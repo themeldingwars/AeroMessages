@@ -1,9 +1,33 @@
 using Bitter;
-namespace PacketPeepScript
-{
+
+namespace PacketPeepScript {
+	public static class MyExtensions {
+		public static string StringZ(this Bitter.BinaryReader rdr) {
+			string ret = "";
+			
+            do {
+                byte b = rdr.Byte();
+                if (b == 0x00)
+                    break;
+				
+				ret += (char)b;
+            } while (CharacterBaseControllerKeyframe.BStream.baseStream.ByteOffset < CharacterBaseControllerKeyframe.BStream.baseStream.Length);
+            
+			return ret;
+        }
+		
+		public static void SkipZeros(this Bitter.BinaryReader rdr) {
+			byte b;
+			do {
+				b = rdr.Byte();
+			} while( b == 0 );
+			
+			CharacterBaseControllerKeyframe.BStream.baseStream.ByteOffset--;
+		}
+	}
+	
     [Script(MessageType.GSS, 2, 129, true)]
-    public class CharacterBaseControllerInventoryUpdate : BaseScript
-    {
+    public class CharacterBaseControllerInventoryUpdate : BaseScript {
         // This message is used both when sending the full inventory on login as well as for partitial updates when playing.
         // There are different formats for items but they should be somewhat split into sections.
         // There is one format for items that have GUID, one format for currency and consumables items that are "stackable" and don't have GUID, and a format that describes battleframes, their loadouts and customization.
