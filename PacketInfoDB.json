@@ -2049,6 +2049,10 @@
         "3": {
           "Name": "Keyframe",
           "Notes": ""
+        },
+        "83": {
+          "Name": "LootObjectCollected",
+          "Notes": ""
         }
       },
       "ClientMessages": {}
