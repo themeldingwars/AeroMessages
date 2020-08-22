@@ -1,31 +1,21 @@
 using Bitter;
 
 namespace PacketPeepScript {
-	public static class MyExtensions {
-		public static string StringZ(this Bitter.BinaryReader rdr) {
-			string ret = "";
-			
-            do {
+    public static class MyExtensions {
+        public static string StringZ(this Bitter.BinaryReader rdr, Bitter.BinaryStream stream) {
+            string ret = "";
+            do
+            {
                 byte b = rdr.Byte();
                 if (b == 0x00)
                     break;
-				
-				ret += (char)b;
-            } while (CharacterBaseControllerKeyframe.BStream.baseStream.ByteOffset < CharacterBaseControllerKeyframe.BStream.baseStream.Length);
-            
-			return ret;
+                ret += (char)b;
+            }
+            while (stream.baseStream.ByteOffset < stream.baseStream.Length);
+            return ret;
         }
-		
-		public static void SkipZeros(this Bitter.BinaryReader rdr) {
-			byte b;
-			do {
-				b = rdr.Byte();
-			} while( b == 0 );
-			
-			CharacterBaseControllerKeyframe.BStream.baseStream.ByteOffset--;
-		}
-	}
-	
+    }
+    
     [Script(MessageType.GSS, 2, 129, true)]
     public class CharacterBaseControllerInventoryUpdate : BaseScript {
         // This message is used both when sending the full inventory on login as well as for partitial updates when playing.
@@ -135,7 +125,7 @@ namespace PacketPeepScript {
             {
                 // Parse first
                 StackItem1_SdbId = Stream.Read.UInt();
-                StackItem1_TextKey = Stream.Read.String(GetNullTerminatedStrSize(Stream));
+                StackItem1_TextKey = Stream.Read.StringZ(Stream);
                 StackItem1_Quantity = Stream.Read.UInt();
                 StackItem1_Unk2 = Stream.Read.ByteArray(5);
 
@@ -147,7 +137,7 @@ namespace PacketPeepScript {
                     do
                     {
                         Stream.Read.UInt();
-                        Stream.Read.String(GetNullTerminatedStrSize(Stream));
+                        Stream.Read.StringZ(Stream);
                         Stream.Read.UInt();
                         Stream.Read.ByteArray(5);
                         remainingStackItems--;
@@ -206,24 +196,6 @@ namespace PacketPeepScript {
 
             // Last four
             Unk_LastThree = Stream.Read.ByteArray(3);
-        }
-
-        // Reads until we find 0x00, then resets the head and returns the number of bytes read.
-        private int GetNullTerminatedStrSize(Bitter.BinaryStream Stream)
-        {
-            long StartOffset = Stream.baseStream.ByteOffset;
-            do
-            {
-                byte b = Stream.Read.Byte();
-                if (b == 0x00)
-                {
-                    break;
-                }
-            }
-            while (Stream.baseStream.ByteOffset < Stream.baseStream.Length);
-            long EndOffset = Stream.baseStream.ByteOffset;
-            Stream.baseStream.ByteOffset = StartOffset;
-            return (int)(EndOffset - StartOffset);
         }
     }
 }
