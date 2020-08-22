@@ -2,7 +2,8 @@ using Bitter;
 namespace PacketPeepScript
 {
     // Assuming it has the same number of status effect fields as Character.
-    [Script(MessageType.GSS, 28, 1, true)]
+    // Only seen status effects here so far.
+    [Script(MessageType.GSS, 30, 1, true)]
     public class VehicleCombatControllerUpdate : BaseScript
     {
         enum ShadowFieldIndex : byte
@@ -57,16 +58,6 @@ namespace PacketPeepScript
             StatusEffect_d_Cancel = 0xad,
             StatusEffect_e_Cancel = 0xae,
             StatusEffect_f_Cancel = 0xaf,
-
-            Unk_0x40 = 0x40,
-            Unk_0x41 = 0x41,
-            Unk_0x42 = 0x42,
-            Unk_0x43 = 0x43,
-            Unk_0x44 = 0x44,
-            Unk_0x45 = 0x45,
-            Unk_0x46 = 0x46,
-            Unk_0x47 = 0x47,
-            Unk_0x48 = 0x48,
         }
 
         public ushort? StatusEffect_0_ShortTime;
@@ -212,17 +203,6 @@ namespace PacketPeepScript
         public byte? StatusEffect_f_Unk2Flag;
         public byte[] StatusEffect_f_Unk2;
         public bool? StatusEffect_f_Cancel;
-
-        public byte[] Unk_0x40;
-        public byte[] Unk_0x41;
-        public byte[] Unk_0x42;
-        public byte[] Unk_0x43;
-        public byte[] Unk_0x44;
-        public byte[] Unk_0x45;
-        public byte[] Unk_0x46;
-        public byte[] Unk_0x47;
-        public byte[] Unk_0x48;
-
 
         public byte[] UnableToParse;
 
@@ -540,34 +520,6 @@ namespace PacketPeepScript
                         break;
                     case ShadowFieldIndex.StatusEffect_f_Cancel:
                         StatusEffect_f_Cancel = true;
-                        break;
-
-                    case ShadowFieldIndex.Unk_0x40:
-                        Unk_0x40 = Stream.Read.ByteArray(4);
-                        break;
-                    case ShadowFieldIndex.Unk_0x41:
-                        Unk_0x41 = Stream.Read.ByteArray(4);
-                        break;
-                    case ShadowFieldIndex.Unk_0x42:
-                        Unk_0x42 = Stream.Read.ByteArray(4);
-                        break;
-                    case ShadowFieldIndex.Unk_0x43:
-                        Unk_0x43 = Stream.Read.ByteArray(4);
-                        break;
-                    case ShadowFieldIndex.Unk_0x44:
-                        Unk_0x44 = Stream.Read.ByteArray(4);
-                        break;
-                    case ShadowFieldIndex.Unk_0x45:
-                        Unk_0x45 = Stream.Read.ByteArray(4);
-                        break;
-                    case ShadowFieldIndex.Unk_0x46:
-                        Unk_0x46 = Stream.Read.ByteArray(4);
-                        break;
-                    case ShadowFieldIndex.Unk_0x47:
-                        Unk_0x47 = Stream.Read.ByteArray(4);
-                        break;
-                    case ShadowFieldIndex.Unk_0x48:
-                        Unk_0x48 = Stream.Read.ByteArray(4);
                         break;
 
                     default:

@@ -10,8 +10,11 @@ namespace PacketPeepScript
         public byte Unk2;
         public byte[] Entity;
         public byte Unk3;
-
         public float[] Position;
+        public uint LootSdbId;
+        public uint Quantity;
+
+        public byte[] Unk;
         
         public override void Read(Bitter.BinaryStream Stream)
         {
@@ -35,6 +38,12 @@ namespace PacketPeepScript
             }
 
             Position = Stream.Read.FloatArray(3);
+
+            LootSdbId = Stream.Read.UInt();
+            Quantity = Stream.Read.UInt();
+
+            int remaining = (int)(Stream.baseStream.Length - Stream.baseStream.ByteOffset);
+            Unk = Stream.Read.ByteArray(remaining);
         }
     }
 }

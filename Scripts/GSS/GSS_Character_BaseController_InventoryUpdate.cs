@@ -5,29 +5,17 @@ using Bitter;
 namespace PacketPeepScript {
 	// Add "MyExtensions.BStream = Stream;" as first line in Packet Read function.
 	public static class MyExtensions {
-		public static Bitter.BinaryStream BStream;
-		
-		public static string StringZ(this Bitter.BinaryReader rdr) {
+        public static string StringZ(this Bitter.BinaryReader rdr, Bitter.BinaryStream stream) {
 			string ret = "";
-			
-            do {
+            do
+            {
                 byte b = rdr.Byte();
                 if (b == 0x00)
                     break;
-				
 				ret += (char)b;
-            } while (BStream.baseStream.ByteOffset < BStream.baseStream.Length);
-            
-			return ret;
-        }
-		
-		public static void SkipZeros(this Bitter.BinaryReader rdr) {
-			byte b;
-			do {
-				b = rdr.Byte();
-			} while( b == 0 );
-			
-			BStream.baseStream.ByteOffset--;
+            }
+            while (stream.baseStream.ByteOffset < stream.baseStream.Length);
+            return ret;
 		}
 	}
 	
@@ -46,7 +34,7 @@ namespace PacketPeepScript {
 
         public byte NumUniqueItems;
 		public List<UniqueItem> UniqueItems;
-		
+
 		public byte NumStackItems;
 		public List<StackItem> StackItems;
 
@@ -81,9 +69,9 @@ namespace PacketPeepScript {
             Loadouts = Stream.Read.TypeList<Loadout>(4);//(NumLoadouts);
 
             //Unk_LastThree = Stream.Read.ByteArray(3);
-        }
-    }
-	
+                }
+            }
+
 	public class UniqueItem : Bitter.BinaryWrapper.ReadWrite {
 		public byte Unk1;
 		public uint SdbId;
@@ -112,15 +100,15 @@ namespace PacketPeepScript {
 			Unk5_Count = Stream.Read.Byte();
 			if (Unk5_Count > 0)
 				Unk5_Data = Stream.Read.UIntArray(Unk5_Count);
-		}
+                }
 		
         public void Write(BinaryStream Stream) {
 			throw new System.NotImplementedException();
-		}
-		
+            }
+
 		public override string ToString() => $"{this.GetType().Name} SdbID: {SdbId}";
 	}
-	
+
 	public class StackItem : Bitter.BinaryWrapper.ReadWrite {
 		// SlotIdx is here somewhere
 		public uint SdbId;
@@ -396,5 +384,5 @@ namespace PacketPeepScript {
 		}
 		
 		public override string ToString() => $"ID: ";
-	}
+    }
 }

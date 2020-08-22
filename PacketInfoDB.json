@@ -2049,6 +2049,10 @@
         "3": {
           "Name": "Keyframe",
           "Notes": ""
+        },
+        "83": {
+          "Name": "LootObjectCollected",
+          "Notes": ""
         }
       },
       "ClientMessages": {}
@@ -2126,9 +2130,26 @@
         "5": {
           "Name": "Remove",
           "Notes": "Is fired with the player id, not sure why."
+        },
+        "83": {
+          "Name": "AbilityActivated",
+          "Notes": ""
+        },
+        "84": {
+          "Name": "AbilityFailed",
+          "Notes": ""
         }
       },
-      "ClientMessages": {}
+      "ClientMessages": {
+        "87": {
+          "Name": "ActivateAbility",
+          "Notes": ""
+        },
+        "88": {
+          "Name": "DeactivateAbility",
+          "Notes": ""
+        }
+      }
     },
     "29": {
       "Name": "firefall::Vehicle::ObserverView",

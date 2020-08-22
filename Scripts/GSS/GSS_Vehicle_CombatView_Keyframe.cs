@@ -7,8 +7,7 @@ namespace PacketPeepScript
         public byte[] Unk1;
 
         // There is a variance in these based on the first 4 bytes
-        // Towards the last bytes, we often have 4 byte gametime and an 8 byte entity
-        // The content inbetween is really confusing in some cases
+        // Bitfield for the status effect data probably.
 
         public override void Read(Bitter.BinaryStream Stream)
         {
