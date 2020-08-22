@@ -148,7 +148,7 @@ namespace PacketPeepScript {
 			NumConfigs = Stream.Read.Byte();
 			LoadoutConfigs = Stream.Read.TypeList<LoadoutConfig>(NumConfigs);
 			
-			_ = Stream.Read.ByteArray(14);
+			/*_ = */Stream.Read.ByteArray(14);
 		}
 		
         public void Write(BinaryStream Stream) {
@@ -186,37 +186,37 @@ namespace PacketPeepScript {
 			Flags = Stream.Read.Byte();
 			
 			if( (Flags & 0x01) > 0 || (Flags & 0x04) > 0 ) {
-				_ = Stream.Read.UInt();
+				/*_ = */Stream.Read.UInt();
 			
 				var f = Stream.Read.Byte();
 				
 				if( (f & 1) > 0 ) {
-					_ = Stream.Read.ByteArray(9);
+					/*_ = */Stream.Read.ByteArray(9);
 				}
 				if( (f & 2) > 0 ) {
-					//_ = Stream.Read.Byte();
+					///*_ = */Stream.Read.Byte();
 					var cnt = Stream.Read.Byte();
-					_ = Stream.Read.ByteArray(cnt);
+					/*_ = */Stream.Read.ByteArray(cnt);
 				}
 				if( (f & 4) > 0 ) {
-					_ = Stream.Read.ByteArray(88);
+					/*_ = */Stream.Read.ByteArray(88);
 				}
 				if( (f & 8) > 0 ) {
 					var cntAwards = Stream.Read.Byte();
 					var awards = Stream.Read.UIntArray(cntAwards);
 				}
 				
-				_ = Stream.Read.Byte();
+				/*_ = */Stream.Read.Byte();
 			
 				var unkints = Stream.Read.UIntArray(2);
 				var unkints2 = Stream.Read.UIntArray(1);
 			}
 			
 			if( (Flags & 0x02) > 0 ) {
-				_ = Stream.Read.Byte();
+				/*_ = */Stream.Read.Byte();
 				
 				var cnt = Stream.Read.Byte();
-				_ = Stream.Read.ByteArray(cnt);
+				/*_ = */Stream.Read.ByteArray(cnt);
 				
 				var unkints = Stream.Read.UIntArray(2);
 				var unkints2 = Stream.Read.UIntArray(1);
@@ -376,7 +376,7 @@ namespace PacketPeepScript {
 		
 		
 		public void Read(BinaryStream Stream) {
-			_ = Stream.Read.ByteArray(1);
+			/*_ = */Stream.Read.ByteArray(1);
 		}
 		
         public void Write(BinaryStream Stream) {
