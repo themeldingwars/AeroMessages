@@ -197,7 +197,10 @@ namespace PacketPeepScript
     [Script(MessageType.GSS, 9, 3, true)]
     public class CharacterEquipmentViewKeyframe : BaseScript
     {
-        public byte Unk_TypeByte; // Maybe "NoBattleframe" or something
+        // "Visual group"?
+        public byte Unk_HaveVisualsGroupData;
+        public byte Unk_VisualsGroupWeirdByte;
+        public uint VisualsGroupId;
         
         // Chassis
         public EquippedItemData Chassis;
@@ -240,9 +243,6 @@ namespace PacketPeepScript
         public byte NumberOfPrimaryWeaponVisualsOrnaments;
         public uint[] PrimaryWeapon_Visuals_Ornaments;
 
-
-
-
         public byte[] Unk4;
 
         public uint SecondaryWeapon;
@@ -284,10 +284,14 @@ namespace PacketPeepScript
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
 
-            
-            Unk_TypeByte = Stream.Read.Byte();
+            Unk_HaveVisualsGroupData = Stream.Read.Byte();
+            if (Unk_HaveVisualsGroupData == 0x01)
+            {
+                Unk_VisualsGroupWeirdByte = Stream.Read.Byte();
+                VisualsGroupId = Stream.Read.UInt();
+            }
 
-            if (Unk_TypeByte == 0x00)
+            if (true) // Keeping this because it somehow fixes highlighting issues
             {
                 Chassis = Stream.Read.EquippedItemData();
                 NumberOfChassisModules = Stream.Read.Byte();
