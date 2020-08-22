@@ -8,14 +8,13 @@ namespace PacketPeepScript {
         public byte NumFrames;
         public List<FrameInfo> Frames;
 
-        public override void Read(Bitter.BinaryStream Stream)
-        {
+        public override void Read(Bitter.BinaryStream Stream) {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
 
             NumFrames = Stream.Read.Byte();
             Frames = Stream.Read.TypeList<FrameInfo>(NumFrames);
-                }
-            }
+		}
+	}
 	
 	public struct FrameInfo : Bitter.BinaryWrapper.ReadWrite {
 		public uint ChassisID;

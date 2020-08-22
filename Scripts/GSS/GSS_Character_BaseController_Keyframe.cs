@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using Bitter;
 
 namespace PacketPeepScript {
+	// Add "MyExtensions.BStream = Stream;" as first line in Packet Read function.
 	public static class MyExtensions {
+		public static Bitter.BinaryStream BStream;
+		
 		public static string StringZ(this Bitter.BinaryReader rdr) {
 			string ret = "";
 			
@@ -13,7 +16,7 @@ namespace PacketPeepScript {
                     break;
 				
 				ret += (char)b;
-            } while (CharacterBaseControllerKeyframe.BStream.baseStream.ByteOffset < CharacterBaseControllerKeyframe.BStream.baseStream.Length);
+            } while (BStream.baseStream.ByteOffset < BStream.baseStream.Length);
             
 			return ret;
         }
@@ -24,14 +27,12 @@ namespace PacketPeepScript {
 				b = rdr.Byte();
 			} while( b == 0 );
 			
-			CharacterBaseControllerKeyframe.BStream.baseStream.ByteOffset--;
+			BStream.baseStream.ByteOffset--;
 		}
 	}
 	
     [Script(MessageType.GSS, 2, 4, true)]
     public class CharacterBaseControllerKeyframe : BaseScript {
-		public static Bitter.BinaryStream BStream;
-		
 		public ulong InstanceID;
 		public uint UnkInt1;
 		public uint UnkInt2;
@@ -56,7 +57,7 @@ namespace PacketPeepScript {
 		public uint VehicleLoadout;
 		public uint GliderLoadout;
 		
-		public WarPaint CharacterWarPaint;
+		public Visuals CharacterVisuals;
 		
 		public string ArmyName;
 		
@@ -70,7 +71,7 @@ namespace PacketPeepScript {
 		public uint ChassisLoadout;
 		public byte NumGear;
 		public IList<Gear> Gear;
-		public WarPaint ChassisWarPaint;
+		public Visuals ChassisVisuals;
 		
 		public uint BackpackLoadout;
 		public byte NumAbilities;
@@ -81,12 +82,12 @@ namespace PacketPeepScript {
 		public uint PrimaryWeaponID;
 		public byte NumPrimaryWeaponModules;
 		public IList<WeaponModule> PrimaryWeaponModules;
-		public WarPaint PrimaryWeaponWarPaint;
+		public Visuals PrimaryWeaponVisuals;
 		
 		public uint SecondaryWeaponID;
 		public byte NumSecondaryWeaponModules;
 		public IList<WeaponModule> SecondaryWeaponModules;
-		public WarPaint SecondaryWeaponWarPaint;
+		public Visuals SecondaryWeaponVisuals;
 		
 		public uint LoadoutID;
 		
@@ -147,7 +148,7 @@ namespace PacketPeepScript {
 		public ulong ArmyID;
 		
         public override void Read(Bitter.BinaryStream Stream) {
-			BStream = Stream;
+			MyExtensions.BStream = Stream;
 			//KeyFrameTime = new uint[32];
 			Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
 			//Stream.ByteOrder = BinaryStream.Endianness.BigEndian; 530239
@@ -186,7 +187,7 @@ namespace PacketPeepScript {
 			VehicleLoadout = Stream.Read.UInt();
 			GliderLoadout = Stream.Read.UInt();
 			
-			CharacterWarPaint = Stream.Read.Type<WarPaint>();
+			CharacterVisuals = Stream.Read.Type<Visuals>();
 			
 			Stream.Read.SkipZeros();
 			ArmyName = Stream.Read.StringZ();
@@ -201,7 +202,7 @@ namespace PacketPeepScript {
 			NumGear = Stream.Read.Byte();
 			Gear = Stream.Read.TypeList<Gear>(NumGear);
 			
-			ChassisWarPaint = Stream.Read.Type<WarPaint>();
+			ChassisVisuals = Stream.Read.Type<Visuals>();
 			//_ = Stream.Read.ByteArray(3);	// ???
 			
 			BackpackLoadout = Stream.Read.UInt();
@@ -222,7 +223,7 @@ namespace PacketPeepScript {
 			
 			NumPrimaryWeaponModules = Stream.Read.Byte();
 			PrimaryWeaponModules = Stream.Read.TypeList<WeaponModule>(NumPrimaryWeaponModules);
-			PrimaryWeaponWarPaint = Stream.Read.Type<WarPaint>();
+			PrimaryWeaponVisuals = Stream.Read.Type<Visuals>();
 			//_ = Stream.Read.ByteArray(3);	// ???
 
 			_ = Stream.Read.UInt();
@@ -233,7 +234,7 @@ namespace PacketPeepScript {
 			
 			NumSecondaryWeaponModules = Stream.Read.Byte();
 			SecondaryWeaponModules = Stream.Read.TypeList<WeaponModule>(NumSecondaryWeaponModules);
-			SecondaryWeaponWarPaint = Stream.Read.Type<WarPaint>();
+			SecondaryWeaponVisuals = Stream.Read.Type<Visuals>();
 			
 			//_ = Stream.Read.ByteArray(3);	// ???
 			_ = Stream.Read.UIntArray(3);
@@ -389,7 +390,7 @@ namespace PacketPeepScript {
 		public override string ToString() => $"ID: {ID}, Usage: {Usage}";
 	}
 	
-	public class WarPaint : Bitter.BinaryWrapper.ReadWrite {
+	public class Visuals : Bitter.BinaryWrapper.ReadWrite {
 		public byte NumDecals;
 		public IList<Decal> Decals;
 		
