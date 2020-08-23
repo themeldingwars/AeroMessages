@@ -1,29 +1,12 @@
 using Bitter;
 namespace PacketPeepScript
 {
-    [Script(MessageType.GSS, 35, 3, true)]
-    public class DeployableObserverViewKeyframe : BaseScript
+    [Script(MessageType.GSS, 28, 4, true)]
+    public class VehicleCombatControllerKeyframe : BaseScript
     {
+        public ulong PlayerID;
         public byte[] Bitfield_StatusEffectData; // Assuming it will support at least 16 status effects
-        public byte[] Unk_ContentBytes; // Focusing on making the parsing work when all these are 0xFF
-
-        public uint DeployableTypeId; // Sdb table 187, id column.
-
-        public byte[] OwnerEntity;
-        public uint SourceAbilityId; // example in msgidx 123396
-
-        public float[] Position;
-        public float[] Rotation;
-
-        public float[] Position2; // But why?
-        public float[] MaybeDirection; // A guess 
-
-        public byte UnkByte;
-        public uint UnkTime;
-        public int MaxHealth;
-        public byte Level;
-
-        public string UnkMemoryLeak; // Inbetween effect times and data.
+        public byte[] Unk_ContentBytes;
 
         public ushort? StatusEffect_0_ShortTime;
         public uint? StatusEffect_0_Id;
@@ -169,114 +152,39 @@ namespace PacketPeepScript
         public byte[] StatusEffect_f_Unk2;
         public bool? StatusEffect_f_Cancel;
 
-        public byte[] Faction;
-
-        public byte[] Unk_LastBytes;
-
         public override void Read(Bitter.BinaryStream Stream)
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
+            
+            if (true)
+            {
+                PlayerID = Stream.Read.ULong();
+                Bitfield_StatusEffectData = Stream.Read.BitArray(16); 
+                Unk_ContentBytes = Stream.Read.ByteArray(2);
 
-            if (true) {
-                Bitfield_StatusEffectData = Stream.Read.BitArray(16);
-                Unk_ContentBytes = Stream.Read.ByteArray(6);
+                // Status Effect Times
+                // Note: In the Deployable Observer we only have as many times as we have data.
+                StatusEffect_0_ShortTime = Stream.Read.UShort();
+                StatusEffect_1_ShortTime = Stream.Read.UShort();
+                StatusEffect_2_ShortTime = Stream.Read.UShort();
+                StatusEffect_3_ShortTime = Stream.Read.UShort();
+                StatusEffect_4_ShortTime = Stream.Read.UShort();
+                StatusEffect_5_ShortTime = Stream.Read.UShort();
+                StatusEffect_6_ShortTime = Stream.Read.UShort();
+                StatusEffect_7_ShortTime = Stream.Read.UShort();
+                StatusEffect_8_ShortTime = Stream.Read.UShort();
+                StatusEffect_9_ShortTime = Stream.Read.UShort();
+                StatusEffect_a_ShortTime = Stream.Read.UShort();
+                StatusEffect_b_ShortTime = Stream.Read.UShort();
+                StatusEffect_c_ShortTime = Stream.Read.UShort();
+                StatusEffect_d_ShortTime = Stream.Read.UShort();
+                StatusEffect_e_ShortTime = Stream.Read.UShort();
+                StatusEffect_f_ShortTime = Stream.Read.UShort();
 
-                DeployableTypeId = Stream.Read.UInt();
+                // Don't know if these are to support more status effects or not.
+                Stream.baseStream.ByteOffset += 32;
 
-                OwnerEntity = Stream.Read.ByteArray(8);
-                SourceAbilityId = Stream.Read.UInt();
-
-                Position = Stream.Read.FloatArray(3);
-                Rotation = Stream.Read.FloatArray(4);
-                
-                Position2 = Stream.Read.FloatArray(3);
-                MaybeDirection = Stream.Read.FloatArray(3);
-
-                UnkByte = Stream.Read.Byte();
-                UnkTime = Stream.Read.UInt();
-
-                MaxHealth = Stream.Read.Int(); 
-                Level = Stream.Read.Byte();
-
-                // Status Times
-                if (Bitfield_StatusEffectData[0] == 0x00)
-                {
-                    StatusEffect_0_ShortTime = Stream.Read.UShort();
-                }
-                if (Bitfield_StatusEffectData[1] == 0x00)
-                {
-                    StatusEffect_1_ShortTime = Stream.Read.UShort();
-                }
-                if (Bitfield_StatusEffectData[2] == 0x00)
-                {
-                    StatusEffect_2_ShortTime = Stream.Read.UShort();
-                }
-                if (Bitfield_StatusEffectData[3] == 0x00)
-                {
-                    StatusEffect_3_ShortTime = Stream.Read.UShort();
-                }
-                if (Bitfield_StatusEffectData[4] == 0x00)
-                {
-                    StatusEffect_4_ShortTime = Stream.Read.UShort();
-                }
-                if (Bitfield_StatusEffectData[5] == 0x00)
-                {
-                    StatusEffect_5_ShortTime = Stream.Read.UShort();
-                }
-                if (Bitfield_StatusEffectData[6] == 0x00)
-                {
-                    StatusEffect_6_ShortTime = Stream.Read.UShort();
-                }
-                if (Bitfield_StatusEffectData[7] == 0x00)
-                {
-                    StatusEffect_7_ShortTime = Stream.Read.UShort();
-                }
-                if (Bitfield_StatusEffectData[8] == 0x00)
-                {
-                    StatusEffect_8_ShortTime = Stream.Read.UShort();
-                }
-                if (Bitfield_StatusEffectData[9] == 0x00)
-                {
-                    StatusEffect_9_ShortTime = Stream.Read.UShort();
-                }
-                if (Bitfield_StatusEffectData[10] == 0x00)
-                {
-                    StatusEffect_a_ShortTime = Stream.Read.UShort();
-                }
-                if (Bitfield_StatusEffectData[11] == 0x00)
-                {
-                    StatusEffect_b_ShortTime = Stream.Read.UShort();
-                }
-                if (Bitfield_StatusEffectData[12] == 0x00)
-                {
-                    StatusEffect_c_ShortTime = Stream.Read.UShort();
-                }
-                if (Bitfield_StatusEffectData[13] == 0x00)
-                {
-                    StatusEffect_d_ShortTime = Stream.Read.UShort();
-                }
-                if (Bitfield_StatusEffectData[14] == 0x00)
-                {
-                    StatusEffect_e_ShortTime = Stream.Read.UShort();
-                }
-                if (Bitfield_StatusEffectData[15] == 0x00)
-                {
-                    StatusEffect_f_ShortTime = Stream.Read.UShort();
-                }
-
-                // This text is fucking weird, I'm half assuming this was due to some kind of bug.
-                // It is neither null-terminated nor size-indicated but it appears to be predictable relative to number of status effects...
-                // This solution appears to work for 0, 1, and 3 status effects.
-                int NumberOfStatusEffects = 0;
-                foreach (byte b in Bitfield_StatusEffectData)
-                {
-                    if (b == 0x00)
-                        NumberOfStatusEffects++;
-                }
-                int WeirdTextLength = 64 - (2*NumberOfStatusEffects);
-                UnkMemoryLeak = Stream.Read.String(WeirdTextLength);
-
-                // Status data
+                // Status Effect Data
                 if (Bitfield_StatusEffectData[0] == 0x00)
                 {
                     StatusEffect_0_Id     = Stream.Read.UInt();
@@ -484,10 +392,6 @@ namespace PacketPeepScript
                         StatusEffect_f_Unk2   = Stream.Read.ByteArray(38);
                     }
                 }
-
-                Faction = Stream.Read.ByteArray(2);
-
-                Unk_LastBytes = Stream.Read.ByteArray(53);
             }
         }
     }

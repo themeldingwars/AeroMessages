@@ -23,6 +23,18 @@ namespace PacketPeepScript
             public override string ToString() => $"SdbId: {SdbId}, Color: {Color}, HalfTransform: [{(HalfTransform != null ? String.Join(", ", HalfTransform) : "null")}], Usage: {Usage}";
         }
 
+        public struct DecalGradientData
+        {
+            public uint Unk;
+
+            public DecalGradientData(Bitter.BinaryReader R)
+            {
+                Unk = R.UInt();
+            }
+
+            public override string ToString() => $"?";
+        }
+
         // 4 byte color
         public struct ColorData
         {
@@ -94,6 +106,21 @@ namespace PacketPeepScript
             for (int i = 1; i <= num; i++)
             {
                 list.Add(R.DecalData());
+            }
+            return list.ToArray();
+        }
+
+        public static DecalGradientData DecalGradientData(this Bitter.BinaryReader R)
+        {
+            return new DecalGradientData(R);
+        }
+
+        public static DecalGradientData[] DecalGradientDataArray(this Bitter.BinaryReader R, int num)
+        {
+            List<DecalGradientData> list = new List<DecalGradientData>();
+            for (int i = 1; i <= num; i++)
+            {
+                list.Add(R.DecalGradientData());
             }
             return list.ToArray();
         }
@@ -176,6 +203,12 @@ namespace PacketPeepScript
 
         public byte[] Unk3;
 
+        public byte NumberOfCharacterVisualsDecals;
+        public DecalData[] Character_Visuals_Decals;
+
+        public byte NumberOfCharacterVisualsDecalGradients;
+        public DecalGradientData[] Character_Visuals_DecalGradients;
+
         public byte NumberOfCharacterVisualsColors;
         public ColorData[] Character_Visuals_Colors;
 
@@ -226,11 +259,13 @@ namespace PacketPeepScript
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
 
+
             if (true)
             {
                 Unk_Contents = Stream.Read.ByteArray(4);
                 DisplayName = Stream.Read.StringZ(Stream);
                 UniqueName = Stream.Read.StringZ(Stream);
+
                 Gender = Stream.Read.Byte();
                 Race = Stream.Read.Byte();
                 CharInfoId = Stream.Read.UInt();
@@ -250,7 +285,13 @@ namespace PacketPeepScript
                 }
                 Vehicle = Stream.Read.UInt();
                 Glider = Stream.Read.UInt();
-                Unk3 = Stream.Read.ByteArray(2);
+
+                NumberOfCharacterVisualsDecals = Stream.Read.Byte();
+                Character_Visuals_Decals = Stream.Read.DecalDataArray(NumberOfCharacterVisualsDecals);
+
+                NumberOfCharacterVisualsDecalGradients = Stream.Read.Byte();
+                Character_Visuals_DecalGradients = Stream.Read.DecalGradientDataArray(NumberOfCharacterVisualsDecalGradients);
+                
                 NumberOfCharacterVisualsColors = Stream.Read.Byte();
                 Character_Visuals_Colors = Stream.Read.ColorDataArray(NumberOfCharacterVisualsColors);
                 NumberOfCharacterVisualsPalettes = Stream.Read.Byte();

@@ -10,9 +10,8 @@ namespace PacketPeepScript
         // It's not only that there's a flag in them, but sometimes the data on them is completely omitted. First byte might be a clue.
         // Keyframes ranging between 200-500+ bytes.
 
-        public byte Unk_Maybe_ContentFlag;
-
-        public byte[] Unk_StartFlags; // Probably
+        public byte[] Bitfield_StatusEffectData;
+        public byte[] Unk_ContentBytes; // Probably
 
 
 
@@ -190,204 +189,274 @@ namespace PacketPeepScript
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
 
-            Unk_Maybe_ContentFlag = Stream.Read.Byte(); // Separating it because I want to use it
-            Unk_StartFlags = Stream.Read.ByteArray(5);
-
-            int expectedStatusDataCount = 0; // Using it further down
-            switch (Unk_Maybe_ContentFlag) // This is a bitfield so this part can be redone once we figure out how they map
+            if (true)
             {
-                case 0x00:
-                    expectedStatusDataCount = 8;
-                    break;
+                Bitfield_StatusEffectData = Stream.Read.BitArray(16); 
+                Unk_ContentBytes = Stream.Read.ByteArray(4);
 
-                case 0xA0:
-                case 0x80:
-                    expectedStatusDataCount = 6;
-                    break;
+                // Note: In the Deployable Observer we only have as many times as we have data.
+                StatusEffect_0_ShortTime = Stream.Read.UShort();
+                StatusEffect_1_ShortTime = Stream.Read.UShort();
+                StatusEffect_2_ShortTime = Stream.Read.UShort();
+                StatusEffect_3_ShortTime = Stream.Read.UShort();
+                StatusEffect_4_ShortTime = Stream.Read.UShort();
+                StatusEffect_5_ShortTime = Stream.Read.UShort();
+                StatusEffect_6_ShortTime = Stream.Read.UShort();
+                StatusEffect_7_ShortTime = Stream.Read.UShort();
+                StatusEffect_8_ShortTime = Stream.Read.UShort();
+                StatusEffect_9_ShortTime = Stream.Read.UShort();
+                StatusEffect_a_ShortTime = Stream.Read.UShort();
+                StatusEffect_b_ShortTime = Stream.Read.UShort();
+                StatusEffect_c_ShortTime = Stream.Read.UShort();
+                StatusEffect_d_ShortTime = Stream.Read.UShort();
+                StatusEffect_e_ShortTime = Stream.Read.UShort();
+                StatusEffect_f_ShortTime = Stream.Read.UShort();
 
-                case 0xE0:
-                    expectedStatusDataCount = 5;
-                    break;
-
-                case 0xE2:
-                    expectedStatusDataCount = 4;
-                    break;
-
-                case 0x5D:
-                case 0xF8:
-                    expectedStatusDataCount = 3;
-                    break;
-
-                case 0xED:
-                case 0xF9:
-                case 0xFC:
-                    expectedStatusDataCount = 2;
-                    break;
-
-                case 0xFE:
-                    expectedStatusDataCount = 1;
-                    break;
-
-                case 0xFD:
-                case 0xFF:
-                    expectedStatusDataCount = 0;
-                    break;
-
-                default:
-                    expectedStatusDataCount = 0;
-                    break;
-            }
+                Unk_NotSure = Stream.Read.ByteArray(32);
 
 
-
-            StatusEffect_0_ShortTime = Stream.Read.UShort();
-            StatusEffect_1_ShortTime = Stream.Read.UShort();
-            StatusEffect_2_ShortTime = Stream.Read.UShort();
-            StatusEffect_3_ShortTime = Stream.Read.UShort();
-            StatusEffect_4_ShortTime = Stream.Read.UShort();
-            StatusEffect_5_ShortTime = Stream.Read.UShort();
-            StatusEffect_6_ShortTime = Stream.Read.UShort();
-            StatusEffect_7_ShortTime = Stream.Read.UShort();
-            StatusEffect_8_ShortTime = Stream.Read.UShort();
-            StatusEffect_9_ShortTime = Stream.Read.UShort();
-            StatusEffect_a_ShortTime = Stream.Read.UShort();
-            StatusEffect_b_ShortTime = Stream.Read.UShort();
-            StatusEffect_c_ShortTime = Stream.Read.UShort();
-            StatusEffect_d_ShortTime = Stream.Read.UShort();
-            StatusEffect_e_ShortTime = Stream.Read.UShort();
-            StatusEffect_f_ShortTime = Stream.Read.UShort();
-
-            Unk_NotSure = Stream.Read.ByteArray(32);
-
-
-            // Status Effect Data
-            // We rely on the expected status count
-            int idx = 0;
-            do
-            {
-                switch(idx)
+                // Status Effect Data
+                if (Bitfield_StatusEffectData[0] == 0x00)
                 {
-                    case 0:
-                        StatusEffect_0_Id     = Stream.Read.UInt();
-                        StatusEffect_0_Unk1   = Stream.Read.ByteArray(1);
-                        StatusEffect_0_Entity = Stream.Read.ByteArray(8);
-                        StatusEffect_0_Time1  = Stream.Read.UInt();
-                        StatusEffect_0_Unk2Flag = Stream.Read.Byte();
-                        if (StatusEffect_0_Unk2Flag == 0x01)
-                        {
-                            StatusEffect_0_Unk2   = Stream.Read.ByteArray(38);
-                        }
-                        break;
-
-                    case 1:
-                        StatusEffect_1_Id     = Stream.Read.UInt();
-                        StatusEffect_1_Unk1   = Stream.Read.ByteArray(1);
-                        StatusEffect_1_Entity = Stream.Read.ByteArray(8);
-                        StatusEffect_1_Time1  = Stream.Read.UInt();
-                        StatusEffect_1_Unk2Flag = Stream.Read.Byte();
-                        if (StatusEffect_1_Unk2Flag == 0x01)
-                        {
-                            StatusEffect_1_Unk2   = Stream.Read.ByteArray(38);
-                        }
-                        break;
-
-                    case 2:
-                        StatusEffect_2_Id     = Stream.Read.UInt();
-                        StatusEffect_2_Unk1   = Stream.Read.ByteArray(1);
-                        StatusEffect_2_Entity = Stream.Read.ByteArray(8);
-                        StatusEffect_2_Time1  = Stream.Read.UInt();
-                        StatusEffect_2_Unk2Flag = Stream.Read.Byte();
-                        if (StatusEffect_2_Unk2Flag == 0x01)
-                        {
-                            StatusEffect_2_Unk2   = Stream.Read.ByteArray(38);
-                        }
-                        break;
-
-                    case 3:
-                        StatusEffect_3_Id     = Stream.Read.UInt();
-                        StatusEffect_3_Unk1   = Stream.Read.ByteArray(1);
-                        StatusEffect_3_Entity = Stream.Read.ByteArray(8);
-                        StatusEffect_3_Time1  = Stream.Read.UInt();
-                        StatusEffect_3_Unk2Flag = Stream.Read.Byte();
-                        if (StatusEffect_3_Unk2Flag == 0x01)
-                        {
-                            StatusEffect_3_Unk2   = Stream.Read.ByteArray(38);
-                        }
-                        break;
-
-                    case 4:
-                        StatusEffect_4_Id     = Stream.Read.UInt();
-                        StatusEffect_4_Unk1   = Stream.Read.ByteArray(1);
-                        StatusEffect_4_Entity = Stream.Read.ByteArray(8);
-                        StatusEffect_4_Time1  = Stream.Read.UInt();
-                        StatusEffect_4_Unk2Flag = Stream.Read.Byte();
-                        if (StatusEffect_4_Unk2Flag == 0x01)
-                        {
-                            StatusEffect_4_Unk2   = Stream.Read.ByteArray(38);
-                        }
-                        break;
-
-                    case 5:
-                        StatusEffect_5_Id     = Stream.Read.UInt();
-                        StatusEffect_5_Unk1   = Stream.Read.ByteArray(1);
-                        StatusEffect_5_Entity = Stream.Read.ByteArray(8);
-                        StatusEffect_5_Time1  = Stream.Read.UInt();
-                        StatusEffect_5_Unk2Flag = Stream.Read.Byte();
-                        if (StatusEffect_5_Unk2Flag == 0x01)
-                        {
-                            StatusEffect_5_Unk2   = Stream.Read.ByteArray(38);
-                        }
-                        break;
-
-                    case 6:
-                        StatusEffect_6_Id     = Stream.Read.UInt();
-                        StatusEffect_6_Unk1   = Stream.Read.ByteArray(1);
-                        StatusEffect_6_Entity = Stream.Read.ByteArray(8);
-                        StatusEffect_6_Time1  = Stream.Read.UInt();
-                        StatusEffect_6_Unk2Flag = Stream.Read.Byte();
-                        if (StatusEffect_6_Unk2Flag == 0x01)
-                        {
-                            StatusEffect_6_Unk2   = Stream.Read.ByteArray(38);
-                        }
-                        break;
-
-                    case 7:
-                        StatusEffect_7_Id     = Stream.Read.UInt();
-                        StatusEffect_7_Unk1   = Stream.Read.ByteArray(1);
-                        StatusEffect_7_Entity = Stream.Read.ByteArray(8);
-                        StatusEffect_7_Time1  = Stream.Read.UInt();
-                        StatusEffect_7_Unk2Flag = Stream.Read.Byte();
-                        if (StatusEffect_7_Unk2Flag == 0x01)
-                        {
-                            StatusEffect_7_Unk2   = Stream.Read.ByteArray(38);
-                        }
-                        break;
+                    StatusEffect_0_Id     = Stream.Read.UInt();
+                    StatusEffect_0_Unk1   = Stream.Read.ByteArray(1);
+                    StatusEffect_0_Entity = Stream.Read.ByteArray(8);
+                    StatusEffect_0_Time1  = Stream.Read.UInt();
+                    StatusEffect_0_Unk2Flag = Stream.Read.Byte();
+                    if (StatusEffect_0_Unk2Flag == 0x01)
+                    {
+                        StatusEffect_0_Unk2   = Stream.Read.ByteArray(38);
+                    }
                 }
-                idx++;
-            }
-            while (idx < expectedStatusDataCount && Stream.baseStream.ByteOffset < Stream.baseStream.Length);
 
+                if (Bitfield_StatusEffectData[1] == 0x00)
+                {
+                    StatusEffect_1_Id     = Stream.Read.UInt();
+                    StatusEffect_1_Unk1   = Stream.Read.ByteArray(1);
+                    StatusEffect_1_Entity = Stream.Read.ByteArray(8);
+                    StatusEffect_1_Time1  = Stream.Read.UInt();
+                    StatusEffect_1_Unk2Flag = Stream.Read.Byte();
+                    if (StatusEffect_1_Unk2Flag == 0x01)
+                    {
+                        StatusEffect_1_Unk2   = Stream.Read.ByteArray(38);
+                    }
+                }
+
+                if (Bitfield_StatusEffectData[2] == 0x00)
+                {
+                    StatusEffect_2_Id     = Stream.Read.UInt();
+                    StatusEffect_2_Unk1   = Stream.Read.ByteArray(1);
+                    StatusEffect_2_Entity = Stream.Read.ByteArray(8);
+                    StatusEffect_2_Time1  = Stream.Read.UInt();
+                    StatusEffect_2_Unk2Flag = Stream.Read.Byte();
+                    if (StatusEffect_2_Unk2Flag == 0x01)
+                    {
+                        StatusEffect_2_Unk2   = Stream.Read.ByteArray(38);
+                    }
+                }
+                
+                if (Bitfield_StatusEffectData[3] == 0x00)
+                {  
+                    StatusEffect_3_Id     = Stream.Read.UInt();
+                    StatusEffect_3_Unk1   = Stream.Read.ByteArray(1);
+                    StatusEffect_3_Entity = Stream.Read.ByteArray(8);
+                    StatusEffect_3_Time1  = Stream.Read.UInt();
+                    StatusEffect_3_Unk2Flag = Stream.Read.Byte();
+                    if (StatusEffect_3_Unk2Flag == 0x01)
+                    {
+                        StatusEffect_3_Unk2   = Stream.Read.ByteArray(38);
+                    }
+                }
+
+                if (Bitfield_StatusEffectData[4] == 0x00)
+                { 
+                    StatusEffect_4_Id     = Stream.Read.UInt();
+                    StatusEffect_4_Unk1   = Stream.Read.ByteArray(1);
+                    StatusEffect_4_Entity = Stream.Read.ByteArray(8);
+                    StatusEffect_4_Time1  = Stream.Read.UInt();
+                    StatusEffect_4_Unk2Flag = Stream.Read.Byte();
+                    if (StatusEffect_4_Unk2Flag == 0x01)
+                    {
+                        StatusEffect_4_Unk2   = Stream.Read.ByteArray(38);
+                    }
+                }
+
+                if (Bitfield_StatusEffectData[5] == 0x00)
+                { 
+                    StatusEffect_5_Id     = Stream.Read.UInt();
+                    StatusEffect_5_Unk1   = Stream.Read.ByteArray(1);
+                    StatusEffect_5_Entity = Stream.Read.ByteArray(8);
+                    StatusEffect_5_Time1  = Stream.Read.UInt();
+                    StatusEffect_5_Unk2Flag = Stream.Read.Byte();
+                    if (StatusEffect_5_Unk2Flag == 0x01)
+                    {
+                        StatusEffect_5_Unk2   = Stream.Read.ByteArray(38);
+                    }
+                }
+
+                if (Bitfield_StatusEffectData[6] == 0x00)
+                {
+                    StatusEffect_6_Id     = Stream.Read.UInt();
+                    StatusEffect_6_Unk1   = Stream.Read.ByteArray(1);
+                    StatusEffect_6_Entity = Stream.Read.ByteArray(8);
+                    StatusEffect_6_Time1  = Stream.Read.UInt();
+                    StatusEffect_6_Unk2Flag = Stream.Read.Byte();
+                    if (StatusEffect_6_Unk2Flag == 0x01)
+                    {
+                        StatusEffect_6_Unk2   = Stream.Read.ByteArray(38);
+                    }
+                }
+
+                if (Bitfield_StatusEffectData[7] == 0x00)
+                { 
+                    StatusEffect_7_Id     = Stream.Read.UInt();
+                    StatusEffect_7_Unk1   = Stream.Read.ByteArray(1);
+                    StatusEffect_7_Entity = Stream.Read.ByteArray(8);
+                    StatusEffect_7_Time1  = Stream.Read.UInt();
+                    StatusEffect_7_Unk2Flag = Stream.Read.Byte();
+                    if (StatusEffect_7_Unk2Flag == 0x01)
+                    {
+                        StatusEffect_7_Unk2   = Stream.Read.ByteArray(38);
+                    }
+                }
+
+                if (Bitfield_StatusEffectData[8] == 0x00)
+                { 
+                    StatusEffect_8_Id     = Stream.Read.UInt();
+                    StatusEffect_8_Unk1   = Stream.Read.ByteArray(1);
+                    StatusEffect_8_Entity = Stream.Read.ByteArray(8);
+                    StatusEffect_8_Time1  = Stream.Read.UInt();
+                    StatusEffect_8_Unk2Flag = Stream.Read.Byte();
+                    if (StatusEffect_8_Unk2Flag == 0x01)
+                    {
+                        StatusEffect_8_Unk2   = Stream.Read.ByteArray(38);
+                    }
+                }
+
+                if (Bitfield_StatusEffectData[9] == 0x00)
+                { 
+                    StatusEffect_9_Id     = Stream.Read.UInt();
+                    StatusEffect_9_Unk1   = Stream.Read.ByteArray(1);
+                    StatusEffect_9_Entity = Stream.Read.ByteArray(8);
+                    StatusEffect_9_Time1  = Stream.Read.UInt();
+                    StatusEffect_9_Unk2Flag = Stream.Read.Byte();
+                    if (StatusEffect_9_Unk2Flag == 0x01)
+                    {
+                        StatusEffect_9_Unk2   = Stream.Read.ByteArray(38);
+                    }
+                }
+                
+                if (Bitfield_StatusEffectData[10] == 0x00)
+                { 
+                    StatusEffect_a_Id     = Stream.Read.UInt();
+                    StatusEffect_a_Unk1   = Stream.Read.ByteArray(1);
+                    StatusEffect_a_Entity = Stream.Read.ByteArray(8);
+                    StatusEffect_a_Time1  = Stream.Read.UInt();
+                    StatusEffect_a_Unk2Flag = Stream.Read.Byte();
+                    if (StatusEffect_a_Unk2Flag == 0x01)
+                    {
+                        StatusEffect_a_Unk2   = Stream.Read.ByteArray(38);
+                    }
+                }
+
+                if (Bitfield_StatusEffectData[11] == 0x00)
+                { 
+                    StatusEffect_b_Id     = Stream.Read.UInt();
+                    StatusEffect_b_Unk1   = Stream.Read.ByteArray(1);
+                    StatusEffect_b_Entity = Stream.Read.ByteArray(8);
+                    StatusEffect_b_Time1  = Stream.Read.UInt();
+                    StatusEffect_b_Unk2Flag = Stream.Read.Byte();
+                    if (StatusEffect_b_Unk2Flag == 0x01)
+                    {
+                        StatusEffect_b_Unk2   = Stream.Read.ByteArray(38);
+                    }
+                }
+
+                if (Bitfield_StatusEffectData[12] == 0x00)
+                { 
+                    StatusEffect_c_Id     = Stream.Read.UInt();
+                    StatusEffect_c_Unk1   = Stream.Read.ByteArray(1);
+                    StatusEffect_c_Entity = Stream.Read.ByteArray(8);
+                    StatusEffect_c_Time1  = Stream.Read.UInt();
+                    StatusEffect_c_Unk2Flag = Stream.Read.Byte();
+                    if (StatusEffect_c_Unk2Flag == 0x01)
+                    {
+                        StatusEffect_c_Unk2   = Stream.Read.ByteArray(38);
+                    }
+                }
+
+                if (Bitfield_StatusEffectData[13] == 0x00)
+                { 
+                    StatusEffect_d_Id     = Stream.Read.UInt();
+                    StatusEffect_d_Unk1   = Stream.Read.ByteArray(1);
+                    StatusEffect_d_Entity = Stream.Read.ByteArray(8);
+                    StatusEffect_d_Time1  = Stream.Read.UInt();
+                    StatusEffect_d_Unk2Flag = Stream.Read.Byte();
+                    if (StatusEffect_d_Unk2Flag == 0x01)
+                    {
+                        StatusEffect_d_Unk2   = Stream.Read.ByteArray(38);
+                    }
+                }
+
+                if (Bitfield_StatusEffectData[14] == 0x00)
+                { 
+                    StatusEffect_e_Id     = Stream.Read.UInt();
+                    StatusEffect_e_Unk1   = Stream.Read.ByteArray(1);
+                    StatusEffect_e_Entity = Stream.Read.ByteArray(8);
+                    StatusEffect_e_Time1  = Stream.Read.UInt();
+                    StatusEffect_e_Unk2Flag = Stream.Read.Byte();
+                    if (StatusEffect_e_Unk2Flag == 0x01)
+                    {
+                        StatusEffect_e_Unk2   = Stream.Read.ByteArray(38);
+                    }
+                }
+
+                if (Bitfield_StatusEffectData[15] == 0x00)
+                { 
+                    StatusEffect_f_Id     = Stream.Read.UInt();
+                    StatusEffect_f_Unk1   = Stream.Read.ByteArray(1);
+                    StatusEffect_f_Entity = Stream.Read.ByteArray(8);
+                    StatusEffect_f_Time1  = Stream.Read.UInt();
+                    StatusEffect_f_Unk2Flag = Stream.Read.Byte();
+                    if (StatusEffect_f_Unk2Flag == 0x01)
+                    {
+                        StatusEffect_f_Unk2   = Stream.Read.ByteArray(38);
+                    }
+                }
+
+                
+                // The unks inbetween these are reasonable asumptions based on what is known
+                SelectFireMode_FireMode = Stream.Read.Byte();
+                SelectFireMode_Time = Stream.Read.UInt();
+                UseScope_InScope = Stream.Read.Byte();
+                UseScope_Time = Stream.Read.UInt();
+                Unk_0x42 = Stream.Read.ByteArray(2);
+                Unk_0x43 = Stream.Read.ByteArray(2);
+                Unk_0x44 = Stream.Read.ByteArray(2);
+                Unk_0x45 = Stream.Read.ByteArray(2);
+                SelectWeapon_Index = Stream.Read.Byte();
+                SelectWeapon_Unk = Stream.Read.ByteArray(2);
+                SelectWeapon_Time = Stream.Read.UInt();
+                Unk_0x47_Time = Stream.Read.UInt();
+                Unk_0x48_Time = Stream.Read.UInt();
+                FireBurst_Time = Stream.Read.UInt();
+                FireEnd_Time = Stream.Read.UInt();
+                FireCancel_Time = Stream.Read.UInt();
+                ReloadWeapon_Time = Stream.Read.UInt();
+                // The 0x4d is missing?
+                Unk_0x4e_Time = Stream.Read.UInt();
+
+
+                // Float
+                // Time
+                // Time
+                // Time
+                // Time
+                // Time
+                // 4 bytes
+                // Time
+            }
             
-            // The unks inbetween these are reasonable asumptions based on what is known
-            SelectFireMode_FireMode = Stream.Read.Byte();
-            SelectFireMode_Time = Stream.Read.UInt();
-            UseScope_InScope = Stream.Read.Byte();
-            UseScope_Time = Stream.Read.UInt();
-            Unk_0x42 = Stream.Read.ByteArray(2);
-            Unk_0x43 = Stream.Read.ByteArray(2);
-            Unk_0x44 = Stream.Read.ByteArray(2);
-            Unk_0x45 = Stream.Read.ByteArray(2);
-            SelectWeapon_Index = Stream.Read.Byte();
-            SelectWeapon_Unk = Stream.Read.ByteArray(2);
-            SelectWeapon_Time = Stream.Read.UInt();
-            Unk_0x47_Time = Stream.Read.UInt();
-            Unk_0x48_Time = Stream.Read.UInt();
-            FireBurst_Time = Stream.Read.UInt();
-            FireEnd_Time = Stream.Read.UInt();
-            FireCancel_Time = Stream.Read.UInt();
-            ReloadWeapon_Time = Stream.Read.UInt();
-            // The 0x4d is missing?
-            Unk_0x4e_Time = Stream.Read.UInt();
         }
     }
 }
