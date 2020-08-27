@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Bitter;
 
 namespace PacketPeepScript {
-	// Add "MyExtensions.BStream = Stream;" as first line in Packet Read function.
 	public static class MyExtensions {
         public static string StringZ(this Bitter.BinaryReader rdr, Bitter.BinaryStream stream) {
 			string ret = "";
@@ -44,7 +43,7 @@ namespace PacketPeepScript {
         public byte[] Unk_LastThree;
 
         public override void Read(Bitter.BinaryStream Stream) {
-			MyExtensions.BStream = Stream;
+			//MyExtensions.BStream = Stream;
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
 
             Unk1_FirstByte = Stream.Read.Byte();
@@ -118,7 +117,7 @@ namespace PacketPeepScript {
 		
 		public void Read(BinaryStream Stream) {
 			SdbId = Stream.Read.UInt();
-			TextKey = Stream.Read.StringZ();
+			TextKey = Stream.Read.StringZ(Stream);
 			Quantity = Stream.Read.UInt();
 			Unk2 = Stream.Read.ByteArray(5);
 		}
@@ -141,8 +140,8 @@ namespace PacketPeepScript {
 
 		public void Read(BinaryStream Stream) {
 			FrameLoadoutGUID = Stream.Read.ULong();
-			LoadoutName = Stream.Read.StringZ();
-			LoadoutType = Stream.Read.StringZ();
+			LoadoutName = Stream.Read.StringZ(Stream);
+			LoadoutType = Stream.Read.StringZ(Stream);
 			ChassisID = Stream.Read.UInt();
 			
 			NumConfigs = Stream.Read.Byte();
@@ -178,7 +177,7 @@ namespace PacketPeepScript {
 		
 		public void Read(BinaryStream Stream) {
 			ConfigID = Stream.Read.UInt();
-			ConfigName = Stream.Read.StringZ();
+			ConfigName = Stream.Read.StringZ(Stream);
 			
 			NumItems = Stream.Read.Byte();
 			Items = Stream.Read.TypeList<LoadoutConfig_Item>(NumItems);

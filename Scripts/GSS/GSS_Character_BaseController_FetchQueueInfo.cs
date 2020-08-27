@@ -6,11 +6,11 @@ namespace PacketPeepScript
     {
         
         public byte NumberOfKeys;
-        public string? Key1;
-        public string? Key2;
-        public string? Key3;
-        public string? Key4;
-        public string? Key5;
+        public string Key1;
+        public string Key2;
+        public string Key3;
+        public string Key4;
+        public string Key5;
 
         public byte[] Unk; // Last few bytes might be a level range
 

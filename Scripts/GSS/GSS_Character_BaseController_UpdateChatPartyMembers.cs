@@ -1,5 +1,4 @@
 using Bitter;
-using System;
 namespace PacketPeepScript
 {
     [Script(MessageType.GSS, 2, 185, false)]

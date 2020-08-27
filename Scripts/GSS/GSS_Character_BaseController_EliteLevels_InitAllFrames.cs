@@ -1,5 +1,4 @@
 using Bitter;
-using System;
 namespace PacketPeepScript
 {
     [Script(MessageType.GSS, 2, 186, true)]
@@ -11,9 +10,7 @@ namespace PacketPeepScript
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
 
-            ChassisId = Stream.Read.UInt();
+            //ChassisId = Stream.Read.UInt();
         }
-
- 
     }
 }

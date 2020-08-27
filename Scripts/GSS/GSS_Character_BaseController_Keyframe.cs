@@ -157,7 +157,7 @@ namespace PacketPeepScript {
 			UnkInt1 = Stream.Read.UInt();
 			UnkInt2 = Stream.Read.UInt();
 			
-			_ = Stream.Read.Byte();
+			/*_ = */Stream.Read.Byte();
 			
 			UsedInvSlots = Stream.Read.UInt();
 			MaxInvSlots = Stream.Read.UInt();
@@ -172,7 +172,7 @@ namespace PacketPeepScript {
 			HeadMain = Stream.Read.UInt();
 			Eyes = Stream.Read.UInt();
 			
-			_ = Stream.Read.Byte();
+			/*_ = */Stream.Read.Byte();
 			
 			IsNPC = Stream.Read.Byte();
 			IsStaff = Stream.Read.Byte();
@@ -194,19 +194,19 @@ namespace PacketPeepScript {
 			
 			KeyFrameTime_0 = Stream.Read.UInt();
 			
-			_ = Stream.Read.Byte();		// 0 something, as in count?
+			/*_ = */Stream.Read.Byte();		// 0 something, as in count?
 			
 			ChassisLoadout = Stream.Read.UInt();
-			_ = Stream.Read.ByteArray(3);	// ???
+			/*_ = */Stream.Read.ByteArray(3);	// ???
 			
 			NumGear = Stream.Read.Byte();
 			Gear = Stream.Read.TypeList<Gear>(NumGear);
 			
 			ChassisVisuals = Stream.Read.Type<Visuals>();
-			//_ = Stream.Read.ByteArray(3);	// ???
+			///*_ = */Stream.Read.ByteArray(3);	// ???
 			
 			BackpackLoadout = Stream.Read.UInt();
-			_ = Stream.Read.ByteArray(3);	// ???
+			/*_ = */Stream.Read.ByteArray(3);	// ???
 			
 			NumAbilities = Stream.Read.Byte();
 			Abilities = Stream.Read.TypeList<Ability>(NumAbilities);
@@ -214,36 +214,36 @@ namespace PacketPeepScript {
 			NumAbilityModules = Stream.Read.Byte();
 			AbilityModules = Stream.Read.TypeList<AbilityModule>(NumAbilityModules);
 			
-			_ = Stream.Read.UInt();
-			_ = Stream.Read.UInt();
-			_ = Stream.Read.UInt();
+			/*_ = */Stream.Read.UInt();
+			/*_ = */Stream.Read.UInt();
+			/*_ = */Stream.Read.UInt();
 			
 			PrimaryWeaponID = Stream.Read.UInt();
-			_ = Stream.Read.ByteArray(3);	// ???
+			/*_ = */Stream.Read.ByteArray(3);	// ???
 			
 			NumPrimaryWeaponModules = Stream.Read.Byte();
 			PrimaryWeaponModules = Stream.Read.TypeList<WeaponModule>(NumPrimaryWeaponModules);
 			PrimaryWeaponVisuals = Stream.Read.Type<Visuals>();
-			//_ = Stream.Read.ByteArray(3);	// ???
+			///*_ = */Stream.Read.ByteArray(3);	// ???
 
-			_ = Stream.Read.UInt();
-			_ = Stream.Read.UInt();
+			/*_ = */Stream.Read.UInt();
+			/*_ = */Stream.Read.UInt();
 			
 			SecondaryWeaponID = Stream.Read.UInt();
-			_ = Stream.Read.ByteArray(3);	// ???
+			/*_ = */Stream.Read.ByteArray(3);	// ???
 			
 			NumSecondaryWeaponModules = Stream.Read.Byte();
 			SecondaryWeaponModules = Stream.Read.TypeList<WeaponModule>(NumSecondaryWeaponModules);
 			SecondaryWeaponVisuals = Stream.Read.Type<Visuals>();
 			
-			//_ = Stream.Read.ByteArray(3);	// ???
-			_ = Stream.Read.UIntArray(3);
-			_ = Stream.Read.Byte();
+			///*_ = */Stream.Read.ByteArray(3);	// ???
+			/*_ = */Stream.Read.UIntArray(3);
+			/*_ = */Stream.Read.Byte();
 			LoadoutID = Stream.Read.UInt();
 			
 			UnkSfxID_0a = Stream.Read.UInt();	// sfidx 0x0a
 			UnkSfxID_0b = Stream.Read.UInt();	// sfidx 0x0b
-			_ = Stream.Read.UInt();
+			/*_ = */Stream.Read.UInt();
 			
 			
 			// Movement
@@ -267,15 +267,15 @@ namespace PacketPeepScript {
 			VelZ = Stream.Read.Float();
 			
 			MovementState = Stream.Read.UShort();
-			_ = Stream.Read.UShort();
+			/*_ = */Stream.Read.UShort();
 			Jets = Stream.Read.UShort();
 			AirGroundTimer = Stream.Read.UShort();
 			JumpTimer = Stream.Read.UShort();
-			_ = Stream.Read.Byte();
+			/*_ = */Stream.Read.Byte();
 			
 			UnkSfxID_0d = Stream.Read.UInt(); // sfidx 0x0d
 			
-			_ = Stream.Read.Byte();
+			/*_ = */Stream.Read.Byte();
 			
 			CharacterState = Stream.Read.Byte();
 			
@@ -284,42 +284,42 @@ namespace PacketPeepScript {
 			FactionMode = Stream.Read.Byte();
 			FactionID = Stream.Read.Byte();
 
-			//_ = Stream.Read.UInt();	// ?
-			//_ = Stream.Read.UInt();
+			///*_ = */Stream.Read.UInt();	// ?
+			///*_ = */Stream.Read.UInt();
 			
 			CurrentHealth = Stream.Read.UInt();
 			
-			_ = Stream.Read.UInt(); // ??? sfidx 0x14
+			/*_ = */Stream.Read.UInt(); // ??? sfidx 0x14
 			
-			_ = Stream.Read.UInt(); // ??? sfidx 0x15
+			/*_ = */Stream.Read.UInt(); // ??? sfidx 0x15
 			KeyFrameTime_3 = Stream.Read.UInt(); // gametime?
 			
 			MaxHealth = Stream.Read.UInt();
 			KeyFrameTime_4 = Stream.Read.UInt(); // gametime?
 			
-			_ = Stream.Read.Byte(); // ??? sfidx 0x17 effects flag?
+			/*_ = */Stream.Read.Byte(); // ??? sfidx 0x17 effects flag?
 			
 			JumpJetEnergy = Stream.Read.Float();
 			MaxJumpJetEnergy = Stream.Read.UInt();
 			JumpJetRecharge = Stream.Read.Float();
 			KeyFrameTime_5 = Stream.Read.UInt(); // gametime?
 			
-			//_ = Stream.Read.UIntArray(4);
+			///*_ = */Stream.Read.UIntArray(4);
 			
 			NumItemStats = Stream.Read.UShort();
 			ItemStatValues = Stream.Read.TypeList<StatValue>(NumItemStats);
 			
-			_ = Stream.Read.UInt(); // ???
+			/*_ = */Stream.Read.UInt(); // ???
 			
 			NumWeapon1Stats = Stream.Read.UShort();
 			Weapon1StatValues = Stream.Read.TypeList<StatValue>(NumWeapon1Stats);
 			
-			_ = Stream.Read.UInt(); // ???
+			/*_ = */Stream.Read.UInt(); // ???
 			
 			NumWeapon2Stats = Stream.Read.UShort();
 			Weapon2StatValues = Stream.Read.TypeList<StatValue>(NumWeapon2Stats);
 			
-			_ = Stream.Read.UInt(); // ???
+			/*_ = */Stream.Read.UInt(); // ???
 			
 			NumAttribCats1 = Stream.Read.UShort();
 			AttribCats1 = Stream.Read.TypeList<StatValue>(NumAttribCats1);
@@ -327,10 +327,10 @@ namespace PacketPeepScript {
 			NumAttribCats2 = Stream.Read.UShort();
 			AttribCats2 = Stream.Read.TypeList<StatValue>(NumAttribCats2);
 			
-			_ = Stream.Read.UInt(); // ???
-			_ = Stream.Read.UInt(); // ???
+			/*_ = */Stream.Read.UInt(); // ???
+			/*_ = */Stream.Read.UInt(); // ???
 			
-			_ = Stream.Read.Byte();
+			/*_ = */Stream.Read.Byte();
 			
 			ArmyID = Stream.Read.ULong();
 			
@@ -532,7 +532,7 @@ namespace PacketPeepScript {
 
 		
 		public void Read(BinaryStream Stream) {
-			_ = Stream.Read.ByteArray(1);
+			/*_ = */Stream.Read.ByteArray(1);
 		}
 		
         public void Write(BinaryStream Stream) {

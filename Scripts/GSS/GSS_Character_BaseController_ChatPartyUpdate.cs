@@ -1,5 +1,4 @@
 using Bitter;
-using System;
 namespace PacketPeepScript
 {
     [Script(MessageType.GSS, 2, 169, true)]
@@ -13,19 +12,19 @@ namespace PacketPeepScript
         public byte NumberOfMembers;
 
         public byte[] Member_01_Entity;
-        public string? Member_01_Name;
+        public string Member_01_Name;
         public byte? Member_01_Unk;
         public byte[] Member_02_Entity;
-        public string? Member_02_Name;
+        public string Member_02_Name;
         public byte? Member_02_Unk;
         public byte[] Member_03_Entity;
-        public string? Member_03_Name;
+        public string Member_03_Name;
         public byte? Member_03_Unk;
         public byte[] Member_04_Entity;
-        public string? Member_04_Name;
+        public string Member_04_Name;
         public byte? Member_04_Unk;
         public byte[] Member_05_Entity;
-        public string? Member_05_Name;
+        public string Member_05_Name;
         public byte? Member_05_Unk;
 
         public byte[] End_Entity;
