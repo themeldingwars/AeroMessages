@@ -245,6 +245,10 @@
           "Name": "RouteMultipleMsg",
           "Notes": ""
         },
+        "32": {
+          "Name": "EncounterToUIMessage",
+          "Notes": ""
+        },
         "64": {
           "Name": "MissionObjectiveUpdated",
           "Notes": ""
@@ -261,12 +265,28 @@
           "Name": "BountyStatusChanged",
           "Notes": ""
         },
+        "70": {
+          "Name": "BountyAbortAck",
+          "Notes": ""
+        },
         "71": {
           "Name": "BountyActivationAck",
           "Notes": ""
         },
+        "77": {
+          "Name": "BountyListPreviousAck",
+          "Notes": "Not sure about this message?"
+        },
         "82": {
           "Name": "TotalAchievementPoints",
+          "Notes": ""
+        },
+        "87": {
+          "Name": "JobLedgerEntriesUpdate",
+          "Notes": ""
+        },
+        "91": {
+          "Name": "InteractableStatusChanged",
           "Notes": ""
         },
         "100": {
@@ -300,6 +320,10 @@
         "112": {
           "Name": "EncounterPublicInfo",
           "Notes": ""
+        },
+        "117": {
+          "Name": "GlobalCounterMilestoneInfo",
+          "Notes": "The entity id it runs on is interesting."
         },
         "118": {
           "Name": "ChatMessageList",
