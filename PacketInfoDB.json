@@ -639,7 +639,7 @@
           "Notes": ""
         },
         "150": {
-          "Name": "",
+          "Name": "SalvageReponse",
           "Notes": ""
         },
         "151": {
@@ -1743,7 +1743,20 @@
           "Notes": ""
         }
       },
-      "ClientMessages": {}
+      "ClientMessages": {
+        "153": {
+          "Name": "TryResumeTutorialChain",
+          "Notes": ""
+        },
+        "169": {
+          "Name": "RequestAchievementStatus",
+          "Notes": ""
+        },
+        "170": {
+          "Name": "RequestAllAchievements",
+          "Notes": ""
+        }
+      }
     },
     "5": {
       "Name": "firefall::Character::CombatController",

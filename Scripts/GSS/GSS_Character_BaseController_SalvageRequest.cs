@@ -15,7 +15,7 @@ namespace PacketPeepScript
             Quantity = R.UInt();
         }
 
-        public override string ToString() => $"GUID: {GUID}, SdbId: {SdbId}";
+        public override string ToString() => $"{(GUID != 0 ?  $"GUID: {GUID}, " : "")}SdbId: {SdbId}, Quantity: {Quantity}";
     }
 
     public static class MyExtensions
