@@ -1806,6 +1806,22 @@
         "124": {
           "Name": "RemoveInteractives",
           "Notes": ""
+        },
+        "125": {
+          "Name": "InteractionProgressed",
+          "Notes": ""
+        },
+        "126": {
+          "Name": "InteractionCompleted",
+          "Notes": ""
+        },
+        "127": {
+          "Name": "InteractedWithProgressed",
+          "Notes": ""
+        },
+        "128": {
+          "Name": "InteractedWithCompleted",
+          "Notes": ""
         }
       },
       "ClientMessages": {
@@ -1851,6 +1867,10 @@
         },
         "126": {
           "Name": "ReloadWeapon",
+          "Notes": ""
+        },
+        "127": {
+          "Name": "CancelReload",
           "Notes": ""
         },
         "134": {
