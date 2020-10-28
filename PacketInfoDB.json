@@ -1822,6 +1822,10 @@
         "128": {
           "Name": "InteractedWithCompleted",
           "Notes": ""
+        },
+        "168": {
+          "Name": "ForcedWeaponSwap",
+          "Notes": ""
         }
       },
       "ClientMessages": {
@@ -1875,6 +1879,10 @@
         },
         "134": {
           "Name": "ActivateAbility",
+          "Notes": ""
+        },
+        "137": {
+          "Name": "DeactivateAbility",
           "Notes": ""
         },
         "138": {
@@ -1939,6 +1947,10 @@
       "Notes": "",
       "InheritFrom": -1,
       "ServerMessages": {
+        "1": {
+          "Name": "Update",
+          "Notes": ""
+        },
         "3": {
           "Name": "Keyframe",
           "Notes": ""
