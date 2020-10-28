@@ -9,6 +9,7 @@ namespace PacketPeepScript
             Unk_0x00                = 0x00,
             UsedInventorySlots      = 0x01,
             MaxInventorySlots       = 0x02,
+            AuthTerminal            = 0x03,
             ConfirmedPoseUpdateTime = 0x04,
             ObserverData            = 0x05, // Look to Character_ObserverView_Keyframe for decoding
             Unk_0x06_Time           = 0x06,
@@ -73,6 +74,9 @@ namespace PacketPeepScript
         public byte[] Unk_0x00;
         public uint? UsedInventorySlots;
         public uint? MaxInventorySlots;
+        public byte? AuthTerminalType;
+        public uint? AuthTerminalId;
+        public byte[] AuthTerminalEntity;
         public uint? ConfirmedPoseUpdateTime;
         public byte[] ObserverData;
         public uint? Unk_0x06_Time;
@@ -167,6 +171,12 @@ namespace PacketPeepScript
 
                     case ShadowFieldIndex.MaxInventorySlots:
                         MaxInventorySlots = Stream.Read.UInt();
+                        break;
+
+                    case ShadowFieldIndex.AuthTerminal:
+                        AuthTerminalType = Stream.Read.Byte();
+                        AuthTerminalId = Stream.Read.UInt();
+                        AuthTerminalEntity = Stream.Read.ByteArray(8);
                         break;
 
                     case ShadowFieldIndex.ConfirmedPoseUpdateTime:
