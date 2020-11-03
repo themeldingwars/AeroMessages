@@ -4,353 +4,511 @@ namespace PacketPeepScript
     [Script(MessageType.GSS, 5, 1, true)]
     public class CharacterCombatControllerUpdate : BaseScript
     {
-        // Take anything that is Unk with a huge grain of salt.
-        // 
-        // One of the functionalites of the Combat Controller and View appears to be 
-        // hosting "status effects". These seem to run minor scripts doing all kinds of things.
-        // The status effect ids are found in Sdb table 46, as the id column.
-        // These effects then refer to "chains" and the like which do the actual stuff.
-        // The first shadow fields in the 0x0- range appear to host 'update' times for effects.
-        // The fields in the 0x2- range get loaded with the data, including the id and typically at least the entity to run it on.
-        // The fields in the 0xa- range do not come with any values, instead, if they are present they cancel the effect.
-        // So a message with an 0x05 key should either have an 0x25 or an 0xa5 to start or cancel an effect, is the theory.
-        // 
-        // Secondly, the Combat Controller and View have a bunch of fields for actions the character is taking, such as shooting and reloading.
-        // These fields are generally just fed the timestamps that the action is occuring and
-        // then it handles the rest by itself.
-        // Currently I found more of those fields in the View than in the Controller.
-        // It might be that not as many are needed for the local controller as they are for multiplayer.
         enum ShadowFieldIndex : byte
         {
-            StatusEffect_0_ShortTime = 0x00,
-            StatusEffect_1_ShortTime = 0x01,
-            StatusEffect_2_ShortTime = 0x02,
-            StatusEffect_3_ShortTime = 0x03,
-            StatusEffect_4_ShortTime = 0x04,
-            StatusEffect_5_ShortTime = 0x05,
-            StatusEffect_6_ShortTime = 0x06,
-            StatusEffect_7_ShortTime = 0x07,
-            StatusEffect_8_ShortTime = 0x08,
-            StatusEffect_9_ShortTime = 0x09,
-            StatusEffect_a_ShortTime = 0x0a,
-            StatusEffect_b_ShortTime = 0x0b,
-            StatusEffect_c_ShortTime = 0x0c,
-            StatusEffect_d_ShortTime = 0x0d,
-            StatusEffect_e_ShortTime = 0x0e,
-            StatusEffect_f_ShortTime = 0x0f,
+            StatusEffect_00_ShortTime = 0x00,
+            StatusEffect_01_ShortTime = 0x01,
+            StatusEffect_02_ShortTime = 0x02,
+            StatusEffect_03_ShortTime = 0x03,
+            StatusEffect_04_ShortTime = 0x04,
+            StatusEffect_05_ShortTime = 0x05,
+            StatusEffect_06_ShortTime = 0x06,
+            StatusEffect_07_ShortTime = 0x07,
+            StatusEffect_08_ShortTime = 0x08,
+            StatusEffect_09_ShortTime = 0x09,
+            StatusEffect_0a_ShortTime = 0x0a,
+            StatusEffect_0b_ShortTime = 0x0b,
+            StatusEffect_0c_ShortTime = 0x0c,
+            StatusEffect_0d_ShortTime = 0x0d,
+            StatusEffect_0e_ShortTime = 0x0e,
+            StatusEffect_0f_ShortTime = 0x0f,
+            StatusEffect_10_ShortTime = 0x10,
+            StatusEffect_11_ShortTime = 0x11,
+            StatusEffect_12_ShortTime = 0x12,
+            StatusEffect_13_ShortTime = 0x13,
+            StatusEffect_14_ShortTime = 0x14,
+            StatusEffect_15_ShortTime = 0x15,
+            StatusEffect_16_ShortTime = 0x16,
+            StatusEffect_17_ShortTime = 0x17,
+            StatusEffect_18_ShortTime = 0x18,
+            StatusEffect_19_ShortTime = 0x19,
+            StatusEffect_1a_ShortTime = 0x1a,
+            StatusEffect_1b_ShortTime = 0x1b,
+            StatusEffect_1c_ShortTime = 0x1c,
+            StatusEffect_1d_ShortTime = 0x1d,
+            StatusEffect_1e_ShortTime = 0x1e,
+            StatusEffect_1f_ShortTime = 0x1f,
 
-            StatusEffect_0_Data = 0x20,
-            StatusEffect_1_Data = 0x21,
-            StatusEffect_2_Data = 0x22,
-            StatusEffect_3_Data = 0x23,
-            StatusEffect_4_Data = 0x24,
-            StatusEffect_5_Data = 0x25,
-            StatusEffect_6_Data = 0x26,
-            StatusEffect_7_Data = 0x27,
-            StatusEffect_8_Data = 0x28,
-            StatusEffect_9_Data = 0x29,
-            StatusEffect_a_Data = 0x2a,
-            StatusEffect_b_Data = 0x2b,
-            StatusEffect_c_Data = 0x2c,
-            StatusEffect_d_Data = 0x2d,
-            StatusEffect_e_Data = 0x2e,
-            StatusEffect_f_Data = 0x2f,
+            StatusEffect_00_Data = 0x20,
+            StatusEffect_01_Data = 0x21,
+            StatusEffect_02_Data = 0x22,
+            StatusEffect_03_Data = 0x23,
+            StatusEffect_04_Data = 0x24,
+            StatusEffect_05_Data = 0x25,
+            StatusEffect_06_Data = 0x26,
+            StatusEffect_07_Data = 0x27,
+            StatusEffect_08_Data = 0x28,
+            StatusEffect_09_Data = 0x29,
+            StatusEffect_0a_Data = 0x2a,
+            StatusEffect_0b_Data = 0x2b,
+            StatusEffect_0c_Data = 0x2c,
+            StatusEffect_0d_Data = 0x2d,
+            StatusEffect_0e_Data = 0x2e,
+            StatusEffect_0f_Data = 0x2f,
+            StatusEffect_10_Data = 0x30,
+            StatusEffect_11_Data = 0x31,
+            StatusEffect_12_Data = 0x32,
+            StatusEffect_13_Data = 0x33,
+            StatusEffect_14_Data = 0x34,
+            StatusEffect_15_Data = 0x35,
+            StatusEffect_16_Data = 0x36,
+            StatusEffect_17_Data = 0x37,
+            StatusEffect_18_Data = 0x38,
+            StatusEffect_19_Data = 0x39,
+            StatusEffect_1a_Data = 0x3a,
+            StatusEffect_1b_Data = 0x3b,
+            StatusEffect_1c_Data = 0x3c,
+            StatusEffect_1d_Data = 0x3d,
+            StatusEffect_1e_Data = 0x3e,
+            StatusEffect_1f_Data = 0x3f,
             
-            StatusEffect_0_Cancel = 0xa0,
-            StatusEffect_1_Cancel = 0xa1,
-            StatusEffect_2_Cancel = 0xa2,
-            StatusEffect_3_Cancel = 0xa3,
-            StatusEffect_4_Cancel = 0xa4,
-            StatusEffect_5_Cancel = 0xa5,
-            StatusEffect_6_Cancel = 0xa6,
-            StatusEffect_7_Cancel = 0xa7,
-            StatusEffect_8_Cancel = 0xa8,
-            StatusEffect_9_Cancel = 0xa9,
-            StatusEffect_a_Cancel = 0xaa,
-            StatusEffect_b_Cancel = 0xab,
-            StatusEffect_c_Cancel = 0xac,
-            StatusEffect_d_Cancel = 0xad,
-            StatusEffect_e_Cancel = 0xae,
-            StatusEffect_f_Cancel = 0xaf,
+            StatusEffect_00_Cancel = 0xa0,
+            StatusEffect_01_Cancel = 0xa1,
+            StatusEffect_02_Cancel = 0xa2,
+            StatusEffect_03_Cancel = 0xa3,
+            StatusEffect_04_Cancel = 0xa4,
+            StatusEffect_05_Cancel = 0xa5,
+            StatusEffect_06_Cancel = 0xa6,
+            StatusEffect_07_Cancel = 0xa7,
+            StatusEffect_08_Cancel = 0xa8,
+            StatusEffect_09_Cancel = 0xa9,
+            StatusEffect_0a_Cancel = 0xaa,
+            StatusEffect_0b_Cancel = 0xab,
+            StatusEffect_0c_Cancel = 0xac,
+            StatusEffect_0d_Cancel = 0xad,
+            StatusEffect_0e_Cancel = 0xae,
+            StatusEffect_0f_Cancel = 0xaf,
 
-            MovementSpeedModifier = 0x40,
+            StatusEffect_10_Cancel = 0xb0,
+            StatusEffect_11_Cancel = 0xb1,
+            StatusEffect_12_Cancel = 0xb2,
+            StatusEffect_13_Cancel = 0xb3,
+            StatusEffect_14_Cancel = 0xb4,
+            StatusEffect_15_Cancel = 0xb5,
+            StatusEffect_16_Cancel = 0xb6,
+            StatusEffect_17_Cancel = 0xb7,
+            StatusEffect_18_Cancel = 0xb8,
+            StatusEffect_19_Cancel = 0xb9,
+            StatusEffect_1a_Cancel = 0xba,
+            StatusEffect_1b_Cancel = 0xbb,
+            StatusEffect_1c_Cancel = 0xbc,
+            StatusEffect_1d_Cancel = 0xbd,
+            StatusEffect_1e_Cancel = 0xbe,
+            StatusEffect_1f_Cancel = 0xbf,
 
-            Unk_0x41 = 0x41,
-            Unk_0x42 = 0x42,
-            Unk_0x43 = 0x43,
-            Unk_0x44 = 0x44,
-            Unk_0x45 = 0x45,
-            Unk_0x46 = 0x46,
-            Unk_0x47 = 0x47,
-            Unk_0x48 = 0x48,
-            Unk_0x49 = 0x49,
-            Unk_0x4a = 0x4a,
+            MovementSpeedMultiplier = 0x40,
+            ForwardMovementMultiplier = 0x41,
+            JumpHeightMultiplier = 0x42,
+            AirMovementMultiplier = 0x43,
+            JetVerticalThrustMultiplier = 0x44,
+            JetMovementMultiplier = 0x45,
+            GroundAccelerationMultiplier = 0x46,
+            AmmoCostModifier = 0x47,
+            AimSmoothingModifier = 0x48,
+            AimSensitivityModifier = 0x49,
+            TimescaleModifier = 0x4a,
             RateOfFireModifier = 0x4b,
-            Unk_0x4c = 0x4c,
-            Unk_0x4d = 0x4d,
-            Unk_0x4e = 0x4e,
+            WeaponSpreadMultiplier = 0x4c,
+            FallingSpeedMultiplier = 0x4d,
+            JetSprintModifier = 0x4e,
+
             Unk_0x4f = 0x4f,
             Unk_0x50 = 0x50,
 
             SelectFireMode = 0x51,
             UseScope = 0x52,
-
-            Unk_0x53_Mag_Ammo1 = 0x53, // Just a guess
-            Unk_0x54_Secondary_Mag_Ammo1 = 0x54, // Just a guess
-            Unk_0x55_Mag_Ammo2 = 0x55, // Just a guess
-            Unk_0x56_Secondary_Mag_Ammo2 = 0x56, // Just a guess
-            Unk_0x57_Reserve_Ammo1 = 0x57, // Just a guess
-            Unk_0x58_Secondary_Reserve_Ammo1 = 0x58, // Just a guess
-            Unk_0x59_Reserve_Ammo2 = 0x59, // Just a guess
-            Unk_0x5a_Secondary_Reserve_Ammo2 = 0x5a, // Just a guess
-
+            Ammo_Primary_Clip_1 = 0x53, 
+            Ammo_Secondary_Clip_1 = 0x54,
+            Ammo_Primary_Clip_2 = 0x55,
+            Ammo_Secondary_Clip_2 = 0x56,
+            Ammo_Primary_Reserve_1 = 0x57,
+            Ammo_Secondary_Reserve_1 = 0x58,
+            Ammo_Primary_Reserve_2 = 0x59,
+            Ammo_Secondary_Reserve_2 = 0x5a,
             SelectWeapon = 0x5b,
             FireBurst = 0x5c,
 
             Unk_0x5d = 0x5d,
 
-            Unk_0x5e_MovementPermissions = 0x5e, // Just a guess. This field appears to match 0x54 in CombatView.
-            Unk_0x5f_ActionPermissions = 0x5f, // Just a guess
+            CombatFlags = 0x5e, // This field appears to match 0x54 in CombatView.
+            CharacterPermissions = 0x5f,
+            GliderParameters = 0x60,
 
-            Unk_0x60 = 0x60,
+
+            Unk_0x61 = 0x61,
             Unk_0x62 = 0x62,
             Unk_0x63 = 0x63,
+            Unk_0x64 = 0x64,
             Unk_0x65 = 0x65,
             
         }
 
-        public ushort? StatusEffect_0_ShortTime;
-        public uint? StatusEffect_0_Id;
-        public byte[] StatusEffect_0_Unk1;
-        public byte[] StatusEffect_0_Entity;
-        public uint? StatusEffect_0_Time1;
-        public byte? StatusEffect_0_Unk2Flag;
-        public byte[] StatusEffect_0_Unk2;
-        public bool? StatusEffect_0_Cancel;
+        public ushort? StatusEffect_00_ShortTime;
+        public uint? StatusEffect_00_Id;
+        public byte[] StatusEffect_00_Unk1;
+        public byte[] StatusEffect_00_Entity;
+        public uint? StatusEffect_00_Time1;
+        public byte? StatusEffect_00_Unk2Flag;
+        public byte[] StatusEffect_00_Unk2;
+        public bool? StatusEffect_00_Cancel;
 
-        public ushort? StatusEffect_1_ShortTime;
-        public uint? StatusEffect_1_Id;
-        public byte[] StatusEffect_1_Unk1;
-        public byte[] StatusEffect_1_Entity;
-        public uint? StatusEffect_1_Time1;
-        public byte? StatusEffect_1_Unk2Flag;
-        public byte[] StatusEffect_1_Unk2;
-        public bool? StatusEffect_1_Cancel;
+        public ushort? StatusEffect_01_ShortTime;
+        public uint? StatusEffect_01_Id;
+        public byte[] StatusEffect_01_Unk1;
+        public byte[] StatusEffect_01_Entity;
+        public uint? StatusEffect_01_Time1;
+        public byte? StatusEffect_01_Unk2Flag;
+        public byte[] StatusEffect_01_Unk2;
+        public bool? StatusEffect_01_Cancel;
 
-        public ushort? StatusEffect_2_ShortTime;
-        public uint? StatusEffect_2_Id;
-        public byte[] StatusEffect_2_Unk1;
-        public byte[] StatusEffect_2_Entity;
-        public uint? StatusEffect_2_Time1;
-        public byte? StatusEffect_2_Unk2Flag;
-        public byte[] StatusEffect_2_Unk2;
-        public bool? StatusEffect_2_Cancel;
+        public ushort? StatusEffect_02_ShortTime;
+        public uint? StatusEffect_02_Id;
+        public byte[] StatusEffect_02_Unk1;
+        public byte[] StatusEffect_02_Entity;
+        public uint? StatusEffect_02_Time1;
+        public byte? StatusEffect_02_Unk2Flag;
+        public byte[] StatusEffect_02_Unk2;
+        public bool? StatusEffect_02_Cancel;
 
-        public ushort? StatusEffect_3_ShortTime;
-        public uint? StatusEffect_3_Id;
-        public byte[] StatusEffect_3_Unk1;
-        public byte[] StatusEffect_3_Entity;
-        public uint? StatusEffect_3_Time1;
-        public byte? StatusEffect_3_Unk2Flag;
-        public byte[] StatusEffect_3_Unk2;
-        public bool? StatusEffect_3_Cancel;
+        public ushort? StatusEffect_03_ShortTime;
+        public uint? StatusEffect_03_Id;
+        public byte[] StatusEffect_03_Unk1;
+        public byte[] StatusEffect_03_Entity;
+        public uint? StatusEffect_03_Time1;
+        public byte? StatusEffect_03_Unk2Flag;
+        public byte[] StatusEffect_03_Unk2;
+        public bool? StatusEffect_03_Cancel;
 
-        public ushort? StatusEffect_4_ShortTime;
-        public uint? StatusEffect_4_Id;
-        public byte[] StatusEffect_4_Unk1;
-        public byte[] StatusEffect_4_Entity;
-        public uint? StatusEffect_4_Time1;
-        public byte? StatusEffect_4_Unk2Flag;
-        public byte[] StatusEffect_4_Unk2;
-        public bool? StatusEffect_4_Cancel;
+        public ushort? StatusEffect_04_ShortTime;
+        public uint? StatusEffect_04_Id;
+        public byte[] StatusEffect_04_Unk1;
+        public byte[] StatusEffect_04_Entity;
+        public uint? StatusEffect_04_Time1;
+        public byte? StatusEffect_04_Unk2Flag;
+        public byte[] StatusEffect_04_Unk2;
+        public bool? StatusEffect_04_Cancel;
 
-        public ushort? StatusEffect_5_ShortTime;
-        public uint? StatusEffect_5_Id;
-        public byte[] StatusEffect_5_Unk1;
-        public byte[] StatusEffect_5_Entity;
-        public uint? StatusEffect_5_Time1;
-        public byte? StatusEffect_5_Unk2Flag;
-        public byte[] StatusEffect_5_Unk2;
-        public bool? StatusEffect_5_Cancel;
+        public ushort? StatusEffect_05_ShortTime;
+        public uint? StatusEffect_05_Id;
+        public byte[] StatusEffect_05_Unk1;
+        public byte[] StatusEffect_05_Entity;
+        public uint? StatusEffect_05_Time1;
+        public byte? StatusEffect_05_Unk2Flag;
+        public byte[] StatusEffect_05_Unk2;
+        public bool? StatusEffect_05_Cancel;
 
-        public ushort? StatusEffect_6_ShortTime;
-        public uint? StatusEffect_6_Id;
-        public byte[] StatusEffect_6_Unk1;
-        public byte[] StatusEffect_6_Entity;
-        public uint? StatusEffect_6_Time1;
-        public byte? StatusEffect_6_Unk2Flag;
-        public byte[] StatusEffect_6_Unk2;
-        public bool? StatusEffect_6_Cancel;
+        public ushort? StatusEffect_06_ShortTime;
+        public uint? StatusEffect_06_Id;
+        public byte[] StatusEffect_06_Unk1;
+        public byte[] StatusEffect_06_Entity;
+        public uint? StatusEffect_06_Time1;
+        public byte? StatusEffect_06_Unk2Flag;
+        public byte[] StatusEffect_06_Unk2;
+        public bool? StatusEffect_06_Cancel;
 
-        public ushort? StatusEffect_7_ShortTime;
-        public uint? StatusEffect_7_Id;
-        public byte[] StatusEffect_7_Unk1;
-        public byte[] StatusEffect_7_Entity;
-        public uint? StatusEffect_7_Time1;
-        public byte? StatusEffect_7_Unk2Flag;
-        public byte[] StatusEffect_7_Unk2;
-        public bool? StatusEffect_7_Cancel;
+        public ushort? StatusEffect_07_ShortTime;
+        public uint? StatusEffect_07_Id;
+        public byte[] StatusEffect_07_Unk1;
+        public byte[] StatusEffect_07_Entity;
+        public uint? StatusEffect_07_Time1;
+        public byte? StatusEffect_07_Unk2Flag;
+        public byte[] StatusEffect_07_Unk2;
+        public bool? StatusEffect_07_Cancel;
 
-        public ushort? StatusEffect_8_ShortTime;
-        public uint? StatusEffect_8_Id; 
-        public byte[] StatusEffect_8_Unk1;
-        public byte[] StatusEffect_8_Entity;
-        public uint? StatusEffect_8_Time1;
-        public byte? StatusEffect_8_Unk2Flag;
-        public byte[] StatusEffect_8_Unk2;
-        public bool? StatusEffect_8_Cancel;
+        public ushort? StatusEffect_08_ShortTime;
+        public uint? StatusEffect_08_Id; 
+        public byte[] StatusEffect_08_Unk1;
+        public byte[] StatusEffect_08_Entity;
+        public uint? StatusEffect_08_Time1;
+        public byte? StatusEffect_08_Unk2Flag;
+        public byte[] StatusEffect_08_Unk2;
+        public bool? StatusEffect_08_Cancel;
 
-        public ushort? StatusEffect_9_ShortTime;
-        public uint? StatusEffect_9_Id;
-        public byte[] StatusEffect_9_Unk1;
-        public byte[] StatusEffect_9_Entity;
-        public uint? StatusEffect_9_Time1;
-        public byte? StatusEffect_9_Unk2Flag;
-        public byte[] StatusEffect_9_Unk2;
-        public bool? StatusEffect_9_Cancel;
+        public ushort? StatusEffect_09_ShortTime;
+        public uint? StatusEffect_09_Id;
+        public byte[] StatusEffect_09_Unk1;
+        public byte[] StatusEffect_09_Entity;
+        public uint? StatusEffect_09_Time1;
+        public byte? StatusEffect_09_Unk2Flag;
+        public byte[] StatusEffect_09_Unk2;
+        public bool? StatusEffect_09_Cancel;
 
-        public ushort? StatusEffect_a_ShortTime;
-        public uint? StatusEffect_a_Id;
-        public byte[] StatusEffect_a_Unk1;
-        public byte[] StatusEffect_a_Entity;
-        public uint? StatusEffect_a_Time1;
-        public byte? StatusEffect_a_Unk2Flag;
-        public byte[] StatusEffect_a_Unk2;
-        public bool? StatusEffect_a_Cancel;
+        public ushort? StatusEffect_0a_ShortTime;
+        public uint? StatusEffect_0a_Id;
+        public byte[] StatusEffect_0a_Unk1;
+        public byte[] StatusEffect_0a_Entity;
+        public uint? StatusEffect_0a_Time1;
+        public byte? StatusEffect_0a_Unk2Flag;
+        public byte[] StatusEffect_0a_Unk2;
+        public bool? StatusEffect_0a_Cancel;
 
-        public ushort? StatusEffect_b_ShortTime;
-        public uint? StatusEffect_b_Id;
-        public byte[] StatusEffect_b_Unk1;
-        public byte[] StatusEffect_b_Entity;
-        public uint? StatusEffect_b_Time1;
-        public byte? StatusEffect_b_Unk2Flag;
-        public byte[] StatusEffect_b_Unk2;
-        public bool? StatusEffect_b_Cancel;
+        public ushort? StatusEffect_0b_ShortTime;
+        public uint? StatusEffect_0b_Id;
+        public byte[] StatusEffect_0b_Unk1;
+        public byte[] StatusEffect_0b_Entity;
+        public uint? StatusEffect_0b_Time1;
+        public byte? StatusEffect_0b_Unk2Flag;
+        public byte[] StatusEffect_0b_Unk2;
+        public bool? StatusEffect_0b_Cancel;
 
-        public ushort? StatusEffect_c_ShortTime;
-        public uint? StatusEffect_c_Id;
-        public byte[] StatusEffect_c_Unk1;
-        public byte[] StatusEffect_c_Entity;
-        public uint? StatusEffect_c_Time1;
-        public byte? StatusEffect_c_Unk2Flag;
-        public byte[] StatusEffect_c_Unk2;
-        public bool? StatusEffect_c_Cancel;
+        public ushort? StatusEffect_0c_ShortTime;
+        public uint? StatusEffect_0c_Id;
+        public byte[] StatusEffect_0c_Unk1;
+        public byte[] StatusEffect_0c_Entity;
+        public uint? StatusEffect_0c_Time1;
+        public byte? StatusEffect_0c_Unk2Flag;
+        public byte[] StatusEffect_0c_Unk2;
+        public bool? StatusEffect_0c_Cancel;
 
-        public ushort? StatusEffect_d_ShortTime;
-        public uint? StatusEffect_d_Id;
-        public byte[] StatusEffect_d_Unk1;
-        public byte[] StatusEffect_d_Entity;
-        public uint? StatusEffect_d_Time1;
-        public byte? StatusEffect_d_Unk2Flag;
-        public byte[] StatusEffect_d_Unk2;
-        public bool? StatusEffect_d_Cancel;
+        public ushort? StatusEffect_0d_ShortTime;
+        public uint? StatusEffect_0d_Id;
+        public byte[] StatusEffect_0d_Unk1;
+        public byte[] StatusEffect_0d_Entity;
+        public uint? StatusEffect_0d_Time1;
+        public byte? StatusEffect_0d_Unk2Flag;
+        public byte[] StatusEffect_0d_Unk2;
+        public bool? StatusEffect_0d_Cancel;
 
-        public ushort? StatusEffect_e_ShortTime;
-        public uint? StatusEffect_e_Id;
-        public byte[] StatusEffect_e_Unk1;
-        public byte[] StatusEffect_e_Entity;
-        public uint? StatusEffect_e_Time1;
-        public byte? StatusEffect_e_Unk2Flag;
-        public byte[] StatusEffect_e_Unk2;
-        public bool? StatusEffect_e_Cancel;
+        public ushort? StatusEffect_0e_ShortTime;
+        public uint? StatusEffect_0e_Id;
+        public byte[] StatusEffect_0e_Unk1;
+        public byte[] StatusEffect_0e_Entity;
+        public uint? StatusEffect_0e_Time1;
+        public byte? StatusEffect_0e_Unk2Flag;
+        public byte[] StatusEffect_0e_Unk2;
+        public bool? StatusEffect_0e_Cancel;
 
-        public ushort? StatusEffect_f_ShortTime;
-        public uint? StatusEffect_f_Id;
-        public byte[] StatusEffect_f_Unk1;
-        public byte[] StatusEffect_f_Entity;
-        public uint? StatusEffect_f_Time1;
-        public byte? StatusEffect_f_Unk2Flag;
-        public byte[] StatusEffect_f_Unk2;
-        public bool? StatusEffect_f_Cancel;
+        public ushort? StatusEffect_0f_ShortTime;
+        public uint? StatusEffect_0f_Id;
+        public byte[] StatusEffect_0f_Unk1;
+        public byte[] StatusEffect_0f_Entity;
+        public uint? StatusEffect_0f_Time1;
+        public byte? StatusEffect_0f_Unk2Flag;
+        public byte[] StatusEffect_0f_Unk2;
+        public bool? StatusEffect_0f_Cancel;
 
+        public ushort? StatusEffect_10_ShortTime;
+        public uint? StatusEffect_10_Id;
+        public byte[] StatusEffect_10_Unk1;
+        public byte[] StatusEffect_10_Entity;
+        public uint? StatusEffect_10_Time1;
+        public byte? StatusEffect_10_Unk2Flag;
+        public byte[] StatusEffect_10_Unk2;
+        public bool? StatusEffect_10_Cancel;
 
-        public float? MovementSpeedModifier_Value;
-        public uint? MovementSpeedModifier_Time;
+        public ushort? StatusEffect_11_ShortTime;
+        public uint? StatusEffect_11_Id;
+        public byte[] StatusEffect_11_Unk1;
+        public byte[] StatusEffect_11_Entity;
+        public uint? StatusEffect_11_Time1;
+        public byte? StatusEffect_11_Unk2Flag;
+        public byte[] StatusEffect_11_Unk2;
+        public bool? StatusEffect_11_Cancel;
 
-        public float? Unk_0x41;
-        public uint? Unk_0x41_Time;
+        public ushort? StatusEffect_12_ShortTime;
+        public uint? StatusEffect_12_Id;
+        public byte[] StatusEffect_12_Unk1;
+        public byte[] StatusEffect_12_Entity;
+        public uint? StatusEffect_12_Time1;
+        public byte? StatusEffect_12_Unk2Flag;
+        public byte[] StatusEffect_12_Unk2;
+        public bool? StatusEffect_12_Cancel;
 
-        public float? Unk_0x42;
-        public uint? Unk_0x42_Time;
+        public ushort? StatusEffect_13_ShortTime;
+        public uint? StatusEffect_13_Id;
+        public byte[] StatusEffect_13_Unk1;
+        public byte[] StatusEffect_13_Entity;
+        public uint? StatusEffect_13_Time1;
+        public byte? StatusEffect_13_Unk2Flag;
+        public byte[] StatusEffect_13_Unk2;
+        public bool? StatusEffect_13_Cancel;
 
-        public float? Unk_0x43;
-        public uint? Unk_0x43_Time;
+        public ushort? StatusEffect_14_ShortTime;
+        public uint? StatusEffect_14_Id;
+        public byte[] StatusEffect_14_Unk1;
+        public byte[] StatusEffect_14_Entity;
+        public uint? StatusEffect_14_Time1;
+        public byte? StatusEffect_14_Unk2Flag;
+        public byte[] StatusEffect_14_Unk2;
+        public bool? StatusEffect_14_Cancel;
 
-        public float? Unk_0x44;
-        public uint? Unk_0x44_Time;
+        public ushort? StatusEffect_15_ShortTime;
+        public uint? StatusEffect_15_Id;
+        public byte[] StatusEffect_15_Unk1;
+        public byte[] StatusEffect_15_Entity;
+        public uint? StatusEffect_15_Time1;
+        public byte? StatusEffect_15_Unk2Flag;
+        public byte[] StatusEffect_15_Unk2;
+        public bool? StatusEffect_15_Cancel;
 
-        public float? Unk_0x45;
-        public uint? Unk_0x45_Time;
+        public ushort? StatusEffect_16_ShortTime;
+        public uint? StatusEffect_16_Id;
+        public byte[] StatusEffect_16_Unk1;
+        public byte[] StatusEffect_16_Entity;
+        public uint? StatusEffect_16_Time1;
+        public byte? StatusEffect_16_Unk2Flag;
+        public byte[] StatusEffect_16_Unk2;
+        public bool? StatusEffect_16_Cancel;
 
-        public float? Unk_0x46;
-        public uint? Unk_0x46_Time;
+        public ushort? StatusEffect_17_ShortTime;
+        public uint? StatusEffect_17_Id;
+        public byte[] StatusEffect_17_Unk1;
+        public byte[] StatusEffect_17_Entity;
+        public uint? StatusEffect_17_Time1;
+        public byte? StatusEffect_17_Unk2Flag;
+        public byte[] StatusEffect_17_Unk2;
+        public bool? StatusEffect_17_Cancel;
 
-        public float? Unk_0x47;
-        public uint? Unk_0x47_Time;
+        public ushort? StatusEffect_18_ShortTime;
+        public uint? StatusEffect_18_Id; 
+        public byte[] StatusEffect_18_Unk1;
+        public byte[] StatusEffect_18_Entity;
+        public uint? StatusEffect_18_Time1;
+        public byte? StatusEffect_18_Unk2Flag;
+        public byte[] StatusEffect_18_Unk2;
+        public bool? StatusEffect_18_Cancel;
 
-        public byte[] Unk_0x48;
-        public uint? Unk_0x48_Time;
+        public ushort? StatusEffect_19_ShortTime;
+        public uint? StatusEffect_19_Id;
+        public byte[] StatusEffect_19_Unk1;
+        public byte[] StatusEffect_19_Entity;
+        public uint? StatusEffect_19_Time1;
+        public byte? StatusEffect_19_Unk2Flag;
+        public byte[] StatusEffect_19_Unk2;
+        public bool? StatusEffect_19_Cancel;
 
-        public byte[] Unk_0x49;
-        public uint? Unk_0x49_Time;
+        public ushort? StatusEffect_1a_ShortTime;
+        public uint? StatusEffect_1a_Id;
+        public byte[] StatusEffect_1a_Unk1;
+        public byte[] StatusEffect_1a_Entity;
+        public uint? StatusEffect_1a_Time1;
+        public byte? StatusEffect_1a_Unk2Flag;
+        public byte[] StatusEffect_1a_Unk2;
+        public bool? StatusEffect_1a_Cancel;
 
-        public float? Unk_0x4a;
-        public uint? Unk_0x4a_Time;
+        public ushort? StatusEffect_1b_ShortTime;
+        public uint? StatusEffect_1b_Id;
+        public byte[] StatusEffect_1b_Unk1;
+        public byte[] StatusEffect_1b_Entity;
+        public uint? StatusEffect_1b_Time1;
+        public byte? StatusEffect_1b_Unk2Flag;
+        public byte[] StatusEffect_1b_Unk2;
+        public bool? StatusEffect_1b_Cancel;
 
+        public ushort? StatusEffect_1c_ShortTime;
+        public uint? StatusEffect_1c_Id;
+        public byte[] StatusEffect_1c_Unk1;
+        public byte[] StatusEffect_1c_Entity;
+        public uint? StatusEffect_1c_Time1;
+        public byte? StatusEffect_1c_Unk2Flag;
+        public byte[] StatusEffect_1c_Unk2;
+        public bool? StatusEffect_1c_Cancel;
+
+        public ushort? StatusEffect_1d_ShortTime;
+        public uint? StatusEffect_1d_Id;
+        public byte[] StatusEffect_1d_Unk1;
+        public byte[] StatusEffect_1d_Entity;
+        public uint? StatusEffect_1d_Time1;
+        public byte? StatusEffect_1d_Unk2Flag;
+        public byte[] StatusEffect_1d_Unk2;
+        public bool? StatusEffect_1d_Cancel;
+
+        public ushort? StatusEffect_1e_ShortTime;
+        public uint? StatusEffect_1e_Id;
+        public byte[] StatusEffect_1e_Unk1;
+        public byte[] StatusEffect_1e_Entity;
+        public uint? StatusEffect_1e_Time1;
+        public byte? StatusEffect_1e_Unk2Flag;
+        public byte[] StatusEffect_1e_Unk2;
+        public bool? StatusEffect_1e_Cancel;
+
+        public ushort? StatusEffect_1f_ShortTime;
+        public uint? StatusEffect_1f_Id;
+        public byte[] StatusEffect_1f_Unk1;
+        public byte[] StatusEffect_1f_Entity;
+        public uint? StatusEffect_1f_Time1;
+        public byte? StatusEffect_1f_Unk2Flag;
+        public byte[] StatusEffect_1f_Unk2;
+        public bool? StatusEffect_1f_Cancel;
+
+        public float? MovementSpeedMultiplier_Value;
+        public uint? MovementSpeedMultiplier_Time;
+        public float? ForwardMovementMultiplier_Value;
+        public uint?  ForwardMovementMultiplier_Time;
+        public float? JumpHeightMultiplier_Value;
+        public uint?  JumpHeightMultiplier_Time;
+        public float? AirMovementMultiplier_Value;
+        public uint?  AirMovementMultiplier_Time;
+        public float? JetVerticalThrustMultiplier_Value;
+        public uint?  JetVerticalThrustMultiplier_Time;
+        public float? JetMovementMultiplier_Value;
+        public uint?  JetMovementMultiplier_Time;
+        public float? GroundAccelerationMultiplier_Value;
+        public uint?  GroundAccelerationMultiplier_Time;
+        public float? AmmoCostModifier_Value;
+        public uint?  AmmoCostModifier_Time;
+        public float? AimSmoothingModifier_Value;
+        public uint?  AimSmoothingModifier_Time;
+        public float? AimSensitivityModifier_Value;
+        public uint?  AimSensitivityModifier_Time;
+        public float? TimescaleModifier_Value;
+        public uint?  TimescaleModifier_Time;
         public float? RateOfFireModifier_Value;
-        public uint? RateOfFireModifier_Time;
+        public uint?  RateOfFireModifier_Time;
+        public float? WeaponSpreadMultiplier_Value;
+        public uint?  WeaponSpreadMultiplier_Time;
+        public float? FallingSpeedMultiplier_Value;
+        public uint?  FallingSpeedMultiplier_Time;
+        public float? JetSprintModifier_Value;
+        public uint?  JetSprintModifier_Time;
 
-        public float? Unk_0x4c;
-        public uint? Unk_0x4c_Time;
+        public float? Unk_0x4f_Value;
+        public uint?  Unk_0x4f_Time;
 
-        public float? Unk_0x4d;
-        public uint? Unk_0x4d_Time;
-
-        public float? Unk_0x4e;
-        public uint? Unk_0x4e_Time;
-
-        public float? Unk_0x4f;
-        public uint? Unk_0x4f_Time;
-
-        public float? Unk_0x50;
-        public uint? Unk_0x50_Time;
+        public float? Unk_0x50_Value;
+        public uint?  Unk_0x50_Time;
 
         public byte? SelectFireMode_FireMode;
         public uint? SelectFireMode_Time;
         public byte? UseScope_InScope;
         public uint? UseScope_Time;
-
-        public ushort? Unk_0x53_Mag_Ammo1;
-        public ushort? Unk_0x54_Secondary_Mag_Ammo1;
-        public ushort? Unk_0x55_Mag_Ammo2;
-        public ushort? Unk_0x56_Secondary_Mag_Ammo2;
-        public ushort? Unk_0x57_Reserve_Ammo1;
-        public ushort? Unk_0x58_Secondary_Reserve_Ammo1;
-        public ushort? Unk_0x59_Reserve_Ammo2;
-        public ushort? Unk_0x5a_Secondary_Reserve_Ammo2;
-
+        public ushort? Ammo_Primary_Clip_1;
+        public ushort? Ammo_Secondary_Clip_1;
+        public ushort? Ammo_Primary_Clip_2;
+        public ushort? Ammo_Secondary_Clip_2;
+        public ushort? Ammo_Primary_Reserve_1;
+        public ushort? Ammo_Secondary_Reserve_1;
+        public ushort? Ammo_Primary_Reserve_2;
+        public ushort? Ammo_Secondary_Reserve_2;
         public byte? SelectWeapon_Index;
         public byte[] SelectWeapon_Unk;
         public uint? SelectWeapon_Time;
-        public ushort? FireBurst_ShortTime;
-        public byte? FireBurst_Unk;
+        public ushort? FireBurst_ShortTime; // Not 100% about this one
+        public byte? FireBurst_Unk; // Not 100% about this one
+        public float? Unk_0x5d;
+        public uint? CombatFlags_Value;
+        public uint? CombatFlags_Time;
+        public uint? PermissionFlags_Value;
+        public byte[] PermissionFlags_Unk;
+        public uint? PermissionFlags_Time;
+        public uint? GliderParameters;
 
-
-
-        public byte[] Unk_0x5e_MovementPermissions;
-        public uint? Unk_0x5e_MovementPermissions_Time;
-
-        public byte[] Unk_0x5f_ActionPermissions;
-        public uint? Unk_0x5f_ActionPermissions_Time;
-
-        public byte? Unk_0x60;
+        // Uncertain
         public uint? Unk_0x62_Time;
         public byte? Unk_0x63;
         public byte[] Unk_0x65;
 
         public byte[] UnableToParse;
-
-
 
         public override void Read(Bitter.BinaryStream Stream)
         {
@@ -361,380 +519,685 @@ namespace PacketPeepScript
                 ShadowFieldIndex sfidx = (ShadowFieldIndex) (Stream.Read.Byte());
                 switch (sfidx)
                 {
-                    case ShadowFieldIndex.StatusEffect_0_ShortTime:
-                        StatusEffect_0_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_00_ShortTime:
+                        StatusEffect_00_ShortTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_1_ShortTime:
-                        StatusEffect_1_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_01_ShortTime:
+                        StatusEffect_01_ShortTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_2_ShortTime:
-                        StatusEffect_2_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_02_ShortTime:
+                        StatusEffect_02_ShortTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_3_ShortTime:
-                        StatusEffect_3_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_03_ShortTime:
+                        StatusEffect_03_ShortTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_4_ShortTime:
-                        StatusEffect_4_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_04_ShortTime:
+                        StatusEffect_04_ShortTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_5_ShortTime:
-                        StatusEffect_5_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_05_ShortTime:
+                        StatusEffect_05_ShortTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_6_ShortTime:
-                        StatusEffect_6_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_06_ShortTime:
+                        StatusEffect_06_ShortTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_7_ShortTime:
-                        StatusEffect_7_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_07_ShortTime:
+                        StatusEffect_07_ShortTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_8_ShortTime:
-                        StatusEffect_8_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_08_ShortTime:
+                        StatusEffect_08_ShortTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_9_ShortTime:
-                        StatusEffect_9_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_09_ShortTime:
+                        StatusEffect_09_ShortTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_a_ShortTime:
-                        StatusEffect_a_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_0a_ShortTime:
+                        StatusEffect_0a_ShortTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_b_ShortTime:
-                        StatusEffect_b_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_0b_ShortTime:
+                        StatusEffect_0b_ShortTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_c_ShortTime:
-                        StatusEffect_c_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_0c_ShortTime:
+                        StatusEffect_0c_ShortTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_d_ShortTime:
-                        StatusEffect_d_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_0d_ShortTime:
+                        StatusEffect_0d_ShortTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_e_ShortTime:
-                        StatusEffect_e_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_0e_ShortTime:
+                        StatusEffect_0e_ShortTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_f_ShortTime:
-                        StatusEffect_f_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_0f_ShortTime:
+                        StatusEffect_0f_ShortTime = Stream.Read.UShort();
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_10_ShortTime:
+                        StatusEffect_10_ShortTime = Stream.Read.UShort();
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_11_ShortTime:
+                        StatusEffect_11_ShortTime = Stream.Read.UShort();
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_12_ShortTime:
+                        StatusEffect_12_ShortTime = Stream.Read.UShort();
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_13_ShortTime:
+                        StatusEffect_13_ShortTime = Stream.Read.UShort();
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_14_ShortTime:
+                        StatusEffect_14_ShortTime = Stream.Read.UShort();
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_15_ShortTime:
+                        StatusEffect_15_ShortTime = Stream.Read.UShort();
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_16_ShortTime:
+                        StatusEffect_16_ShortTime = Stream.Read.UShort();
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_17_ShortTime:
+                        StatusEffect_17_ShortTime = Stream.Read.UShort();
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_18_ShortTime:
+                        StatusEffect_18_ShortTime = Stream.Read.UShort();
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_19_ShortTime:
+                        StatusEffect_19_ShortTime = Stream.Read.UShort();
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_1a_ShortTime:
+                        StatusEffect_1a_ShortTime = Stream.Read.UShort();
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_1b_ShortTime:
+                        StatusEffect_1b_ShortTime = Stream.Read.UShort();
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_1c_ShortTime:
+                        StatusEffect_1c_ShortTime = Stream.Read.UShort();
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_1d_ShortTime:
+                        StatusEffect_1d_ShortTime = Stream.Read.UShort();
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_1e_ShortTime:
+                        StatusEffect_1e_ShortTime = Stream.Read.UShort();
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_1f_ShortTime:
+                        StatusEffect_1f_ShortTime = Stream.Read.UShort();
                         break;
 
 
-                    case ShadowFieldIndex.StatusEffect_0_Data:
-                        StatusEffect_0_Id     = Stream.Read.UInt();
-                        StatusEffect_0_Unk1   = Stream.Read.ByteArray(1);
-                        StatusEffect_0_Entity = Stream.Read.ByteArray(8);
-                        StatusEffect_0_Time1  = Stream.Read.UInt();
-                        StatusEffect_0_Unk2Flag = Stream.Read.Byte();
-                        if (StatusEffect_0_Unk2Flag == 0x01)
+                    case ShadowFieldIndex.StatusEffect_00_Data:
+                        StatusEffect_00_Id     = Stream.Read.UInt();
+                        StatusEffect_00_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_00_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_00_Time1  = Stream.Read.UInt();
+                        StatusEffect_00_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_00_Unk2Flag == 0x01)
                         {
-                            StatusEffect_0_Unk2   = Stream.Read.ByteArray(38);
+                            StatusEffect_00_Unk2   = Stream.Read.ByteArray(38);
                         }
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_1_Data:
-                        StatusEffect_1_Id     = Stream.Read.UInt();
-                        StatusEffect_1_Unk1   = Stream.Read.ByteArray(1);
-                        StatusEffect_1_Entity = Stream.Read.ByteArray(8);
-                        StatusEffect_1_Time1  = Stream.Read.UInt();
-                        StatusEffect_1_Unk2Flag = Stream.Read.Byte();
-                        if (StatusEffect_1_Unk2Flag == 0x01)
+                    case ShadowFieldIndex.StatusEffect_01_Data:
+                        StatusEffect_01_Id     = Stream.Read.UInt();
+                        StatusEffect_01_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_01_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_01_Time1  = Stream.Read.UInt();
+                        StatusEffect_01_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_01_Unk2Flag == 0x01)
                         {
-                            StatusEffect_1_Unk2   = Stream.Read.ByteArray(38);
+                            StatusEffect_01_Unk2   = Stream.Read.ByteArray(38);
                         }
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_2_Data:
-                        StatusEffect_2_Id     = Stream.Read.UInt();
-                        StatusEffect_2_Unk1   = Stream.Read.ByteArray(1);
-                        StatusEffect_2_Entity = Stream.Read.ByteArray(8);
-                        StatusEffect_2_Time1  = Stream.Read.UInt();
-                        StatusEffect_2_Unk2Flag = Stream.Read.Byte();
-                        if (StatusEffect_2_Unk2Flag == 0x01)
+                    case ShadowFieldIndex.StatusEffect_02_Data:
+                        StatusEffect_02_Id     = Stream.Read.UInt();
+                        StatusEffect_02_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_02_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_02_Time1  = Stream.Read.UInt();
+                        StatusEffect_02_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_02_Unk2Flag == 0x01)
                         {
-                            StatusEffect_2_Unk2   = Stream.Read.ByteArray(38);
+                            StatusEffect_02_Unk2   = Stream.Read.ByteArray(38);
                         }
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_3_Data:
-                        StatusEffect_3_Id     = Stream.Read.UInt();
-                        StatusEffect_3_Unk1   = Stream.Read.ByteArray(1);
-                        StatusEffect_3_Entity = Stream.Read.ByteArray(8);
-                        StatusEffect_3_Time1  = Stream.Read.UInt();
-                        StatusEffect_3_Unk2Flag = Stream.Read.Byte();
-                        if (StatusEffect_3_Unk2Flag == 0x01)
+                    case ShadowFieldIndex.StatusEffect_03_Data:
+                        StatusEffect_03_Id     = Stream.Read.UInt();
+                        StatusEffect_03_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_03_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_03_Time1  = Stream.Read.UInt();
+                        StatusEffect_03_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_03_Unk2Flag == 0x01)
                         {
-                            StatusEffect_3_Unk2   = Stream.Read.ByteArray(38);
+                            StatusEffect_03_Unk2   = Stream.Read.ByteArray(38);
                         }
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_4_Data:
-                        StatusEffect_4_Id     = Stream.Read.UInt();
-                        StatusEffect_4_Unk1   = Stream.Read.ByteArray(1);
-                        StatusEffect_4_Entity = Stream.Read.ByteArray(8);
-                        StatusEffect_4_Time1  = Stream.Read.UInt();
-                        StatusEffect_4_Unk2Flag = Stream.Read.Byte();
-                        if (StatusEffect_4_Unk2Flag == 0x01)
+                    case ShadowFieldIndex.StatusEffect_04_Data:
+                        StatusEffect_04_Id     = Stream.Read.UInt();
+                        StatusEffect_04_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_04_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_04_Time1  = Stream.Read.UInt();
+                        StatusEffect_04_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_04_Unk2Flag == 0x01)
                         {
-                            StatusEffect_4_Unk2   = Stream.Read.ByteArray(38);
+                            StatusEffect_04_Unk2   = Stream.Read.ByteArray(38);
                         }
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_5_Data:
-                        StatusEffect_5_Id     = Stream.Read.UInt();
-                        StatusEffect_5_Unk1   = Stream.Read.ByteArray(1);
-                        StatusEffect_5_Entity = Stream.Read.ByteArray(8);
-                        StatusEffect_5_Time1  = Stream.Read.UInt();
-                        StatusEffect_5_Unk2Flag = Stream.Read.Byte();
-                        if (StatusEffect_5_Unk2Flag == 0x01)
+                    case ShadowFieldIndex.StatusEffect_05_Data:
+                        StatusEffect_05_Id     = Stream.Read.UInt();
+                        StatusEffect_05_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_05_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_05_Time1  = Stream.Read.UInt();
+                        StatusEffect_05_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_05_Unk2Flag == 0x01)
                         {
-                            StatusEffect_5_Unk2   = Stream.Read.ByteArray(38);
+                            StatusEffect_05_Unk2   = Stream.Read.ByteArray(38);
                         }
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_6_Data:
-                        StatusEffect_6_Id     = Stream.Read.UInt();
-                        StatusEffect_6_Unk1   = Stream.Read.ByteArray(1);
-                        StatusEffect_6_Entity = Stream.Read.ByteArray(8);
-                        StatusEffect_6_Time1  = Stream.Read.UInt();
-                        StatusEffect_6_Unk2Flag = Stream.Read.Byte();
-                        if (StatusEffect_6_Unk2Flag == 0x01)
+                    case ShadowFieldIndex.StatusEffect_06_Data:
+                        StatusEffect_06_Id     = Stream.Read.UInt();
+                        StatusEffect_06_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_06_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_06_Time1  = Stream.Read.UInt();
+                        StatusEffect_06_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_06_Unk2Flag == 0x01)
                         {
-                            StatusEffect_6_Unk2   = Stream.Read.ByteArray(38);
+                            StatusEffect_06_Unk2   = Stream.Read.ByteArray(38);
                         }
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_7_Data:
-                        StatusEffect_7_Id     = Stream.Read.UInt();
-                        StatusEffect_7_Unk1   = Stream.Read.ByteArray(1);
-                        StatusEffect_7_Entity = Stream.Read.ByteArray(8);
-                        StatusEffect_7_Time1  = Stream.Read.UInt();
-                        StatusEffect_7_Unk2Flag = Stream.Read.Byte();
-                        if (StatusEffect_7_Unk2Flag == 0x01)
+                    case ShadowFieldIndex.StatusEffect_07_Data:
+                        StatusEffect_07_Id     = Stream.Read.UInt();
+                        StatusEffect_07_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_07_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_07_Time1  = Stream.Read.UInt();
+                        StatusEffect_07_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_07_Unk2Flag == 0x01)
                         {
-                            StatusEffect_7_Unk2   = Stream.Read.ByteArray(38);
+                            StatusEffect_07_Unk2   = Stream.Read.ByteArray(38);
                         }
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_8_Data:
-                        StatusEffect_8_Id     = Stream.Read.UInt();
-                        StatusEffect_8_Unk1   = Stream.Read.ByteArray(1);
-                        StatusEffect_8_Entity = Stream.Read.ByteArray(8);
-                        StatusEffect_8_Time1  = Stream.Read.UInt();
-                        StatusEffect_8_Unk2Flag = Stream.Read.Byte();
-                        if (StatusEffect_8_Unk2Flag == 0x01)
+                    case ShadowFieldIndex.StatusEffect_08_Data:
+                        StatusEffect_08_Id     = Stream.Read.UInt();
+                        StatusEffect_08_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_08_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_08_Time1  = Stream.Read.UInt();
+                        StatusEffect_08_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_08_Unk2Flag == 0x01)
                         {
-                            StatusEffect_8_Unk2   = Stream.Read.ByteArray(38);
+                            StatusEffect_08_Unk2   = Stream.Read.ByteArray(38);
                         }
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_9_Data:
-                        StatusEffect_9_Id     = Stream.Read.UInt();
-                        StatusEffect_9_Unk1   = Stream.Read.ByteArray(1);
-                        StatusEffect_9_Entity = Stream.Read.ByteArray(8);
-                        StatusEffect_9_Time1  = Stream.Read.UInt();
-                        StatusEffect_9_Unk2Flag = Stream.Read.Byte();
-                        if (StatusEffect_9_Unk2Flag == 0x01)
+                    case ShadowFieldIndex.StatusEffect_09_Data:
+                        StatusEffect_09_Id     = Stream.Read.UInt();
+                        StatusEffect_09_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_09_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_09_Time1  = Stream.Read.UInt();
+                        StatusEffect_09_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_09_Unk2Flag == 0x01)
                         {
-                            StatusEffect_9_Unk2   = Stream.Read.ByteArray(38);
+                            StatusEffect_09_Unk2   = Stream.Read.ByteArray(38);
                         }
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_a_Data:
-                        StatusEffect_a_Id     = Stream.Read.UInt();
-                        StatusEffect_a_Unk1   = Stream.Read.ByteArray(1);
-                        StatusEffect_a_Entity = Stream.Read.ByteArray(8);
-                        StatusEffect_a_Time1  = Stream.Read.UInt();
-                        StatusEffect_a_Unk2Flag = Stream.Read.Byte();
-                        if (StatusEffect_a_Unk2Flag == 0x01)
+                    case ShadowFieldIndex.StatusEffect_0a_Data:
+                        StatusEffect_0a_Id     = Stream.Read.UInt();
+                        StatusEffect_0a_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_0a_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_0a_Time1  = Stream.Read.UInt();
+                        StatusEffect_0a_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_0a_Unk2Flag == 0x01)
                         {
-                            StatusEffect_a_Unk2   = Stream.Read.ByteArray(38);
+                            StatusEffect_0a_Unk2   = Stream.Read.ByteArray(38);
                         }
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_b_Data:
-                        StatusEffect_b_Id     = Stream.Read.UInt();
-                        StatusEffect_b_Unk1   = Stream.Read.ByteArray(1);
-                        StatusEffect_b_Entity = Stream.Read.ByteArray(8);
-                        StatusEffect_b_Time1  = Stream.Read.UInt();
-                        StatusEffect_b_Unk2Flag = Stream.Read.Byte();
-                        if (StatusEffect_b_Unk2Flag == 0x01)
+                    case ShadowFieldIndex.StatusEffect_0b_Data:
+                        StatusEffect_0b_Id     = Stream.Read.UInt();
+                        StatusEffect_0b_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_0b_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_0b_Time1  = Stream.Read.UInt();
+                        StatusEffect_0b_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_0b_Unk2Flag == 0x01)
                         {
-                            StatusEffect_b_Unk2   = Stream.Read.ByteArray(38);
+                            StatusEffect_0b_Unk2   = Stream.Read.ByteArray(38);
                         }
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_c_Data:
-                        StatusEffect_c_Id     = Stream.Read.UInt();
-                        StatusEffect_c_Unk1   = Stream.Read.ByteArray(1);
-                        StatusEffect_c_Entity = Stream.Read.ByteArray(8);
-                        StatusEffect_c_Time1  = Stream.Read.UInt();
-                        StatusEffect_c_Unk2Flag = Stream.Read.Byte();
-                        if (StatusEffect_c_Unk2Flag == 0x01)
+                    case ShadowFieldIndex.StatusEffect_0c_Data:
+                        StatusEffect_0c_Id     = Stream.Read.UInt();
+                        StatusEffect_0c_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_0c_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_0c_Time1  = Stream.Read.UInt();
+                        StatusEffect_0c_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_0c_Unk2Flag == 0x01)
                         {
-                            StatusEffect_c_Unk2   = Stream.Read.ByteArray(38);
+                            StatusEffect_0c_Unk2   = Stream.Read.ByteArray(38);
                         }
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_d_Data:
-                        StatusEffect_d_Id     = Stream.Read.UInt();
-                        StatusEffect_d_Unk1   = Stream.Read.ByteArray(1);
-                        StatusEffect_d_Entity = Stream.Read.ByteArray(8);
-                        StatusEffect_d_Time1  = Stream.Read.UInt();
-                        StatusEffect_d_Unk2Flag = Stream.Read.Byte();
-                        if (StatusEffect_d_Unk2Flag == 0x01)
+                    case ShadowFieldIndex.StatusEffect_0d_Data:
+                        StatusEffect_0d_Id     = Stream.Read.UInt();
+                        StatusEffect_0d_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_0d_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_0d_Time1  = Stream.Read.UInt();
+                        StatusEffect_0d_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_0d_Unk2Flag == 0x01)
                         {
-                            StatusEffect_d_Unk2   = Stream.Read.ByteArray(38);
+                            StatusEffect_0d_Unk2   = Stream.Read.ByteArray(38);
                         }
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_e_Data:
-                        StatusEffect_e_Id     = Stream.Read.UInt();
-                        StatusEffect_e_Unk1   = Stream.Read.ByteArray(1);
-                        StatusEffect_e_Entity = Stream.Read.ByteArray(8);
-                        StatusEffect_e_Time1  = Stream.Read.UInt();
-                        StatusEffect_e_Unk2Flag = Stream.Read.Byte();
-                        if (StatusEffect_e_Unk2Flag == 0x01)
+                    case ShadowFieldIndex.StatusEffect_0e_Data:
+                        StatusEffect_0e_Id     = Stream.Read.UInt();
+                        StatusEffect_0e_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_0e_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_0e_Time1  = Stream.Read.UInt();
+                        StatusEffect_0e_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_0e_Unk2Flag == 0x01)
                         {
-                            StatusEffect_e_Unk2   = Stream.Read.ByteArray(38);
+                            StatusEffect_0e_Unk2   = Stream.Read.ByteArray(38);
                         }
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_f_Data:
-                        StatusEffect_f_Id     = Stream.Read.UInt();
-                        StatusEffect_f_Unk1   = Stream.Read.ByteArray(1);
-                        StatusEffect_f_Entity = Stream.Read.ByteArray(8);
-                        StatusEffect_f_Time1  = Stream.Read.UInt();
-                        StatusEffect_f_Unk2Flag = Stream.Read.Byte();
-                        if (StatusEffect_f_Unk2Flag == 0x01)
+                    case ShadowFieldIndex.StatusEffect_0f_Data:
+                        StatusEffect_0f_Id     = Stream.Read.UInt();
+                        StatusEffect_0f_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_0f_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_0f_Time1  = Stream.Read.UInt();
+                        StatusEffect_0f_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_0f_Unk2Flag == 0x01)
                         {
-                            StatusEffect_f_Unk2   = Stream.Read.ByteArray(38);
+                            StatusEffect_0f_Unk2   = Stream.Read.ByteArray(38);
+                        }
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_10_Data:
+                        StatusEffect_10_Id     = Stream.Read.UInt();
+                        StatusEffect_10_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_10_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_10_Time1  = Stream.Read.UInt();
+                        StatusEffect_10_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_10_Unk2Flag == 0x01)
+                        {
+                            StatusEffect_10_Unk2   = Stream.Read.ByteArray(38);
+                        }
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_11_Data:
+                        StatusEffect_11_Id     = Stream.Read.UInt();
+                        StatusEffect_11_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_11_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_11_Time1  = Stream.Read.UInt();
+                        StatusEffect_11_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_11_Unk2Flag == 0x01)
+                        {
+                            StatusEffect_11_Unk2   = Stream.Read.ByteArray(38);
+                        }
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_12_Data:
+                        StatusEffect_12_Id     = Stream.Read.UInt();
+                        StatusEffect_12_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_12_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_12_Time1  = Stream.Read.UInt();
+                        StatusEffect_12_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_12_Unk2Flag == 0x01)
+                        {
+                            StatusEffect_12_Unk2   = Stream.Read.ByteArray(38);
+                        }
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_13_Data:
+                        StatusEffect_13_Id     = Stream.Read.UInt();
+                        StatusEffect_13_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_13_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_13_Time1  = Stream.Read.UInt();
+                        StatusEffect_13_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_13_Unk2Flag == 0x01)
+                        {
+                            StatusEffect_13_Unk2   = Stream.Read.ByteArray(38);
+                        }
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_14_Data:
+                        StatusEffect_14_Id     = Stream.Read.UInt();
+                        StatusEffect_14_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_14_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_14_Time1  = Stream.Read.UInt();
+                        StatusEffect_14_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_14_Unk2Flag == 0x01)
+                        {
+                            StatusEffect_14_Unk2   = Stream.Read.ByteArray(38);
+                        }
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_15_Data:
+                        StatusEffect_15_Id     = Stream.Read.UInt();
+                        StatusEffect_15_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_15_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_15_Time1  = Stream.Read.UInt();
+                        StatusEffect_15_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_15_Unk2Flag == 0x01)
+                        {
+                            StatusEffect_15_Unk2   = Stream.Read.ByteArray(38);
+                        }
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_16_Data:
+                        StatusEffect_16_Id     = Stream.Read.UInt();
+                        StatusEffect_16_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_16_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_16_Time1  = Stream.Read.UInt();
+                        StatusEffect_16_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_16_Unk2Flag == 0x01)
+                        {
+                            StatusEffect_16_Unk2   = Stream.Read.ByteArray(38);
+                        }
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_17_Data:
+                        StatusEffect_17_Id     = Stream.Read.UInt();
+                        StatusEffect_17_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_17_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_17_Time1  = Stream.Read.UInt();
+                        StatusEffect_17_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_17_Unk2Flag == 0x01)
+                        {
+                            StatusEffect_17_Unk2   = Stream.Read.ByteArray(38);
+                        }
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_18_Data:
+                        StatusEffect_18_Id     = Stream.Read.UInt();
+                        StatusEffect_18_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_18_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_18_Time1  = Stream.Read.UInt();
+                        StatusEffect_18_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_18_Unk2Flag == 0x01)
+                        {
+                            StatusEffect_18_Unk2   = Stream.Read.ByteArray(38);
+                        }
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_19_Data:
+                        StatusEffect_19_Id     = Stream.Read.UInt();
+                        StatusEffect_19_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_19_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_19_Time1  = Stream.Read.UInt();
+                        StatusEffect_19_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_19_Unk2Flag == 0x01)
+                        {
+                            StatusEffect_19_Unk2   = Stream.Read.ByteArray(38);
+                        }
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_1a_Data:
+                        StatusEffect_1a_Id     = Stream.Read.UInt();
+                        StatusEffect_1a_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_1a_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_1a_Time1  = Stream.Read.UInt();
+                        StatusEffect_1a_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_1a_Unk2Flag == 0x01)
+                        {
+                            StatusEffect_1a_Unk2   = Stream.Read.ByteArray(38);
+                        }
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_1b_Data:
+                        StatusEffect_1b_Id     = Stream.Read.UInt();
+                        StatusEffect_1b_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_1b_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_1b_Time1  = Stream.Read.UInt();
+                        StatusEffect_1b_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_1b_Unk2Flag == 0x01)
+                        {
+                            StatusEffect_1b_Unk2   = Stream.Read.ByteArray(38);
+                        }
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_1c_Data:
+                        StatusEffect_1c_Id     = Stream.Read.UInt();
+                        StatusEffect_1c_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_1c_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_1c_Time1  = Stream.Read.UInt();
+                        StatusEffect_1c_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_1c_Unk2Flag == 0x01)
+                        {
+                            StatusEffect_1c_Unk2   = Stream.Read.ByteArray(38);
+                        }
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_1d_Data:
+                        StatusEffect_1d_Id     = Stream.Read.UInt();
+                        StatusEffect_1d_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_1d_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_1d_Time1  = Stream.Read.UInt();
+                        StatusEffect_1d_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_1d_Unk2Flag == 0x01)
+                        {
+                            StatusEffect_1d_Unk2   = Stream.Read.ByteArray(38);
+                        }
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_1e_Data:
+                        StatusEffect_1e_Id     = Stream.Read.UInt();
+                        StatusEffect_1e_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_1e_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_1e_Time1  = Stream.Read.UInt();
+                        StatusEffect_1e_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_1e_Unk2Flag == 0x01)
+                        {
+                            StatusEffect_1e_Unk2   = Stream.Read.ByteArray(38);
+                        }
+                        break;
+
+                    case ShadowFieldIndex.StatusEffect_1f_Data:
+                        StatusEffect_1f_Id     = Stream.Read.UInt();
+                        StatusEffect_1f_Unk1   = Stream.Read.ByteArray(1);
+                        StatusEffect_1f_Entity = Stream.Read.ByteArray(8);
+                        StatusEffect_1f_Time1  = Stream.Read.UInt();
+                        StatusEffect_1f_Unk2Flag = Stream.Read.Byte();
+                        if (StatusEffect_1f_Unk2Flag == 0x01)
+                        {
+                            StatusEffect_1f_Unk2   = Stream.Read.ByteArray(38);
                         }
                         break;
 
                     // These keys do not come with any data
-                    case ShadowFieldIndex.StatusEffect_0_Cancel:
-                        StatusEffect_0_Cancel = true;
+                    case ShadowFieldIndex.StatusEffect_00_Cancel:
+                        StatusEffect_00_Cancel = true;
                         break;
-                    case ShadowFieldIndex.StatusEffect_1_Cancel:
-                        StatusEffect_1_Cancel = true;
+                    case ShadowFieldIndex.StatusEffect_01_Cancel:
+                        StatusEffect_01_Cancel = true;
                         break;
-                    case ShadowFieldIndex.StatusEffect_2_Cancel:
-                        StatusEffect_2_Cancel = true;
+                    case ShadowFieldIndex.StatusEffect_02_Cancel:
+                        StatusEffect_02_Cancel = true;
                         break;
-                    case ShadowFieldIndex.StatusEffect_3_Cancel:
-                        StatusEffect_3_Cancel = true;
+                    case ShadowFieldIndex.StatusEffect_03_Cancel:
+                        StatusEffect_03_Cancel = true;
                         break;
-                    case ShadowFieldIndex.StatusEffect_4_Cancel:
-                        StatusEffect_4_Cancel = true;
+                    case ShadowFieldIndex.StatusEffect_04_Cancel:
+                        StatusEffect_04_Cancel = true;
                         break;
-                    case ShadowFieldIndex.StatusEffect_5_Cancel:
-                        StatusEffect_5_Cancel = true;
+                    case ShadowFieldIndex.StatusEffect_05_Cancel:
+                        StatusEffect_05_Cancel = true;
                         break;
-                    case ShadowFieldIndex.StatusEffect_6_Cancel:
-                        StatusEffect_6_Cancel = true;
+                    case ShadowFieldIndex.StatusEffect_06_Cancel:
+                        StatusEffect_06_Cancel = true;
                         break;
-                    case ShadowFieldIndex.StatusEffect_7_Cancel:
-                        StatusEffect_7_Cancel = true;
+                    case ShadowFieldIndex.StatusEffect_07_Cancel:
+                        StatusEffect_07_Cancel = true;
                         break;
-                    case ShadowFieldIndex.StatusEffect_8_Cancel:
-                        StatusEffect_8_Cancel = true;
+                    case ShadowFieldIndex.StatusEffect_08_Cancel:
+                        StatusEffect_08_Cancel = true;
                         break;
-                    case ShadowFieldIndex.StatusEffect_9_Cancel:
-                        StatusEffect_9_Cancel = true;
+                    case ShadowFieldIndex.StatusEffect_09_Cancel:
+                        StatusEffect_09_Cancel = true;
                         break;
-                    case ShadowFieldIndex.StatusEffect_a_Cancel:
-                        StatusEffect_a_Cancel = true;
+                    case ShadowFieldIndex.StatusEffect_0a_Cancel:
+                        StatusEffect_0a_Cancel = true;
                         break;
-                    case ShadowFieldIndex.StatusEffect_b_Cancel:
-                        StatusEffect_b_Cancel = true;
+                    case ShadowFieldIndex.StatusEffect_0b_Cancel:
+                        StatusEffect_0b_Cancel = true;
                         break;
-                    case ShadowFieldIndex.StatusEffect_c_Cancel:
-                        StatusEffect_c_Cancel = true;
+                    case ShadowFieldIndex.StatusEffect_0c_Cancel:
+                        StatusEffect_0c_Cancel = true;
                         break;
-                    case ShadowFieldIndex.StatusEffect_d_Cancel:
-                        StatusEffect_d_Cancel = true;
+                    case ShadowFieldIndex.StatusEffect_0d_Cancel:
+                        StatusEffect_0d_Cancel = true;
                         break;
-                    case ShadowFieldIndex.StatusEffect_e_Cancel:
-                        StatusEffect_e_Cancel = true;
+                    case ShadowFieldIndex.StatusEffect_0e_Cancel:
+                        StatusEffect_0e_Cancel = true;
                         break;
-                    case ShadowFieldIndex.StatusEffect_f_Cancel:
-                        StatusEffect_f_Cancel = true;
+                    case ShadowFieldIndex.StatusEffect_0f_Cancel:
+                        StatusEffect_0f_Cancel = true;
+                        break;
+                    case ShadowFieldIndex.StatusEffect_10_Cancel:
+                        StatusEffect_10_Cancel = true;
+                        break;
+                    case ShadowFieldIndex.StatusEffect_11_Cancel:
+                        StatusEffect_11_Cancel = true;
+                        break;
+                    case ShadowFieldIndex.StatusEffect_12_Cancel:
+                        StatusEffect_12_Cancel = true;
+                        break;
+                    case ShadowFieldIndex.StatusEffect_13_Cancel:
+                        StatusEffect_13_Cancel = true;
+                        break;
+                    case ShadowFieldIndex.StatusEffect_14_Cancel:
+                        StatusEffect_14_Cancel = true;
+                        break;
+                    case ShadowFieldIndex.StatusEffect_15_Cancel:
+                        StatusEffect_15_Cancel = true;
+                        break;
+                    case ShadowFieldIndex.StatusEffect_16_Cancel:
+                        StatusEffect_16_Cancel = true;
+                        break;
+                    case ShadowFieldIndex.StatusEffect_17_Cancel:
+                        StatusEffect_17_Cancel = true;
+                        break;
+                    case ShadowFieldIndex.StatusEffect_18_Cancel:
+                        StatusEffect_18_Cancel = true;
+                        break;
+                    case ShadowFieldIndex.StatusEffect_19_Cancel:
+                        StatusEffect_19_Cancel = true;
+                        break;
+                    case ShadowFieldIndex.StatusEffect_1a_Cancel:
+                        StatusEffect_1a_Cancel = true;
+                        break;
+                    case ShadowFieldIndex.StatusEffect_1b_Cancel:
+                        StatusEffect_1b_Cancel = true;
+                        break;
+                    case ShadowFieldIndex.StatusEffect_1c_Cancel:
+                        StatusEffect_1c_Cancel = true;
+                        break;
+                    case ShadowFieldIndex.StatusEffect_1d_Cancel:
+                        StatusEffect_1d_Cancel = true;
+                        break;
+                    case ShadowFieldIndex.StatusEffect_1e_Cancel:
+                        StatusEffect_1e_Cancel = true;
+                        break;
+                    case ShadowFieldIndex.StatusEffect_1f_Cancel:
+                        StatusEffect_1f_Cancel = true;
                         break;
 
-
-                    case ShadowFieldIndex.MovementSpeedModifier:
-                        MovementSpeedModifier_Value = Stream.Read.Float();
-                        MovementSpeedModifier_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.MovementSpeedMultiplier:
+                        MovementSpeedMultiplier_Value = Stream.Read.Float();
+                        MovementSpeedMultiplier_Time = Stream.Read.UInt();
                         break;
-                    case ShadowFieldIndex.Unk_0x41:
-                        Unk_0x41 = Stream.Read.Float();
-                        Unk_0x41_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.ForwardMovementMultiplier:
+                        ForwardMovementMultiplier_Value = Stream.Read.Float();
+                        ForwardMovementMultiplier_Time = Stream.Read.UInt();
                         break;
-                    case ShadowFieldIndex.Unk_0x42:
-                        Unk_0x42 = Stream.Read.Float();
-                        Unk_0x42_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.JumpHeightMultiplier:
+                        JumpHeightMultiplier_Value = Stream.Read.Float();
+                        JumpHeightMultiplier_Time = Stream.Read.UInt();
                         break;
-                    case ShadowFieldIndex.Unk_0x43:
-                        Unk_0x43 = Stream.Read.Float();
-                        Unk_0x43_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.AirMovementMultiplier:
+                        AirMovementMultiplier_Value = Stream.Read.Float();
+                        AirMovementMultiplier_Time = Stream.Read.UInt();
                         break;
-                    case ShadowFieldIndex.Unk_0x44:
-                        Unk_0x44 = Stream.Read.Float();
-                        Unk_0x44_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.JetVerticalThrustMultiplier:
+                        JetVerticalThrustMultiplier_Value = Stream.Read.Float();
+                        JetVerticalThrustMultiplier_Time = Stream.Read.UInt();
                         break;
-                    case ShadowFieldIndex.Unk_0x45:
-                        Unk_0x45 = Stream.Read.Float();
-                        Unk_0x45_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.JetMovementMultiplier:
+                        JetMovementMultiplier_Value = Stream.Read.Float();
+                        JetMovementMultiplier_Time = Stream.Read.UInt();
                         break;
-                    case ShadowFieldIndex.Unk_0x46:
-                        Unk_0x46 = Stream.Read.Float();
-                        Unk_0x46_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.GroundAccelerationMultiplier:
+                        GroundAccelerationMultiplier_Value = Stream.Read.Float();
+                        GroundAccelerationMultiplier_Time = Stream.Read.UInt();
                         break;
-                    case ShadowFieldIndex.Unk_0x47:
-                        Unk_0x47 = Stream.Read.Float();
-                        Unk_0x47_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.AmmoCostModifier:
+                        AmmoCostModifier_Value = Stream.Read.Float();
+                        AmmoCostModifier_Time = Stream.Read.UInt();
                         break;
-                    case ShadowFieldIndex.Unk_0x48:
-                        Unk_0x48 = Stream.Read.ByteArray(4);
-                        Unk_0x48_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.AimSmoothingModifier:
+                        AimSmoothingModifier_Value = Stream.Read.Float();
+                        AimSmoothingModifier_Time = Stream.Read.UInt();
                         break;
-                    case ShadowFieldIndex.Unk_0x49:
-                        Unk_0x49 = Stream.Read.ByteArray(4);
-                        Unk_0x49_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.AimSensitivityModifier:
+                        AimSensitivityModifier_Value = Stream.Read.Float();
+                        AimSensitivityModifier_Time = Stream.Read.UInt();
                         break;
-                    case ShadowFieldIndex.Unk_0x4a:
-                        Unk_0x4a = Stream.Read.Float();
-                        Unk_0x4a_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.TimescaleModifier:
+                        TimescaleModifier_Value = Stream.Read.Float();
+                        TimescaleModifier_Time = Stream.Read.UInt();
                         break;
                     case ShadowFieldIndex.RateOfFireModifier:
                         RateOfFireModifier_Value = Stream.Read.Float();
                         RateOfFireModifier_Time = Stream.Read.UInt();
                         break;
-                    case ShadowFieldIndex.Unk_0x4c:
-                        Unk_0x4c = Stream.Read.Float();
-                        Unk_0x4c_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.WeaponSpreadMultiplier:
+                        WeaponSpreadMultiplier_Value = Stream.Read.Float();
+                        WeaponSpreadMultiplier_Time = Stream.Read.UInt();
                         break;
-                    case ShadowFieldIndex.Unk_0x4d:
-                        Unk_0x4d = Stream.Read.Float();
-                        Unk_0x4d_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.FallingSpeedMultiplier:
+                        FallingSpeedMultiplier_Value = Stream.Read.Float();
+                        FallingSpeedMultiplier_Time = Stream.Read.UInt();
                         break;  
-                    case ShadowFieldIndex.Unk_0x4e:
-                        Unk_0x4e = Stream.Read.Float();
-                        Unk_0x4e_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.JetSprintModifier:
+                        JetSprintModifier_Value = Stream.Read.Float();
+                        JetSprintModifier_Time = Stream.Read.UInt();
                         break;
+
+
                     case ShadowFieldIndex.Unk_0x4f:
-                        Unk_0x4f = Stream.Read.Float();
+                        Unk_0x4f_Value = Stream.Read.Float();
                         Unk_0x4f_Time = Stream.Read.UInt();
                         break;
                     case ShadowFieldIndex.Unk_0x50:
-                        Unk_0x50 = Stream.Read.Float();
+                        Unk_0x50_Value = Stream.Read.Float();
                         Unk_0x50_Time = Stream.Read.UInt();
                         break;
 
@@ -746,32 +1209,30 @@ namespace PacketPeepScript
                         UseScope_InScope = Stream.Read.Byte();
                         UseScope_Time = Stream.Read.UInt();
                         break;
-
-                    case ShadowFieldIndex.Unk_0x53_Mag_Ammo1:
-                        Unk_0x53_Mag_Ammo1 = Stream.Read.UShort();
+                    case ShadowFieldIndex.Ammo_Primary_Clip_1:
+                        Ammo_Primary_Clip_1 = Stream.Read.UShort();
                         break;
-                    case ShadowFieldIndex.Unk_0x54_Secondary_Mag_Ammo1:
-                        Unk_0x54_Secondary_Mag_Ammo1 = Stream.Read.UShort();
+                    case ShadowFieldIndex.Ammo_Secondary_Clip_1:
+                        Ammo_Secondary_Clip_1 = Stream.Read.UShort();
                         break;
-                    case ShadowFieldIndex.Unk_0x55_Mag_Ammo2:
-                        Unk_0x55_Mag_Ammo2 = Stream.Read.UShort();
+                    case ShadowFieldIndex.Ammo_Primary_Clip_2:
+                        Ammo_Primary_Clip_2 = Stream.Read.UShort();
                         break;
-                    case ShadowFieldIndex.Unk_0x56_Secondary_Mag_Ammo2:
-                        Unk_0x56_Secondary_Mag_Ammo2 = Stream.Read.UShort();
+                    case ShadowFieldIndex.Ammo_Secondary_Clip_2:
+                        Ammo_Secondary_Clip_2 = Stream.Read.UShort();
                         break;
-                    case ShadowFieldIndex.Unk_0x57_Reserve_Ammo1:
-                        Unk_0x57_Reserve_Ammo1 = Stream.Read.UShort();
+                    case ShadowFieldIndex.Ammo_Primary_Reserve_1:
+                        Ammo_Primary_Reserve_1 = Stream.Read.UShort();
                         break;
-                    case ShadowFieldIndex.Unk_0x58_Secondary_Reserve_Ammo1:
-                        Unk_0x58_Secondary_Reserve_Ammo1 = Stream.Read.UShort();
+                    case ShadowFieldIndex.Ammo_Secondary_Reserve_1:
+                        Ammo_Secondary_Reserve_1 = Stream.Read.UShort();
                         break;
-                    case ShadowFieldIndex.Unk_0x59_Reserve_Ammo2:
-                        Unk_0x59_Reserve_Ammo2 = Stream.Read.UShort();
+                    case ShadowFieldIndex.Ammo_Primary_Reserve_2:
+                        Ammo_Primary_Reserve_2 = Stream.Read.UShort();
                         break;
-                    case ShadowFieldIndex.Unk_0x5a_Secondary_Reserve_Ammo2:
-                        Unk_0x5a_Secondary_Reserve_Ammo2 = Stream.Read.UShort();
+                    case ShadowFieldIndex.Ammo_Secondary_Reserve_2:
+                        Ammo_Secondary_Reserve_2 = Stream.Read.UShort();
                         break;
-
                     case ShadowFieldIndex.SelectWeapon:
                         SelectWeapon_Index = Stream.Read.Byte();
                         SelectWeapon_Unk = Stream.Read.ByteArray(2);
@@ -782,19 +1243,27 @@ namespace PacketPeepScript
                         FireBurst_Unk = Stream.Read.Byte();
                         break;
 
-                    case ShadowFieldIndex.Unk_0x5e_MovementPermissions:
-                        Unk_0x5e_MovementPermissions = Stream.Read.ByteArray(4);
-                        Unk_0x5e_MovementPermissions_Time = Stream.Read.UInt();
-                        break;
-                    case ShadowFieldIndex.Unk_0x5f_ActionPermissions:
-                        Unk_0x5f_ActionPermissions = Stream.Read.ByteArray(8);
-                        Unk_0x5f_ActionPermissions_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.Unk_0x5d:
+                        Unk_0x5d = Stream.Read.Float();
                         break;
 
-
-                    case ShadowFieldIndex.Unk_0x60:
-                        Unk_0x60 = Stream.Read.Byte();
+                    case ShadowFieldIndex.CombatFlags:
+                        CombatFlags_Value = Stream.Read.UInt();
+                        CombatFlags_Time = Stream.Read.UInt();
                         break;
+                    case ShadowFieldIndex.CharacterPermissions:
+                        PermissionFlags_Value = Stream.Read.UInt();
+                        PermissionFlags_Unk = Stream.Read.ByteArray(4);
+                        PermissionFlags_Time = Stream.Read.UInt();
+                        break;
+                    case ShadowFieldIndex.GliderParameters:
+                        GliderParameters = Stream.Read.UInt();
+                        break;
+
+                    // Uncertain
+
+                    //case ShadowFieldIndex.Unk_0x61:
+                    //    break;
 
                     case ShadowFieldIndex.Unk_0x62:
                         Unk_0x62_Time = Stream.Read.UInt();
@@ -803,6 +1272,9 @@ namespace PacketPeepScript
                     case ShadowFieldIndex.Unk_0x63:
                         Unk_0x63 = Stream.Read.Byte();
                         break;
+
+                    //case ShadowFieldIndex.Unk_0x64:
+                    //    break;
 
                     case ShadowFieldIndex.Unk_0x65:
                         Unk_0x65 = Stream.Read.ByteArray(3);

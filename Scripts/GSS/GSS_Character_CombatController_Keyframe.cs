@@ -1,9 +1,11 @@
 using Bitter;
 namespace PacketPeepScript
 {
-    [Script(MessageType.GSS, 11, 3, true)]
-    public class CharacterCombatViewKeyframe : BaseScript
+    [Script(MessageType.GSS, 5, 4, true)]
+    public class CharacterCombatControllerKeyframe : BaseScript
     {
+        public ulong InstanceID;
+
         public byte[] Bitfield_StatusEffectData;
         public byte[] Unk_ContentBytes; // Probably
 
@@ -295,6 +297,42 @@ namespace PacketPeepScript
         public byte[] StatusEffect_1f_Unk2;
         public bool? StatusEffect_1f_Cancel;
 
+        public float? MovementSpeedMultiplier_Value;
+        public uint? MovementSpeedMultiplier_Time;
+        public float? ForwardMovementMultiplier_Value;
+        public uint?  ForwardMovementMultiplier_Time;
+        public float? JumpHeightMultiplier_Value;
+        public uint?  JumpHeightMultiplier_Time;
+        public float? AirMovementMultiplier_Value;
+        public uint?  AirMovementMultiplier_Time;
+        public float? JetVerticalThrustMultiplier_Value;
+        public uint?  JetVerticalThrustMultiplier_Time;
+        public float? JetMovementMultiplier_Value;
+        public uint?  JetMovementMultiplier_Time;
+        public float? GroundAccelerationMultiplier_Value;
+        public uint?  GroundAccelerationMultiplier_Time;
+        public float? AmmoCostModifier_Value;
+        public uint?  AmmoCostModifier_Time;
+        public float? AimSmoothingModifier_Value;
+        public uint?  AimSmoothingModifier_Time;
+        public float? AimSensitivityModifier_Value;
+        public uint?  AimSensitivityModifier_Time;
+        public float? TimescaleModifier_Value;
+        public uint?  TimescaleModifier_Time;
+        public float? RateOfFireModifier_Value;
+        public uint?  RateOfFireModifier_Time;
+        public float? WeaponSpreadMultiplier_Value;
+        public uint?  WeaponSpreadMultiplier_Time;
+        public float? FallingSpeedMultiplier_Value;
+        public uint?  FallingSpeedMultiplier_Time;
+        public float? JetSprintModifier_Value;
+        public uint?  JetSprintModifier_Time;
+
+        public float? Unk_0x4f_Value;
+        public uint?  Unk_0x4f_Time;
+
+        public float? Unk_0x50_Value;
+        public uint?  Unk_0x50_Time;
 
         public byte? SelectFireMode_FireMode;
         public uint? SelectFireMode_Time;
@@ -304,19 +342,24 @@ namespace PacketPeepScript
         public ushort? Ammo_Secondary_Clip_1;
         public ushort? Ammo_Primary_Clip_2;
         public ushort? Ammo_Secondary_Clip_2;
+        public ushort? Ammo_Primary_Reserve_1;
+        public ushort? Ammo_Secondary_Reserve_1;
+        public ushort? Ammo_Primary_Reserve_2;
+        public ushort? Ammo_Secondary_Reserve_2;
         public byte? SelectWeapon_Index;
         public byte[] SelectWeapon_Unk;
         public uint? SelectWeapon_Time;
-        public uint? Unk_0x47_Time;
-        public uint? Unk_0x48_Time;
-        public uint? FireBurst_Time;
-        public uint? FireEnd_Time;
-        public uint? FireCancel_Time;
-        public uint? ReloadWeapon_Time;
-        public uint? Unk_0x4e_Time;
+        public ushort? FireBurst_ShortTime; // Not 100% about this one
+        public byte? FireBurst_Unk; // Not 100% about this one
+        public float? Unk_0x5d;
+        public uint? CombatFlags_Value;
+        public uint? CombatFlags_Time;
+        public uint? PermissionFlags_Value;
+        public byte[] PermissionFlags_Unk;
+        public uint? PermissionFlags_Time;
+        public uint? GliderParameters;
 
-
-
+        public byte[] Unk_Remaining;
 
         public override void Read(Bitter.BinaryStream Stream)
         {
@@ -324,6 +367,7 @@ namespace PacketPeepScript
 
             if (true)
             {
+                InstanceID = Stream.Read.ULong();
                 Bitfield_StatusEffectData = Stream.Read.BitArray(32); 
                 Unk_ContentBytes = Stream.Read.ByteArray(2);
 
@@ -778,8 +822,43 @@ namespace PacketPeepScript
                     }
                 }
 
+                // Modifiers
+                MovementSpeedMultiplier_Value = Stream.Read.Float();
+                MovementSpeedMultiplier_Time = Stream.Read.UInt();
+                ForwardMovementMultiplier_Value = Stream.Read.Float();
+                ForwardMovementMultiplier_Time = Stream.Read.UInt();
+                JumpHeightMultiplier_Value = Stream.Read.Float();
+                JumpHeightMultiplier_Time = Stream.Read.UInt();
+                AirMovementMultiplier_Value = Stream.Read.Float();
+                AirMovementMultiplier_Time = Stream.Read.UInt();
+                JetVerticalThrustMultiplier_Value = Stream.Read.Float();
+                JetVerticalThrustMultiplier_Time = Stream.Read.UInt();
+                JetMovementMultiplier_Value = Stream.Read.Float();
+                JetMovementMultiplier_Time = Stream.Read.UInt();
+                GroundAccelerationMultiplier_Value = Stream.Read.Float();
+                GroundAccelerationMultiplier_Time = Stream.Read.UInt();
+                AmmoCostModifier_Value = Stream.Read.Float();
+                AmmoCostModifier_Time = Stream.Read.UInt();
+                AimSmoothingModifier_Value = Stream.Read.Float();
+                AimSmoothingModifier_Time = Stream.Read.UInt();
+                AimSensitivityModifier_Value = Stream.Read.Float();
+                AimSensitivityModifier_Time = Stream.Read.UInt();
+                TimescaleModifier_Value = Stream.Read.Float();
+                TimescaleModifier_Time = Stream.Read.UInt();
+                RateOfFireModifier_Value = Stream.Read.Float();
+                RateOfFireModifier_Time = Stream.Read.UInt();
+                WeaponSpreadMultiplier_Value = Stream.Read.Float();
+                WeaponSpreadMultiplier_Time = Stream.Read.UInt();
+                FallingSpeedMultiplier_Value = Stream.Read.Float();
+                FallingSpeedMultiplier_Time = Stream.Read.UInt();
+                JetSprintModifier_Value = Stream.Read.Float();
+                JetSprintModifier_Time = Stream.Read.UInt();
+
+                Unk_0x4f_Value = Stream.Read.Float();
+                Unk_0x4f_Time = Stream.Read.UInt();
+                Unk_0x50_Value = Stream.Read.Float();
+                Unk_0x50_Time = Stream.Read.UInt();
                 
-                // The unks inbetween these are reasonable asumptions based on what is known
                 SelectFireMode_FireMode = Stream.Read.Byte();
                 SelectFireMode_Time = Stream.Read.UInt();
                 UseScope_InScope = Stream.Read.Byte();
@@ -788,17 +867,30 @@ namespace PacketPeepScript
                 Ammo_Secondary_Clip_1 = Stream.Read.UShort();
                 Ammo_Primary_Clip_2 = Stream.Read.UShort();
                 Ammo_Secondary_Clip_2 = Stream.Read.UShort();
+                Ammo_Primary_Reserve_1 = Stream.Read.UShort();
+                Ammo_Secondary_Reserve_1 = Stream.Read.UShort();
+                Ammo_Primary_Reserve_2 = Stream.Read.UShort();
+                Ammo_Secondary_Reserve_2 = Stream.Read.UShort();
+
                 SelectWeapon_Index = Stream.Read.Byte();
                 SelectWeapon_Unk = Stream.Read.ByteArray(2);
                 SelectWeapon_Time = Stream.Read.UInt();
-                Unk_0x47_Time = Stream.Read.UInt();
-                Unk_0x48_Time = Stream.Read.UInt();
-                FireBurst_Time = Stream.Read.UInt();
-                FireEnd_Time = Stream.Read.UInt();
-                FireCancel_Time = Stream.Read.UInt();
-                ReloadWeapon_Time = Stream.Read.UInt();
-                // The 0x4d is missing?
-                Unk_0x4e_Time = Stream.Read.UInt();
+                
+                FireBurst_ShortTime = Stream.Read.UShort();
+                FireBurst_Unk = Stream.Read.Byte();
+
+                Unk_0x5d = Stream.Read.Float();
+
+                CombatFlags_Value = Stream.Read.UInt();
+                CombatFlags_Time = Stream.Read.UInt();
+                PermissionFlags_Value = Stream.Read.UInt();
+                PermissionFlags_Unk = Stream.Read.ByteArray(4);
+                PermissionFlags_Time = Stream.Read.UInt();
+                GliderParameters = Stream.Read.UInt();
+
+                // Still some remaining that I'm not sure about
+                int remaining = (int)(Stream.baseStream.Length - Stream.baseStream.ByteOffset);
+                Unk_Remaining = Stream.Read.ByteArray(remaining);
             }
             
         }
