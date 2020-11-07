@@ -1,9 +1,5 @@
 {
   "ControlPackets": {
-    "-1": {
-      "Name": "",
-      "Notes": ""
-    },
     "0": {
       "Name": "Close",
       "Notes": ""
@@ -238,12 +234,12 @@
   "GSSControllers": {
     "0": {
       "Name": "Core",
-      "Notes": "",
-      "InheritFrom": -1,
+      "Notes": "GenericEvents",
+      "InheritFrom": 1,
       "ServerMessages": {
         "8": {
-          "Name": "RouteMultipleMsg",
-          "Notes": ""
+          "Name": "RoutedMultipleMessage",
+          "Notes": "A special message that contains other messages. PacketPeep automatically unpacks these. Sent with controller and entity ids zeroed."
         },
         "32": {
           "Name": "EncounterToUIMessage",
@@ -334,38 +330,41 @@
     },
     "1": {
       "Name": "Base",
-      "Notes": "Notes and stuff",
-      "InheritFrom": -1,
-      "ServerMessages": {
-        "1": {
-          "Name": "Test",
-          "Notes": ""
-        }
-      },
-      "ClientMessages": {
-        "-1": {
-          "Name": "fhfhf",
-          "Notes": ""
-        }
-      }
-    },
-    "2": {
-      "Name": "firefall::Character::BaseController",
-      "Notes": "tfLocalCharacter::BaseNetController ?\n\nFor controller ids\nthis is fromsome logic in the client\n2, 4, 5, 6, 7 Controllers?\n3, and 10 unknown types\n8, 9, 11, 12 Views\n13 tiny object view, seems to be handled abit differntly?\n14 DynamicProjectileView\n\nControllers 1 through to 14 seem to have the same message handlers, kinda makes sense\nsince they are all named charater\n",
-      "InheritFrom": -1,
+      "Notes": "Using this as base inheritance, these messages appear to exist for all entities. The controller id 1 is reserved for Character.",
+      "InheritFrom": 1,
       "ServerMessages": {
         "1": {
           "Name": "Update",
-          "Notes": ""
+          "Notes": "Generic update message accessing/modifying class specific fields."
+        },
+        "2": {
+          "Name": "Checksum",
+          "Notes": "Not completely understood, believed to be CRC32"
+        },
+        "3": {
+          "Name": "Keyframe",
+          "Notes": "Keyframe of the full class specific networkable state."
         },
         "4": {
           "Name": "Keyframe",
-          "Notes": ""
+          "Notes": "Like Keyframe (3) but used only with Controllers and sent only to the respective local player."
         },
         "5": {
           "Name": "Remove",
-          "Notes": ""
+          "Notes": "Like Remove (6) but used only with Controllers and sent only to the respective local player."
         },
+        "6": {
+          "Name": "Remove",
+          "Notes": "Remove the object of this class and entity. Sent with no data."
+        }
+      },
+      "ClientMessages": {}
+    },
+    "2": {
+      "Name": "firefall::Character::BaseController",
+      "Notes": "tfLocalCharacter::BaseNetController ?\n\nFor controller ids\nthis is fromsome logic in the client\n2, 4, 5, 6, 7 Controllers?\n3, and 10 unknown types\n8, 9, 11, 12 Views\n13 tiny object view, seems to be handled abit differntly?\n14 DynamicProjectileView\n\nControllers 1 through to 14 seem to have the same message handlers, kinda makes sense\nsince they are all named character\n",
+      "InheritFrom": 1,
+      "ServerMessages": {
         "59": {
           "Name": "",
           "Notes": ""
@@ -1725,24 +1724,15 @@
     "3": {
       "Name": "firefall::Character::NPCController",
       "Notes": "",
-      "InheritFrom": -1,
+      "InheritFrom": 1,
       "ServerMessages": {},
       "ClientMessages": {}
     },
     "4": {
       "Name": "firefall::Character::MissionAndMarkerController",
       "Notes": "",
-      "InheritFrom": -1,
-      "ServerMessages": {
-        "4": {
-          "Name": "Keyframe",
-          "Notes": ""
-        },
-        "5": {
-          "Name": "Remove",
-          "Notes": ""
-        }
-      },
+      "InheritFrom": 1,
+      "ServerMessages": {},
       "ClientMessages": {
         "153": {
           "Name": "TryResumeTutorialChain",
@@ -1761,24 +1751,8 @@
     "5": {
       "Name": "firefall::Character::CombatController",
       "Notes": "",
-      "InheritFrom": -1,
+      "InheritFrom": 1,
       "ServerMessages": {
-        "-1": {
-          "Name": "",
-          "Notes": ""
-        },
-        "1": {
-          "Name": "Update",
-          "Notes": ""
-        },
-        "4": {
-          "Name": "Keyframe",
-          "Notes": ""
-        },
-        "5": {
-          "Name": "Remove",
-          "Notes": ""
-        },
         "97": {
           "Name": "ProjectileHitReported",
           "Notes": ""
@@ -1829,10 +1803,6 @@
         }
       },
       "ClientMessages": {
-        "-1": {
-          "Name": "",
-          "Notes": ""
-        },
         "117": {
           "Name": "FireInputIgnored",
           "Notes": ""
@@ -1894,43 +1864,22 @@
     "6": {
       "Name": "firefall::Character::LocalEffectsController",
       "Notes": "",
-      "InheritFrom": -1,
-      "ServerMessages": {
-        "4": {
-          "Name": "Keyframe",
-          "Notes": ""
-        },
-        "5": {
-          "Name": "Remove",
-          "Notes": ""
-        }
-      },
+      "InheritFrom": 1,
+      "ServerMessages": {},
       "ClientMessages": {}
     },
     "7": {
       "Name": "firefall::Character::SpectatorController",
       "Notes": "",
-      "InheritFrom": -1,
+      "InheritFrom": 1,
       "ServerMessages": {},
       "ClientMessages": {}
     },
     "8": {
       "Name": "firefall::Character::ObserverView",
       "Notes": "",
-      "InheritFrom": -1,
+      "InheritFrom": 1,
       "ServerMessages": {
-        "1": {
-          "Name": "Update",
-          "Notes": ""
-        },
-        "3": {
-          "Name": "Keyframe",
-          "Notes": ""
-        },
-        "6": {
-          "Name": "Remove",
-          "Notes": ""
-        },
         "101": {
           "Name": "JumpActioned",
           "Notes": ""
@@ -1945,51 +1894,22 @@
     "9": {
       "Name": "firefall::Character::EquipmentView",
       "Notes": "",
-      "InheritFrom": -1,
-      "ServerMessages": {
-        "1": {
-          "Name": "Update",
-          "Notes": ""
-        },
-        "3": {
-          "Name": "Keyframe",
-          "Notes": ""
-        },
-        "6": {
-          "Name": "Remove",
-          "Notes": ""
-        }
-      },
+      "InheritFrom": 1,
+      "ServerMessages": {},
       "ClientMessages": {}
     },
     "10": {
       "Name": "firefall::Character::AIObserverView",
       "Notes": "",
-      "InheritFrom": -1,
+      "InheritFrom": 1,
       "ServerMessages": {},
       "ClientMessages": {}
     },
     "11": {
       "Name": "firefall::Character::CombatView",
       "Notes": "",
-      "InheritFrom": -1,
+      "InheritFrom": 1,
       "ServerMessages": {
-        "-1": {
-          "Name": "",
-          "Notes": ""
-        },
-        "1": {
-          "Name": "Update",
-          "Notes": ""
-        },
-        "3": {
-          "Name": "Keyframe",
-          "Notes": ""
-        },
-        "6": {
-          "Name": "Remove",
-          "Notes": ""
-        },
         "95": {
           "Name": "WeaponProjectileFired",
           "Notes": ""
@@ -2008,20 +1928,8 @@
     "12": {
       "Name": "firefall::Character::MovementView",
       "Notes": "",
-      "InheritFrom": -1,
+      "InheritFrom": 1,
       "ServerMessages": {
-        "1": {
-          "Name": "Update",
-          "Notes": ""
-        },
-        "3": {
-          "Name": "Keyframe",
-          "Notes": ""
-        },
-        "6": {
-          "Name": "Remove",
-          "Notes": ""
-        },
         "110": {
           "Name": "CurrentPoseUpdate",
           "Notes": "The main way in which the present location of other characters is relayed to the client."
@@ -2032,93 +1940,64 @@
     "13": {
       "Name": "firefall::Character::TinyObjectView",
       "Notes": "",
-      "InheritFrom": -1,
-      "ServerMessages": {
-        "3": {
-          "Name": "Keyframe",
-          "Notes": ""
-        }
-      },
+      "InheritFrom": 1,
+      "ServerMessages": {},
       "ClientMessages": {}
     },
     "14": {
       "Name": "firefall::Character::DynamicProjectileView",
       "Notes": "",
-      "InheritFrom": -1,
+      "InheritFrom": 1,
       "ServerMessages": {},
       "ClientMessages": {}
     },
     "16": {
       "Name": "firefall::Melding::ObserverView",
       "Notes": "",
-      "InheritFrom": -1,
+      "InheritFrom": 1,
       "ServerMessages": {},
       "ClientMessages": {}
     },
     "18": {
       "Name": "firefall::MeldingBubble::ObserverView",
       "Notes": "",
-      "InheritFrom": -1,
+      "InheritFrom": 1,
       "ServerMessages": {},
       "ClientMessages": {}
     },
     "20": {
       "Name": "firefall::AreaVisualData::ObserverView",
       "Notes": "",
-      "InheritFrom": -1,
-      "ServerMessages": {
-        "3": {
-          "Name": "Keyframe",
-          "Notes": ""
-        }
-      },
+      "InheritFrom": 1,
+      "ServerMessages": {},
       "ClientMessages": {}
     },
     "21": {
       "Name": "firefall::AreaVisualData::ParticleEffectsView",
       "Notes": "",
-      "InheritFrom": -1,
-      "ServerMessages": {
-        "3": {
-          "Name": "Keyframe",
-          "Notes": ""
-        }
-      },
+      "InheritFrom": 1,
+      "ServerMessages": {},
       "ClientMessages": {}
     },
     "22": {
       "Name": "firefall::AreaVisualData::MapMarkerView",
       "Notes": "",
-      "InheritFrom": -1,
-      "ServerMessages": {
-        "3": {
-          "Name": "Keyframe",
-          "Notes": ""
-        }
-      },
+      "InheritFrom": 1,
+      "ServerMessages": {},
       "ClientMessages": {}
     },
     "23": {
       "Name": "firefall::AreaVisualData::TinyObjectView",
       "Notes": "",
-      "InheritFrom": -1,
-      "ServerMessages": {
-        "3": {
-          "Name": "Keyframe",
-          "Notes": ""
-        }
-      },
+      "InheritFrom": 1,
+      "ServerMessages": {},
       "ClientMessages": {}
     },
     "24": {
       "Name": "firefall::AreaVisualData::LootObjectView",
       "Notes": "",
-      "InheritFrom": -1,
+      "InheritFrom": 1,
       "ServerMessages": {
-        "3": {
-          "Name": "Keyframe",
-          "Notes": ""
-        },
         "83": {
           "Name": "LootObjectCollected",
           "Notes": ""
@@ -2129,33 +2008,15 @@
     "25": {
       "Name": "firefall::AreaVisualData::ForceShieldView",
       "Notes": "",
-      "InheritFrom": -1,
-      "ServerMessages": {
-        "3": {
-          "Name": "Keyframe",
-          "Notes": ""
-        }
-      },
+      "InheritFrom": 1,
+      "ServerMessages": {},
       "ClientMessages": {}
     },
     "27": {
       "Name": "firefall::Vehicle::BaseController",
       "Notes": "",
-      "InheritFrom": -1,
-      "ServerMessages": {
-        "1": {
-          "Name": "Update",
-          "Notes": ""
-        },
-        "4": {
-          "Name": "Keyframe",
-          "Notes": ""
-        },
-        "5": {
-          "Name": "Remove",
-          "Notes": "Is fired with the player id, not sure why."
-        }
-      },
+      "InheritFrom": 1,
+      "ServerMessages": {},
       "ClientMessages": {
         "83": {
           "Name": "MovementInput",
@@ -2186,20 +2047,8 @@
     "28": {
       "Name": "firefall::Vehicle::CombatController",
       "Notes": "",
-      "InheritFrom": -1,
+      "InheritFrom": 1,
       "ServerMessages": {
-        "1": {
-          "Name": "Update",
-          "Notes": ""
-        },
-        "4": {
-          "Name": "Keyframe",
-          "Notes": ""
-        },
-        "5": {
-          "Name": "Remove",
-          "Notes": "Is fired with the player id, not sure why."
-        },
         "83": {
           "Name": "AbilityActivated",
           "Notes": ""
@@ -2223,56 +2072,22 @@
     "29": {
       "Name": "firefall::Vehicle::ObserverView",
       "Notes": "",
-      "InheritFrom": -1,
-      "ServerMessages": {
-        "1": {
-          "Name": "Update",
-          "Notes": ""
-        },
-        "3": {
-          "Name": "Keyframe",
-          "Notes": ""
-        }
-      },
+      "InheritFrom": 1,
+      "ServerMessages": {},
       "ClientMessages": {}
     },
     "30": {
       "Name": "firefall::Vehicle::CombatView",
       "Notes": "",
-      "InheritFrom": -1,
-      "ServerMessages": {
-        "1": {
-          "Name": "Update",
-          "Notes": ""
-        },
-        "3": {
-          "Name": "Keyframe",
-          "Notes": ""
-        },
-        "6": {
-          "Name": "Remove",
-          "Notes": ""
-        }
-      },
+      "InheritFrom": 1,
+      "ServerMessages": {},
       "ClientMessages": {}
     },
     "31": {
       "Name": "firefall::Vehicle::MovementView",
       "Notes": "",
-      "InheritFrom": -1,
+      "InheritFrom": 1,
       "ServerMessages": {
-        "1": {
-          "Name": "Update",
-          "Notes": ""
-        },
-        "3": {
-          "Name": "Keyframe",
-          "Notes": ""
-        },
-        "6": {
-          "Name": "Remove",
-          "Notes": ""
-        },
         "86": {
           "Name": "CurrentPoseUpdate",
           "Notes": ""
@@ -2283,57 +2098,64 @@
     "33": {
       "Name": "firefall::Anchor::AIObserverView",
       "Notes": "",
-      "InheritFrom": -1,
+      "InheritFrom": 1,
       "ServerMessages": {},
       "ClientMessages": {}
     },
     "35": {
       "Name": "firefall::Deployable::ObserverView",
       "Notes": "",
-      "InheritFrom": -1,
-      "ServerMessages": {
-        "3": {
-          "Name": "Keyframe",
-          "Notes": ""
-        }
-      },
+      "InheritFrom": 1,
+      "ServerMessages": {},
       "ClientMessages": {}
     },
     "36": {
       "Name": "firefall::Deployable::NPCObserverView",
       "Notes": "",
-      "InheritFrom": -1,
+      "InheritFrom": 1,
       "ServerMessages": {},
       "ClientMessages": {}
     },
     "37": {
       "Name": "firefall::Deployable::HardpointView",
       "Notes": "",
-      "InheritFrom": -1,
-      "ServerMessages": {
-        "3": {
-          "Name": "Keyframe",
-          "Notes": ""
-        }
-      },
+      "InheritFrom": 1,
+      "ServerMessages": {},
       "ClientMessages": {}
     },
     "39": {
       "Name": "firefall::Turret::BaseController",
       "Notes": "",
-      "InheritFrom": -1,
+      "InheritFrom": 1,
       "ServerMessages": {},
-      "ClientMessages": {}
+      "ClientMessages": {
+        "83": {
+          "Name": "PoseUpdate",
+          "Notes": ""
+        },
+        "84": {
+          "Name": "FireBurst",
+          "Notes": ""
+        },
+        "85": {
+          "Name": "FireEnd",
+          "Notes": ""
+        },
+        "86": {
+          "Name": "FireWeaponProjectile",
+          "Notes": ""
+        },
+        "87": {
+          "Name": "ReportProjectileHit",
+          "Notes": ""
+        },
+      }
     },
     "40": {
       "Name": "firefall::Turret::ObserverView",
       "Notes": "",
-      "InheritFrom": -1,
+      "InheritFrom": 1,
       "ServerMessages": {
-        "3": {
-          "Name": "Keyframe",
-          "Notes": ""
-        },
         "83": {
           "Name": "WeaponProjectileFired",
           "Notes": ""
@@ -2344,49 +2166,35 @@
     "45": {
       "Name": "firefall::Outpost::ObserverView",
       "Notes": "",
-      "InheritFrom": -1,
-      "ServerMessages": {
-        "3": {
-          "Name": "Keyframe",
-          "Notes": ""
-        }
-      },
+      "InheritFrom": 1,
+      "ServerMessages": {},
       "ClientMessages": {}
     },
     "48": {
       "Name": "firefall::ResourceNode::ObserverView",
       "Notes": "",
-      "InheritFrom": -1,
+      "InheritFrom": 1,
       "ServerMessages": {},
       "ClientMessages": {}
     },
     "51": {
       "Name": "firefall::CarryableObject::ObserverView",
       "Notes": "",
-      "InheritFrom": -1,
-      "ServerMessages": {
-        "1": {
-          "Name": "Update",
-          "Notes": ""
-        },
-        "3": {
-          "Name": "Keyframe",
-          "Notes": ""
-        }
-      },
+      "InheritFrom": 1,
+      "ServerMessages": {},
       "ClientMessages": {}
     },
     "53": {
       "Name": "firefall::LootStoreExtension::LootObjectView",
       "Notes": "",
-      "InheritFrom": -1,
+      "InheritFrom": 1,
       "ServerMessages": {},
       "ClientMessages": {}
     },
     "251": {
       "Name": "ServerGeneric",
-      "Notes": "Maybe Zone would be a good name?",
-      "InheritFrom": -1,
+      "Notes": "GenericCommands. Maybe Zone would be a good name?",
+      "InheritFrom": 1,
       "ServerMessages": {},
       "ClientMessages": {
         "17": {
@@ -2403,11 +2211,11 @@
         },
         "20": {
           "Name": "LocalProximityAbilitySuccess",
-          "Notes": ""
+          "Notes": "Reports activation of client-enabled proximity ability for the local player."
         },
         "21": {
           "Name": "RemoteProximityAbilitySuccess",
-          "Notes": ""
+          "Notes": "Reports activation of client-enabled proximity ability for other players."
         },
         "22": {
           "Name": "TrailRequest",
@@ -2447,7 +2255,7 @@
         },
         "31": {
           "Name": "VendorProductRequest",
-          "Notes": ""
+          "Notes": "Sent by client as a result of lua-api Game.RequestVendorProductList"
         }
       }
     }
