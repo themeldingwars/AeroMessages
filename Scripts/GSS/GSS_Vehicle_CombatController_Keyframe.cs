@@ -586,13 +586,13 @@ namespace PacketPeepScript
                     StatusEffect_01_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_01_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_01_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_01_Data1_Count > 0) {
+                            StatusEffect_01_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_01_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_01_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_01_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_01_Data_Float2 = Stream.Read.Float();
                     }
                 }
 
@@ -605,13 +605,13 @@ namespace PacketPeepScript
                     StatusEffect_02_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_02_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_02_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_02_Data1_Count > 0) {
+                            StatusEffect_02_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_02_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_02_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_02_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_02_Data_Float2 = Stream.Read.Float();
                     }
                 }
                 
@@ -624,13 +624,13 @@ namespace PacketPeepScript
                     StatusEffect_03_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_03_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_03_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_03_Data1_Count > 0) {
+                            StatusEffect_03_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_03_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_03_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_03_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_03_Data_Float2 = Stream.Read.Float();
                     }
                 }
 
@@ -643,13 +643,13 @@ namespace PacketPeepScript
                     StatusEffect_04_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_04_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_04_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_04_Data1_Count > 0) {
+                            StatusEffect_04_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_04_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_04_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_04_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_04_Data_Float2 = Stream.Read.Float();
                     }
                 }
 
@@ -662,13 +662,13 @@ namespace PacketPeepScript
                     StatusEffect_05_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_05_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_05_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_05_Data1_Count > 0) {
+                            StatusEffect_05_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_05_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_05_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_05_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_05_Data_Float2 = Stream.Read.Float();
                     }
                 }
 
@@ -681,13 +681,13 @@ namespace PacketPeepScript
                     StatusEffect_06_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_06_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_06_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_06_Data1_Count > 0) {
+                            StatusEffect_06_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_06_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_06_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_06_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_06_Data_Float2 = Stream.Read.Float();
                     }
                 }
 
@@ -700,13 +700,13 @@ namespace PacketPeepScript
                     StatusEffect_07_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_07_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_07_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_07_Data1_Count > 0) {
+                            StatusEffect_07_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_07_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_07_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_07_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_07_Data_Float2 = Stream.Read.Float();
                     }
                 }
 
@@ -719,13 +719,13 @@ namespace PacketPeepScript
                     StatusEffect_08_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_08_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_08_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_08_Data1_Count > 0) {
+                            StatusEffect_08_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_08_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_08_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_08_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_08_Data_Float2 = Stream.Read.Float();
                     }
                 }
 
@@ -738,13 +738,13 @@ namespace PacketPeepScript
                     StatusEffect_09_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_09_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_09_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_09_Data1_Count > 0) {
+                            StatusEffect_09_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_09_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_09_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_09_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_09_Data_Float2 = Stream.Read.Float();
                     }
                 }
                 
@@ -757,13 +757,13 @@ namespace PacketPeepScript
                     StatusEffect_0a_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_0a_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_0a_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_0a_Data1_Count > 0) {
+                            StatusEffect_0a_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_0a_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_0a_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_0a_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_0a_Data_Float2 = Stream.Read.Float();
                     }
                 }
 
@@ -776,13 +776,13 @@ namespace PacketPeepScript
                     StatusEffect_0b_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_0b_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_0b_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_0b_Data1_Count > 0) {
+                            StatusEffect_0b_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_0b_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_0b_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_0b_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_0b_Data_Float2 = Stream.Read.Float();
                     }
                 }
 
@@ -795,13 +795,13 @@ namespace PacketPeepScript
                     StatusEffect_0c_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_0c_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_0c_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_0c_Data1_Count > 0) {
+                            StatusEffect_0c_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_0c_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_0c_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_0c_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_0c_Data_Float2 = Stream.Read.Float();
                     }
                 }
 
@@ -814,13 +814,13 @@ namespace PacketPeepScript
                     StatusEffect_0d_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_0d_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_0d_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_0d_Data1_Count > 0) {
+                            StatusEffect_0d_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_0d_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_0d_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_0d_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_0d_Data_Float2 = Stream.Read.Float();
                     }
                 }
 
@@ -833,13 +833,13 @@ namespace PacketPeepScript
                     StatusEffect_0e_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_0e_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_0e_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_0e_Data1_Count > 0) {
+                            StatusEffect_0e_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_0e_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_0e_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_0e_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_0e_Data_Float2 = Stream.Read.Float();
                     }
                 }
 
@@ -852,13 +852,13 @@ namespace PacketPeepScript
                     StatusEffect_0f_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_0f_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_0f_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_0f_Data1_Count > 0) {
+                            StatusEffect_0f_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_0f_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_0f_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_0f_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_0f_Data_Float2 = Stream.Read.Float();
                     }
                 }
 
@@ -871,13 +871,13 @@ namespace PacketPeepScript
                     StatusEffect_10_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_10_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_10_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_10_Data1_Count > 0) {
+                            StatusEffect_10_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_10_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_10_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_10_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_10_Data_Float2 = Stream.Read.Float();
                     }
                 }
 
@@ -890,13 +890,13 @@ namespace PacketPeepScript
                     StatusEffect_11_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_11_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_11_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_11_Data1_Count > 0) {
+                            StatusEffect_11_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_11_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_11_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_11_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_11_Data_Float2 = Stream.Read.Float();
                     }
                 }
 
@@ -909,13 +909,13 @@ namespace PacketPeepScript
                     StatusEffect_12_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_12_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_12_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_12_Data1_Count > 0) {
+                            StatusEffect_12_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_12_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_12_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_12_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_12_Data_Float2 = Stream.Read.Float();
                     }
                 }
                 
@@ -928,13 +928,13 @@ namespace PacketPeepScript
                     StatusEffect_13_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_13_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_13_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_13_Data1_Count > 0) {
+                            StatusEffect_13_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_13_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_13_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_13_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_13_Data_Float2 = Stream.Read.Float();
                     }
                 }
 
@@ -947,13 +947,13 @@ namespace PacketPeepScript
                     StatusEffect_14_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_14_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_14_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_14_Data1_Count > 0) {
+                            StatusEffect_14_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_14_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_14_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_14_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_14_Data_Float2 = Stream.Read.Float();
                     }
                 }
 
@@ -966,13 +966,13 @@ namespace PacketPeepScript
                     StatusEffect_15_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_15_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_15_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_15_Data1_Count > 0) {
+                            StatusEffect_15_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_15_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_15_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_15_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_15_Data_Float2 = Stream.Read.Float();
                     }
                 }
 
@@ -985,13 +985,13 @@ namespace PacketPeepScript
                     StatusEffect_16_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_16_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_16_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_16_Data1_Count > 0) {
+                            StatusEffect_16_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_16_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_16_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_16_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_16_Data_Float2 = Stream.Read.Float();
                     }
                 }
 
@@ -1004,13 +1004,13 @@ namespace PacketPeepScript
                     StatusEffect_17_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_17_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_17_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_17_Data1_Count > 0) {
+                            StatusEffect_17_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_17_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_17_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_17_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_17_Data_Float2 = Stream.Read.Float();
                     }
                 }
 
@@ -1023,13 +1023,13 @@ namespace PacketPeepScript
                     StatusEffect_18_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_18_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_18_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_18_Data1_Count > 0) {
+                            StatusEffect_18_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_18_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_18_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_18_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_18_Data_Float2 = Stream.Read.Float();
                     }
                 }
 
@@ -1042,13 +1042,13 @@ namespace PacketPeepScript
                     StatusEffect_19_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_19_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_19_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_19_Data1_Count > 0) {
+                            StatusEffect_19_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_19_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_19_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_19_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_19_Data_Float2 = Stream.Read.Float();
                     }
                 }
                 
@@ -1061,13 +1061,13 @@ namespace PacketPeepScript
                     StatusEffect_1a_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_1a_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_1a_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_1a_Data1_Count > 0) {
+                            StatusEffect_1a_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_1a_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_1a_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_1a_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_1a_Data_Float2 = Stream.Read.Float();
                     }
                 }
 
@@ -1080,13 +1080,13 @@ namespace PacketPeepScript
                     StatusEffect_1b_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_1b_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_1b_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_1b_Data1_Count > 0) {
+                            StatusEffect_1b_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_1b_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_1b_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_1b_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_1b_Data_Float2 = Stream.Read.Float();
                     }
                 }
 
@@ -1099,13 +1099,13 @@ namespace PacketPeepScript
                     StatusEffect_1c_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_1c_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_1c_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_1c_Data1_Count > 0) {
+                            StatusEffect_1c_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_1c_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_1c_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_1c_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_1c_Data_Float2 = Stream.Read.Float();
                     }
                 }
 
@@ -1118,13 +1118,13 @@ namespace PacketPeepScript
                     StatusEffect_1d_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_1d_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_1d_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_1d_Data1_Count > 0) {
+                            StatusEffect_1d_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_1d_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_1d_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_1d_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_1d_Data_Float2 = Stream.Read.Float();
                     }
                 }
 
@@ -1137,13 +1137,13 @@ namespace PacketPeepScript
                     StatusEffect_1e_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_1e_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_1e_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_1e_Data1_Count > 0) {
+                            StatusEffect_1e_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_1e_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_1e_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_1e_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_1e_Data_Float2 = Stream.Read.Float();
                     }
                 }
 
@@ -1156,13 +1156,13 @@ namespace PacketPeepScript
                     StatusEffect_1f_MoreDataFlag = Stream.Read.Byte();
                     if (StatusEffect_1f_MoreDataFlag == 0x01)
                     {
-                        StatusEffect_00_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffect_00_Data1_Count > 0) {
-                            StatusEffect_00_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_00_Data1_Count);
+                        StatusEffect_1f_Data1_Count = Stream.Read.Byte();
+                        if (StatusEffect_1f_Data1_Count > 0) {
+                            StatusEffect_1f_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffect_1f_Data1_Count);
                         }
-                        StatusEffect_00_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffect_00_Data_Float1 = Stream.Read.Float();
-                        StatusEffect_00_Data_Float2 = Stream.Read.Float();
+                        StatusEffect_1f_UnkData   = Stream.Read.ByteArray(29);
+                        StatusEffect_1f_Data_Float1 = Stream.Read.Float();
+                        StatusEffect_1f_Data_Float2 = Stream.Read.Float();
                     }
                 }
 
