@@ -1,8 +1,8 @@
 using Bitter;
 namespace PacketPeepScript
 {
-    [Script(MessageType.GSS, 13, 3, true)]
-    public class CharacterTinyObjectViewKeyframe : BaseScript
+    [Script(MessageType.GSS, 23, 3, true)]
+    public class AreaVisualDataTinyObjectViewKeyframe : BaseScript
     {
         public byte[] Bitfield_TinyObjectData;
 
