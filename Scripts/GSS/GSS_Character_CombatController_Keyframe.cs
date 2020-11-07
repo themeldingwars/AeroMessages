@@ -4,7 +4,7 @@ namespace PacketPeepScript
     [Script(MessageType.GSS, 5, 4, true)]
     public class CharacterCombatControllerKeyframe : BaseScript
     {
-        public ulong InstanceID;
+        public ulong PlayerID;
 
         public byte[] Bitfield_StatusEffectData;
         public byte[] Unk_ContentBytes; // Probably
@@ -495,7 +495,7 @@ namespace PacketPeepScript
 
             if (true)
             {
-                InstanceID = Stream.Read.ULong();
+                PlayerID = Stream.Read.ULong();
                 Bitfield_StatusEffectData = Stream.Read.BitArray(32); 
                 Unk_ContentBytes = Stream.Read.ByteArray(2);
 
