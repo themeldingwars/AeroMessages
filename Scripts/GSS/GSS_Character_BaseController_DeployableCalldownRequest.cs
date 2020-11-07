@@ -2,7 +2,7 @@ using Bitter;
 namespace PacketPeepScript
 {
     [Script(MessageType.GSS, 2, 180, false)]
-    public class CharacterBaseControllerVehicleCalldownRequest : BaseScript
+    public class CharacterBaseControllerDeployableCalldownRequest : BaseScript
     {
         public uint DeployableId; // Sdb table 187, id column.
 
