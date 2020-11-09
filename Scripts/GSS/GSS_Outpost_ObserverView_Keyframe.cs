@@ -19,7 +19,7 @@ namespace PacketPeepScript
         public byte PowerLevel;
         public ushort MWCurrent;
         public ushort MWMax;
-        public byte[] Unk2;
+        public uint MapMarkerTypeId;
         public float Radius;
         public byte[] Unk3;
         public byte[] EncounterId;
@@ -44,7 +44,7 @@ namespace PacketPeepScript
             PowerLevel = Stream.Read.Byte();
             MWCurrent = Stream.Read.UShort();
             MWMax = Stream.Read.UShort();
-            Unk2 = Stream.Read.ByteArray(4);
+            MapMarkerTypeId = Stream.Read.UInt();
             Radius = Stream.Read.Float(); 
             Unk3 = Stream.Read.ByteArray(8);
             EncounterId = Stream.Read.ByteArray(8);
