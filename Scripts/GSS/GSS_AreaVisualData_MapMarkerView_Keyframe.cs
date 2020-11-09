@@ -8,7 +8,6 @@ namespace PacketPeepScript
         public byte? Unk1; // Always 7 in the captures, haven't played around with it.
         public float[] Position;
 
-        public float[] MapMarker_00_Position;
         public uint? MapMarker_00_MarkerType; // SDB Table 155
         public byte[] MapMarker_00_Unk3;
         public byte[] MapMarker_00_EncounterId;
@@ -17,7 +16,6 @@ namespace PacketPeepScript
         public uint? MapMarker_00_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_00_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_01_Position;
         public uint? MapMarker_01_MarkerType; // SDB Table 155
         public byte[] MapMarker_01_Unk3;
         public byte[] MapMarker_01_EncounterId;
@@ -26,7 +24,6 @@ namespace PacketPeepScript
         public uint? MapMarker_01_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_01_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_02_Position;
         public uint? MapMarker_02_MarkerType; // SDB Table 155
         public byte[] MapMarker_02_Unk3;
         public byte[] MapMarker_02_EncounterId;
@@ -35,7 +32,6 @@ namespace PacketPeepScript
         public uint? MapMarker_02_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_02_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_03_Position;
         public uint? MapMarker_03_MarkerType; // SDB Table 155
         public byte[] MapMarker_03_Unk3;
         public byte[] MapMarker_03_EncounterId;
@@ -44,7 +40,6 @@ namespace PacketPeepScript
         public uint? MapMarker_03_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_03_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_04_Position;
         public uint? MapMarker_04_MarkerType; // SDB Table 155
         public byte[] MapMarker_04_Unk3;
         public byte[] MapMarker_04_EncounterId;
@@ -53,7 +48,6 @@ namespace PacketPeepScript
         public uint? MapMarker_04_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_04_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_05_Position;
         public uint? MapMarker_05_MarkerType; // SDB Table 155
         public byte[] MapMarker_05_Unk3;
         public byte[] MapMarker_05_EncounterId;
@@ -62,7 +56,6 @@ namespace PacketPeepScript
         public uint? MapMarker_05_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_05_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_06_Position;
         public uint? MapMarker_06_MarkerType; // SDB Table 155
         public byte[] MapMarker_06_Unk3;
         public byte[] MapMarker_06_EncounterId;
@@ -71,7 +64,6 @@ namespace PacketPeepScript
         public uint? MapMarker_06_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_06_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_07_Position;
         public uint? MapMarker_07_MarkerType; // SDB Table 155
         public byte[] MapMarker_07_Unk3;
         public byte[] MapMarker_07_EncounterId;
@@ -80,7 +72,6 @@ namespace PacketPeepScript
         public uint? MapMarker_07_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_07_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_08_Position;
         public uint? MapMarker_08_MarkerType; // SDB Table 155
         public byte[] MapMarker_08_Unk3;
         public byte[] MapMarker_08_EncounterId;
@@ -89,7 +80,6 @@ namespace PacketPeepScript
         public uint? MapMarker_08_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_08_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_09_Position;
         public uint? MapMarker_09_MarkerType; // SDB Table 155
         public byte[] MapMarker_09_Unk3;
         public byte[] MapMarker_09_EncounterId;
@@ -98,7 +88,6 @@ namespace PacketPeepScript
         public uint? MapMarker_09_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_09_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_0a_Position;
         public uint? MapMarker_0a_MarkerType; // SDB Table 155
         public byte[] MapMarker_0a_Unk3;
         public byte[] MapMarker_0a_EncounterId;
@@ -107,7 +96,6 @@ namespace PacketPeepScript
         public uint? MapMarker_0a_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_0a_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_0b_Position;
         public uint? MapMarker_0b_MarkerType; // SDB Table 155
         public byte[] MapMarker_0b_Unk3;
         public byte[] MapMarker_0b_EncounterId;
@@ -116,7 +104,6 @@ namespace PacketPeepScript
         public uint? MapMarker_0b_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_0b_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_0c_Position;
         public uint? MapMarker_0c_MarkerType; // SDB Table 155
         public byte[] MapMarker_0c_Unk3;
         public byte[] MapMarker_0c_EncounterId;
@@ -125,7 +112,6 @@ namespace PacketPeepScript
         public uint? MapMarker_0c_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_0c_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_0d_Position;
         public uint? MapMarker_0d_MarkerType; // SDB Table 155
         public byte[] MapMarker_0d_Unk3;
         public byte[] MapMarker_0d_EncounterId;
@@ -134,7 +120,6 @@ namespace PacketPeepScript
         public uint? MapMarker_0d_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_0d_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_0e_Position;
         public uint? MapMarker_0e_MarkerType; // SDB Table 155
         public byte[] MapMarker_0e_Unk3;
         public byte[] MapMarker_0e_EncounterId;
@@ -143,7 +128,6 @@ namespace PacketPeepScript
         public uint? MapMarker_0e_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_0e_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_0f_Position;
         public uint? MapMarker_0f_MarkerType; // SDB Table 155
         public byte[] MapMarker_0f_Unk3;
         public byte[] MapMarker_0f_EncounterId;
@@ -152,7 +136,6 @@ namespace PacketPeepScript
         public uint? MapMarker_0f_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_0f_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_10_Position;
         public uint? MapMarker_10_MarkerType; // SDB Table 155
         public byte[] MapMarker_10_Unk3;
         public byte[] MapMarker_10_EncounterId;
@@ -161,7 +144,6 @@ namespace PacketPeepScript
         public uint? MapMarker_10_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_10_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_11_Position;
         public uint? MapMarker_11_MarkerType; // SDB Table 155
         public byte[] MapMarker_11_Unk3;
         public byte[] MapMarker_11_EncounterId;
@@ -170,7 +152,6 @@ namespace PacketPeepScript
         public uint? MapMarker_11_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_11_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_12_Position;
         public uint? MapMarker_12_MarkerType; // SDB Table 155
         public byte[] MapMarker_12_Unk3;
         public byte[] MapMarker_12_EncounterId;
@@ -179,7 +160,6 @@ namespace PacketPeepScript
         public uint? MapMarker_12_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_12_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_13_Position;
         public uint? MapMarker_13_MarkerType; // SDB Table 155
         public byte[] MapMarker_13_Unk3;
         public byte[] MapMarker_13_EncounterId;
@@ -188,7 +168,6 @@ namespace PacketPeepScript
         public uint? MapMarker_13_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_13_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_14_Position;
         public uint? MapMarker_14_MarkerType; // SDB Table 155
         public byte[] MapMarker_14_Unk3;
         public byte[] MapMarker_14_EncounterId;
@@ -197,7 +176,6 @@ namespace PacketPeepScript
         public uint? MapMarker_14_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_14_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_15_Position;
         public uint? MapMarker_15_MarkerType; // SDB Table 155
         public byte[] MapMarker_15_Unk3;
         public byte[] MapMarker_15_EncounterId;
@@ -206,7 +184,6 @@ namespace PacketPeepScript
         public uint? MapMarker_15_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_15_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_16_Position;
         public uint? MapMarker_16_MarkerType; // SDB Table 155
         public byte[] MapMarker_16_Unk3;
         public byte[] MapMarker_16_EncounterId;
@@ -215,7 +192,6 @@ namespace PacketPeepScript
         public uint? MapMarker_16_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_16_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_17_Position;
         public uint? MapMarker_17_MarkerType; // SDB Table 155
         public byte[] MapMarker_17_Unk3;
         public byte[] MapMarker_17_EncounterId;
@@ -224,7 +200,6 @@ namespace PacketPeepScript
         public uint? MapMarker_17_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_17_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_18_Position;
         public uint? MapMarker_18_MarkerType; // SDB Table 155
         public byte[] MapMarker_18_Unk3;
         public byte[] MapMarker_18_EncounterId;
@@ -233,7 +208,6 @@ namespace PacketPeepScript
         public uint? MapMarker_18_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_18_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_19_Position;
         public uint? MapMarker_19_MarkerType; // SDB Table 155
         public byte[] MapMarker_19_Unk3;
         public byte[] MapMarker_19_EncounterId;
@@ -242,7 +216,6 @@ namespace PacketPeepScript
         public uint? MapMarker_19_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_19_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_1a_Position;
         public uint? MapMarker_1a_MarkerType; // SDB Table 155
         public byte[] MapMarker_1a_Unk3;
         public byte[] MapMarker_1a_EncounterId;
@@ -251,7 +224,6 @@ namespace PacketPeepScript
         public uint? MapMarker_1a_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_1a_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_1b_Position;
         public uint? MapMarker_1b_MarkerType; // SDB Table 155
         public byte[] MapMarker_1b_Unk3;
         public byte[] MapMarker_1b_EncounterId;
@@ -260,7 +232,6 @@ namespace PacketPeepScript
         public uint? MapMarker_1b_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_1b_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_1c_Position;
         public uint? MapMarker_1c_MarkerType; // SDB Table 155
         public byte[] MapMarker_1c_Unk3;
         public byte[] MapMarker_1c_EncounterId;
@@ -269,7 +240,6 @@ namespace PacketPeepScript
         public uint? MapMarker_1c_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_1c_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_1d_Position;
         public uint? MapMarker_1d_MarkerType; // SDB Table 155
         public byte[] MapMarker_1d_Unk3;
         public byte[] MapMarker_1d_EncounterId;
@@ -278,7 +248,6 @@ namespace PacketPeepScript
         public uint? MapMarker_1d_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_1d_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_1e_Position;
         public uint? MapMarker_1e_MarkerType; // SDB Table 155
         public byte[] MapMarker_1e_Unk3;
         public byte[] MapMarker_1e_EncounterId;
@@ -287,7 +256,6 @@ namespace PacketPeepScript
         public uint? MapMarker_1e_ExpireAtTime; // Gametime ms
         public ushort[] MapMarker_1e_Offset_AsUShort; // Not sure about the format.
 
-        public float[] MapMarker_1f_Position;
         public uint? MapMarker_1f_MarkerType; // SDB Table 155
         public byte[] MapMarker_1f_Unk3;
         public byte[] MapMarker_1f_EncounterId;
