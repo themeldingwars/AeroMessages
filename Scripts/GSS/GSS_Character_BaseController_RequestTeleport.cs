@@ -9,7 +9,7 @@ namespace PacketPeepScript
 
         public override void Read(Bitter.BinaryStream Stream)
         {
-            Stream.ByteOrder = BinaryStream.Endianness.BigEndian; // NOTE~! Client sends the coords in big endian
+            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
 
             PosX = Stream.Read.UInt();
             PosY = Stream.Read.UInt();
