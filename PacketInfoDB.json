@@ -718,7 +718,7 @@
           "Notes": "Squad presumably"
         },
         "170": {
-          "Name": "",
+          "Name": "BagInventoryUpdate",
           "Notes": ""
         },
         "171": {
@@ -726,7 +726,7 @@
           "Notes": ""
         },
         "172": {
-          "Name": "",
+          "Name": "FactionReputationUpdate",
           "Notes": ""
         },
         "173": {
@@ -1773,6 +1773,14 @@
           "Name": "AbilityActivated",
           "Notes": ""
         },
+        "117": {
+          "Name": "AbilityFailed",
+          "Notes": ""
+        },
+        "118": {
+          "Name": "AbilityCooldowns",
+          "Notes": ""
+        },
         "123": {
           "Name": "AddOrUpdateInteractives",
           "Notes": ""
@@ -2148,7 +2156,7 @@
         "87": {
           "Name": "ReportProjectileHit",
           "Notes": ""
-        },
+        }
       }
     },
     "40": {
