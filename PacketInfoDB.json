@@ -339,7 +339,7 @@
         },
         "2": {
           "Name": "Checksum",
-          "Notes": "Not completely understood, believed to be CRC32"
+          "Notes": "Not completely understood, believed to be CRC32."
         },
         "3": {
           "Name": "Keyframe",
@@ -356,6 +356,10 @@
         "6": {
           "Name": "Remove",
           "Notes": "Remove the object of this class and entity. Sent with no data."
+        },
+        "9": {
+          "Name": "RefId",
+          "Notes": "Sets the ref id used in RoutedMultipleMessage (8) for this object. PacketPeep eats these if they come from RoutedMultipleMessages."
         }
       },
       "ClientMessages": {}
