@@ -47,6 +47,10 @@ namespace PacketPeepScript
             StatusEffect_13_Cancel = 0xb3,
             StatusEffect_14_Cancel = 0xb4,
 
+
+            Faction = 0x4b,
+            Unk_0x50 = 0x50,
+            Unk_0x51 = 0x51,
         }
 
 
@@ -143,7 +147,9 @@ namespace PacketPeepScript
         public byte[] StatusEffect_14_Unk2;
         public bool? StatusEffect_14_Cancel;
 
-
+        public byte[] Faction;
+        public byte[] Unk_0x50;
+        public byte[] Unk_0x51;
 
         public byte[] UnableToParse;
 
@@ -355,6 +361,18 @@ namespace PacketPeepScript
                         break;
                     case ShadowFieldIndex.StatusEffect_14_Cancel:
                         StatusEffect_14_Cancel = true;
+                        break;
+
+                    case ShadowFieldIndex.Faction:
+                        Faction = Stream.Read.ByteArray(2);
+                        break;
+
+                    case ShadowFieldIndex.Unk_0x50:
+                        Unk_0x50 = Stream.Read.ByteArray(2);
+                        break;
+
+                    case ShadowFieldIndex.Unk_0x51:
+                        Unk_0x51 = Stream.Read.ByteArray(2);
                         break;
 
                     default:

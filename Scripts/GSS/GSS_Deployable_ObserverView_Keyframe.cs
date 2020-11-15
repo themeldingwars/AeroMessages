@@ -10,6 +10,8 @@ namespace PacketPeepScript
         public uint DeployableTypeId; // Sdb table 187, id column.
 
         public byte[] OwnerEntity;
+        public ulong OwnerEntity_Value;
+
         public uint SourceAbilityId; // example in msgidx 123396
 
         public float[] Position;
@@ -184,6 +186,9 @@ namespace PacketPeepScript
                 DeployableTypeId = Stream.Read.UInt();
 
                 OwnerEntity = Stream.Read.ByteArray(8);
+                Stream.baseStream.ByteOffset -= 8;
+                OwnerEntity_Value = Stream.Read.ULong() & 0xFFFFFFFFFFFFFF00;
+                
                 SourceAbilityId = Stream.Read.UInt();
 
                 Position = Stream.Read.FloatArray(3);
