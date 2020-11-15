@@ -149,7 +149,7 @@ namespace PacketPeepScript
             Unk_0x62 = 0x62,
             Unk_0x63 = 0x63,
             Unk_0x64 = 0x64,
-            Unk_0x65 = 0x65,
+            HKMCharge = 0x65,
             
         }
 
@@ -634,7 +634,10 @@ namespace PacketPeepScript
         // Uncertain
         public uint? Unk_0x62_Time;
         public byte? Unk_0x63;
-        public byte[] Unk_0x65;
+
+
+        public float? HKMCharge_Value;
+        public byte? HKMCharge_Op;
 
         public byte[] UnableToParse;
 
@@ -1596,8 +1599,9 @@ namespace PacketPeepScript
                     //case ShadowFieldIndex.Unk_0x64:
                     //    break;
 
-                    case ShadowFieldIndex.Unk_0x65:
-                        Unk_0x65 = Stream.Read.ByteArray(3);
+                    case ShadowFieldIndex.HKMCharge:
+                        HKMCharge_Value = Stream.Read.Half();
+                        HKMCharge_Op = Stream.Read.Byte();
                         break;
                         
 
