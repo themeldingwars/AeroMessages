@@ -1773,6 +1773,10 @@
           "Name": "ForcedMovement",
           "Notes": ""
         },
+        "114": {
+          "Name": "ForcedMovementCancelled",
+          "Notes": ""
+        },
         "116": {
           "Name": "AbilityActivated",
           "Notes": ""
