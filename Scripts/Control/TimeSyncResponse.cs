@@ -5,7 +5,7 @@ namespace PacketPeepScript
     [Script(MessageType.Control, 5)]
     public class TimeSyncResponse : BaseScript
     {
-		public ulong ClientTime; // Microseconds Client System Uptime (hrtime)
+        public ulong ClientTime; // Microseconds Client System Uptime (hrtime)
         public ulong ServerTime; // Microseconds UNIX Epoch
 
         public DateTimeOffset ServerTimeAsUnixMillis;
@@ -13,7 +13,7 @@ namespace PacketPeepScript
         public override void Read(Bitter.BinaryStream Stream)
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-			ClientTime = Stream.Read.ULong();
+            ClientTime = Stream.Read.ULong();
             ServerTime = Stream.Read.ULong();
             ServerTimeAsUnixMillis = MicrosToUnixMillis(ServerTime);
         }

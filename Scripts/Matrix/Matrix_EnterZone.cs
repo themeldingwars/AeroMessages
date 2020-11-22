@@ -28,18 +28,19 @@ namespace PacketPeepScript
         public override void Read(Bitter.BinaryStream Stream)
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
+            MyExtensions.BStream = Stream;
             if (true) {
                 InstanceId = Stream.Read.ULong();
                 ZoneId = Stream.Read.UInt();
                 ZoneTimestamp = Stream.Read.ULong();
                 PreviewModeFlag = Stream.Read.Byte();
-                ZoneOwner = Stream.Read.String(GetNullTerminatedStrSize(Stream));
+                ZoneOwner = Stream.Read.StringZ();
                 Unk1 = Stream.Read.ByteArray(6);
                 HotfixLevel = Stream.Read.Byte();
                 MatchId = Stream.Read.ULong();
                 Unk2 = Stream.Read.ByteArray(1);
                 Unk3 = Stream.Read.UInt();
-                ZoneName = Stream.Read.String(GetNullTerminatedStrSize(Stream));
+                ZoneName = Stream.Read.StringZ();
                 Unk4 = Stream.Read.Byte();
                 Unk_ZoneTime = Stream.Read.ByteArray(16);
                 Unk5_MicroUnix = Stream.Read.MicroUnixToMillis();
@@ -50,33 +51,31 @@ namespace PacketPeepScript
                 SpectatorModeFlag = Stream.Read.Byte();
             }
         }
-
-        // Reads until we find 0x00, then resets the head and returns the number of bytes read.
-        private int GetNullTerminatedStrSize(Bitter.BinaryStream Stream)
-        {
-            long StartOffset = Stream.baseStream.ByteOffset;
-            do
-            {
-                byte b = Stream.Read.Byte();
-                if (b == 0x00)
-                {
-                    break;
-                }
-            }
-            while (Stream.baseStream.ByteOffset < Stream.baseStream.Length);
-            long EndOffset = Stream.baseStream.ByteOffset;
-            Stream.baseStream.ByteOffset = StartOffset;
-            return (int)(EndOffset - StartOffset);
-        } 
     }
 
     public static class MyExtensions
     {
+        public static Bitter.BinaryStream BStream;
+
         public static DateTimeOffset MicroUnixToMillis(this Bitter.BinaryReader R)
         {
             ulong Micros = R.ULong();
             ulong Millis = Micros / 1000;
             return DateTimeOffset.FromUnixTimeMilliseconds((long) Millis);
+        }
+
+        public static string StringZ(this Bitter.BinaryReader R)
+        {
+            string res = "";
+            do
+            {
+                byte b = R.Byte();
+                if (b == 0x00)
+                    break;
+                res += (char)b;
+            }
+            while (BStream.baseStream.ByteOffset < BStream.baseStream.Length);
+            return res;
         }
     }
 }

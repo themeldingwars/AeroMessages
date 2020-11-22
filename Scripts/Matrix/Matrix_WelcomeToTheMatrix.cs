@@ -10,11 +10,11 @@ namespace PacketPeepScript
 
         public override void Read(Bitter.BinaryStream Stream)
         {
-           Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
+            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
 
-           PlayerID = Stream.Read.ULong();
-           Unk1     = Stream.Read.UShort();
-           Unk2     = Stream.Read.UShort();
+            PlayerID = Stream.Read.ULong();
+            Unk1     = Stream.Read.UShort();
+            Unk2     = Stream.Read.UShort();
         }
     }
 }
