@@ -211,8 +211,8 @@ namespace PacketPeepScript
         public byte NumberOfChassisVisualsDecals;
         public DecalData[] Chassis_Visuals_Decals;
 
-        public byte NumberOfChassisVisualsUnk1;
-        public byte[] Chassis_Visuals_Unk1_Data; // (idk if this is right, parsing as 4 byte int)
+        public byte NumberOfChassisVisualsGradients;
+        public uint[] Chassis_Visuals_Gradients;
 
         public byte NumberOfChassisVisualsColors;
         public ColorData[] Chassis_Visuals_Colors;
@@ -233,7 +233,10 @@ namespace PacketPeepScript
         public byte[] Unk3;
 
         public uint PrimaryWeapon;
-        public byte[] Unk_PrimaryWeapon_ItemData;
+        public byte[] Unk_PrimaryWeapon_ItemData_1;
+        public byte NumberOfPrimaryWeaponWeaponModules;
+        public uint[] PrimaryWeapon_WeaponModules;
+        public byte[] Unk_PrimaryWeapon_ItemData_2;
         public byte NumberOfPrimaryWeaponVisualsColors;
         public ColorData[] PrimaryWeapon_Visuals_Colors;
         public byte NumberOfPrimaryWeaponVisualsPalettes;
@@ -246,7 +249,10 @@ namespace PacketPeepScript
         public byte[] Unk4;
 
         public uint SecondaryWeapon;
-        public byte[] Unk_SecondaryWeapon_ItemData;
+        public byte[] Unk_SecondaryWeapon_ItemData_1;
+        public byte NumberOfSecondaryWeaponWeaponModules;
+        public uint[] SecondaryWeapon_WeaponModules;
+        public byte[] Unk_SecondaryWeapon_ItemData_2;
         public byte NumberOfSecondaryWeaponVisualsColors;
         public ColorData[] SecondaryWeapon_Visuals_Colors;
         public byte NumberOfSecondaryWeaponVisualsPalettes;
@@ -300,10 +306,10 @@ namespace PacketPeepScript
                 NumberOfChassisVisualsDecals = Stream.Read.Byte();
                 Chassis_Visuals_Decals = Stream.Read.DecalDataArray(NumberOfChassisVisualsDecals);
 
-                NumberOfChassisVisualsUnk1 = Stream.Read.Byte();
-                if (NumberOfChassisVisualsUnk1 > 0)
+                NumberOfChassisVisualsGradients = Stream.Read.Byte();
+                if (NumberOfChassisVisualsGradients > 0)
                 {
-                    Chassis_Visuals_Unk1_Data = Stream.Read.ByteArray(4 * NumberOfChassisVisualsUnk1);
+                    Chassis_Visuals_Gradients = Stream.Read.UIntArray(NumberOfChassisVisualsGradients);
                 }
 
                 NumberOfChassisVisualsColors = Stream.Read.Byte();
@@ -325,18 +331,10 @@ namespace PacketPeepScript
                 Unk3 = Stream.Read.ByteArray(9);
 
                 PrimaryWeapon = Stream.Read.UInt();
-
-                Stream.baseStream.ByteOffset += 3;
-                byte LookaheadByte1 = Stream.Read.Byte(); 
-                Stream.baseStream.ByteOffset -= 4;
-                if (LookaheadByte1 != 0x00)
-                {
-                    Unk_PrimaryWeapon_ItemData = Stream.Read.ByteArray(13);
-                }
-                else
-                {
-                    Unk_PrimaryWeapon_ItemData = Stream.Read.ByteArray(6);
-                }
+                Unk_PrimaryWeapon_ItemData_1 = Stream.Read.ByteArray(3);
+                NumberOfPrimaryWeaponWeaponModules = Stream.Read.Byte();
+                PrimaryWeapon_WeaponModules = Stream.Read.UIntArray(NumberOfPrimaryWeaponWeaponModules);
+                Unk_PrimaryWeapon_ItemData_2 = Stream.Read.ByteArray(5);
 
                 NumberOfPrimaryWeaponVisualsColors = Stream.Read.Byte();
                 PrimaryWeapon_Visuals_Colors = Stream.Read.ColorDataArray(NumberOfPrimaryWeaponVisualsColors);
@@ -354,17 +352,10 @@ namespace PacketPeepScript
 
                 SecondaryWeapon = Stream.Read.UInt();
 
-                Stream.baseStream.ByteOffset += 3;
-                byte LookaheadByte2 = Stream.Read.Byte(); 
-                Stream.baseStream.ByteOffset -= 4;
-                if (LookaheadByte2 != 0x00)
-                {
-                    Unk_SecondaryWeapon_ItemData = Stream.Read.ByteArray(13);
-                }
-                else
-                {
-                    Unk_SecondaryWeapon_ItemData = Stream.Read.ByteArray(6);
-                }
+                Unk_SecondaryWeapon_ItemData_1 = Stream.Read.ByteArray(3);
+                NumberOfSecondaryWeaponWeaponModules = Stream.Read.Byte();
+                SecondaryWeapon_WeaponModules = Stream.Read.UIntArray(NumberOfSecondaryWeaponWeaponModules);
+                Unk_SecondaryWeapon_ItemData_2 = Stream.Read.ByteArray(5);
 
                 NumberOfSecondaryWeaponVisualsColors = Stream.Read.Byte();
                 SecondaryWeapon_Visuals_Colors = Stream.Read.ColorDataArray( NumberOfSecondaryWeaponVisualsColors);
