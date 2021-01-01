@@ -2,7 +2,7 @@ using Bitter;
 namespace PacketPeepScript
 {
     [Script(MessageType.GSS, 5, 113, true)]
-    public class CharacterCombatControllerFireBurst : BaseScript
+    public class CharacterCombatControllerForcedMovement : BaseScript
     {
         public byte Unk1_Flag;
         public byte[] Unk2;
