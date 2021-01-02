@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Bitter;
 namespace PacketPeepScript
 {
-    // Script(MessageType.GSS, 2, 129, true)
+    [Script(MessageType.GSS, 2, 129, true)]
     public class CharacterBaseControllerInventoryUpdate : BaseScript
     {
         // This message is used both when sending the full inventory on login as well as for partitial updates when playing.
@@ -12,7 +12,8 @@ namespace PacketPeepScript
         // Currently, PacketPeep does not handle split messages, and it's not really capable of displaying objects/structs. Hence this parser doesn't really work yet.
         // A lot of bytes are still unk so everything can get completely thrown off due to arrays of data.
 
-        public byte Unk1_FirstByte;
+        public byte FullInventoryUpdate; // 1 for full update, 0 for partitial
+        public string CantParseNotice;
 
         public byte NumUniqueItems;
         public List<UniqueItem> UniqueItems;
@@ -30,8 +31,13 @@ namespace PacketPeepScript
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
             MyExtensions.BStream = Stream;
 
-            Unk1_FirstByte = Stream.Read.Byte();
+            FullInventoryUpdate = Stream.Read.Byte();
 
+            if (FullInventoryUpdate == 0x01) {
+                CantParseNotice = "This message is likely split, aborting parsing."; // Remove this when PacketPeep gets split message parsing.
+                return;
+            }
+            
             var hackUniqueItems = new List<UniqueItem>();
             do
             {
@@ -50,29 +56,12 @@ namespace PacketPeepScript
             
             // Loadouts
             NumLoadouts = Stream.Read.Byte();
-            Loadouts = Stream.Read.TypeList<Loadout>(4);//(NumLoadouts);
+            Loadouts = Stream.Read.TypeList<Loadout>(NumLoadouts);
 
-            //Unk_LastThree = Stream.Read.ByteArray(3);
+            Unk_LastThree = Stream.Read.ByteArray(3);
         }
     }
 
-    public static class MyExtensions {
-        public static Bitter.BinaryStream BStream;
-        
-        public static string StringZ(this Bitter.BinaryReader rdr) {
-            string ret = "";
-            
-            do {
-                byte b = rdr.Byte();
-                if (b == 0x00)
-                    break;
-                
-                ret += (char)b;
-            } while (BStream.baseStream.ByteOffset < BStream.baseStream.Length);
-            
-            return ret;
-        }
-    }
 
     public class UniqueItem : Bitter.BinaryWrapper.ReadWrite {
         public byte Unk1;
@@ -80,11 +69,14 @@ namespace PacketPeepScript
         public ulong GUID;
         public byte SubInventory;
         public byte[] Unk2;
-        public byte Unk3_Count;
-        public ulong[] Unk3_Data;
-        public byte[] Unk4;
-        public byte Unk5_Count;
-        public uint[] Unk5_Data;
+        public byte DynamicFlags;
+        public ushort Durability;
+        public byte[] Unk3;
+        public byte Unk4_Count;
+        public ulong[] Unk4_Data;
+        public byte[] Unk5;
+        public byte Module_Count;
+        public uint[] Modules;
         
         public void Read(BinaryStream Stream)
         {
@@ -92,17 +84,17 @@ namespace PacketPeepScript
             SdbId = Stream.Read.UInt();
             GUID = Stream.Read.ULong();
             SubInventory = Stream.Read.Byte();
-            Unk2 = Stream.Read.ByteArray(12);
-            
-            Unk3_Count = Stream.Read.Byte();
-            if (Unk3_Count > 0)
-                Unk3_Data = Stream.Read.ULongArray(Unk3_Count);
-            
-            Unk4 = Stream.Read.ByteArray(2);
-            
-            Unk5_Count = Stream.Read.Byte();
-            if (Unk5_Count > 0)
-                Unk5_Data = Stream.Read.UIntArray(Unk5_Count);
+            Unk2 = Stream.Read.ByteArray(4);
+            DynamicFlags = Stream.Read.Byte();
+            Durability = Stream.Read.UShort();
+            Unk3 = Stream.Read.ByteArray(5);
+            Unk4_Count = Stream.Read.Byte();
+            if (Unk4_Count > 0)
+                Unk4_Data = Stream.Read.ULongArray(Unk4_Count);
+            Unk5 = Stream.Read.ByteArray(2);
+            Module_Count = Stream.Read.Byte();
+            if (Module_Count > 0)
+                Modules = Stream.Read.UIntArray(Module_Count);
         }
         
         public void Write(BinaryStream Stream)
@@ -115,18 +107,19 @@ namespace PacketPeepScript
 
     public class StackItem : Bitter.BinaryWrapper.ReadWrite
     {
-        // SlotIdx is here somewhere
         public uint SdbId;
         public string TextKey; // Used for XP rewards?
         public uint Quantity;
+        public byte SubInventory;
         public byte[] Unk2;
         
         public void Read(BinaryStream Stream)
         {
             SdbId = Stream.Read.UInt();
-            TextKey = Stream.Read.StringZ(Stream);
+            TextKey = Stream.Read.StringZ();
             Quantity = Stream.Read.UInt();
-            Unk2 = Stream.Read.ByteArray(5);
+            SubInventory = Stream.Read.Byte();
+            Unk2 = Stream.Read.ByteArray(4);
         }
         
         public void Write(BinaryStream Stream)
@@ -139,7 +132,8 @@ namespace PacketPeepScript
     
     public class Loadout : Bitter.BinaryWrapper.ReadWrite
     {
-        public ulong FrameLoadoutGUID;
+        public uint FrameLoadoutId;
+        public byte[] Unk; // The frame loadout id is used as a uint in other messages so these are unlikely to belong to it.
         public string LoadoutName;
         public string LoadoutType;
         public uint ChassisID;
@@ -149,15 +143,13 @@ namespace PacketPeepScript
 
         public void Read(BinaryStream Stream)
         {
-            FrameLoadoutGUID = Stream.Read.ULong(); // This is probably wrong since loadout id is only 4 bytes in character base controller
-            LoadoutName = Stream.Read.StringZ(Stream);
-            LoadoutType = Stream.Read.StringZ(Stream);
+            FrameLoadoutId = Stream.Read.UInt();
+            Unk = Stream.Read.ByteArray(4);
+            LoadoutName = Stream.Read.StringZ();
+            LoadoutType = Stream.Read.StringZ();
             ChassisID = Stream.Read.UInt();
-            
             NumConfigs = Stream.Read.Byte();
             LoadoutConfigs = Stream.Read.TypeList<LoadoutConfig>(NumConfigs);
-            
-            /*_ = */Stream.Read.ByteArray(14);
         }
         
         public void Write(BinaryStream Stream)
@@ -176,64 +168,26 @@ namespace PacketPeepScript
         public byte NumItems;
         public List<LoadoutConfig_Item> Items;
         
-        public byte Flags;
-        
-        public Visuals Visuals1;
-        public Visuals Visuals2;
-        public Visuals Visuals3;
+        public byte NumVisuals;
+        public List<LoadoutConfig_Visual> Visuals;
         
         public byte NumPerks;
         public uint[] Perks;
         
-        public byte[] UnkBytes;
+        public byte[] Unk;
         
         public void Read(BinaryStream Stream)
         {
             ConfigID = Stream.Read.UInt();
-            ConfigName = Stream.Read.StringZ(Stream);
+            ConfigName = Stream.Read.StringZ();
             
             NumItems = Stream.Read.Byte();
             Items = Stream.Read.TypeList<LoadoutConfig_Item>(NumItems);
             
-            Flags = Stream.Read.Byte();
+            NumVisuals = Stream.Read.Byte();
+            Visuals = Stream.Read.TypeList<LoadoutConfig_Visual>(NumVisuals);
             
-            if( (Flags & 0x01) > 0 || (Flags & 0x04) > 0 ) {
-                /*_ = */Stream.Read.UInt();
-            
-                var f = Stream.Read.Byte();
-                
-                if( (f & 1) > 0 ) {
-                    /*_ = */Stream.Read.ByteArray(9);
-                }
-                if( (f & 2) > 0 ) {
-                    ///*_ = */Stream.Read.Byte();
-                    var cnt = Stream.Read.Byte();
-                    /*_ = */Stream.Read.ByteArray(cnt);
-                }
-                if( (f & 4) > 0 ) {
-                    /*_ = */Stream.Read.ByteArray(88);
-                }
-                if( (f & 8) > 0 ) {
-                    var cntAwards = Stream.Read.Byte();
-                    var awards = Stream.Read.UIntArray(cntAwards);
-                }
-                
-                /*_ = */Stream.Read.Byte();
-            
-                var unkints = Stream.Read.UIntArray(2);
-                var unkints2 = Stream.Read.UIntArray(1);
-            }
-            
-            if( (Flags & 0x02) > 0 )
-            {
-                /*_ = */Stream.Read.Byte();
-                
-                var cnt = Stream.Read.Byte();
-                /*_ = */Stream.Read.ByteArray(cnt);
-                
-                var unkints = Stream.Read.UIntArray(2);
-                var unkints2 = Stream.Read.UIntArray(1);
-            }
+            Unk = Stream.Read.ByteArray(13);
         }
         
         public void Write(BinaryStream Stream) 
@@ -262,70 +216,67 @@ namespace PacketPeepScript
         
         public override string ToString() => $"{this.GetType().Name} Slot: {SlotIndex} => {ItemGUID}";
     }
-    
-    public class Visuals : Bitter.BinaryWrapper.ReadWrite
+
+    public class LoadoutConfig_Visual : Bitter.BinaryWrapper.ReadWrite
     {
-        public byte NumDecals;
-        public IList<Decal> Decals;
+        public enum LoadoutVisualType : byte {
+            Palette = 9,
+            Pattern = 10,
+            Decal = 11,
+
+            Glider = 13,
+            Vehicle = 14,
+        };
+
+        public uint ItemSdbId;
+        public LoadoutVisualType VisualType;
         
-        public byte NumDecalGradients;
-        public IList<DecalGradient> DecalGradients;
+        public byte[] Unk1;
+
+        public byte? Decal_TransformCount;
+        public float[] Decal_Transform;
+        public byte? Glider_Unk;
+        public byte? Vehicle_Unk;
+        public byte? Palette_Unk;
+        public byte? Pattern_TransformCount;
+        public float[] Pattern_Transform;
         
-        public ushort NumColors;
-        public uint[] Colors;
-        
-        public byte NumPalettes;
-        public IList<Palette> Palettes;
-        
-        public byte NumPatterns;
-        public IList<Pattern> Patterns;
-        
-        public byte NumOrnamentGroups;
-        public uint[] OrnamentGroups;
-        
-        public byte NumUnk1;
-        public uint[] ItemsUnk1;
-        
-        public byte NumUnk2;
-        public uint[] ItemsUnk2;
-        
-        public byte NumUnk3;
-        public uint[] ItemsUnk3;
-        
+        public string UnknownTypeParsingError;
+
         public void Read(BinaryStream Stream)
         {
-            NumDecals = Stream.Read.Byte();
-            Decals = Stream.Read.TypeList<Decal>(NumDecals);
-            
-            //NumDecalGradients = Stream.Read.Byte();
-            //DecalGradients = Stream.Read.TypeList<DecalGradient>(NumDecalGradients);
-            
-            //NumColors = Stream.Read.UShort();
-            //Colors = Stream.Read.UIntArray((int)NumColors);
-            
-            //NumPalettes = Stream.Read.Byte();
-            //Palettes = Stream.Read.TypeList<Palette>((int)NumPalettes);
-            
-            //NumPatterns = Stream.Read.Byte();
-            //Patterns = Stream.Read.TypeList<Pattern>((int)NumPatterns);
-            
-            //NumOrnamentGroups = Stream.Read.Byte();
-            //OrnamentGroups = Stream.Read.UIntArray((int)NumOrnamentGroups);
-            
-            //NumUnk1 = Stream.Read.Byte();
-            //if( NumUnk1 > 0 )
-            //  throw new System.NotImplementedException();
-            //ItemsUnk1 = Stream.Read.UIntArray((int)NumUnk1);
-            
-            //NumUnk2 = Stream.Read.Byte();
-            //if( NumUnk2 > 0 )
-            //  throw new System.NotImplementedException();
-            //ItemsUnk2 = Stream.Read.UIntArray((int)NumUnk2);
-            
-            //NumUnk3 = Stream.Read.Byte();
-            //if( NumUnk3 > 0 )
-            //  throw new System.NotImplementedException();
-            //ItemsUnk3 = Stream.Read.UIntArray((int)NumUnk3);
+            ItemSdbId = Stream.Read.UInt();
+            VisualType = (LoadoutVisualType) Stream.Read.Byte();
+            Unk1 = Stream.Read.ByteArray(8);
+
+            switch (VisualType)
+            {
+                case LoadoutVisualType.Palette:
+                    Palette_Unk = Stream.Read.Byte();
+                    break;
+
+                case LoadoutVisualType.Pattern:
+                    Pattern_TransformCount = Stream.Read.Byte();
+                    Pattern_Transform = Stream.Read.FloatArray((int)Pattern_TransformCount);
+                    break;
+
+                case LoadoutVisualType.Decal:
+                    Decal_TransformCount = Stream.Read.Byte();
+                    Decal_Transform = Stream.Read.FloatArray((int)Decal_TransformCount);
+                    break;
+
+                case LoadoutVisualType.Glider:
+                    Glider_Unk = Stream.Read.Byte();
+                    break;
+
+                case LoadoutVisualType.Vehicle:
+                    Vehicle_Unk = Stream.Read.Byte();
+                    break;
+                
+                default:
+                    UnknownTypeParsingError = "Dont know how to parse this visual type! Implement!";
+                    break;
+            }
         }
         
         public void Write(BinaryStream Stream)
@@ -333,86 +284,24 @@ namespace PacketPeepScript
             throw new System.NotImplementedException();
         }
         
-        public override string ToString() => $"Colors: {Colors}, Palettes: {Palettes}, Patterns: {Patterns}";
+        public override string ToString() => $"{this.GetType().Name} Slot: {ItemSdbId} => {VisualType}";
     }
-    
-    public class Palette : Bitter.BinaryWrapper.ReadWrite
-    {
-        public byte Type;
-        public uint ID;
+
+    public static class MyExtensions {
+        public static Bitter.BinaryStream BStream;
         
-        public void Read(BinaryStream Stream)
-        {
-            Type = Stream.Read.Byte();
-            ID = Stream.Read.UInt();
+        public static string StringZ(this Bitter.BinaryReader rdr) {
+            string ret = "";
+            
+            do {
+                byte b = rdr.Byte();
+                if (b == 0x00)
+                    break;
+                
+                ret += (char)b;
+            } while (BStream.baseStream.ByteOffset < BStream.baseStream.Length);
+            
+            return ret;
         }
-        
-        public void Write(BinaryStream Stream)
-        {
-            Stream.Write.Byte(Type);
-            Stream.Write.UInt(ID);
-        }
-        
-        public override string ToString() => $"Type: {Type}, ID: {ID}";
-    }
-    
-    public class Pattern : Bitter.BinaryWrapper.ReadWrite
-    {
-        public uint ID;
-        public ushort[] Transform;
-        public byte Usage;
-        
-        
-        public void Read(BinaryStream Stream)
-        {
-            ID = Stream.Read.UInt();
-            Transform = Stream.Read.UShortArray(4);
-            Usage = Stream.Read.Byte();
-        }
-        
-        public void Write(BinaryStream Stream)
-        {
-            throw new System.NotImplementedException();
-        }
-        
-        public override string ToString() => $"ID: {ID}, Usage: {Usage}";
-    }
-    
-    public class Decal : Bitter.BinaryWrapper.ReadWrite
-    {
-        public uint ID;
-        public uint Color;
-        public ushort[] Transform;
-        public byte Usage;
-        
-        public void Read(BinaryStream Stream)
-        {
-            ID = Stream.Read.UInt();
-            Color = Stream.Read.UInt();
-            Transform = Stream.Read.UShortArray(12);
-            Usage = Stream.Read.Byte();
-        }
-        
-        public void Write(BinaryStream Stream)
-        {
-            throw new System.NotImplementedException();
-        }
-        
-        public override string ToString() => $"ID: {ID}, Color: {Color}, Usage: {Usage}";
-    }
-    
-    public class DecalGradient : Bitter.BinaryWrapper.ReadWrite
-    {
-        public void Read(BinaryStream Stream)
-        {
-            /*_ = */Stream.Read.ByteArray(1);
-        }
-        
-        public void Write(BinaryStream Stream)
-        {
-            throw new System.NotImplementedException();
-        }
-        
-        public override string ToString() => $"ID: ";
     }
 }
