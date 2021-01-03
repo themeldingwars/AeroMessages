@@ -235,7 +235,7 @@ namespace PacketPeepScript
         public uint PrimaryWeapon;
         public byte[] Unk_PrimaryWeapon_ItemData_1;
         public byte NumberOfPrimaryWeaponWeaponModules;
-        public uint[] PrimaryWeapon_WeaponModules;
+        public EquippedItemData[] PrimaryWeapon_WeaponModules;
         public byte[] Unk_PrimaryWeapon_ItemData_2;
         public byte NumberOfPrimaryWeaponVisualsColors;
         public ColorData[] PrimaryWeapon_Visuals_Colors;
@@ -251,7 +251,7 @@ namespace PacketPeepScript
         public uint SecondaryWeapon;
         public byte[] Unk_SecondaryWeapon_ItemData_1;
         public byte NumberOfSecondaryWeaponWeaponModules;
-        public uint[] SecondaryWeapon_WeaponModules;
+        public EquippedItemData[] SecondaryWeapon_WeaponModules;
         public byte[] Unk_SecondaryWeapon_ItemData_2;
         public byte NumberOfSecondaryWeaponVisualsColors;
         public ColorData[] SecondaryWeapon_Visuals_Colors;
@@ -333,8 +333,8 @@ namespace PacketPeepScript
                 PrimaryWeapon = Stream.Read.UInt();
                 Unk_PrimaryWeapon_ItemData_1 = Stream.Read.ByteArray(3);
                 NumberOfPrimaryWeaponWeaponModules = Stream.Read.Byte();
-                PrimaryWeapon_WeaponModules = Stream.Read.UIntArray(NumberOfPrimaryWeaponWeaponModules);
-                Unk_PrimaryWeapon_ItemData_2 = Stream.Read.ByteArray(5);
+                PrimaryWeapon_WeaponModules = Stream.Read.EquippedItemDataArray(NumberOfPrimaryWeaponWeaponModules);
+                Unk_PrimaryWeapon_ItemData_2 = Stream.Read.ByteArray(2);
 
                 NumberOfPrimaryWeaponVisualsColors = Stream.Read.Byte();
                 PrimaryWeapon_Visuals_Colors = Stream.Read.ColorDataArray(NumberOfPrimaryWeaponVisualsColors);
@@ -354,8 +354,8 @@ namespace PacketPeepScript
 
                 Unk_SecondaryWeapon_ItemData_1 = Stream.Read.ByteArray(3);
                 NumberOfSecondaryWeaponWeaponModules = Stream.Read.Byte();
-                SecondaryWeapon_WeaponModules = Stream.Read.UIntArray(NumberOfSecondaryWeaponWeaponModules);
-                Unk_SecondaryWeapon_ItemData_2 = Stream.Read.ByteArray(5);
+                SecondaryWeapon_WeaponModules = Stream.Read.EquippedItemDataArray(NumberOfSecondaryWeaponWeaponModules);
+                Unk_SecondaryWeapon_ItemData_2 = Stream.Read.ByteArray(2);
 
                 NumberOfSecondaryWeaponVisualsColors = Stream.Read.Byte();
                 SecondaryWeapon_Visuals_Colors = Stream.Read.ColorDataArray( NumberOfSecondaryWeaponVisualsColors);
