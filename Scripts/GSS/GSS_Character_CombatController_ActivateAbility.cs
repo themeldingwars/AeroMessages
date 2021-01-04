@@ -9,8 +9,13 @@ namespace PacketPeepScript
 
         public byte HaveTarget;
         public byte[] TargetEntity;
+        public ulong TargetEntityId;
         public byte[] InitiatorEntity;
+        
         public byte[] Unk_1;
+
+        public float[] Unk_2;
+
 
         public override void Read(Bitter.BinaryStream Stream)
         {
@@ -23,8 +28,15 @@ namespace PacketPeepScript
 
             if (HaveTarget != 0x00) {
                 TargetEntity = Stream.Read.ByteArray(8);
+
+                Stream.baseStream.ByteOffset -= 8;
+                TargetEntityId = Stream.Read.ULong() & 0xFFFFFFFFFFFFFF00;
+
                 InitiatorEntity = Stream.Read.ByteArray(8);
                 Unk_1 = Stream.Read.ByteArray(5);
+            }
+            else {
+                Unk_2 = Stream.Read.FloatArray(3);
             }
 
 

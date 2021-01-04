@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Bitter;
 namespace PacketPeepScript
 {
@@ -5,82 +6,121 @@ namespace PacketPeepScript
     public class CharacterCombatControllerAddOrUpdateInteractives : BaseScript
     {
         public byte NumberOfEntities;
-        public byte[] Entity1;
-        public byte[] Entity2;
-        public byte[] Entity3;
-        public byte[] Entity4;
-        public byte[] Entity5;
+        public MyExtensions.EntityRef[] Entities;
 
         public byte NumberOfInteractionTypes;
-        public byte? InteractionType1;
-        public byte? InteractionType2;
-        public byte? InteractionType3;
-        public byte? InteractionType4;
-        public byte? InteractionType5;
+        public byte[] InteractionTypes;
 
         public byte NumberOfInteractionDurationMs;
-        public uint? InteractionDurationMs1;
-        public uint? InteractionDurationMs2;
-        public uint? InteractionDurationMs3;
-        public uint? InteractionDurationMs4;
-        public uint? InteractionDurationMs5;
+        public uint[] InteractionDurationsMs;
 
         public override void Read(Bitter.BinaryStream Stream)
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
+            MyExtensions.BStream = Stream;
             
             if (true) {
                 NumberOfEntities = Stream.Read.Byte();
-                if (NumberOfEntities > 0) {
-                    Entity1 = Stream.Read.ByteArray(8);
-                }
-                if (NumberOfEntities > 1) {
-                    Entity2 = Stream.Read.ByteArray(8);
-                }
-                if (NumberOfEntities > 2) {
-                    Entity3 = Stream.Read.ByteArray(8);
-                }
-                if (NumberOfEntities > 3) {
-                    Entity4 = Stream.Read.ByteArray(8);
-                }
-                if (NumberOfEntities > 4) {
-                    Entity5 = Stream.Read.ByteArray(8);
-                }
+                Entities = Stream.Read.EntityArray(NumberOfEntities);
 
                 NumberOfInteractionTypes = Stream.Read.Byte();
-                if (NumberOfInteractionTypes > 0) {
-                    InteractionType1 = Stream.Read.Byte();
-                }
-                if (NumberOfInteractionTypes > 1) {
-                    InteractionType2 = Stream.Read.Byte();
-                }
-                if (NumberOfInteractionTypes > 2) {
-                    InteractionType3 = Stream.Read.Byte();
-                }
-                if (NumberOfInteractionTypes > 3) {
-                    InteractionType4 = Stream.Read.Byte();
-                }
-                if (NumberOfInteractionTypes > 4) {
-                    InteractionType5 = Stream.Read.Byte();
-                }
+                InteractionTypes = Stream.Read.ByteArray(NumberOfInteractionTypes);
 
                 NumberOfInteractionDurationMs = Stream.Read.Byte();
-                if (NumberOfInteractionDurationMs > 0) {
-                    InteractionDurationMs1 = Stream.Read.UInt();
-                }
-                if (NumberOfInteractionDurationMs > 1) {
-                    InteractionDurationMs2 = Stream.Read.UInt();
-                }
-                if (NumberOfInteractionDurationMs > 2) {
-                    InteractionDurationMs3 = Stream.Read.UInt();
-                }
-                if (NumberOfInteractionDurationMs > 3) {
-                    InteractionDurationMs4 = Stream.Read.UInt();
-                }
-                if (NumberOfInteractionDurationMs > 4) {
-                    InteractionDurationMs5 = Stream.Read.UInt();
-                }
+                InteractionDurationsMs = Stream.Read.UIntArray(NumberOfInteractionDurationMs);
             }
+        }
+    }
+
+    public static class MyExtensions
+    {
+        public static Bitter.BinaryStream BStream;
+        
+
+        public enum Controller : byte
+        {
+            Character = 0x01,
+            Melding = 0x0f,
+            MeldingBubble = 0x11,
+            AreaVisualData = 0x13,
+            Vehicle = 0x1a,
+            Anchor = 0x20,
+            Deployable = 0x22,
+            Turret = 0x26,
+            Outpost = 0x2c,
+            ResourceNode = 0x2f,
+            Encounter = 0x31,
+            Carryable = 0x32,
+        }
+
+        public struct EntityRef
+        {
+            public Controller Controller;
+            public ulong Id;
+
+            public EntityRef(Bitter.BinaryReader R)
+            {
+                Controller = (Controller) R.Byte();
+                BStream.baseStream.ByteOffset--;
+                Id = R.ULong() & 0xFFFFFFFFFFFFFF00;
+
+            }
+
+            public override string ToString() => $"{Controller}:{Id}";
+        }
+
+        public static EntityRef Entity(this Bitter.BinaryReader R)
+        {
+            return new EntityRef(R);
+        }
+
+        public static EntityRef[] EntityArray(this Bitter.BinaryReader R, int num)
+        {
+            List<EntityRef> list = new List<EntityRef>();
+            for (int i = 1; i <= num; i++)
+            {
+                list.Add(R.Entity());
+            }
+            return list.ToArray();
+        }
+
+        /*
+        public static string Entity(this Bitter.BinaryReader rdr)
+        {
+            Controller controller;
+            ulong id;
+
+            controller = (Controller) rdr.Byte();
+            BStream.baseStream.ByteOffset--;
+            id = rdr.ULong() & 0xFFFFFFFFFFFFFF00;
+
+            return $"{controller}:{id}";
+        }
+        */
+
+        public static string StringZ(this Bitter.BinaryReader rdr)
+        {
+            string ret = "";
+            
+            do {
+                byte b = rdr.Byte();
+                if (b == 0x00)
+                    break;
+                
+                ret += (char)b;
+            } while (BStream.baseStream.ByteOffset < BStream.baseStream.Length);
+            
+            return ret;
+        }
+        
+        public static void SkipZeros(this Bitter.BinaryReader rdr)
+        {
+            byte b;
+            do {
+                b = rdr.Byte();
+            } while( b == 0 );
+            
+            BStream.baseStream.ByteOffset--;
         }
     }
 }

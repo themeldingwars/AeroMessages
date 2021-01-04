@@ -14,7 +14,7 @@ namespace PacketPeepScript
         public byte HotfixLevel;
         public ulong MatchId;
         public byte[] Unk2;
-        public uint Unk3;
+        public uint Unk3_Millis;
         public string ZoneName;
         public byte Unk4;
         public byte[] Unk_ZoneTime;
@@ -39,7 +39,7 @@ namespace PacketPeepScript
                 HotfixLevel = Stream.Read.Byte();
                 MatchId = Stream.Read.ULong();
                 Unk2 = Stream.Read.ByteArray(1);
-                Unk3 = Stream.Read.UInt();
+                Unk3_Millis = Stream.Read.UInt();
                 ZoneName = Stream.Read.StringZ();
                 Unk4 = Stream.Read.Byte();
                 Unk_ZoneTime = Stream.Read.ByteArray(16);

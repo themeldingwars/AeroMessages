@@ -13,9 +13,11 @@ namespace PacketPeepScript
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
 
-            Unk1 = Stream.Read.ByteArray(4);
-            Position = Stream.Read.FloatArray(3);
-            Unk2 = Stream.Read.ByteArray(8);
+            if (true) {
+                Unk1 = Stream.Read.ByteArray(4);
+                Position = Stream.Read.FloatArray(3);
+                Unk2 = Stream.Read.ByteArray(8);
+            }
         }
     }
 }

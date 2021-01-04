@@ -19,31 +19,33 @@ namespace PacketPeepScript
         public override void Read(Bitter.BinaryStream Stream)
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
+            
+            if (true) {
+                Unk1 = Stream.Read.ByteArray(3);
+                Time1 = Stream.Read.UInt();
 
-            Unk1 = Stream.Read.ByteArray(3);
-            Time1 = Stream.Read.UInt();
+                Unk2 = Stream.Read.Byte();
+                if (Unk2 == 1)
+                {
+                    Entity = Stream.Read.ByteArray(8);
+                }
 
-            Unk2 = Stream.Read.Byte();
-            if (Unk2 == 1)
-            {
-                Entity = Stream.Read.ByteArray(8);
+                Unk3 = Stream.Read.Byte();
+                if (Unk3 == 1) {
+                    Stream.baseStream.ByteOffset += 8;
+                }
+                else {
+                    Stream.baseStream.ByteOffset += 6;
+                }
+
+                Position = Stream.Read.FloatArray(3);
+
+                LootSdbId = Stream.Read.UInt();
+                Quantity = Stream.Read.UInt();
+
+                int remaining = (int)(Stream.baseStream.Length - Stream.baseStream.ByteOffset);
+                Unk = Stream.Read.ByteArray(remaining);
             }
-
-            Unk3 = Stream.Read.Byte();
-            if (Unk3 == 1) {
-                Stream.baseStream.ByteOffset += 8;
-            }
-            else {
-                Stream.baseStream.ByteOffset += 6;
-            }
-
-            Position = Stream.Read.FloatArray(3);
-
-            LootSdbId = Stream.Read.UInt();
-            Quantity = Stream.Read.UInt();
-
-            int remaining = (int)(Stream.baseStream.Length - Stream.baseStream.ByteOffset);
-            Unk = Stream.Read.ByteArray(remaining);
         }
     }
 }
