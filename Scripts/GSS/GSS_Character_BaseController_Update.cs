@@ -6,149 +6,204 @@ namespace PacketPeepScript
     {
         enum ShadowFieldIndex : byte
         {   
-            Unk_0x00                = 0x00,
-            UsedInventorySlots      = 0x01,
-            MaxInventorySlots       = 0x02,
-            AuthTerminal            = 0x03,
-            ConfirmedPoseUpdateTime = 0x04,
-            ObserverData            = 0x05, // Look to Character_ObserverView_Keyframe for decoding
-            Unk_0x06_Time           = 0x06,
-            Unk_0x07                = 0x07,
-            EquipmentData           = 0x08, // Look to Character_EquipmentView_Keyframe for decoding
-            LoadoutId               = 0x09,
-            Unk_0x0A                = 0x0A,
-            Unk_0x0B                = 0x0B,
-            MovementData            = 0x0C, // Look to Character_MovementView_Keyframe for decoding
-            Unk_0x0D                = 0x0D, // Equivalent of 0x04 in Observer View
+            TimePlayed              = 0x00,
+            CurrentWeight           = 0x01, // CurrentWeight
+            EncumberedWeight        = 0x02, // MaxsInventorySlots
+            AuthorizedTerminal      = 0x03,
+            PingTime                = 0x04,
+            StaticInfo              = 0x05, // ObserverData, Look to Character_ObserverView_Keyframe for decoding
+            SpawnTime               = 0x06,
+            VisualOverrides         = 0x07,
+            CurrentEquipment        = 0x08, // EquipmentData, Look to Character_EquipmentView_Keyframe for decoding
+            SelectedLoadout         = 0x09, // LoadoutId
+            SelectedLoadoutIsPvP    = 0x0a,
+            GibVisualsID            = 0x0b,
+            SpawnPose               = 0x0c, // MovementData, Look to Character_MovementView_Keyframe for decoding
+            ProcessDelay            = 0x0d, // Equivalent of 0x04 in Observer View
+            SpectatorMode           = 0x0e,
+            CinematicCamera         = 0x0f,
             CharacterState          = 0x10,
-            Faction                 = 0x11,
-            Unk_0x12                = 0x12, // I think this might be like offsets for the player point of view or something along those lines, values like these reoccur in the Vehicle stuff as well
+            HostilityInfo           = 0x11,
+            PersonalFactionStance   = 0x12,
             CurrentHealth           = 0x13,
-            Unk_0x14                = 0x14,
-            Unk_0x15                = 0x15,
+            CurrentShields          = 0x14,
+            MaxShields              = 0x15,
             MaxHealth               = 0x16,
-            Unk_0x17                = 0x17,
-            JetpackValues           = 0x18,
-            Stats                   = 0x19,
+            CurrentDurabilityPct    = 0x17,
+            EnergyParams            = 0x18,
+            CharacterStats          = 0x19,
+            EmoteID                 = 0x1a,
+            AttachedTo              = 0x1b,
+            SnapMount               = 0x1c,
+            SinFlags                = 0x1d,
+            SinFlagsPrivate         = 0x1e,
+            SinFactionsAcquiredBy   = 0x1f,
+            SinTeamsAqquiredBy      = 0x20,
             ArmyGUID                = 0x21,
-            Unk_0x22                = 0x22,
-            Unk_0x26                = 0x26,
-            Unk_0x27                = 0x27,
-            Unk_0x29                = 0x29,
-            Unk_0x2F                = 0x2F,
-            Unk_0x30                = 0x30,
-            Unk_0x31                = 0x31,
-            Unk_0x32                = 0x32,
-            Unk_0x33                = 0x33,
-            Unk_0x34                = 0x34,
-            Unk_0x35                = 0x35,
-            Unk_0x36                = 0x36,
-            Unk_0x37                = 0x37,
-            Unk_0x38                = 0x38,
-            Unk_0x39                = 0x39,
-            Unk_0x3a                = 0x3a,
-            Unk_0x3b                = 0x3b,
-            Unk_0x3c                = 0x3c,
-            Unk_0x3d                = 0x3d,
-            Unk_0x3e                = 0x3e,
-            Unk_0x3f                = 0x3f,
-            Unk_0x40                = 0x40,
-            Unk_0x41                = 0x41,
-            Unk_0x42                = 0x42,
-            Unk_0x43                = 0x43,
-            Unk_0x44                = 0x44,
-            Unk_0x45                = 0x45,
-            Level                   = 0x47,
-            Effective_Level         = 0x48,
-            Unk_0x4b                = 0x4b,
-            Unk_0x6a                = 0x6a,
-            Unk_0x6b                = 0x6b,
-            Unk_0x6c                = 0x6c,
-            Unk_0x6d                = 0x6d,
-            Unk_0x6e                = 0x6e,
-            Unk_0x6f                = 0x6f,
-            Unk_0x70                = 0x70,
-            Unk_0x71                = 0x71,
+            ArmyIsOfficer           = 0x22,
+            EncounterPartyTuple     = 0x23,
+            DockedParams            = 0x24,
+            LookAtTarget            = 0x25,
+            ZoneUnlocks             = 0x26,
+            RegionUnlocks           = 0x27,
+            ChatPartyLeaderId       = 0x28,
+            ScopeBubbleInfo         = 0x29,
+
+            CarryableObjects_0      = 0x2a,
+            CarryableObjects_1      = 0x2b,
+            CarryableObjects_2      = 0x2c,
+            CachedAssets            = 0x2d,
+            RespawnTimes            = 0x2e,
+
+            ProgressionXp           = 0x2f,
+            PermanentStatusEffects  = 0x30,
+            XpBoostModifier             = 0x31,
+            XpPermanentModifier         = 0x32,
+            XpZoneModifier              = 0x33,
+            XpVipModifier               = 0x34,
+            XpEventModifier             = 0x35,
+            ResourceBoostModifier       = 0x36,
+            ResourcePermanentModifier   = 0x37,
+            ResourceZoneModifier        = 0x38,
+            ResourceVipModifier         = 0x39,
+            ResourceEventModifier       = 0x3a,
+            MoneyBoostModifier          = 0x3b,
+            MoneyPermanentModifier      = 0x3c,
+            MoneyZoneModifier           = 0x3d,
+            MoneyVipModifier            = 0x3e,
+            MoneyEventModifier          = 0x3f,
+            ReputationBoostModifier     = 0x40,
+            ReputationPermanentModifier = 0x41,
+            ReputationZoneModifier      = 0x42,
+            ReputationVipModifier       = 0x43,
+            ReputationEventModifier     = 0x44,
+            Wallet                      = 0x45,
+            Loyalty                     = 0x46,
+            Level                       = 0x47,
+            EffectiveLevel              = 0x48,
+            LevelResetCount             = 0x49,
+            OldestDeployables           = 0x4a,
+            PerkRespecs                 = 0x4b,
+            ArcStatus                   = 0x4c,
+            LeaveZoneTime               = 0x4d,
+            ChatMuteStatus              = 0x4e,
+            TimedDailyReward            = 0x4f,
+            TimedDailyRewardResult      = 0x50,
+            SinCardType                 = 0x51,
+            SinCardFields_0             = 0x52,
+            SinCardFields_1             = 0x53,
+            SinCardFields_2             = 0x54,
+            SinCardFields_3             = 0x55,
+            SinCardFields_4             = 0x56,
+            SinCardFields_5             = 0x57,
+            SinCardFields_6             = 0x58,
+            SinCardFields_7             = 0x59,
+            SinCardFields_8             = 0x5a,
+            SinCardFields_9             = 0x5b,
+            SinCardFields_10            = 0x5c,
+            SinCardFields_11            = 0x5d,
+            SinCardFields_12            = 0x5e,
+            SinCardFields_13            = 0x5f,
+            SinCardFields_14            = 0x60,
+            SinCardFields_15            = 0x61,
+            SinCardFields_16            = 0x62,
+            SinCardFields_17            = 0x63,
+            SinCardFields_18            = 0x64,
+            SinCardFields_19            = 0x65,
+            SinCardFields_20            = 0x66,
+            SinCardFields_21            = 0x67,
+            SinCardFields_22            = 0x68,
+            AssetOverrides              = 0x69,
+            FriendCount                 = 0x6a,
+            CAISStatus                  = 0x6b,
+            ScalingLevel                = 0x6c,
+            PvPRank                     = 0x6d,
+            PvPRankPoints               = 0x6e,
+            PvPTokens                   = 0x6f,
+            BountyPointsLastClaimed     = 0x70,
+            EliteLevel                  = 0x71,
         }
 
-        public byte[] Unk_0x00;
-        public uint? UsedInventorySlots;
-        public uint? MaxInventorySlots;
-        public byte? AuthTerminalType;
-        public uint? AuthTerminalId;
-        public byte[] AuthTerminalEntity;
-        public uint? ConfirmedPoseUpdateTime;
-        public byte[] ObserverData;
-        public uint? Unk_0x06_Time;
-        public byte? Unk_0x07;
-        public byte[] EquipmentData;
-        public uint? LoadoutId;
-        public byte[] Unk_0x0A;
-        public byte[] Unk_0x0B_1;
-        public uint? Unk_0x0B_Time;
-        public byte[] MovementData;
+        public string UnableToParseWarning; // Will be set if we enocunter an unhandled shadowfield
+
+        public byte[] TimePlayed;
+        public uint? CurrentWeight;
+        public uint? EncumberedWeight;
+        public byte? AuthorizedTerminalType;
+        public uint? AuthorizedTerminalId;
+        public byte[] AuthorizedTerminalEntity;
+        public uint? PingTime;
+        public byte[] StaticInfo;
+        public uint? SpawnTime;
+        public byte? VisualOverrides;
+        public byte[] CurrentEquipment;
+        public uint? SelectedLoadout;
+        public byte[] SelectedLoadoutIsPvP;
+        public byte[] GibVisualsID_1;
+        public uint? GibVisualsID_Time;
+        public byte[] SpawnPose;
         public byte? CharacterState;
         public uint? CharacterState_Time;
-        public byte[] Unk_0x0D;
-        public byte[] Faction;
-        public byte[] Unk_0x12;
+        public byte[] ProcessDelay;
+        public byte[] HostilityInfo;
+        public byte[] PersonalFactionStance;
         public uint? CurrentHealth;
-        public byte[] Unk_0x14;
-        public byte[] Unk_0x15;
-        public uint? Unk_0x15_Time;
+        public byte[] CurrentShields;
+        public byte[] MaxShields;
+        public uint? MaxShields_Time;
         public uint? MaxHealth;
         public uint? MaxHealth_Time;
-        public byte? Unk_0x17;
-        public float? JetpackValues_EnergyMax;
-        public uint? JetpackValues_Unk;
-        public float? JetpackValues_RechargeRelated;
-        public uint? JetpackValues_Time;
-        public byte[] Stats;
+        public byte? CurrentDurabilityPct;
+        public float? EnergyParams_EnergyMax;
+        public uint? EnergyParams_Unk;
+        public float? EnergyParams_RechargeRelated;
+        public uint? EnergyParams_Time;
+        public byte[] CharacterStats;
         public ulong? ArmyGUID;
         
-        public byte? Unk_0x22;
+        public byte? ArmyIsOfficer;
 
-        public byte[] Unk_0x26;
-        public byte[] Unk_0x27;
-        public byte[] Unk_0x29;
-        public byte[] Unk_0x2F;
+        public byte[] ZoneUnlocks;
+        public byte[] RegionUnlocks;
+        public byte[] ScopeBubbleInfo;
+        public byte[] ProgressionXp;
 
-        public byte[] Unk_0x30;
+        public byte[] PermanentStatusEffects;
 
-        public byte[] Unk_0x31;
-        public byte[] Unk_0x32;
-        public byte[] Unk_0x33;
-        public byte[] Unk_0x34;
-        public byte[] Unk_0x35;
-        public byte[] Unk_0x36;
-        public byte[] Unk_0x37;
-        public byte[] Unk_0x38;
-        public byte[] Unk_0x39;
-        public byte[] Unk_0x3a;
-        public byte[] Unk_0x3b;
-        public byte[] Unk_0x3c;
-        public byte[] Unk_0x3d;
-        public byte[] Unk_0x3e;
-        public byte[] Unk_0x3f;
-        public byte[] Unk_0x40;
-        public byte[] Unk_0x41;
-        public byte[] Unk_0x42;
-        public byte[] Unk_0x43;
-        public byte[] Unk_0x44;
-        public byte[] Unk_0x45;
+        public byte[] XpBoostModifier;
+        public byte[] XpPermanentModifier;
+        public byte[] XpZoneModifier;
+        public byte[] XpVipModifier;
+        public byte[] XpEventModifier;
+        public byte[] ResourceBoostModifier;
+        public byte[] ResourcePermanentModifier;
+        public byte[] ResourceZoneModifier;
+        public byte[] ResourceVipModifier;
+        public byte[] ResourceEventModifier;
+        public byte[] MoneyBoostModifier;
+        public byte[] MoneyPermanentModifier;
+        public byte[] MoneyZoneModifier;
+        public byte[] MoneyVipModifier;
+        public byte[] MoneyEventModifier;
+        public byte[] ReputationBoostModifier;
+        public byte[] ReputationPermanentModifier;
+        public byte[] ReputationZoneModifier;
+        public byte[] ReputationVipModifier;
+        public byte[] ReputationEventModifier;
+        public byte[] Wallet;
 
         public byte? Level;
-        public byte? Effective_Level;
+        public byte? EffectiveLevel;
 
-        public byte[] Unk_0x4b;
-        public byte[] Unk_0x6a;
-        public byte[] Unk_0x6b;
-        public byte[] Unk_0x6c;
-        public byte[] Unk_0x6d;
-        public byte[] Unk_0x6e;
-        public byte[] Unk_0x6f;
-        public byte[] Unk_0x70;
-        public byte[] Unk_0x71;
+        public byte[] PerkRespecs;
+        public byte[] FriendCount;
+        public byte[] CAISStatus;
+        public byte[] ScalingLevel;
+        public byte[] PvPRank;
+        public byte[] PvPRankPoints;
+        public byte[] PvPTokens;
+        public byte[] BountyPointsLastClaimed;
+        public byte[] EliteLevel;
 
         public byte[] UnableToParse;
 
@@ -161,63 +216,63 @@ namespace PacketPeepScript
                 ShadowFieldIndex sfidx = (ShadowFieldIndex) (Stream.Read.Byte());
                 switch (sfidx)
                 {
-                    case ShadowFieldIndex.Unk_0x00:
-                        Unk_0x00 = Stream.Read.ByteArray(4);
+                    case ShadowFieldIndex.TimePlayed:
+                        TimePlayed = Stream.Read.ByteArray(4);
                         break;
                         
-                    case ShadowFieldIndex.UsedInventorySlots:
-                        UsedInventorySlots = Stream.Read.UInt();
+                    case ShadowFieldIndex.CurrentWeight:
+                        CurrentWeight = Stream.Read.UInt();
                         break;
 
-                    case ShadowFieldIndex.MaxInventorySlots:
-                        MaxInventorySlots = Stream.Read.UInt();
+                    case ShadowFieldIndex.EncumberedWeight:
+                        EncumberedWeight = Stream.Read.UInt();
                         break;
 
-                    case ShadowFieldIndex.AuthTerminal:
-                        AuthTerminalType = Stream.Read.Byte();
-                        AuthTerminalId = Stream.Read.UInt();
-                        AuthTerminalEntity = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.AuthorizedTerminal:
+                        AuthorizedTerminalType = Stream.Read.Byte();
+                        AuthorizedTerminalId = Stream.Read.UInt();
+                        AuthorizedTerminalEntity = Stream.Read.ByteArray(8);
                         break;
 
-                    case ShadowFieldIndex.ConfirmedPoseUpdateTime:
-                        ConfirmedPoseUpdateTime = Stream.Read.UInt();
+                    case ShadowFieldIndex.PingTime:
+                        PingTime = Stream.Read.UInt();
                         break;
 
-                    //case ShadowFieldIndex.ObserverData:
-                    //    ObserverData = ; // Variable length needs indepth parsing
+                    //case ShadowFieldIndex.StaticInfo:
+                    //    StaticInfo = ; // Variable length needs indepth parsing
                     //    break;
 
-                    case ShadowFieldIndex.Unk_0x06_Time:
-                        Unk_0x06_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.SpawnTime:
+                        SpawnTime = Stream.Read.UInt();
                         break;
 
-                    case ShadowFieldIndex.Unk_0x07:
-                        Unk_0x07 = Stream.Read.Byte();
+                    case ShadowFieldIndex.VisualOverrides:
+                        VisualOverrides = Stream.Read.Byte();
                         break;
 
-                    //case ShadowFieldIndex.EquipmentData:
-                    //    EquipmentData = ; // Variable length needs indepth parsing
+                    //case ShadowFieldIndex.CurrentEquipment:
+                    //    CurrentEquipment = ; // Variable length needs indepth parsing
                     //    break;
 
-                    case ShadowFieldIndex.LoadoutId:
-                        LoadoutId = Stream.Read.UInt();
+                    case ShadowFieldIndex.SelectedLoadout:
+                        SelectedLoadout = Stream.Read.UInt();
                         break;
 
-                    case ShadowFieldIndex.Unk_0x0A:
-                        Unk_0x0A = Stream.Read.ByteArray(4);
+                    case ShadowFieldIndex.SelectedLoadoutIsPvP:
+                        SelectedLoadoutIsPvP = Stream.Read.ByteArray(4);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x0B:
-                        Unk_0x0B_1 = Stream.Read.ByteArray(4);
-                        Unk_0x0B_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.GibVisualsID:
+                        GibVisualsID_1 = Stream.Read.ByteArray(4);
+                        GibVisualsID_Time = Stream.Read.UInt();
                         break;
 
-                    case ShadowFieldIndex.Unk_0x0D:
-                        Unk_0x0D = Stream.Read.ByteArray(4);
+                    case ShadowFieldIndex.ProcessDelay:
+                        ProcessDelay = Stream.Read.ByteArray(4);
                         break;
 
-                    case ShadowFieldIndex.MovementData:
-                        MovementData = Stream.Read.ByteArray(67); // Might as well add indepth parsing
+                    case ShadowFieldIndex.SpawnPose:
+                        SpawnPose = Stream.Read.ByteArray(67); // Might as well add indepth parsing
                         break;
 
                     case ShadowFieldIndex.CharacterState:
@@ -225,25 +280,25 @@ namespace PacketPeepScript
                         CharacterState_Time = Stream.Read.UInt();
                         break;
 
-                    case ShadowFieldIndex.Faction:
-                        Faction = Stream.Read.ByteArray(2);
+                    case ShadowFieldIndex.HostilityInfo:
+                        HostilityInfo = Stream.Read.ByteArray(2);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x12:
-                        Unk_0x12 = Stream.Read.ByteArray(20);
+                    case ShadowFieldIndex.PersonalFactionStance:
+                        PersonalFactionStance = Stream.Read.ByteArray(20);
                         break;
 
                     case ShadowFieldIndex.CurrentHealth:
                         CurrentHealth = Stream.Read.UInt();
                         break;
 
-                    case ShadowFieldIndex.Unk_0x14:
-                        Unk_0x14 = Stream.Read.ByteArray(4);
+                    case ShadowFieldIndex.CurrentShields:
+                        CurrentShields = Stream.Read.ByteArray(4);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x15:
-                        Unk_0x15 = Stream.Read.ByteArray(4);
-                        Unk_0x15_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.MaxShields:
+                        MaxShields = Stream.Read.ByteArray(4);
+                        MaxShields_Time = Stream.Read.UInt();
                         break;
 
                     case ShadowFieldIndex.MaxHealth:
@@ -251,174 +306,175 @@ namespace PacketPeepScript
                         MaxHealth_Time = Stream.Read.UInt();
                         break;
 
-                    case ShadowFieldIndex.Unk_0x17:
-                        Unk_0x17 = Stream.Read.Byte();
+                    case ShadowFieldIndex.CurrentDurabilityPct:
+                        CurrentDurabilityPct = Stream.Read.Byte();
                         break;
 
-                    case ShadowFieldIndex.JetpackValues:
-                        JetpackValues_EnergyMax = Stream.Read.Float();
-                        JetpackValues_Unk = Stream.Read.UInt(); // Not sure
-                        JetpackValues_RechargeRelated = Stream.Read.Float();
-                        JetpackValues_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.EnergyParams:
+                        EnergyParams_EnergyMax = Stream.Read.Float();
+                        EnergyParams_Unk = Stream.Read.UInt(); // Not sure
+                        EnergyParams_RechargeRelated = Stream.Read.Float();
+                        EnergyParams_Time = Stream.Read.UInt();
                         break;
 
-                    //case ShadowFieldIndex.Stats:
-                    //    Stats = ; // Variable length needs indepth parsing
+                    //case ShadowFieldIndex.CharacterStats:
+                    //    CharacterStats = ; // Variable length needs indepth parsing
                     //    break;
 
                     case ShadowFieldIndex.ArmyGUID:
                         ArmyGUID = Stream.Read.ULong();
                         break;
 
-                    case ShadowFieldIndex.Unk_0x22:
-                        Unk_0x22 = Stream.Read.Byte();
+                    case ShadowFieldIndex.ArmyIsOfficer:
+                        ArmyIsOfficer = Stream.Read.Byte();
                         break;
 
-                    case ShadowFieldIndex.Unk_0x26:
-                        Unk_0x26 = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.ZoneUnlocks:
+                        ZoneUnlocks = Stream.Read.ByteArray(8);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x27:
-                        Unk_0x27 = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.RegionUnlocks:
+                        RegionUnlocks = Stream.Read.ByteArray(8);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x29:
-                        Unk_0x29 = Stream.Read.ByteArray(9);
+                    case ShadowFieldIndex.ScopeBubbleInfo:
+                        ScopeBubbleInfo = Stream.Read.ByteArray(9);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x2F:
-                        Unk_0x2F = Stream.Read.ByteArray(4);
+                    case ShadowFieldIndex.ProgressionXp:
+                        ProgressionXp = Stream.Read.ByteArray(4);
                         break;
 
-                    //case ShadowFieldIndex.Unk_0x30:
-                    //    Unk_0x30 = ;
+                    //case ShadowFieldIndex.PermanentStatusEffects:
+                    //    PermanentStatusEffects = ;
                     //    break;
 
-                    case ShadowFieldIndex.Unk_0x31:
-                        Unk_0x31 = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.XpBoostModifier:
+                        XpBoostModifier = Stream.Read.ByteArray(8);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x32:
-                        Unk_0x32 = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.XpPermanentModifier:
+                        XpPermanentModifier = Stream.Read.ByteArray(8);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x33:
-                        Unk_0x33 = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.XpZoneModifier:
+                        XpZoneModifier = Stream.Read.ByteArray(8);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x34:
-                        Unk_0x34 = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.XpVipModifier:
+                        XpVipModifier = Stream.Read.ByteArray(8);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x35:
-                        Unk_0x35 = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.XpEventModifier:
+                        XpEventModifier = Stream.Read.ByteArray(8);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x36:
-                        Unk_0x36 = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.ResourceBoostModifier:
+                        ResourceBoostModifier = Stream.Read.ByteArray(8);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x37:
-                        Unk_0x37 = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.ResourcePermanentModifier:
+                        ResourcePermanentModifier = Stream.Read.ByteArray(8);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x38:
-                        Unk_0x38 = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.ResourceZoneModifier:
+                        ResourceZoneModifier = Stream.Read.ByteArray(8);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x39:
-                        Unk_0x39 = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.ResourceVipModifier:
+                        ResourceVipModifier = Stream.Read.ByteArray(8);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x3a:
-                        Unk_0x3a = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.ResourceEventModifier:
+                        ResourceEventModifier = Stream.Read.ByteArray(8);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x3b:
-                        Unk_0x3b = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.MoneyBoostModifier:
+                        MoneyBoostModifier = Stream.Read.ByteArray(8);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x3c:
-                        Unk_0x3c = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.MoneyPermanentModifier:
+                        MoneyPermanentModifier = Stream.Read.ByteArray(8);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x3d:
-                        Unk_0x3d = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.MoneyZoneModifier:
+                        MoneyZoneModifier = Stream.Read.ByteArray(8);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x3e:
-                        Unk_0x3e = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.MoneyVipModifier:
+                        MoneyVipModifier = Stream.Read.ByteArray(8);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x3f:
-                        Unk_0x3f = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.MoneyEventModifier:
+                        MoneyEventModifier = Stream.Read.ByteArray(8);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x40:
-                        Unk_0x40 = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.ReputationBoostModifier:
+                        ReputationBoostModifier = Stream.Read.ByteArray(8);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x41:
-                        Unk_0x41 = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.ReputationPermanentModifier:
+                        ReputationPermanentModifier = Stream.Read.ByteArray(8);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x42:
-                        Unk_0x42 = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.ReputationZoneModifier:
+                        ReputationZoneModifier = Stream.Read.ByteArray(8);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x43:
-                        Unk_0x43 = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.ReputationVipModifier:
+                        ReputationVipModifier = Stream.Read.ByteArray(8);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x44:
-                        Unk_0x44 = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.ReputationEventModifier:
+                        ReputationEventModifier = Stream.Read.ByteArray(8);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x45:
-                        Unk_0x45 = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.Wallet:
+                        Wallet = Stream.Read.ByteArray(8);
                         break;
 
                     case ShadowFieldIndex.Level:
                         Level = Stream.Read.Byte();
                         break;
 
-                    case ShadowFieldIndex.Effective_Level:
-                        Effective_Level = Stream.Read.Byte();
+                    case ShadowFieldIndex.EffectiveLevel:
+                        EffectiveLevel = Stream.Read.Byte();
                         break;
 
-                    case ShadowFieldIndex.Unk_0x4b:
-                        Unk_0x4b = Stream.Read.ByteArray(4);
+                    case ShadowFieldIndex.PerkRespecs:
+                        PerkRespecs = Stream.Read.ByteArray(4);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x6a:
-                        Unk_0x6a = Stream.Read.ByteArray(2);
+                    case ShadowFieldIndex.FriendCount:
+                        FriendCount = Stream.Read.ByteArray(2);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x6b:
-                        Unk_0x6b = Stream.Read.ByteArray(5);
+                    case ShadowFieldIndex.CAISStatus:
+                        CAISStatus = Stream.Read.ByteArray(5);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x6d:
-                        Unk_0x6d = Stream.Read.ByteArray(4);
+                    case ShadowFieldIndex.PvPRank:
+                        PvPRank = Stream.Read.ByteArray(4);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x6e:
-                        Unk_0x6e = Stream.Read.ByteArray(4);
+                    case ShadowFieldIndex.PvPRankPoints:
+                        PvPRankPoints = Stream.Read.ByteArray(4);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x6f:
-                        Unk_0x6f = Stream.Read.ByteArray(4);
+                    case ShadowFieldIndex.PvPTokens:
+                        PvPTokens = Stream.Read.ByteArray(4);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x70:
-                        Unk_0x70 = Stream.Read.ByteArray(4);
+                    case ShadowFieldIndex.BountyPointsLastClaimed:
+                        BountyPointsLastClaimed = Stream.Read.ByteArray(4);
                         break;
 
-                    case ShadowFieldIndex.Unk_0x71:
-                        Unk_0x71 = Stream.Read.ByteArray(4);
+                    case ShadowFieldIndex.EliteLevel:
+                        EliteLevel = Stream.Read.ByteArray(4);
                         break;
 
                     default:
+                        UnableToParseWarning = $"Dont know how to parse shadowfield {sfidx}";
                         int remaining = (int)(Stream.baseStream.Length - Stream.baseStream.ByteOffset);
                         UnableToParse = Stream.Read.ByteArray(remaining);
                         break;
