@@ -16,7 +16,7 @@ namespace PacketPeepScript
             PersonalMapMarkers_7 = 0x07,
             PersonalMapMarkers_8 = 0x08,
             PersonalMapMarkers_9 = 0x09,
-            PersonalMapMarkers_10 = 0x10,
+            PersonalMapMarkers_10 = 0x0a,
             PersonalMapMarkers_11 = 0x0b,
             PersonalMapMarkers_12 = 0x0c,
             PersonalMapMarkers_13 = 0x0d,
