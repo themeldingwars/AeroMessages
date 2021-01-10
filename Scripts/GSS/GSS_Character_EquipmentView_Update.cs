@@ -199,21 +199,21 @@ namespace PacketPeepScript
     {
         enum ShadowFieldIndex : byte
         {
-
-            Maybe_VisualsGroupData = 0x00,
-            Items = 0x01,
+            VisualOverrides = 0x00,
+            CurrentEquipment = 0x01,
             Level = 0x02,
-            Effective_Level = 0x03,
-
-            Unk_0x05 = 0x05,
-            Stats = 0x06,
-
-            Unk_0x09 = 0x09, // ?
+            EffectiveLevel = 0x03,
+            LevelResetCount = 0x04,
+            CurrentDurabilityPct = 0x05,
+            CharacterStats = 0x06,
+            ScalingLevel = 0x07,
+            PvPRank = 0x08,
+            EliteLevel = 0x09,
         }
 
         public byte[] UnableToParse;
 
-        // "Visual group"?
+        // VisualOverrides, references a visual group?
         public byte Unk_HaveVisualsGroupData;
         public byte Unk_VisualsGroupWeirdByte;
         public uint VisualsGroupId;
@@ -275,30 +275,27 @@ namespace PacketPeepScript
         public byte[] Unk5;
 
         public byte Level;
-        public byte Effective_Level;
+        public byte EffectiveLevel;
         public byte[] Unk6;
 
-        public ushort NumberOfItemAttributeStats;
-        public StatData[] ItemAttribute_Stats; // (6 byte, ushort id, float value)
+        public ushort NumberOfItemAttributeCharacterStats;
+        public StatData[] ItemAttribute_CharacterStats; // (6 byte, ushort id, float value)
         public byte[] Unk7;
-        public ushort NumberOfPrimaryWeaponStats;
-        public StatData[] PrimaryWeapon_Stats;
+        public ushort NumberOfPrimaryWeaponCharacterStats;
+        public StatData[] PrimaryWeapon_CharacterStats;
         public byte[] Unk8;
-        public ushort NumberOfSecondaryWeaponStats;
-        public StatData[] SecondaryWeapon_Stats;
+        public ushort NumberOfSecondaryWeaponCharacterStats;
+        public StatData[] SecondaryWeapon_CharacterStats;
         public byte[] Unk9;
-        public ushort NumberOfAttributeCategories1Stats;
-        public StatData[] AttributeCategories_1_Stats; // Yeah, there are two.
-        public ushort NumberOfAttributeCategories2Stats;
-        public StatData[] AttributeCategories_2_Stats; // Maybe one for elite ranks and one for normal progression.
+        public ushort NumberOfAttributeCategories1CharacterStats;
+        public StatData[] AttributeCategories_1_CharacterStats; // Yeah, there are two.
+        public ushort NumberOfAttributeCategories2CharacterStats;
+        public StatData[] AttributeCategories_2_CharacterStats; // Maybe one for elite ranks and one for normal progression.
 
-        public byte[] Unk10;
         public uint PvP_Rank;
         public uint Elite_Rank;
 
-
-
-        public byte Unk_0x05_Value;
+        public byte CurrentDurabilityPct_Value;
 
         public override void Read(Bitter.BinaryStream Stream)
         {
@@ -310,7 +307,7 @@ namespace PacketPeepScript
                 switch (sfidx)
                 {
             
-                    case ShadowFieldIndex.Maybe_VisualsGroupData:
+                    case ShadowFieldIndex.VisualOverrides:
                         Unk_HaveVisualsGroupData = Stream.Read.Byte();
                         if (Unk_HaveVisualsGroupData == 0x01)
                         {
@@ -319,7 +316,7 @@ namespace PacketPeepScript
                         }
                         break;
 
-                    case ShadowFieldIndex.Items:
+                    case ShadowFieldIndex.CurrentEquipment:
                         Chassis = Stream.Read.EquippedItemData();
                         NumberOfChassisModules = Stream.Read.Byte();
                         Chassis_Modules = Stream.Read.EquippedItemDataArray(NumberOfChassisModules);
@@ -347,6 +344,7 @@ namespace PacketPeepScript
                         Unk3 = Stream.Read.ByteArray(9);
                         PrimaryWeapon = Stream.Read.UInt();
 
+                        // TODO: Fix this, its fixed in the keyframe I think
                         Stream.baseStream.ByteOffset += 3;
                         byte LookaheadByte1 = Stream.Read.Byte(); 
                         Stream.baseStream.ByteOffset -= 4;
@@ -406,60 +404,51 @@ namespace PacketPeepScript
                         Level = Stream.Read.Byte();
                         break;
 
-                    case ShadowFieldIndex.Effective_Level:
-                        Effective_Level = Stream.Read.Byte();
+                    case ShadowFieldIndex.EffectiveLevel:
+                        EffectiveLevel = Stream.Read.Byte();
                         break;
 
-                    case ShadowFieldIndex.Unk_0x05:
-                        Unk_0x05_Value = Stream.Read.Byte();
+                    case ShadowFieldIndex.CurrentDurabilityPct:
+                        CurrentDurabilityPct_Value = Stream.Read.Byte();
                         break;
 
-                    case ShadowFieldIndex.Stats:
-                        NumberOfItemAttributeStats = Stream.Read.UShort();
-                        ItemAttribute_Stats = Stream.Read.StatDataArray(NumberOfItemAttributeStats);
+                    case ShadowFieldIndex.CharacterStats:
+                        NumberOfItemAttributeCharacterStats = Stream.Read.UShort();
+                        ItemAttribute_CharacterStats = Stream.Read.StatDataArray(NumberOfItemAttributeCharacterStats);
                         Unk7 = Stream.Read.ByteArray(4);
 
-                        NumberOfPrimaryWeaponStats = Stream.Read.UShort();
-                        PrimaryWeapon_Stats = Stream.Read.StatDataArray(NumberOfPrimaryWeaponStats);
+                        NumberOfPrimaryWeaponCharacterStats = Stream.Read.UShort();
+                        PrimaryWeapon_CharacterStats = Stream.Read.StatDataArray(NumberOfPrimaryWeaponCharacterStats);
 
                         Unk8 = Stream.Read.ByteArray(4);
 
-                        NumberOfSecondaryWeaponStats = Stream.Read.UShort();
-                        SecondaryWeapon_Stats = Stream.Read.StatDataArray(NumberOfSecondaryWeaponStats);
+                        NumberOfSecondaryWeaponCharacterStats = Stream.Read.UShort();
+                        SecondaryWeapon_CharacterStats = Stream.Read.StatDataArray(NumberOfSecondaryWeaponCharacterStats);
                         Unk9 = Stream.Read.ByteArray(4);
 
-                        NumberOfAttributeCategories1Stats = Stream.Read.UShort();
-                        AttributeCategories_1_Stats = Stream.Read.StatDataArray(NumberOfAttributeCategories1Stats);
+                        NumberOfAttributeCategories1CharacterStats = Stream.Read.UShort();
+                        AttributeCategories_1_CharacterStats = Stream.Read.StatDataArray(NumberOfAttributeCategories1CharacterStats);
 
-                        NumberOfAttributeCategories2Stats = Stream.Read.UShort();
-                        AttributeCategories_2_Stats = Stream.Read.StatDataArray(NumberOfAttributeCategories2Stats);
+                        NumberOfAttributeCategories2CharacterStats = Stream.Read.UShort();
+                        AttributeCategories_2_CharacterStats = Stream.Read.StatDataArray(NumberOfAttributeCategories2CharacterStats);
 
                         break;
+
+                    case ShadowFieldIndex.PvPRank:
+                        PvP_Rank = Stream.Read.UInt();
+                        break;
+                    case ShadowFieldIndex.EliteLevel:
+                        Elite_Rank = Stream.Read.UInt();
+                        break;
+
                     default:
+                        UnableToParseWarning = $"Dont know how to parse shadowfield {sfidx}";
                         int remaining = (int)(Stream.baseStream.Length - Stream.baseStream.ByteOffset);
                         UnableToParse = Stream.Read.ByteArray(remaining);
                         break;
                 }
             }
             while (Stream.baseStream.ByteOffset < Stream.baseStream.Length);
-
-            /*
-
-
-            if (true)
-            {
-  
-    
-
-                Unk6 = Stream.Read.ByteArray(2); // 0x04?
-
-                // after stats
-                Unk10 = Stream.Read.ByteArray(4);
-                PvP_Rank = Stream.Read.UInt();
-                Elite_Rank = Stream.Read.UInt();
-            }
-            */
-
         }
     }
 }
