@@ -211,8 +211,8 @@ namespace PacketPeepScript
             EliteLevel = 0x09,
         }
 
-        public byte[] UnableToParse;
-
+        public string UnableToParseWarning; // Will be set if we enocunter an unhandled shadowfield
+        
         // VisualOverrides, references a visual group?
         public byte Unk_HaveVisualsGroupData;
         public byte Unk_VisualsGroupWeirdByte;
@@ -296,6 +296,8 @@ namespace PacketPeepScript
         public uint Elite_Rank;
 
         public byte CurrentDurabilityPct_Value;
+
+        public byte[] UnableToParse;
 
         public override void Read(Bitter.BinaryStream Stream)
         {

@@ -154,6 +154,8 @@ namespace PacketPeepScript
             MimicOffset = 0x6c,
         }
 
+        public string UnableToParseWarning; // Will be set if we enocunter an unhandled shadowfield
+
         public ushort? StatusEffect_00_ChangeTime;
         public uint? StatusEffect_00_Id;
         public byte[] StatusEffect_00_Unk1;
@@ -603,7 +605,6 @@ namespace PacketPeepScript
 
         public byte[] NPCTargetObjId_Entity;
 
-        public string UnableToParseWarning;
         public byte[] UnableToParse;
 
         public override void Read(Bitter.BinaryStream Stream)

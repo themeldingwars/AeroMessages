@@ -63,6 +63,8 @@ namespace PacketPeepScript
             Unk_Special_0x99        = 0x99, // No value
         }
 
+        public string UnableToParseWarning; // Will be set if we enocunter an unhandled shadowfield
+
         public byte? StaticInfo_1;
         public uint? StaticInfo_Time1;
         public uint? StaticInfo_Time2;
@@ -96,7 +98,6 @@ namespace PacketPeepScript
         public byte[] DismountedVehicle;
         public bool? Unk_Special_0x99;
 
-        public string UnableToParseWarning;
         public byte[] UnableToParse;
        
 

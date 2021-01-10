@@ -169,6 +169,8 @@ namespace PacketPeepScript
 
         }
 
+        public string UnableToParseWarning; // Will be set if we enocunter an unhandled shadowfield
+
         public ushort? StatusEffect_00_ChangeTime;
         public uint? StatusEffect_00_Id;
         public byte[] StatusEffect_00_Unk1;
@@ -637,7 +639,7 @@ namespace PacketPeepScript
         public byte? WeaponIndex_Index;
         public byte[] WeaponIndex_Unk;
         public uint? WeaponIndex_Time;
-        public ushort? WeaponFireBaseTime_ChangeTime; // Not 100% about this one
+        public ushort? WeaponFireBaseTime; // Not 100% about this one
         public byte? WeaponFireBaseTime_Unk; // Not 100% about this one
         public float? WeaponAgilityMod;
         public uint? CombatFlags_Value;
@@ -654,7 +656,6 @@ namespace PacketPeepScript
         public float? SuperCharge_Value;
         public byte? SuperCharge_Op;
 
-        public string UnableToParseWarning;
         public byte[] UnableToParse;
 
         public override void Read(Bitter.BinaryStream Stream)
@@ -1578,7 +1579,7 @@ namespace PacketPeepScript
                         WeaponIndex_Time = Stream.Read.UInt();
                         break;
                     case ShadowFieldIndex.WeaponFireBaseTime:
-                        WeaponFireBaseTime_ShortTime = Stream.Read.UShort();
+                        WeaponFireBaseTime = Stream.Read.UShort();
                         WeaponFireBaseTime_Unk = Stream.Read.Byte();
                         break;
 
