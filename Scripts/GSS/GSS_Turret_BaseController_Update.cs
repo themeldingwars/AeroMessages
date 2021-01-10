@@ -2,8 +2,8 @@ using Bitter;
 using System;
 namespace PacketPeepScript
 {
-    [Script(MessageType.GSS, 40, 1, true)]
-    public class TurretObserverViewUpdate : BaseScript
+    [Script(MessageType.GSS, 39, 1, true)]
+    public class TurretBaseControllerUpdate : BaseScript
     {
         enum ShadowFieldIndex : byte
         {
@@ -11,14 +11,14 @@ namespace PacketPeepScript
             ParentObjId = 0x01,
             ParentChildIndex = 0x02,
             GunnerId = 0x03,
-            CurrentPose = 0x04,
+            SpawnPose = 0x04,
             ProcessDelay = 0x05,
-            WeaponBurstFired = 0x06,
-            WeaponBurstEnded = 0x07,
-            Ammo = 0x08,
-            FireRateModifier = 0x09,
-            HostilityInfo = 0x0a, // Faction
-            PersonalFactionStance = 0x0b,
+            WeaponFireBaseTime = 0x06,
+            Ammo = 0x07,
+            FireRateModifier = 0x08,
+            HostilityInfo = 0x9, // Faction
+            PersonalFactionStance = 0x0a,
+            ScalingLevel = 0x0b,
 
             Unk_0x8b = 0x8b, // Some action/eventcall, no data
         }
@@ -28,12 +28,11 @@ namespace PacketPeepScript
         public byte[] GunnerId_Entity;
         public ulong? GunnerId_Entity_Value;
 
-        public ushort? CurrentPose_ShortTime;
-        public ushort[] CurrentPose_Data;
-        public float[] CurrentPose_Unpacked;
+        public ushort? SpawnPose_ShortTime; // May be off
+        public ushort[] SpawnPose_Data; // May be off
+        public float[] SpawnPose_Unpacked; // May be off
         public uint? ProcessDelay;
-        public uint? WeaponBurstFired_Time;
-        public uint? WeaponBurstEnded_Time;
+        public uint? WeaponFireBaseTime_Time;
 
         public byte[] HostilityInfo_Faction;
 
@@ -55,21 +54,18 @@ namespace PacketPeepScript
                         Stream.baseStream.ByteOffset -= 8;
                         GunnerId_Entity_Value = Stream.Read.ULong() & 0xFFFFFFFFFFFFFF00;
                         break;
-                    case ShadowFieldIndex.CurrentPose:
-                        CurrentPose_ShortTime = Stream.Read.UShort();
-                        CurrentPose_Data = Stream.Read.UShortArray(4);
-                        CurrentPose_Unpacked = UnpackFloatArray(CurrentPose_Data);
+                    case ShadowFieldIndex.SpawnPose: // May be off
+                        SpawnPose_ShortTime = Stream.Read.UShort();
+                        SpawnPose_Data = Stream.Read.UShortArray(4);
+                        SpawnPose_Unpacked = UnpackFloatArray(SpawnPose_Data);
                         break;
                     case ShadowFieldIndex.ProcessDelay:
                         ProcessDelay = Stream.Read.UInt();
                         break;
-                    case ShadowFieldIndex.WeaponBurstFired:
-                        WeaponBurstFired_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.WeaponFireBaseTime:
+                        WeaponFireBaseTime_Time = Stream.Read.UInt();
                         break;
-                    case ShadowFieldIndex.WeaponBurstEnded:
-                        WeaponBurstEnded_Time = Stream.Read.UInt();
-                        break;
-
+    
                     case ShadowFieldIndex.HostilityInfo:
                         HostilityInfo_Faction = Stream.Read.ByteArray(2);
                         break;
