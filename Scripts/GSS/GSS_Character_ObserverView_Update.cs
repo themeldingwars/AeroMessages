@@ -4,107 +4,100 @@ namespace PacketPeepScript
     [Script(MessageType.GSS, 8, 1, true)]
     public class CharacterObserverViewUpdate : BaseScript
     {
-        // Take anything that is Unk with a huge grain of salt.
         enum ShadowFieldIndex : byte
         {
-            Unk_0x00                = 0x00,
-            Unk_0x01                = 0x01,
-            EffectsFlag             = 0x02, // aka flashlight
-            Unk_0x03                = 0x03,
-            Unk_0x04                = 0x04, // Equivalent of 0x0d on base controller
+            StaticInfo              = 0x00,
+            SpawnTime               = 0x01,
+            EffectsFlags            = 0x02, // aka flashlight
+            GibVisualsID            = 0x03,
+            ProcessDelay            = 0x04, // Equivalent of 0x0d on base controller
             CharacterState          = 0x05,
-            Faction                 = 0x06,
-            CurrentHealthPercent    = 0x08, // % integer
-            PerformEmote            = 0x0A,
-            MountVehicle            = 0x0B,
-            Unk_0x15                = 0x15,
-            Unk_0x19                = 0x19,
-            DismountVehicle         = 0x8B,
+            HostilityInfo           = 0x06, // Not sure about the parsing 
+            PersonalFactionStance   = 0x07, // Not sure about the parsing 
+            CurrentHealthPct        = 0x08, // % integer
+            MaxHealth               = 0x09,
+            EmoteID                 = 0x0A,
+            AttachedTo              = 0x0B, // used when the character is mounted to a vehicle
+            SnapMount               = 0x0C,
+            SinFlags                = 0x0D,
+            SinFactionsAcquiredBy   = 0x0E,
+            SinTeamsAcquiredBy      = 0x0F,
+            ArmyGUID                = 0x10,
+            OwnerId                 = 0x11,
+            NPCType                 = 0x12,
+            DockedParams            = 0x13,
+            LookAtTarget            = 0x14,
+            WaterLevelAndDesc       = 0x15,
+            CarryableObjects_0      = 0x16,
+            CarryableObjects_1      = 0x17,
+            CarryableObjects_2      = 0x18,
+            RespawnTimes            = 0x19,
+            SinCardType             = 0x1a,
+            SinCardFields_0         = 0x1b,
+            SinCardFields_1         = 0x1c,
+            SinCardFields_2         = 0x1d,
+            SinCardFields_3         = 0x1e,
+            SinCardFields_4         = 0x1f,
+            SinCardFields_5         = 0x20,
+            SinCardFields_6         = 0x21,
+            SinCardFields_7         = 0x22,
+            SinCardFields_8         = 0x23,
+            SinCardFields_9         = 0x24,
+            SinCardFields_10        = 0x25,
+            SinCardFields_11        = 0x26,
+            SinCardFields_12        = 0x27,
+            SinCardFields_13        = 0x28,
+            SinCardFields_14        = 0x29,
+            SinCardFields_15        = 0x2a,
+            SinCardFields_16        = 0x2b,
+            SinCardFields_17        = 0x2c,
+            SinCardFields_18        = 0x2d,
+            SinCardFields_19        = 0x2e,
+            SinCardFields_20        = 0x2f,
+            SinCardFields_21        = 0x30,
+            SinCardFields_22        = 0x31,
+            AssetOverrides          = 0x32,
 
+            // These actions may not actually be shadowfields but some other form of events?
+            DismountVehicle         = 0x8B, // Maybe this is a special key with no params, and then 0x0C is used to dismount?
             Unk_Special_0x99        = 0x99, // No value
         }
 
-        public byte? Unk_0x00_1;
-        public uint? Unk_0x00_Time1;
-        public uint? Unk_0x00_Time2;
+        public byte? StaticInfo_1;
+        public uint? StaticInfo_Time1;
+        public uint? StaticInfo_Time2;
 
-        public byte? EffectsFlag;
+        public byte? EffectsFlags;
 
-        public byte[] Unk_0x03_Unk;
-        public uint? Unk_0x03_Time;
+        public uint? GibVisualsID_Id;
+        public uint? GibVisualsID_Time;
 
-        public ushort? Unk_0x04_ShortTime; 
-        public byte[] Unk_0x04_2;
+        public ushort? ProcessDelay_ShortTime; 
+        public byte[] ProcessDelay_2;
 
 
         public byte? CharacterState;
         public uint? CharacterState_Time;
-        public byte[] Faction;
-        public byte? CurrentHealthPercent;
-        public ushort? PerformEmote_EmoteId; // Sdb table 73, id column
-        public uint? PerformEmote_Time;
-        public byte[] MountedVehicle;
-        public byte? Unk_0x15;
-        public uint? Unk_0x19_Time1;
-        public uint? Unk_0x19_Time2;
-        public byte[] DismountedVehicle;
+        public byte[] HostilityInfo;
+        public byte[] PersonalFactionStance;
+        public byte? CurrentHealthPct;
+        public uint? MaxHealth; // assumption
+        public ushort? EmoteID_EmoteId; // Sdb table 73, id column
+        public uint? EmoteID_Time;
 
+        public byte[] AttachedTo;
+
+
+        public byte? WaterLevelAndDesc;
+        public uint? RespawnTimes_Time1;
+        public uint? RespawnTimes_Time2;
+
+
+        public byte[] DismountedVehicle;
         public bool? Unk_Special_0x99;
 
+        public string UnableToParseWarning;
         public byte[] UnableToParse;
-
-
-        /*
-        public byte[] Unk1;
-        public string DisplayName;
-        public string UniqueName;
-        public byte Gender;
-        public byte Race;
-        public uint CharInfoId; // Sdb table 240
-        public uint Head;
-        public uint Eyes;
-        public byte Unk2;
-        public byte IsNpc;
-        public byte StaffFlags;
-        public uint CharacterTypeId; // Sdb table 280
-        public uint Voice;
-        public ushort TitleId;
-        public uint NameLocalizationId; // Sdb table 31
-        public uint[] HeadAccessories;
-        public uint Vehicle;
-        public uint Glider;
-        // Character Visuals
-        public byte[] Unk3;
-        public uint[] WarpaintColors; // Skin/Hair colors here
-        public byte[] WarpaintPalettes_Data; // 1 byte type, 4 byte id
-        public byte[] WarpaintPatterns_Data; // 4 byte id, 4*2 byte transform (halfs), 1 byte "usage"
-        public uint[] Ornaments;
-        public byte[] Unk4;
-        // --
-        public string ArmyTag;
-
-        // Beyond here it will not match well for NPCs
-        // This section needs some work, too many varied length unks
-        public uint Time1;
-        public byte[] Unk5;
-        public uint Time2;
-        public byte[] Unk6;
-        public byte CharacterState;
-        public uint Time3;
-        public byte[] Faction; // Left Byte is Mode: 1 = Factions, 2 = Teams. Right byte is the Faction or Team Id respectively.
-        public byte[] Unk7;
-
-        public byte[] Unk9;
-        public byte HealthPercent;
-        public uint HealthMax;
-        public uint Time4;
-        public byte[] Unk10;
-        public byte[] Mounted_Unk_VehicleEntity1; // Couldnt get this to actually work in the client
-        public byte[] Mounted_Unk_VehicleEntity2;
-        public byte[] Mounted_Unk_Bytes;
-        public byte[] Unk11;
-        public ulong ArmyGUID;
-        */
        
 
         public override void Read(Bitter.BinaryStream Stream)
@@ -117,25 +110,24 @@ namespace PacketPeepScript
                 switch (sfidx)
                 {
  
-                    case ShadowFieldIndex.Unk_0x00:
-                        Unk_0x00_1 = Stream.Read.Byte();
-                        Unk_0x00_Time1 = Stream.Read.UInt();
-                        Unk_0x00_Time2 = Stream.Read.UInt();
+                    case ShadowFieldIndex.StaticInfo:
+                        StaticInfo_1 = Stream.Read.Byte();
+                        StaticInfo_Time1 = Stream.Read.UInt();
+                        StaticInfo_Time2 = Stream.Read.UInt();
                         break;
 
-                    case ShadowFieldIndex.EffectsFlag:
-                        EffectsFlag = Stream.Read.Byte();
+                    case ShadowFieldIndex.EffectsFlags:
+                        EffectsFlags = Stream.Read.Byte();
                         break;
 
-                    case ShadowFieldIndex.Unk_0x03:
-                        Unk_0x03_Unk = Stream.Read.ByteArray(4);
-                        Unk_0x03_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.GibVisualsID:
+                        GibVisualsID_Id = Stream.Read.UInt();
+                        GibVisualsID_Time = Stream.Read.UInt();
                         break;
 
-
-                    case ShadowFieldIndex.Unk_0x04:
-                        Unk_0x04_ShortTime = Stream.Read.UShort();
-                        Unk_0x04_2 = Stream.Read.ByteArray(2);
+                    case ShadowFieldIndex.ProcessDelay:
+                        ProcessDelay_ShortTime = Stream.Read.UShort();
+                        ProcessDelay_2 = Stream.Read.ByteArray(2);
                         break;
 
                     case ShadowFieldIndex.CharacterState:
@@ -143,30 +135,38 @@ namespace PacketPeepScript
                         CharacterState_Time = Stream.Read.UInt();
                         break;
 
-                    case ShadowFieldIndex.Faction:
-                        Faction = Stream.Read.ByteArray(2);
+                    case ShadowFieldIndex.HostilityInfo:
+                        HostilityInfo = Stream.Read.ByteArray(2);
                         break;
 
-                    case ShadowFieldIndex.CurrentHealthPercent:
-                        CurrentHealthPercent = Stream.Read.Byte();
+                    case ShadowFieldIndex.PersonalFactionStance:
+                        PersonalFactionStance = Stream.Read.ByteArray(2);
                         break;
 
-                    case ShadowFieldIndex.PerformEmote:
-                        PerformEmote_EmoteId = Stream.Read.UShort();
-                        PerformEmote_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.CurrentHealthPct:
+                        CurrentHealthPct = Stream.Read.Byte();
                         break;
 
-                    case ShadowFieldIndex.MountVehicle:
-                        MountedVehicle = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.MaxHealth:
+                        MaxHealth = Stream.Read.UInt();
                         break;
 
-                    case ShadowFieldIndex.Unk_0x15:
-                        Unk_0x15 = Stream.Read.Byte();
+                    case ShadowFieldIndex.EmoteID:
+                        EmoteID_EmoteId = Stream.Read.UShort();
+                        EmoteID_Time = Stream.Read.UInt();
                         break;
 
-                    case ShadowFieldIndex.Unk_0x19:
-                        Unk_0x19_Time1 = Stream.Read.UInt();
-                        Unk_0x19_Time2 = Stream.Read.UInt();
+                    case ShadowFieldIndex.AttachedTo:
+                        AttachedTo = Stream.Read.ByteArray(8);
+                        break;
+
+                    case ShadowFieldIndex.WaterLevelAndDesc:
+                        WaterLevelAndDesc = Stream.Read.Byte();
+                        break;
+
+                    case ShadowFieldIndex.RespawnTimes:
+                        RespawnTimes_Time1 = Stream.Read.UInt();
+                        RespawnTimes_Time2 = Stream.Read.UInt();
                         break;
 
                     case ShadowFieldIndex.DismountVehicle:
@@ -179,6 +179,7 @@ namespace PacketPeepScript
                         break;
 
                     default:
+                        UnableToParseWarning = $"Dont know how to parse shadowfield {sfidx}";
                         int remaining = (int)(Stream.baseStream.Length - Stream.baseStream.ByteOffset);
                         UnableToParse = Stream.Read.ByteArray(remaining);
                         break;
