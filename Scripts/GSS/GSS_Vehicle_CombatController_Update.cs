@@ -1,44 +1,43 @@
 using Bitter;
 namespace PacketPeepScript
 {
-    // Assuming it has the same number of status effect fields as Character.
     [Script(MessageType.GSS, 28, 1, true)]
     public class VehicleCombatControllerUpdate : BaseScript
     {
         enum ShadowFieldIndex : byte
         {   
-            StatusEffect_00_ShortTime = 0x00,
-            StatusEffect_01_ShortTime = 0x01,
-            StatusEffect_02_ShortTime = 0x02,
-            StatusEffect_03_ShortTime = 0x03,
-            StatusEffect_04_ShortTime = 0x04,
-            StatusEffect_05_ShortTime = 0x05,
-            StatusEffect_06_ShortTime = 0x06,
-            StatusEffect_07_ShortTime = 0x07,
-            StatusEffect_08_ShortTime = 0x08,
-            StatusEffect_09_ShortTime = 0x09,
-            StatusEffect_0a_ShortTime = 0x0a,
-            StatusEffect_0b_ShortTime = 0x0b,
-            StatusEffect_0c_ShortTime = 0x0c,
-            StatusEffect_0d_ShortTime = 0x0d,
-            StatusEffect_0e_ShortTime = 0x0e,
-            StatusEffect_0f_ShortTime = 0x0f,
-            StatusEffect_10_ShortTime = 0x10,
-            StatusEffect_11_ShortTime = 0x11,
-            StatusEffect_12_ShortTime = 0x12,
-            StatusEffect_13_ShortTime = 0x13,
-            StatusEffect_14_ShortTime = 0x14,
-            StatusEffect_15_ShortTime = 0x15,
-            StatusEffect_16_ShortTime = 0x16,
-            StatusEffect_17_ShortTime = 0x17,
-            StatusEffect_18_ShortTime = 0x18,
-            StatusEffect_19_ShortTime = 0x19,
-            StatusEffect_1a_ShortTime = 0x1a,
-            StatusEffect_1b_ShortTime = 0x1b,
-            StatusEffect_1c_ShortTime = 0x1c,
-            StatusEffect_1d_ShortTime = 0x1d,
-            StatusEffect_1e_ShortTime = 0x1e,
-            StatusEffect_1f_ShortTime = 0x1f,
+            StatusEffect_00_ChangeTime = 0x00,
+            StatusEffect_01_ChangeTime = 0x01,
+            StatusEffect_02_ChangeTime = 0x02,
+            StatusEffect_03_ChangeTime = 0x03,
+            StatusEffect_04_ChangeTime = 0x04,
+            StatusEffect_05_ChangeTime = 0x05,
+            StatusEffect_06_ChangeTime = 0x06,
+            StatusEffect_07_ChangeTime = 0x07,
+            StatusEffect_08_ChangeTime = 0x08,
+            StatusEffect_09_ChangeTime = 0x09,
+            StatusEffect_0a_ChangeTime = 0x0a,
+            StatusEffect_0b_ChangeTime = 0x0b,
+            StatusEffect_0c_ChangeTime = 0x0c,
+            StatusEffect_0d_ChangeTime = 0x0d,
+            StatusEffect_0e_ChangeTime = 0x0e,
+            StatusEffect_0f_ChangeTime = 0x0f,
+            StatusEffect_10_ChangeTime = 0x10,
+            StatusEffect_11_ChangeTime = 0x11,
+            StatusEffect_12_ChangeTime = 0x12,
+            StatusEffect_13_ChangeTime = 0x13,
+            StatusEffect_14_ChangeTime = 0x14,
+            StatusEffect_15_ChangeTime = 0x15,
+            StatusEffect_16_ChangeTime = 0x16,
+            StatusEffect_17_ChangeTime = 0x17,
+            StatusEffect_18_ChangeTime = 0x18,
+            StatusEffect_19_ChangeTime = 0x19,
+            StatusEffect_1a_ChangeTime = 0x1a,
+            StatusEffect_1b_ChangeTime = 0x1b,
+            StatusEffect_1c_ChangeTime = 0x1c,
+            StatusEffect_1d_ChangeTime = 0x1d,
+            StatusEffect_1e_ChangeTime = 0x1e,
+            StatusEffect_1f_ChangeTime = 0x1f,
 
             StatusEffect_00_Data = 0x20,
             StatusEffect_01_Data = 0x21,
@@ -107,19 +106,20 @@ namespace PacketPeepScript
             StatusEffect_1e_Cancel = 0xbe,
             StatusEffect_1f_Cancel = 0xbf,
 
-
-            Unk_0x40 = 0x40,
-            Unk_0x41 = 0x41,
-            Unk_0x42 = 0x42,
-            Unk_0x43 = 0x43,
-            Unk_0x44 = 0x44,
-            Unk_0x45 = 0x45,
-            Unk_0x46 = 0x46,
-            Unk_0x47 = 0x47,
-            Unk_0x48 = 0x48,
+            SlottedAbility_0       = 0x40,
+            SlottedAbility_1       = 0x41,
+            SlottedAbility_2       = 0x42,
+            SlottedAbility_3       = 0x43,
+            SlottedAbility_4       = 0x44,
+            SlottedAbility_5       = 0x45,
+            SlottedAbility_6       = 0x46,
+            SlottedAbility_7       = 0x47,
+            SlottedAbility_8       = 0x48,
         }
 
-        public ushort? StatusEffect_00_ShortTime;
+        public string UnableToParseWarning; // Will be set if we encounter an unhandled shadowfield
+
+        public ushort? StatusEffect_00_ChangeTime;
         public uint? StatusEffect_00_Id;
         public byte[] StatusEffect_00_Unk1;
         public byte[] StatusEffect_00_Entity;
@@ -132,7 +132,7 @@ namespace PacketPeepScript
         public float? StatusEffect_00_Data_Float2;
         public bool? StatusEffect_00_Cancel;
 
-        public ushort? StatusEffect_01_ShortTime;
+        public ushort? StatusEffect_01_ChangeTime;
         public uint? StatusEffect_01_Id;
         public byte[] StatusEffect_01_Unk1;
         public byte[] StatusEffect_01_Entity;
@@ -145,7 +145,7 @@ namespace PacketPeepScript
         public float? StatusEffect_01_Data_Float2;
         public bool? StatusEffect_01_Cancel;
 
-        public ushort? StatusEffect_02_ShortTime;
+        public ushort? StatusEffect_02_ChangeTime;
         public uint? StatusEffect_02_Id;
         public byte[] StatusEffect_02_Unk1;
         public byte[] StatusEffect_02_Entity;
@@ -158,7 +158,7 @@ namespace PacketPeepScript
         public float? StatusEffect_02_Data_Float2;
         public bool? StatusEffect_02_Cancel;
 
-        public ushort? StatusEffect_03_ShortTime;
+        public ushort? StatusEffect_03_ChangeTime;
         public uint? StatusEffect_03_Id;
         public byte[] StatusEffect_03_Unk1;
         public byte[] StatusEffect_03_Entity;
@@ -171,7 +171,7 @@ namespace PacketPeepScript
         public float? StatusEffect_03_Data_Float2;
         public bool? StatusEffect_03_Cancel;
 
-        public ushort? StatusEffect_04_ShortTime;
+        public ushort? StatusEffect_04_ChangeTime;
         public uint? StatusEffect_04_Id;
         public byte[] StatusEffect_04_Unk1;
         public byte[] StatusEffect_04_Entity;
@@ -184,7 +184,7 @@ namespace PacketPeepScript
         public float? StatusEffect_04_Data_Float2;
         public bool? StatusEffect_04_Cancel;
 
-        public ushort? StatusEffect_05_ShortTime;
+        public ushort? StatusEffect_05_ChangeTime;
         public uint? StatusEffect_05_Id;
         public byte[] StatusEffect_05_Unk1;
         public byte[] StatusEffect_05_Entity;
@@ -197,7 +197,7 @@ namespace PacketPeepScript
         public float? StatusEffect_05_Data_Float2;
         public bool? StatusEffect_05_Cancel;
 
-        public ushort? StatusEffect_06_ShortTime;
+        public ushort? StatusEffect_06_ChangeTime;
         public uint? StatusEffect_06_Id;
         public byte[] StatusEffect_06_Unk1;
         public byte[] StatusEffect_06_Entity;
@@ -210,7 +210,7 @@ namespace PacketPeepScript
         public float? StatusEffect_06_Data_Float2;
         public bool? StatusEffect_06_Cancel;
 
-        public ushort? StatusEffect_07_ShortTime;
+        public ushort? StatusEffect_07_ChangeTime;
         public uint? StatusEffect_07_Id;
         public byte[] StatusEffect_07_Unk1;
         public byte[] StatusEffect_07_Entity;
@@ -223,7 +223,7 @@ namespace PacketPeepScript
         public float? StatusEffect_07_Data_Float2;
         public bool? StatusEffect_07_Cancel;
 
-        public ushort? StatusEffect_08_ShortTime;
+        public ushort? StatusEffect_08_ChangeTime;
         public uint? StatusEffect_08_Id; 
         public byte[] StatusEffect_08_Unk1;
         public byte[] StatusEffect_08_Entity;
@@ -236,7 +236,7 @@ namespace PacketPeepScript
         public float? StatusEffect_08_Data_Float2;
         public bool? StatusEffect_08_Cancel;
 
-        public ushort? StatusEffect_09_ShortTime;
+        public ushort? StatusEffect_09_ChangeTime;
         public uint? StatusEffect_09_Id;
         public byte[] StatusEffect_09_Unk1;
         public byte[] StatusEffect_09_Entity;
@@ -249,7 +249,7 @@ namespace PacketPeepScript
         public float? StatusEffect_09_Data_Float2;
         public bool? StatusEffect_09_Cancel;
 
-        public ushort? StatusEffect_0a_ShortTime;
+        public ushort? StatusEffect_0a_ChangeTime;
         public uint? StatusEffect_0a_Id;
         public byte[] StatusEffect_0a_Unk1;
         public byte[] StatusEffect_0a_Entity;
@@ -262,7 +262,7 @@ namespace PacketPeepScript
         public float? StatusEffect_0a_Data_Float2;
         public bool? StatusEffect_0a_Cancel;
 
-        public ushort? StatusEffect_0b_ShortTime;
+        public ushort? StatusEffect_0b_ChangeTime;
         public uint? StatusEffect_0b_Id;
         public byte[] StatusEffect_0b_Unk1;
         public byte[] StatusEffect_0b_Entity;
@@ -275,7 +275,7 @@ namespace PacketPeepScript
         public float? StatusEffect_0b_Data_Float2;
         public bool? StatusEffect_0b_Cancel;
 
-        public ushort? StatusEffect_0c_ShortTime;
+        public ushort? StatusEffect_0c_ChangeTime;
         public uint? StatusEffect_0c_Id;
         public byte[] StatusEffect_0c_Unk1;
         public byte[] StatusEffect_0c_Entity;
@@ -288,7 +288,7 @@ namespace PacketPeepScript
         public float? StatusEffect_0c_Data_Float2;
         public bool? StatusEffect_0c_Cancel;
 
-        public ushort? StatusEffect_0d_ShortTime;
+        public ushort? StatusEffect_0d_ChangeTime;
         public uint? StatusEffect_0d_Id;
         public byte[] StatusEffect_0d_Unk1;
         public byte[] StatusEffect_0d_Entity;
@@ -301,7 +301,7 @@ namespace PacketPeepScript
         public float? StatusEffect_0d_Data_Float2;
         public bool? StatusEffect_0d_Cancel;
 
-        public ushort? StatusEffect_0e_ShortTime;
+        public ushort? StatusEffect_0e_ChangeTime;
         public uint? StatusEffect_0e_Id;
         public byte[] StatusEffect_0e_Unk1;
         public byte[] StatusEffect_0e_Entity;
@@ -314,7 +314,7 @@ namespace PacketPeepScript
         public float? StatusEffect_0e_Data_Float2;
         public bool? StatusEffect_0e_Cancel;
 
-        public ushort? StatusEffect_0f_ShortTime;
+        public ushort? StatusEffect_0f_ChangeTime;
         public uint? StatusEffect_0f_Id;
         public byte[] StatusEffect_0f_Unk1;
         public byte[] StatusEffect_0f_Entity;
@@ -327,7 +327,7 @@ namespace PacketPeepScript
         public float? StatusEffect_0f_Data_Float2;
         public bool? StatusEffect_0f_Cancel;
 
-        public ushort? StatusEffect_10_ShortTime;
+        public ushort? StatusEffect_10_ChangeTime;
         public uint? StatusEffect_10_Id;
         public byte[] StatusEffect_10_Unk1;
         public byte[] StatusEffect_10_Entity;
@@ -340,7 +340,7 @@ namespace PacketPeepScript
         public float? StatusEffect_10_Data_Float2;
         public bool? StatusEffect_10_Cancel;
 
-        public ushort? StatusEffect_11_ShortTime;
+        public ushort? StatusEffect_11_ChangeTime;
         public uint? StatusEffect_11_Id;
         public byte[] StatusEffect_11_Unk1;
         public byte[] StatusEffect_11_Entity;
@@ -353,7 +353,7 @@ namespace PacketPeepScript
         public float? StatusEffect_11_Data_Float2;
         public bool? StatusEffect_11_Cancel;
 
-        public ushort? StatusEffect_12_ShortTime;
+        public ushort? StatusEffect_12_ChangeTime;
         public uint? StatusEffect_12_Id;
         public byte[] StatusEffect_12_Unk1;
         public byte[] StatusEffect_12_Entity;
@@ -366,7 +366,7 @@ namespace PacketPeepScript
         public float? StatusEffect_12_Data_Float2;
         public bool? StatusEffect_12_Cancel;
 
-        public ushort? StatusEffect_13_ShortTime;
+        public ushort? StatusEffect_13_ChangeTime;
         public uint? StatusEffect_13_Id;
         public byte[] StatusEffect_13_Unk1;
         public byte[] StatusEffect_13_Entity;
@@ -379,7 +379,7 @@ namespace PacketPeepScript
         public float? StatusEffect_13_Data_Float2;
         public bool? StatusEffect_13_Cancel;
 
-        public ushort? StatusEffect_14_ShortTime;
+        public ushort? StatusEffect_14_ChangeTime;
         public uint? StatusEffect_14_Id;
         public byte[] StatusEffect_14_Unk1;
         public byte[] StatusEffect_14_Entity;
@@ -392,7 +392,7 @@ namespace PacketPeepScript
         public float? StatusEffect_14_Data_Float2;
         public bool? StatusEffect_14_Cancel;
 
-        public ushort? StatusEffect_15_ShortTime;
+        public ushort? StatusEffect_15_ChangeTime;
         public uint? StatusEffect_15_Id;
         public byte[] StatusEffect_15_Unk1;
         public byte[] StatusEffect_15_Entity;
@@ -405,7 +405,7 @@ namespace PacketPeepScript
         public float? StatusEffect_15_Data_Float2;
         public bool? StatusEffect_15_Cancel;
 
-        public ushort? StatusEffect_16_ShortTime;
+        public ushort? StatusEffect_16_ChangeTime;
         public uint? StatusEffect_16_Id;
         public byte[] StatusEffect_16_Unk1;
         public byte[] StatusEffect_16_Entity;
@@ -418,7 +418,7 @@ namespace PacketPeepScript
         public float? StatusEffect_16_Data_Float2;
         public bool? StatusEffect_16_Cancel;
 
-        public ushort? StatusEffect_17_ShortTime;
+        public ushort? StatusEffect_17_ChangeTime;
         public uint? StatusEffect_17_Id;
         public byte[] StatusEffect_17_Unk1;
         public byte[] StatusEffect_17_Entity;
@@ -431,7 +431,7 @@ namespace PacketPeepScript
         public float? StatusEffect_17_Data_Float2;
         public bool? StatusEffect_17_Cancel;
 
-        public ushort? StatusEffect_18_ShortTime;
+        public ushort? StatusEffect_18_ChangeTime;
         public uint? StatusEffect_18_Id; 
         public byte[] StatusEffect_18_Unk1;
         public byte[] StatusEffect_18_Entity;
@@ -444,7 +444,7 @@ namespace PacketPeepScript
         public float? StatusEffect_18_Data_Float2;
         public bool? StatusEffect_18_Cancel;
 
-        public ushort? StatusEffect_19_ShortTime;
+        public ushort? StatusEffect_19_ChangeTime;
         public uint? StatusEffect_19_Id;
         public byte[] StatusEffect_19_Unk1;
         public byte[] StatusEffect_19_Entity;
@@ -457,7 +457,7 @@ namespace PacketPeepScript
         public float? StatusEffect_19_Data_Float2;
         public bool? StatusEffect_19_Cancel;
 
-        public ushort? StatusEffect_1a_ShortTime;
+        public ushort? StatusEffect_1a_ChangeTime;
         public uint? StatusEffect_1a_Id;
         public byte[] StatusEffect_1a_Unk1;
         public byte[] StatusEffect_1a_Entity;
@@ -470,7 +470,7 @@ namespace PacketPeepScript
         public float? StatusEffect_1a_Data_Float2;
         public bool? StatusEffect_1a_Cancel;
 
-        public ushort? StatusEffect_1b_ShortTime;
+        public ushort? StatusEffect_1b_ChangeTime;
         public uint? StatusEffect_1b_Id;
         public byte[] StatusEffect_1b_Unk1;
         public byte[] StatusEffect_1b_Entity;
@@ -483,7 +483,7 @@ namespace PacketPeepScript
         public float? StatusEffect_1b_Data_Float2;
         public bool? StatusEffect_1b_Cancel;
 
-        public ushort? StatusEffect_1c_ShortTime;
+        public ushort? StatusEffect_1c_ChangeTime;
         public uint? StatusEffect_1c_Id;
         public byte[] StatusEffect_1c_Unk1;
         public byte[] StatusEffect_1c_Entity;
@@ -496,7 +496,7 @@ namespace PacketPeepScript
         public float? StatusEffect_1c_Data_Float2;
         public bool? StatusEffect_1c_Cancel;
 
-        public ushort? StatusEffect_1d_ShortTime;
+        public ushort? StatusEffect_1d_ChangeTime;
         public uint? StatusEffect_1d_Id;
         public byte[] StatusEffect_1d_Unk1;
         public byte[] StatusEffect_1d_Entity;
@@ -509,7 +509,7 @@ namespace PacketPeepScript
         public float? StatusEffect_1d_Data_Float2;
         public bool? StatusEffect_1d_Cancel;
 
-        public ushort? StatusEffect_1e_ShortTime;
+        public ushort? StatusEffect_1e_ChangeTime;
         public uint? StatusEffect_1e_Id;
         public byte[] StatusEffect_1e_Unk1;
         public byte[] StatusEffect_1e_Entity;
@@ -522,7 +522,7 @@ namespace PacketPeepScript
         public float? StatusEffect_1e_Data_Float2;
         public bool? StatusEffect_1e_Cancel;
 
-        public ushort? StatusEffect_1f_ShortTime;
+        public ushort? StatusEffect_1f_ChangeTime;
         public uint? StatusEffect_1f_Id;
         public byte[] StatusEffect_1f_Unk1;
         public byte[] StatusEffect_1f_Entity;
@@ -535,18 +535,15 @@ namespace PacketPeepScript
         public float? StatusEffect_1f_Data_Float2;
         public bool? StatusEffect_1f_Cancel;
 
-        // Type might be wrong for some
-        public uint? Unk_0x40;
-        public uint? Unk_0x41;
-        public uint? Unk_0x42;
-        public uint? Unk_0x43;
-        public uint? Unk_0x44;
-        public uint? Unk_0x45;
-        public uint? Unk_0x46;
-        public uint? Unk_0x47;
-        public uint? Unk_0x48;
-        // --
-
+        public uint? SlottedAbility_0;
+        public uint? SlottedAbility_1;
+        public uint? SlottedAbility_2;
+        public uint? SlottedAbility_3;
+        public uint? SlottedAbility_4;
+        public uint? SlottedAbility_5;
+        public uint? SlottedAbility_6;
+        public uint? SlottedAbility_7;
+        public uint? SlottedAbility_8;
 
         public byte[] UnableToParse;
 
@@ -559,132 +556,132 @@ namespace PacketPeepScript
                 ShadowFieldIndex sfidx = (ShadowFieldIndex) (Stream.Read.Byte());
                 switch (sfidx)
                 {
-                    case ShadowFieldIndex.StatusEffect_00_ShortTime:
-                        StatusEffect_00_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_00_ChangeTime:
+                        StatusEffect_00_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_01_ShortTime:
-                        StatusEffect_01_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_01_ChangeTime:
+                        StatusEffect_01_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_02_ShortTime:
-                        StatusEffect_02_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_02_ChangeTime:
+                        StatusEffect_02_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_03_ShortTime:
-                        StatusEffect_03_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_03_ChangeTime:
+                        StatusEffect_03_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_04_ShortTime:
-                        StatusEffect_04_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_04_ChangeTime:
+                        StatusEffect_04_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_05_ShortTime:
-                        StatusEffect_05_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_05_ChangeTime:
+                        StatusEffect_05_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_06_ShortTime:
-                        StatusEffect_06_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_06_ChangeTime:
+                        StatusEffect_06_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_07_ShortTime:
-                        StatusEffect_07_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_07_ChangeTime:
+                        StatusEffect_07_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_08_ShortTime:
-                        StatusEffect_08_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_08_ChangeTime:
+                        StatusEffect_08_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_09_ShortTime:
-                        StatusEffect_09_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_09_ChangeTime:
+                        StatusEffect_09_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_0a_ShortTime:
-                        StatusEffect_0a_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_0a_ChangeTime:
+                        StatusEffect_0a_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_0b_ShortTime:
-                        StatusEffect_0b_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_0b_ChangeTime:
+                        StatusEffect_0b_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_0c_ShortTime:
-                        StatusEffect_0c_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_0c_ChangeTime:
+                        StatusEffect_0c_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_0d_ShortTime:
-                        StatusEffect_0d_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_0d_ChangeTime:
+                        StatusEffect_0d_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_0e_ShortTime:
-                        StatusEffect_0e_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_0e_ChangeTime:
+                        StatusEffect_0e_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_0f_ShortTime:
-                        StatusEffect_0f_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_0f_ChangeTime:
+                        StatusEffect_0f_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_10_ShortTime:
-                        StatusEffect_10_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_10_ChangeTime:
+                        StatusEffect_10_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_11_ShortTime:
-                        StatusEffect_11_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_11_ChangeTime:
+                        StatusEffect_11_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_12_ShortTime:
-                        StatusEffect_12_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_12_ChangeTime:
+                        StatusEffect_12_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_13_ShortTime:
-                        StatusEffect_13_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_13_ChangeTime:
+                        StatusEffect_13_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_14_ShortTime:
-                        StatusEffect_14_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_14_ChangeTime:
+                        StatusEffect_14_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_15_ShortTime:
-                        StatusEffect_15_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_15_ChangeTime:
+                        StatusEffect_15_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_16_ShortTime:
-                        StatusEffect_16_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_16_ChangeTime:
+                        StatusEffect_16_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_17_ShortTime:
-                        StatusEffect_17_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_17_ChangeTime:
+                        StatusEffect_17_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_18_ShortTime:
-                        StatusEffect_18_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_18_ChangeTime:
+                        StatusEffect_18_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_19_ShortTime:
-                        StatusEffect_19_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_19_ChangeTime:
+                        StatusEffect_19_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_1a_ShortTime:
-                        StatusEffect_1a_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_1a_ChangeTime:
+                        StatusEffect_1a_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_1b_ShortTime:
-                        StatusEffect_1b_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_1b_ChangeTime:
+                        StatusEffect_1b_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_1c_ShortTime:
-                        StatusEffect_1c_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_1c_ChangeTime:
+                        StatusEffect_1c_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_1d_ShortTime:
-                        StatusEffect_1d_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_1d_ChangeTime:
+                        StatusEffect_1d_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_1e_ShortTime:
-                        StatusEffect_1e_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_1e_ChangeTime:
+                        StatusEffect_1e_ChangeTime = Stream.Read.UShort();
                         break;
 
-                    case ShadowFieldIndex.StatusEffect_1f_ShortTime:
-                        StatusEffect_1f_ShortTime = Stream.Read.UShort();
+                    case ShadowFieldIndex.StatusEffect_1f_ChangeTime:
+                        StatusEffect_1f_ChangeTime = Stream.Read.UShort();
                         break;
 
 
@@ -1362,35 +1359,36 @@ namespace PacketPeepScript
                         StatusEffect_1f_Cancel = true;
                         break;
 
-                    case ShadowFieldIndex.Unk_0x40:
-                        Unk_0x40 = Stream.Read.UInt();
+                    case ShadowFieldIndex.SlottedAbility_0:
+                        SlottedAbility_0 = Stream.Read.UInt();
                         break;
-                    case ShadowFieldIndex.Unk_0x41:
-                        Unk_0x41 = Stream.Read.UInt();
+                    case ShadowFieldIndex.SlottedAbility_1:
+                        SlottedAbility_1 = Stream.Read.UInt();
                         break;
-                    case ShadowFieldIndex.Unk_0x42:
-                        Unk_0x42 = Stream.Read.UInt();
+                    case ShadowFieldIndex.SlottedAbility_2:
+                        SlottedAbility_2 = Stream.Read.UInt();
                         break;
-                    case ShadowFieldIndex.Unk_0x43:
-                        Unk_0x43 = Stream.Read.UInt();
+                    case ShadowFieldIndex.SlottedAbility_3:
+                        SlottedAbility_3 = Stream.Read.UInt();
                         break;
-                    case ShadowFieldIndex.Unk_0x44:
-                        Unk_0x44 = Stream.Read.UInt();
+                    case ShadowFieldIndex.SlottedAbility_4:
+                        SlottedAbility_4 = Stream.Read.UInt();
                         break;
-                    case ShadowFieldIndex.Unk_0x45:
-                        Unk_0x45 = Stream.Read.UInt();
+                    case ShadowFieldIndex.SlottedAbility_5:
+                        SlottedAbility_5 = Stream.Read.UInt();
                         break;
-                    case ShadowFieldIndex.Unk_0x46:
-                        Unk_0x46 = Stream.Read.UInt();
+                    case ShadowFieldIndex.SlottedAbility_6:
+                        SlottedAbility_6 = Stream.Read.UInt();
                         break;
-                    case ShadowFieldIndex.Unk_0x47:
-                        Unk_0x47 = Stream.Read.UInt();
+                    case ShadowFieldIndex.SlottedAbility_7:
+                        SlottedAbility_7 = Stream.Read.UInt();
                         break;
-                    case ShadowFieldIndex.Unk_0x48:
-                        Unk_0x48 = Stream.Read.UInt();
+                    case ShadowFieldIndex.SlottedAbility_8:
+                        SlottedAbility_8 = Stream.Read.UInt();
                         break;
 
                     default:
+                        UnableToParseWarning = $"Dont know how to parse shadowfield {sfidx}";
                         int remaining = (int)(Stream.baseStream.Length - Stream.baseStream.ByteOffset);
                         UnableToParse = Stream.Read.ByteArray(remaining);
                         break;

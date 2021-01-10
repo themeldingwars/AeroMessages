@@ -7,82 +7,119 @@ namespace PacketPeepScript
         enum ShadowFieldIndex : byte
         {   
             VehicleId             = 0x00,
-            Unk_0x01              = 0x01,
-            Unk_0x02              = 0x02,
-            VehicleEnabled        = 0x03,
-            Unk_0x04              = 0x04,
-            OwnerEntity           = 0x05,
-            Unk_0x07              = 0x07,
-            Seat0Entity           = 0x08,
-            Seat1Entity           = 0x09,
-            Seat2Entity           = 0x0A,
-            Seat3Entity           = 0x0B,
-            Seat4Entity           = 0x0C,
-            Seat5Entity           = 0x0D,
-            Unk_0x0E              = 0x0E,
-            Unk_0x0F              = 0x0F,
-            Unk_0x10              = 0x10,
-            Unk_0x11              = 0x11,
-            Unk_0x12              = 0x12,
-            Unk_0x13              = 0x13,
-            Unk_0x14              = 0x14,
-            Unk_0x15              = 0x15,
-            Unk_0x16              = 0x16,
-            Unk_0x17              = 0x17,
-            Unk_0x18              = 0x18,
-            Maybe_InitialMovement = 0x19,
-            Unk_0x1A              = 0x1A,
-            MovementInput         = 0x1B,
-            Unk_0x1C              = 0x1C,
-            Maybe_Faction         = 0x1D,
-            Unk_0x1E              = 0x1E,
+            Configuration         = 0x01,
+            Flags                 = 0x02,
+            EngineState           = 0x03, // VehicleEnabled
+            PathState             = 0x04,
+            OwnerId               = 0x05,
+            OwnerName             = 0x06,
+            OwnerLocalString      = 0x07,
+            OccupantIds_0         = 0x08,
+            OccupantIds_1         = 0x09,
+            OccupantIds_2         = 0x0A,
+            OccupantIds_3         = 0x0B,
+            OccupantIds_4         = 0x0C,
+            OccupantIds_5         = 0x0D,
+            DeployableIds_0       = 0x0E,
+            DeployableIds_1       = 0x0F,
+            DeployableIds_2       = 0x10,
+            DeployableIds_3       = 0x11,
+            DeployableIds_4       = 0x12,
+            DeployableIds_5       = 0x13,
+            DeployableIds_6       = 0x14,
+            DeployableIds_7       = 0x15,
+            DeployableIds_8       = 0x16,
+            DeployableIds_9       = 0x17,
+            SnapMount             = 0x18,
+            SpawnPose             = 0x19,
+            SpawnVelocity         = 0x1A,
+            CurrentPose           = 0x1B, // MovementInput
+            ProcessDelay          = 0x1C,
+            HostilityInfo         = 0x1D,
+            PersonalFactionStance = 0x1E,
             CurrentHealth         = 0x1F,
             MaxHealth             = 0x20,
-            Unk_0x23              = 0x23,
-            Unk_0x24              = 0x24,
+            CurrentShields        = 0x21,
+            MaxShields            = 0x22,
+            CurrentResources      = 0x23,
+            MaxResources          = 0x24,
+            WaterLevelAndDesc     = 0x25,
+            SinFlags              = 0x26,
+            SinFlagsPrivate       = 0x27,
+            SinFactionsAcquiredBy = 0x28,
+            SinTeamsAcquiredBy    = 0x29,
+            SinCardType           = 0x2a,
+            SinCardFields_0       = 0x2b,
+            SinCardFields_1       = 0x2c,
+            SinCardFields_2       = 0x2d,
+            SinCardFields_3       = 0x2e,
+            SinCardFields_4       = 0x2f,
+            SinCardFields_5       = 0x30,
+            SinCardFields_6       = 0x31,
+            SinCardFields_7       = 0x32,
+            SinCardFields_8       = 0x33,
+            SinCardFields_9       = 0x34,
+            SinCardFields_10      = 0x35,
+            SinCardFields_11      = 0x36,
+            SinCardFields_12      = 0x37,
+            SinCardFields_13      = 0x38,
+            SinCardFields_14      = 0x39,
+            SinCardFields_15      = 0x3a,
+            SinCardFields_16      = 0x3b,
+            SinCardFields_17      = 0x3c,
+            SinCardFields_18      = 0x3d,
+            SinCardFields_19      = 0x3e,
+            SinCardFields_20      = 0x3f,
+            SinCardFields_21      = 0x40,
+            SinCardFields_22      = 0x41,
+            ScopeBubbleInfo       = 0x42,
+            ScalingLevel          = 0x43,
+
         }
 
-        public ushort? VehicleId;
-        public byte[] Unk_0x01;
-        public byte[] Unk_0x02;
-        public byte? VehicleEnabled;
-        public byte? Unk_0x04;
-        public byte[] OwnerEntity;
-        public byte[] Unk_0x07;
-        public byte[] Seat0Entity;
-        public byte[] Seat1Entity;
-        public byte[] Seat2Entity;
-        public byte[] Seat3Entity;
-        public byte[] Seat4Entity;
-        public byte[] Seat5Entity;
-        public byte[] Unk_0x0E;
-        public byte[] Unk_0x0F;
-        public byte[] Unk_0x10;
-        public byte[] Unk_0x11;
-        public byte[] Unk_0x12;
-        public byte[] Unk_0x13;
-        public byte[] Unk_0x14;
-        public byte[] Unk_0x15;
-        public byte[] Unk_0x16;
-        public byte[] Unk_0x17;
-        public byte? Unk_0x18;
-        public float[] UnkMov_Position; // 0x19
-        public float[] UnkMov_Rotation; // 0x19
-        public float[] UnkMov_Direction; // 0x19
-        public uint? UnkMov_Time; // 0x19
+        public string UnableToParseWarning; // Will be set if we encounter an unhandled shadowfield
 
-        public byte[] Unk_0x1A;
-        public float[] MovInput_Position; // 0x1B
-        public float[] MovInput_Rotation; // 0x1B
-        public float[] MovInput_Direction; // 0x1B
-        public ushort? MovInput_State; // 0x1B
-        public uint? MovInput_Time; // 0x1B
-        public byte[] Unk_0x1C;
-        public byte[] Maybe_Faction;
-        public byte[] Unk_0x1E;
+        public ushort? VehicleId;
+        public byte[] Configuration;
+        public byte[] Flags;
+        public byte? EngineState;
+        public byte? PathState;
+        public byte[] OwnerId;
+        public byte[] OwnerLocalString;
+        public byte[] OccupantIds_0;
+        public byte[] OccupantIds_1;
+        public byte[] OccupantIds_2;
+        public byte[] OccupantIds_3;
+        public byte[] OccupantIds_4;
+        public byte[] OccupantIds_5;
+        public byte[] DeployableIds_0;
+        public byte[] DeployableIds_1;
+        public byte[] DeployableIds_2;
+        public byte[] DeployableIds_3;
+        public byte[] DeployableIds_4;
+        public byte[] DeployableIds_5;
+        public byte[] DeployableIds_6;
+        public byte[] DeployableIds_7;
+        public byte[] DeployableIds_8;
+        public byte[] DeployableIds_9;
+        public byte? SnapMount;
+        public float[] SpawnPose_Position; // 0x19
+        public float[] SpawnPose_Rotation; // 0x19
+        public float[] SpawnPose_Direction; // 0x19
+        public uint? SpawnPose_Time; // 0x19
+
+        public byte[] SpawnVelocity;
+        public float[] CurrentPose_Position; // 0x1B
+        public float[] CurrentPose_Rotation; // 0x1B
+        public float[] CurrentPose_Direction; // 0x1B
+        public ushort? CurrentPose_State; // 0x1B
+        public uint? CurrentPose_Time; // 0x1B
+        public byte[] ProcessDelay;
+        public byte[] HostilityInfo;
+        public byte[] PersonalFactionStance;
         public uint? CurrentHealth;
         public uint? MaxHealth;
-        public byte[] Unk_0x23;
+        public byte[] CurrentResources;
 
         public byte[] UnableToParse;
 
@@ -98,99 +135,99 @@ namespace PacketPeepScript
                     case ShadowFieldIndex.VehicleId:
                         VehicleId = Stream.Read.UShort();
                         break;
-                    case ShadowFieldIndex.Unk_0x01:
-                        Unk_0x01 = Stream.Read.ByteArray(32);
+                    case ShadowFieldIndex.Configuration:
+                        Configuration = Stream.Read.ByteArray(32);
                         break;
-                    case ShadowFieldIndex.Unk_0x02:
-                        Unk_0x02 = Stream.Read.ByteArray(4);
+                    case ShadowFieldIndex.Flags:
+                        Flags = Stream.Read.ByteArray(4);
                         break;
-                    case ShadowFieldIndex.VehicleEnabled:
-                        VehicleEnabled = Stream.Read.Byte();
+                    case ShadowFieldIndex.EngineState:
+                        EngineState = Stream.Read.Byte();
                         break;
-                    case ShadowFieldIndex.Unk_0x04:
-                        Unk_0x04 = Stream.Read.Byte();
+                    case ShadowFieldIndex.PathState:
+                        PathState = Stream.Read.Byte();
                         break;
-                    case ShadowFieldIndex.OwnerEntity:
-                        OwnerEntity = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.OwnerId:
+                        OwnerId = Stream.Read.ByteArray(8);
                         break;
-                    case ShadowFieldIndex.Unk_0x07:
-                        Unk_0x07 = Stream.Read.ByteArray(4);
+                    case ShadowFieldIndex.OwnerLocalString:
+                        OwnerLocalString = Stream.Read.ByteArray(4);
                         break;
-                    case ShadowFieldIndex.Seat0Entity:
-                        Seat0Entity = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.OccupantIds_0:
+                        OccupantIds_0 = Stream.Read.ByteArray(8);
                         break;
-                    case ShadowFieldIndex.Seat1Entity:
-                        Seat1Entity = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.OccupantIds_1:
+                        OccupantIds_1 = Stream.Read.ByteArray(8);
                         break;
-                    case ShadowFieldIndex.Seat2Entity:
-                        Seat2Entity = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.OccupantIds_2:
+                        OccupantIds_2 = Stream.Read.ByteArray(8);
                         break;
-                    case ShadowFieldIndex.Seat3Entity:
-                        Seat3Entity = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.OccupantIds_3:
+                        OccupantIds_3 = Stream.Read.ByteArray(8);
                         break;
-                    case ShadowFieldIndex.Seat4Entity:
-                        Seat4Entity = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.OccupantIds_4:
+                        OccupantIds_4 = Stream.Read.ByteArray(8);
                         break;
-                    case ShadowFieldIndex.Seat5Entity:
-                        Seat5Entity = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.OccupantIds_5:
+                        OccupantIds_5 = Stream.Read.ByteArray(8);
                         break;
-                    case ShadowFieldIndex.Unk_0x0E:
-                        Unk_0x0E = Stream.Read.ByteArray(13);
+                    case ShadowFieldIndex.DeployableIds_0:
+                        DeployableIds_0 = Stream.Read.ByteArray(13);
                         break;
-                    case ShadowFieldIndex.Unk_0x0F:
-                        Unk_0x0F = Stream.Read.ByteArray(13);
+                    case ShadowFieldIndex.DeployableIds_1:
+                        DeployableIds_1 = Stream.Read.ByteArray(13);
                         break;
-                    case ShadowFieldIndex.Unk_0x10:
-                        Unk_0x10 = Stream.Read.ByteArray(13);
+                    case ShadowFieldIndex.DeployableIds_2:
+                        DeployableIds_2 = Stream.Read.ByteArray(13);
                         break;
-                    case ShadowFieldIndex.Unk_0x11:
-                        Unk_0x11 = Stream.Read.ByteArray(13);
+                    case ShadowFieldIndex.DeployableIds_3:
+                        DeployableIds_3 = Stream.Read.ByteArray(13);
                         break;
-                    case ShadowFieldIndex.Unk_0x12:
-                        Unk_0x12 = Stream.Read.ByteArray(13);
+                    case ShadowFieldIndex.DeployableIds_4:
+                        DeployableIds_4 = Stream.Read.ByteArray(13);
                         break;
-                    case ShadowFieldIndex.Unk_0x13:
-                        Unk_0x13 = Stream.Read.ByteArray(13);
+                    case ShadowFieldIndex.DeployableIds_5:
+                        DeployableIds_5 = Stream.Read.ByteArray(13);
                         break;
-                    case ShadowFieldIndex.Unk_0x14:
-                        Unk_0x14 = Stream.Read.ByteArray(13);
+                    case ShadowFieldIndex.DeployableIds_6:
+                        DeployableIds_6 = Stream.Read.ByteArray(13);
                         break;
-                    case ShadowFieldIndex.Unk_0x15:
-                        Unk_0x15 = Stream.Read.ByteArray(13);
+                    case ShadowFieldIndex.DeployableIds_7:
+                        DeployableIds_7 = Stream.Read.ByteArray(13);
                         break;
-                    case ShadowFieldIndex.Unk_0x16:
-                        Unk_0x16 = Stream.Read.ByteArray(13);
+                    case ShadowFieldIndex.DeployableIds_8:
+                        DeployableIds_8 = Stream.Read.ByteArray(13);
                         break;
-                    case ShadowFieldIndex.Unk_0x17:
-                        Unk_0x17 = Stream.Read.ByteArray(13);
+                    case ShadowFieldIndex.DeployableIds_9:
+                        DeployableIds_9 = Stream.Read.ByteArray(13);
                         break;
-                    case ShadowFieldIndex.Unk_0x18:
-                        Unk_0x18 = Stream.Read.Byte();
+                    case ShadowFieldIndex.SnapMount:
+                        SnapMount = Stream.Read.Byte();
                         break;
-                    case ShadowFieldIndex.Maybe_InitialMovement:
-                        UnkMov_Position = Stream.Read.FloatArray(3);
-                        UnkMov_Rotation = Stream.Read.FloatArray(4);
-                        UnkMov_Direction = Stream.Read.FloatArray(3);
-                        UnkMov_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.SpawnPose:
+                        SpawnPose_Position = Stream.Read.FloatArray(3);
+                        SpawnPose_Rotation = Stream.Read.FloatArray(4);
+                        SpawnPose_Direction = Stream.Read.FloatArray(3);
+                        SpawnPose_Time = Stream.Read.UInt();
                         break;
-                    case ShadowFieldIndex.Unk_0x1A:
-                        Unk_0x1A = Stream.Read.ByteArray(12);
+                    case ShadowFieldIndex.SpawnVelocity:
+                        SpawnVelocity = Stream.Read.ByteArray(12);
                         break;
-                    case ShadowFieldIndex.MovementInput:
-                        MovInput_Position = Stream.Read.FloatArray(3);
-                        MovInput_Rotation = Stream.Read.FloatArray(4);
-                        MovInput_Direction = Stream.Read.FloatArray(3);
-                        MovInput_State = Stream.Read.UShort();
-                        MovInput_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.CurrentPose: // MovementInput
+                        CurrentPose_Position = Stream.Read.FloatArray(3);
+                        CurrentPose_Rotation = Stream.Read.FloatArray(4);
+                        CurrentPose_Direction = Stream.Read.FloatArray(3);
+                        CurrentPose_State = Stream.Read.UShort();
+                        CurrentPose_Time = Stream.Read.UInt();
                         break;
-                    case ShadowFieldIndex.Unk_0x1C:
-                        Unk_0x1C = Stream.Read.ByteArray(4);
+                    case ShadowFieldIndex.ProcessDelay:
+                        ProcessDelay = Stream.Read.ByteArray(4);
                         break;
-                    case ShadowFieldIndex.Maybe_Faction:
-                        Maybe_Faction = Stream.Read.ByteArray(2);
+                    case ShadowFieldIndex.HostilityInfo:
+                        HostilityInfo = Stream.Read.ByteArray(2);
                         break;
-                    case ShadowFieldIndex.Unk_0x1E:
-                        Unk_0x1E = Stream.Read.ByteArray(20);
+                    case ShadowFieldIndex.PersonalFactionStance:
+                        PersonalFactionStance = Stream.Read.ByteArray(20);
                         break;
                     case ShadowFieldIndex.CurrentHealth:
                         CurrentHealth = Stream.Read.UInt();
@@ -198,10 +235,11 @@ namespace PacketPeepScript
                     case ShadowFieldIndex.MaxHealth:
                         MaxHealth = Stream.Read.UInt();
                         break;
-                    case ShadowFieldIndex.Unk_0x23:
-                        Unk_0x23 = Stream.Read.ByteArray(4);
+                    case ShadowFieldIndex.CurrentResources:
+                        CurrentResources = Stream.Read.ByteArray(4);
                         break;
                     default:
+                        UnableToParseWarning = $"Dont know how to parse shadowfield {sfidx}";
                         int remaining = (int)(Stream.baseStream.Length - Stream.baseStream.ByteOffset);
                         UnableToParse = Stream.Read.ByteArray(remaining);
                         break;

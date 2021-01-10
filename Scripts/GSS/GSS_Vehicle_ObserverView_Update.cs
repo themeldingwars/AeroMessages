@@ -6,44 +6,91 @@ namespace PacketPeepScript
     {
         enum ShadowFieldIndex : byte
         {
-            Unk_0x02 = 0x02,
-            Unk_0x03 = 0x03, // Maybe Vehicle Enabled
-            Unk_0x04 = 0x04,
-            DriverSeat0_Entity = 0x08,
-            PassengerSeat1_Entity = 0x09,
-            PassengerSeat2_Entity = 0x0a,
-            PassengerSeat3_Entity = 0x0b,
-            PassengerSeat4_Entity = 0x0c,
-            PassengerSeat5_Entity = 0x0d,
-            Unk_0x18 = 0x18, // Not effect flags
-            Unk_0x19 = 0x19, // 3rd byte sometimes counting down
-            Faction = 0x1A, // 0x01, 0x01, could maybe be effect flags or faction
-            Unk_0x1B = 0x1B, // 20 bytes of idk
-            CurrentHealth = 0x1C,
-            Unk_0x1D = 0x1D,
-            Unk_0x23 = 0x23, // Sees values of 0x00-0x06 and seems generally incremental. Maybe gear... if that needs to be network relayed. Some cases jumping 5 to 0 tho. The studied entry was a P1-Cobra so seat doesn't make sense.
-            Unk_0x24 = 0x24, // Not effect flags
-            Unk_0x3E = 0x3E, // Might be part of 0x1D
+            VehicleType           = 0x00,
+            Configuration         = 0x01,
+            Flags                 = 0x02,
+            EngineState           = 0x03, // VehicleEnabled
+            PathState             = 0x04,
+            OwnerId               = 0x05,
+            OwnerName             = 0x06,
+            OwnerLocalString      = 0x07,
+            OccupantIds_0         = 0x08,
+            OccupantIds_1         = 0x09,
+            OccupantIds_2         = 0x0a,
+            OccupantIds_3         = 0x0b,
+            OccupantIds_4         = 0x0c,
+            OccupantIds_5         = 0x0d,
+            DeployableIds_0       = 0x0e,
+            DeployableIds_1       = 0x0f,
+            DeployableIds_2       = 0x10,
+            DeployableIds_3       = 0x11,
+            DeployableIds_4       = 0x12,
+            DeployableIds_5       = 0x13,
+            DeployableIds_6       = 0x14,
+            DeployableIds_7       = 0x15,
+            DeployableIds_8       = 0x16,
+            DeployableIds_9       = 0x17,
+            SnapMount             = 0x18, // Not effect flags
+            ProcessDelay          = 0x19,
+            HostilityInfo         = 0x1a, // Faction
+            PersonalFactionStance = 0x1b, // 20 bytes of idk
+            CurrentHealth         = 0x1c,
+            MaxHealth             = 0x1d,
+            CurrentShields        = 0x1e,
+            MaxShields            = 0x1f,
+            SinFlags              = 0x20,
+            SinFactionsAcquiredBy = 0x21,
+            SinTeamsAcquiredBy    = 0x22,
+            WaterLevelAndDesc     = 0x23,
+            EffectsFlags          = 0x24,
+            SinCardType           = 0x25,
+            SinCardFields_0       = 0x26,
+            SinCardFields_1       = 0x27,
+            SinCardFields_2       = 0x28,
+            SinCardFields_3       = 0x29,
+            SinCardFields_4       = 0x2a,
+            SinCardFields_5       = 0x2b,
+            SinCardFields_6       = 0x2c,
+            SinCardFields_7       = 0x2d,
+            SinCardFields_8       = 0x2e,
+            SinCardFields_9       = 0x2f,
+            SinCardFields_10      = 0x30,
+            SinCardFields_11      = 0x31,
+            SinCardFields_12      = 0x32,
+            SinCardFields_13      = 0x33,
+            SinCardFields_14      = 0x34,
+            SinCardFields_15      = 0x35,
+            SinCardFields_16      = 0x36,
+            SinCardFields_17      = 0x37,
+            SinCardFields_18      = 0x38,
+            SinCardFields_19      = 0x39,
+            SinCardFields_20      = 0x3a,
+            SinCardFields_21      = 0x3b,
+            SinCardFields_22      = 0x3c,
+            ScalingLevel          = 0x3e,
         }
 
-        public byte[] Unk_0x02;
-        public byte? Unk_0x03;
-        public byte? Unk_0x04;
-        public byte[] DriverSeat0_Entity; // 0x08
-        public byte[] PassengerSeat1_Entity; // 0x09
-        public byte[] PassengerSeat2_Entity; // 0x0a
-        public byte[] PassengerSeat3_Entity; // 0x0b
-        public byte[] PassengerSeat4_Entity; // 0x0c
-        public byte[] PassengerSeat5_Entity; // 0x0d
-        public byte? Unk_0x18; 
-        public byte[] Unk_0x19;
-        public byte[] Faction;
-        public byte[] Unk_0x1B;
+        public string UnableToParseWarning; // Will be set if we encounter an unhandled shadowfield
+
+
+        public byte[] Flags;
+        public byte? EngineState;
+        public byte? PathState;
+        public byte[] OccupantIds_0; // 0x08
+        public byte[] OccupantIds_1; // 0x09
+        public byte[] OccupantIds_2; // 0x0a
+        public byte[] OccupantIds_3; // 0x0b
+        public byte[] OccupantIds_4; // 0x0c
+        public byte[] OccupantIds_5; // 0x0d
+        public byte? SnapMount; 
+        public byte[] ProcessDelay;
+        public byte[] HostilityInfo;
+        public byte[] PersonalFactionStance;
         public uint? CurrentHealth;
-        public byte[] Unk_0x1D;
-        public byte? Unk_0x23;
-        public byte? Unk_0x24; 
-        public byte[] Unk_0x3E;
+        public byte[] MaxHealth;
+        public byte? WaterLevelAndDesc;
+        public byte? EffectsFlags; 
+        public byte[] ScalingLevel;
 
         public byte[] UnableToParse;
 
@@ -56,61 +103,62 @@ namespace PacketPeepScript
                 ShadowFieldIndex sfidx = (ShadowFieldIndex) (Stream.Read.Byte());
                 switch (sfidx)
                 {
-                    case ShadowFieldIndex.Unk_0x02:
-                        Unk_0x02 = Stream.Read.ByteArray(4);
+                    case ShadowFieldIndex.Flags:
+                        Flags = Stream.Read.ByteArray(4);
                         break;
-                    case ShadowFieldIndex.Unk_0x03:
-                        Unk_0x03 = Stream.Read.Byte();
+                    case ShadowFieldIndex.EngineState:
+                        EngineState = Stream.Read.Byte();
                         break;
-                    case ShadowFieldIndex.Unk_0x04:
-                        Unk_0x04 = Stream.Read.Byte();
+                    case ShadowFieldIndex.PathState:
+                        PathState = Stream.Read.Byte();
                         break;
-                    case ShadowFieldIndex.DriverSeat0_Entity:
-                        DriverSeat0_Entity = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.OccupantIds_0:
+                        OccupantIds_0 = Stream.Read.ByteArray(8);
                         break;
-                    case ShadowFieldIndex.PassengerSeat1_Entity:
-                        PassengerSeat1_Entity = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.OccupantIds_1:
+                        OccupantIds_1 = Stream.Read.ByteArray(8);
                         break;
-                    case ShadowFieldIndex.PassengerSeat2_Entity:
-                        PassengerSeat2_Entity = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.OccupantIds_2:
+                        OccupantIds_2 = Stream.Read.ByteArray(8);
                         break;
-                    case ShadowFieldIndex.PassengerSeat3_Entity:
-                        PassengerSeat3_Entity = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.OccupantIds_3:
+                        OccupantIds_3 = Stream.Read.ByteArray(8);
                         break;
-                    case ShadowFieldIndex.PassengerSeat4_Entity:
-                        PassengerSeat4_Entity = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.OccupantIds_4:
+                        OccupantIds_4 = Stream.Read.ByteArray(8);
                         break;
-                    case ShadowFieldIndex.PassengerSeat5_Entity:
-                        PassengerSeat5_Entity = Stream.Read.ByteArray(8);
+                    case ShadowFieldIndex.OccupantIds_5:
+                        OccupantIds_5 = Stream.Read.ByteArray(8);
                         break;
-                    case ShadowFieldIndex.Unk_0x18:
-                        Unk_0x18 = Stream.Read.Byte();
+                    case ShadowFieldIndex.SnapMount:
+                        SnapMount = Stream.Read.Byte();
                         break;
-                    case ShadowFieldIndex.Unk_0x19:
-                        Unk_0x19 = Stream.Read.ByteArray(4);
+                    case ShadowFieldIndex.ProcessDelay:
+                        ProcessDelay = Stream.Read.ByteArray(4);
                         break;
-                    case ShadowFieldIndex.Faction:
-                        Faction = Stream.Read.ByteArray(2);
+                    case ShadowFieldIndex.HostilityInfo:
+                        HostilityInfo = Stream.Read.ByteArray(2);
                         break;
-                    case ShadowFieldIndex.Unk_0x1B:
-                        Unk_0x1B = Stream.Read.ByteArray(20);
+                    case ShadowFieldIndex.PersonalFactionStance:
+                        PersonalFactionStance = Stream.Read.ByteArray(20);
                         break;
                     case ShadowFieldIndex.CurrentHealth:
                         CurrentHealth = Stream.Read.UInt();
                         break;
-                    case ShadowFieldIndex.Unk_0x1D:
-                        Unk_0x1D = Stream.Read.ByteArray(4);
+                    case ShadowFieldIndex.MaxHealth:
+                        MaxHealth = Stream.Read.ByteArray(4);
                         break;
-                    case ShadowFieldIndex.Unk_0x23:
-                        Unk_0x23 = Stream.Read.Byte();
+                    case ShadowFieldIndex.WaterLevelAndDesc:
+                        WaterLevelAndDesc = Stream.Read.Byte();
                         break;
-                    case ShadowFieldIndex.Unk_0x24:
-                        Unk_0x24 = Stream.Read.Byte();
+                    case ShadowFieldIndex.EffectsFlags:
+                        EffectsFlags = Stream.Read.Byte();
                         break;
-                    case ShadowFieldIndex.Unk_0x3E:
-                        Unk_0x3E = Stream.Read.ByteArray(4);
+                    case ShadowFieldIndex.ScalingLevel:
+                        ScalingLevel = Stream.Read.ByteArray(4);
                         break;
                     default:
+                        UnableToParseWarning = $"Dont know how to parse shadowfield {sfidx}";
                         int remaining = (int)(Stream.baseStream.Length - Stream.baseStream.ByteOffset);
                         UnableToParse = Stream.Read.ByteArray(remaining);
                         break;
