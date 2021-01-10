@@ -88,7 +88,6 @@ namespace PacketPeepScript
             StatusEffect_0d_Cancel = 0xad,
             StatusEffect_0e_Cancel = 0xae,
             StatusEffect_0f_Cancel = 0xaf,
-
             StatusEffect_10_Cancel = 0xb0,
             StatusEffect_11_Cancel = 0xb1,
             StatusEffect_12_Cancel = 0xb2,
