@@ -211,7 +211,7 @@ namespace PacketPeepScript
             EliteLevel = 0x09,
         }
 
-        public string UnableToParseWarning; // Will be set if we enocunter an unhandled shadowfield
+        public string UnableToParseWarning; // Will be set if we encounter an unhandled shadowfield
         
         // VisualOverrides, references a visual group?
         public byte Unk_HaveVisualsGroupData;

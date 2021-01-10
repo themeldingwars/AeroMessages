@@ -169,7 +169,7 @@ namespace PacketPeepScript
 
         }
 
-        public string UnableToParseWarning; // Will be set if we enocunter an unhandled shadowfield
+        public string UnableToParseWarning; // Will be set if we encounter an unhandled shadowfield
 
         public ushort? StatusEffect_00_ChangeTime;
         public uint? StatusEffect_00_Id;

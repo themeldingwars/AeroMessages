@@ -124,7 +124,7 @@ namespace PacketPeepScript
             EliteLevel                  = 0x71,
         }
 
-        public string UnableToParseWarning; // Will be set if we enocunter an unhandled shadowfield
+        public string UnableToParseWarning; // Will be set if we encounter an unhandled shadowfield
 
         public byte[] TimePlayed;
         public uint? CurrentWeight;
