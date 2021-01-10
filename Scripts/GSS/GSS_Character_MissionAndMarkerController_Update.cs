@@ -2,7 +2,7 @@ using Bitter;
 namespace PacketPeepScript
 {
     [Script(MessageType.GSS, 4, 1, true)]
-    public class CharacterMissionAndMarkerControllerRequestAchievementStatus : BaseScript
+    public class CharacterMissionAndMarkerControllerUpdate : BaseScript
     {
         enum ShadowFieldIndex : byte
         {
