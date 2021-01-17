@@ -7,7 +7,7 @@ namespace PacketPeepScript
         public ulong PlayerID;
 
         public byte[] Bitfield_StatusEffectData;
-        public byte[] Unk_ContentBytes; // Probably
+        public byte[] Bitfield_AppendageHealth; // Only 10 bits are used
 
         public ushort? StatusEffect_00_ShortTime;
         public uint? StatusEffect_00_Id;
@@ -425,67 +425,77 @@ namespace PacketPeepScript
         public float? StatusEffect_1f_Data_Float2;
         public bool? StatusEffect_1f_Cancel;
 
-        public float? MovementSpeedMultiplier_Value;
-        public uint? MovementSpeedMultiplier_Time;
-        public float? ForwardMovementMultiplier_Value;
-        public uint?  ForwardMovementMultiplier_Time;
-        public float? JumpHeightMultiplier_Value;
-        public uint?  JumpHeightMultiplier_Time;
-        public float? AirMovementMultiplier_Value;
-        public uint?  AirMovementMultiplier_Time;
-        public float? JetVerticalThrustMultiplier_Value;
-        public uint?  JetVerticalThrustMultiplier_Time;
-        public float? JetMovementMultiplier_Value;
-        public uint?  JetMovementMultiplier_Time;
-        public float? GroundAccelerationMultiplier_Value;
-        public uint?  GroundAccelerationMultiplier_Time;
-        public float? AmmoCostModifier_Value;
-        public uint?  AmmoCostModifier_Time;
-        public float? AimSmoothingModifier_Value;
-        public uint?  AimSmoothingModifier_Time;
-        public float? AimSensitivityModifier_Value;
-        public uint?  AimSensitivityModifier_Time;
-        public float? TimescaleModifier_Value;
-        public uint?  TimescaleModifier_Time;
-        public float? RateOfFireModifier_Value;
-        public uint?  RateOfFireModifier_Time;
-        public float? WeaponSpreadMultiplier_Value;
-        public uint?  WeaponSpreadMultiplier_Time;
-        public float? FallingSpeedMultiplier_Value;
-        public uint?  FallingSpeedMultiplier_Time;
-        public float? JetSprintModifier_Value;
-        public uint?  JetSprintModifier_Time;
+        public float? RunSpeedMult_Value;
+        public uint? RunSpeedMult_Time;
+        public float? FwdRunSpeedMult_Value;
+        public uint?  FwdRunSpeedMult_Time;
+        public float? JumpHeightMult_Value;
+        public uint?  JumpHeightMult_Time;
+        public float? AirContorlMult_Value;
+        public uint?  AirContorlMult_Time;
+        public float? ThrustStrengthMult_Value;
+        public uint?  ThrustStrengthMult_Time;
+        public float? ThrustAirControl_Value;
+        public uint?  ThrustAirControl_Time;
+        public float? Friction_Value;
+        public uint?  Friction_Time;
+        public float? AmmoConsumption_Value;
+        public uint?  AmmoConsumption_Time;
+        public float? MaxTurnRate_Value;
+        public uint?  MaxTurnRate_Time;
+        public float? TurnSpeed_Value;
+        public uint?  TurnSpeed_Time;
+        public float? TimeDilation_Value;
+        public uint?  TimeDilation_Time;
+        public float? FireRateModifier_Value;
+        public uint?  FireRateModifier_Time;
+        public float? AccuracyModifier_Value;
+        public uint?  AccuracyModifier_Time;
+        public float? GravityMult_Value;
+        public uint?  GravityMult_Time;
+        public float? AirResistanceMult_Value;
+        public uint?  AirResistanceMult_Time;
 
-        public float? Unk_0x4f_Value;
-        public uint?  Unk_0x4f_Time;
+        public float? WeaponChargeupMod_Value;
+        public uint?  WeaponChargeupMod_Time;
 
-        public float? Unk_0x50_Value;
-        public uint?  Unk_0x50_Time;
+        public float? WeaponDamageDealtMod_Value;
+        public uint?  WeaponDamageDealtMod_Time;
 
-        public byte? SelectFireMode_FireMode;
-        public uint? SelectFireMode_Time;
-        public byte? UseScope_InScope;
-        public uint? UseScope_Time;
-        public ushort? Ammo_Primary_Clip_1;
-        public ushort? Ammo_Secondary_Clip_1;
-        public ushort? Ammo_Primary_Clip_2;
-        public ushort? Ammo_Secondary_Clip_2;
-        public ushort? Ammo_Primary_Reserve_1;
-        public ushort? Ammo_Secondary_Reserve_1;
-        public ushort? Ammo_Primary_Reserve_2;
-        public ushort? Ammo_Secondary_Reserve_2;
-        public byte? SelectWeapon_Index;
-        public byte[] SelectWeapon_Unk;
-        public uint? SelectWeapon_Time;
-        public ushort? FireBurst_ShortTime; // Not 100% about this one
-        public byte? FireBurst_Unk; // Not 100% about this one
-        public float? Unk_0x5d;
+        public byte? FireMode_0_Mode;
+        public uint? FireMode_0_Time;
+        public byte? FireMode_1_Mode;
+        public uint? FireMode_1_Time;
+        public ushort? Ammo_Clip_0;
+        public ushort? Ammo_Clip_1;
+        public ushort? Ammo_AltClip_0;
+        public ushort? Ammo_AltClip_1;
+        public ushort? Ammo_Ammo_0;
+        public ushort? Ammo_Ammo_1;
+        public ushort? Ammo_AltAmmo_0;
+        public ushort? Ammo_AltAmmo_1;
+        public byte? WeaponIndex_Index;
+        public byte[] WeaponIndex_Unk;
+        public uint? WeaponIndex_Time;
+        public ushort? WeaponFireBaseTime_ShortTime; // Not 100% about this one
+        public byte? WeaponFireBaseTime_Unk; // Not 100% about this one
+        public float? WeaponAgilityMod;
         public uint? CombatFlags_Value;
         public uint? CombatFlags_Time;
         public uint? PermissionFlags_Value;
         public byte[] PermissionFlags_Unk;
         public uint? PermissionFlags_Time;
-        public uint? GliderParameters;
+        public uint? GliderProfileId;
+        public uint? HoverProfileId;
+        public uint? CombatTimer_0;
+        public byte CombatTimer_1;
+
+        // Now it gets a little more difficult
+        // Nemeses - Not sure but I guess it should be an entity id
+        // SuperCharge - observed as 3 bytes in update, where 2 bytes seem to be value and 1 byte seems to be operation. Should that be stored?
+        // NoSpreadFlags
+        public float? SuperCharge_Value;
+        
 
         public byte[] Unk_Remaining;
 
@@ -497,7 +507,7 @@ namespace PacketPeepScript
             {
                 PlayerID = Stream.Read.ULong();
                 Bitfield_StatusEffectData = Stream.Read.BitArray(32); 
-                Unk_ContentBytes = Stream.Read.ByteArray(2);
+                Bitfield_AppendageHealth = Stream.Read.BitArray(16);
 
                 StatusEffect_00_ShortTime = Stream.Read.UShort();
                 StatusEffect_01_ShortTime = Stream.Read.UShort();
@@ -1143,70 +1153,74 @@ namespace PacketPeepScript
                 }
 
                 // Modifiers
-                MovementSpeedMultiplier_Value = Stream.Read.Float();
-                MovementSpeedMultiplier_Time = Stream.Read.UInt();
-                ForwardMovementMultiplier_Value = Stream.Read.Float();
-                ForwardMovementMultiplier_Time = Stream.Read.UInt();
-                JumpHeightMultiplier_Value = Stream.Read.Float();
-                JumpHeightMultiplier_Time = Stream.Read.UInt();
-                AirMovementMultiplier_Value = Stream.Read.Float();
-                AirMovementMultiplier_Time = Stream.Read.UInt();
-                JetVerticalThrustMultiplier_Value = Stream.Read.Float();
-                JetVerticalThrustMultiplier_Time = Stream.Read.UInt();
-                JetMovementMultiplier_Value = Stream.Read.Float();
-                JetMovementMultiplier_Time = Stream.Read.UInt();
-                GroundAccelerationMultiplier_Value = Stream.Read.Float();
-                GroundAccelerationMultiplier_Time = Stream.Read.UInt();
-                AmmoCostModifier_Value = Stream.Read.Float();
-                AmmoCostModifier_Time = Stream.Read.UInt();
-                AimSmoothingModifier_Value = Stream.Read.Float();
-                AimSmoothingModifier_Time = Stream.Read.UInt();
-                AimSensitivityModifier_Value = Stream.Read.Float();
-                AimSensitivityModifier_Time = Stream.Read.UInt();
-                TimescaleModifier_Value = Stream.Read.Float();
-                TimescaleModifier_Time = Stream.Read.UInt();
-                RateOfFireModifier_Value = Stream.Read.Float();
-                RateOfFireModifier_Time = Stream.Read.UInt();
-                WeaponSpreadMultiplier_Value = Stream.Read.Float();
-                WeaponSpreadMultiplier_Time = Stream.Read.UInt();
-                FallingSpeedMultiplier_Value = Stream.Read.Float();
-                FallingSpeedMultiplier_Time = Stream.Read.UInt();
-                JetSprintModifier_Value = Stream.Read.Float();
-                JetSprintModifier_Time = Stream.Read.UInt();
-
-                Unk_0x4f_Value = Stream.Read.Float();
-                Unk_0x4f_Time = Stream.Read.UInt();
-                Unk_0x50_Value = Stream.Read.Float();
-                Unk_0x50_Time = Stream.Read.UInt();
+                RunSpeedMult_Value = Stream.Read.Float();
+                RunSpeedMult_Time = Stream.Read.UInt();
+                FwdRunSpeedMult_Value = Stream.Read.Float();
+                FwdRunSpeedMult_Time = Stream.Read.UInt();
+                JumpHeightMult_Value = Stream.Read.Float();
+                JumpHeightMult_Time = Stream.Read.UInt();
+                AirContorlMult_Value = Stream.Read.Float();
+                AirContorlMult_Time = Stream.Read.UInt();
+                ThrustStrengthMult_Value = Stream.Read.Float();
+                ThrustStrengthMult_Time = Stream.Read.UInt();
+                ThrustAirControl_Value = Stream.Read.Float();
+                ThrustAirControl_Time = Stream.Read.UInt();
+                Friction_Value = Stream.Read.Float();
+                Friction_Time = Stream.Read.UInt();
+                AmmoConsumption_Value = Stream.Read.Float();
+                AmmoConsumption_Time = Stream.Read.UInt();
+                MaxTurnRate_Value = Stream.Read.Float();
+                MaxTurnRate_Time = Stream.Read.UInt();
+                TurnSpeed_Value = Stream.Read.Float();
+                TurnSpeed_Time = Stream.Read.UInt();
+                TimeDilation_Value = Stream.Read.Float();
+                TimeDilation_Time = Stream.Read.UInt();
+                FireRateModifier_Value = Stream.Read.Float();
+                FireRateModifier_Time = Stream.Read.UInt();
+                AccuracyModifier_Value = Stream.Read.Float();
+                AccuracyModifier_Time = Stream.Read.UInt();
+                GravityMult_Value = Stream.Read.Float();
+                GravityMult_Time = Stream.Read.UInt();
+                AirResistanceMult_Value = Stream.Read.Float();
+                AirResistanceMult_Time = Stream.Read.UInt();
+                WeaponChargeupMod_Value = Stream.Read.Float();
+                WeaponChargeupMod_Time = Stream.Read.UInt();
+                WeaponDamageDealtMod_Value = Stream.Read.Float();
+                WeaponDamageDealtMod_Time = Stream.Read.UInt();
                 
-                SelectFireMode_FireMode = Stream.Read.Byte();
-                SelectFireMode_Time = Stream.Read.UInt();
-                UseScope_InScope = Stream.Read.Byte();
-                UseScope_Time = Stream.Read.UInt();
-                Ammo_Primary_Clip_1 = Stream.Read.UShort();
-                Ammo_Secondary_Clip_1 = Stream.Read.UShort();
-                Ammo_Primary_Clip_2 = Stream.Read.UShort();
-                Ammo_Secondary_Clip_2 = Stream.Read.UShort();
-                Ammo_Primary_Reserve_1 = Stream.Read.UShort();
-                Ammo_Secondary_Reserve_1 = Stream.Read.UShort();
-                Ammo_Primary_Reserve_2 = Stream.Read.UShort();
-                Ammo_Secondary_Reserve_2 = Stream.Read.UShort();
+                FireMode_0_Mode = Stream.Read.Byte();
+                FireMode_0_Time = Stream.Read.UInt();
+                FireMode_1_Mode = Stream.Read.Byte();
+                FireMode_1_Time = Stream.Read.UInt();
+                Ammo_Clip_0 = Stream.Read.UShort();
+                Ammo_Clip_1 = Stream.Read.UShort();
+                Ammo_AltClip_0 = Stream.Read.UShort();
+                Ammo_AltClip_1 = Stream.Read.UShort();
+                Ammo_Ammo_0 = Stream.Read.UShort();
+                Ammo_Ammo_1 = Stream.Read.UShort();
+                Ammo_AltAmmo_0 = Stream.Read.UShort();
+                Ammo_AltAmmo_1 = Stream.Read.UShort();
 
-                SelectWeapon_Index = Stream.Read.Byte();
-                SelectWeapon_Unk = Stream.Read.ByteArray(2);
-                SelectWeapon_Time = Stream.Read.UInt();
+                WeaponIndex_Index = Stream.Read.Byte();
+                WeaponIndex_Unk = Stream.Read.ByteArray(2);
+                WeaponIndex_Time = Stream.Read.UInt();
                 
-                FireBurst_ShortTime = Stream.Read.UShort();
-                FireBurst_Unk = Stream.Read.Byte();
+                WeaponFireBaseTime_ShortTime = Stream.Read.UShort();
+                WeaponFireBaseTime_Unk = Stream.Read.Byte();
 
-                Unk_0x5d = Stream.Read.Float();
+                WeaponAgilityMod = Stream.Read.Float();
 
                 CombatFlags_Value = Stream.Read.UInt();
                 CombatFlags_Time = Stream.Read.UInt();
                 PermissionFlags_Value = Stream.Read.UInt();
                 PermissionFlags_Unk = Stream.Read.ByteArray(4);
                 PermissionFlags_Time = Stream.Read.UInt();
-                GliderParameters = Stream.Read.UInt();
+                GliderProfileId = Stream.Read.UInt();
+                HoverProfileId = Stream.Read.UInt();
+                CombatTimer_0 = Stream.Read.UInt();
+                CombatTimer_1 = Stream.Read.Byte();
+                
+                // SuperCharge_Value = Stream.Read.Half();
 
                 // Still some remaining that I'm not sure about
                 int remaining = (int)(Stream.baseStream.Length - Stream.baseStream.ByteOffset);

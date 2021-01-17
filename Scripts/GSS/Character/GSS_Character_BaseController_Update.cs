@@ -126,7 +126,7 @@ namespace PacketPeepScript
 
         public string UnableToParseWarning; // Will be set if we encounter an unhandled shadowfield
 
-        public byte[] TimePlayed;
+        public uint? TimePlayed;
         public uint? CurrentWeight;
         public uint? EncumberedWeight;
         public byte? AuthorizedTerminalType;
@@ -138,18 +138,18 @@ namespace PacketPeepScript
         public byte? VisualOverrides;
         public byte[] CurrentEquipment;
         public uint? SelectedLoadout;
-        public byte[] SelectedLoadoutIsPvP;
-        public byte[] GibVisualsID_1;
+        public uint? SelectedLoadoutIsPvP;
+        public uint? GibVisualsID_1;
         public uint? GibVisualsID_Time;
         public byte[] SpawnPose;
+        public uint? ProcessDelay;
         public byte? CharacterState;
         public uint? CharacterState_Time;
-        public byte[] ProcessDelay;
         public byte[] HostilityInfo;
         public byte[] PersonalFactionStance;
         public uint? CurrentHealth;
-        public byte[] CurrentShields;
-        public byte[] MaxShields;
+        public uint? CurrentShields;
+        public uint? MaxShields;
         public uint? MaxShields_Time;
         public uint? MaxHealth;
         public uint? MaxHealth_Time;
@@ -166,7 +166,7 @@ namespace PacketPeepScript
         public byte[] ZoneUnlocks;
         public byte[] RegionUnlocks;
         public byte[] ScopeBubbleInfo;
-        public byte[] ProgressionXp;
+        public uint ProgressionXp;
 
         public byte[] PermanentStatusEffects;
 
@@ -195,15 +195,15 @@ namespace PacketPeepScript
         public byte? Level;
         public byte? EffectiveLevel;
 
-        public byte[] PerkRespecs;
-        public byte[] FriendCount;
+        public uint PerkRespecs;
+        public ushort FriendCount;
         public byte[] CAISStatus;
         public byte[] ScalingLevel;
-        public byte[] PvPRank;
-        public byte[] PvPRankPoints;
-        public byte[] PvPTokens;
-        public byte[] BountyPointsLastClaimed;
-        public byte[] EliteLevel;
+        public uint PvPRank;
+        public uint PvPRankPoints;
+        public uint PvPTokens;
+        public uint BountyPointsLastClaimed;
+        public uint EliteLevel;
 
         public byte[] UnableToParse;
 
@@ -217,7 +217,7 @@ namespace PacketPeepScript
                 switch (sfidx)
                 {
                     case ShadowFieldIndex.TimePlayed:
-                        TimePlayed = Stream.Read.ByteArray(4);
+                        TimePlayed = Stream.Read.UInt();
                         break;
                         
                     case ShadowFieldIndex.CurrentWeight:
@@ -247,7 +247,7 @@ namespace PacketPeepScript
                         break;
 
                     case ShadowFieldIndex.VisualOverrides:
-                        VisualOverrides = Stream.Read.Byte();
+                        VisualOverrides = Stream.Read.Byte(); // TODO: Presumably more data if set?
                         break;
 
                     //case ShadowFieldIndex.CurrentEquipment:
@@ -259,20 +259,20 @@ namespace PacketPeepScript
                         break;
 
                     case ShadowFieldIndex.SelectedLoadoutIsPvP:
-                        SelectedLoadoutIsPvP = Stream.Read.ByteArray(4);
+                        SelectedLoadoutIsPvP = Stream.Read.UInt();
                         break;
 
                     case ShadowFieldIndex.GibVisualsID:
-                        GibVisualsID_1 = Stream.Read.ByteArray(4);
+                        GibVisualsID_1 = Stream.Read.UInt();
                         GibVisualsID_Time = Stream.Read.UInt();
                         break;
 
-                    case ShadowFieldIndex.ProcessDelay:
-                        ProcessDelay = Stream.Read.ByteArray(4);
+                    case ShadowFieldIndex.SpawnPose:
+                        SpawnPose = Stream.Read.ByteArray(67); // TODO: Might as well add indepth parsing
                         break;
 
-                    case ShadowFieldIndex.SpawnPose:
-                        SpawnPose = Stream.Read.ByteArray(67); // Might as well add indepth parsing
+                    case ShadowFieldIndex.ProcessDelay:
+                        ProcessDelay = Stream.Read.UInt();
                         break;
 
                     case ShadowFieldIndex.CharacterState:
@@ -293,11 +293,11 @@ namespace PacketPeepScript
                         break;
 
                     case ShadowFieldIndex.CurrentShields:
-                        CurrentShields = Stream.Read.ByteArray(4);
+                        CurrentShields = Stream.Read.UInt();
                         break;
 
                     case ShadowFieldIndex.MaxShields:
-                        MaxShields = Stream.Read.ByteArray(4);
+                        MaxShields = Stream.Read.UInt();
                         MaxShields_Time = Stream.Read.UInt();
                         break;
 
@@ -342,12 +342,13 @@ namespace PacketPeepScript
                         break;
 
                     case ShadowFieldIndex.ProgressionXp:
-                        ProgressionXp = Stream.Read.ByteArray(4);
+                        ProgressionXp = Stream.Read.UInt();
                         break;
 
-                    //case ShadowFieldIndex.PermanentStatusEffects:
-                    //    PermanentStatusEffects = ;
-                    //    break;
+                    case ShadowFieldIndex.PermanentStatusEffects:
+                        let pse_count = Stream.Read.Byte();
+                        PermanentStatusEffects = Stream.Read.ByteArray(pse_count * (4+4+8));
+                        break;
 
                     case ShadowFieldIndex.XpBoostModifier:
                         XpBoostModifier = Stream.Read.ByteArray(8);
@@ -442,11 +443,11 @@ namespace PacketPeepScript
                         break;
 
                     case ShadowFieldIndex.PerkRespecs:
-                        PerkRespecs = Stream.Read.ByteArray(4);
+                        PerkRespecs = Stream.Read.UInt();
                         break;
 
                     case ShadowFieldIndex.FriendCount:
-                        FriendCount = Stream.Read.ByteArray(2);
+                        FriendCount = Stream.Read.UShort();
                         break;
 
                     case ShadowFieldIndex.CAISStatus:
@@ -454,23 +455,23 @@ namespace PacketPeepScript
                         break;
 
                     case ShadowFieldIndex.PvPRank:
-                        PvPRank = Stream.Read.ByteArray(4);
+                        PvPRank = Stream.Read.UInt();
                         break;
 
                     case ShadowFieldIndex.PvPRankPoints:
-                        PvPRankPoints = Stream.Read.ByteArray(4);
+                        PvPRankPoints = Stream.Read.UInt();
                         break;
 
                     case ShadowFieldIndex.PvPTokens:
-                        PvPTokens = Stream.Read.ByteArray(4);
+                        PvPTokens = Stream.Read.UInt();
                         break;
 
                     case ShadowFieldIndex.BountyPointsLastClaimed:
-                        BountyPointsLastClaimed = Stream.Read.ByteArray(4);
+                        BountyPointsLastClaimed = Stream.Read.UInt();
                         break;
 
                     case ShadowFieldIndex.EliteLevel:
-                        EliteLevel = Stream.Read.ByteArray(4);
+                        EliteLevel = Stream.Read.UInt();
                         break;
 
                     default:

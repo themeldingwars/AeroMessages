@@ -623,9 +623,9 @@ namespace PacketPeepScript
         public float? WeaponDamageDealtMod_Value;
         public uint?  WeaponDamageDealtMod_Time;
 
-        public byte? FireMode_0_FireMode;
+        public byte? FireMode_0_Mode;
         public uint? FireMode_0_Time;
-        public byte? FireMode_1_InScope;
+        public byte? FireMode_1_Mode;
         public uint? FireMode_1_Time;
         public ushort? Ammo_Clip_0;
         public ushort? Ammo_Clip_1;
@@ -647,6 +647,7 @@ namespace PacketPeepScript
         public byte[] PermissionFlags_Unk;
         public uint? PermissionFlags_Time;
         public uint? GliderProfileId;
+        public uint? HoverProfileId;
 
         public uint? CombatTimer_0_Time;
         public byte? CombatTimer_1;
@@ -1541,11 +1542,11 @@ namespace PacketPeepScript
                         break;
 
                     case ShadowFieldIndex.FireMode_0:
-                        FireMode_0_FireMode = Stream.Read.Byte();
+                        FireMode_0_Mode = Stream.Read.Byte();
                         FireMode_0_Time = Stream.Read.UInt();
                         break;
                     case ShadowFieldIndex.FireMode_1:
-                        FireMode_1_InScope = Stream.Read.Byte();
+                        FireMode_1_Mode = Stream.Read.Byte();
                         FireMode_1_Time = Stream.Read.UInt();
                         break;
                     case ShadowFieldIndex.Ammo_Clip_0:
@@ -1599,10 +1600,9 @@ namespace PacketPeepScript
                         GliderProfileId = Stream.Read.UInt();
                         break;
 
-                    // Uncertain
-
-                    //case ShadowFieldIndex.HoverProfileId:
-                    //    break;
+                    case ShadowFieldIndex.HoverProfileId:
+                        HoverProfileId = Stream.Read.UInt();
+                        break;
 
                     case ShadowFieldIndex.CombatTimer_0:
                         CombatTimer_0_Time = Stream.Read.UInt();

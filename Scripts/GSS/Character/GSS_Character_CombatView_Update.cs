@@ -599,11 +599,12 @@ namespace PacketPeepScript
         public uint? AbilityCooldownEndMs_2_Time;
         public uint? AbilityCooldownEndMs_3_Time;
         public uint? EquipmentLoadTime_Time;
-
         public uint? CombatFlags;
         public uint? CombatFlags_Time;
-
         public byte[] NPCTargetObjId_Entity;
+        public ushort? BattleChatterTag;
+        public byte[] MimicParent;
+        public float[] MimicOffset;
 
         public byte[] UnableToParse;
 
@@ -1491,6 +1492,18 @@ namespace PacketPeepScript
 
                     case ShadowFieldIndex.NPCTargetObjId:
                         NPCTargetObjId_Entity = Stream.Read.ByteArray(8);
+                        break;
+
+                    case ShadowFieldIndex.BattleChatterTag:
+                        BattleChatterTag = Stream.Read.UShort();
+                        break;
+                        
+                    case ShadowFieldIndex.MimicParent:
+                        MimicParent = Stream.Read.ByteArray(8);
+                        break;
+
+                    case ShadowFieldIndex.MimicOffset:
+                        MimicOffset = Stream.Read.FloatArray(3);
                         break;
 
                     default:
