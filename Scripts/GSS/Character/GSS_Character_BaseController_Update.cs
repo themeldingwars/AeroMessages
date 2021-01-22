@@ -346,8 +346,8 @@ namespace PacketPeepScript
                         break;
 
                     case ShadowFieldIndex.PermanentStatusEffects:
-                        let pse_count = Stream.Read.Byte();
-                        PermanentStatusEffects = Stream.Read.ByteArray(pse_count * (4+4+8));
+                        byte pse_count = Stream.Read.Byte();
+                        PermanentStatusEffects = Stream.Read.ByteArray((int)pse_count * (4+4+8));
                         break;
 
                     case ShadowFieldIndex.XpBoostModifier:
