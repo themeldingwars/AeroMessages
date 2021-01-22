@@ -11,9 +11,10 @@ namespace PacketPeepScript
         public uint EliteRank;
         public uint EliteXP;
         public uint ElitePoints;
-        public byte NumberOfUpgrades;
-        public UpgradeInfo[] Upgrades;
-        public byte UnkByte;
+        public byte NumberOfAvailableUpgrades;
+        public AvailableUpgradeInfo[] AvailableUpgrades;
+        public byte NumberOfPreviousUpgrades;
+        public PreviousUpgradeInfo[] PreviousUpgrades;
 
         public FrameInfo(Bitter.BinaryReader Read)
         {
@@ -22,15 +23,16 @@ namespace PacketPeepScript
             EliteRank = Read.UInt();
             EliteXP = Read.UInt();
             ElitePoints = Read.UInt();
-            NumberOfUpgrades = Read.Byte();
-            Upgrades = Read.UpgradeInfoArray((int)NumberOfUpgrades);
-            UnkByte = Read.Byte();
+            NumberOfAvailableUpgrades = Read.Byte();
+            AvailableUpgrades = Read.AvailableUpgradeInfoArray((int)NumberOfAvailableUpgrades);
+            NumberOfPreviousUpgrades = Read.Byte();
+            PreviousUpgrades = Read.PreviousUpgradeInfoArray((int)NumberOfPreviousUpgrades);
         }
 
-        public override string ToString() => $"Frame: {ChassisId_1}, Rank: {EliteRank}, XP: {EliteXP}, Points: {ElitePoints}, Upgrades: [{(Upgrades != null ? String.Join(", ", Upgrades) : "null")}], UnkByte: {UnkByte}";
+        public override string ToString() => $"Frame: {ChassisId_1}, Rank: {EliteRank}, XP: {EliteXP}, Points: {ElitePoints}, AvailableUpgrades: [{(AvailableUpgrades != null ? String.Join(", ", AvailableUpgrades) : "null")}], PreviousUpgrades: [{(PreviousUpgrades != null ? String.Join(", ", PreviousUpgrades) : "null")}]";
     }
 
-    public struct UpgradeInfo
+    public struct AvailableUpgradeInfo
     {
         public uint UpgradeId;
         public uint Unk_1;
@@ -44,7 +46,7 @@ namespace PacketPeepScript
 
         public uint LocalizationId;
 
-        public UpgradeInfo(Bitter.BinaryReader Read)
+        public AvailableUpgradeInfo(Bitter.BinaryReader Read)
         {
             UpgradeId = Read.UInt();
             Unk_1 = Read.UInt();
@@ -72,7 +74,21 @@ namespace PacketPeepScript
             LocalizationId = Read.UInt();
         }
 
-        public override string ToString() => $"(Id: {UpgradeId}, Name: {LocalizationId})";
+        public override string ToString() => $"(Id: {UpgradeId}, Unk_1: {Unk_1}, StatValue: {StatValue} Name: {LocalizationId}, AdditionalInfo [{(AdditionalInfo != null ? String.Join(", ", AdditionalInfo) : "null")}])";
+    }
+
+    public struct PreviousUpgradeInfo
+    {
+        public uint UpgradeId;
+        public uint Count;
+
+        public PreviousUpgradeInfo(Bitter.BinaryReader Read)
+        {
+            UpgradeId = Read.UInt();
+            Count = Read.UInt();
+        }
+
+        public override string ToString() => $"(Id: {UpgradeId}, Count: {Count})";
     }
 
     [Script(MessageType.GSS, 2, 186, true)]
@@ -111,17 +127,32 @@ namespace PacketPeepScript
             return list.ToArray();
         }
 
-        public static UpgradeInfo UpgradeInfo(this Bitter.BinaryReader R)
+        public static AvailableUpgradeInfo AvailableUpgradeInfo(this Bitter.BinaryReader R)
         {
-            return new UpgradeInfo(R);
+            return new AvailableUpgradeInfo(R);
         }
 
-        public static UpgradeInfo[] UpgradeInfoArray(this Bitter.BinaryReader R, int num)
+        public static AvailableUpgradeInfo[] AvailableUpgradeInfoArray(this Bitter.BinaryReader R, int num)
         {
-            List<UpgradeInfo> list = new List<UpgradeInfo>();
+            List<AvailableUpgradeInfo> list = new List<AvailableUpgradeInfo>();
             for (int i = 1; i <= num; i++)
             {
-                list.Add(R.UpgradeInfo());
+                list.Add(R.AvailableUpgradeInfo());
+            }
+            return list.ToArray();
+        }
+
+        public static PreviousUpgradeInfo PreviousUpgradeInfo(this Bitter.BinaryReader R)
+        {
+            return new PreviousUpgradeInfo(R);
+        }
+
+        public static PreviousUpgradeInfo[] PreviousUpgradeInfoArray(this Bitter.BinaryReader R, int num)
+        {
+            List<PreviousUpgradeInfo> list = new List<PreviousUpgradeInfo>();
+            for (int i = 1; i <= num; i++)
+            {
+                list.Add(R.PreviousUpgradeInfo());
             }
             return list.ToArray();
         }
