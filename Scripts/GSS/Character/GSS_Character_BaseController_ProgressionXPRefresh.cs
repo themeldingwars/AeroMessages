@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 using Bitter;
 namespace PacketPeepScript
 {
@@ -6,18 +7,18 @@ namespace PacketPeepScript
     public class CharacterBaseControllerProgressionXPRefresh : BaseScript
     {
         public byte NumFrames;
-        public List<FrameInfo> Frames;
+        public FrameInfo[] Frames;
 
         public override void Read(Bitter.BinaryStream Stream)
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
 
             NumFrames = Stream.Read.Byte();
-            Frames = Stream.Read.TypeList<FrameInfo>(NumFrames);
+            Frames = Stream.Read.FrameInfoArray(NumFrames);
         }
     }
     
-    public struct FrameInfo : Bitter.BinaryWrapper.ReadWrite
+    public struct FrameInfo
     {
         public uint ChassisID;
         public uint XpValue1;
@@ -25,20 +26,35 @@ namespace PacketPeepScript
         public byte CurrentLevel;
         public byte[] Unk;
         
-        public void Read(BinaryStream Stream)
+        
+        public FrameInfo(Bitter.BinaryReader Read)
         {
-            ChassisID = Stream.Read.UInt();
-            XpValue1 = Stream.Read.UInt();
-            XpValue2 = Stream.Read.UInt();
-            CurrentLevel = Stream.Read.Byte();
-            Unk = Stream.Read.ByteArray(7);
+            ChassisID = Read.UInt();
+            XpValue1 = Read.UInt();
+            XpValue2 = Read.UInt();
+            CurrentLevel = Read.Byte();
+            Unk = Read.ByteArray(7);
         }
         
-        public void Write(BinaryStream Stream)
+        public override string ToString() => $"Chassis: {ChassisID}, Level: {CurrentLevel}, CurrentXP: {XpValue1}, MaximumXP: {XpValue2}, Unk [{(Unk != null ? String.Join(", ", Unk) : "null")}]";
+    }
+
+
+    public static class MyExtensions
+    {
+        public static FrameInfo FrameInfo(this Bitter.BinaryReader R)
         {
-            throw new System.NotImplementedException();
+            return new FrameInfo(R);
         }
-        
-        public override string ToString() => $"Chassis: {ChassisID}, Level: {CurrentLevel}";
+
+        public static FrameInfo[] FrameInfoArray(this Bitter.BinaryReader R, int num)
+        {
+            List<FrameInfo> list = new List<FrameInfo>();
+            for (int i = 1; i <= num; i++)
+            {
+                list.Add(R.FrameInfo());
+            }
+            return list.ToArray();
+        }
     }
 }
