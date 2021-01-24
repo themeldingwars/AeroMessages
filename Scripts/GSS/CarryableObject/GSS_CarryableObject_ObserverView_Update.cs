@@ -78,39 +78,6 @@ namespace PacketPeepScript
             StatusEffect_1d_Data = 0x45,
             StatusEffect_1e_Data = 0x46,
             StatusEffect_1f_Data = 0x47,
-
-            StatusEffect_00_Cancel = 0xa8,
-            StatusEffect_01_Cancel = 0xa9,
-            StatusEffect_02_Cancel = 0xaa,
-            StatusEffect_03_Cancel = 0xab,
-            StatusEffect_04_Cancel = 0xac,
-            StatusEffect_05_Cancel = 0xad,
-            StatusEffect_06_Cancel = 0xae,
-            StatusEffect_07_Cancel = 0xaf,
-            StatusEffect_08_Cancel = 0xb0,
-            StatusEffect_09_Cancel = 0xb1,
-            StatusEffect_0a_Cancel = 0xb2,
-            StatusEffect_0b_Cancel = 0xb3,
-            StatusEffect_0c_Cancel = 0xb4,
-            StatusEffect_0d_Cancel = 0xb5,
-            StatusEffect_0e_Cancel = 0xb6,
-            StatusEffect_0f_Cancel = 0xb7,
-            StatusEffect_10_Cancel = 0xb8,
-            StatusEffect_11_Cancel = 0xb9,
-            StatusEffect_12_Cancel = 0xba,
-            StatusEffect_13_Cancel = 0xbb,
-            StatusEffect_14_Cancel = 0xbc,
-            StatusEffect_15_Cancel = 0xbd,
-            StatusEffect_16_Cancel = 0xbe,
-            StatusEffect_17_Cancel = 0xbf,
-            StatusEffect_18_Cancel = 0xc0,
-            StatusEffect_19_Cancel = 0xc1,
-            StatusEffect_1a_Cancel = 0xc2,
-            StatusEffect_1b_Cancel = 0xc3,
-            StatusEffect_1c_Cancel = 0xc4,
-            StatusEffect_1d_Cancel = 0xc5,
-            StatusEffect_1e_Cancel = 0xc6,
-            StatusEffect_1f_Cancel = 0xc7,
             
             AllowFriendlyPickup = 0x48,
             AllowHostilePickup = 0x49,
@@ -144,19 +111,138 @@ namespace PacketPeepScript
             BounceField = 0x65,
             ScopeBubbleInfo = 0x66,
 
-            Unk_0x86 = 0x86, // not sure if call with no data or if just a byte that belonged elsewhere
+
+
+
+
+            Reset_PersonalFactionStance = 133, // assumption
+            Reset_CarryingCharacterId = 134, // guess
+            Reset_ForcedMovement = 135, // guess
+
+            StatusEffect_00_Cancel = 0xa8,
+            StatusEffect_01_Cancel = 0xa9,
+            StatusEffect_02_Cancel = 0xaa,
+            StatusEffect_03_Cancel = 0xab,
+            StatusEffect_04_Cancel = 0xac,
+            StatusEffect_05_Cancel = 0xad,
+            StatusEffect_06_Cancel = 0xae,
+            StatusEffect_07_Cancel = 0xaf,
+            StatusEffect_08_Cancel = 0xb0,
+            StatusEffect_09_Cancel = 0xb1,
+            StatusEffect_0a_Cancel = 0xb2,
+            StatusEffect_0b_Cancel = 0xb3,
+            StatusEffect_0c_Cancel = 0xb4,
+            StatusEffect_0d_Cancel = 0xb5,
+            StatusEffect_0e_Cancel = 0xb6,
+            StatusEffect_0f_Cancel = 0xb7,
+            StatusEffect_10_Cancel = 0xb8,
+            StatusEffect_11_Cancel = 0xb9,
+            StatusEffect_12_Cancel = 0xba,
+            StatusEffect_13_Cancel = 0xbb,
+            StatusEffect_14_Cancel = 0xbc,
+            StatusEffect_15_Cancel = 0xbd,
+            StatusEffect_16_Cancel = 0xbe,
+            StatusEffect_17_Cancel = 0xbf,
+            StatusEffect_18_Cancel = 0xc0,
+            StatusEffect_19_Cancel = 0xc1,
+            StatusEffect_1a_Cancel = 0xc2,
+            StatusEffect_1b_Cancel = 0xc3,
+            StatusEffect_1c_Cancel = 0xc4,
+            StatusEffect_1d_Cancel = 0xc5,
+            StatusEffect_1e_Cancel = 0xc6,
+            StatusEffect_1f_Cancel = 0xc7,
+
+            Reset_SinCardFields_0  = 203, // 0xcb
+            Reset_SinCardFields_1  = 204,
+            Reset_SinCardFields_2  = 205,
+            Reset_SinCardFields_3  = 206,
+            Reset_SinCardFields_4  = 207,
+            Reset_SinCardFields_5  = 208,
+            Reset_SinCardFields_6  = 209,
+            Reset_SinCardFields_7  = 210,
+            Reset_SinCardFields_8  = 211,
+            Reset_SinCardFields_9  = 212,
+            Reset_SinCardFields_10 = 213,
+            Reset_SinCardFields_11 = 214,
+            Reset_SinCardFields_12 = 215,
+            Reset_SinCardFields_13 = 216,
+            Reset_SinCardFields_14 = 217,
+            Reset_SinCardFields_15 = 218,
+            Reset_SinCardFields_16 = 219,
+            Reset_SinCardFields_17 = 220,
+            Reset_SinCardFields_18 = 221,
+            Reset_SinCardFields_19 = 222,
+            Reset_SinCardFields_20 = 223,
+            Reset_SinCardFields_21 = 224,
+            Reset_SinCardFields_22 = 225, // 0xe1
+
+            Reset_ThrownField = 227, // guess
+            Reset_SeekField = 228, // guess
+            Reset_BounceField = 229, // guess
         }
 
         public string UnableToParseWarning; // Will be set if we encounter an unhandled shadowfield
 
 
+        public uint? CarryableObjectTypeId; // Sdb table 480, id column.
+        public string Name;
         public float[] Position;
+        public float[] Orientation;
+        public byte? Hostility_Mode;
+        public byte? Hostility_Id;
+
+
+        public byte[] PersonalFactionStance;
         public byte[] CarryingCharacterId;
+        public byte[] ForcedMovement;
+
+        public byte? AllowFriendlyPickup; // guess
+        public byte? AllowHostilePickup; // guess
+        public uint? SinCardType;
+
+        
+
+        public float[] ThrownField_Unk1_Floats;
+        public byte[] ThrownField_Unk2_Bytes;
 
         public float[] BounceField_Position;
         public float[] BounceField_MaybeVelocity;
         public uint? BounceField_Time;
 
+
+        public byte? VisualInfoGroupIndex;
+        public byte[] ScopeBubbleInfo;
+
+
+        public bool? Reset_PersonalFactionStance;
+        public bool? Reset_CarryingCharacterId;
+        public bool? Reset_ForcedMovement;
+        public bool? Reset_SinCardFields_0;
+        public bool? Reset_SinCardFields_1;
+        public bool? Reset_SinCardFields_2;
+        public bool? Reset_SinCardFields_3;
+        public bool? Reset_SinCardFields_4;
+        public bool? Reset_SinCardFields_5;
+        public bool? Reset_SinCardFields_6;
+        public bool? Reset_SinCardFields_7;
+        public bool? Reset_SinCardFields_8;
+        public bool? Reset_SinCardFields_9;
+        public bool? Reset_SinCardFields_10;
+        public bool? Reset_SinCardFields_11;
+        public bool? Reset_SinCardFields_12;
+        public bool? Reset_SinCardFields_13;
+        public bool? Reset_SinCardFields_14;
+        public bool? Reset_SinCardFields_15;
+        public bool? Reset_SinCardFields_16;
+        public bool? Reset_SinCardFields_17;
+        public bool? Reset_SinCardFields_18;
+        public bool? Reset_SinCardFields_19;
+        public bool? Reset_SinCardFields_20;
+        public bool? Reset_SinCardFields_21;
+        public bool? Reset_SinCardFields_22;
+        public bool? Reset_ThrownField;
+        public bool? Reset_SeekField;
+        public bool? Reset_BounceField;
 
 
         public ushort? StatusEffect_00_ChangeTime;
@@ -576,7 +662,6 @@ namespace PacketPeepScript
         public bool? StatusEffect_1f_Cancel;
 
 
-
         public byte[] UnableToParse;
 
         public override void Read(Bitter.BinaryStream Stream)
@@ -587,12 +672,56 @@ namespace PacketPeepScript
                 ShadowFieldIndex sfidx = (ShadowFieldIndex) (Stream.Read.Byte());
                 switch (sfidx)
                 {
+                    case ShadowFieldIndex.CarryableObjectTypeId:
+                        CarryableObjectTypeId = Stream.Read.UInt();
+                        break;
+
+                    case ShadowFieldIndex.Name:
+                        Name = Stream.Read.StringZ(Stream);
+                        break;
+
                     case ShadowFieldIndex.Position:
                         Position = Stream.Read.FloatArray(3);
                         break;
 
+                    case ShadowFieldIndex.Orientation:
+                        Orientation = Stream.Read.FloatArray(4);
+                        break;
+
+                    case ShadowFieldIndex.Hostility:
+                        Hostility_Mode = Stream.Read.Byte();
+                        if (Hostility_Mode > 0) {
+                            Hostility_Id = Stream.Read.Byte();
+                        }
+                        break;
+
+                    case ShadowFieldIndex.PersonalFactionStance:
+                        PersonalFactionStance = Stream.Read.ByteArray(5*4);
+                        break;
+
                     case ShadowFieldIndex.CarryingCharacterId:
                         CarryingCharacterId = Stream.Read.ByteArray(8);
+                        break;
+
+                    case ShadowFieldIndex.AllowFriendlyPickup:
+                        AllowFriendlyPickup = Stream.Read.Byte();
+                        break;
+
+                    case ShadowFieldIndex.AllowHostilePickup:
+                        AllowHostilePickup = Stream.Read.Byte();
+                        break;
+
+                    case ShadowFieldIndex.SinCardType:
+                        SinCardType = Stream.Read.UInt();
+                        break;
+
+
+
+                    
+
+                    case ShadowFieldIndex.ThrownField:
+                        ThrownField_Unk1_Floats = Stream.Read.FloatArray(4);
+                        ThrownField_Unk2_Bytes = Stream.Read.ByteArray(1);
                         break;
 
                     case ShadowFieldIndex.BounceField:
@@ -600,7 +729,6 @@ namespace PacketPeepScript
                         BounceField_MaybeVelocity = Stream.Read.FloatArray(3);
                         BounceField_Time = Stream.Read.UInt();
                         break;
-
 
                     case ShadowFieldIndex.StatusEffect_00_ChangeTime:
                         StatusEffect_00_ChangeTime = Stream.Read.UShort();
@@ -1405,6 +1533,96 @@ namespace PacketPeepScript
                         StatusEffect_1f_Cancel = true;
                         break;
 
+
+                    case ShadowFieldIndex.Reset_PersonalFactionStance:
+                        Reset_PersonalFactionStance = true;
+                        break;
+                    case ShadowFieldIndex.Reset_CarryingCharacterId:
+                        Reset_CarryingCharacterId = true;
+                        break;
+                    case ShadowFieldIndex.Reset_ForcedMovement:
+                        Reset_ForcedMovement = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_0:
+                        Reset_SinCardFields_0 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_1:
+                        Reset_SinCardFields_1 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_2:
+                        Reset_SinCardFields_2 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_3:
+                        Reset_SinCardFields_3 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_4:
+                        Reset_SinCardFields_4 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_5:
+                        Reset_SinCardFields_5 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_6:
+                        Reset_SinCardFields_6 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_7:
+                        Reset_SinCardFields_7 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_8:
+                        Reset_SinCardFields_8 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_9:
+                        Reset_SinCardFields_9 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_10:
+                        Reset_SinCardFields_10 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_11:
+                        Reset_SinCardFields_11 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_12:
+                        Reset_SinCardFields_12 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_13:
+                        Reset_SinCardFields_13 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_14:
+                        Reset_SinCardFields_14 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_15:
+                        Reset_SinCardFields_15 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_16:
+                        Reset_SinCardFields_16 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_17:
+                        Reset_SinCardFields_17 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_18:
+                        Reset_SinCardFields_18 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_19:
+                        Reset_SinCardFields_19 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_20:
+                        Reset_SinCardFields_20 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_21:
+                        Reset_SinCardFields_21 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_22:
+                        Reset_SinCardFields_22 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_ThrownField:
+                        Reset_ThrownField = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SeekField:
+                        Reset_SeekField = true;
+                        break;
+                    case ShadowFieldIndex.Reset_BounceField:
+                        Reset_BounceField = true;
+                        break;
+
+
                     default:
                         UnableToParseWarning = $"Dont know how to parse shadowfield {sfidx}";
                         int remaining = (int)(Stream.baseStream.Length - Stream.baseStream.ByteOffset);
@@ -1414,6 +1632,22 @@ namespace PacketPeepScript
             }
             while (Stream.baseStream.ByteOffset < Stream.baseStream.Length);
 
+        }
+    }
+
+    public static class MyExtensions
+    {
+        public static string StringZ(this Bitter.BinaryReader rdr, Bitter.BinaryStream stream) {
+            string ret = "";
+            do
+            {
+                byte b = rdr.Byte();
+                if (b == 0x00)
+                    break;
+                ret += (char)b;
+            }
+            while (stream.baseStream.ByteOffset < stream.baseStream.Length);
+            return ret;
         }
     }
 }
