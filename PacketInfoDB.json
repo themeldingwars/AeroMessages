@@ -245,6 +245,10 @@
           "Name": "EncounterToUIMessage",
           "Notes": ""
         },
+        "48": {
+          "Name": "TempConsoleMessage",
+          "Notes": ""
+        },
         "64": {
           "Name": "MissionObjectiveUpdated",
           "Notes": ""

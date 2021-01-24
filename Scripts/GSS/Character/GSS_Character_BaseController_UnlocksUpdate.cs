@@ -1,11 +1,10 @@
 using Bitter;
-using System;
 namespace PacketPeepScript
 {
     [Script(MessageType.GSS, 2, 130, true)]
     public class CharacterBaseControllerUnlocksUpdate : BaseScript
     {
-        public byte UnkFirstByte; // Probably partitial vs full update, like InventoryUpdate.
+        public byte Reset; // true/false
 
         public byte NumberOfKeys;
         public string[] Keys;
@@ -49,13 +48,12 @@ namespace PacketPeepScript
             //     
 
 
-            UnkFirstByte = Stream.Read.Byte();
+            Reset = Stream.Read.Byte();
             NumberOfKeys = Stream.Read.Byte();
 
             Key = Stream.Read.StringZ(Stream);
 
             byte NumberOfEntriesInSection;
-            int totalAmountOfBytes;
             do
             {
                 NumberOfEntriesInSection = Stream.Read.Byte();

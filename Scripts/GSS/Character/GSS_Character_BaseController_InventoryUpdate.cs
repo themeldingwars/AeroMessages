@@ -12,7 +12,7 @@ namespace PacketPeepScript
         // Currently, PacketPeep does not handle split messages, and it's not really capable of displaying objects/structs. Hence this parser doesn't really work yet.
         // A lot of bytes are still unk so everything can get completely thrown off due to arrays of data.
 
-        public byte FullInventoryUpdate; // 1 for full update, 0 for partitial
+        public byte Reset; // 1 for full update, 0 for partitial
         public string CantParseNotice;
 
         public byte NumUniqueItems;
@@ -31,9 +31,9 @@ namespace PacketPeepScript
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
             MyExtensions.BStream = Stream;
 
-            FullInventoryUpdate = Stream.Read.Byte();
+            Reset = Stream.Read.Byte();
 
-            if (FullInventoryUpdate == 0x01) {
+            if (Reset == 0x01) {
                 CantParseNotice = "This message is likely split, aborting parsing."; // Remove this when PacketPeep gets split message parsing.
                 return;
             }
