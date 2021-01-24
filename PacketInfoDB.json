@@ -1904,6 +1904,10 @@
       "Notes": "",
       "InheritFrom": 1,
       "ServerMessages": {
+        "91": {
+          "Name": "PublicCombatLog",
+          "Notes": ""
+        },
         "101": {
           "Name": "JumpActioned",
           "Notes": ""
