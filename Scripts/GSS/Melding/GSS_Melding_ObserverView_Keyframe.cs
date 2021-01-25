@@ -6,20 +6,20 @@ namespace PacketPeepScript
     {
         public string PerimiterSetName;
 
+        // -- ActiveData --
         public byte[] Unk1;
         public byte[] Unk2_Consistent;
-
         public byte ControlPoints_1_Count;
         public float[] ControlPoints_1;
         public byte Offsets_1_Count;
         public float[] Offsets_1;
-
         public byte ControlPoints_2_Count;
         public float[] ControlPoints_2;
         public byte Offsets_2_Count;
         public float[] Offsets_2;
+        // -- --
 
-        public byte[] Unk3_Consistent;
+        public byte[] ScopeBubbleInfo;
 
         public override void Read(Bitter.BinaryStream Stream)
         {
@@ -29,6 +29,7 @@ namespace PacketPeepScript
             if (true) {
                 PerimiterSetName = Stream.Read.StringZ();
 
+                // -- ActiveData --
                 Unk1 = Stream.Read.ByteArray(4);
                 Unk2_Consistent = Stream.Read.ByteArray(13);
 
@@ -43,8 +44,9 @@ namespace PacketPeepScript
 
                 Offsets_2_Count = Stream.Read.Byte();
                 Offsets_2 = Stream.Read.FloatArray(Offsets_2_Count*3);
+                // -- --
 
-                Unk3_Consistent = Stream.Read.ByteArray(8);
+                ScopeBubbleInfo = Stream.Read.ByteArray(8);
             }
             
         }
