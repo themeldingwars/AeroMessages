@@ -91,14 +91,14 @@ namespace PacketPeepScript
             WeaponDamageDealtMod = 0x50,
             FireMode_0 = 0x51,
             FireMode_1 = 0x52,
-            Ammo_Clip_0 = 0x53, 
-            Ammo_Clip_1 = 0x54,
-            Ammo_AltClip_0 = 0x55,
-            Ammo_AltClip_1 = 0x56,
-            Ammo_Ammo_0 = 0x57,
-            Ammo_Ammo_1 = 0x58,
-            Ammo_AltAmmo_0 = 0x59,
-            Ammo_AltAmmo_1 = 0x5a,
+            Clip_0 = 0x53, 
+            Clip_1 = 0x54,
+            AltClip_0 = 0x55,
+            AltClip_1 = 0x56,
+            Ammo_0 = 0x57,
+            Ammo_1 = 0x58,
+            AltAmmo_0 = 0x59,
+            AltAmmo_1 = 0x5a,
             WeaponIndex = 0x5b,
             WeaponFireBaseTime = 0x5c,
             WeaponAgilityMod = 0x5d,
@@ -168,6 +168,16 @@ namespace PacketPeepScript
             StatusEffects_30_Cancel = 0xbe,
             StatusEffects_31_Cancel = 0xbf,
 
+            Reset_AppendageHealthPools_0 = 231,
+            Reset_AppendageHealthPools_1 = 232,
+            Reset_AppendageHealthPools_2 = 233,
+            Reset_AppendageHealthPools_3 = 234,
+            Reset_AppendageHealthPools_4 = 235,
+            Reset_AppendageHealthPools_5 = 236,
+            Reset_AppendageHealthPools_6 = 237,
+            Reset_AppendageHealthPools_7 = 238,
+            Reset_AppendageHealthPools_8 = 239,
+            Reset_AppendageHealthPools_9 = 240,
         }
 
         public string UnableToParseWarning; // Will be set if we encounter an unhandled shadowfield
@@ -618,25 +628,22 @@ namespace PacketPeepScript
         public uint?  GravityMult_Time;
         public float? AirResistanceMult_Value;
         public uint?  AirResistanceMult_Time;
-
         public float? WeaponChargeupMod_Value;
         public uint?  WeaponChargeupMod_Time;
-
         public float? WeaponDamageDealtMod_Value;
         public uint?  WeaponDamageDealtMod_Time;
-
         public byte? FireMode_0_Mode;
         public uint? FireMode_0_Time;
         public byte? FireMode_1_Mode;
         public uint? FireMode_1_Time;
-        public ushort? Ammo_Clip_0;
-        public ushort? Ammo_Clip_1;
-        public ushort? Ammo_AltClip_0;
-        public ushort? Ammo_AltClip_1;
-        public ushort? Ammo_Ammo_0;
-        public ushort? Ammo_Ammo_1;
-        public ushort? Ammo_AltAmmo_0;
-        public ushort? Ammo_AltAmmo_1;
+        public ushort? Clip_0;
+        public ushort? Clip_1;
+        public ushort? AltClip_0;
+        public ushort? AltClip_1;
+        public ushort? Ammo_0;
+        public ushort? Ammo_1;
+        public ushort? AltAmmo_0;
+        public ushort? AltAmmo_1;
         public byte? WeaponIndex_Index;
         public byte[] WeaponIndex_Unk;
         public uint? WeaponIndex_Time;
@@ -650,13 +657,37 @@ namespace PacketPeepScript
         public uint? PermissionFlags_Time;
         public uint? GliderProfileId;
         public uint? HoverProfileId;
-
         public uint? CombatTimer_0_Time;
         public byte? CombatTimer_1;
 
+        public byte[] Nemeses;
 
         public float? SuperCharge_Value;
         public byte? SuperCharge_Op;
+
+        public byte NoSpreadFlags;
+
+        public byte[] AppendageHealthPools_0;
+        public byte[] AppendageHealthPools_1;
+        public byte[] AppendageHealthPools_2;
+        public byte[] AppendageHealthPools_3;
+        public byte[] AppendageHealthPools_4;
+        public byte[] AppendageHealthPools_5;
+        public byte[] AppendageHealthPools_6;
+        public byte[] AppendageHealthPools_7;
+        public byte[] AppendageHealthPools_8;
+        public byte[] AppendageHealthPools_9;
+
+        public byte? AppendageHealthPct_0;
+        public byte? AppendageHealthPct_1;
+        public byte? AppendageHealthPct_2;
+        public byte? AppendageHealthPct_3;
+        public byte? AppendageHealthPct_4;
+        public byte? AppendageHealthPct_5;
+        public byte? AppendageHealthPct_6;
+        public byte? AppendageHealthPct_7;
+        public byte? AppendageHealthPct_8;
+        public byte? AppendageHealthPct_9;
 
         public byte[] UnableToParse;
 
@@ -1551,29 +1582,29 @@ namespace PacketPeepScript
                         FireMode_1_Mode = Stream.Read.Byte();
                         FireMode_1_Time = Stream.Read.UInt();
                         break;
-                    case ShadowFieldIndex.Ammo_Clip_0:
-                        Ammo_Clip_0 = Stream.Read.UShort();
+                    case ShadowFieldIndex.Clip_0:
+                        Clip_0 = Stream.Read.UShort();
                         break;
-                    case ShadowFieldIndex.Ammo_Clip_1:
-                        Ammo_Clip_1 = Stream.Read.UShort();
+                    case ShadowFieldIndex.Clip_1:
+                        Clip_1 = Stream.Read.UShort();
                         break;
-                    case ShadowFieldIndex.Ammo_AltClip_0:
-                        Ammo_AltClip_0 = Stream.Read.UShort();
+                    case ShadowFieldIndex.AltClip_0:
+                        AltClip_0 = Stream.Read.UShort();
                         break;
-                    case ShadowFieldIndex.Ammo_AltClip_1:
-                        Ammo_AltClip_1 = Stream.Read.UShort();
+                    case ShadowFieldIndex.AltClip_1:
+                        AltClip_1 = Stream.Read.UShort();
                         break;
-                    case ShadowFieldIndex.Ammo_Ammo_0:
-                        Ammo_Ammo_0 = Stream.Read.UShort();
+                    case ShadowFieldIndex.Ammo_0:
+                        Ammo_0 = Stream.Read.UShort();
                         break;
-                    case ShadowFieldIndex.Ammo_Ammo_1:
-                        Ammo_Ammo_1 = Stream.Read.UShort();
+                    case ShadowFieldIndex.Ammo_1:
+                        Ammo_1 = Stream.Read.UShort();
                         break;
-                    case ShadowFieldIndex.Ammo_AltAmmo_0:
-                        Ammo_AltAmmo_0 = Stream.Read.UShort();
+                    case ShadowFieldIndex.AltAmmo_0:
+                        AltAmmo_0 = Stream.Read.UShort();
                         break;
-                    case ShadowFieldIndex.Ammo_AltAmmo_1:
-                        Ammo_AltAmmo_1 = Stream.Read.UShort();
+                    case ShadowFieldIndex.AltAmmo_1:
+                        AltAmmo_1 = Stream.Read.UShort();
                         break;
                     case ShadowFieldIndex.WeaponIndex:
                         WeaponIndex_Index = Stream.Read.Byte();
@@ -1621,7 +1652,52 @@ namespace PacketPeepScript
                         SuperCharge_Value = Stream.Read.Half();
                         SuperCharge_Op = Stream.Read.Byte();
                         break;
-                        
+                    
+                    case ShadowFieldIndex.NoSpreadFlags:
+                        NoSpreadFlags = Stream.Read.Byte();
+                        break;
+
+                    // TODO: AppendageHealthPools
+
+                    case ShadowFieldIndex.AppendageHealthPct_0:
+                        AppendageHealthPct_0 = Stream.Read.Byte();
+                        break;
+                    
+                    case ShadowFieldIndex.AppendageHealthPct_1:
+                        AppendageHealthPct_1 = Stream.Read.Byte();
+                        break;
+                    
+                    case ShadowFieldIndex.AppendageHealthPct_2:
+                        AppendageHealthPct_2 = Stream.Read.Byte();
+                        break;
+                    
+                    case ShadowFieldIndex.AppendageHealthPct_3:
+                        AppendageHealthPct_3 = Stream.Read.Byte();
+                        break;
+                    
+                    case ShadowFieldIndex.AppendageHealthPct_4:
+                        AppendageHealthPct_4 = Stream.Read.Byte();
+                        break;
+                    
+                    case ShadowFieldIndex.AppendageHealthPct_5:
+                        AppendageHealthPct_5 = Stream.Read.Byte();
+                        break;
+                    
+                    case ShadowFieldIndex.AppendageHealthPct_6:
+                        AppendageHealthPct_6 = Stream.Read.Byte();
+                        break;
+                    
+                    case ShadowFieldIndex.AppendageHealthPct_7:
+                        AppendageHealthPct_7 = Stream.Read.Byte();
+                        break;
+                    
+                    case ShadowFieldIndex.AppendageHealthPct_8:
+                        AppendageHealthPct_8 = Stream.Read.Byte();
+                        break;
+                    
+                    case ShadowFieldIndex.AppendageHealthPct_9:
+                        AppendageHealthPct_9 = Stream.Read.Byte();
+                        break;
 
                     default:
                         UnableToParseWarning = $"Dont know how to parse shadowfield {sfidx}";

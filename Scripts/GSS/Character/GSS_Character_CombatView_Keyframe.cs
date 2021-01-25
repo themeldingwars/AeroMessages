@@ -52,6 +52,7 @@ namespace PacketPeepScript
             BattleChatterTag,
         }
 
+        public string Warning;
         public byte[] Bitfield;
 
         public ushort? StatusEffects_0_ChangeTime;
@@ -470,36 +471,61 @@ namespace PacketPeepScript
         public float? StatusEffects_31_Data_Float2;
         public bool? StatusEffects_31_Cancel;
 
+        public byte? FireMode_0;
+        public uint? FireMode_0_Time;
+        public byte? FireMode_1;
+        public uint? FireMode_1_Time;
+        public ushort? Ammo_0;
+        public ushort? Ammo_1;
+        public ushort? AltAmmo_0;
+        public ushort? AltAmmo_1;
+        public byte? WeaponIndex_Index;
+        public byte[] WeaponIndex_Unk;
+        public uint? WeaponIndex_Time;
+        public uint? ClipEmptyBegin;
+        public uint? ClipEmptyEnd;
+        public uint? WeaponBurstFired;
+        public uint? WeaponBurstEnded;
+        public uint? WeaponBurstCancelled;
+        public uint? WeaponReloaded;
+        public uint? WeaponReloadCancelled;
+        public float? WeaponAgilityMod;
+        public uint? AbilityCooldownEndMs_0;
+        public uint? AbilityCooldownEndMs_1;
+        public uint? AbilityCooldownEndMs_2;
+        public uint? AbilityCooldownEndMs_3;
+        public uint? EquipmentLoadTime;
+        public uint? CombatFlags;
+        public uint? CombatFlags_Time;
 
-        public byte? SelectFireMode_FireMode;
-        public uint? SelectFireMode_Time;
-        public byte? UseScope_InScope;
-        public uint? UseScope_Time;
-        public ushort? Ammo_Primary_Clip_1;
-        public ushort? Ammo_Secondary_Clip_1;
-        public ushort? Ammo_Primary_Clip_2;
-        public ushort? Ammo_Secondary_Clip_2;
-        public byte? SelectWeapon_Index;
-        public byte[] SelectWeapon_Unk;
-        public uint? SelectWeapon_Time;
-        public uint? Unk_0x47_Time;
-        public uint? Unk_0x48_Time;
-        public uint? FireBurst_Time;
-        public uint? FireEnd_Time;
-        public uint? FireCancel_Time;
-        public uint? ReloadWeapon_Time;
-        public uint? Unk_Time0;
-        public float? Unk_Float1;
-        public uint? Unk_Time2;
-        public uint? Unk_Time3;
-        public uint? Unk_Time4;
-        public uint? Unk_Time5;
-        public uint? Unk_Time6;
-        public uint? Unk_Gap7;
-        public uint? Unk_Time8;
+        public byte[] AppendageHealthPools_0;
+        public byte[] AppendageHealthPools_1;
+        public byte[] AppendageHealthPools_2;
+        public byte[] AppendageHealthPools_3;
+        public byte[] AppendageHealthPools_4;
+        public byte[] AppendageHealthPools_5;
+        public byte[] AppendageHealthPools_6;
+        public byte[] AppendageHealthPools_7;
+        public byte[] AppendageHealthPools_8;
+        public byte[] AppendageHealthPools_9;
 
+        public byte AppendageHealthPct_0; // Not sure
+        public byte AppendageHealthPct_1; // Not sure
+        public byte AppendageHealthPct_2; // Not sure
+        public byte AppendageHealthPct_3; // Not sure
+        public byte AppendageHealthPct_4; // Not sure
+        public byte AppendageHealthPct_5; // Not sure
+        public byte AppendageHealthPct_6; // Not sure
+        public byte AppendageHealthPct_7; // Not sure
+        public byte AppendageHealthPct_8; // Not sure
+        public byte AppendageHealthPct_9; // Not sure
 
+        public byte[] NPCTargetObjId;
+        public byte[] BattleChatterTag;
 
+        public byte[] MimicParent; // Not sure
+        public byte[] MimicOffset; // Not sure
+ 
         public override void Read(Bitter.BinaryStream Stream)
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
@@ -1151,35 +1177,100 @@ namespace PacketPeepScript
                     }
                 }
 
-                
-                // The unks inbetween these are reasonable asumptions based on what is known
-                SelectFireMode_FireMode = Stream.Read.Byte();
-                SelectFireMode_Time = Stream.Read.UInt();
-                UseScope_InScope = Stream.Read.Byte();
-                UseScope_Time = Stream.Read.UInt();
-                Ammo_Primary_Clip_1 = Stream.Read.UShort();
-                Ammo_Secondary_Clip_1 = Stream.Read.UShort();
-                Ammo_Primary_Clip_2 = Stream.Read.UShort();
-                Ammo_Secondary_Clip_2 = Stream.Read.UShort();
-                SelectWeapon_Index = Stream.Read.Byte();
-                SelectWeapon_Unk = Stream.Read.ByteArray(2);
-                SelectWeapon_Time = Stream.Read.UInt();
-                Unk_0x47_Time = Stream.Read.UInt();
-                Unk_0x48_Time = Stream.Read.UInt();
-                FireBurst_Time = Stream.Read.UInt();
-                FireEnd_Time = Stream.Read.UInt();
-                FireCancel_Time = Stream.Read.UInt();
-                ReloadWeapon_Time = Stream.Read.UInt();
+                FireMode_0 = Stream.Read.Byte();
+                FireMode_0_Time = Stream.Read.UInt();
+                FireMode_1 = Stream.Read.Byte();
+                FireMode_1_Time = Stream.Read.UInt();
+                Ammo_0 = Stream.Read.UShort();
+                Ammo_1 = Stream.Read.UShort();
+                AltAmmo_0 = Stream.Read.UShort();
+                AltAmmo_1 = Stream.Read.UShort();
+                WeaponIndex_Index = Stream.Read.Byte();
+                WeaponIndex_Unk = Stream.Read.ByteArray(2);
+                WeaponIndex_Time = Stream.Read.UInt();
+                ClipEmptyBegin = Stream.Read.UInt();
+                ClipEmptyEnd = Stream.Read.UInt();
+                WeaponBurstFired = Stream.Read.UInt();
+                WeaponBurstEnded = Stream.Read.UInt();
+                WeaponBurstCancelled = Stream.Read.UInt();
+                WeaponReloaded = Stream.Read.UInt();
+                WeaponReloadCancelled = Stream.Read.UInt();
+                WeaponAgilityMod = Stream.Read.Float();
+                AbilityCooldownEndMs_0 = Stream.Read.UInt();
+                AbilityCooldownEndMs_1 = Stream.Read.UInt();
+                AbilityCooldownEndMs_2 = Stream.Read.UInt();
+                AbilityCooldownEndMs_3 = Stream.Read.UInt();
+                EquipmentLoadTime = Stream.Read.UInt();
+                CombatFlags = Stream.Read.UInt();
+                CombatFlags_Time = Stream.Read.UInt();
 
-                Unk_Time0 = Stream.Read.UInt();
-                Unk_Float1 = Stream.Read.Float();
-                Unk_Time2 = Stream.Read.UInt();
-                Unk_Time3 = Stream.Read.UInt();
-                Unk_Time4 = Stream.Read.UInt();
-                Unk_Time5 = Stream.Read.UInt();
-                Unk_Time6 = Stream.Read.UInt();
-                Unk_Gap7 = Stream.Read.UInt();
-                Unk_Time8 = Stream.Read.UInt();
+                // TODO: AppendageHealthPools
+                if(Bitfield[(int)BitfieldIndex.AppendageHealthPools_0] == 0)
+                {
+                    Warning += "AppendageHealthPools_0;";
+                }
+                if(Bitfield[(int)BitfieldIndex.AppendageHealthPools_1] == 0)
+                {
+                    Warning += "AppendageHealthPools_1;";
+                }
+                if(Bitfield[(int)BitfieldIndex.AppendageHealthPools_2] == 0)
+                {
+                    Warning += "AppendageHealthPools_2;";
+                }
+                if(Bitfield[(int)BitfieldIndex.AppendageHealthPools_3] == 0)
+                {
+                    Warning += "AppendageHealthPools_3;";
+                }
+                if(Bitfield[(int)BitfieldIndex.AppendageHealthPools_4] == 0)
+                {
+                    Warning += "AppendageHealthPools_4;";
+                }
+                if(Bitfield[(int)BitfieldIndex.AppendageHealthPools_5] == 0)
+                {
+                    Warning += "AppendageHealthPools_5;";
+                }
+                if(Bitfield[(int)BitfieldIndex.AppendageHealthPools_6] == 0)
+                {
+                    Warning += "AppendageHealthPools_6;";
+                }
+                if(Bitfield[(int)BitfieldIndex.AppendageHealthPools_7] == 0)
+                {
+                    Warning += "AppendageHealthPools_7;";
+                }
+                if(Bitfield[(int)BitfieldIndex.AppendageHealthPools_8] == 0)
+                {
+                    Warning += "AppendageHealthPools_8;";
+                }
+                if(Bitfield[(int)BitfieldIndex.AppendageHealthPools_9] == 0)
+                {
+                    Warning += "AppendageHealthPools_9;";
+                }
+
+                // AppendageHealthPct (guess, but it's rock solid for the entities that have npctargetobjid)
+                AppendageHealthPct_0 = Stream.Read.Byte();
+                AppendageHealthPct_1 = Stream.Read.Byte();
+                AppendageHealthPct_2 = Stream.Read.Byte();
+                AppendageHealthPct_3 = Stream.Read.Byte();
+                AppendageHealthPct_4 = Stream.Read.Byte();
+                AppendageHealthPct_5 = Stream.Read.Byte();
+                AppendageHealthPct_6 = Stream.Read.Byte();
+                AppendageHealthPct_7 = Stream.Read.Byte();
+                AppendageHealthPct_8 = Stream.Read.Byte();
+                AppendageHealthPct_9 = Stream.Read.Byte();
+
+                if(Bitfield[(int)BitfieldIndex.NPCTargetObjId] == 0)
+                {
+                    NPCTargetObjId = Stream.Read.ByteArray(8);
+                }
+                if(Bitfield[(int)BitfieldIndex.BattleChatterTag] == 0)
+                {
+                    Warning += "BattleChatterTag;";
+                    BattleChatterTag = Stream.Read.ByteArray(2);
+                }
+
+                MimicParent = Stream.Read.ByteArray(8); // Have yet to find a proper example, but ends up being 0s consistently so thats good
+                MimicOffset = Stream.Read.ByteArray(12); // Many cases of values but not sure what they are, hardly fitting for floats, maybe something packed
+
             }
             
         }

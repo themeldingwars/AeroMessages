@@ -71,13 +71,13 @@ namespace PacketPeepScript
             StatusEffects_29_Data = 0x3d,
             StatusEffects_30_Data = 0x3e,
             StatusEffects_31_Data = 0x3f,
-  
+
             FireMode_0 = 0x40,
             FireMode_1 = 0x41,
-            Ammo_Ammo_0 = 0x42,
-            Ammo_Ammo_1 = 0x43,
-            Ammo_AltAmmo_0 = 0x44,
-            Ammo_AltAmmo_1 = 0x45,
+            Ammo_0 = 0x42,
+            Ammo_1 = 0x43,
+            AltAmmo_0 = 0x44,
+            AltAmmo_1 = 0x45,
             WeaponIndex = 0x46,
             ClipEmptyBegin = 0x47,
             ClipEmptyEnd = 0x48,
@@ -117,7 +117,8 @@ namespace PacketPeepScript
 
             NPCTargetObjId = 0x69, // References an entity, For bandit this triggers a taunt, possible engage-combat or something
             BattleChatterTag = 0x6a,
-            MimicParent = 0x6b, 
+
+            MimicParent = 0x6b,
             MimicOffset = 0x6c,
 
 
@@ -588,17 +589,14 @@ namespace PacketPeepScript
         public float? StatusEffects_31_Data_Float2;
         public bool? StatusEffects_31_Cancel;
 
-
-   
-
         public byte? FireMode_0_FireMode;
         public uint? FireMode_0_Time;
         public byte? FireMode_1_InScope;
         public uint? FireMode_1_Time;
-        public ushort? Ammo_Ammo_0;
-        public ushort? Ammo_Ammo_1;
-        public ushort? Ammo_AltAmmo_0;
-        public ushort? Ammo_AltAmmo_1;
+        public ushort? Ammo_0;
+        public ushort? Ammo_1;
+        public ushort? AltAmmo_0;
+        public ushort? AltAmmo_1;
         public byte? WeaponIndex_Index;
         public byte[] WeaponIndex_Unk;
         public uint? WeaponIndex_Time;
@@ -617,10 +615,35 @@ namespace PacketPeepScript
         public uint? EquipmentLoadTime_Time;
         public uint? CombatFlags;
         public uint? CombatFlags_Time;
+
+        public byte AppendageHealthPct_0; // Not sure
+        public byte AppendageHealthPct_1; // Not sure
+        public byte AppendageHealthPct_2; // Not sure
+        public byte AppendageHealthPct_3; // Not sure
+        public byte AppendageHealthPct_4; // Not sure
+        public byte AppendageHealthPct_5; // Not sure
+        public byte AppendageHealthPct_6; // Not sure
+        public byte AppendageHealthPct_7; // Not sure
+        public byte AppendageHealthPct_8; // Not sure
+        public byte AppendageHealthPct_9; // Not sure
+
         public byte[] NPCTargetObjId_Entity;
         public ushort? BattleChatterTag;
         public byte[] MimicParent;
         public float[] MimicOffset;
+
+        public bool? Reset_AppendageHealthPools_0;
+        public bool? Reset_AppendageHealthPools_1;
+        public bool? Reset_AppendageHealthPools_2;
+        public bool? Reset_AppendageHealthPools_3;
+        public bool? Reset_AppendageHealthPools_4;
+        public bool? Reset_AppendageHealthPools_5;
+        public bool? Reset_AppendageHealthPools_6;
+        public bool? Reset_AppendageHealthPools_7;
+        public bool? Reset_AppendageHealthPools_8;
+        public bool? Reset_AppendageHealthPools_9;
+        public bool? Reset_NPCTargetObjId;
+        public bool? Reset_BattleChatterTag;
 
         public byte[] UnableToParse;
 
@@ -1338,6 +1361,137 @@ namespace PacketPeepScript
                         }
                         break;
 
+                    case ShadowFieldIndex.FireMode_0:
+                        FireMode_0_FireMode = Stream.Read.Byte();
+                        FireMode_0_Time = Stream.Read.UInt();
+                        break;
+                    case ShadowFieldIndex.FireMode_1:
+                        FireMode_1_InScope = Stream.Read.Byte();
+                        FireMode_1_Time = Stream.Read.UInt();
+                        break;
+                    case ShadowFieldIndex.Ammo_0:
+                        Ammo_0 = Stream.Read.UShort();
+                        break;
+                    case ShadowFieldIndex.Ammo_1:
+                        Ammo_1 = Stream.Read.UShort();
+                        break;
+                    case ShadowFieldIndex.AltAmmo_0:
+                        AltAmmo_0 = Stream.Read.UShort();
+                        break;
+                    case ShadowFieldIndex.AltAmmo_1:
+                        AltAmmo_1 = Stream.Read.UShort();
+                        break;
+                    case ShadowFieldIndex.WeaponIndex:
+                        WeaponIndex_Index = Stream.Read.Byte();
+                        WeaponIndex_Unk = Stream.Read.ByteArray(2);
+                        WeaponIndex_Time = Stream.Read.UInt();
+                        break;
+                    case ShadowFieldIndex.ClipEmptyBegin:
+                        ClipEmptyBegin_Time = Stream.Read.UInt();
+                        break;
+                    case ShadowFieldIndex.ClipEmptyEnd:
+                        ClipEmptyEnd_Time = Stream.Read.UInt();
+                        break;
+                    case ShadowFieldIndex.WeaponBurstFired:
+                        WeaponBurstFired_Time = Stream.Read.UInt();
+                        break;
+                    case ShadowFieldIndex.WeaponBurstEnded:
+                        WeaponBurstEnded_Time = Stream.Read.UInt();
+                        break;
+                    case ShadowFieldIndex.WeaponBurstCancelled:
+                        WeaponBurstCancelled_Time = Stream.Read.UInt();
+                        break;
+                    case ShadowFieldIndex.WeaponReloaded:
+                        WeaponReloaded_Time = Stream.Read.UInt();
+                        break;
+                    case ShadowFieldIndex.WeaponReloadCancelled:
+                        WeaponReloadCancelled_Time = Stream.Read.UInt();
+                        break;
+                    case ShadowFieldIndex.WeaponAgilityMod:
+                        WeaponAgilityMod_Time = Stream.Read.UInt();
+                        break;
+                    case ShadowFieldIndex.AbilityCooldownEndMs_0:
+                        AbilityCooldownEndMs_0_Time = Stream.Read.UInt();
+                        break;
+                    case ShadowFieldIndex.AbilityCooldownEndMs_1:
+                        AbilityCooldownEndMs_1_Time = Stream.Read.UInt();
+                        break;
+                    case ShadowFieldIndex.AbilityCooldownEndMs_2:
+                        AbilityCooldownEndMs_2_Time = Stream.Read.UInt();
+                        break;
+                    case ShadowFieldIndex.AbilityCooldownEndMs_3:
+                        AbilityCooldownEndMs_3_Time = Stream.Read.UInt();
+                        break;
+                    case ShadowFieldIndex.EquipmentLoadTime:
+                        EquipmentLoadTime_Time = Stream.Read.UInt();
+                        break;
+
+                    case ShadowFieldIndex.CombatFlags:
+                        CombatFlags = Stream.Read.UInt();
+                        CombatFlags_Time = Stream.Read.UInt();
+                        break;
+
+
+                    case ShadowFieldIndex.AppendageHealthPct_0:
+                        AppendageHealthPct_0 = Stream.Read.Byte();
+                        break;
+                    
+                    case ShadowFieldIndex.AppendageHealthPct_1:
+                        AppendageHealthPct_1 = Stream.Read.Byte();
+                        break;
+                    
+                    case ShadowFieldIndex.AppendageHealthPct_2:
+                        AppendageHealthPct_2 = Stream.Read.Byte();
+                        break;
+                    
+                    case ShadowFieldIndex.AppendageHealthPct_3:
+                        AppendageHealthPct_3 = Stream.Read.Byte();
+                        break;
+                    
+                    case ShadowFieldIndex.AppendageHealthPct_4:
+                        AppendageHealthPct_4 = Stream.Read.Byte();
+                        break;
+                    
+                    case ShadowFieldIndex.AppendageHealthPct_5:
+                        AppendageHealthPct_5 = Stream.Read.Byte();
+                        break;
+                    
+                    case ShadowFieldIndex.AppendageHealthPct_6:
+                        AppendageHealthPct_6 = Stream.Read.Byte();
+                        break;
+                    
+                    case ShadowFieldIndex.AppendageHealthPct_7:
+                        AppendageHealthPct_7 = Stream.Read.Byte();
+                        break;
+                    
+                    case ShadowFieldIndex.AppendageHealthPct_8:
+                        AppendageHealthPct_8 = Stream.Read.Byte();
+                        break;
+                    
+                    case ShadowFieldIndex.AppendageHealthPct_9:
+                        AppendageHealthPct_9 = Stream.Read.Byte();
+                        break;
+                    
+
+                    case ShadowFieldIndex.NPCTargetObjId:
+                        NPCTargetObjId_Entity = Stream.Read.ByteArray(8);
+                        break;
+
+                    case ShadowFieldIndex.BattleChatterTag:
+                        BattleChatterTag = Stream.Read.UShort();
+                        break;
+                        
+                    case ShadowFieldIndex.MimicParent:
+                        MimicParent = Stream.Read.ByteArray(8);
+                        break;
+
+                    case ShadowFieldIndex.MimicOffset:
+                        MimicOffset = Stream.Read.FloatArray(3);
+                        break;
+
+
+                    // Reset fields
+
                     // These keys do not come with any data
                     case ShadowFieldIndex.StatusEffects_0_Cancel:
                         StatusEffects_0_Cancel = true;
@@ -1435,91 +1589,41 @@ namespace PacketPeepScript
                     case ShadowFieldIndex.StatusEffects_31_Cancel:
                         StatusEffects_31_Cancel = true;
                         break;
-
-                    case ShadowFieldIndex.FireMode_0:
-                        FireMode_0_FireMode = Stream.Read.Byte();
-                        FireMode_0_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.Reset_AppendageHealthPools_0:
+                        Reset_AppendageHealthPools_0 = true;
                         break;
-                    case ShadowFieldIndex.FireMode_1:
-                        FireMode_1_InScope = Stream.Read.Byte();
-                        FireMode_1_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.Reset_AppendageHealthPools_1:
+                        Reset_AppendageHealthPools_1 = true;
                         break;
-                    case ShadowFieldIndex.Ammo_Ammo_0:
-                        Ammo_Ammo_0 = Stream.Read.UShort();
+                    case ShadowFieldIndex.Reset_AppendageHealthPools_2:
+                        Reset_AppendageHealthPools_2 = true;
                         break;
-                    case ShadowFieldIndex.Ammo_Ammo_1:
-                        Ammo_Ammo_1 = Stream.Read.UShort();
+                    case ShadowFieldIndex.Reset_AppendageHealthPools_3:
+                        Reset_AppendageHealthPools_3 = true;
                         break;
-                    case ShadowFieldIndex.Ammo_AltAmmo_0:
-                        Ammo_AltAmmo_0 = Stream.Read.UShort();
+                    case ShadowFieldIndex.Reset_AppendageHealthPools_4:
+                        Reset_AppendageHealthPools_4 = true;
                         break;
-                    case ShadowFieldIndex.Ammo_AltAmmo_1:
-                        Ammo_AltAmmo_1 = Stream.Read.UShort();
+                    case ShadowFieldIndex.Reset_AppendageHealthPools_5:
+                        Reset_AppendageHealthPools_5 = true;
                         break;
-                    case ShadowFieldIndex.WeaponIndex:
-                        WeaponIndex_Index = Stream.Read.Byte();
-                        WeaponIndex_Unk = Stream.Read.ByteArray(2);
-                        WeaponIndex_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.Reset_AppendageHealthPools_6:
+                        Reset_AppendageHealthPools_6 = true;
                         break;
-                    case ShadowFieldIndex.ClipEmptyBegin:
-                        ClipEmptyBegin_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.Reset_AppendageHealthPools_7:
+                        Reset_AppendageHealthPools_7 = true;
                         break;
-                    case ShadowFieldIndex.ClipEmptyEnd:
-                        ClipEmptyEnd_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.Reset_AppendageHealthPools_8:
+                        Reset_AppendageHealthPools_8 = true;
                         break;
-                    case ShadowFieldIndex.WeaponBurstFired:
-                        WeaponBurstFired_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.Reset_AppendageHealthPools_9:
+                        Reset_AppendageHealthPools_9 = true;
                         break;
-                    case ShadowFieldIndex.WeaponBurstEnded:
-                        WeaponBurstEnded_Time = Stream.Read.UInt();
+                    case ShadowFieldIndex.Reset_NPCTargetObjId:
+                        Reset_NPCTargetObjId = true;
                         break;
-                    case ShadowFieldIndex.WeaponBurstCancelled:
-                        WeaponBurstCancelled_Time = Stream.Read.UInt();
-                        break;
-                    case ShadowFieldIndex.WeaponReloaded:
-                        WeaponReloaded_Time = Stream.Read.UInt();
-                        break;
-                    case ShadowFieldIndex.WeaponReloadCancelled:
-                        WeaponReloadCancelled_Time = Stream.Read.UInt();
-                        break;
-                    case ShadowFieldIndex.WeaponAgilityMod:
-                        WeaponAgilityMod_Time = Stream.Read.UInt();
-                        break;
-                    case ShadowFieldIndex.AbilityCooldownEndMs_0:
-                        AbilityCooldownEndMs_0_Time = Stream.Read.UInt();
-                        break;
-                    case ShadowFieldIndex.AbilityCooldownEndMs_1:
-                        AbilityCooldownEndMs_1_Time = Stream.Read.UInt();
-                        break;
-                    case ShadowFieldIndex.AbilityCooldownEndMs_2:
-                        AbilityCooldownEndMs_2_Time = Stream.Read.UInt();
-                        break;
-                    case ShadowFieldIndex.AbilityCooldownEndMs_3:
-                        AbilityCooldownEndMs_3_Time = Stream.Read.UInt();
-                        break;
-                    case ShadowFieldIndex.EquipmentLoadTime:
-                        EquipmentLoadTime_Time = Stream.Read.UInt();
-                        break;
-
-                    case ShadowFieldIndex.CombatFlags:
-                        CombatFlags = Stream.Read.UInt();
-                        CombatFlags_Time = Stream.Read.UInt();
-                        break;
-
-                    case ShadowFieldIndex.NPCTargetObjId:
-                        NPCTargetObjId_Entity = Stream.Read.ByteArray(8);
-                        break;
-
-                    case ShadowFieldIndex.BattleChatterTag:
-                        BattleChatterTag = Stream.Read.UShort();
-                        break;
-                        
-                    case ShadowFieldIndex.MimicParent:
-                        MimicParent = Stream.Read.ByteArray(8);
-                        break;
-
-                    case ShadowFieldIndex.MimicOffset:
-                        MimicOffset = Stream.Read.FloatArray(3);
+                    case ShadowFieldIndex.Reset_BattleChatterTag:
+                        Reset_BattleChatterTag = true;
                         break;
 
                     default:
