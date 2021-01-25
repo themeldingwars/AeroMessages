@@ -38,7 +38,7 @@ namespace PacketPeepScript
             SinFlags                = 0x1d,
             SinFlagsPrivate         = 0x1e,
             SinFactionsAcquiredBy   = 0x1f,
-            SinTeamsAqquiredBy      = 0x20,
+            SinTeamsAcquiredBy      = 0x20,
             ArmyGUID                = 0x21,
             ArmyIsOfficer           = 0x22,
             EncounterPartyTuple     = 0x23,
@@ -122,6 +122,46 @@ namespace PacketPeepScript
             PvPTokens                   = 0x6f,
             BountyPointsLastClaimed     = 0x70,
             EliteLevel                  = 0x71,
+
+            // Reset fields
+            Reset_CinematicCamera        = 0x8f,
+            Reset_PersonalFactionStance  = 0x92,
+            Reset_AttachedTo             = 0x9b,
+            Reset_SinFactionsAcquiredBy  = 0x9f,
+            Reset_SinTeamsAqquiredBy     = 0xa0,
+            Reset_EncounterPartyTuple    = 0xa3,
+            Reset_LookAtTarget           = 0xa5,
+            Reset_CarryableObjects_0     = 0xaa,
+            Reset_CarryableObjects_1     = 0xab,
+            Reset_CarryableObjects_2     = 0xac,
+            Reset_CachedAssets           = 0xad,
+            Reset_RespawnTimes           = 0xae,
+            Reset_ArcStatus              = 0xcc,
+            Reset_LeaveZoneTime          = 0xcd,
+            Reset_TimedDailyRewardResult = 0xd0,
+            Reset_SinCardFields_0        = 0xd2,
+            Reset_SinCardFields_1        = 0xd3,
+            Reset_SinCardFields_2        = 0xd4,
+            Reset_SinCardFields_3        = 0xd5,
+            Reset_SinCardFields_4        = 0xd6,
+            Reset_SinCardFields_5        = 0xd7,
+            Reset_SinCardFields_6        = 0xd8,
+            Reset_SinCardFields_7        = 0xd9,
+            Reset_SinCardFields_8        = 0xda,
+            Reset_SinCardFields_9        = 0xdb,
+            Reset_SinCardFields_10       = 0xdc,
+            Reset_SinCardFields_11       = 0xdd,
+            Reset_SinCardFields_12       = 0xde,
+            Reset_SinCardFields_13       = 0xdf,
+            Reset_SinCardFields_14       = 0xe0,
+            Reset_SinCardFields_15       = 0xe1,
+            Reset_SinCardFields_16       = 0xe2,
+            Reset_SinCardFields_17       = 0xe3,
+            Reset_SinCardFields_18       = 0xe4,
+            Reset_SinCardFields_19       = 0xe5,
+            Reset_SinCardFields_20       = 0xe6,
+            Reset_SinCardFields_21       = 0xe7,
+            Reset_SinCardFields_22       = 0xe8,
         }
 
         public string UnableToParseWarning; // Will be set if we encounter an unhandled shadowfield
@@ -139,12 +179,13 @@ namespace PacketPeepScript
         public byte[] CurrentEquipment;
         public uint? SelectedLoadout;
         public uint? SelectedLoadoutIsPvP;
-        public uint? GibVisualsID_1;
+        public uint? GibVisualsID_Value;
         public uint? GibVisualsID_Time;
         public byte[] SpawnPose;
         public uint? ProcessDelay;
         public byte? CharacterState;
         public uint? CharacterState_Time;
+        public byte? SpectatorMode;
         public byte[] HostilityInfo;
         public byte[] PersonalFactionStance;
         public uint? CurrentHealth;
@@ -155,17 +196,27 @@ namespace PacketPeepScript
         public uint? MaxHealth_Time;
         public byte? CurrentDurabilityPct;
         public float? EnergyParams_EnergyMax;
-        public uint? EnergyParams_Unk;
-        public float? EnergyParams_RechargeRelated;
+        public uint? EnergyParams_Delay;
+        public float? EnergyParams_Recharge;
         public uint? EnergyParams_Time;
-        public byte[] CharacterStats;
-        public ulong? ArmyGUID;
-        
-        public byte? ArmyIsOfficer;
 
+        public byte[] CharacterStats;
+
+        public ushort? EmoteID_Value; // Sdb table 73, id column
+        public uint? EmoteID_Time;
+        public byte? SnapMount;
+        public byte? SinFlags;
+        public byte? SinFlagsPrivate;
+
+        public byte[] SinFactionsAcquiredBy;
+        public byte[] SinTeamsAcquiredBy;
+
+        public ulong? ArmyGUID;
+        public byte? ArmyIsOfficer;
         public byte[] ZoneUnlocks;
         public byte[] RegionUnlocks;
         public byte[] ScopeBubbleInfo;
+        public byte[] ChatPartyLeaderId;
         public uint ProgressionXp;
 
         public byte[] PermanentStatusEffects;
@@ -190,20 +241,71 @@ namespace PacketPeepScript
         public byte[] ReputationZoneModifier;
         public byte[] ReputationVipModifier;
         public byte[] ReputationEventModifier;
-        public byte[] Wallet;
-
+        public uint Wallet_RedBeans;
+        public uint Wallet_Epoch;
+        public uint Loyalty_CurrentPoints;
+        public uint Loyalty_LifetimePoints;
+        public uint Loyalty_Tier;
         public byte? Level;
         public byte? EffectiveLevel;
-
+        public byte? LevelResetCount;
+        //public byte[] OldestDeployables; // Dunno
         public uint PerkRespecs;
+        //public byte[] ArcStatus; // Dunno
+        public uint? LeaveZoneTime; // Guess
+        public byte? ChatMuteStatus;
+        public byte[] TimedDailyReward;
+        //public byte[] TimedDailyRewardResult // Dunno
+        public uint SinCardType;
         public ushort FriendCount;
-        public byte[] CAISStatus;
+        public byte CAISStatus_State;
+        public uint CAISStatus_ElapsedSeconds; 
         public byte[] ScalingLevel;
         public uint PvPRank;
         public uint PvPRankPoints;
         public uint PvPTokens;
         public uint BountyPointsLastClaimed;
         public uint EliteLevel;
+
+
+        public bool? Reset_CinematicCamera;
+        public bool? Reset_PersonalFactionStance;
+        public bool? Reset_AttachedTo;
+        public bool? Reset_SinFactionsAcquiredBy;
+        public bool? Reset_SinTeamsAqquiredBy;
+        public bool? Reset_EncounterPartyTuple;
+        public bool? Reset_LookAtTarget;
+        public bool? Reset_CarryableObjects_0;
+        public bool? Reset_CarryableObjects_1;
+        public bool? Reset_CarryableObjects_2;
+        public bool? Reset_CachedAssets;
+        public bool? Reset_RespawnTimes;
+        public bool? Reset_ArcStatus;
+        public bool? Reset_LeaveZoneTime;
+        public bool? Reset_TimedDailyRewardResult;
+        public bool? Reset_SinCardFields_0;
+        public bool? Reset_SinCardFields_1;
+        public bool? Reset_SinCardFields_2;
+        public bool? Reset_SinCardFields_3;
+        public bool? Reset_SinCardFields_4;
+        public bool? Reset_SinCardFields_5;
+        public bool? Reset_SinCardFields_6;
+        public bool? Reset_SinCardFields_7;
+        public bool? Reset_SinCardFields_8;
+        public bool? Reset_SinCardFields_9;
+        public bool? Reset_SinCardFields_10;
+        public bool? Reset_SinCardFields_11;
+        public bool? Reset_SinCardFields_12;
+        public bool? Reset_SinCardFields_13;
+        public bool? Reset_SinCardFields_14;
+        public bool? Reset_SinCardFields_15;
+        public bool? Reset_SinCardFields_16;
+        public bool? Reset_SinCardFields_17;
+        public bool? Reset_SinCardFields_18;
+        public bool? Reset_SinCardFields_19;
+        public bool? Reset_SinCardFields_20;
+        public bool? Reset_SinCardFields_21;
+        public bool? Reset_SinCardFields_22;
 
         public byte[] UnableToParse;
 
@@ -263,7 +365,7 @@ namespace PacketPeepScript
                         break;
 
                     case ShadowFieldIndex.GibVisualsID:
-                        GibVisualsID_1 = Stream.Read.UInt();
+                        GibVisualsID_Value = Stream.Read.UInt();
                         GibVisualsID_Time = Stream.Read.UInt();
                         break;
 
@@ -278,6 +380,10 @@ namespace PacketPeepScript
                     case ShadowFieldIndex.CharacterState:
                         CharacterState = Stream.Read.Byte();
                         CharacterState_Time = Stream.Read.UInt();
+                        break;
+
+                    case ShadowFieldIndex.SpectatorMode:
+                        SpectatorMode = Stream.Read.Byte();
                         break;
 
                     case ShadowFieldIndex.HostilityInfo:
@@ -312,14 +418,39 @@ namespace PacketPeepScript
 
                     case ShadowFieldIndex.EnergyParams:
                         EnergyParams_EnergyMax = Stream.Read.Float();
-                        EnergyParams_Unk = Stream.Read.UInt(); // Not sure
-                        EnergyParams_RechargeRelated = Stream.Read.Float();
+                        EnergyParams_Delay = Stream.Read.UInt(); // Not sure
+                        EnergyParams_Recharge = Stream.Read.Float();
                         EnergyParams_Time = Stream.Read.UInt();
                         break;
 
                     //case ShadowFieldIndex.CharacterStats:
                     //    CharacterStats = ; // Variable length needs indepth parsing
                     //    break;
+
+                    case ShadowFieldIndex.EmoteID:
+                        EmoteID_Value = Stream.Read.UShort();
+                        EmoteID_Time = Stream.Read.UInt();
+                        break;
+
+                    case ShadowFieldIndex.SnapMount:
+                        SnapMount = Stream.Read.Byte();
+                        break;
+
+                    case ShadowFieldIndex.SinFlags:
+                        SinFlags = Stream.Read.Byte();
+                        break;
+
+                    case ShadowFieldIndex.SinFlagsPrivate:
+                        SinFlagsPrivate = Stream.Read.Byte();
+                        break;
+
+                    case ShadowFieldIndex.SinFactionsAcquiredBy:
+                        SinFactionsAcquiredBy = Stream.Read.ByteArray(2);
+                        break;
+
+                    case ShadowFieldIndex.SinTeamsAcquiredBy:
+                        SinTeamsAcquiredBy = Stream.Read.ByteArray(2);
+                        break;
 
                     case ShadowFieldIndex.ArmyGUID:
                         ArmyGUID = Stream.Read.ULong();
@@ -338,7 +469,11 @@ namespace PacketPeepScript
                         break;
 
                     case ShadowFieldIndex.ScopeBubbleInfo:
-                        ScopeBubbleInfo = Stream.Read.ByteArray(9);
+                        ScopeBubbleInfo = Stream.Read.ByteArray(8);
+                        break;
+
+                    case ShadowFieldIndex.ChatPartyLeaderId:
+                        ChatPartyLeaderId = Stream.Read.ByteArray(8); // guess
                         break;
 
                     case ShadowFieldIndex.ProgressionXp:
@@ -431,7 +566,14 @@ namespace PacketPeepScript
                         break;
 
                     case ShadowFieldIndex.Wallet:
-                        Wallet = Stream.Read.ByteArray(8);
+                        Wallet_RedBeans = Stream.Read.UInt();
+                        Wallet_Epoch = Stream.Read.UInt();
+                        break;
+
+                    case ShadowFieldIndex.Loyalty:
+                        Loyalty_CurrentPoints = Stream.Read.UInt();
+                        Loyalty_LifetimePoints = Stream.Read.UInt();
+                        Loyalty_Tier = Stream.Read.UInt();
                         break;
 
                     case ShadowFieldIndex.Level:
@@ -442,8 +584,31 @@ namespace PacketPeepScript
                         EffectiveLevel = Stream.Read.Byte();
                         break;
 
+                    case ShadowFieldIndex.LevelResetCount:
+                        LevelResetCount = Stream.Read.Byte();
+                        break;
+                    
+                    //OldestDeployables
+
                     case ShadowFieldIndex.PerkRespecs:
                         PerkRespecs = Stream.Read.UInt();
+                        break;
+
+
+                    case ShadowFieldIndex.LeaveZoneTime:
+                        LeaveZoneTime = Stream.Read.UInt();
+                        break;
+
+                    case ShadowFieldIndex.ChatMuteStatus:
+                        ChatMuteStatus = Stream.Read.Byte();
+                        break;
+
+                    case ShadowFieldIndex.TimedDailyReward:
+                        TimedDailyReward = Stream.Read.ByteArray(8);
+                        break;
+
+                    case ShadowFieldIndex.SinCardType:
+                        SinCardType = Stream.Read.UInt();
                         break;
 
                     case ShadowFieldIndex.FriendCount:
@@ -451,7 +616,8 @@ namespace PacketPeepScript
                         break;
 
                     case ShadowFieldIndex.CAISStatus:
-                        CAISStatus = Stream.Read.ByteArray(5);
+                        CAISStatus_State = Stream.Read.Byte();
+                        CAISStatus_ElapsedSeconds = Stream.Read.UInt();
                         break;
 
                     case ShadowFieldIndex.PvPRank:
@@ -472,6 +638,121 @@ namespace PacketPeepScript
 
                     case ShadowFieldIndex.EliteLevel:
                         EliteLevel = Stream.Read.UInt();
+                        break;
+
+                    case ShadowFieldIndex.Reset_CinematicCamera:
+                        Reset_CinematicCamera = true;
+                        break;
+                    case ShadowFieldIndex.Reset_PersonalFactionStance:
+                        Reset_PersonalFactionStance = true;
+                        break;
+                    case ShadowFieldIndex.Reset_AttachedTo:
+                        Reset_AttachedTo = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinFactionsAcquiredBy:
+                        Reset_SinFactionsAcquiredBy = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinTeamsAqquiredBy:
+                        Reset_SinTeamsAqquiredBy = true;
+                        break;
+                    case ShadowFieldIndex.Reset_EncounterPartyTuple:
+                        Reset_EncounterPartyTuple = true;
+                        break;
+                    case ShadowFieldIndex.Reset_LookAtTarget:
+                        Reset_LookAtTarget = true;
+                        break;
+                    case ShadowFieldIndex.Reset_CarryableObjects_0:
+                        Reset_CarryableObjects_0 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_CarryableObjects_1:
+                        Reset_CarryableObjects_1 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_CarryableObjects_2:
+                        Reset_CarryableObjects_2 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_CachedAssets:
+                        Reset_CachedAssets = true;
+                        break;
+                    case ShadowFieldIndex.Reset_RespawnTimes:
+                        Reset_RespawnTimes = true;
+                        break;
+                    case ShadowFieldIndex.Reset_ArcStatus:
+                        Reset_ArcStatus = true;
+                        break;
+                    case ShadowFieldIndex.Reset_LeaveZoneTime:
+                        Reset_LeaveZoneTime = true;
+                        break;
+                    case ShadowFieldIndex.Reset_TimedDailyRewardResult:
+                        Reset_TimedDailyRewardResult = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_0:
+                        Reset_SinCardFields_0 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_1:
+                        Reset_SinCardFields_1 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_2:
+                        Reset_SinCardFields_2 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_3:
+                        Reset_SinCardFields_3 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_4:
+                        Reset_SinCardFields_4 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_5:
+                        Reset_SinCardFields_5 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_6:
+                        Reset_SinCardFields_6 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_7:
+                        Reset_SinCardFields_7 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_8:
+                        Reset_SinCardFields_8 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_9:
+                        Reset_SinCardFields_9 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_10:
+                        Reset_SinCardFields_10 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_11:
+                        Reset_SinCardFields_11 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_12:
+                        Reset_SinCardFields_12 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_13:
+                        Reset_SinCardFields_13 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_14:
+                        Reset_SinCardFields_14 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_15:
+                        Reset_SinCardFields_15 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_16:
+                        Reset_SinCardFields_16 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_17:
+                        Reset_SinCardFields_17 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_18:
+                        Reset_SinCardFields_18 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_19:
+                        Reset_SinCardFields_19 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_20:
+                        Reset_SinCardFields_20 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_21:
+                        Reset_SinCardFields_21 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_22:
+                        Reset_SinCardFields_22 = true;
                         break;
 
                     default:
