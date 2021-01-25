@@ -83,42 +83,60 @@ namespace PacketPeepScript
             ScopeBubbleInfo             = 0x4a,
 
 
-            StatusEffects_0_Cancel = 0xa0,
-            StatusEffects_1_Cancel = 0xa1,
-            StatusEffects_2_Cancel = 0xa2,
-            StatusEffects_3_Cancel = 0xa3,
-            StatusEffects_4_Cancel = 0xa4,
-            StatusEffects_5_Cancel = 0xa5,
-            StatusEffects_6_Cancel = 0xa6,
-            StatusEffects_7_Cancel = 0xa7,
-            StatusEffects_8_Cancel = 0xa8,
-            StatusEffects_9_Cancel = 0xa9,
-            StatusEffects_10_Cancel = 0xaa,
-            StatusEffects_11_Cancel = 0xab,
-            StatusEffects_12_Cancel = 0xac,
-            StatusEffects_13_Cancel = 0xad,
-            StatusEffects_14_Cancel = 0xae,
-            StatusEffects_15_Cancel = 0xaf,
-            StatusEffects_16_Cancel = 0xb0,
-            StatusEffects_17_Cancel = 0xb1,
-            StatusEffects_18_Cancel = 0xb2,
-            StatusEffects_19_Cancel = 0xb3,
-            StatusEffects_20_Cancel = 0xb4,
-            StatusEffects_21_Cancel = 0xb5,
-            StatusEffects_22_Cancel = 0xb6,
-            StatusEffects_23_Cancel = 0xb7,
-            StatusEffects_24_Cancel = 0xb8,
-            StatusEffects_25_Cancel = 0xb9,
-            StatusEffects_26_Cancel = 0xba,
-            StatusEffects_27_Cancel = 0xbb,
-            StatusEffects_28_Cancel = 0xbc,
-            StatusEffects_29_Cancel = 0xbd,
-            StatusEffects_30_Cancel = 0xbe,
-            StatusEffects_31_Cancel = 0xbf,
+            StatusEffects_0_Cancel  = 0xa8,
+            StatusEffects_1_Cancel  = 0xa9,
+            StatusEffects_2_Cancel  = 0xaa,
+            StatusEffects_3_Cancel  = 0xab,
+            StatusEffects_4_Cancel  = 0xac,
+            StatusEffects_5_Cancel  = 0xad,
+            StatusEffects_6_Cancel  = 0xae,
+            StatusEffects_7_Cancel  = 0xaf,
+            StatusEffects_8_Cancel  = 0xb0,
+            StatusEffects_9_Cancel  = 0xb1,
+            StatusEffects_10_Cancel = 0xb2,
+            StatusEffects_11_Cancel = 0xb3,
+            StatusEffects_12_Cancel = 0xb4,
+            StatusEffects_13_Cancel = 0xb5,
+            StatusEffects_14_Cancel = 0xb6,
+            StatusEffects_15_Cancel = 0xb7,
+            StatusEffects_16_Cancel = 0xb8,
+            StatusEffects_17_Cancel = 0xb9,
+            StatusEffects_18_Cancel = 0xba,
+            StatusEffects_19_Cancel = 0xbb,
+            StatusEffects_20_Cancel = 0xbc,
+            StatusEffects_21_Cancel = 0xbd,
+            StatusEffects_22_Cancel = 0xbe,
+            StatusEffects_23_Cancel = 0xbf,
+            StatusEffects_24_Cancel = 0xc0,
+            StatusEffects_25_Cancel = 0xc1,
+            StatusEffects_26_Cancel = 0xc2,
+            StatusEffects_27_Cancel = 0xc3,
+            StatusEffects_28_Cancel = 0xc4,
+            StatusEffects_29_Cancel = 0xc5,
+            StatusEffects_30_Cancel = 0xc6,
+            StatusEffects_31_Cancel = 0xc7,
+
+            Reset_PersonalFactionStance = 0xc9,
         }
 
         public string UnableToParseWarning; // Will be set if we encounter an unhandled shadowfield
 
+        public uint NodeType;
+        public byte[] OwnerId1; // total assumption, similar to vehicle
+        public byte[] OwnerId2; // total assumption, similar to vehicle
+        public string Owner;
+        public uint UnkMaybeTime;
+        public float[] Position;
+        public uint BeaconId;
+        public byte CurrentHealthPct;
+        public uint MaxHealth;
+        public float Progress;
+        public byte StateInfo_State;
+        public uint StateInfo_Time;
+        public uint StateInfo_CountdownTime;
+        public byte[] HostilityInfo;
+        public byte[] PersonalFactionStance;
+        public byte[] ScopeBubbleInfo;
 
         public ushort? StatusEffects_0_ChangeTime;
         public uint? StatusEffects_0_Id;
@@ -536,6 +554,7 @@ namespace PacketPeepScript
         public float? StatusEffects_31_Data_Float2;
         public bool? StatusEffects_31_Cancel;
 
+        public bool? Reset_PersonalFactionStance;
 
         public byte[] UnableToParse;
 
@@ -548,6 +567,24 @@ namespace PacketPeepScript
                 ShadowFieldIndex sfidx = (ShadowFieldIndex) (Stream.Read.Byte());
                 switch (sfidx)
                 {
+                    case ShadowFieldIndex.StateInfo:
+                        StateInfo_State = Stream.Read.Byte();
+                        StateInfo_Time = Stream.Read.UInt();
+                        StateInfo_CountdownTime = Stream.Read.UInt();
+                        break;
+
+                    case ShadowFieldIndex.CurrentHealthPct:
+                        CurrentHealthPct = Stream.Read.Byte();
+                        break;
+
+                    case ShadowFieldIndex.Progress:
+                        Progress = Stream.Read.Float();
+                        break;
+
+                    case ShadowFieldIndex.ScopeBubbleInfo:
+                        ScopeBubbleInfo = Stream.Read.ByteArray(8);
+                        break;
+
                     case ShadowFieldIndex.StatusEffects_0_ChangeTime:
                         StatusEffects_0_ChangeTime = Stream.Read.UShort();
                         break;
@@ -1349,6 +1386,10 @@ namespace PacketPeepScript
                         break;
                     case ShadowFieldIndex.StatusEffects_31_Cancel:
                         StatusEffects_31_Cancel = true;
+                        break;
+
+                    case ShadowFieldIndex.Reset_PersonalFactionStance:
+                        Reset_PersonalFactionStance = true;
                         break;
 
                     default:
