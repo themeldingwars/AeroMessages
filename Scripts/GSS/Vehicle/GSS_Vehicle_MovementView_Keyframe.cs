@@ -4,23 +4,23 @@ namespace PacketPeepScript
     [Script(MessageType.GSS, 31, 3, true)]
     public class VehicleMovementViewKeyframe : BaseScript
     {
-        public float[] Position;
-        public float[] Rotation;
-        public float[] Direction;
-        public ushort MovementState;
-        public uint Time;
-        public byte[] Unk1;
+        public float[] CurrentPose_Position;
+        public float[] CurrentPose_Rotation;
+        public float[] CurrentPose_Direction;
+        public ushort CurrentPose_MovementState;
+        public uint CurrentPose_Time;
+        public float[] SpawnVelocity;
 
         public override void Read(Bitter.BinaryStream Stream)
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
 
-            Position = Stream.Read.FloatArray(3);
-            Rotation = Stream.Read.FloatArray(4);
-            Direction = Stream.Read.FloatArray(3);
-            MovementState = Stream.Read.UShort();
-            Time = Stream.Read.UInt();
-            Unk1 = Stream.Read.ByteArray(4*3);
+            CurrentPose_Position = Stream.Read.FloatArray(3);
+            CurrentPose_Rotation = Stream.Read.FloatArray(4);
+            CurrentPose_Direction = Stream.Read.FloatArray(3);
+            CurrentPose_MovementState = Stream.Read.UShort();
+            CurrentPose_Time = Stream.Read.UInt();
+            SpawnVelocity = Stream.Read.FloatArray(3);
         }
     }
 }

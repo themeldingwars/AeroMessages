@@ -4,7 +4,43 @@ namespace PacketPeepScript
     [Script(MessageType.GSS, 30, 3, true)]
     public class VehicleCombatViewKeyframe : BaseScript
     {
-        public byte[] Bitfield_StatusEffectData;
+        enum BitfieldIndex : byte
+        { 
+            StatusEffects_0,
+            StatusEffects_1,
+            StatusEffects_2,
+            StatusEffects_3,
+            StatusEffects_4,
+            StatusEffects_5,
+            StatusEffects_6,
+            StatusEffects_7,
+            StatusEffects_8,
+            StatusEffects_9,
+            StatusEffects_10,
+            StatusEffects_11,
+            StatusEffects_12,
+            StatusEffects_13,
+            StatusEffects_14,
+            StatusEffects_15,
+            StatusEffects_16,
+            StatusEffects_17,
+            StatusEffects_18,
+            StatusEffects_19,
+            StatusEffects_20,
+            StatusEffects_21,
+            StatusEffects_22,
+            StatusEffects_23,
+            StatusEffects_24,
+            StatusEffects_25,
+            StatusEffects_26,
+            StatusEffects_27,
+            StatusEffects_28,
+            StatusEffects_29,
+            StatusEffects_30,
+            StatusEffects_31,
+        }
+
+        public byte[] Bitfield;
         
         public ushort? StatusEffects_0_ChangeTime;
         public uint? StatusEffects_0_Id;
@@ -428,7 +464,7 @@ namespace PacketPeepScript
             
             if (true)
             {
-                Bitfield_StatusEffectData = Stream.Read.BitArray(32); 
+                Bitfield = Stream.Read.BitArray(32); 
 
                 // Status Effect Times
                 StatusEffects_0_ChangeTime = Stream.Read.UShort();
@@ -466,613 +502,614 @@ namespace PacketPeepScript
 
 
                 // Status Effect Data
-                if (Bitfield_StatusEffectData[0] == 0x00)
-                {
-                    StatusEffects_0_Id     = Stream.Read.UInt();
-                    StatusEffects_0_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_0_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_0_Time1  = Stream.Read.UInt();
-                    StatusEffects_0_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_0_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_0_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_0_Data1_Count > 0) {
-                            StatusEffects_0_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_0_Data1_Count);
-                        }
-                        StatusEffects_0_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_0_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_0_Data_Float2 = Stream.Read.Float();
-                    }
-                }
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_0] == 0)
+               {
+                   StatusEffects_0_Id     = Stream.Read.UInt();
+                   StatusEffects_0_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_0_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_0_Time1  = Stream.Read.UInt();
+                   StatusEffects_0_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_0_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_0_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_0_Data1_Count > 0) {
+                           StatusEffects_0_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_0_Data1_Count);
+                       }
+                       StatusEffects_0_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_0_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_0_Data_Float2 = Stream.Read.Float();
+                   }
+               }
 
-                if (Bitfield_StatusEffectData[1] == 0x00)
-                {
-                    StatusEffects_1_Id     = Stream.Read.UInt();
-                    StatusEffects_1_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_1_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_1_Time1  = Stream.Read.UInt();
-                    StatusEffects_1_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_1_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_1_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_1_Data1_Count > 0) {
-                            StatusEffects_1_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_1_Data1_Count);
-                        }
-                        StatusEffects_1_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_1_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_1_Data_Float2 = Stream.Read.Float();
-                    }
-                }
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_1] == 0)
+               {
+                   StatusEffects_1_Id     = Stream.Read.UInt();
+                   StatusEffects_1_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_1_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_1_Time1  = Stream.Read.UInt();
+                   StatusEffects_1_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_1_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_1_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_1_Data1_Count > 0) {
+                           StatusEffects_1_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_1_Data1_Count);
+                       }
+                       StatusEffects_1_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_1_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_1_Data_Float2 = Stream.Read.Float();
+                   }
+               }
 
-                if (Bitfield_StatusEffectData[2] == 0x00)
-                {
-                    StatusEffects_2_Id     = Stream.Read.UInt();
-                    StatusEffects_2_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_2_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_2_Time1  = Stream.Read.UInt();
-                    StatusEffects_2_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_2_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_2_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_2_Data1_Count > 0) {
-                            StatusEffects_2_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_2_Data1_Count);
-                        }
-                        StatusEffects_2_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_2_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_2_Data_Float2 = Stream.Read.Float();
-                    }
-                }
-                
-                if (Bitfield_StatusEffectData[3] == 0x00)
-                {  
-                    StatusEffects_3_Id     = Stream.Read.UInt();
-                    StatusEffects_3_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_3_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_3_Time1  = Stream.Read.UInt();
-                    StatusEffects_3_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_3_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_3_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_3_Data1_Count > 0) {
-                            StatusEffects_3_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_3_Data1_Count);
-                        }
-                        StatusEffects_3_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_3_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_3_Data_Float2 = Stream.Read.Float();
-                    }
-                }
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_2] == 0)
+               {
+                   StatusEffects_2_Id     = Stream.Read.UInt();
+                   StatusEffects_2_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_2_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_2_Time1  = Stream.Read.UInt();
+                   StatusEffects_2_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_2_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_2_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_2_Data1_Count > 0) {
+                           StatusEffects_2_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_2_Data1_Count);
+                       }
+                       StatusEffects_2_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_2_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_2_Data_Float2 = Stream.Read.Float();
+                   }
+               }
+               
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_3] == 0)
+               {  
+                   StatusEffects_3_Id     = Stream.Read.UInt();
+                   StatusEffects_3_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_3_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_3_Time1  = Stream.Read.UInt();
+                   StatusEffects_3_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_3_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_3_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_3_Data1_Count > 0) {
+                           StatusEffects_3_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_3_Data1_Count);
+                       }
+                       StatusEffects_3_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_3_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_3_Data_Float2 = Stream.Read.Float();
+                   }
+               }
 
-                if (Bitfield_StatusEffectData[4] == 0x00)
-                { 
-                    StatusEffects_4_Id     = Stream.Read.UInt();
-                    StatusEffects_4_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_4_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_4_Time1  = Stream.Read.UInt();
-                    StatusEffects_4_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_4_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_4_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_4_Data1_Count > 0) {
-                            StatusEffects_4_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_4_Data1_Count);
-                        }
-                        StatusEffects_4_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_4_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_4_Data_Float2 = Stream.Read.Float();
-                    }
-                }
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_4] == 0)
+               { 
+                   StatusEffects_4_Id     = Stream.Read.UInt();
+                   StatusEffects_4_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_4_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_4_Time1  = Stream.Read.UInt();
+                   StatusEffects_4_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_4_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_4_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_4_Data1_Count > 0) {
+                           StatusEffects_4_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_4_Data1_Count);
+                       }
+                       StatusEffects_4_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_4_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_4_Data_Float2 = Stream.Read.Float();
+                   }
+               }
 
-                if (Bitfield_StatusEffectData[5] == 0x00)
-                { 
-                    StatusEffects_5_Id     = Stream.Read.UInt();
-                    StatusEffects_5_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_5_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_5_Time1  = Stream.Read.UInt();
-                    StatusEffects_5_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_5_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_5_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_5_Data1_Count > 0) {
-                            StatusEffects_5_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_5_Data1_Count);
-                        }
-                        StatusEffects_5_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_5_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_5_Data_Float2 = Stream.Read.Float();
-                    }
-                }
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_5] == 0)
+               { 
+                   StatusEffects_5_Id     = Stream.Read.UInt();
+                   StatusEffects_5_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_5_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_5_Time1  = Stream.Read.UInt();
+                   StatusEffects_5_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_5_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_5_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_5_Data1_Count > 0) {
+                           StatusEffects_5_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_5_Data1_Count);
+                       }
+                       StatusEffects_5_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_5_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_5_Data_Float2 = Stream.Read.Float();
+                   }
+               }
 
-                if (Bitfield_StatusEffectData[6] == 0x00)
-                {
-                    StatusEffects_6_Id     = Stream.Read.UInt();
-                    StatusEffects_6_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_6_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_6_Time1  = Stream.Read.UInt();
-                    StatusEffects_6_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_6_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_6_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_6_Data1_Count > 0) {
-                            StatusEffects_6_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_6_Data1_Count);
-                        }
-                        StatusEffects_6_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_6_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_6_Data_Float2 = Stream.Read.Float();
-                    }
-                }
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_6] == 0)
+               {
+                   StatusEffects_6_Id     = Stream.Read.UInt();
+                   StatusEffects_6_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_6_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_6_Time1  = Stream.Read.UInt();
+                   StatusEffects_6_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_6_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_6_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_6_Data1_Count > 0) {
+                           StatusEffects_6_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_6_Data1_Count);
+                       }
+                       StatusEffects_6_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_6_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_6_Data_Float2 = Stream.Read.Float();
+                   }
+               }
 
-                if (Bitfield_StatusEffectData[7] == 0x00)
-                { 
-                    StatusEffects_7_Id     = Stream.Read.UInt();
-                    StatusEffects_7_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_7_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_7_Time1  = Stream.Read.UInt();
-                    StatusEffects_7_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_7_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_7_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_7_Data1_Count > 0) {
-                            StatusEffects_7_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_7_Data1_Count);
-                        }
-                        StatusEffects_7_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_7_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_7_Data_Float2 = Stream.Read.Float();
-                    }
-                }
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_7] == 0)
+               { 
+                   StatusEffects_7_Id     = Stream.Read.UInt();
+                   StatusEffects_7_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_7_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_7_Time1  = Stream.Read.UInt();
+                   StatusEffects_7_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_7_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_7_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_7_Data1_Count > 0) {
+                           StatusEffects_7_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_7_Data1_Count);
+                       }
+                       StatusEffects_7_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_7_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_7_Data_Float2 = Stream.Read.Float();
+                   }
+               }
 
-                if (Bitfield_StatusEffectData[8] == 0x00)
-                { 
-                    StatusEffects_8_Id     = Stream.Read.UInt();
-                    StatusEffects_8_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_8_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_8_Time1  = Stream.Read.UInt();
-                    StatusEffects_8_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_8_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_8_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_8_Data1_Count > 0) {
-                            StatusEffects_8_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_8_Data1_Count);
-                        }
-                        StatusEffects_8_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_8_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_8_Data_Float2 = Stream.Read.Float();
-                    }
-                }
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_8] == 0)
+               { 
+                   StatusEffects_8_Id     = Stream.Read.UInt();
+                   StatusEffects_8_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_8_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_8_Time1  = Stream.Read.UInt();
+                   StatusEffects_8_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_8_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_8_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_8_Data1_Count > 0) {
+                           StatusEffects_8_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_8_Data1_Count);
+                       }
+                       StatusEffects_8_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_8_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_8_Data_Float2 = Stream.Read.Float();
+                   }
+               }
 
-                if (Bitfield_StatusEffectData[9] == 0x00)
-                { 
-                    StatusEffects_9_Id     = Stream.Read.UInt();
-                    StatusEffects_9_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_9_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_9_Time1  = Stream.Read.UInt();
-                    StatusEffects_9_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_9_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_9_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_9_Data1_Count > 0) {
-                            StatusEffects_9_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_9_Data1_Count);
-                        }
-                        StatusEffects_9_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_9_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_9_Data_Float2 = Stream.Read.Float();
-                    }
-                }
-                
-                if (Bitfield_StatusEffectData[10] == 0x00)
-                { 
-                    StatusEffects_10_Id     = Stream.Read.UInt();
-                    StatusEffects_10_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_10_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_10_Time1  = Stream.Read.UInt();
-                    StatusEffects_10_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_10_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_10_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_10_Data1_Count > 0) {
-                            StatusEffects_10_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_10_Data1_Count);
-                        }
-                        StatusEffects_10_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_10_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_10_Data_Float2 = Stream.Read.Float();
-                    }
-                }
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_9] == 0)
+               { 
+                   StatusEffects_9_Id     = Stream.Read.UInt();
+                   StatusEffects_9_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_9_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_9_Time1  = Stream.Read.UInt();
+                   StatusEffects_9_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_9_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_9_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_9_Data1_Count > 0) {
+                           StatusEffects_9_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_9_Data1_Count);
+                       }
+                       StatusEffects_9_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_9_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_9_Data_Float2 = Stream.Read.Float();
+                   }
+               }
+               
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_10] == 0)
+               { 
+                   StatusEffects_10_Id     = Stream.Read.UInt();
+                   StatusEffects_10_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_10_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_10_Time1  = Stream.Read.UInt();
+                   StatusEffects_10_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_10_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_10_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_10_Data1_Count > 0) {
+                           StatusEffects_10_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_10_Data1_Count);
+                       }
+                       StatusEffects_10_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_10_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_10_Data_Float2 = Stream.Read.Float();
+                   }
+               }
 
-                if (Bitfield_StatusEffectData[11] == 0x00)
-                { 
-                    StatusEffects_11_Id     = Stream.Read.UInt();
-                    StatusEffects_11_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_11_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_11_Time1  = Stream.Read.UInt();
-                    StatusEffects_11_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_11_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_11_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_11_Data1_Count > 0) {
-                            StatusEffects_11_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_11_Data1_Count);
-                        }
-                        StatusEffects_11_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_11_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_11_Data_Float2 = Stream.Read.Float();
-                    }
-                }
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_11] == 0)
+               { 
+                   StatusEffects_11_Id     = Stream.Read.UInt();
+                   StatusEffects_11_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_11_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_11_Time1  = Stream.Read.UInt();
+                   StatusEffects_11_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_11_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_11_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_11_Data1_Count > 0) {
+                           StatusEffects_11_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_11_Data1_Count);
+                       }
+                       StatusEffects_11_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_11_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_11_Data_Float2 = Stream.Read.Float();
+                   }
+               }
 
-                if (Bitfield_StatusEffectData[12] == 0x00)
-                { 
-                    StatusEffects_12_Id     = Stream.Read.UInt();
-                    StatusEffects_12_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_12_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_12_Time1  = Stream.Read.UInt();
-                    StatusEffects_12_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_12_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_12_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_12_Data1_Count > 0) {
-                            StatusEffects_12_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_12_Data1_Count);
-                        }
-                        StatusEffects_12_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_12_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_12_Data_Float2 = Stream.Read.Float();
-                    }
-                }
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_12] == 0)
+               { 
+                   StatusEffects_12_Id     = Stream.Read.UInt();
+                   StatusEffects_12_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_12_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_12_Time1  = Stream.Read.UInt();
+                   StatusEffects_12_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_12_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_12_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_12_Data1_Count > 0) {
+                           StatusEffects_12_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_12_Data1_Count);
+                       }
+                       StatusEffects_12_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_12_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_12_Data_Float2 = Stream.Read.Float();
+                   }
+               }
 
-                if (Bitfield_StatusEffectData[13] == 0x00)
-                { 
-                    StatusEffects_13_Id     = Stream.Read.UInt();
-                    StatusEffects_13_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_13_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_13_Time1  = Stream.Read.UInt();
-                    StatusEffects_13_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_13_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_13_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_13_Data1_Count > 0) {
-                            StatusEffects_13_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_13_Data1_Count);
-                        }
-                        StatusEffects_13_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_13_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_13_Data_Float2 = Stream.Read.Float();
-                    }
-                }
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_13] == 0)
+               { 
+                   StatusEffects_13_Id     = Stream.Read.UInt();
+                   StatusEffects_13_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_13_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_13_Time1  = Stream.Read.UInt();
+                   StatusEffects_13_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_13_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_13_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_13_Data1_Count > 0) {
+                           StatusEffects_13_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_13_Data1_Count);
+                       }
+                       StatusEffects_13_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_13_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_13_Data_Float2 = Stream.Read.Float();
+                   }
+               }
 
-                if (Bitfield_StatusEffectData[14] == 0x00)
-                { 
-                    StatusEffects_14_Id     = Stream.Read.UInt();
-                    StatusEffects_14_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_14_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_14_Time1  = Stream.Read.UInt();
-                    StatusEffects_14_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_14_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_14_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_14_Data1_Count > 0) {
-                            StatusEffects_14_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_14_Data1_Count);
-                        }
-                        StatusEffects_14_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_14_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_14_Data_Float2 = Stream.Read.Float();
-                    }
-                }
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_14] == 0)
+               { 
+                   StatusEffects_14_Id     = Stream.Read.UInt();
+                   StatusEffects_14_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_14_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_14_Time1  = Stream.Read.UInt();
+                   StatusEffects_14_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_14_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_14_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_14_Data1_Count > 0) {
+                           StatusEffects_14_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_14_Data1_Count);
+                       }
+                       StatusEffects_14_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_14_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_14_Data_Float2 = Stream.Read.Float();
+                   }
+               }
 
-                if (Bitfield_StatusEffectData[15] == 0x00)
-                { 
-                    StatusEffects_15_Id     = Stream.Read.UInt();
-                    StatusEffects_15_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_15_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_15_Time1  = Stream.Read.UInt();
-                    StatusEffects_15_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_15_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_15_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_15_Data1_Count > 0) {
-                            StatusEffects_15_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_15_Data1_Count);
-                        }
-                        StatusEffects_15_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_15_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_15_Data_Float2 = Stream.Read.Float();
-                    }
-                }
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_15] == 0)
+               { 
+                   StatusEffects_15_Id     = Stream.Read.UInt();
+                   StatusEffects_15_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_15_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_15_Time1  = Stream.Read.UInt();
+                   StatusEffects_15_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_15_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_15_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_15_Data1_Count > 0) {
+                           StatusEffects_15_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_15_Data1_Count);
+                       }
+                       StatusEffects_15_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_15_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_15_Data_Float2 = Stream.Read.Float();
+                   }
+               }
 
-                if (Bitfield_StatusEffectData[16] == 0x00)
-                {
-                    StatusEffects_16_Id     = Stream.Read.UInt();
-                    StatusEffects_16_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_16_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_16_Time1  = Stream.Read.UInt();
-                    StatusEffects_16_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_16_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_16_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_16_Data1_Count > 0) {
-                            StatusEffects_16_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_16_Data1_Count);
-                        }
-                        StatusEffects_16_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_16_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_16_Data_Float2 = Stream.Read.Float();
-                    }
-                }
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_16] == 0)
+               {
+                   StatusEffects_16_Id     = Stream.Read.UInt();
+                   StatusEffects_16_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_16_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_16_Time1  = Stream.Read.UInt();
+                   StatusEffects_16_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_16_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_16_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_16_Data1_Count > 0) {
+                           StatusEffects_16_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_16_Data1_Count);
+                       }
+                       StatusEffects_16_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_16_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_16_Data_Float2 = Stream.Read.Float();
+                   }
+               }
 
-                if (Bitfield_StatusEffectData[17] == 0x00)
-                {
-                    StatusEffects_17_Id     = Stream.Read.UInt();
-                    StatusEffects_17_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_17_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_17_Time1  = Stream.Read.UInt();
-                    StatusEffects_17_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_17_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_17_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_17_Data1_Count > 0) {
-                            StatusEffects_17_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_17_Data1_Count);
-                        }
-                        StatusEffects_17_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_17_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_17_Data_Float2 = Stream.Read.Float();
-                    }
-                }
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_17] == 0)
+               {
+                   StatusEffects_17_Id     = Stream.Read.UInt();
+                   StatusEffects_17_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_17_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_17_Time1  = Stream.Read.UInt();
+                   StatusEffects_17_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_17_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_17_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_17_Data1_Count > 0) {
+                           StatusEffects_17_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_17_Data1_Count);
+                       }
+                       StatusEffects_17_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_17_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_17_Data_Float2 = Stream.Read.Float();
+                   }
+               }
 
-                if (Bitfield_StatusEffectData[18] == 0x00)
-                {
-                    StatusEffects_18_Id     = Stream.Read.UInt();
-                    StatusEffects_18_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_18_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_18_Time1  = Stream.Read.UInt();
-                    StatusEffects_18_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_18_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_18_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_18_Data1_Count > 0) {
-                            StatusEffects_18_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_18_Data1_Count);
-                        }
-                        StatusEffects_18_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_18_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_18_Data_Float2 = Stream.Read.Float();
-                    }
-                }
-                
-                if (Bitfield_StatusEffectData[19] == 0x00)
-                {  
-                    StatusEffects_19_Id     = Stream.Read.UInt();
-                    StatusEffects_19_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_19_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_19_Time1  = Stream.Read.UInt();
-                    StatusEffects_19_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_19_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_19_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_19_Data1_Count > 0) {
-                            StatusEffects_19_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_19_Data1_Count);
-                        }
-                        StatusEffects_19_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_19_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_19_Data_Float2 = Stream.Read.Float();
-                    }
-                }
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_18] == 0)
+               {
+                   StatusEffects_18_Id     = Stream.Read.UInt();
+                   StatusEffects_18_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_18_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_18_Time1  = Stream.Read.UInt();
+                   StatusEffects_18_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_18_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_18_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_18_Data1_Count > 0) {
+                           StatusEffects_18_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_18_Data1_Count);
+                       }
+                       StatusEffects_18_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_18_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_18_Data_Float2 = Stream.Read.Float();
+                   }
+               }
+               
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_19] == 0)
+               {  
+                   StatusEffects_19_Id     = Stream.Read.UInt();
+                   StatusEffects_19_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_19_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_19_Time1  = Stream.Read.UInt();
+                   StatusEffects_19_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_19_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_19_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_19_Data1_Count > 0) {
+                           StatusEffects_19_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_19_Data1_Count);
+                       }
+                       StatusEffects_19_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_19_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_19_Data_Float2 = Stream.Read.Float();
+                   }
+               }
 
-                if (Bitfield_StatusEffectData[20] == 0x00)
-                { 
-                    StatusEffects_20_Id     = Stream.Read.UInt();
-                    StatusEffects_20_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_20_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_20_Time1  = Stream.Read.UInt();
-                    StatusEffects_20_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_20_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_20_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_20_Data1_Count > 0) {
-                            StatusEffects_20_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_20_Data1_Count);
-                        }
-                        StatusEffects_20_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_20_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_20_Data_Float2 = Stream.Read.Float();
-                    }
-                }
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_20] == 0)
+               { 
+                   StatusEffects_20_Id     = Stream.Read.UInt();
+                   StatusEffects_20_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_20_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_20_Time1  = Stream.Read.UInt();
+                   StatusEffects_20_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_20_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_20_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_20_Data1_Count > 0) {
+                           StatusEffects_20_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_20_Data1_Count);
+                       }
+                       StatusEffects_20_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_20_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_20_Data_Float2 = Stream.Read.Float();
+                   }
+               }
 
-                if (Bitfield_StatusEffectData[21] == 0x00)
-                { 
-                    StatusEffects_21_Id     = Stream.Read.UInt();
-                    StatusEffects_21_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_21_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_21_Time1  = Stream.Read.UInt();
-                    StatusEffects_21_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_21_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_21_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_21_Data1_Count > 0) {
-                            StatusEffects_21_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_21_Data1_Count);
-                        }
-                        StatusEffects_21_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_21_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_21_Data_Float2 = Stream.Read.Float();
-                    }
-                }
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_21] == 0)
+               { 
+                   StatusEffects_21_Id     = Stream.Read.UInt();
+                   StatusEffects_21_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_21_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_21_Time1  = Stream.Read.UInt();
+                   StatusEffects_21_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_21_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_21_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_21_Data1_Count > 0) {
+                           StatusEffects_21_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_21_Data1_Count);
+                       }
+                       StatusEffects_21_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_21_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_21_Data_Float2 = Stream.Read.Float();
+                   }
+               }
 
-                if (Bitfield_StatusEffectData[22] == 0x00)
-                {
-                    StatusEffects_22_Id     = Stream.Read.UInt();
-                    StatusEffects_22_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_22_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_22_Time1  = Stream.Read.UInt();
-                    StatusEffects_22_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_22_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_22_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_22_Data1_Count > 0) {
-                            StatusEffects_22_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_22_Data1_Count);
-                        }
-                        StatusEffects_22_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_22_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_22_Data_Float2 = Stream.Read.Float();
-                    }
-                }
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_22] == 0)
+               {
+                   StatusEffects_22_Id     = Stream.Read.UInt();
+                   StatusEffects_22_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_22_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_22_Time1  = Stream.Read.UInt();
+                   StatusEffects_22_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_22_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_22_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_22_Data1_Count > 0) {
+                           StatusEffects_22_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_22_Data1_Count);
+                       }
+                       StatusEffects_22_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_22_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_22_Data_Float2 = Stream.Read.Float();
+                   }
+               }
 
-                if (Bitfield_StatusEffectData[23] == 0x00)
-                { 
-                    StatusEffects_23_Id     = Stream.Read.UInt();
-                    StatusEffects_23_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_23_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_23_Time1  = Stream.Read.UInt();
-                    StatusEffects_23_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_23_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_23_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_23_Data1_Count > 0) {
-                            StatusEffects_23_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_23_Data1_Count);
-                        }
-                        StatusEffects_23_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_23_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_23_Data_Float2 = Stream.Read.Float();
-                    }
-                }
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_23] == 0)
+               { 
+                   StatusEffects_23_Id     = Stream.Read.UInt();
+                   StatusEffects_23_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_23_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_23_Time1  = Stream.Read.UInt();
+                   StatusEffects_23_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_23_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_23_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_23_Data1_Count > 0) {
+                           StatusEffects_23_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_23_Data1_Count);
+                       }
+                       StatusEffects_23_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_23_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_23_Data_Float2 = Stream.Read.Float();
+                   }
+               }
 
-                if (Bitfield_StatusEffectData[24] == 0x00)
-                { 
-                    StatusEffects_24_Id     = Stream.Read.UInt();
-                    StatusEffects_24_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_24_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_24_Time1  = Stream.Read.UInt();
-                    StatusEffects_24_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_24_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_24_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_24_Data1_Count > 0) {
-                            StatusEffects_24_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_24_Data1_Count);
-                        }
-                        StatusEffects_24_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_24_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_24_Data_Float2 = Stream.Read.Float();
-                    }
-                }
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_24] == 0)
+               { 
+                   StatusEffects_24_Id     = Stream.Read.UInt();
+                   StatusEffects_24_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_24_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_24_Time1  = Stream.Read.UInt();
+                   StatusEffects_24_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_24_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_24_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_24_Data1_Count > 0) {
+                           StatusEffects_24_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_24_Data1_Count);
+                       }
+                       StatusEffects_24_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_24_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_24_Data_Float2 = Stream.Read.Float();
+                   }
+               }
 
-                if (Bitfield_StatusEffectData[25] == 0x00)
-                { 
-                    StatusEffects_25_Id     = Stream.Read.UInt();
-                    StatusEffects_25_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_25_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_25_Time1  = Stream.Read.UInt();
-                    StatusEffects_25_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_25_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_25_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_25_Data1_Count > 0) {
-                            StatusEffects_25_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_25_Data1_Count);
-                        }
-                        StatusEffects_25_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_25_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_25_Data_Float2 = Stream.Read.Float();
-                    }
-                }
-                
-                if (Bitfield_StatusEffectData[26] == 0x00)
-                { 
-                    StatusEffects_26_Id     = Stream.Read.UInt();
-                    StatusEffects_26_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_26_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_26_Time1  = Stream.Read.UInt();
-                    StatusEffects_26_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_26_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_26_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_26_Data1_Count > 0) {
-                            StatusEffects_26_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_26_Data1_Count);
-                        }
-                        StatusEffects_26_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_26_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_26_Data_Float2 = Stream.Read.Float();
-                    }
-                }
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_25] == 0)
+               { 
+                   StatusEffects_25_Id     = Stream.Read.UInt();
+                   StatusEffects_25_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_25_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_25_Time1  = Stream.Read.UInt();
+                   StatusEffects_25_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_25_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_25_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_25_Data1_Count > 0) {
+                           StatusEffects_25_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_25_Data1_Count);
+                       }
+                       StatusEffects_25_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_25_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_25_Data_Float2 = Stream.Read.Float();
+                   }
+               }
+               
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_26] == 0)
+               { 
+                   StatusEffects_26_Id     = Stream.Read.UInt();
+                   StatusEffects_26_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_26_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_26_Time1  = Stream.Read.UInt();
+                   StatusEffects_26_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_26_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_26_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_26_Data1_Count > 0) {
+                           StatusEffects_26_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_26_Data1_Count);
+                       }
+                       StatusEffects_26_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_26_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_26_Data_Float2 = Stream.Read.Float();
+                   }
+               }
 
-                if (Bitfield_StatusEffectData[27] == 0x00)
-                { 
-                    StatusEffects_27_Id     = Stream.Read.UInt();
-                    StatusEffects_27_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_27_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_27_Time1  = Stream.Read.UInt();
-                    StatusEffects_27_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_27_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_27_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_27_Data1_Count > 0) {
-                            StatusEffects_27_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_27_Data1_Count);
-                        }
-                        StatusEffects_27_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_27_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_27_Data_Float2 = Stream.Read.Float();
-                    }
-                }
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_27] == 0)
+               { 
+                   StatusEffects_27_Id     = Stream.Read.UInt();
+                   StatusEffects_27_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_27_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_27_Time1  = Stream.Read.UInt();
+                   StatusEffects_27_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_27_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_27_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_27_Data1_Count > 0) {
+                           StatusEffects_27_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_27_Data1_Count);
+                       }
+                       StatusEffects_27_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_27_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_27_Data_Float2 = Stream.Read.Float();
+                   }
+               }
 
-                if (Bitfield_StatusEffectData[28] == 0x00)
-                { 
-                    StatusEffects_28_Id     = Stream.Read.UInt();
-                    StatusEffects_28_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_28_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_28_Time1  = Stream.Read.UInt();
-                    StatusEffects_28_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_28_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_28_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_28_Data1_Count > 0) {
-                            StatusEffects_28_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_28_Data1_Count);
-                        }
-                        StatusEffects_28_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_28_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_28_Data_Float2 = Stream.Read.Float();
-                    }
-                }
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_28] == 0)
+               { 
+                   StatusEffects_28_Id     = Stream.Read.UInt();
+                   StatusEffects_28_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_28_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_28_Time1  = Stream.Read.UInt();
+                   StatusEffects_28_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_28_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_28_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_28_Data1_Count > 0) {
+                           StatusEffects_28_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_28_Data1_Count);
+                       }
+                       StatusEffects_28_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_28_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_28_Data_Float2 = Stream.Read.Float();
+                   }
+               }
 
-                if (Bitfield_StatusEffectData[29] == 0x00)
-                { 
-                    StatusEffects_29_Id     = Stream.Read.UInt();
-                    StatusEffects_29_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_29_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_29_Time1  = Stream.Read.UInt();
-                    StatusEffects_29_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_29_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_29_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_29_Data1_Count > 0) {
-                            StatusEffects_29_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_29_Data1_Count);
-                        }
-                        StatusEffects_29_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_29_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_29_Data_Float2 = Stream.Read.Float();
-                    }
-                }
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_29] == 0)
+               { 
+                   StatusEffects_29_Id     = Stream.Read.UInt();
+                   StatusEffects_29_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_29_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_29_Time1  = Stream.Read.UInt();
+                   StatusEffects_29_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_29_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_29_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_29_Data1_Count > 0) {
+                           StatusEffects_29_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_29_Data1_Count);
+                       }
+                       StatusEffects_29_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_29_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_29_Data_Float2 = Stream.Read.Float();
+                   }
+               }
 
-                if (Bitfield_StatusEffectData[30] == 0x00)
-                { 
-                    StatusEffects_30_Id     = Stream.Read.UInt();
-                    StatusEffects_30_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_30_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_30_Time1  = Stream.Read.UInt();
-                    StatusEffects_30_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_30_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_30_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_30_Data1_Count > 0) {
-                            StatusEffects_30_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_30_Data1_Count);
-                        }
-                        StatusEffects_30_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_30_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_30_Data_Float2 = Stream.Read.Float();
-                    }
-                }
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_30] == 0)
+               { 
+                   StatusEffects_30_Id     = Stream.Read.UInt();
+                   StatusEffects_30_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_30_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_30_Time1  = Stream.Read.UInt();
+                   StatusEffects_30_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_30_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_30_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_30_Data1_Count > 0) {
+                           StatusEffects_30_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_30_Data1_Count);
+                       }
+                       StatusEffects_30_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_30_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_30_Data_Float2 = Stream.Read.Float();
+                   }
+               }
 
-                if (Bitfield_StatusEffectData[31] == 0x00)
-                { 
-                    StatusEffects_31_Id     = Stream.Read.UInt();
-                    StatusEffects_31_Unk1   = Stream.Read.ByteArray(1);
-                    StatusEffects_31_Entity = Stream.Read.ByteArray(8);
-                    StatusEffects_31_Time1  = Stream.Read.UInt();
-                    StatusEffects_31_MoreDataFlag = Stream.Read.Byte();
-                    if (StatusEffects_31_MoreDataFlag == 0x01)
-                    {
-                        StatusEffects_31_Data1_Count = Stream.Read.Byte();
-                        if (StatusEffects_31_Data1_Count > 0) {
-                            StatusEffects_31_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_31_Data1_Count);
-                        }
-                        StatusEffects_31_UnkData   = Stream.Read.ByteArray(29);
-                        StatusEffects_31_Data_Float1 = Stream.Read.Float();
-                        StatusEffects_31_Data_Float2 = Stream.Read.Float();
-                    }
-                }
+               if (Bitfield[(int)BitfieldIndex.StatusEffects_31] == 0)
+               { 
+                   StatusEffects_31_Id     = Stream.Read.UInt();
+                   StatusEffects_31_Unk1   = Stream.Read.ByteArray(1);
+                   StatusEffects_31_Entity = Stream.Read.ByteArray(8);
+                   StatusEffects_31_Time1  = Stream.Read.UInt();
+                   StatusEffects_31_MoreDataFlag = Stream.Read.Byte();
+                   if (StatusEffects_31_MoreDataFlag == 0x01)
+                   {
+                       StatusEffects_31_Data1_Count = Stream.Read.Byte();
+                       if (StatusEffects_31_Data1_Count > 0) {
+                           StatusEffects_31_Data1_Entity = Stream.Read.ByteArray(8*(int)StatusEffects_31_Data1_Count);
+                       }
+                       StatusEffects_31_UnkData   = Stream.Read.ByteArray(29);
+                       StatusEffects_31_Data_Float1 = Stream.Read.Float();
+                       StatusEffects_31_Data_Float2 = Stream.Read.Float();
+                   }
+               }
+
             }
         }
     }

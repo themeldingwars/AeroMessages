@@ -4,84 +4,251 @@ namespace PacketPeepScript
     [Script(MessageType.GSS, 29, 3, true)]
     public class VehicleObserverViewKeyframe : BaseScript
     {
-        // Fields are underscored based on VehicleBaseController shadowfield indexes, they may not match with this view.
-        // The unks with no underscored index are gap areas where I don't know the potential byte distribution.
-        // Field lengths can expand (e.g. arrays) and throw the distribution off when we don't know how to handle them, so compare multiple fields and messages if something looks wrong.
-        public byte[] Unk1;
-        public ushort VehicleID; // Sdb table 47, id column.
-        public byte[] Unk2_0x01;
-        public byte[] Unk3_0x02;
-        public byte VehicleEnabled; // 0 - off, 1 - ignition, 2 - drivable
-        public byte Unk4_0x04;
-        public byte[] OwnerEntity;
-        public byte Unk5;
-        public byte[] Unk6_0x07;
-        public byte[] DriverSeat0_Entity; // 0x08
-        public byte[] PassengerSeat1_Entity; // 0x09
-        public byte[] PassengerSeat2_Entity; // 0x0a
-        public byte[] PassengerSeat3_Entity; // 0x0b
-        public byte[] PassengerSeat4_Entity; // 0x0c
-        public byte[] PassengerSeat5_Entity; // 0x0d
-        public byte[] Unk8_0x0E;
-        public byte[] Unk9_0x0F;
-        public byte[] Unk10_0x10;
-        public byte[] Unk11_0x11;
-        public byte[] Unk12_0x12;
-        public byte[] Unk13_0x13;
-        public byte[] Unk14_0x14;
-        public byte[] Unk15_0x15;
-        public byte[] Unk16_0x16;
-        public byte[] Unk17_0x17;
-        public byte Unk18;
-        public byte[] Unk19_0x1C;
-        public byte[] Faction;
-        public byte[] Unk20_0x1E;
+        enum BitfieldIndex : byte
+        {
+            PersonalFactionStance,
+            SinFactionsAcquiredBy,
+            SinTeamsAcquiredBy,
+            SinCardFields_0,
+            SinCardFields_1,
+            SinCardFields_2,
+            SinCardFields_3,
+            SinCardFields_4,
+            SinCardFields_5,
+            SinCardFields_6,
+            SinCardFields_7,
+            SinCardFields_8,
+            SinCardFields_9,
+            SinCardFields_10,
+            SinCardFields_11,
+            SinCardFields_12,
+            SinCardFields_13,
+            SinCardFields_14,
+            SinCardFields_15,
+            SinCardFields_16,
+            SinCardFields_17,
+            SinCardFields_18,
+            SinCardFields_19,
+            SinCardFields_20,
+            SinCardFields_21,
+            SinCardFields_22,
+        }
+
+        public string Warning;
+
+        public byte[] Bitfield;
+        public ushort VehicleType; // 0x00, Sdb table 47, id column.
+        public byte[] Configuration;
+        public byte[] Flags;
+        public byte EngineState; // 0x03, 0 - off, 1 - ignition, 2 - drivable
+        public byte PathState;
+        public byte[] OwnerId; // 0x05
+        public string OwnerName;
+        public uint OwnerLocalString;
+        public byte[] OccupantIds_0; // 0x08
+        public byte[] OccupantIds_1; // 0x09
+        public byte[] OccupantIds_2; // 0x0a
+        public byte[] OccupantIds_3; // 0x0b
+        public byte[] OccupantIds_4; // 0x0c
+        public byte[] OccupantIds_5; // 0x0d
+        public byte[] DeployableIds_0;
+        public byte[] DeployableIds_1;
+        public byte[] DeployableIds_2;
+        public byte[] DeployableIds_3;
+        public byte[] DeployableIds_4;
+        public byte[] DeployableIds_5;
+        public byte[] DeployableIds_6;
+        public byte[] DeployableIds_7;
+        public byte[] DeployableIds_8;
+        public byte[] DeployableIds_9;
+        public byte SnapMount;
+        public uint ProcessDelay;
+        public byte[] HostilityInfo;
+        public byte[] PersonalFactionStance;
         public uint CurrentHealth;
         public uint MaxHealth;
-        public byte[] Unk21;
-        public byte[] Unk22_0x23;
-        public byte[] Unk23;
+        public uint CurrentShields;
+        public uint MaxShields;
+        public byte SinFlags;
+        public byte SinFlagsPrivate;
+        public byte[] SinFactionsAcquiredBy;
+        public byte[] SinTeamsAcquiredBy;
+        public byte WaterLevelAndDesc;
+        public byte EffectsFlags;
+        public uint SinCardType;
+        public byte[] ScopeBubbleInfo;
+        public uint ScalingLevel;
 
         public override void Read(Bitter.BinaryStream Stream)
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
 
             if (true) {
-                Unk1 = Stream.Read.ByteArray(4);
-                VehicleID = Stream.Read.UShort();
-                Unk2_0x01 = Stream.Read.ByteArray(32);
-                Unk3_0x02 = Stream.Read.ByteArray(4);
-                VehicleEnabled = Stream.Read.Byte();
-                Unk4_0x04 = Stream.Read.Byte();
-                OwnerEntity = Stream.Read.ByteArray(8);
-                Unk5 = Stream.Read.Byte();
-                Unk6_0x07 = Stream.Read.ByteArray(4);
-                DriverSeat0_Entity = Stream.Read.ByteArray(8);
-                PassengerSeat1_Entity = Stream.Read.ByteArray(8);
-                PassengerSeat2_Entity = Stream.Read.ByteArray(8);
-                PassengerSeat3_Entity = Stream.Read.ByteArray(8);
-                PassengerSeat4_Entity = Stream.Read.ByteArray(8);
-                PassengerSeat5_Entity = Stream.Read.ByteArray(8);
-                Unk8_0x0E = Stream.Read.ByteArray(13);
-                Unk9_0x0F = Stream.Read.ByteArray(13);
-                Unk10_0x10 = Stream.Read.ByteArray(13);
-                Unk11_0x11 = Stream.Read.ByteArray(13);
-                Unk12_0x12 = Stream.Read.ByteArray(13);
-                Unk13_0x13 = Stream.Read.ByteArray(13);
-                Unk14_0x14 = Stream.Read.ByteArray(13);
-                Unk15_0x15 = Stream.Read.ByteArray(13);
-                Unk16_0x16 = Stream.Read.ByteArray(13);
-                Unk17_0x17 = Stream.Read.ByteArray(13);
-                Unk18 = Stream.Read.Byte();
-                Unk19_0x1C = Stream.Read.ByteArray(4);
-                Faction = Stream.Read.ByteArray(2);
-                Unk20_0x1E = Stream.Read.ByteArray(20);
+                Bitfield = Stream.Read.BitArray(32);
+                VehicleType = Stream.Read.UShort();
+                Configuration = Stream.Read.ByteArray(32);
+                Flags = Stream.Read.ByteArray(4);
+                EngineState = Stream.Read.Byte();
+                PathState = Stream.Read.Byte();
+                OwnerId = Stream.Read.ByteArray(8);
+                OwnerName = Stream.Read.StringZ(Stream);
+                OwnerLocalString = Stream.Read.UInt();
+                OccupantIds_0 = Stream.Read.ByteArray(8);
+                OccupantIds_1 = Stream.Read.ByteArray(8);
+                OccupantIds_2 = Stream.Read.ByteArray(8);
+                OccupantIds_3 = Stream.Read.ByteArray(8);
+                OccupantIds_4 = Stream.Read.ByteArray(8);
+                OccupantIds_5 = Stream.Read.ByteArray(8);
+                DeployableIds_0 = Stream.Read.ByteArray(13);
+                DeployableIds_1 = Stream.Read.ByteArray(13);
+                DeployableIds_2 = Stream.Read.ByteArray(13);
+                DeployableIds_3 = Stream.Read.ByteArray(13);
+                DeployableIds_4 = Stream.Read.ByteArray(13);
+                DeployableIds_5 = Stream.Read.ByteArray(13);
+                DeployableIds_6 = Stream.Read.ByteArray(13);
+                DeployableIds_7 = Stream.Read.ByteArray(13);
+                DeployableIds_8 = Stream.Read.ByteArray(13);
+                DeployableIds_9 = Stream.Read.ByteArray(13);
+                SnapMount = Stream.Read.Byte();
+                ProcessDelay = Stream.Read.UInt();
+                HostilityInfo = Stream.Read.ByteArray(2);
+
+                if (Bitfield[(int)BitfieldIndex.PersonalFactionStance] == 0)
+                {
+                    PersonalFactionStance = Stream.Read.ByteArray(5*4);
+                }
+
                 CurrentHealth = Stream.Read.UInt();
                 MaxHealth = Stream.Read.UInt();
-                Unk21 = Stream.Read.ByteArray(8);
-                Unk22_0x23 = Stream.Read.ByteArray(4);
-                Unk23 = Stream.Read.ByteArray(23);
+                CurrentShields = Stream.Read.UInt();
+                MaxShields = Stream.Read.UInt();
+                SinFlags = Stream.Read.Byte();
+                if (Bitfield[(int)BitfieldIndex.SinFactionsAcquiredBy] == 0)
+                {
+                    SinFactionsAcquiredBy = Stream.Read.ByteArray(2);
+                }
+
+                if (Bitfield[(int)BitfieldIndex.SinTeamsAcquiredBy] == 0)
+                {
+                    SinTeamsAcquiredBy = Stream.Read.ByteArray(2);
+                }
+                WaterLevelAndDesc = Stream.Read.Byte();
+                EffectsFlags = Stream.Read.Byte();
+
+                SinCardType = Stream.Read.UInt();
+
+                if (Bitfield[(int)BitfieldIndex.SinCardFields_0] == 0)
+                {
+                    Warning += "SinCardFields_0;";
+                }
+                if (Bitfield[(int)BitfieldIndex.SinCardFields_1] == 0)
+                {
+                    Warning += "SinCardFields_1;";
+                }
+                if (Bitfield[(int)BitfieldIndex.SinCardFields_2] == 0)
+                {
+                    Warning += "SinCardFields_2;";
+                }
+                if (Bitfield[(int)BitfieldIndex.SinCardFields_3] == 0)
+                {
+                    Warning += "SinCardFields_3;";
+                }
+                if (Bitfield[(int)BitfieldIndex.SinCardFields_4] == 0)
+                {
+                    Warning += "SinCardFields_4;";
+                }
+                if (Bitfield[(int)BitfieldIndex.SinCardFields_5] == 0)
+                {
+                    Warning += "SinCardFields_5;";
+                }
+                if (Bitfield[(int)BitfieldIndex.SinCardFields_6] == 0)
+                {
+                    Warning += "SinCardFields_6;";
+                }
+                if (Bitfield[(int)BitfieldIndex.SinCardFields_7] == 0)
+                {
+                    Warning += "SinCardFields_7;";
+                }
+                if (Bitfield[(int)BitfieldIndex.SinCardFields_8] == 0)
+                {
+                    Warning += "SinCardFields_8;";
+                }
+                if (Bitfield[(int)BitfieldIndex.SinCardFields_9] == 0)
+                {
+                    Warning += "SinCardFields_9;";
+                }
+                if (Bitfield[(int)BitfieldIndex.SinCardFields_10] == 0)
+                {
+                    Warning += "SinCardFields_10;";
+                }
+                if (Bitfield[(int)BitfieldIndex.SinCardFields_11] == 0)
+                {
+                    Warning += "SinCardFields_11;";
+                }
+                if (Bitfield[(int)BitfieldIndex.SinCardFields_12] == 0)
+                {
+                    Warning += "SinCardFields_12;";
+                }
+                if (Bitfield[(int)BitfieldIndex.SinCardFields_13] == 0)
+                {
+                    Warning += "SinCardFields_13;";
+                }
+                if (Bitfield[(int)BitfieldIndex.SinCardFields_14] == 0)
+                {
+                    Warning += "SinCardFields_14;";
+                }
+                if (Bitfield[(int)BitfieldIndex.SinCardFields_15] == 0)
+                {
+                    Warning += "SinCardFields_15;";
+                }
+                if (Bitfield[(int)BitfieldIndex.SinCardFields_16] == 0)
+                {
+                    Warning += "SinCardFields_16;";
+                }
+                if (Bitfield[(int)BitfieldIndex.SinCardFields_17] == 0)
+                {
+                    Warning += "SinCardFields_17;";
+                }
+                if (Bitfield[(int)BitfieldIndex.SinCardFields_18] == 0)
+                {
+                    Warning += "SinCardFields_18;";
+                }
+                if (Bitfield[(int)BitfieldIndex.SinCardFields_19] == 0)
+                {
+                    Warning += "SinCardFields_19;";
+                }
+                if (Bitfield[(int)BitfieldIndex.SinCardFields_20] == 0)
+                {
+                    Warning += "SinCardFields_20;";
+                }
+                if (Bitfield[(int)BitfieldIndex.SinCardFields_21] == 0)
+                {
+                    Warning += "SinCardFields_21;";
+                }
+                if (Bitfield[(int)BitfieldIndex.SinCardFields_22] == 0)
+                {
+                    Warning += "SinCardFields_22;";
+                }
+                ScopeBubbleInfo = Stream.Read.ByteArray(8);
+                ScalingLevel = Stream.Read.UInt();
             }
         }
+    }
+
+    public static class MyExtensions
+    {
+        public static string StringZ(this Bitter.BinaryReader rdr, Bitter.BinaryStream stream) {
+            string ret = "";
+            do
+            {
+                byte b = rdr.Byte();
+                if (b == 0x00)
+                    break;
+                ret += (char)b;
+            }
+            while (stream.baseStream.ByteOffset < stream.baseStream.Length);
+            return ret;
+        }
+
     }
 }

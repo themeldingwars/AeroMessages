@@ -4,8 +4,44 @@ namespace PacketPeepScript
     [Script(MessageType.GSS, 28, 4, true)]
     public class VehicleCombatControllerKeyframe : BaseScript
     {
+        enum BitfieldIndex : byte
+        { 
+            StatusEffects_0,
+            StatusEffects_1,
+            StatusEffects_2,
+            StatusEffects_3,
+            StatusEffects_4,
+            StatusEffects_5,
+            StatusEffects_6,
+            StatusEffects_7,
+            StatusEffects_8,
+            StatusEffects_9,
+            StatusEffects_10,
+            StatusEffects_11,
+            StatusEffects_12,
+            StatusEffects_13,
+            StatusEffects_14,
+            StatusEffects_15,
+            StatusEffects_16,
+            StatusEffects_17,
+            StatusEffects_18,
+            StatusEffects_19,
+            StatusEffects_20,
+            StatusEffects_21,
+            StatusEffects_22,
+            StatusEffects_23,
+            StatusEffects_24,
+            StatusEffects_25,
+            StatusEffects_26,
+            StatusEffects_27,
+            StatusEffects_28,
+            StatusEffects_29,
+            StatusEffects_30,
+            StatusEffects_31,
+        }
+
         public ulong PlayerID;
-        public byte[] Bitfield_StatusEffectData;
+        public byte[] Bitfield;
 
         public ushort? StatusEffects_0_ChangeTime;
         public uint? StatusEffects_0_Id;
@@ -425,18 +461,16 @@ namespace PacketPeepScript
 
         public string UnkMemoryLeak;
 
-        // Type might be wrong for some
-        public uint Unk_0x40;
-        public uint Unk_0x41;
-        public uint Unk_0x42;
-        public uint Unk_0x43;
-        public uint Unk_0x44;
-        public uint Unk_0x45;
-        public uint Unk_0x46;
-        public uint Unk_0x47;
-        public uint Unk_0x48;
-        // --
-
+        public uint SlottedAbility_0;
+        public uint SlottedAbility_1;
+        public uint SlottedAbility_2;
+        public uint SlottedAbility_3;
+        public uint SlottedAbility_4;
+        public uint SlottedAbility_5;
+        public uint SlottedAbility_6;
+        public uint SlottedAbility_7;
+        public uint SlottedAbility_8;
+ 
         public override void Read(Bitter.BinaryStream Stream)
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
@@ -444,103 +478,103 @@ namespace PacketPeepScript
             if (true)
             {
                 PlayerID = Stream.Read.ULong();
-                Bitfield_StatusEffectData = Stream.Read.BitArray(32); 
+                Bitfield = Stream.Read.BitArray(32); 
 
                 // Status Effect Times
-                if (Bitfield_StatusEffectData[0x00] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_0] == 0) {
                     StatusEffects_0_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x01] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_1] == 0) {
                     StatusEffects_1_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x02] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_2] == 0) {
                     StatusEffects_2_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x03] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_3] == 0) {
                     StatusEffects_3_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x04] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_4] == 0) {
                     StatusEffects_4_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x05] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_5] == 0) {
                     StatusEffects_5_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x06] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_6] == 0) {
                     StatusEffects_6_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x07] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_7] == 0) {
                     StatusEffects_7_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x08] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_8] == 0) {
                     StatusEffects_8_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x09] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_9] == 0) {
                     StatusEffects_9_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x0a] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_10] == 0) {
                     StatusEffects_10_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x0b] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_11] == 0) {
                     StatusEffects_11_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x0c] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_12] == 0) {
                     StatusEffects_12_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x0d] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_13] == 0) {
                     StatusEffects_13_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x0e] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_14] == 0) {
                     StatusEffects_14_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x0f] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_15] == 0) {
                     StatusEffects_15_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x10] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_16] == 0) {
                     StatusEffects_16_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x11] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_17] == 0) {
                     StatusEffects_17_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x12] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_18] == 0) {
                     StatusEffects_18_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x13] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_19] == 0) {
                     StatusEffects_19_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x14] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_20] == 0) {
                     StatusEffects_20_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x15] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_21] == 0) {
                     StatusEffects_21_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x16] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_22] == 0) {
                     StatusEffects_22_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x17] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_23] == 0) {
                     StatusEffects_23_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x18] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_24] == 0) {
                     StatusEffects_24_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x19] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_25] == 0) {
                     StatusEffects_25_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x1a] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_26] == 0) {
                     StatusEffects_26_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x1b] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_27] == 0) {
                     StatusEffects_27_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x1c] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_28] == 0) {
                     StatusEffects_28_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x1d] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_29] == 0) {
                     StatusEffects_29_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x1e] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_30] == 0) {
                     StatusEffects_30_ChangeTime = Stream.Read.UShort();
                 }
-                if (Bitfield_StatusEffectData[0x1f] == 0x00) {
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_31] == 0) {
                     StatusEffects_31_ChangeTime = Stream.Read.UShort();
                 }
 
@@ -548,7 +582,7 @@ namespace PacketPeepScript
                 // It is neither null-terminated nor size-indicated but it appears to be predictable relative to number of status effects...
                 // This solution appears to work for 0, 1, and 3 status effects.
                 int NumberOfStatusEffects = 0;
-                foreach (byte b in Bitfield_StatusEffectData)
+                foreach (byte b in Bitfield)
                 {
                     if (b == 0x00)
                         NumberOfStatusEffects++;
@@ -556,9 +590,8 @@ namespace PacketPeepScript
                 int WeirdTextLength = 64 - (2*NumberOfStatusEffects);
                 UnkMemoryLeak = Stream.Read.String(WeirdTextLength);
       
-
                 // Status Effect Data
-                if (Bitfield_StatusEffectData[0] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_0] == 0)
                 {
                     StatusEffects_0_Id     = Stream.Read.UInt();
                     StatusEffects_0_Unk1   = Stream.Read.ByteArray(1);
@@ -577,7 +610,7 @@ namespace PacketPeepScript
                     }
                 }
 
-                if (Bitfield_StatusEffectData[1] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_1] == 0)
                 {
                     StatusEffects_1_Id     = Stream.Read.UInt();
                     StatusEffects_1_Unk1   = Stream.Read.ByteArray(1);
@@ -596,7 +629,7 @@ namespace PacketPeepScript
                     }
                 }
 
-                if (Bitfield_StatusEffectData[2] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_2] == 0)
                 {
                     StatusEffects_2_Id     = Stream.Read.UInt();
                     StatusEffects_2_Unk1   = Stream.Read.ByteArray(1);
@@ -615,7 +648,7 @@ namespace PacketPeepScript
                     }
                 }
                 
-                if (Bitfield_StatusEffectData[3] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_3] == 0)
                 {  
                     StatusEffects_3_Id     = Stream.Read.UInt();
                     StatusEffects_3_Unk1   = Stream.Read.ByteArray(1);
@@ -634,7 +667,7 @@ namespace PacketPeepScript
                     }
                 }
 
-                if (Bitfield_StatusEffectData[4] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_4] == 0)
                 { 
                     StatusEffects_4_Id     = Stream.Read.UInt();
                     StatusEffects_4_Unk1   = Stream.Read.ByteArray(1);
@@ -653,7 +686,7 @@ namespace PacketPeepScript
                     }
                 }
 
-                if (Bitfield_StatusEffectData[5] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_5] == 0)
                 { 
                     StatusEffects_5_Id     = Stream.Read.UInt();
                     StatusEffects_5_Unk1   = Stream.Read.ByteArray(1);
@@ -672,7 +705,7 @@ namespace PacketPeepScript
                     }
                 }
 
-                if (Bitfield_StatusEffectData[6] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_6] == 0)
                 {
                     StatusEffects_6_Id     = Stream.Read.UInt();
                     StatusEffects_6_Unk1   = Stream.Read.ByteArray(1);
@@ -691,7 +724,7 @@ namespace PacketPeepScript
                     }
                 }
 
-                if (Bitfield_StatusEffectData[7] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_7] == 0)
                 { 
                     StatusEffects_7_Id     = Stream.Read.UInt();
                     StatusEffects_7_Unk1   = Stream.Read.ByteArray(1);
@@ -710,7 +743,7 @@ namespace PacketPeepScript
                     }
                 }
 
-                if (Bitfield_StatusEffectData[8] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_8] == 0)
                 { 
                     StatusEffects_8_Id     = Stream.Read.UInt();
                     StatusEffects_8_Unk1   = Stream.Read.ByteArray(1);
@@ -729,7 +762,7 @@ namespace PacketPeepScript
                     }
                 }
 
-                if (Bitfield_StatusEffectData[9] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_9] == 0)
                 { 
                     StatusEffects_9_Id     = Stream.Read.UInt();
                     StatusEffects_9_Unk1   = Stream.Read.ByteArray(1);
@@ -748,7 +781,7 @@ namespace PacketPeepScript
                     }
                 }
                 
-                if (Bitfield_StatusEffectData[10] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_10] == 0)
                 { 
                     StatusEffects_10_Id     = Stream.Read.UInt();
                     StatusEffects_10_Unk1   = Stream.Read.ByteArray(1);
@@ -767,7 +800,7 @@ namespace PacketPeepScript
                     }
                 }
 
-                if (Bitfield_StatusEffectData[11] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_11] == 0)
                 { 
                     StatusEffects_11_Id     = Stream.Read.UInt();
                     StatusEffects_11_Unk1   = Stream.Read.ByteArray(1);
@@ -786,7 +819,7 @@ namespace PacketPeepScript
                     }
                 }
 
-                if (Bitfield_StatusEffectData[12] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_12] == 0)
                 { 
                     StatusEffects_12_Id     = Stream.Read.UInt();
                     StatusEffects_12_Unk1   = Stream.Read.ByteArray(1);
@@ -805,7 +838,7 @@ namespace PacketPeepScript
                     }
                 }
 
-                if (Bitfield_StatusEffectData[13] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_13] == 0)
                 { 
                     StatusEffects_13_Id     = Stream.Read.UInt();
                     StatusEffects_13_Unk1   = Stream.Read.ByteArray(1);
@@ -824,7 +857,7 @@ namespace PacketPeepScript
                     }
                 }
 
-                if (Bitfield_StatusEffectData[14] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_14] == 0)
                 { 
                     StatusEffects_14_Id     = Stream.Read.UInt();
                     StatusEffects_14_Unk1   = Stream.Read.ByteArray(1);
@@ -843,7 +876,7 @@ namespace PacketPeepScript
                     }
                 }
 
-                if (Bitfield_StatusEffectData[15] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_15] == 0)
                 { 
                     StatusEffects_15_Id     = Stream.Read.UInt();
                     StatusEffects_15_Unk1   = Stream.Read.ByteArray(1);
@@ -862,7 +895,7 @@ namespace PacketPeepScript
                     }
                 }
 
-                if (Bitfield_StatusEffectData[16] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_16] == 0)
                 {
                     StatusEffects_16_Id     = Stream.Read.UInt();
                     StatusEffects_16_Unk1   = Stream.Read.ByteArray(1);
@@ -881,7 +914,7 @@ namespace PacketPeepScript
                     }
                 }
 
-                if (Bitfield_StatusEffectData[17] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_17] == 0)
                 {
                     StatusEffects_17_Id     = Stream.Read.UInt();
                     StatusEffects_17_Unk1   = Stream.Read.ByteArray(1);
@@ -900,7 +933,7 @@ namespace PacketPeepScript
                     }
                 }
 
-                if (Bitfield_StatusEffectData[18] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_18] == 0)
                 {
                     StatusEffects_18_Id     = Stream.Read.UInt();
                     StatusEffects_18_Unk1   = Stream.Read.ByteArray(1);
@@ -919,7 +952,7 @@ namespace PacketPeepScript
                     }
                 }
                 
-                if (Bitfield_StatusEffectData[19] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_19] == 0)
                 {  
                     StatusEffects_19_Id     = Stream.Read.UInt();
                     StatusEffects_19_Unk1   = Stream.Read.ByteArray(1);
@@ -938,7 +971,7 @@ namespace PacketPeepScript
                     }
                 }
 
-                if (Bitfield_StatusEffectData[20] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_20] == 0)
                 { 
                     StatusEffects_20_Id     = Stream.Read.UInt();
                     StatusEffects_20_Unk1   = Stream.Read.ByteArray(1);
@@ -957,7 +990,7 @@ namespace PacketPeepScript
                     }
                 }
 
-                if (Bitfield_StatusEffectData[21] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_21] == 0)
                 { 
                     StatusEffects_21_Id     = Stream.Read.UInt();
                     StatusEffects_21_Unk1   = Stream.Read.ByteArray(1);
@@ -976,7 +1009,7 @@ namespace PacketPeepScript
                     }
                 }
 
-                if (Bitfield_StatusEffectData[22] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_22] == 0)
                 {
                     StatusEffects_22_Id     = Stream.Read.UInt();
                     StatusEffects_22_Unk1   = Stream.Read.ByteArray(1);
@@ -995,7 +1028,7 @@ namespace PacketPeepScript
                     }
                 }
 
-                if (Bitfield_StatusEffectData[23] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_23] == 0)
                 { 
                     StatusEffects_23_Id     = Stream.Read.UInt();
                     StatusEffects_23_Unk1   = Stream.Read.ByteArray(1);
@@ -1014,7 +1047,7 @@ namespace PacketPeepScript
                     }
                 }
 
-                if (Bitfield_StatusEffectData[24] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_24] == 0)
                 { 
                     StatusEffects_24_Id     = Stream.Read.UInt();
                     StatusEffects_24_Unk1   = Stream.Read.ByteArray(1);
@@ -1033,7 +1066,7 @@ namespace PacketPeepScript
                     }
                 }
 
-                if (Bitfield_StatusEffectData[25] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_25] == 0)
                 { 
                     StatusEffects_25_Id     = Stream.Read.UInt();
                     StatusEffects_25_Unk1   = Stream.Read.ByteArray(1);
@@ -1052,7 +1085,7 @@ namespace PacketPeepScript
                     }
                 }
                 
-                if (Bitfield_StatusEffectData[26] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_26] == 0)
                 { 
                     StatusEffects_26_Id     = Stream.Read.UInt();
                     StatusEffects_26_Unk1   = Stream.Read.ByteArray(1);
@@ -1071,7 +1104,7 @@ namespace PacketPeepScript
                     }
                 }
 
-                if (Bitfield_StatusEffectData[27] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_27] == 0)
                 { 
                     StatusEffects_27_Id     = Stream.Read.UInt();
                     StatusEffects_27_Unk1   = Stream.Read.ByteArray(1);
@@ -1090,7 +1123,7 @@ namespace PacketPeepScript
                     }
                 }
 
-                if (Bitfield_StatusEffectData[28] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_28] == 0)
                 { 
                     StatusEffects_28_Id     = Stream.Read.UInt();
                     StatusEffects_28_Unk1   = Stream.Read.ByteArray(1);
@@ -1109,7 +1142,7 @@ namespace PacketPeepScript
                     }
                 }
 
-                if (Bitfield_StatusEffectData[29] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_29] == 0)
                 { 
                     StatusEffects_29_Id     = Stream.Read.UInt();
                     StatusEffects_29_Unk1   = Stream.Read.ByteArray(1);
@@ -1128,7 +1161,7 @@ namespace PacketPeepScript
                     }
                 }
 
-                if (Bitfield_StatusEffectData[30] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_30] == 0)
                 { 
                     StatusEffects_30_Id     = Stream.Read.UInt();
                     StatusEffects_30_Unk1   = Stream.Read.ByteArray(1);
@@ -1147,7 +1180,7 @@ namespace PacketPeepScript
                     }
                 }
 
-                if (Bitfield_StatusEffectData[31] == 0x00)
+                if (Bitfield[(int)BitfieldIndex.StatusEffects_31] == 0)
                 { 
                     StatusEffects_31_Id     = Stream.Read.UInt();
                     StatusEffects_31_Unk1   = Stream.Read.ByteArray(1);
@@ -1166,16 +1199,15 @@ namespace PacketPeepScript
                     }
                 }
 
-
-                Unk_0x40 = Stream.Read.UInt();
-                Unk_0x41 = Stream.Read.UInt();
-                Unk_0x42 = Stream.Read.UInt();
-                Unk_0x43 = Stream.Read.UInt();
-                Unk_0x44 = Stream.Read.UInt();
-                Unk_0x45 = Stream.Read.UInt();
-                Unk_0x46 = Stream.Read.UInt();
-                Unk_0x47 = Stream.Read.UInt();
-                Unk_0x48 = Stream.Read.UInt();
+                SlottedAbility_0 = Stream.Read.UInt();
+                SlottedAbility_1 = Stream.Read.UInt();
+                SlottedAbility_2 = Stream.Read.UInt();
+                SlottedAbility_3 = Stream.Read.UInt();
+                SlottedAbility_4 = Stream.Read.UInt();
+                SlottedAbility_5 = Stream.Read.UInt();
+                SlottedAbility_6 = Stream.Read.UInt();
+                SlottedAbility_7 = Stream.Read.UInt();
+                SlottedAbility_8 = Stream.Read.UInt();
             }
         }
     }

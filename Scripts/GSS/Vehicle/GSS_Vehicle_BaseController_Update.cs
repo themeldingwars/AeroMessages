@@ -16,12 +16,12 @@ namespace PacketPeepScript
             OwnerLocalString      = 0x07,
             OccupantIds_0         = 0x08,
             OccupantIds_1         = 0x09,
-            OccupantIds_2         = 0x0A,
-            OccupantIds_3         = 0x0B,
-            OccupantIds_4         = 0x0C,
-            OccupantIds_5         = 0x0D,
-            DeployableIds_0       = 0x0E,
-            DeployableIds_1       = 0x0F,
+            OccupantIds_2         = 0x0a,
+            OccupantIds_3         = 0x0b,
+            OccupantIds_4         = 0x0c,
+            OccupantIds_5         = 0x0d,
+            DeployableIds_0       = 0x0e,
+            DeployableIds_1       = 0x0f,
             DeployableIds_2       = 0x10,
             DeployableIds_3       = 0x11,
             DeployableIds_4       = 0x12,
@@ -32,12 +32,12 @@ namespace PacketPeepScript
             DeployableIds_9       = 0x17,
             SnapMount             = 0x18,
             SpawnPose             = 0x19,
-            SpawnVelocity         = 0x1A,
-            CurrentPose           = 0x1B, // MovementInput
-            ProcessDelay          = 0x1C,
-            HostilityInfo         = 0x1D,
-            PersonalFactionStance = 0x1E,
-            CurrentHealth         = 0x1F,
+            SpawnVelocity         = 0x1a,
+            CurrentPose           = 0x1b, // MovementInput
+            ProcessDelay          = 0x1c,
+            HostilityInfo         = 0x1d,
+            PersonalFactionStance = 0x1e,
+            CurrentHealth         = 0x1f,
             MaxHealth             = 0x20,
             CurrentShields        = 0x21,
             MaxShields            = 0x22,
@@ -75,6 +75,32 @@ namespace PacketPeepScript
             ScopeBubbleInfo       = 0x42,
             ScalingLevel          = 0x43,
 
+            Reset_PersonalFactionStance = 0x9e,
+            Reset_SinFactionsAcquiredBy = 0xa8,
+            Reset_SinTeamsAcquiredBy    = 0xa9,
+            Reset_SinCardFields_0       = 0xab,
+            Reset_SinCardFields_1       = 0xac,
+            Reset_SinCardFields_2       = 0xad,
+            Reset_SinCardFields_3       = 0xae,
+            Reset_SinCardFields_4       = 0xaf,
+            Reset_SinCardFields_5       = 0xb0,
+            Reset_SinCardFields_6       = 0xb1,
+            Reset_SinCardFields_7       = 0xb2,
+            Reset_SinCardFields_8       = 0xb3,
+            Reset_SinCardFields_9       = 0xb4,
+            Reset_SinCardFields_10      = 0xb5,
+            Reset_SinCardFields_11      = 0xb6,
+            Reset_SinCardFields_12      = 0xb7,
+            Reset_SinCardFields_13      = 0xb8,
+            Reset_SinCardFields_14      = 0xb9,
+            Reset_SinCardFields_15      = 0xba,
+            Reset_SinCardFields_16      = 0xbb,
+            Reset_SinCardFields_17      = 0xbc,
+            Reset_SinCardFields_18      = 0xbd,
+            Reset_SinCardFields_19      = 0xbe,
+            Reset_SinCardFields_20      = 0xbf,
+            Reset_SinCardFields_21      = 0xc0,
+            Reset_SinCardFields_22      = 0xc1,
         }
 
         public string UnableToParseWarning; // Will be set if we encounter an unhandled shadowfield
@@ -85,7 +111,8 @@ namespace PacketPeepScript
         public byte? EngineState;
         public byte? PathState;
         public byte[] OwnerId;
-        public byte[] OwnerLocalString;
+        public string OwnerName;
+        public uint? OwnerLocalString;
         public byte[] OccupantIds_0;
         public byte[] OccupantIds_1;
         public byte[] OccupantIds_2;
@@ -107,19 +134,56 @@ namespace PacketPeepScript
         public float[] SpawnPose_Rotation; // 0x19
         public float[] SpawnPose_Direction; // 0x19
         public uint? SpawnPose_Time; // 0x19
-
-        public byte[] SpawnVelocity;
+        public float[] SpawnVelocity;
         public float[] CurrentPose_Position; // 0x1B
         public float[] CurrentPose_Rotation; // 0x1B
         public float[] CurrentPose_Direction; // 0x1B
         public ushort? CurrentPose_State; // 0x1B
         public uint? CurrentPose_Time; // 0x1B
-        public byte[] ProcessDelay;
+        public uint? ProcessDelay;
         public byte[] HostilityInfo;
         public byte[] PersonalFactionStance;
         public uint? CurrentHealth;
         public uint? MaxHealth;
-        public byte[] CurrentResources;
+        public uint? CurrentShields;
+        public uint? MaxShields;
+        public uint? CurrentResources;
+        public uint? MaxResources;
+        public byte? WaterLevelAndDesc;
+        public byte? SinFlags;
+        public byte? SinFlagsPrivate;
+        public byte[] SinFactionsAcquiredBy;
+        public byte[] SinTeamsAcquiredBy;
+        public uint? SinCardType;
+        public byte[] ScopeBubbleInfo;
+        public uint? ScalingLevel;
+
+        public bool? Reset_PersonalFactionStance;
+        public bool? Reset_SinFactionsAcquiredBy;
+        public bool? Reset_SinTeamsAcquiredBy;
+        public bool? Reset_SinCardFields_0;
+        public bool? Reset_SinCardFields_1;
+        public bool? Reset_SinCardFields_2;
+        public bool? Reset_SinCardFields_3;
+        public bool? Reset_SinCardFields_4;
+        public bool? Reset_SinCardFields_5;
+        public bool? Reset_SinCardFields_6;
+        public bool? Reset_SinCardFields_7;
+        public bool? Reset_SinCardFields_8;
+        public bool? Reset_SinCardFields_9;
+        public bool? Reset_SinCardFields_10;
+        public bool? Reset_SinCardFields_11;
+        public bool? Reset_SinCardFields_12;
+        public bool? Reset_SinCardFields_13;
+        public bool? Reset_SinCardFields_14;
+        public bool? Reset_SinCardFields_15;
+        public bool? Reset_SinCardFields_16;
+        public bool? Reset_SinCardFields_17;
+        public bool? Reset_SinCardFields_18;
+        public bool? Reset_SinCardFields_19;
+        public bool? Reset_SinCardFields_20;
+        public bool? Reset_SinCardFields_21;
+        public bool? Reset_SinCardFields_22;
 
         public byte[] UnableToParse;
 
@@ -150,8 +214,11 @@ namespace PacketPeepScript
                     case ShadowFieldIndex.OwnerId:
                         OwnerId = Stream.Read.ByteArray(8);
                         break;
+                    case ShadowFieldIndex.OwnerName:
+                        OwnerName = Stream.Read.StringZ(Stream);
+                        break;
                     case ShadowFieldIndex.OwnerLocalString:
-                        OwnerLocalString = Stream.Read.ByteArray(4);
+                        OwnerLocalString = Stream.Read.UInt();
                         break;
                     case ShadowFieldIndex.OccupantIds_0:
                         OccupantIds_0 = Stream.Read.ByteArray(8);
@@ -211,7 +278,7 @@ namespace PacketPeepScript
                         SpawnPose_Time = Stream.Read.UInt();
                         break;
                     case ShadowFieldIndex.SpawnVelocity:
-                        SpawnVelocity = Stream.Read.ByteArray(12);
+                        SpawnVelocity = Stream.Read.FloatArray(3);
                         break;
                     case ShadowFieldIndex.CurrentPose: // MovementInput
                         CurrentPose_Position = Stream.Read.FloatArray(3);
@@ -221,7 +288,7 @@ namespace PacketPeepScript
                         CurrentPose_Time = Stream.Read.UInt();
                         break;
                     case ShadowFieldIndex.ProcessDelay:
-                        ProcessDelay = Stream.Read.ByteArray(4);
+                        ProcessDelay = Stream.Read.UInt();
                         break;
                     case ShadowFieldIndex.HostilityInfo:
                         HostilityInfo = Stream.Read.ByteArray(2);
@@ -235,9 +302,122 @@ namespace PacketPeepScript
                     case ShadowFieldIndex.MaxHealth:
                         MaxHealth = Stream.Read.UInt();
                         break;
-                    case ShadowFieldIndex.CurrentResources:
-                        CurrentResources = Stream.Read.ByteArray(4);
+                    case ShadowFieldIndex.CurrentShields:
+                        CurrentShields = Stream.Read.UInt();
                         break;
+                    case ShadowFieldIndex.MaxShields:
+                        MaxShields = Stream.Read.UInt();
+                        break;
+                    case ShadowFieldIndex.CurrentResources:
+                        CurrentResources = Stream.Read.UInt();
+                        break;
+                    case ShadowFieldIndex.MaxResources:
+                        MaxResources = Stream.Read.UInt();
+                        break;
+                    case ShadowFieldIndex.WaterLevelAndDesc:
+                        WaterLevelAndDesc = Stream.Read.Byte();
+                        break;
+                    case ShadowFieldIndex.SinFlags:
+                        SinFlags = Stream.Read.Byte();
+                        break;
+                    case ShadowFieldIndex.SinFlagsPrivate:
+                        SinFlagsPrivate = Stream.Read.Byte();
+                        break;
+                    case ShadowFieldIndex.SinFactionsAcquiredBy:
+                        SinFactionsAcquiredBy = Stream.Read.ByteArray(2);
+                        break;
+                    case ShadowFieldIndex.SinTeamsAcquiredBy:
+                        SinTeamsAcquiredBy = Stream.Read.ByteArray(2);
+                        break;
+                    case ShadowFieldIndex.SinCardType:
+                        SinCardType = Stream.Read.UInt();
+                        break;
+                    case ShadowFieldIndex.ScopeBubbleInfo:
+                        ScopeBubbleInfo = Stream.Read.ByteArray(8);
+                        break;
+                    case ShadowFieldIndex.ScalingLevel:
+                        ScalingLevel = Stream.Read.UInt();
+                        break;
+
+                    case ShadowFieldIndex.Reset_PersonalFactionStance:
+                        Reset_PersonalFactionStance = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinFactionsAcquiredBy:
+                        Reset_SinFactionsAcquiredBy = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinTeamsAcquiredBy:
+                        Reset_SinTeamsAcquiredBy = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_0:
+                        Reset_SinCardFields_0 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_1:
+                        Reset_SinCardFields_1 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_2:
+                        Reset_SinCardFields_2 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_3:
+                        Reset_SinCardFields_3 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_4:
+                        Reset_SinCardFields_4 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_5:
+                        Reset_SinCardFields_5 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_6:
+                        Reset_SinCardFields_6 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_7:
+                        Reset_SinCardFields_7 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_8:
+                        Reset_SinCardFields_8 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_9:
+                        Reset_SinCardFields_9 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_10:
+                        Reset_SinCardFields_10 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_11:
+                        Reset_SinCardFields_11 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_12:
+                        Reset_SinCardFields_12 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_13:
+                        Reset_SinCardFields_13 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_14:
+                        Reset_SinCardFields_14 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_15:
+                        Reset_SinCardFields_15 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_16:
+                        Reset_SinCardFields_16 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_17:
+                        Reset_SinCardFields_17 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_18:
+                        Reset_SinCardFields_18 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_19:
+                        Reset_SinCardFields_19 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_20:
+                        Reset_SinCardFields_20 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_21:
+                        Reset_SinCardFields_21 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_22:
+                        Reset_SinCardFields_22 = true;
+                        break;
+
                     default:
                         UnableToParseWarning = $"Dont know how to parse shadowfield {sfidx}";
                         int remaining = (int)(Stream.baseStream.Length - Stream.baseStream.ByteOffset);
@@ -248,5 +428,22 @@ namespace PacketPeepScript
             while (Stream.baseStream.ByteOffset < Stream.baseStream.Length);
 
         }
+    }
+
+    public static class MyExtensions
+    {
+        public static string StringZ(this Bitter.BinaryReader rdr, Bitter.BinaryStream stream) {
+            string ret = "";
+            do
+            {
+                byte b = rdr.Byte();
+                if (b == 0x00)
+                    break;
+                ret += (char)b;
+            }
+            while (stream.baseStream.ByteOffset < stream.baseStream.Length);
+            return ret;
+        }
+
     }
 }
