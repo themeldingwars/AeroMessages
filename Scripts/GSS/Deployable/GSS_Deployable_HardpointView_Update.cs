@@ -12,6 +12,10 @@ namespace PacketPeepScript
 
         public string UnableToParseWarning; // Will be set if we encounter an unhandled shadowfield
 
+        public uint HardpointChildType; // DeployableTypeId Of the selected deployable
+        public byte HardpointChildId_HaveEntity;
+        public byte[] HardpointChildId_Entity;
+
         public byte[] UnableToParse;
 
         public override void Read(Bitter.BinaryStream Stream)
@@ -23,6 +27,17 @@ namespace PacketPeepScript
                 ShadowFieldIndex sfidx = (ShadowFieldIndex) (Stream.Read.Byte());
                 switch (sfidx)
                 {
+                    case ShadowFieldIndex.HardpointChildType:
+                        HardpointChildType = Stream.Read.UInt();
+                        break;
+
+                    case ShadowFieldIndex.HardpointChildId:
+                        HardpointChildId_HaveEntity = Stream.Read.Byte();
+                        if (HardpointChildId_HaveEntity > 0x00) {
+                            HardpointChildId_Entity = Stream.Read.ByteArray(8);
+                        }
+                        break;
+
                     default:
                         UnableToParseWarning = $"Dont know how to parse shadowfield {sfidx}";
                         int remaining = (int)(Stream.baseStream.Length - Stream.baseStream.ByteOffset);

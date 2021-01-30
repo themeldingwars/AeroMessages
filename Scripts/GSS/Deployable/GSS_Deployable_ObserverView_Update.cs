@@ -1,4 +1,6 @@
 using Bitter;
+using System;
+using System.Collections.Generic;
 namespace PacketPeepScript
 {
     [Script(MessageType.GSS, 35, 1, true)]
@@ -14,7 +16,7 @@ namespace PacketPeepScript
             AimPosition = 0x05,
             AimDirection = 0x06,
             ConstructedTime = 0x07,
-            CurrentHealthPct    = 0x08, // % integer
+            CurrentHealthPct = 0x08, // % integer
             MaxHealth = 0x09,
             Level = 0x0a,
             StatusEffects_0_ChangeTime = 0x0b,
@@ -81,7 +83,6 @@ namespace PacketPeepScript
             StatusEffects_29_Data = 0x48,
             StatusEffects_30_Data = 0x49,
             StatusEffects_31_Data = 0x4a,
-
             HostilityInfo = 0x4b,
             PersonalFactionStance = 0x4c,
             GibVisualsID = 0x04d,
@@ -133,6 +134,7 @@ namespace PacketPeepScript
             AppendageHealthPct_7 = 0x7b,
 
 
+            // Reset indexes
             StatusEffects_0_Cancel = 0xab,
             StatusEffects_1_Cancel = 0xac,
             StatusEffects_2_Cancel = 0xad,
@@ -165,17 +167,107 @@ namespace PacketPeepScript
             StatusEffects_29_Cancel = 0xc8,
             StatusEffects_30_Cancel = 0xc9,
             StatusEffects_31_Cancel = 0xca,
+            Reset_PersonalFactionStance = 0xcc,
+            Reset_ForcedMovement = 0xce,
+            Reset_SinFactionsAcquiredBy = 0xd0,
+            Reset_SinTeamsAcquiredBy = 0xd1,
+            Reset_SinCardFields_0 = 0xd7,
+            Reset_SinCardFields_1 = 0xd8,
+            Reset_SinCardFields_2 = 0xd9,
+            Reset_SinCardFields_3 = 0xda,
+            Reset_SinCardFields_4 = 0xdb,
+            Reset_SinCardFields_5 = 0xdc,
+            Reset_SinCardFields_6 = 0xdd,
+            Reset_SinCardFields_7 = 0xde,
+            Reset_SinCardFields_8 = 0xdf,
+            Reset_SinCardFields_9 = 0xe0,
+            Reset_SinCardFields_10 = 0xe1,
+            Reset_SinCardFields_11 = 0xe2,
+            Reset_SinCardFields_12 = 0xe3,
+            Reset_SinCardFields_13 = 0xe4,
+            Reset_SinCardFields_14 = 0xe5,
+            Reset_SinCardFields_15 = 0xe6,
+            Reset_SinCardFields_16 = 0xe7,
+            Reset_SinCardFields_17 = 0xe8,
+            Reset_SinCardFields_18 = 0xe9,
+            Reset_SinCardFields_19 = 0xea,
+            Reset_AppendageHealthPools_0 = 0xec,
+            Reset_AppendageHealthPools_1 = 0xed,
+            Reset_AppendageHealthPools_2 = 0xee,
+            Reset_AppendageHealthPools_3 = 0xef,
+            Reset_AppendageHealthPools_4 = 0xf0,
+            Reset_AppendageHealthPools_5 = 0xf1,
+            Reset_AppendageHealthPools_6 = 0xf2,
+            Reset_AppendageHealthPools_7 = 0xf3,
         }
 
         public string UnableToParseWarning; // Will be set if we encounter an unhandled shadowfield
 
-
+        public uint? Type; // Type, Sdb table 187, id column.
+        public byte[] OwningEntity;
+        public uint? AbilitySrcId;
+        public float[] Position;
+        public float[] Orientation;
+        public float[] AimPosition;
+        public float[] AimDirection;
         public byte? CurrentHealthPct;
-
+        public uint? ConstructedTime;
+        public uint? MaxHealth;
+        public byte? Level;
         public byte[] HostilityInfo;
+        public byte[] PersonalFactionStance;
+        public uint? GibVisualsID;
+        public byte[] ForcedMovement; // Uncertain lengths
+        public byte? SinFlags;
         public byte[] SinFactionsAcquiredBy;
         public byte[] SinTeamsAcquiredBy;
-
+        public byte[] AttachedTo;
+        public byte? WarpaintColors_Count;
+        public ushort[] WarpaintColors_Data;
+        public byte[] VisualInfoGroupIndex; // Uncertain lengths
+        public ushort? CharacterStats_1_Count;
+        public StatData[] CharacterStats_1_Data;
+        public byte[] CharacterStats_1_Unk;
+        public ushort? CharacterStats_2_Count;
+        public StatData[] CharacterStats_2_Data;
+        public byte[] CharacterStats_2_Unk;
+        public ushort? CharacterStats_3_Count;
+        public StatData[] CharacterStats_3_Data;
+        public byte[] CharacterStats_3_Unk;
+        public ushort? CharacterStats_4_Count;
+        public StatData[] CharacterStats_4_Data;
+        public ushort? CharacterStats_5_Count;
+        public StatData[] CharacterStats_5_Data;
+        public uint? SinCardType;
+        public SinCardField? SinCardFields_0;
+        public SinCardField? SinCardFields_1;
+        public SinCardField? SinCardFields_2;
+        public SinCardField? SinCardFields_3;
+        public SinCardField? SinCardFields_4;
+        public SinCardField? SinCardFields_5;
+        public SinCardField? SinCardFields_6;
+        public SinCardField? SinCardFields_7;
+        public SinCardField? SinCardFields_8;
+        public SinCardField? SinCardFields_9;
+        public SinCardField? SinCardFields_10;
+        public SinCardField? SinCardFields_11;
+        public SinCardField? SinCardFields_12;
+        public SinCardField? SinCardFields_13;
+        public SinCardField? SinCardFields_14;
+        public SinCardField? SinCardFields_15;
+        public SinCardField? SinCardFields_16;
+        public SinCardField? SinCardFields_17;
+        public SinCardField? SinCardFields_18;
+        public SinCardField? SinCardFields_19;
+        public uint? ScalingLevel;
+        public byte? AppendageHealthPct_0;
+        public byte? AppendageHealthPct_1;
+        public byte? AppendageHealthPct_2;
+        public byte? AppendageHealthPct_3;
+        public byte? AppendageHealthPct_4;
+        public byte? AppendageHealthPct_5;
+        public byte? AppendageHealthPct_6;
+        public byte? AppendageHealthPct_7;
 
         public ushort? StatusEffects_0_ChangeTime;
         public uint? StatusEffects_0_Id;
@@ -593,6 +685,40 @@ namespace PacketPeepScript
         public float? StatusEffects_31_Data_Float2;
         public bool? StatusEffects_31_Cancel;
 
+
+        public bool? Reset_PersonalFactionStance;
+        public bool? Reset_ForcedMovement;
+        public bool? Reset_SinFactionsAcquiredBy;
+        public bool? Reset_SinTeamsAcquiredBy;
+        public bool? Reset_SinCardFields_0;
+        public bool? Reset_SinCardFields_1;
+        public bool? Reset_SinCardFields_2;
+        public bool? Reset_SinCardFields_3;
+        public bool? Reset_SinCardFields_4;
+        public bool? Reset_SinCardFields_5;
+        public bool? Reset_SinCardFields_6;
+        public bool? Reset_SinCardFields_7;
+        public bool? Reset_SinCardFields_8;
+        public bool? Reset_SinCardFields_9;
+        public bool? Reset_SinCardFields_10;
+        public bool? Reset_SinCardFields_11;
+        public bool? Reset_SinCardFields_12;
+        public bool? Reset_SinCardFields_13;
+        public bool? Reset_SinCardFields_14;
+        public bool? Reset_SinCardFields_15;
+        public bool? Reset_SinCardFields_16;
+        public bool? Reset_SinCardFields_17;
+        public bool? Reset_SinCardFields_18;
+        public bool? Reset_SinCardFields_19;
+        public bool? Reset_AppendageHealthPools_0;
+        public bool? Reset_AppendageHealthPools_1;
+        public bool? Reset_AppendageHealthPools_2;
+        public bool? Reset_AppendageHealthPools_3;
+        public bool? Reset_AppendageHealthPools_4;
+        public bool? Reset_AppendageHealthPools_5;
+        public bool? Reset_AppendageHealthPools_6;
+        public bool? Reset_AppendageHealthPools_7;
+
         public byte[] UnableToParse;
 
 
@@ -600,20 +726,74 @@ namespace PacketPeepScript
         public override void Read(Bitter.BinaryStream Stream)
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
+            MyExtensions.Stream = Stream;
 
             do
             {
                 ShadowFieldIndex sfidx = (ShadowFieldIndex) (Stream.Read.Byte());
                 switch (sfidx)
                 {
- 
-                    
+    
+                    case ShadowFieldIndex.Type:
+                        Type = Stream.Read.UInt();
+                        break;
+                    case ShadowFieldIndex.OwningEntity:
+                        OwningEntity = Stream.Read.ByteArray(8);
+                        break;
+                    case ShadowFieldIndex.AbilitySrcId:
+                        AbilitySrcId = Stream.Read.UInt();
+                        break;
+                    case ShadowFieldIndex.Position:
+                        Position = Stream.Read.FloatArray(3);
+
+                        break;
+                    case ShadowFieldIndex.Orientation:
+                        Orientation = Stream.Read.FloatArray(4);
+
+                        break;
+                    case ShadowFieldIndex.AimPosition:
+                        AimPosition = Stream.Read.FloatArray(3);
+
+                        break;
+                    case ShadowFieldIndex.AimDirection:
+                        AimDirection = Stream.Read.FloatArray(3);
+
+                        break;
+                    case ShadowFieldIndex.ConstructedTime:
+                        ConstructedTime = Stream.Read.UInt();
+
+                        break;
                     case ShadowFieldIndex.CurrentHealthPct:
                         CurrentHealthPct = Stream.Read.Byte();
+
+                        break;
+                    case ShadowFieldIndex.MaxHealth:
+                        MaxHealth = Stream.Read.UInt();
+
+                        break;
+                    case ShadowFieldIndex.Level:
+                        Level = Stream.Read.Byte();
                         break;
 
                     case ShadowFieldIndex.HostilityInfo:
                         HostilityInfo = Stream.Read.ByteArray(2);
+                        break;
+
+                    case ShadowFieldIndex.PersonalFactionStance:
+                        PersonalFactionStance = Stream.Read.ByteArray(5*4);
+                        break;
+
+                    case ShadowFieldIndex.GibVisualsID:
+                        GibVisualsID = Stream.Read.UInt();
+                        break;
+
+                    case ShadowFieldIndex.ForcedMovement:
+                        // Needs indepth parsing, first byte is type/flags.
+                        ForcedMovement = Stream.Read.ByteArray(30);
+                        break;
+
+                    case ShadowFieldIndex.SinFlags:
+                        SinFlags = Stream.Read.Byte();
                         break;
 
                     case ShadowFieldIndex.SinFactionsAcquiredBy:
@@ -624,6 +804,131 @@ namespace PacketPeepScript
                         SinTeamsAcquiredBy = Stream.Read.ByteArray(2);
                         break;
 
+                    case ShadowFieldIndex.AttachedTo:
+                        AttachedTo = Stream.Read.ByteArray(8);
+                        break;
+
+                    case ShadowFieldIndex.WarpaintColors:
+                        WarpaintColors_Count = Stream.Read.Byte();
+                        WarpaintColors_Data = Stream.Read.UShortArray((int)WarpaintColors_Count);
+                        break;
+
+                    case ShadowFieldIndex.VisualInfoGroupIndex:
+                        VisualInfoGroupIndex = Stream.Read.ByteArray(1); // Uncertain
+                        break;
+                    
+                    case ShadowFieldIndex.CharacterStats:
+                        CharacterStats_1_Count = Stream.Read.UShort();
+                        CharacterStats_1_Data = Stream.Read.StatDataArray((int)CharacterStats_1_Count);
+                        CharacterStats_1_Unk = Stream.Read.ByteArray(4);
+                        CharacterStats_2_Count = Stream.Read.UShort();
+                        CharacterStats_2_Data = Stream.Read.StatDataArray((int)CharacterStats_2_Count);
+                        CharacterStats_2_Unk = Stream.Read.ByteArray(4);
+                        CharacterStats_3_Count = Stream.Read.UShort();
+                        CharacterStats_3_Data = Stream.Read.StatDataArray((int)CharacterStats_3_Count);
+                        CharacterStats_3_Unk = Stream.Read.ByteArray(4);
+                        CharacterStats_4_Count = Stream.Read.UShort();
+                        CharacterStats_4_Data = Stream.Read.StatDataArray((int)CharacterStats_4_Count);
+                        CharacterStats_5_Count = Stream.Read.UShort();
+                        CharacterStats_5_Data = Stream.Read.StatDataArray((int)CharacterStats_5_Count);
+                        break;   
+
+                    case ShadowFieldIndex.SinCardType:
+                        SinCardType = Stream.Read.UInt();
+                        break;
+
+                    case ShadowFieldIndex.SinCardFields_0:
+                        SinCardFields_0 = Stream.Read.SinCardField();
+                        break;
+                    case ShadowFieldIndex.SinCardFields_1:
+                        SinCardFields_1 = Stream.Read.SinCardField();
+                        break;
+                    case ShadowFieldIndex.SinCardFields_2:
+                        SinCardFields_2 = Stream.Read.SinCardField();
+                        break;
+                    case ShadowFieldIndex.SinCardFields_3:
+                        SinCardFields_3 = Stream.Read.SinCardField();
+                        break;
+                    case ShadowFieldIndex.SinCardFields_4:
+                        SinCardFields_4 = Stream.Read.SinCardField();
+                        break;
+                    case ShadowFieldIndex.SinCardFields_5:
+                        SinCardFields_5 = Stream.Read.SinCardField();
+                        break;
+                    case ShadowFieldIndex.SinCardFields_6:
+                        SinCardFields_6 = Stream.Read.SinCardField();
+                        break;
+                    case ShadowFieldIndex.SinCardFields_7:
+                        SinCardFields_7 = Stream.Read.SinCardField();
+                        break;
+                    case ShadowFieldIndex.SinCardFields_8:
+                        SinCardFields_8 = Stream.Read.SinCardField();
+                        break;
+                    case ShadowFieldIndex.SinCardFields_9:
+                        SinCardFields_9 = Stream.Read.SinCardField();
+                        break;
+                    case ShadowFieldIndex.SinCardFields_10:
+                        SinCardFields_10 = Stream.Read.SinCardField();
+                        break;
+                    case ShadowFieldIndex.SinCardFields_11:
+                        SinCardFields_11 = Stream.Read.SinCardField();
+                        break;
+                    case ShadowFieldIndex.SinCardFields_12:
+                        SinCardFields_12 = Stream.Read.SinCardField();
+                        break;
+                    case ShadowFieldIndex.SinCardFields_13:
+                        SinCardFields_13 = Stream.Read.SinCardField();
+                        break;
+                    case ShadowFieldIndex.SinCardFields_14:
+                        SinCardFields_14 = Stream.Read.SinCardField();
+                        break;
+                    case ShadowFieldIndex.SinCardFields_15:
+                        SinCardFields_15 = Stream.Read.SinCardField();
+                        break;
+                    case ShadowFieldIndex.SinCardFields_16:
+                        SinCardFields_16 = Stream.Read.SinCardField();
+                        break;
+                    case ShadowFieldIndex.SinCardFields_17:
+                        SinCardFields_17 = Stream.Read.SinCardField();
+                        break;
+                    case ShadowFieldIndex.SinCardFields_18:
+                        SinCardFields_18 = Stream.Read.SinCardField();
+                        break;
+                    case ShadowFieldIndex.SinCardFields_19:
+                        SinCardFields_19 = Stream.Read.SinCardField();
+                        break;
+
+                    case ShadowFieldIndex.ScalingLevel:
+                        ScalingLevel = Stream.Read.UInt();
+                        break;
+
+                    // TODO: AppendageHealthPools
+                    // 
+                    
+                    case ShadowFieldIndex.AppendageHealthPct_0:
+                        AppendageHealthPct_0 = Stream.Read.Byte();
+                        break;
+                    case ShadowFieldIndex.AppendageHealthPct_1:
+                        AppendageHealthPct_1 = Stream.Read.Byte();
+                        break;
+                    case ShadowFieldIndex.AppendageHealthPct_2:
+                        AppendageHealthPct_2 = Stream.Read.Byte();
+                        break;
+                    case ShadowFieldIndex.AppendageHealthPct_3:
+                        AppendageHealthPct_3 = Stream.Read.Byte();
+                        break;
+                    case ShadowFieldIndex.AppendageHealthPct_4:
+                        AppendageHealthPct_4 = Stream.Read.Byte();
+                        break;
+                    case ShadowFieldIndex.AppendageHealthPct_5:
+                        AppendageHealthPct_5 = Stream.Read.Byte();
+                        break;
+                    case ShadowFieldIndex.AppendageHealthPct_6:
+                        AppendageHealthPct_6 = Stream.Read.Byte();
+                        break;
+                    case ShadowFieldIndex.AppendageHealthPct_7:
+                        AppendageHealthPct_7 = Stream.Read.Byte();
+                        break;
 
                     case ShadowFieldIndex.StatusEffects_0_ChangeTime:
                         StatusEffects_0_ChangeTime = Stream.Read.UShort();
@@ -1428,6 +1733,105 @@ namespace PacketPeepScript
                         StatusEffects_31_Cancel = true;
                         break;
 
+
+                    case ShadowFieldIndex.Reset_PersonalFactionStance:
+                        Reset_PersonalFactionStance = true;
+                        break;
+                    case ShadowFieldIndex.Reset_ForcedMovement:
+                        Reset_ForcedMovement = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinFactionsAcquiredBy:
+                        Reset_SinFactionsAcquiredBy = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinTeamsAcquiredBy:
+                        Reset_SinTeamsAcquiredBy = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_0:
+                        Reset_SinCardFields_0 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_1:
+                        Reset_SinCardFields_1 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_2:
+                        Reset_SinCardFields_2 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_3:
+                        Reset_SinCardFields_3 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_4:
+                        Reset_SinCardFields_4 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_5:
+                        Reset_SinCardFields_5 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_6:
+                        Reset_SinCardFields_6 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_7:
+                        Reset_SinCardFields_7 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_8:
+                        Reset_SinCardFields_8 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_9:
+                        Reset_SinCardFields_9 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_10:
+                        Reset_SinCardFields_10 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_11:
+                        Reset_SinCardFields_11 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_12:
+                        Reset_SinCardFields_12 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_13:
+                        Reset_SinCardFields_13 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_14:
+                        Reset_SinCardFields_14 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_15:
+                        Reset_SinCardFields_15 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_16:
+                        Reset_SinCardFields_16 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_17:
+                        Reset_SinCardFields_17 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_18:
+                        Reset_SinCardFields_18 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_SinCardFields_19:
+                        Reset_SinCardFields_19 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_AppendageHealthPools_0:
+                        Reset_AppendageHealthPools_0 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_AppendageHealthPools_1:
+                        Reset_AppendageHealthPools_1 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_AppendageHealthPools_2:
+                        Reset_AppendageHealthPools_2 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_AppendageHealthPools_3:
+                        Reset_AppendageHealthPools_3 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_AppendageHealthPools_4:
+                        Reset_AppendageHealthPools_4 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_AppendageHealthPools_5:
+                        Reset_AppendageHealthPools_5 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_AppendageHealthPools_6:
+                        Reset_AppendageHealthPools_6 = true;
+                        break;
+                    case ShadowFieldIndex.Reset_AppendageHealthPools_7:
+                        Reset_AppendageHealthPools_7 = true;
+                        break;
+
+
                     default:
                         UnableToParseWarning = $"Dont know how to parse shadowfield {sfidx}";
                         int remaining = (int)(Stream.baseStream.Length - Stream.baseStream.ByteOffset);
@@ -1436,6 +1840,162 @@ namespace PacketPeepScript
                 }
             }
             while (Stream.baseStream.ByteOffset < Stream.baseStream.Length);
+        }
+    }
+
+    public struct SinCardField
+    {
+        public enum SinCardFieldDataType : byte
+        {
+            LocalizationId = 0, // 4 bytes
+            Integer = 1, // 4 bytes
+            EntityId = 2, // 8 bytes
+            UnkType_3 = 3, // 8 bytes
+            Enum = 4, // stringz
+            UnkType_5 = 5, // ?
+            Short = 6, // 2 bytes
+            Timer = 7, // 9 bytes
+            Boolean = 8, // 0 bytes???
+        }
+
+        public SinCardFieldDataType DataType;
+
+        public uint LocalizationId;
+        public uint Integer;
+        public byte[] EntityId;
+        public string Enum;
+        public ushort Short;
+
+        public byte[] UnkData;
+
+
+        public SinCardField(Bitter.BinaryReader R)
+        {
+            // Sigh
+            LocalizationId = 0;
+            Integer = 0;
+            EntityId = null;
+            Enum = "";
+            Short = 0;
+            UnkData = null;
+
+            // Parse
+            DataType = (SinCardFieldDataType) R.Byte();
+
+            switch (DataType)
+            {
+                case SinCardFieldDataType.LocalizationId:
+                    LocalizationId = R.UInt();
+                    break;
+                case SinCardFieldDataType.Integer:
+                    Integer = R.UInt();
+                    break;
+                case SinCardFieldDataType.EntityId:
+                    EntityId = R.ByteArray(8);
+                    break;
+                case SinCardFieldDataType.Enum:
+                    Enum = R.StringZ();
+                    break;
+                case SinCardFieldDataType.Short:
+                    Short = R.UShort();
+                    break;
+                case SinCardFieldDataType.Timer:
+                    UnkData = R.ByteArray(9);
+                    break;
+            }
+        }
+
+        public override string ToString()
+        {
+            string result = $"{DataType}: ";
+
+            switch (DataType)
+            {
+                case SinCardFieldDataType.LocalizationId:
+                    result += $"{LocalizationId}";
+                    break;
+                case SinCardFieldDataType.Integer:
+                    result += $"{Integer}";
+                    break;
+                case SinCardFieldDataType.EntityId:
+                    result += $"[{(EntityId != null ? String.Join(", ", EntityId) : "null")}]";
+                    break;
+                case SinCardFieldDataType.Enum:
+                    result += $"{Enum}";
+                    break;
+                case SinCardFieldDataType.Short:
+                    result += $"{Short}";
+                    break;
+                case SinCardFieldDataType.Timer:
+                    result += $"[{(UnkData != null ? String.Join(", ", UnkData) : "null")}]";
+                    break;
+            }
+
+            return result;
+        } 
+    }
+
+    public struct StatData
+    {
+        public ushort Id;
+        public float Value;
+
+        public StatData(Bitter.BinaryReader R)
+        {
+            Id = R.UShort();
+            Value = R.Float();
+        }
+
+        public override string ToString() => $"Id: {Id}, Value: {Value}";
+    }
+
+    public static class MyExtensions
+    {
+        public static Bitter.BinaryStream Stream;
+
+        public static string StringZ(this Bitter.BinaryReader rdr)
+        {
+            string ret = "";
+            
+            do {
+                byte b = rdr.Byte();
+                if (b == 0x00)
+                    break;
+                
+                ret += (char)b;
+            } while (Stream.baseStream.ByteOffset < Stream.baseStream.Length);
+            
+            return ret;
+        }
+
+        public static SinCardField SinCardField(this Bitter.BinaryReader R)
+        {
+            return new SinCardField(R);
+        }
+
+        public static SinCardField[] SinCardFieldArray(this Bitter.BinaryReader R, int num)
+        {
+            List<SinCardField> list = new List<SinCardField>();
+            for (int i = 1; i <= num; i++)
+            {
+                list.Add(R.SinCardField());
+            }
+            return list.ToArray();
+        }
+
+        public static StatData StatData(this Bitter.BinaryReader R)
+        {
+            return new StatData(R);
+        }
+
+        public static StatData[] StatDataArray(this Bitter.BinaryReader R, int num)
+        {
+            List<StatData> list = new List<StatData>();
+            for (int i = 1; i <= num; i++)
+            {
+                list.Add(R.StatData());
+            }
+            return list.ToArray();
         }
     }
 }
