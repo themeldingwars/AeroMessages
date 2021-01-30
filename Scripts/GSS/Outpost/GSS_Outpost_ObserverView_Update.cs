@@ -54,6 +54,7 @@ namespace PacketPeepScript
         public override void Read(Bitter.BinaryStream Stream)
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
+            MyExtensions.Stream = Stream;
 
             do
             {

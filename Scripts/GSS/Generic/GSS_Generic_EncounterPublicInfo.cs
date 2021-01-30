@@ -12,8 +12,9 @@ namespace PacketPeepScript
         public override void Read(Bitter.BinaryStream Stream)
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
+            MyExtensions.Stream = Stream;
 
-            EncounterId = Stream.Read.String();
+            EncounterId = Stream.Read.StringZ();
 
             int remainingBytes = (int)(Stream.baseStream.Length - Stream.baseStream.ByteOffset);
             EncounterJSON = Stream.Read.String(remainingBytes);

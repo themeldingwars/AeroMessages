@@ -12,6 +12,7 @@ namespace PacketPeepScript
         public override void Read(Bitter.BinaryStream Stream)
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
+            MyExtensions.Stream = Stream;
 
             HardpointChildType = Stream.Read.UInt();
             HardpointChildId_HaveEntity = Stream.Read.Byte();

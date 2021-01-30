@@ -15,30 +15,13 @@ namespace PacketPeepScript
         public override void Read(Bitter.BinaryStream Stream)
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
+            MyExtensions.Stream = Stream;
 
             Unk1 = Stream.Read.Byte();
             Sender_Entity = Stream.Read.Entity();
-            Sender_Name = Stream.Read.String(GetNullTerminatedStrSize(Stream));
-            Message = Stream.Read.String(GetNullTerminatedStrSize(Stream));
+            Sender_Name = Stream.Read.StringZ();
+            Message = Stream.Read.StringZ();
             Channel = Stream.Read.Byte();
-        }
-
-        // Reads until we find 0x00, then resets the head and returns the number of bytes read.
-        private int GetNullTerminatedStrSize(Bitter.BinaryStream Stream)
-        {
-            long StartOffset = Stream.baseStream.ByteOffset;
-            do
-            {
-                byte b = Stream.Read.Byte();
-                if (b == 0x00)
-                {
-                    break;
-                }
-            }
-            while (Stream.baseStream.ByteOffset < Stream.baseStream.Length);
-            long EndOffset = Stream.baseStream.ByteOffset;
-            Stream.baseStream.ByteOffset = StartOffset;
-            return (int)(EndOffset - StartOffset);
         }
     }
 

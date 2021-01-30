@@ -12,6 +12,7 @@ namespace PacketPeepScript
         public override void Read(Bitter.BinaryStream Stream)
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
+            MyExtensions.Stream = Stream;
 
             LootEntityID = Stream.Read.Entity();
             Unk = Stream.Read.ByteArray(4);

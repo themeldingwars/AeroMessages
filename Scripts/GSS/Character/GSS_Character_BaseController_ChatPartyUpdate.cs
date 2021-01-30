@@ -33,9 +33,10 @@ namespace PacketPeepScript
         public override void Read(Bitter.BinaryStream Stream)
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
+            MyExtensions.Stream = Stream;
 
             Begin_Entity = Stream.Read.Entity();
-            Begin_Name = Stream.Read.String(GetNullTerminatedStrSize(Stream));
+            Begin_Name = Stream.Read.StringZ();
 
             Unk1 = Stream.Read.ByteArray(10);
 
@@ -44,31 +45,31 @@ namespace PacketPeepScript
             if (NumberOfMembers > 0)
             {
                 Member_01_Entity = Stream.Read.Entity();
-                Member_01_Name = Stream.Read.String(GetNullTerminatedStrSize(Stream));
+                Member_01_Name = Stream.Read.StringZ();
                 Member_01_Unk = Stream.Read.Byte();
             }
             if (NumberOfMembers > 1)
             {
                 Member_02_Entity = Stream.Read.Entity();
-                Member_02_Name = Stream.Read.String(GetNullTerminatedStrSize(Stream));
+                Member_02_Name = Stream.Read.StringZ();
                 Member_02_Unk = Stream.Read.Byte();
             }
             if (NumberOfMembers > 2)
             {
                 Member_03_Entity = Stream.Read.Entity();
-                Member_03_Name = Stream.Read.String(GetNullTerminatedStrSize(Stream));
+                Member_03_Name = Stream.Read.StringZ();
                 Member_03_Unk = Stream.Read.Byte();
             }
             if (NumberOfMembers > 3)
             {
                 Member_04_Entity = Stream.Read.Entity();
-                Member_04_Name = Stream.Read.String(GetNullTerminatedStrSize(Stream));
+                Member_04_Name = Stream.Read.StringZ();
                 Member_04_Unk = Stream.Read.Byte();
             }
             if (NumberOfMembers > 5)
             {
                 Member_05_Entity = Stream.Read.Entity();
-                Member_05_Name = Stream.Read.String(GetNullTerminatedStrSize(Stream));
+                Member_05_Name = Stream.Read.StringZ();
                 Member_05_Unk = Stream.Read.Byte();
             }
 
@@ -76,24 +77,6 @@ namespace PacketPeepScript
 
 
             End_Entity = Stream.Read.Entity();
-        }
-
-        // Reads until we find 0x00, then resets the head and returns the number of bytes read.
-        private int GetNullTerminatedStrSize(Bitter.BinaryStream Stream)
-        {
-            long StartOffset = Stream.baseStream.ByteOffset;
-            do
-            {
-                byte b = Stream.Read.Byte();
-                if (b == 0x00)
-                {
-                    break;
-                }
-            }
-            while (Stream.baseStream.ByteOffset < Stream.baseStream.Length);
-            long EndOffset = Stream.baseStream.ByteOffset;
-            Stream.baseStream.ByteOffset = StartOffset;
-            return (int)(EndOffset - StartOffset);
         }
     }
 

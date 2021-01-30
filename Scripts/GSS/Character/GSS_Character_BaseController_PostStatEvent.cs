@@ -30,6 +30,7 @@ namespace PacketPeepScript
         public override void Read(Bitter.BinaryStream Stream)
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
+            MyExtensions.Stream = Stream;
 
             StatEventId = Stream.Read.UInt();
             ParamCount = Stream.Read.UInt();
@@ -42,23 +43,23 @@ namespace PacketPeepScript
                 switch(index)
                 {
                     case 1:
-                        Key1 = Stream.Read.String(GetNullTerminatedStrSize(Stream));
+                        Key1 = Stream.Read.StringZ();
                         Key = Key1;
                         break;
                     case 2:
-                        Key2 = Stream.Read.String(GetNullTerminatedStrSize(Stream));
+                        Key2 = Stream.Read.StringZ();
                         Key = Key2;
                         break;
                     case 3:
-                        Key3 = Stream.Read.String(GetNullTerminatedStrSize(Stream));
+                        Key3 = Stream.Read.StringZ();
                         Key = Key3;
                         break;
                     case 4:
-                        Key4 = Stream.Read.String(GetNullTerminatedStrSize(Stream));
+                        Key4 = Stream.Read.StringZ();
                         Key = Key4;
                         break;
                     case 5:
-                        Key5 = Stream.Read.String(GetNullTerminatedStrSize(Stream));
+                        Key5 = Stream.Read.StringZ();
                         Key = Key5;
                         break;
                     default:
@@ -92,24 +93,6 @@ namespace PacketPeepScript
                 index++;
             }
             while (index <= ParamCount && Stream.baseStream.ByteOffset < Stream.baseStream.Length);
-        }
-
-        // Reads until we find 0x00, then resets the head and returns the number of bytes read.
-        private int GetNullTerminatedStrSize(Bitter.BinaryStream Stream)
-        {
-            long StartOffset = Stream.baseStream.ByteOffset;
-            do
-            {
-                byte b = Stream.Read.Byte();
-                if (b == 0x00)
-                {
-                    break;
-                }
-            }
-            while (Stream.baseStream.ByteOffset < Stream.baseStream.Length);
-            long EndOffset = Stream.baseStream.ByteOffset;
-            Stream.baseStream.ByteOffset = StartOffset;
-            return (int)(EndOffset - StartOffset);
         }
     }
 
