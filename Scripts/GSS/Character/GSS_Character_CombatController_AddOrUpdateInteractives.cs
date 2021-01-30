@@ -17,7 +17,7 @@ namespace PacketPeepScript
         public override void Read(Bitter.BinaryStream Stream)
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-            MyExtensions.BStream = Stream;
+            MyExtensions.Stream = Stream;
             
             if (true) {
                 NumberOfEntities = Stream.Read.Byte();
@@ -34,7 +34,7 @@ namespace PacketPeepScript
 
     public static class MyExtensions
     {
-        public static Bitter.BinaryStream BStream;
+        public static Bitter.BinaryStream Stream;
         
 
         public enum Controller : byte
@@ -61,7 +61,7 @@ namespace PacketPeepScript
             public EntityRef(Bitter.BinaryReader R)
             {
                 Controller = (Controller) R.Byte();
-                BStream.baseStream.ByteOffset--;
+                Stream.baseStream.ByteOffset--;
                 Id = R.ULong() & 0xFFFFFFFFFFFFFF00;
 
             }
@@ -91,7 +91,7 @@ namespace PacketPeepScript
             ulong id;
 
             controller = (Controller) rdr.Byte();
-            BStream.baseStream.ByteOffset--;
+            Stream.baseStream.ByteOffset--;
             id = rdr.ULong() & 0xFFFFFFFFFFFFFF00;
 
             return $"{controller}:{id}";
@@ -108,7 +108,7 @@ namespace PacketPeepScript
                     break;
                 
                 ret += (char)b;
-            } while (BStream.baseStream.ByteOffset < BStream.baseStream.Length);
+            } while (Stream.baseStream.ByteOffset < Stream.baseStream.Length);
             
             return ret;
         }
@@ -120,7 +120,7 @@ namespace PacketPeepScript
                 b = rdr.Byte();
             } while( b == 0 );
             
-            BStream.baseStream.ByteOffset--;
+            Stream.baseStream.ByteOffset--;
         }
     }
 }

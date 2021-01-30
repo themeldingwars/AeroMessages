@@ -480,7 +480,7 @@ namespace PacketPeepScript
         public override void Read(Bitter.BinaryStream Stream)
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-            MyExtensions.BStream = Stream;
+            MyExtensions.Stream = Stream;
 
             if (true) {
                 Bitfield = Stream.Read.BitArray(40);
@@ -1221,7 +1221,7 @@ namespace PacketPeepScript
     }
 
     public static class MyExtensions {
-        public static Bitter.BinaryStream BStream;
+        public static Bitter.BinaryStream Stream;
 
         public static string StringZ(this Bitter.BinaryReader rdr) {
             string ret = "";
@@ -1232,7 +1232,7 @@ namespace PacketPeepScript
                     break;
                 ret += (char)b;
             }
-            while (BStream.baseStream.ByteOffset < BStream.baseStream.Length);
+            while (Stream.baseStream.ByteOffset < Stream.baseStream.Length);
             return ret;
         }
     }

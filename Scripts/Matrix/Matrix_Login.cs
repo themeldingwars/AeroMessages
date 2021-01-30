@@ -14,7 +14,7 @@ namespace PacketPeepScript
 
         public override void Read(Bitter.BinaryStream Stream)
         {
-            MyExtensions.BStream = Stream;
+            MyExtensions.Stream = Stream;
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
 
             Unk1 = Stream.Read.Byte();
@@ -30,10 +30,10 @@ namespace PacketPeepScript
         }
     }
 
-    // Add "MyExtensions.BStream = Stream;" as first line in Packet Read function.
+    // Add "MyExtensions.Stream = Stream;" as first line in Packet Read function.
     public static class MyExtensions
     {
-        public static Bitter.BinaryStream BStream;
+        public static Bitter.BinaryStream Stream;
         
         public static string StringZ(this Bitter.BinaryReader R)
         {
@@ -45,7 +45,7 @@ namespace PacketPeepScript
                     break;
                 res += (char)b;
             }
-            while (BStream.baseStream.ByteOffset < BStream.baseStream.Length);
+            while (Stream.baseStream.ByteOffset < Stream.baseStream.Length);
             return res;
         }
         
@@ -57,7 +57,7 @@ namespace PacketPeepScript
                 b = R.Byte();
             }
             while( b == 0 );
-            BStream.baseStream.ByteOffset--;
+            Stream.baseStream.ByteOffset--;
         }
     }
 }

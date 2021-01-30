@@ -28,7 +28,7 @@ namespace PacketPeepScript
         public override void Read(Bitter.BinaryStream Stream)
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-            MyExtensions.BStream = Stream;
+            MyExtensions.Stream = Stream;
             if (true) {
                 InstanceId = Stream.Read.ULong();
                 ZoneId = Stream.Read.UInt();
@@ -55,7 +55,7 @@ namespace PacketPeepScript
 
     public static class MyExtensions
     {
-        public static Bitter.BinaryStream BStream;
+        public static Bitter.BinaryStream Stream;
 
         public static DateTimeOffset MicroUnixToMillis(this Bitter.BinaryReader R)
         {
@@ -74,7 +74,7 @@ namespace PacketPeepScript
                     break;
                 res += (char)b;
             }
-            while (BStream.baseStream.ByteOffset < BStream.baseStream.Length);
+            while (Stream.baseStream.ByteOffset < Stream.baseStream.Length);
             return res;
         }
     }
