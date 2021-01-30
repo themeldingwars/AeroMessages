@@ -1,5 +1,6 @@
 using Bitter;
 using System;
+using System.Collections.Generic;
 namespace PacketPeepScript
 {
     [Script(MessageType.GSS, 40, 3, true)]
@@ -7,11 +8,9 @@ namespace PacketPeepScript
     {
         public byte Unk_MoreData; // When 0 we get another 20 bytes at the end of the message
         public uint TurretTypeId; // SDB Table 197
-        public byte[] ParentEntity; // Turret_ObserverView is added to this Deployable entity, get "unhandled viewcode" error if not specified.
-        public ulong ParentEntity_Value; // Just for searching purposes
+        public string ParentEntity; // Turret_ObserverView is added to this Deployable entity, get "unhandled viewcode" error if not specified.
         public byte Unk2; // Only observed 0x00
-        public byte[] Entity2;
-        public ulong Entity2_Value; // Just for searching purposes
+        public string Entity2;
         public ushort Rotation_ShortTime;
         public ushort[] Rotation_Data; // Assumption
         public float[] Rotation_Unpacked; // Assumption
@@ -32,14 +31,10 @@ namespace PacketPeepScript
                 Unk_MoreData = Stream.Read.Byte();
                 TurretTypeId = Stream.Read.UInt();
 
-                ParentEntity = Stream.Read.ByteArray(8);
-                Stream.baseStream.ByteOffset -= 8;
-                ParentEntity_Value = Stream.Read.ULong() & 0xFFFFFFFFFFFFFF00;
+                ParentEntity = Stream.Read.Entity();
 
                 Unk2 = Stream.Read.Byte();
-                Entity2 = Stream.Read.ByteArray(8);
-                Stream.baseStream.ByteOffset -= 8;
-                Entity2_Value = Stream.Read.ULong() & 0xFFFFFFFFFFFFFF00;
+                Entity2 = Stream.Read.Entity();
 
                 Rotation_ShortTime = Stream.Read.UShort();
                 Rotation_Data = Stream.Read.UShortArray(4);
@@ -73,6 +68,71 @@ namespace PacketPeepScript
         private float[] UnpackFloatArray(ushort[] arr)
         {
             return Array.ConvertAll(arr, val => UnpackFloat(val));
+        }
+    }
+
+    public static class MyExtensions
+    {
+        public static Bitter.BinaryStream Stream;
+            
+        public enum Controller : byte
+        {
+            Generic = 0x00,
+            Character = 0x01,
+            Melding = 0x0f,
+            MeldingBubble = 0x11,
+            AreaVisualData = 0x13,
+            Vehicle = 0x1a,
+            Anchor = 0x20,
+            Deployable = 0x22,
+            Turret = 0x26,
+            TinyObjectType = 0x29,
+            CharacterAbilityPhysics = 0x2a,
+            ProjectileObjectType = 0x2b,
+            Outpost = 0x2c,
+            ResourceArea = 0x2e,
+            ResourceNode = 0x2f,
+            Encounter = 0x31,
+            Carryable = 0x32,
+            LootStoreExtension = 0x34,
+            TeamManager = 0x36,
+        }
+        
+        public static string Entity(this Bitter.BinaryReader rdr)
+        {
+            Controller controller;
+            ulong id;
+
+            controller = (Controller) rdr.Byte();
+            Stream.baseStream.ByteOffset--;
+            id = rdr.ULong() & 0xFFFFFFFFFFFFFF00;
+
+            if (controller == 0 && id == 0) return "None";
+            return $"{controller}:{id}";
+        }
+
+        public static string[] EntityArray(this Bitter.BinaryReader R, int num)
+        {
+            List<string> list = new List<string>();
+            for (int i = 1; i <= num; i++)
+            {
+                list.Add(R.Entity());
+            }
+            return list.ToArray();
+        }
+
+        public static string StringZ(this Bitter.BinaryReader rdr)
+        {
+            string ret = "";
+            do
+            {
+                byte b = rdr.Byte();
+                if (b == 0x00)
+                    break;
+                ret += (char)b;
+            }
+            while (Stream.baseStream.ByteOffset < Stream.baseStream.Length);
+            return ret;
         }
     }
 }

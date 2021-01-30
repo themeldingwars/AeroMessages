@@ -112,15 +112,15 @@ namespace PacketPeepScript
         public byte[] Flags;
         public byte? EngineState;
         public byte? PathState;
-        public byte[] OwnerId;
+        public string OwnerId;
         public string OwnerName;
         public uint? OwnerLocalString;
-        public byte[] OccupantIds_0;
-        public byte[] OccupantIds_1;
-        public byte[] OccupantIds_2;
-        public byte[] OccupantIds_3;
-        public byte[] OccupantIds_4;
-        public byte[] OccupantIds_5;
+        public string OccupantIds_0;
+        public string OccupantIds_1;
+        public string OccupantIds_2;
+        public string OccupantIds_3;
+        public string OccupantIds_4;
+        public string OccupantIds_5;
         public byte[] DeployableIds_0;
         public byte[] DeployableIds_1;
         public byte[] DeployableIds_2;
@@ -238,7 +238,7 @@ namespace PacketPeepScript
                         PathState = Stream.Read.Byte();
                         break;
                     case ShadowFieldIndex.OwnerId:
-                        OwnerId = Stream.Read.ByteArray(8);
+                        OwnerId = Stream.Read.Entity();
                         break;
                     case ShadowFieldIndex.OwnerName:
                         OwnerName = Stream.Read.StringZ();
@@ -247,22 +247,22 @@ namespace PacketPeepScript
                         OwnerLocalString = Stream.Read.UInt();
                         break;
                     case ShadowFieldIndex.OccupantIds_0:
-                        OccupantIds_0 = Stream.Read.ByteArray(8);
+                        OccupantIds_0 = Stream.Read.Entity();
                         break;
                     case ShadowFieldIndex.OccupantIds_1:
-                        OccupantIds_1 = Stream.Read.ByteArray(8);
+                        OccupantIds_1 = Stream.Read.Entity();
                         break;
                     case ShadowFieldIndex.OccupantIds_2:
-                        OccupantIds_2 = Stream.Read.ByteArray(8);
+                        OccupantIds_2 = Stream.Read.Entity();
                         break;
                     case ShadowFieldIndex.OccupantIds_3:
-                        OccupantIds_3 = Stream.Read.ByteArray(8);
+                        OccupantIds_3 = Stream.Read.Entity();
                         break;
                     case ShadowFieldIndex.OccupantIds_4:
-                        OccupantIds_4 = Stream.Read.ByteArray(8);
+                        OccupantIds_4 = Stream.Read.Entity();
                         break;
                     case ShadowFieldIndex.OccupantIds_5:
-                        OccupantIds_5 = Stream.Read.ByteArray(8);
+                        OccupantIds_5 = Stream.Read.Entity();
                         break;
                     case ShadowFieldIndex.DeployableIds_0:
                         DeployableIds_0 = Stream.Read.ByteArray(13);
@@ -544,7 +544,7 @@ namespace PacketPeepScript
 
         public uint LocalizationId;
         public uint Integer;
-        public byte[] EntityId;
+        public string EntityId;
         public string Enum;
         public ushort Short;
 
@@ -573,7 +573,7 @@ namespace PacketPeepScript
                     Integer = R.UInt();
                     break;
                 case SinCardFieldDataType.EntityId:
-                    EntityId = R.ByteArray(8);
+                    EntityId = R.Entity();
                     break;
                 case SinCardFieldDataType.Enum:
                     Enum = R.StringZ();
@@ -600,7 +600,7 @@ namespace PacketPeepScript
                     result += $"{Integer}";
                     break;
                 case SinCardFieldDataType.EntityId:
-                    result += $"[{(EntityId != null ? String.Join(", ", EntityId) : "null")}]";
+                    result += $"{EntityId}";
                     break;
                 case SinCardFieldDataType.Enum:
                     result += $"{Enum}";
@@ -620,6 +620,52 @@ namespace PacketPeepScript
     public static class MyExtensions
     {
         public static Bitter.BinaryStream Stream;
+        
+        public enum Controller : byte
+        {
+            Generic = 0x00,
+            Character = 0x01,
+            Melding = 0x0f,
+            MeldingBubble = 0x11,
+            AreaVisualData = 0x13,
+            Vehicle = 0x1a,
+            Anchor = 0x20,
+            Deployable = 0x22,
+            Turret = 0x26,
+            TinyObjectType = 0x29,
+            CharacterAbilityPhysics = 0x2a,
+            ProjectileObjectType = 0x2b,
+            Outpost = 0x2c,
+            ResourceArea = 0x2e,
+            ResourceNode = 0x2f,
+            Encounter = 0x31,
+            Carryable = 0x32,
+            LootStoreExtension = 0x34,
+            TeamManager = 0x36,
+        }
+
+        public static string Entity(this Bitter.BinaryReader rdr)
+        {
+            Controller controller;
+            ulong id;
+
+            controller = (Controller) rdr.Byte();
+            Stream.baseStream.ByteOffset--;
+            id = rdr.ULong() & 0xFFFFFFFFFFFFFF00;
+
+            if (controller == 0 && id == 0) return "None";
+            return $"{controller}:{id}";
+        }
+
+        public static string[] EntityArray(this Bitter.BinaryReader R, int num)
+        {
+            List<string> list = new List<string>();
+            for (int i = 1; i <= num; i++)
+            {
+                list.Add(R.Entity());
+            }
+            return list.ToArray();
+        }
         
         public static string StringZ(this Bitter.BinaryReader rdr)
         {

@@ -171,9 +171,9 @@ namespace PacketPeepScript
         public uint? TimePlayed;
         public uint? CurrentWeight;
         public uint? EncumberedWeight;
-        public byte? AuthorizedTerminalType;
-        public uint? AuthorizedTerminalId;
-        public byte[] AuthorizedTerminalEntity;
+        public byte? AuthorizedTerminal_Type;
+        public uint? AuthorizedTerminal_Id;
+        public string AuthorizedTerminal_Entity;
         public uint? PingTime;
         public byte[] StaticInfo;
         public uint? SpawnTime;
@@ -356,9 +356,9 @@ namespace PacketPeepScript
                         break;
 
                     case ShadowFieldIndex.AuthorizedTerminal:
-                        AuthorizedTerminalType = Stream.Read.Byte();
-                        AuthorizedTerminalId = Stream.Read.UInt();
-                        AuthorizedTerminalEntity = Stream.Read.ByteArray(8);
+                        AuthorizedTerminal_Type = Stream.Read.Byte();
+                        AuthorizedTerminal_Id = Stream.Read.UInt();
+                        AuthorizedTerminal_Entity = Stream.Read.Entity();
                         break;
 
                     case ShadowFieldIndex.PingTime:
@@ -881,7 +881,7 @@ namespace PacketPeepScript
 
         public uint LocalizationId;
         public uint Integer;
-        public byte[] EntityId;
+        public string EntityId;
         public string Enum;
         public ushort Short;
 
@@ -910,7 +910,7 @@ namespace PacketPeepScript
                     Integer = R.UInt();
                     break;
                 case SinCardFieldDataType.EntityId:
-                    EntityId = R.ByteArray(8);
+                    EntityId = R.Entity();
                     break;
                 case SinCardFieldDataType.Enum:
                     Enum = R.StringZ();
@@ -937,7 +937,7 @@ namespace PacketPeepScript
                     result += $"{Integer}";
                     break;
                 case SinCardFieldDataType.EntityId:
-                    result += $"[{(EntityId != null ? String.Join(", ", EntityId) : "null")}]";
+                    result += $"{EntityId}";
                     break;
                 case SinCardFieldDataType.Enum:
                     result += $"{Enum}";
@@ -957,7 +957,53 @@ namespace PacketPeepScript
     public static class MyExtensions
     {
         public static Bitter.BinaryStream Stream;
-        
+            
+        public enum Controller : byte
+        {
+            Generic = 0x00,
+            Character = 0x01,
+            Melding = 0x0f,
+            MeldingBubble = 0x11,
+            AreaVisualData = 0x13,
+            Vehicle = 0x1a,
+            Anchor = 0x20,
+            Deployable = 0x22,
+            Turret = 0x26,
+            TinyObjectType = 0x29,
+            CharacterAbilityPhysics = 0x2a,
+            ProjectileObjectType = 0x2b,
+            Outpost = 0x2c,
+            ResourceArea = 0x2e,
+            ResourceNode = 0x2f,
+            Encounter = 0x31,
+            Carryable = 0x32,
+            LootStoreExtension = 0x34,
+            TeamManager = 0x36,
+        }
+
+        public static string Entity(this Bitter.BinaryReader rdr)
+        {
+            Controller controller;
+            ulong id;
+
+            controller = (Controller) rdr.Byte();
+            Stream.baseStream.ByteOffset--;
+            id = rdr.ULong() & 0xFFFFFFFFFFFFFF00;
+
+            if (controller == 0 && id == 0) return "None";
+            return $"{controller}:{id}";
+        }
+
+        public static string[] EntityArray(this Bitter.BinaryReader R, int num)
+        {
+            List<string> list = new List<string>();
+            for (int i = 1; i <= num; i++)
+            {
+                list.Add(R.Entity());
+            }
+            return list.ToArray();
+        }
+
         public static string StringZ(this Bitter.BinaryReader rdr)
         {
             string ret = "";
