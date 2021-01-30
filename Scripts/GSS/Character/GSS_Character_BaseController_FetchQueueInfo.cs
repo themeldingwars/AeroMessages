@@ -1,4 +1,5 @@
 using Bitter;
+using System.Collections.Generic;
 namespace PacketPeepScript
 {
     [Script(MessageType.GSS, 2, 89, false)]
