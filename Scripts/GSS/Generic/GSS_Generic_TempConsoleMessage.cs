@@ -30,7 +30,7 @@ namespace PacketPeepScript
     public static class MyExtensions
     {
         public static Bitter.BinaryStream Stream;
-
+        
         public static string StringZ(this Bitter.BinaryReader rdr)
         {
             string ret = "";

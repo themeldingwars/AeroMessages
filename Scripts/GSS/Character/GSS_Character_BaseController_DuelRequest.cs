@@ -14,17 +14,21 @@ namespace PacketPeepScript
         public override void Read(Bitter.BinaryStream Stream)
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
+            MyExtensions.Stream = Stream;
 
             Unk1 = Stream.Read.ByteArray(2);
             RequestingEntity = Stream.Read.ByteArray(8);
             Unk2 = Stream.Read.ByteArray(9);
-            TargetName = Stream.Read.StringZ(Stream);
+            TargetName = Stream.Read.StringZ();
             Unk3 = Stream.Read.ByteArray(20);
         }
     }
 
     public static class MyExtensions {
-        public static string StringZ(this Bitter.BinaryReader rdr, Bitter.BinaryStream stream) {
+        public static Bitter.BinaryStream Stream;
+        
+        public static string StringZ(this Bitter.BinaryReader rdr)
+        {
             string ret = "";
             do
             {
@@ -33,7 +37,7 @@ namespace PacketPeepScript
                     break;
                 ret += (char)b;
             }
-            while (stream.baseStream.ByteOffset < stream.baseStream.Length);
+            while (Stream.baseStream.ByteOffset < Stream.baseStream.Length);
             return ret;
         }
     }

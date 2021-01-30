@@ -552,11 +552,12 @@ namespace PacketPeepScript
         public override void Read(Bitter.BinaryStream Stream)
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
+            MyExtensions.Stream = Stream;
 
             if (true) {
                 Bitfield = Stream.Read.BitArray(64);
                 CarryableObjectTypeId = Stream.Read.UInt();
-                Name = Stream.Read.StringZ(Stream);
+                Name = Stream.Read.StringZ();
                 Position = Stream.Read.FloatArray(3);
                 Orientation = Stream.Read.FloatArray(4);
                 Hostility_Mode = Stream.Read.Byte();
@@ -1370,7 +1371,10 @@ namespace PacketPeepScript
 
     public static class MyExtensions
     {
-        public static string StringZ(this Bitter.BinaryReader rdr, Bitter.BinaryStream stream) {
+        public static Bitter.BinaryStream Stream;
+        
+        public static string StringZ(this Bitter.BinaryReader rdr)
+        {
             string ret = "";
             do
             {
@@ -1379,7 +1383,7 @@ namespace PacketPeepScript
                     break;
                 ret += (char)b;
             }
-            while (stream.baseStream.ByteOffset < stream.baseStream.Length);
+            while (Stream.baseStream.ByteOffset < Stream.baseStream.Length);
             return ret;
         }
     }

@@ -29,6 +29,7 @@ namespace PacketPeepScript
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
             MyExtensions.Stream = Stream;
+            
             if (true) {
                 InstanceId = Stream.Read.ULong();
                 ZoneId = Stream.Read.UInt();
@@ -64,18 +65,18 @@ namespace PacketPeepScript
             return DateTimeOffset.FromUnixTimeMilliseconds((long) Millis);
         }
 
-        public static string StringZ(this Bitter.BinaryReader R)
+        public static string StringZ(this Bitter.BinaryReader rdr)
         {
-            string res = "";
+            string ret = "";
             do
             {
-                byte b = R.Byte();
+                byte b = rdr.Byte();
                 if (b == 0x00)
                     break;
-                res += (char)b;
+                ret += (char)b;
             }
             while (Stream.baseStream.ByteOffset < Stream.baseStream.Length);
-            return res;
+            return ret;
         }
     }
 }

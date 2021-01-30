@@ -176,14 +176,15 @@ namespace PacketPeepScript
         public override void Read(Bitter.BinaryStream Stream)
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
+            MyExtensions.Stream = Stream;
 
             if (true)
             {
                 Bitfield = Stream.Read.BitArray(32);
 
                 // Static Info Begin
-                DisplayName = Stream.Read.StringZ(Stream);
-                UniqueName = Stream.Read.StringZ(Stream);
+                DisplayName = Stream.Read.StringZ();
+                UniqueName = Stream.Read.StringZ();
 
                 Gender = Stream.Read.Byte();
                 Race = Stream.Read.Byte();
@@ -220,7 +221,7 @@ namespace PacketPeepScript
                 NumberOfCharacterVisualsOrnaments = Stream.Read.Byte();
                 Character_Visuals_Ornaments = Stream.Read.UIntArray(NumberOfCharacterVisualsOrnaments);
                 Unk4 = Stream.Read.ByteArray(3);
-                ArmyTag = Stream.Read.StringZ(Stream);
+                ArmyTag = Stream.Read.StringZ();
                 // Static Info End
 
                 SpawnTime = Stream.Read.UInt();
@@ -483,7 +484,10 @@ namespace PacketPeepScript
 
     public static class MyExtensions
     {
-        public static string StringZ(this Bitter.BinaryReader rdr, Bitter.BinaryStream stream) {
+        public static Bitter.BinaryStream Stream;
+        
+        public static string StringZ(this Bitter.BinaryReader rdr)
+        {
             string ret = "";
             do
             {
@@ -492,7 +496,7 @@ namespace PacketPeepScript
                     break;
                 ret += (char)b;
             }
-            while (stream.baseStream.ByteOffset < stream.baseStream.Length);
+            while (Stream.baseStream.ByteOffset < Stream.baseStream.Length);
             return ret;
         }
 

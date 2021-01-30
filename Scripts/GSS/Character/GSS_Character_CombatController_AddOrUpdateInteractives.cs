@@ -63,7 +63,6 @@ namespace PacketPeepScript
                 Controller = (Controller) R.Byte();
                 Stream.baseStream.ByteOffset--;
                 Id = R.ULong() & 0xFFFFFFFFFFFFFF00;
-
             }
 
             public override string ToString() => $"{Controller}:{Id}";
@@ -97,19 +96,18 @@ namespace PacketPeepScript
             return $"{controller}:{id}";
         }
         */
-
+        
         public static string StringZ(this Bitter.BinaryReader rdr)
         {
             string ret = "";
-            
-            do {
+            do
+            {
                 byte b = rdr.Byte();
                 if (b == 0x00)
                     break;
-                
                 ret += (char)b;
-            } while (Stream.baseStream.ByteOffset < Stream.baseStream.Length);
-            
+            }
+            while (Stream.baseStream.ByteOffset < Stream.baseStream.Length);
             return ret;
         }
         

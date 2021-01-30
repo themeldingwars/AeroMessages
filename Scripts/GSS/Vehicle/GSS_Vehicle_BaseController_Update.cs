@@ -190,6 +190,7 @@ namespace PacketPeepScript
         public override void Read(Bitter.BinaryStream Stream)
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
+            MyExtensions.Stream = Stream;
 
             do
             {
@@ -215,7 +216,7 @@ namespace PacketPeepScript
                         OwnerId = Stream.Read.ByteArray(8);
                         break;
                     case ShadowFieldIndex.OwnerName:
-                        OwnerName = Stream.Read.StringZ(Stream);
+                        OwnerName = Stream.Read.StringZ();
                         break;
                     case ShadowFieldIndex.OwnerLocalString:
                         OwnerLocalString = Stream.Read.UInt();
@@ -432,7 +433,10 @@ namespace PacketPeepScript
 
     public static class MyExtensions
     {
-        public static string StringZ(this Bitter.BinaryReader rdr, Bitter.BinaryStream stream) {
+        public static Bitter.BinaryStream Stream;
+        
+        public static string StringZ(this Bitter.BinaryReader rdr)
+        {
             string ret = "";
             do
             {
@@ -441,9 +445,8 @@ namespace PacketPeepScript
                     break;
                 ret += (char)b;
             }
-            while (stream.baseStream.ByteOffset < stream.baseStream.Length);
+            while (Stream.baseStream.ByteOffset < Stream.baseStream.Length);
             return ret;
         }
-
     }
 }
