@@ -66,7 +66,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_0_UnkData;
         public float? StatusEffects_0_Data_Float1;
         public float? StatusEffects_0_Data_Float2;
-        public bool? StatusEffects_0_Cancel;
+        public bool? Clear_StatusEffects_0;
 
         public ushort? StatusEffects_1_ChangeTime;
         public uint? StatusEffects_1_Id;
@@ -79,7 +79,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_1_UnkData;
         public float? StatusEffects_1_Data_Float1;
         public float? StatusEffects_1_Data_Float2;
-        public bool? StatusEffects_1_Cancel;
+        public bool? Clear_StatusEffects_1;
 
         public ushort? StatusEffects_2_ChangeTime;
         public uint? StatusEffects_2_Id;
@@ -92,7 +92,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_2_UnkData;
         public float? StatusEffects_2_Data_Float1;
         public float? StatusEffects_2_Data_Float2;
-        public bool? StatusEffects_2_Cancel;
+        public bool? Clear_StatusEffects_2;
 
         public ushort? StatusEffects_3_ChangeTime;
         public uint? StatusEffects_3_Id;
@@ -105,7 +105,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_3_UnkData;
         public float? StatusEffects_3_Data_Float1;
         public float? StatusEffects_3_Data_Float2;
-        public bool? StatusEffects_3_Cancel;
+        public bool? Clear_StatusEffects_3;
 
         public ushort? StatusEffects_4_ChangeTime;
         public uint? StatusEffects_4_Id;
@@ -118,7 +118,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_4_UnkData;
         public float? StatusEffects_4_Data_Float1;
         public float? StatusEffects_4_Data_Float2;
-        public bool? StatusEffects_4_Cancel;
+        public bool? Clear_StatusEffects_4;
 
         public ushort? StatusEffects_5_ChangeTime;
         public uint? StatusEffects_5_Id;
@@ -131,7 +131,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_5_UnkData;
         public float? StatusEffects_5_Data_Float1;
         public float? StatusEffects_5_Data_Float2;
-        public bool? StatusEffects_5_Cancel;
+        public bool? Clear_StatusEffects_5;
 
         public ushort? StatusEffects_6_ChangeTime;
         public uint? StatusEffects_6_Id;
@@ -144,7 +144,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_6_UnkData;
         public float? StatusEffects_6_Data_Float1;
         public float? StatusEffects_6_Data_Float2;
-        public bool? StatusEffects_6_Cancel;
+        public bool? Clear_StatusEffects_6;
 
         public ushort? StatusEffects_7_ChangeTime;
         public uint? StatusEffects_7_Id;
@@ -157,7 +157,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_7_UnkData;
         public float? StatusEffects_7_Data_Float1;
         public float? StatusEffects_7_Data_Float2;
-        public bool? StatusEffects_7_Cancel;
+        public bool? Clear_StatusEffects_7;
 
         public ushort? StatusEffects_8_ChangeTime;
         public uint? StatusEffects_8_Id; 
@@ -170,7 +170,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_8_UnkData;
         public float? StatusEffects_8_Data_Float1;
         public float? StatusEffects_8_Data_Float2;
-        public bool? StatusEffects_8_Cancel;
+        public bool? Clear_StatusEffects_8;
 
         public ushort? StatusEffects_9_ChangeTime;
         public uint? StatusEffects_9_Id;
@@ -183,7 +183,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_9_UnkData;
         public float? StatusEffects_9_Data_Float1;
         public float? StatusEffects_9_Data_Float2;
-        public bool? StatusEffects_9_Cancel;
+        public bool? Clear_StatusEffects_9;
 
         public ushort? StatusEffects_10_ChangeTime;
         public uint? StatusEffects_10_Id;
@@ -196,7 +196,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_10_UnkData;
         public float? StatusEffects_10_Data_Float1;
         public float? StatusEffects_10_Data_Float2;
-        public bool? StatusEffects_10_Cancel;
+        public bool? Clear_StatusEffects_10;
 
         public ushort? StatusEffects_11_ChangeTime;
         public uint? StatusEffects_11_Id;
@@ -209,7 +209,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_11_UnkData;
         public float? StatusEffects_11_Data_Float1;
         public float? StatusEffects_11_Data_Float2;
-        public bool? StatusEffects_11_Cancel;
+        public bool? Clear_StatusEffects_11;
 
         public ushort? StatusEffects_12_ChangeTime;
         public uint? StatusEffects_12_Id;
@@ -222,7 +222,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_12_UnkData;
         public float? StatusEffects_12_Data_Float1;
         public float? StatusEffects_12_Data_Float2;
-        public bool? StatusEffects_12_Cancel;
+        public bool? Clear_StatusEffects_12;
 
         public ushort? StatusEffects_13_ChangeTime;
         public uint? StatusEffects_13_Id;
@@ -235,7 +235,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_13_UnkData;
         public float? StatusEffects_13_Data_Float1;
         public float? StatusEffects_13_Data_Float2;
-        public bool? StatusEffects_13_Cancel;
+        public bool? Clear_StatusEffects_13;
 
         public ushort? StatusEffects_14_ChangeTime;
         public uint? StatusEffects_14_Id;
@@ -248,7 +248,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_14_UnkData;
         public float? StatusEffects_14_Data_Float1;
         public float? StatusEffects_14_Data_Float2;
-        public bool? StatusEffects_14_Cancel;
+        public bool? Clear_StatusEffects_14;
 
         public ushort? StatusEffects_15_ChangeTime;
         public uint? StatusEffects_15_Id;
@@ -261,7 +261,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_15_UnkData;
         public float? StatusEffects_15_Data_Float1;
         public float? StatusEffects_15_Data_Float2;
-        public bool? StatusEffects_15_Cancel;
+        public bool? Clear_StatusEffects_15;
 
         public ushort? StatusEffects_16_ChangeTime;
         public uint? StatusEffects_16_Id;
@@ -274,7 +274,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_16_UnkData;
         public float? StatusEffects_16_Data_Float1;
         public float? StatusEffects_16_Data_Float2;
-        public bool? StatusEffects_16_Cancel;
+        public bool? Clear_StatusEffects_16;
 
         public ushort? StatusEffects_17_ChangeTime;
         public uint? StatusEffects_17_Id;
@@ -287,7 +287,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_17_UnkData;
         public float? StatusEffects_17_Data_Float1;
         public float? StatusEffects_17_Data_Float2;
-        public bool? StatusEffects_17_Cancel;
+        public bool? Clear_StatusEffects_17;
 
         public ushort? StatusEffects_18_ChangeTime;
         public uint? StatusEffects_18_Id;
@@ -300,7 +300,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_18_UnkData;
         public float? StatusEffects_18_Data_Float1;
         public float? StatusEffects_18_Data_Float2;
-        public bool? StatusEffects_18_Cancel;
+        public bool? Clear_StatusEffects_18;
 
         public ushort? StatusEffects_19_ChangeTime;
         public uint? StatusEffects_19_Id;
@@ -313,7 +313,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_19_UnkData;
         public float? StatusEffects_19_Data_Float1;
         public float? StatusEffects_19_Data_Float2;
-        public bool? StatusEffects_19_Cancel;
+        public bool? Clear_StatusEffects_19;
 
         public ushort? StatusEffects_20_ChangeTime;
         public uint? StatusEffects_20_Id;
@@ -326,7 +326,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_20_UnkData;
         public float? StatusEffects_20_Data_Float1;
         public float? StatusEffects_20_Data_Float2;
-        public bool? StatusEffects_20_Cancel;
+        public bool? Clear_StatusEffects_20;
 
         public ushort? StatusEffects_21_ChangeTime;
         public uint? StatusEffects_21_Id;
@@ -339,7 +339,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_21_UnkData;
         public float? StatusEffects_21_Data_Float1;
         public float? StatusEffects_21_Data_Float2;
-        public bool? StatusEffects_21_Cancel;
+        public bool? Clear_StatusEffects_21;
 
         public ushort? StatusEffects_22_ChangeTime;
         public uint? StatusEffects_22_Id;
@@ -352,7 +352,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_22_UnkData;
         public float? StatusEffects_22_Data_Float1;
         public float? StatusEffects_22_Data_Float2;
-        public bool? StatusEffects_22_Cancel;
+        public bool? Clear_StatusEffects_22;
 
         public ushort? StatusEffects_23_ChangeTime;
         public uint? StatusEffects_23_Id;
@@ -365,7 +365,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_23_UnkData;
         public float? StatusEffects_23_Data_Float1;
         public float? StatusEffects_23_Data_Float2;
-        public bool? StatusEffects_23_Cancel;
+        public bool? Clear_StatusEffects_23;
 
         public ushort? StatusEffects_24_ChangeTime;
         public uint? StatusEffects_24_Id; 
@@ -378,7 +378,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_24_UnkData;
         public float? StatusEffects_24_Data_Float1;
         public float? StatusEffects_24_Data_Float2;
-        public bool? StatusEffects_24_Cancel;
+        public bool? Clear_StatusEffects_24;
 
         public ushort? StatusEffects_25_ChangeTime;
         public uint? StatusEffects_25_Id;
@@ -391,7 +391,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_25_UnkData;
         public float? StatusEffects_25_Data_Float1;
         public float? StatusEffects_25_Data_Float2;
-        public bool? StatusEffects_25_Cancel;
+        public bool? Clear_StatusEffects_25;
 
         public ushort? StatusEffects_26_ChangeTime;
         public uint? StatusEffects_26_Id;
@@ -404,7 +404,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_26_UnkData;
         public float? StatusEffects_26_Data_Float1;
         public float? StatusEffects_26_Data_Float2;
-        public bool? StatusEffects_26_Cancel;
+        public bool? Clear_StatusEffects_26;
 
         public ushort? StatusEffects_27_ChangeTime;
         public uint? StatusEffects_27_Id;
@@ -417,7 +417,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_27_UnkData;
         public float? StatusEffects_27_Data_Float1;
         public float? StatusEffects_27_Data_Float2;
-        public bool? StatusEffects_27_Cancel;
+        public bool? Clear_StatusEffects_27;
 
         public ushort? StatusEffects_28_ChangeTime;
         public uint? StatusEffects_28_Id;
@@ -430,7 +430,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_28_UnkData;
         public float? StatusEffects_28_Data_Float1;
         public float? StatusEffects_28_Data_Float2;
-        public bool? StatusEffects_28_Cancel;
+        public bool? Clear_StatusEffects_28;
 
         public ushort? StatusEffects_29_ChangeTime;
         public uint? StatusEffects_29_Id;
@@ -443,7 +443,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_29_UnkData;
         public float? StatusEffects_29_Data_Float1;
         public float? StatusEffects_29_Data_Float2;
-        public bool? StatusEffects_29_Cancel;
+        public bool? Clear_StatusEffects_29;
 
         public ushort? StatusEffects_30_ChangeTime;
         public uint? StatusEffects_30_Id;
@@ -456,7 +456,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_30_UnkData;
         public float? StatusEffects_30_Data_Float1;
         public float? StatusEffects_30_Data_Float2;
-        public bool? StatusEffects_30_Cancel;
+        public bool? Clear_StatusEffects_30;
 
         public ushort? StatusEffects_31_ChangeTime;
         public uint? StatusEffects_31_Id;
@@ -469,7 +469,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_31_UnkData;
         public float? StatusEffects_31_Data_Float1;
         public float? StatusEffects_31_Data_Float2;
-        public bool? StatusEffects_31_Cancel;
+        public bool? Clear_StatusEffects_31;
 
         public byte? FireMode_0;
         public uint? FireMode_0_Time;

@@ -135,49 +135,49 @@ namespace PacketPeepScript
 
 
             // Reset fields
-            StatusEffects_0_Cancel = 0xa0,
-            StatusEffects_1_Cancel = 0xa1,
-            StatusEffects_2_Cancel = 0xa2,
-            StatusEffects_3_Cancel = 0xa3,
-            StatusEffects_4_Cancel = 0xa4,
-            StatusEffects_5_Cancel = 0xa5,
-            StatusEffects_6_Cancel = 0xa6,
-            StatusEffects_7_Cancel = 0xa7,
-            StatusEffects_8_Cancel = 0xa8,
-            StatusEffects_9_Cancel = 0xa9,
-            StatusEffects_10_Cancel = 0xaa,
-            StatusEffects_11_Cancel = 0xab,
-            StatusEffects_12_Cancel = 0xac,
-            StatusEffects_13_Cancel = 0xad,
-            StatusEffects_14_Cancel = 0xae,
-            StatusEffects_15_Cancel = 0xaf,
-            StatusEffects_16_Cancel = 0xb0,
-            StatusEffects_17_Cancel = 0xb1,
-            StatusEffects_18_Cancel = 0xb2,
-            StatusEffects_19_Cancel = 0xb3,
-            StatusEffects_20_Cancel = 0xb4,
-            StatusEffects_21_Cancel = 0xb5,
-            StatusEffects_22_Cancel = 0xb6,
-            StatusEffects_23_Cancel = 0xb7,
-            StatusEffects_24_Cancel = 0xb8,
-            StatusEffects_25_Cancel = 0xb9,
-            StatusEffects_26_Cancel = 0xba,
-            StatusEffects_27_Cancel = 0xbb,
-            StatusEffects_28_Cancel = 0xbc,
-            StatusEffects_29_Cancel = 0xbd,
-            StatusEffects_30_Cancel = 0xbe,
-            StatusEffects_31_Cancel = 0xbf,
+            Clear_StatusEffects_0 = 0xa0,
+            Clear_StatusEffects_1 = 0xa1,
+            Clear_StatusEffects_2 = 0xa2,
+            Clear_StatusEffects_3 = 0xa3,
+            Clear_StatusEffects_4 = 0xa4,
+            Clear_StatusEffects_5 = 0xa5,
+            Clear_StatusEffects_6 = 0xa6,
+            Clear_StatusEffects_7 = 0xa7,
+            Clear_StatusEffects_8 = 0xa8,
+            Clear_StatusEffects_9 = 0xa9,
+            Clear_StatusEffects_10 = 0xaa,
+            Clear_StatusEffects_11 = 0xab,
+            Clear_StatusEffects_12 = 0xac,
+            Clear_StatusEffects_13 = 0xad,
+            Clear_StatusEffects_14 = 0xae,
+            Clear_StatusEffects_15 = 0xaf,
+            Clear_StatusEffects_16 = 0xb0,
+            Clear_StatusEffects_17 = 0xb1,
+            Clear_StatusEffects_18 = 0xb2,
+            Clear_StatusEffects_19 = 0xb3,
+            Clear_StatusEffects_20 = 0xb4,
+            Clear_StatusEffects_21 = 0xb5,
+            Clear_StatusEffects_22 = 0xb6,
+            Clear_StatusEffects_23 = 0xb7,
+            Clear_StatusEffects_24 = 0xb8,
+            Clear_StatusEffects_25 = 0xb9,
+            Clear_StatusEffects_26 = 0xba,
+            Clear_StatusEffects_27 = 0xbb,
+            Clear_StatusEffects_28 = 0xbc,
+            Clear_StatusEffects_29 = 0xbd,
+            Clear_StatusEffects_30 = 0xbe,
+            Clear_StatusEffects_31 = 0xbf,
 
-            Reset_AppendageHealthPools_0 = 231,
-            Reset_AppendageHealthPools_1 = 232,
-            Reset_AppendageHealthPools_2 = 233,
-            Reset_AppendageHealthPools_3 = 234,
-            Reset_AppendageHealthPools_4 = 235,
-            Reset_AppendageHealthPools_5 = 236,
-            Reset_AppendageHealthPools_6 = 237,
-            Reset_AppendageHealthPools_7 = 238,
-            Reset_AppendageHealthPools_8 = 239,
-            Reset_AppendageHealthPools_9 = 240,
+            Clear_AppendageHealthPools_0 = 231,
+            Clear_AppendageHealthPools_1 = 232,
+            Clear_AppendageHealthPools_2 = 233,
+            Clear_AppendageHealthPools_3 = 234,
+            Clear_AppendageHealthPools_4 = 235,
+            Clear_AppendageHealthPools_5 = 236,
+            Clear_AppendageHealthPools_6 = 237,
+            Clear_AppendageHealthPools_7 = 238,
+            Clear_AppendageHealthPools_8 = 239,
+            Clear_AppendageHealthPools_9 = 240,
         }
 
         public string PeepWarning; // Will be set if we encounter an unhandled shadowfield
@@ -193,7 +193,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_0_UnkData;
         public float? StatusEffects_0_Data_Float1;
         public float? StatusEffects_0_Data_Float2;
-        public bool? StatusEffects_0_Cancel;
+        public bool? Clear_StatusEffects_0;
 
         public ushort? StatusEffects_1_ChangeTime;
         public uint? StatusEffects_1_Id;
@@ -206,7 +206,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_1_UnkData;
         public float? StatusEffects_1_Data_Float1;
         public float? StatusEffects_1_Data_Float2;
-        public bool? StatusEffects_1_Cancel;
+        public bool? Clear_StatusEffects_1;
 
         public ushort? StatusEffects_2_ChangeTime;
         public uint? StatusEffects_2_Id;
@@ -219,7 +219,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_2_UnkData;
         public float? StatusEffects_2_Data_Float1;
         public float? StatusEffects_2_Data_Float2;
-        public bool? StatusEffects_2_Cancel;
+        public bool? Clear_StatusEffects_2;
 
         public ushort? StatusEffects_3_ChangeTime;
         public uint? StatusEffects_3_Id;
@@ -232,7 +232,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_3_UnkData;
         public float? StatusEffects_3_Data_Float1;
         public float? StatusEffects_3_Data_Float2;
-        public bool? StatusEffects_3_Cancel;
+        public bool? Clear_StatusEffects_3;
 
         public ushort? StatusEffects_4_ChangeTime;
         public uint? StatusEffects_4_Id;
@@ -245,7 +245,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_4_UnkData;
         public float? StatusEffects_4_Data_Float1;
         public float? StatusEffects_4_Data_Float2;
-        public bool? StatusEffects_4_Cancel;
+        public bool? Clear_StatusEffects_4;
 
         public ushort? StatusEffects_5_ChangeTime;
         public uint? StatusEffects_5_Id;
@@ -258,7 +258,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_5_UnkData;
         public float? StatusEffects_5_Data_Float1;
         public float? StatusEffects_5_Data_Float2;
-        public bool? StatusEffects_5_Cancel;
+        public bool? Clear_StatusEffects_5;
 
         public ushort? StatusEffects_6_ChangeTime;
         public uint? StatusEffects_6_Id;
@@ -271,7 +271,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_6_UnkData;
         public float? StatusEffects_6_Data_Float1;
         public float? StatusEffects_6_Data_Float2;
-        public bool? StatusEffects_6_Cancel;
+        public bool? Clear_StatusEffects_6;
 
         public ushort? StatusEffects_7_ChangeTime;
         public uint? StatusEffects_7_Id;
@@ -284,7 +284,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_7_UnkData;
         public float? StatusEffects_7_Data_Float1;
         public float? StatusEffects_7_Data_Float2;
-        public bool? StatusEffects_7_Cancel;
+        public bool? Clear_StatusEffects_7;
 
         public ushort? StatusEffects_8_ChangeTime;
         public uint? StatusEffects_8_Id; 
@@ -297,7 +297,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_8_UnkData;
         public float? StatusEffects_8_Data_Float1;
         public float? StatusEffects_8_Data_Float2;
-        public bool? StatusEffects_8_Cancel;
+        public bool? Clear_StatusEffects_8;
 
         public ushort? StatusEffects_9_ChangeTime;
         public uint? StatusEffects_9_Id;
@@ -310,7 +310,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_9_UnkData;
         public float? StatusEffects_9_Data_Float1;
         public float? StatusEffects_9_Data_Float2;
-        public bool? StatusEffects_9_Cancel;
+        public bool? Clear_StatusEffects_9;
 
         public ushort? StatusEffects_10_ChangeTime;
         public uint? StatusEffects_10_Id;
@@ -323,7 +323,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_10_UnkData;
         public float? StatusEffects_10_Data_Float1;
         public float? StatusEffects_10_Data_Float2;
-        public bool? StatusEffects_10_Cancel;
+        public bool? Clear_StatusEffects_10;
 
         public ushort? StatusEffects_11_ChangeTime;
         public uint? StatusEffects_11_Id;
@@ -336,7 +336,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_11_UnkData;
         public float? StatusEffects_11_Data_Float1;
         public float? StatusEffects_11_Data_Float2;
-        public bool? StatusEffects_11_Cancel;
+        public bool? Clear_StatusEffects_11;
 
         public ushort? StatusEffects_12_ChangeTime;
         public uint? StatusEffects_12_Id;
@@ -349,7 +349,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_12_UnkData;
         public float? StatusEffects_12_Data_Float1;
         public float? StatusEffects_12_Data_Float2;
-        public bool? StatusEffects_12_Cancel;
+        public bool? Clear_StatusEffects_12;
 
         public ushort? StatusEffects_13_ChangeTime;
         public uint? StatusEffects_13_Id;
@@ -362,7 +362,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_13_UnkData;
         public float? StatusEffects_13_Data_Float1;
         public float? StatusEffects_13_Data_Float2;
-        public bool? StatusEffects_13_Cancel;
+        public bool? Clear_StatusEffects_13;
 
         public ushort? StatusEffects_14_ChangeTime;
         public uint? StatusEffects_14_Id;
@@ -375,7 +375,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_14_UnkData;
         public float? StatusEffects_14_Data_Float1;
         public float? StatusEffects_14_Data_Float2;
-        public bool? StatusEffects_14_Cancel;
+        public bool? Clear_StatusEffects_14;
 
         public ushort? StatusEffects_15_ChangeTime;
         public uint? StatusEffects_15_Id;
@@ -388,7 +388,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_15_UnkData;
         public float? StatusEffects_15_Data_Float1;
         public float? StatusEffects_15_Data_Float2;
-        public bool? StatusEffects_15_Cancel;
+        public bool? Clear_StatusEffects_15;
 
         public ushort? StatusEffects_16_ChangeTime;
         public uint? StatusEffects_16_Id;
@@ -401,7 +401,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_16_UnkData;
         public float? StatusEffects_16_Data_Float1;
         public float? StatusEffects_16_Data_Float2;
-        public bool? StatusEffects_16_Cancel;
+        public bool? Clear_StatusEffects_16;
 
         public ushort? StatusEffects_17_ChangeTime;
         public uint? StatusEffects_17_Id;
@@ -414,7 +414,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_17_UnkData;
         public float? StatusEffects_17_Data_Float1;
         public float? StatusEffects_17_Data_Float2;
-        public bool? StatusEffects_17_Cancel;
+        public bool? Clear_StatusEffects_17;
 
         public ushort? StatusEffects_18_ChangeTime;
         public uint? StatusEffects_18_Id;
@@ -427,7 +427,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_18_UnkData;
         public float? StatusEffects_18_Data_Float1;
         public float? StatusEffects_18_Data_Float2;
-        public bool? StatusEffects_18_Cancel;
+        public bool? Clear_StatusEffects_18;
 
         public ushort? StatusEffects_19_ChangeTime;
         public uint? StatusEffects_19_Id;
@@ -440,7 +440,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_19_UnkData;
         public float? StatusEffects_19_Data_Float1;
         public float? StatusEffects_19_Data_Float2;
-        public bool? StatusEffects_19_Cancel;
+        public bool? Clear_StatusEffects_19;
 
         public ushort? StatusEffects_20_ChangeTime;
         public uint? StatusEffects_20_Id;
@@ -453,7 +453,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_20_UnkData;
         public float? StatusEffects_20_Data_Float1;
         public float? StatusEffects_20_Data_Float2;
-        public bool? StatusEffects_20_Cancel;
+        public bool? Clear_StatusEffects_20;
 
         public ushort? StatusEffects_21_ChangeTime;
         public uint? StatusEffects_21_Id;
@@ -466,7 +466,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_21_UnkData;
         public float? StatusEffects_21_Data_Float1;
         public float? StatusEffects_21_Data_Float2;
-        public bool? StatusEffects_21_Cancel;
+        public bool? Clear_StatusEffects_21;
 
         public ushort? StatusEffects_22_ChangeTime;
         public uint? StatusEffects_22_Id;
@@ -479,7 +479,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_22_UnkData;
         public float? StatusEffects_22_Data_Float1;
         public float? StatusEffects_22_Data_Float2;
-        public bool? StatusEffects_22_Cancel;
+        public bool? Clear_StatusEffects_22;
 
         public ushort? StatusEffects_23_ChangeTime;
         public uint? StatusEffects_23_Id;
@@ -492,7 +492,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_23_UnkData;
         public float? StatusEffects_23_Data_Float1;
         public float? StatusEffects_23_Data_Float2;
-        public bool? StatusEffects_23_Cancel;
+        public bool? Clear_StatusEffects_23;
 
         public ushort? StatusEffects_24_ChangeTime;
         public uint? StatusEffects_24_Id; 
@@ -505,7 +505,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_24_UnkData;
         public float? StatusEffects_24_Data_Float1;
         public float? StatusEffects_24_Data_Float2;
-        public bool? StatusEffects_24_Cancel;
+        public bool? Clear_StatusEffects_24;
 
         public ushort? StatusEffects_25_ChangeTime;
         public uint? StatusEffects_25_Id;
@@ -518,7 +518,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_25_UnkData;
         public float? StatusEffects_25_Data_Float1;
         public float? StatusEffects_25_Data_Float2;
-        public bool? StatusEffects_25_Cancel;
+        public bool? Clear_StatusEffects_25;
 
         public ushort? StatusEffects_26_ChangeTime;
         public uint? StatusEffects_26_Id;
@@ -531,7 +531,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_26_UnkData;
         public float? StatusEffects_26_Data_Float1;
         public float? StatusEffects_26_Data_Float2;
-        public bool? StatusEffects_26_Cancel;
+        public bool? Clear_StatusEffects_26;
 
         public ushort? StatusEffects_27_ChangeTime;
         public uint? StatusEffects_27_Id;
@@ -544,7 +544,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_27_UnkData;
         public float? StatusEffects_27_Data_Float1;
         public float? StatusEffects_27_Data_Float2;
-        public bool? StatusEffects_27_Cancel;
+        public bool? Clear_StatusEffects_27;
 
         public ushort? StatusEffects_28_ChangeTime;
         public uint? StatusEffects_28_Id;
@@ -557,7 +557,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_28_UnkData;
         public float? StatusEffects_28_Data_Float1;
         public float? StatusEffects_28_Data_Float2;
-        public bool? StatusEffects_28_Cancel;
+        public bool? Clear_StatusEffects_28;
 
         public ushort? StatusEffects_29_ChangeTime;
         public uint? StatusEffects_29_Id;
@@ -570,7 +570,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_29_UnkData;
         public float? StatusEffects_29_Data_Float1;
         public float? StatusEffects_29_Data_Float2;
-        public bool? StatusEffects_29_Cancel;
+        public bool? Clear_StatusEffects_29;
 
         public ushort? StatusEffects_30_ChangeTime;
         public uint? StatusEffects_30_Id;
@@ -583,7 +583,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_30_UnkData;
         public float? StatusEffects_30_Data_Float1;
         public float? StatusEffects_30_Data_Float2;
-        public bool? StatusEffects_30_Cancel;
+        public bool? Clear_StatusEffects_30;
 
         public ushort? StatusEffects_31_ChangeTime;
         public uint? StatusEffects_31_Id;
@@ -596,7 +596,7 @@ namespace PacketPeepScript
         public byte[] StatusEffects_31_UnkData;
         public float? StatusEffects_31_Data_Float1;
         public float? StatusEffects_31_Data_Float2;
-        public bool? StatusEffects_31_Cancel;
+        public bool? Clear_StatusEffects_31;
 
         public float? RunSpeedMult_Value;
         public uint? RunSpeedMult_Time;
@@ -1406,101 +1406,101 @@ namespace PacketPeepScript
                         break;
 
                     // These keys do not come with any data
-                    case ShadowFieldIndex.StatusEffects_0_Cancel:
-                        StatusEffects_0_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_0:
+                        Clear_StatusEffects_0 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_1_Cancel:
-                        StatusEffects_1_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_1:
+                        Clear_StatusEffects_1 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_2_Cancel:
-                        StatusEffects_2_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_2:
+                        Clear_StatusEffects_2 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_3_Cancel:
-                        StatusEffects_3_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_3:
+                        Clear_StatusEffects_3 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_4_Cancel:
-                        StatusEffects_4_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_4:
+                        Clear_StatusEffects_4 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_5_Cancel:
-                        StatusEffects_5_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_5:
+                        Clear_StatusEffects_5 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_6_Cancel:
-                        StatusEffects_6_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_6:
+                        Clear_StatusEffects_6 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_7_Cancel:
-                        StatusEffects_7_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_7:
+                        Clear_StatusEffects_7 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_8_Cancel:
-                        StatusEffects_8_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_8:
+                        Clear_StatusEffects_8 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_9_Cancel:
-                        StatusEffects_9_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_9:
+                        Clear_StatusEffects_9 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_10_Cancel:
-                        StatusEffects_10_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_10:
+                        Clear_StatusEffects_10 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_11_Cancel:
-                        StatusEffects_11_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_11:
+                        Clear_StatusEffects_11 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_12_Cancel:
-                        StatusEffects_12_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_12:
+                        Clear_StatusEffects_12 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_13_Cancel:
-                        StatusEffects_13_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_13:
+                        Clear_StatusEffects_13 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_14_Cancel:
-                        StatusEffects_14_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_14:
+                        Clear_StatusEffects_14 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_15_Cancel:
-                        StatusEffects_15_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_15:
+                        Clear_StatusEffects_15 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_16_Cancel:
-                        StatusEffects_16_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_16:
+                        Clear_StatusEffects_16 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_17_Cancel:
-                        StatusEffects_17_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_17:
+                        Clear_StatusEffects_17 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_18_Cancel:
-                        StatusEffects_18_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_18:
+                        Clear_StatusEffects_18 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_19_Cancel:
-                        StatusEffects_19_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_19:
+                        Clear_StatusEffects_19 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_20_Cancel:
-                        StatusEffects_20_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_20:
+                        Clear_StatusEffects_20 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_21_Cancel:
-                        StatusEffects_21_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_21:
+                        Clear_StatusEffects_21 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_22_Cancel:
-                        StatusEffects_22_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_22:
+                        Clear_StatusEffects_22 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_23_Cancel:
-                        StatusEffects_23_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_23:
+                        Clear_StatusEffects_23 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_24_Cancel:
-                        StatusEffects_24_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_24:
+                        Clear_StatusEffects_24 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_25_Cancel:
-                        StatusEffects_25_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_25:
+                        Clear_StatusEffects_25 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_26_Cancel:
-                        StatusEffects_26_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_26:
+                        Clear_StatusEffects_26 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_27_Cancel:
-                        StatusEffects_27_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_27:
+                        Clear_StatusEffects_27 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_28_Cancel:
-                        StatusEffects_28_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_28:
+                        Clear_StatusEffects_28 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_29_Cancel:
-                        StatusEffects_29_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_29:
+                        Clear_StatusEffects_29 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_30_Cancel:
-                        StatusEffects_30_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_30:
+                        Clear_StatusEffects_30 = true;
                         break;
-                    case ShadowFieldIndex.StatusEffects_31_Cancel:
-                        StatusEffects_31_Cancel = true;
+                    case ShadowFieldIndex.Clear_StatusEffects_31:
+                        Clear_StatusEffects_31 = true;
                         break;
 
                     case ShadowFieldIndex.RunSpeedMult:

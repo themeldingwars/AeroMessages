@@ -59,38 +59,38 @@ namespace PacketPeepScript
             AssetOverrides          = 0x32,
 
             // These are not named by the client
-            Reset_PersonalFactionStance = 0x87, // Guess
-            Reset_AttachedTo            = 0x8b, // Confirmed
-            Reset_SinFactionsAcquiredBy = 0x8e, // Guess
-            Reset_SinTeamsAcquiredBy    = 0x8f, // Guess
-            Reset_LookAtTarget          = 0x94, // Confirmed
-            Reset_CarryableObjects_0    = 0x96, // Guess
-            Reset_CarryableObjects_1    = 0x97, // Guess
-            Reset_CarryableObjects_2    = 0x98, // Guess
-            Reset_RespawnTimes          = 0x99, // Guess
-            Reset_SinCardFields_0       = 0x9b, // Guess
-            Reset_SinCardFields_1       = 0x9c, // Guess
-            Reset_SinCardFields_2       = 0x9d, // Guess
-            Reset_SinCardFields_3       = 0x9e, // Guess
-            Reset_SinCardFields_4       = 0x9f, // Guess
-            Reset_SinCardFields_5       = 0xa0, // Guess
-            Reset_SinCardFields_6       = 0xa1, // Guess
-            Reset_SinCardFields_7       = 0xa2, // Guess
-            Reset_SinCardFields_8       = 0xa3, // Guess
-            Reset_SinCardFields_9       = 0xa4, // Guess
-            Reset_SinCardFields_10      = 0xa5, // Guess
-            Reset_SinCardFields_11      = 0xa6, // Guess
-            Reset_SinCardFields_12      = 0xa7, // Guess
-            Reset_SinCardFields_13      = 0xa8, // Guess
-            Reset_SinCardFields_14      = 0xa9, // Guess
-            Reset_SinCardFields_15      = 0xaa, // Guess
-            Reset_SinCardFields_16      = 0xab, // Guess
-            Reset_SinCardFields_17      = 0xac, // Guess
-            Reset_SinCardFields_18      = 0xad, // Guess
-            Reset_SinCardFields_19      = 0xae, // Guess
-            Reset_SinCardFields_20      = 0xaf, // Guess
-            Reset_SinCardFields_21      = 0xb0, // Guess
-            Reset_SinCardFields_22      = 0xb1, // Guess
+            Clear_PersonalFactionStance = 0x87, // Guess
+            Clear_AttachedTo            = 0x8b, // Confirmed
+            Clear_SinFactionsAcquiredBy = 0x8e, // Guess
+            Clear_SinTeamsAcquiredBy    = 0x8f, // Guess
+            Clear_LookAtTarget          = 0x94, // Confirmed
+            Clear_CarryableObjects_0    = 0x96, // Guess
+            Clear_CarryableObjects_1    = 0x97, // Guess
+            Clear_CarryableObjects_2    = 0x98, // Guess
+            Clear_RespawnTimes          = 0x99, // Guess
+            Clear_SinCardFields_0       = 0x9b, // Guess
+            Clear_SinCardFields_1       = 0x9c, // Guess
+            Clear_SinCardFields_2       = 0x9d, // Guess
+            Clear_SinCardFields_3       = 0x9e, // Guess
+            Clear_SinCardFields_4       = 0x9f, // Guess
+            Clear_SinCardFields_5       = 0xa0, // Guess
+            Clear_SinCardFields_6       = 0xa1, // Guess
+            Clear_SinCardFields_7       = 0xa2, // Guess
+            Clear_SinCardFields_8       = 0xa3, // Guess
+            Clear_SinCardFields_9       = 0xa4, // Guess
+            Clear_SinCardFields_10      = 0xa5, // Guess
+            Clear_SinCardFields_11      = 0xa6, // Guess
+            Clear_SinCardFields_12      = 0xa7, // Guess
+            Clear_SinCardFields_13      = 0xa8, // Guess
+            Clear_SinCardFields_14      = 0xa9, // Guess
+            Clear_SinCardFields_15      = 0xaa, // Guess
+            Clear_SinCardFields_16      = 0xab, // Guess
+            Clear_SinCardFields_17      = 0xac, // Guess
+            Clear_SinCardFields_18      = 0xad, // Guess
+            Clear_SinCardFields_19      = 0xae, // Guess
+            Clear_SinCardFields_20      = 0xaf, // Guess
+            Clear_SinCardFields_21      = 0xb0, // Guess
+            Clear_SinCardFields_22      = 0xb1, // Guess
         }
 
         public string PeepWarning; // Will be set if we encounter an unhandled shadowfield
@@ -145,38 +145,38 @@ namespace PacketPeepScript
 
         public byte? AssetOverrides;
 
-        public bool? Reset_PersonalFactionStance;
-        public bool? Reset_AttachedTo;
-        public bool? Reset_SinFactionsAcquiredBy;
-        public bool? Reset_SinTeamsAcquiredBy;
-        public bool? Reset_LookAtTarget;
-        public bool? Reset_CarryableObjects_0;
-        public bool? Reset_CarryableObjects_1;
-        public bool? Reset_CarryableObjects_2;
-        public bool? Reset_RespawnTimes;
-        public bool? Reset_SinCardFields_0;
-        public bool? Reset_SinCardFields_1;
-        public bool? Reset_SinCardFields_2;
-        public bool? Reset_SinCardFields_3;
-        public bool? Reset_SinCardFields_4;
-        public bool? Reset_SinCardFields_5;
-        public bool? Reset_SinCardFields_6;
-        public bool? Reset_SinCardFields_7;
-        public bool? Reset_SinCardFields_8;
-        public bool? Reset_SinCardFields_9;
-        public bool? Reset_SinCardFields_10;
-        public bool? Reset_SinCardFields_11;
-        public bool? Reset_SinCardFields_12;
-        public bool? Reset_SinCardFields_13;
-        public bool? Reset_SinCardFields_14;
-        public bool? Reset_SinCardFields_15;
-        public bool? Reset_SinCardFields_16;
-        public bool? Reset_SinCardFields_17;
-        public bool? Reset_SinCardFields_18;
-        public bool? Reset_SinCardFields_19;
-        public bool? Reset_SinCardFields_20;
-        public bool? Reset_SinCardFields_21;
-        public bool? Reset_SinCardFields_22;
+        public bool? Clear_PersonalFactionStance;
+        public bool? Clear_AttachedTo;
+        public bool? Clear_SinFactionsAcquiredBy;
+        public bool? Clear_SinTeamsAcquiredBy;
+        public bool? Clear_LookAtTarget;
+        public bool? Clear_CarryableObjects_0;
+        public bool? Clear_CarryableObjects_1;
+        public bool? Clear_CarryableObjects_2;
+        public bool? Clear_RespawnTimes;
+        public bool? Clear_SinCardFields_0;
+        public bool? Clear_SinCardFields_1;
+        public bool? Clear_SinCardFields_2;
+        public bool? Clear_SinCardFields_3;
+        public bool? Clear_SinCardFields_4;
+        public bool? Clear_SinCardFields_5;
+        public bool? Clear_SinCardFields_6;
+        public bool? Clear_SinCardFields_7;
+        public bool? Clear_SinCardFields_8;
+        public bool? Clear_SinCardFields_9;
+        public bool? Clear_SinCardFields_10;
+        public bool? Clear_SinCardFields_11;
+        public bool? Clear_SinCardFields_12;
+        public bool? Clear_SinCardFields_13;
+        public bool? Clear_SinCardFields_14;
+        public bool? Clear_SinCardFields_15;
+        public bool? Clear_SinCardFields_16;
+        public bool? Clear_SinCardFields_17;
+        public bool? Clear_SinCardFields_18;
+        public bool? Clear_SinCardFields_19;
+        public bool? Clear_SinCardFields_20;
+        public bool? Clear_SinCardFields_21;
+        public bool? Clear_SinCardFields_22;
 
 
         public byte[] UnableToParse;
@@ -330,132 +330,132 @@ namespace PacketPeepScript
                         AssetOverrides = Stream.Read.Byte(); // probably more if we have content
                         break;
 
-                    case ShadowFieldIndex.Reset_PersonalFactionStance:
-                        Reset_PersonalFactionStance = true;
+                    case ShadowFieldIndex.Clear_PersonalFactionStance:
+                        Clear_PersonalFactionStance = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_AttachedTo:
-                        Reset_AttachedTo = true;
+                    case ShadowFieldIndex.Clear_AttachedTo:
+                        Clear_AttachedTo = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_SinFactionsAcquiredBy:
-                        Reset_SinFactionsAcquiredBy = true;
+                    case ShadowFieldIndex.Clear_SinFactionsAcquiredBy:
+                        Clear_SinFactionsAcquiredBy = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_SinTeamsAcquiredBy:
-                        Reset_SinTeamsAcquiredBy = true;
+                    case ShadowFieldIndex.Clear_SinTeamsAcquiredBy:
+                        Clear_SinTeamsAcquiredBy = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_LookAtTarget:
-                        Reset_LookAtTarget = true;
+                    case ShadowFieldIndex.Clear_LookAtTarget:
+                        Clear_LookAtTarget = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_CarryableObjects_0:
-                        Reset_CarryableObjects_0 = true;
+                    case ShadowFieldIndex.Clear_CarryableObjects_0:
+                        Clear_CarryableObjects_0 = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_CarryableObjects_1:
-                        Reset_CarryableObjects_1 = true;
+                    case ShadowFieldIndex.Clear_CarryableObjects_1:
+                        Clear_CarryableObjects_1 = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_CarryableObjects_2:
-                        Reset_CarryableObjects_2 = true;
+                    case ShadowFieldIndex.Clear_CarryableObjects_2:
+                        Clear_CarryableObjects_2 = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_RespawnTimes:
-                        Reset_RespawnTimes = true;
+                    case ShadowFieldIndex.Clear_RespawnTimes:
+                        Clear_RespawnTimes = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_SinCardFields_0:
-                        Reset_SinCardFields_0 = true;
+                    case ShadowFieldIndex.Clear_SinCardFields_0:
+                        Clear_SinCardFields_0 = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_SinCardFields_1:
-                        Reset_SinCardFields_1 = true;
+                    case ShadowFieldIndex.Clear_SinCardFields_1:
+                        Clear_SinCardFields_1 = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_SinCardFields_2:
-                        Reset_SinCardFields_2 = true;
+                    case ShadowFieldIndex.Clear_SinCardFields_2:
+                        Clear_SinCardFields_2 = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_SinCardFields_3:
-                        Reset_SinCardFields_3 = true;
+                    case ShadowFieldIndex.Clear_SinCardFields_3:
+                        Clear_SinCardFields_3 = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_SinCardFields_4:
-                        Reset_SinCardFields_4 = true;
+                    case ShadowFieldIndex.Clear_SinCardFields_4:
+                        Clear_SinCardFields_4 = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_SinCardFields_5:
-                        Reset_SinCardFields_5 = true;
+                    case ShadowFieldIndex.Clear_SinCardFields_5:
+                        Clear_SinCardFields_5 = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_SinCardFields_6:
-                        Reset_SinCardFields_6 = true;
+                    case ShadowFieldIndex.Clear_SinCardFields_6:
+                        Clear_SinCardFields_6 = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_SinCardFields_7:
-                        Reset_SinCardFields_7 = true;
+                    case ShadowFieldIndex.Clear_SinCardFields_7:
+                        Clear_SinCardFields_7 = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_SinCardFields_8:
-                        Reset_SinCardFields_8 = true;
+                    case ShadowFieldIndex.Clear_SinCardFields_8:
+                        Clear_SinCardFields_8 = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_SinCardFields_9:
-                        Reset_SinCardFields_9 = true;
+                    case ShadowFieldIndex.Clear_SinCardFields_9:
+                        Clear_SinCardFields_9 = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_SinCardFields_10:
-                        Reset_SinCardFields_10 = true;
+                    case ShadowFieldIndex.Clear_SinCardFields_10:
+                        Clear_SinCardFields_10 = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_SinCardFields_11:
-                        Reset_SinCardFields_11 = true;
+                    case ShadowFieldIndex.Clear_SinCardFields_11:
+                        Clear_SinCardFields_11 = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_SinCardFields_12:
-                        Reset_SinCardFields_12 = true;
+                    case ShadowFieldIndex.Clear_SinCardFields_12:
+                        Clear_SinCardFields_12 = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_SinCardFields_13:
-                        Reset_SinCardFields_13 = true;
+                    case ShadowFieldIndex.Clear_SinCardFields_13:
+                        Clear_SinCardFields_13 = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_SinCardFields_14:
-                        Reset_SinCardFields_14 = true;
+                    case ShadowFieldIndex.Clear_SinCardFields_14:
+                        Clear_SinCardFields_14 = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_SinCardFields_15:
-                        Reset_SinCardFields_15 = true;
+                    case ShadowFieldIndex.Clear_SinCardFields_15:
+                        Clear_SinCardFields_15 = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_SinCardFields_16:
-                        Reset_SinCardFields_16 = true;
+                    case ShadowFieldIndex.Clear_SinCardFields_16:
+                        Clear_SinCardFields_16 = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_SinCardFields_17:
-                        Reset_SinCardFields_17 = true;
+                    case ShadowFieldIndex.Clear_SinCardFields_17:
+                        Clear_SinCardFields_17 = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_SinCardFields_18:
-                        Reset_SinCardFields_18 = true;
+                    case ShadowFieldIndex.Clear_SinCardFields_18:
+                        Clear_SinCardFields_18 = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_SinCardFields_19:
-                        Reset_SinCardFields_19 = true;
+                    case ShadowFieldIndex.Clear_SinCardFields_19:
+                        Clear_SinCardFields_19 = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_SinCardFields_20:
-                        Reset_SinCardFields_20 = true;
+                    case ShadowFieldIndex.Clear_SinCardFields_20:
+                        Clear_SinCardFields_20 = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_SinCardFields_21:
-                        Reset_SinCardFields_21 = true;
+                    case ShadowFieldIndex.Clear_SinCardFields_21:
+                        Clear_SinCardFields_21 = true;
                         break;
 
-                    case ShadowFieldIndex.Reset_SinCardFields_22:
-                        Reset_SinCardFields_22 = true;
+                    case ShadowFieldIndex.Clear_SinCardFields_22:
+                        Clear_SinCardFields_22 = true;
                         break;
 
                     default:
