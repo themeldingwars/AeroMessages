@@ -3,6 +3,24 @@ using System;
 using System.Collections.Generic;
 namespace PacketPeepScript
 {
+    [Script(MessageType.GSS, 2, 186, true)]
+    public class CharacterBaseControllerEliteLevelsInitAllFrames : BaseScript
+    {
+        public uint CurrentFrame_Id; 
+
+        public byte NumberOfFrames;
+        public FrameInfo[] Frames;
+
+        public override void Read(Bitter.BinaryStream Stream)
+        {
+            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
+            if (true) {
+                CurrentFrame_Id = Stream.Read.UInt();
+                NumberOfFrames = Stream.Read.Byte();
+                Frames = Stream.Read.FrameInfoArray((int)NumberOfFrames);
+            }
+        }
+    }
 
     public struct FrameInfo
     {
@@ -89,25 +107,6 @@ namespace PacketPeepScript
         }
 
         public override string ToString() => $"(Id: {UpgradeId}, Count: {Count})";
-    }
-
-    [Script(MessageType.GSS, 2, 186, true)]
-    public class CharacterBaseControllerEliteLevelsInitAllFrames : BaseScript
-    {
-        public uint CurrentFrame_Id; 
-
-        public byte NumberOfFrames;
-        public FrameInfo[] Frames;
-
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-            if (true) {
-                CurrentFrame_Id = Stream.Read.UInt();
-                NumberOfFrames = Stream.Read.Byte();
-                Frames = Stream.Read.FrameInfoArray((int)NumberOfFrames);
-            }
-        }
     }
 
     public static class MyExtensions

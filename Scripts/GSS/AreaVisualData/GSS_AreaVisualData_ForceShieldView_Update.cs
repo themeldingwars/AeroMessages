@@ -2,18 +2,6 @@ using Bitter;
 using System.Collections.Generic;
 namespace PacketPeepScript
 {
-    public struct ForceShieldsData
-    {
-        // TODO:
-
-        public ForceShieldsData(Bitter.BinaryReader R)
-        {
-            
-        }
-
-        public override string ToString() => $"";
-    }
-
     [Script(MessageType.GSS, 25, 1, true)]
     public class AreaVisualDataForceShieldViewUpdate : BaseScript
     {
@@ -213,6 +201,17 @@ namespace PacketPeepScript
         }
     }
 
+    public struct ForceShieldsData
+    {
+        // TODO:
+
+        public ForceShieldsData(Bitter.BinaryReader R)
+        {
+            
+        }
+
+        public override string ToString() => $"";
+    }
 
     public static class MyExtensions
     {

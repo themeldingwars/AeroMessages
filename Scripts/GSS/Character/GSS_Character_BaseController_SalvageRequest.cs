@@ -2,6 +2,20 @@ using Bitter;
 using System.Collections.Generic;
 namespace PacketPeepScript
 {
+    [Script(MessageType.GSS, 2, 202, false)]
+    public class CharacterBaseControllerSalvageRequest : BaseScript
+    {
+        public byte NumberOfItems;
+        public ItemSalvageRequest[] SalvageRequests;
+
+        public override void Read(Bitter.BinaryStream Stream)
+        {
+            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
+            NumberOfItems = Stream.Read.Byte();
+            SalvageRequests = Stream.Read.ItemSalvageRequestArray(NumberOfItems);
+        }
+    }
+
     public struct ItemSalvageRequest
     {
         public ulong GUID;
@@ -33,20 +47,6 @@ namespace PacketPeepScript
                 list.Add(R.ItemSalvageRequest());
             }
             return list.ToArray();
-        }
-    }
-
-    [Script(MessageType.GSS, 2, 202, false)]
-    public class CharacterBaseControllerSalvageRequest : BaseScript
-    {
-        public byte NumberOfItems;
-        public ItemSalvageRequest[] SalvageRequests;
-
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-            NumberOfItems = Stream.Read.Byte();
-            SalvageRequests = Stream.Read.ItemSalvageRequestArray(NumberOfItems);
         }
     }
 }

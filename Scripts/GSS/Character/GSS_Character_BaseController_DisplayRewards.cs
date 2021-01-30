@@ -2,6 +2,39 @@ using Bitter;
 using System.Collections.Generic;
 namespace PacketPeepScript
 {
+    [Script(MessageType.GSS, 2, 133, true)]
+    public class CharacterBaseControllerDisplayRewards : BaseScript
+    {
+        public uint IndexId; // Used by client when claiming
+        public uint TitleLocalizationId;
+        public byte[] Unk1;
+        public byte NumberOfStats;
+        public StatInfo[] Stats;
+        public byte NumberOfRewards;
+        public RewardInfo[] Rewards;
+        public byte[] Unk2;
+        public byte HaveExperience;
+        public uint Experience;
+        public byte[] Unk3;
+
+        public override void Read(Bitter.BinaryStream Stream)
+        {
+            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
+
+            IndexId = Stream.Read.UInt();
+            TitleLocalizationId = Stream.Read.UInt();
+            Unk1 = Stream.Read.ByteArray(4);
+            NumberOfStats = Stream.Read.Byte();
+            Stats = Stream.Read.StatInfoArray(NumberOfStats);
+            NumberOfRewards = Stream.Read.Byte();
+            Rewards = Stream.Read.RewardInfoArray(NumberOfRewards);
+            Unk2 = Stream.Read.ByteArray(9);
+            HaveExperience = Stream.Read.Byte();
+            Experience = Stream.Read.UInt();
+            Unk3 = Stream.Read.ByteArray(3);
+        }
+    }
+
     public struct StatInfo
     {
         public uint LocalizationId;
@@ -64,39 +97,6 @@ namespace PacketPeepScript
                 list.Add(R.RewardInfo());
             }
             return list.ToArray();
-        }
-    }
-
-    [Script(MessageType.GSS, 2, 133, true)]
-    public class CharacterBaseControllerDisplayRewards : BaseScript
-    {
-        public uint IndexId; // Used by client when claiming
-        public uint TitleLocalizationId;
-        public byte[] Unk1;
-        public byte NumberOfStats;
-        public StatInfo[] Stats;
-        public byte NumberOfRewards;
-        public RewardInfo[] Rewards;
-        public byte[] Unk2;
-        public byte HaveExperience;
-        public uint Experience;
-        public byte[] Unk3;
-
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-
-            IndexId = Stream.Read.UInt();
-            TitleLocalizationId = Stream.Read.UInt();
-            Unk1 = Stream.Read.ByteArray(4);
-            NumberOfStats = Stream.Read.Byte();
-            Stats = Stream.Read.StatInfoArray(NumberOfStats);
-            NumberOfRewards = Stream.Read.Byte();
-            Rewards = Stream.Read.RewardInfoArray(NumberOfRewards);
-            Unk2 = Stream.Read.ByteArray(9);
-            HaveExperience = Stream.Read.Byte();
-            Experience = Stream.Read.UInt();
-            Unk3 = Stream.Read.ByteArray(3);
         }
     }
 }

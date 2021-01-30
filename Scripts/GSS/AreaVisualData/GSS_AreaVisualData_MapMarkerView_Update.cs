@@ -3,36 +3,6 @@ using System;
 using System.Collections.Generic;
 namespace PacketPeepScript
 {
-    // Assuming same format as in keyframe
-    public struct MapMarkersData
-    {
-        public uint? MarkerType; // SDB Table 155
-        public byte[] Unk3;
-        public byte[] EncounterId;
-        public byte[] EncounterMarkerId; // No controller specified.
-        public byte? HasDuration;
-        public uint? ExpireAtTime; // Gametime ms
-        public float[] Position;
-
-        public MapMarkersData(Bitter.BinaryReader R)
-        {
-            MarkerType = R.UInt();
-            Unk3 = R.ByteArray(6);
-            EncounterId = R.ByteArray(8);
-            EncounterMarkerId = R.ByteArray(8);
-            HasDuration = R.Byte();
-            if (HasDuration != 0x00) {
-                ExpireAtTime = R.UInt();
-            }
-            else {
-                ExpireAtTime = 0;
-            }
-            Position = R.HalfArray(3);
-        }
-
-        public override string ToString() => $"MarkerType: {MarkerType}, Position: [{(Position != null ? String.Join(", ", Position) : "null")}]";
-    }
-
     [Script(MessageType.GSS, 22, 1, true)]
     public class AreaVisualDataMapMarkerViewUpdate : BaseScript
     {
@@ -247,6 +217,36 @@ namespace PacketPeepScript
             }
             while (Stream.baseStream.ByteOffset < Stream.baseStream.Length);
         }
+    }
+
+    // Assuming same format as in keyframe
+    public struct MapMarkersData
+    {
+        public uint? MarkerType; // SDB Table 155
+        public byte[] Unk3;
+        public byte[] EncounterId;
+        public byte[] EncounterMarkerId; // No controller specified.
+        public byte? HasDuration;
+        public uint? ExpireAtTime; // Gametime ms
+        public float[] Position;
+
+        public MapMarkersData(Bitter.BinaryReader R)
+        {
+            MarkerType = R.UInt();
+            Unk3 = R.ByteArray(6);
+            EncounterId = R.ByteArray(8);
+            EncounterMarkerId = R.ByteArray(8);
+            HasDuration = R.Byte();
+            if (HasDuration != 0x00) {
+                ExpireAtTime = R.UInt();
+            }
+            else {
+                ExpireAtTime = 0;
+            }
+            Position = R.HalfArray(3);
+        }
+
+        public override string ToString() => $"MarkerType: {MarkerType}, Position: [{(Position != null ? String.Join(", ", Position) : "null")}]";
     }
 
     public static class MyExtensions

@@ -3,103 +3,6 @@ using System;
 using System.Collections.Generic;
 namespace PacketPeepScript
 {
-
-    public struct EquippedItemData
-    {
-        public uint SdbId;
-        public byte SlotIdx;
-        public byte[] UnkData;
-
-        public EquippedItemData(Bitter.BinaryReader R)
-        {
-            SdbId = R.UInt();
-            SlotIdx = R.Byte();
-            UnkData = R.ByteArray(2);
-        }
-
-        public override string ToString() => $"SdbId: {SdbId}, SlotIdx: {SlotIdx}, Unk: [{(UnkData != null ? String.Join(", ", UnkData) : "null")}]";
-    }
-
-    // (4 byte id, 4 byte color, 12*2 half transform, 1 byte "usage")
-    public struct DecalData
-    {
-        public uint SdbId;
-        public uint Color;
-        public float[] HalfTransform;
-        public byte Usage;
-
-        public DecalData(Bitter.BinaryReader R)
-        {
-            SdbId = R.UInt();
-            Color = R.UInt();
-            HalfTransform = R.HalfArray(12);
-            Usage = R.Byte();
-
-        }
-
-        public override string ToString() => $"SdbId: {SdbId}, Color: {Color}, HalfTransform: [{(HalfTransform != null ? String.Join(", ", HalfTransform) : "null")}], Usage: {Usage}";
-    }
-
-    // 4 byte color
-    public struct ColorData
-    {
-        public uint Color;
-
-        public ColorData(Bitter.BinaryReader R)
-        {
-            Color = R.UInt();
-        }
-
-        public override string ToString() => $"Color: {Color}";
-    }
-
-    // (1 byte type, 4 byte id)
-    public struct PaletteData
-    {
-        public byte Type;
-        public uint SdbId;
-
-        public PaletteData(Bitter.BinaryReader R)
-        {
-            Type = R.Byte();
-            SdbId = R.UInt();
-        }
-
-        public override string ToString() => $"Type: {Type}, SdbId: {SdbId}";
-    }
-
-    // (4 byte id,  4*2 byte transform (halfs), 1 byte "usage")
-    public struct PatternData
-    {
-        public uint SdbId;
-        public float[] HalfTransform;
-        public byte Usage;
-
-        public PatternData(Bitter.BinaryReader R)
-        {
-            SdbId = R.UInt();
-            HalfTransform = R.HalfArray(4);
-            Usage = R.Byte();
-        }
-
-        public override string ToString() => $"SdbId: {SdbId}, HalfTransform: [{(HalfTransform != null ? String.Join(", ", HalfTransform) : "null")}], Usage: {Usage}";
-    }
-
-    // (6 byte, ushort id, float value)
-    public struct StatData
-    {
-        public ushort Id;
-        public float Value;
-
-        public StatData(Bitter.BinaryReader R)
-        {
-            Id = R.UShort();
-            Value = R.Float();
-        }
-
-        public override string ToString() => $"Id: {Id}, Value: {Value}";
-    }
-
     [Script(MessageType.GSS, 9, 1, true)]
     public class CharacterEquipmentViewUpdate : BaseScript
     {
@@ -371,6 +274,102 @@ namespace PacketPeepScript
             }
             while (Stream.baseStream.ByteOffset < Stream.baseStream.Length);
         }
+    }
+
+    public struct EquippedItemData
+    {
+        public uint SdbId;
+        public byte SlotIdx;
+        public byte[] UnkData;
+
+        public EquippedItemData(Bitter.BinaryReader R)
+        {
+            SdbId = R.UInt();
+            SlotIdx = R.Byte();
+            UnkData = R.ByteArray(2);
+        }
+
+        public override string ToString() => $"SdbId: {SdbId}, SlotIdx: {SlotIdx}, Unk: [{(UnkData != null ? String.Join(", ", UnkData) : "null")}]";
+    }
+
+    // (4 byte id, 4 byte color, 12*2 half transform, 1 byte "usage")
+    public struct DecalData
+    {
+        public uint SdbId;
+        public uint Color;
+        public float[] HalfTransform;
+        public byte Usage;
+
+        public DecalData(Bitter.BinaryReader R)
+        {
+            SdbId = R.UInt();
+            Color = R.UInt();
+            HalfTransform = R.HalfArray(12);
+            Usage = R.Byte();
+
+        }
+
+        public override string ToString() => $"SdbId: {SdbId}, Color: {Color}, HalfTransform: [{(HalfTransform != null ? String.Join(", ", HalfTransform) : "null")}], Usage: {Usage}";
+    }
+
+    // 4 byte color
+    public struct ColorData
+    {
+        public uint Color;
+
+        public ColorData(Bitter.BinaryReader R)
+        {
+            Color = R.UInt();
+        }
+
+        public override string ToString() => $"Color: {Color}";
+    }
+
+    // (1 byte type, 4 byte id)
+    public struct PaletteData
+    {
+        public byte Type;
+        public uint SdbId;
+
+        public PaletteData(Bitter.BinaryReader R)
+        {
+            Type = R.Byte();
+            SdbId = R.UInt();
+        }
+
+        public override string ToString() => $"Type: {Type}, SdbId: {SdbId}";
+    }
+
+    // (4 byte id,  4*2 byte transform (halfs), 1 byte "usage")
+    public struct PatternData
+    {
+        public uint SdbId;
+        public float[] HalfTransform;
+        public byte Usage;
+
+        public PatternData(Bitter.BinaryReader R)
+        {
+            SdbId = R.UInt();
+            HalfTransform = R.HalfArray(4);
+            Usage = R.Byte();
+        }
+
+        public override string ToString() => $"SdbId: {SdbId}, HalfTransform: [{(HalfTransform != null ? String.Join(", ", HalfTransform) : "null")}], Usage: {Usage}";
+    }
+
+    // (6 byte, ushort id, float value)
+    public struct StatData
+    {
+        public ushort Id;
+        public float Value;
+
+        public StatData(Bitter.BinaryReader R)
+        {
+            Id = R.UShort();
+            Value = R.Float();
+        }
+
+        public override string ToString() => $"Id: {Id}, Value: {Value}";
     }
 
     public static class MyExtensions

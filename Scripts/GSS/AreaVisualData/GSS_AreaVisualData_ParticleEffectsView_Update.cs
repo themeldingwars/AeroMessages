@@ -3,23 +3,6 @@ using System;
 using System.Collections.Generic;
 namespace PacketPeepScript
 {
-    public struct ParticleEffectsData
-    {
-        // No idea if this is right
-        public byte[] Unk1;
-        public byte[] Unk2;
-        public float[] Position;
-
-        public ParticleEffectsData(Bitter.BinaryReader R)
-        {
-            Unk1 = R.ByteArray(4);
-            Unk2 = R.ByteArray(11);
-            Position = R.FloatArray(3);
-        }
-
-        public override string ToString() => $"Position: [{(Position != null ? String.Join(", ", Position) : "null")}";
-    }
-
     [Script(MessageType.GSS, 21, 1, true)]
     public class AreaVisualDataParticleEffectsViewUpdate : BaseScript
     {
@@ -153,6 +136,23 @@ namespace PacketPeepScript
             while (Stream.baseStream.ByteOffset < Stream.baseStream.Length);
         }
 
+    }
+
+    public struct ParticleEffectsData
+    {
+        // No idea if this is right
+        public byte[] Unk1;
+        public byte[] Unk2;
+        public float[] Position;
+
+        public ParticleEffectsData(Bitter.BinaryReader R)
+        {
+            Unk1 = R.ByteArray(4);
+            Unk2 = R.ByteArray(11);
+            Position = R.FloatArray(3);
+        }
+
+        public override string ToString() => $"Position: [{(Position != null ? String.Join(", ", Position) : "null")}";
     }
 
 

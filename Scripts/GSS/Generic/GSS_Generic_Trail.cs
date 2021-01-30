@@ -3,6 +3,25 @@ using System;
 using System.Collections.Generic;
 namespace PacketPeepScript
 {
+    [Script(MessageType.GSS, 0, 98, true)]
+    public class GenericTrail : BaseScript
+    {
+
+        public byte[] Unk;
+        public byte NumberOfPoints;
+        public PointData[] PointData;
+
+        public override void Read(Bitter.BinaryStream Stream)
+        {
+            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
+    
+            Unk = Stream.Read.ByteArray(5);
+            NumberOfPoints = Stream.Read.Byte();
+            PointData = Stream.Read.PointDataArray(NumberOfPoints);
+
+        }
+    }
+
     public struct PointData
     {
         public float[] Position;
@@ -30,25 +49,6 @@ namespace PacketPeepScript
                 list.Add(R.PointData());
             }
             return list.ToArray();
-        }
-    }
-
-    [Script(MessageType.GSS, 0, 98, true)]
-    public class GenericTrail : BaseScript
-    {
-
-        public byte[] Unk;
-        public byte NumberOfPoints;
-        public PointData[] PointData;
-
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-    
-            Unk = Stream.Read.ByteArray(5);
-            NumberOfPoints = Stream.Read.Byte();
-            PointData = Stream.Read.PointDataArray(NumberOfPoints);
-
         }
     }
 }

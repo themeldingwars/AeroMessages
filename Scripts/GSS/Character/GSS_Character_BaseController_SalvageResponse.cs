@@ -2,6 +2,24 @@ using Bitter;
 using System.Collections.Generic;
 namespace PacketPeepScript
 {
+    [Script(MessageType.GSS, 2, 150, true)]
+    public class CharacterBaseControllerSalvageResponse : BaseScript
+    {
+        // Added script so that peep doesn't display the wrong stuff  
+
+        public byte Unk1;
+        public byte NumberOfItems;
+        public ItemSalvageResponse[] SalvageResponses;
+
+        public override void Read(Bitter.BinaryStream Stream)
+        {
+            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
+
+            Unk1 = Stream.Read.Byte();
+            NumberOfItems = Stream.Read.Byte();
+            SalvageResponses = Stream.Read.ItemSalvageResponseArray(NumberOfItems);
+        }
+    }
 
     public struct ItemSalvageResponse
     {
@@ -34,25 +52,6 @@ namespace PacketPeepScript
                 list.Add(R.ItemSalvageResponse());
             }
             return list.ToArray();
-        }
-    }
-
-    [Script(MessageType.GSS, 2, 150, true)]
-    public class CharacterBaseControllerSalvageResponse : BaseScript
-    {
-        // Added script so that peep doesn't display the wrong stuff  
-
-        public byte Unk1;
-        public byte NumberOfItems;
-        public ItemSalvageResponse[] SalvageResponses;
-
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-
-            Unk1 = Stream.Read.Byte();
-            NumberOfItems = Stream.Read.Byte();
-            SalvageResponses = Stream.Read.ItemSalvageResponseArray(NumberOfItems);
         }
     }
 }

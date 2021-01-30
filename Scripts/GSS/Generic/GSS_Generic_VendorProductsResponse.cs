@@ -2,6 +2,36 @@ using Bitter;
 using System.Collections.Generic;
 namespace PacketPeepScript
 {
+    [Script(MessageType.GSS, 0, 120, true)]
+    public class GenericVendorProductsResponse : BaseScript
+    {
+
+        public uint VendorId;
+        public ulong Id;
+        public string Title;
+        public uint FactionId;
+        public byte NumberOfFactionDiscounts;
+        public FactionDiscount[] FactionDiscounts;
+        public byte NumberOfProducts;
+        public VendorProduct[] Products;
+
+
+        public override void Read(Bitter.BinaryStream Stream)
+        {
+            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
+            MyExtensions.BStream = Stream;
+    
+            VendorId = Stream.Read.UInt();
+            Id = Stream.Read.ULong();
+            Title = Stream.Read.StringZ();
+            FactionId = Stream.Read.UInt();
+            NumberOfFactionDiscounts = Stream.Read.Byte();
+            FactionDiscounts = Stream.Read.FactionDiscountArray(NumberOfFactionDiscounts);
+            NumberOfProducts = Stream.Read.Byte();
+            Products = Stream.Read.VendorProductArray(NumberOfProducts);
+        }
+    }
+
     public struct FactionDiscount
     {
         public uint MinRep;
@@ -156,35 +186,5 @@ namespace PacketPeepScript
         }
 
 
-    }
-
-    [Script(MessageType.GSS, 0, 120, true)]
-    public class GenericVendorProductsResponse : BaseScript
-    {
-
-        public uint VendorId;
-        public ulong Id;
-        public string Title;
-        public uint FactionId;
-        public byte NumberOfFactionDiscounts;
-        public FactionDiscount[] FactionDiscounts;
-        public byte NumberOfProducts;
-        public VendorProduct[] Products;
-
-
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-            MyExtensions.BStream = Stream;
-    
-            VendorId = Stream.Read.UInt();
-            Id = Stream.Read.ULong();
-            Title = Stream.Read.StringZ();
-            FactionId = Stream.Read.UInt();
-            NumberOfFactionDiscounts = Stream.Read.Byte();
-            FactionDiscounts = Stream.Read.FactionDiscountArray(NumberOfFactionDiscounts);
-            NumberOfProducts = Stream.Read.Byte();
-            Products = Stream.Read.VendorProductArray(NumberOfProducts);
-        }
     }
 }

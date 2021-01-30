@@ -3,22 +3,6 @@ using System;
 using System.Collections.Generic;
 namespace PacketPeepScript
 {
-    public struct TinyObjectData
-    {
-        public ushort TypeId; // SDB Table 152
-        public float[] Position;
-        public byte[] Faction;
-
-        public TinyObjectData(Bitter.BinaryReader R)
-        {
-            TypeId = R.UShort();
-            Position = R.FloatArray(3);
-            Faction = R.ByteArray(2);
-        }
-
-        public override string ToString() => $"TypeId: {TypeId}, Position: [{(Position != null ? String.Join(", ", Position) : "null")}, Faction: [{(Faction != null ? String.Join(", ", Faction) : "null")}]";
-    }
-
     [Script(MessageType.GSS, 23, 1, true)]
     public class AreaVisualDataTinyObjectViewUpdate : BaseScript
     {
@@ -375,6 +359,21 @@ namespace PacketPeepScript
         }
     }
 
+    public struct TinyObjectData
+    {
+        public ushort TypeId; // SDB Table 152
+        public float[] Position;
+        public byte[] Faction;
+
+        public TinyObjectData(Bitter.BinaryReader R)
+        {
+            TypeId = R.UShort();
+            Position = R.FloatArray(3);
+            Faction = R.ByteArray(2);
+        }
+
+        public override string ToString() => $"TypeId: {TypeId}, Position: [{(Position != null ? String.Join(", ", Position) : "null")}, Faction: [{(Faction != null ? String.Join(", ", Faction) : "null")}]";
+    }
 
     public static class MyExtensions
     {

@@ -2,6 +2,22 @@ using Bitter;
 using System.Collections.Generic;
 namespace PacketPeepScript
 {
+    [Script(MessageType.GSS, 2, 204, false)]
+    public class CharacterBaseControllerSlotModuleRequest : BaseScript
+    {
+        public ulong ItemGUID;
+        public byte NumberOfModules;
+        public SlotModuleRequest[] Modules;
+
+        public override void Read(Bitter.BinaryStream Stream)
+        {
+            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
+            ItemGUID = Stream.Read.ULong();
+            NumberOfModules = Stream.Read.Byte();
+            Modules = Stream.Read.SlotModuleRequestArray(NumberOfModules);
+        }
+    }
+
     public struct SlotModuleRequest
     {
         public uint SdbId;
@@ -31,22 +47,6 @@ namespace PacketPeepScript
                 list.Add(R.SlotModuleRequest());
             }
             return list.ToArray();
-        }
-    }
-
-    [Script(MessageType.GSS, 2, 204, false)]
-    public class CharacterBaseControllerSlotModuleRequest : BaseScript
-    {
-        public ulong ItemGUID;
-        public byte NumberOfModules;
-        public SlotModuleRequest[] Modules;
-
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-            ItemGUID = Stream.Read.ULong();
-            NumberOfModules = Stream.Read.Byte();
-            Modules = Stream.Read.SlotModuleRequestArray(NumberOfModules);
         }
     }
 }

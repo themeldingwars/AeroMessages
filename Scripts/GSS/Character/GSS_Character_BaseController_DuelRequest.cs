@@ -1,21 +1,6 @@
 using Bitter;
 namespace PacketPeepScript
 {
-    public static class MyExtensions {
-        public static string StringZ(this Bitter.BinaryReader rdr, Bitter.BinaryStream stream) {
-            string ret = "";
-            do
-            {
-                byte b = rdr.Byte();
-                if (b == 0x00)
-                    break;
-                ret += (char)b;
-            }
-            while (stream.baseStream.ByteOffset < stream.baseStream.Length);
-            return ret;
-        }
-    }
-
     [Script(MessageType.GSS, 2, 188, false)]
     public class CharacterBaseControllerDuelRequest : BaseScript
     {
@@ -35,6 +20,21 @@ namespace PacketPeepScript
             Unk2 = Stream.Read.ByteArray(9);
             TargetName = Stream.Read.StringZ(Stream);
             Unk3 = Stream.Read.ByteArray(20);
+        }
+    }
+
+    public static class MyExtensions {
+        public static string StringZ(this Bitter.BinaryReader rdr, Bitter.BinaryStream stream) {
+            string ret = "";
+            do
+            {
+                byte b = rdr.Byte();
+                if (b == 0x00)
+                    break;
+                ret += (char)b;
+            }
+            while (stream.baseStream.ByteOffset < stream.baseStream.Length);
+            return ret;
         }
     }
 }

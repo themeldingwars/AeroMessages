@@ -3,22 +3,6 @@ using System;
 using System.Collections.Generic;
 namespace PacketPeepScript
 {
-    public struct LocalStatusEffectsData
-    {
-        public byte[] Entity;
-        public uint? Value;
-        public uint? Time;
-
-        public LocalStatusEffectsData(Bitter.BinaryReader R)
-        {
-           Entity = R.ByteArray(8);
-           Value = R.UInt();
-           Time = R.UInt();
-        }
-
-        public override string ToString() => $"Value: {Value}, Time: {Time}, Entity: [{(Entity != null ? String.Join(", ", Entity) : "null")}]";
-    }
-
     [Script(MessageType.GSS, 6, 1, true)]
     public class CharacterLocalEffectsControllerUpdate : BaseScript
     {
@@ -387,6 +371,21 @@ namespace PacketPeepScript
         }
     }
 
+    public struct LocalStatusEffectsData
+    {
+        public byte[] Entity;
+        public uint? Value;
+        public uint? Time;
+
+        public LocalStatusEffectsData(Bitter.BinaryReader R)
+        {
+           Entity = R.ByteArray(8);
+           Value = R.UInt();
+           Time = R.UInt();
+        }
+
+        public override string ToString() => $"Value: {Value}, Time: {Time}, Entity: [{(Entity != null ? String.Join(", ", Entity) : "null")}]";
+    }
 
     public static class MyExtensions
     {
