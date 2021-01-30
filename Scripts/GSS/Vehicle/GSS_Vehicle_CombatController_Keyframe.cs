@@ -459,8 +459,6 @@ namespace PacketPeepScript
         public float? StatusEffects_31_Data_Float2;
         public bool? StatusEffects_31_Cancel;
 
-        public string UnkMemoryLeak;
-
         public uint SlottedAbility_0;
         public uint SlottedAbility_1;
         public uint SlottedAbility_2;
@@ -480,115 +478,39 @@ namespace PacketPeepScript
                 PlayerID = Stream.Read.ULong();
                 Bitfield = Stream.Read.BitArray(32); 
 
-                // Status Effect Times
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_0] == 0) {
-                    StatusEffects_0_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_1] == 0) {
-                    StatusEffects_1_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_2] == 0) {
-                    StatusEffects_2_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_3] == 0) {
-                    StatusEffects_3_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_4] == 0) {
-                    StatusEffects_4_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_5] == 0) {
-                    StatusEffects_5_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_6] == 0) {
-                    StatusEffects_6_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_7] == 0) {
-                    StatusEffects_7_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_8] == 0) {
-                    StatusEffects_8_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_9] == 0) {
-                    StatusEffects_9_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_10] == 0) {
-                    StatusEffects_10_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_11] == 0) {
-                    StatusEffects_11_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_12] == 0) {
-                    StatusEffects_12_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_13] == 0) {
-                    StatusEffects_13_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_14] == 0) {
-                    StatusEffects_14_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_15] == 0) {
-                    StatusEffects_15_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_16] == 0) {
-                    StatusEffects_16_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_17] == 0) {
-                    StatusEffects_17_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_18] == 0) {
-                    StatusEffects_18_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_19] == 0) {
-                    StatusEffects_19_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_20] == 0) {
-                    StatusEffects_20_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_21] == 0) {
-                    StatusEffects_21_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_22] == 0) {
-                    StatusEffects_22_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_23] == 0) {
-                    StatusEffects_23_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_24] == 0) {
-                    StatusEffects_24_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_25] == 0) {
-                    StatusEffects_25_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_26] == 0) {
-                    StatusEffects_26_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_27] == 0) {
-                    StatusEffects_27_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_28] == 0) {
-                    StatusEffects_28_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_29] == 0) {
-                    StatusEffects_29_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_30] == 0) {
-                    StatusEffects_30_ChangeTime = Stream.Read.UShort();
-                }
-                if (Bitfield[(int)BitfieldIndex.StatusEffects_31] == 0) {
-                    StatusEffects_31_ChangeTime = Stream.Read.UShort();
-                }
-
-                // This text is fucking weird, I'm half assuming this was due to some kind of bug.
-                // It is neither null-terminated nor size-indicated but it appears to be predictable relative to number of status effects...
-                // This solution appears to work for 0, 1, and 3 status effects.
-                int NumberOfStatusEffects = 0;
-                foreach (byte b in Bitfield)
-                {
-                    if (b == 0x00)
-                        NumberOfStatusEffects++;
-                }
-                int WeirdTextLength = 64 - (2*NumberOfStatusEffects);
-                UnkMemoryLeak = Stream.Read.String(WeirdTextLength);
+                // Status Effect Change Times
+                StatusEffects_0_ChangeTime = Stream.Read.UShort();
+                StatusEffects_1_ChangeTime = Stream.Read.UShort();
+                StatusEffects_2_ChangeTime = Stream.Read.UShort();
+                StatusEffects_3_ChangeTime = Stream.Read.UShort();
+                StatusEffects_4_ChangeTime = Stream.Read.UShort();
+                StatusEffects_5_ChangeTime = Stream.Read.UShort();
+                StatusEffects_6_ChangeTime = Stream.Read.UShort();
+                StatusEffects_7_ChangeTime = Stream.Read.UShort();
+                StatusEffects_8_ChangeTime = Stream.Read.UShort();
+                StatusEffects_9_ChangeTime = Stream.Read.UShort();
+                StatusEffects_10_ChangeTime = Stream.Read.UShort();
+                StatusEffects_11_ChangeTime = Stream.Read.UShort();
+                StatusEffects_12_ChangeTime = Stream.Read.UShort();
+                StatusEffects_13_ChangeTime = Stream.Read.UShort();
+                StatusEffects_14_ChangeTime = Stream.Read.UShort();
+                StatusEffects_15_ChangeTime = Stream.Read.UShort();
+                StatusEffects_16_ChangeTime = Stream.Read.UShort();
+                StatusEffects_17_ChangeTime = Stream.Read.UShort();
+                StatusEffects_18_ChangeTime = Stream.Read.UShort();
+                StatusEffects_19_ChangeTime = Stream.Read.UShort();
+                StatusEffects_20_ChangeTime = Stream.Read.UShort();
+                StatusEffects_21_ChangeTime = Stream.Read.UShort();
+                StatusEffects_22_ChangeTime = Stream.Read.UShort();
+                StatusEffects_23_ChangeTime = Stream.Read.UShort();
+                StatusEffects_24_ChangeTime = Stream.Read.UShort();
+                StatusEffects_25_ChangeTime = Stream.Read.UShort();
+                StatusEffects_26_ChangeTime = Stream.Read.UShort();
+                StatusEffects_27_ChangeTime = Stream.Read.UShort();
+                StatusEffects_28_ChangeTime = Stream.Read.UShort();
+                StatusEffects_29_ChangeTime = Stream.Read.UShort();
+                StatusEffects_30_ChangeTime = Stream.Read.UShort();
+                StatusEffects_31_ChangeTime = Stream.Read.UShort();
       
                 // Status Effect Data
                 if (Bitfield[(int)BitfieldIndex.StatusEffects_0] == 0)
