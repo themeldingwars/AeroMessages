@@ -24,24 +24,28 @@ namespace PacketPeepScript
         public override void Read(Bitter.BinaryStream Stream)
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-            ShortTime = Stream.Read.UShort();
-            PackedUnk = Stream.Read.UShortArray(3);
-            UnpackedUnk = UnpackFloatArray(PackedUnk);
-            PackedAim = Stream.Read.UShortArray(3);
-            Aim = UnpackFloatArray(PackedAim);
-            AmmoType = Stream.Read.UShort();
-            Range = Stream.Read.Float();
 
-            Unk1 = Stream.Read.ByteArray(14);
-
-            Hardpoint = Stream.Read.UShort();
-
-            Unk5 = Stream.Read.ByteArray(2);
-
-            UnkFlag = Stream.Read.Byte();
-            if (UnkFlag > 0)
+            if (true)
             {
-                UnkFlaggedEntity = Stream.Read.ByteArray(8);
+                ShortTime = Stream.Read.UShort();
+                PackedUnk = Stream.Read.UShortArray(3);
+                UnpackedUnk = UnpackFloatArray(PackedUnk);
+                PackedAim = Stream.Read.UShortArray(3);
+                Aim = UnpackFloatArray(PackedAim);
+                AmmoType = Stream.Read.UShort();
+                Range = Stream.Read.Float();
+
+                Unk1 = Stream.Read.ByteArray(14);
+
+                Hardpoint = Stream.Read.UShort();
+
+                Unk5 = Stream.Read.ByteArray(2);
+
+                UnkFlag = Stream.Read.Byte();
+                if (UnkFlag > 0)
+                {
+                    UnkFlaggedEntity = Stream.Read.ByteArray(8);
+                }
             }
         }
         
