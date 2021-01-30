@@ -1429,7 +1429,6 @@ namespace PacketPeepScript
         }
     }
     
-
     public struct SinCardField
     {
         public enum SinCardFieldDataType : byte

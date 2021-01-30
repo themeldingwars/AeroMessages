@@ -1,4 +1,6 @@
 using Bitter;
+using System;
+using System.Collections.Generic;
 namespace PacketPeepScript
 {
     [Script(MessageType.GSS, 27, 4, true)]
@@ -88,6 +90,29 @@ namespace PacketPeepScript
         public byte[] SinFactionsAcquiredBy;
         public byte[] SinTeamsAcquiredBy;
         public uint SinCardType;
+        public SinCardField SinCardFields_0;
+        public SinCardField SinCardFields_1;
+        public SinCardField SinCardFields_2;
+        public SinCardField SinCardFields_3;
+        public SinCardField SinCardFields_4;
+        public SinCardField SinCardFields_5;
+        public SinCardField SinCardFields_6;
+        public SinCardField SinCardFields_7;
+        public SinCardField SinCardFields_8;
+        public SinCardField SinCardFields_9;
+        public SinCardField SinCardFields_10;
+        public SinCardField SinCardFields_11;
+        public SinCardField SinCardFields_12;
+        public SinCardField SinCardFields_13;
+        public SinCardField SinCardFields_14;
+        public SinCardField SinCardFields_15;
+        public SinCardField SinCardFields_16;
+        public SinCardField SinCardFields_17;
+        public SinCardField SinCardFields_18;
+        public SinCardField SinCardFields_19;
+        public SinCardField SinCardFields_20;
+        public SinCardField SinCardFields_21;
+        public SinCardField SinCardFields_22;
         public byte[] ScopeBubbleInfo;
         public uint ScalingLevel;
 
@@ -171,101 +196,193 @@ namespace PacketPeepScript
 
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_0] == 0)
                 {
-                    PeepWarning += "SinCardFields_0;";
+                    SinCardFields_0 = Stream.Read.SinCardField();
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_1] == 0)
                 {
-                    PeepWarning += "SinCardFields_1;";
+                    SinCardFields_1 = Stream.Read.SinCardField();
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_2] == 0)
                 {
-                    PeepWarning += "SinCardFields_2;";
+                    SinCardFields_2 = Stream.Read.SinCardField();
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_3] == 0)
                 {
-                    PeepWarning += "SinCardFields_3;";
+                    SinCardFields_3 = Stream.Read.SinCardField();
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_4] == 0)
                 {
-                    PeepWarning += "SinCardFields_4;";
+                    SinCardFields_4 = Stream.Read.SinCardField();
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_5] == 0)
                 {
-                    PeepWarning += "SinCardFields_5;";
+                    SinCardFields_5 = Stream.Read.SinCardField();
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_6] == 0)
                 {
-                    PeepWarning += "SinCardFields_6;";
+                    SinCardFields_6 = Stream.Read.SinCardField();
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_7] == 0)
                 {
-                    PeepWarning += "SinCardFields_7;";
+                  SinCardFields_7 = Stream.Read.SinCardField();
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_8] == 0)
                 {
-                    PeepWarning += "SinCardFields_8;";
+                    SinCardFields_8 = Stream.Read.SinCardField();
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_9] == 0)
                 {
-                    PeepWarning += "SinCardFields_9;";
+                    SinCardFields_9 = Stream.Read.SinCardField();
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_10] == 0)
                 {
-                    PeepWarning += "SinCardFields_10;";
+                    SinCardFields_10 = Stream.Read.SinCardField();
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_11] == 0)
                 {
-                    PeepWarning += "SinCardFields_11;";
+                    SinCardFields_11 = Stream.Read.SinCardField();
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_12] == 0)
                 {
-                    PeepWarning += "SinCardFields_12;";
+                    SinCardFields_12 = Stream.Read.SinCardField();
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_13] == 0)
                 {
-                    PeepWarning += "SinCardFields_13;";
+                    SinCardFields_13 = Stream.Read.SinCardField();
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_14] == 0)
                 {
-                    PeepWarning += "SinCardFields_14;";
+                    SinCardFields_14 = Stream.Read.SinCardField();
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_15] == 0)
                 {
-                    PeepWarning += "SinCardFields_15;";
+                    SinCardFields_15 = Stream.Read.SinCardField();
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_16] == 0)
                 {
-                    PeepWarning += "SinCardFields_16;";
+                    SinCardFields_16 = Stream.Read.SinCardField();
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_17] == 0)
                 {
-                    PeepWarning += "SinCardFields_17;";
+                    SinCardFields_17 = Stream.Read.SinCardField();
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_18] == 0)
                 {
-                    PeepWarning += "SinCardFields_18;";
+                    SinCardFields_18 = Stream.Read.SinCardField();
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_19] == 0)
                 {
-                    PeepWarning += "SinCardFields_19;";
+                    SinCardFields_19 = Stream.Read.SinCardField();
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_20] == 0)
                 {
-                    PeepWarning += "SinCardFields_20;";
+                    SinCardFields_20 = Stream.Read.SinCardField();
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_21] == 0)
                 {
-                    PeepWarning += "SinCardFields_21;";
+                    SinCardFields_21 = Stream.Read.SinCardField();
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_22] == 0)
                 {
-                    PeepWarning += "SinCardFields_22;";
+                    SinCardFields_22 = Stream.Read.SinCardField();
                 }
 
                 ScopeBubbleInfo = Stream.Read.ByteArray(8);
                 ScalingLevel = Stream.Read.UInt();
             } 
         }
+    }
+
+    public struct SinCardField
+    {
+        public enum SinCardFieldDataType : byte
+        {
+            LocalizationId = 0, // 4 bytes
+            Integer = 1, // 4 bytes
+            EntityId = 2, // 8 bytes
+            UnkType_3 = 3, // 8 bytes
+            Enum = 4, // stringz
+            UnkType_5 = 5, // ?
+            Short = 6, // 2 bytes
+            Timer = 7, // 9 bytes
+            Boolean = 8, // 0 bytes???
+        }
+
+        public SinCardFieldDataType DataType;
+
+        public uint LocalizationId;
+        public uint Integer;
+        public byte[] EntityId;
+        public string Enum;
+        public ushort Short;
+
+        public byte[] UnkData;
+
+
+        public SinCardField(Bitter.BinaryReader R)
+        {
+            // Sigh
+            LocalizationId = 0;
+            Integer = 0;
+            EntityId = null;
+            Enum = "";
+            Short = 0;
+            UnkData = null;
+
+            // Parse
+            DataType = (SinCardFieldDataType) R.Byte();
+
+            switch (DataType)
+            {
+                case SinCardFieldDataType.LocalizationId:
+                    LocalizationId = R.UInt();
+                    break;
+                case SinCardFieldDataType.Integer:
+                    Integer = R.UInt();
+                    break;
+                case SinCardFieldDataType.EntityId:
+                    EntityId = R.ByteArray(8);
+                    break;
+                case SinCardFieldDataType.Enum:
+                    Enum = R.StringZ();
+                    break;
+                case SinCardFieldDataType.Short:
+                    Short = R.UShort();
+                    break;
+                case SinCardFieldDataType.Timer:
+                    UnkData = R.ByteArray(9);
+                    break;
+            }
+        }
+
+        public override string ToString()
+        {
+            string result = $"{DataType}: ";
+
+            switch (DataType)
+            {
+                case SinCardFieldDataType.LocalizationId:
+                    result += $"{LocalizationId}";
+                    break;
+                case SinCardFieldDataType.Integer:
+                    result += $"{Integer}";
+                    break;
+                case SinCardFieldDataType.EntityId:
+                    result += $"[{(EntityId != null ? String.Join(", ", EntityId) : "null")}]";
+                    break;
+                case SinCardFieldDataType.Enum:
+                    result += $"{Enum}";
+                    break;
+                case SinCardFieldDataType.Short:
+                    result += $"{Short}";
+                    break;
+                case SinCardFieldDataType.Timer:
+                    result += $"[{(UnkData != null ? String.Join(", ", UnkData) : "null")}]";
+                    break;
+            }
+
+            return result;
+        } 
     }
 
     public static class MyExtensions
@@ -284,6 +401,21 @@ namespace PacketPeepScript
             }
             while (Stream.baseStream.ByteOffset < Stream.baseStream.Length);
             return ret;
+        }
+
+        public static SinCardField SinCardField(this Bitter.BinaryReader R)
+        {
+            return new SinCardField(R);
+        }
+
+        public static SinCardField[] SinCardFieldArray(this Bitter.BinaryReader R, int num)
+        {
+            List<SinCardField> list = new List<SinCardField>();
+            for (int i = 1; i <= num; i++)
+            {
+                list.Add(R.SinCardField());
+            }
+            return list.ToArray();
         }
     }
 }
