@@ -52,7 +52,7 @@ namespace PacketPeepScript
             BattleChatterTag,
         }
 
-        public string Warning;
+        public string PeepWarning;
         public byte[] Bitfield;
 
         public ushort? StatusEffects_0_ChangeTime;
@@ -1207,43 +1207,43 @@ namespace PacketPeepScript
                 // TODO: AppendageHealthPools
                 if(Bitfield[(int)BitfieldIndex.AppendageHealthPools_0] == 0)
                 {
-                    Warning += "AppendageHealthPools_0;";
+                    PeepWarning += "AppendageHealthPools_0;";
                 }
                 if(Bitfield[(int)BitfieldIndex.AppendageHealthPools_1] == 0)
                 {
-                    Warning += "AppendageHealthPools_1;";
+                    PeepWarning += "AppendageHealthPools_1;";
                 }
                 if(Bitfield[(int)BitfieldIndex.AppendageHealthPools_2] == 0)
                 {
-                    Warning += "AppendageHealthPools_2;";
+                    PeepWarning += "AppendageHealthPools_2;";
                 }
                 if(Bitfield[(int)BitfieldIndex.AppendageHealthPools_3] == 0)
                 {
-                    Warning += "AppendageHealthPools_3;";
+                    PeepWarning += "AppendageHealthPools_3;";
                 }
                 if(Bitfield[(int)BitfieldIndex.AppendageHealthPools_4] == 0)
                 {
-                    Warning += "AppendageHealthPools_4;";
+                    PeepWarning += "AppendageHealthPools_4;";
                 }
                 if(Bitfield[(int)BitfieldIndex.AppendageHealthPools_5] == 0)
                 {
-                    Warning += "AppendageHealthPools_5;";
+                    PeepWarning += "AppendageHealthPools_5;";
                 }
                 if(Bitfield[(int)BitfieldIndex.AppendageHealthPools_6] == 0)
                 {
-                    Warning += "AppendageHealthPools_6;";
+                    PeepWarning += "AppendageHealthPools_6;";
                 }
                 if(Bitfield[(int)BitfieldIndex.AppendageHealthPools_7] == 0)
                 {
-                    Warning += "AppendageHealthPools_7;";
+                    PeepWarning += "AppendageHealthPools_7;";
                 }
                 if(Bitfield[(int)BitfieldIndex.AppendageHealthPools_8] == 0)
                 {
-                    Warning += "AppendageHealthPools_8;";
+                    PeepWarning += "AppendageHealthPools_8;";
                 }
                 if(Bitfield[(int)BitfieldIndex.AppendageHealthPools_9] == 0)
                 {
-                    Warning += "AppendageHealthPools_9;";
+                    PeepWarning += "AppendageHealthPools_9;";
                 }
 
                 // AppendageHealthPct (guess, but it's rock solid for the entities that have npctargetobjid)
@@ -1264,7 +1264,7 @@ namespace PacketPeepScript
                 }
                 if(Bitfield[(int)BitfieldIndex.BattleChatterTag] == 0)
                 {
-                    Warning += "BattleChatterTag;";
+                    PeepWarning += "BattleChatterTag;";
                     BattleChatterTag = Stream.Read.ByteArray(2);
                 }
 

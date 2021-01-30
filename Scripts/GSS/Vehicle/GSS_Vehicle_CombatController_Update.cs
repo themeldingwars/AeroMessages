@@ -124,7 +124,7 @@ namespace PacketPeepScript
             StatusEffects_31_Cancel = 0xbf,
         }
 
-        public string UnableToParseWarning; // Will be set if we encounter an unhandled shadowfield
+        public string PeepWarning; // Will be set if we encounter an unhandled shadowfield
 
         public ushort? StatusEffects_0_ChangeTime;
         public uint? StatusEffects_0_Id;
@@ -1395,7 +1395,7 @@ namespace PacketPeepScript
                         break;
 
                     default:
-                        UnableToParseWarning = $"Dont know how to parse shadowfield {sfidx}";
+                        PeepWarning += $"Dont know how to parse shadowfield {sfidx}";
                         int remaining = (int)(Stream.baseStream.Length - Stream.baseStream.ByteOffset);
                         UnableToParse = Stream.Read.ByteArray(remaining);
                         break;

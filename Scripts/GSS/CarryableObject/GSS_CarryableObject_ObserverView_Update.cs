@@ -181,7 +181,7 @@ namespace PacketPeepScript
             Reset_BounceField = 229, // guess
         }
 
-        public string UnableToParseWarning; // Will be set if we encounter an unhandled shadowfield
+        public string PeepWarning; // Will be set if we encounter an unhandled shadowfield
 
 
         public uint? CarryableObjectTypeId; // Sdb table 480, id column.
@@ -1626,7 +1626,7 @@ namespace PacketPeepScript
 
 
                     default:
-                        UnableToParseWarning = $"Dont know how to parse shadowfield {sfidx}";
+                        PeepWarning += $"Dont know how to parse shadowfield {sfidx}";
                         int remaining = (int)(Stream.baseStream.Length - Stream.baseStream.ByteOffset);
                         UnableToParse = Stream.Read.ByteArray(remaining);
                         break;

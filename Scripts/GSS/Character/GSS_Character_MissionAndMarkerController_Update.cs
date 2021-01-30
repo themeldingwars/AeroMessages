@@ -104,7 +104,7 @@ namespace PacketPeepScript
             ContextFlags_23 = 0x5f,
         }
 
-        public string UnableToParseWarning; // Will be set if we encounter an unhandled shadowfield
+        public string PeepWarning; // Will be set if we encounter an unhandled shadowfield
 
         public byte[] UnableToParse;
 
@@ -118,7 +118,7 @@ namespace PacketPeepScript
                 switch (sfidx)
                 {
                     default:
-                        UnableToParseWarning = $"Dont know how to parse shadowfield {sfidx}";
+                        PeepWarning += $"Dont know how to parse shadowfield {sfidx}";
                         int remaining = (int)(Stream.baseStream.Length - Stream.baseStream.ByteOffset);
                         UnableToParse = Stream.Read.ByteArray(remaining);
                         break;

@@ -74,8 +74,7 @@ namespace PacketPeepScript
             // 3 last bits are 0 by default, probably unused
         }
 
-
-        public string Warning;
+        public string PeepWarning;
 
         public byte[] Bitfield;
         public uint CarryableObjectTypeId; // Sdb table 480, id column.
@@ -577,7 +576,7 @@ namespace PacketPeepScript
 
                 if (Bitfield[(int)BitfieldIndex.ForcedMovement] == 0)
                 {
-                    Warning += "ForcedMovement;";
+                    PeepWarning += "ForcedMovement;";
                     // Needs indepth parsing, first byte is type/flags.
                     ForcedMovement = Stream.Read.ByteArray(30);
                 }
@@ -1230,117 +1229,117 @@ namespace PacketPeepScript
 
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_0] == 0)
                 {
-                    Warning += "SinCardFields_0;";
+                    PeepWarning += "SinCardFields_0;";
                     SinCardFields_0 = Stream.Read.ByteArray(5);
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_1] == 0)
                 {
-                    Warning += "SinCardFields_1;";
+                    PeepWarning += "SinCardFields_1;";
                     SinCardFields_1 = Stream.Read.ByteArray(5);
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_2] == 0)
                 {
-                    Warning += "SinCardFields_2;";
+                    PeepWarning += "SinCardFields_2;";
                     SinCardFields_2 = Stream.Read.ByteArray(5);
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_3] == 0)
                 {
-                    Warning += "SinCardFields_3;";
+                    PeepWarning += "SinCardFields_3;";
                     SinCardFields_3 = Stream.Read.ByteArray(5);
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_4] == 0)
                 {
-                    Warning += "SinCardFields_4;";
+                    PeepWarning += "SinCardFields_4;";
                     SinCardFields_4 = Stream.Read.ByteArray(5);
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_5] == 0)
                 {
-                    Warning += "SinCardFields_5;";
+                    PeepWarning += "SinCardFields_5;";
                     SinCardFields_5 = Stream.Read.ByteArray(5);
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_6] == 0)
                 {
-                    Warning += "SinCardFields_6;";
+                    PeepWarning += "SinCardFields_6;";
                     SinCardFields_6 = Stream.Read.ByteArray(5);
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_7] == 0)
                 {
-                    Warning += "SinCardFields_7;";
+                    PeepWarning += "SinCardFields_7;";
                     SinCardFields_7 = Stream.Read.ByteArray(5);
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_8] == 0)
                 {
-                    Warning += "SinCardFields_8;";
+                    PeepWarning += "SinCardFields_8;";
                     SinCardFields_8 = Stream.Read.ByteArray(5);
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_9] == 0)
                 {
-                    Warning += "SinCardFields_9;";
+                    PeepWarning += "SinCardFields_9;";
                     SinCardFields_9 = Stream.Read.ByteArray(5);
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_10] == 0)
                 {
-                    Warning += "SinCardFields_10;";
+                    PeepWarning += "SinCardFields_10;";
                     SinCardFields_10 = Stream.Read.ByteArray(5);
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_11] == 0)
                 {
-                    Warning += "SinCardFields_11;";
+                    PeepWarning += "SinCardFields_11;";
                     SinCardFields_11 = Stream.Read.ByteArray(5);
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_12] == 0)
                 {
-                    Warning += "SinCardFields_12;";
+                    PeepWarning += "SinCardFields_12;";
                     SinCardFields_12 = Stream.Read.ByteArray(5);
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_13] == 0)
                 {
-                    Warning += "SinCardFields_13;";
+                    PeepWarning += "SinCardFields_13;";
                     SinCardFields_13 = Stream.Read.ByteArray(5);
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_14] == 0)
                 {
-                    Warning += "SinCardFields_14;";
+                    PeepWarning += "SinCardFields_14;";
                     SinCardFields_14 = Stream.Read.ByteArray(5);
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_15] == 0)
                 {
-                    Warning += "SinCardFields_15;";
+                    PeepWarning += "SinCardFields_15;";
                     SinCardFields_15 = Stream.Read.ByteArray(5);
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_16] == 0)
                 {
-                    Warning += "SinCardFields_16;";
+                    PeepWarning += "SinCardFields_16;";
                     SinCardFields_16 = Stream.Read.ByteArray(5);
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_17] == 0)
                 {
-                    Warning += "SinCardFields_17;";
+                    PeepWarning += "SinCardFields_17;";
                     SinCardFields_17 = Stream.Read.ByteArray(5);
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_18] == 0)
                 {
-                    Warning += "SinCardFields_18;";
+                    PeepWarning += "SinCardFields_18;";
                     SinCardFields_18 = Stream.Read.ByteArray(5);
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_19] == 0)
                 {
-                    Warning += "SinCardFields_19;";
+                    PeepWarning += "SinCardFields_19;";
                     SinCardFields_19 = Stream.Read.ByteArray(5);
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_20] == 0)
                 {
-                    Warning += "SinCardFields_20;";
+                    PeepWarning += "SinCardFields_20;";
                     SinCardFields_20 = Stream.Read.ByteArray(5);
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_21] == 0)
                 {
-                    Warning += "SinCardFields_21;";
+                    PeepWarning += "SinCardFields_21;";
                     SinCardFields_21 = Stream.Read.ByteArray(5);
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_22] == 0)
                 {
-                    Warning += "SinCardFields_22;";
+                    PeepWarning += "SinCardFields_22;";
                     SinCardFields_22 = Stream.Read.ByteArray(5);
                 }
 
@@ -1353,7 +1352,7 @@ namespace PacketPeepScript
                 }
                 if (Bitfield[(int)BitfieldIndex.SeekField] == 0)
                 {
-                    Warning += "SeekField;";
+                    PeepWarning += "SeekField;";
                 }
                 if (Bitfield[(int)BitfieldIndex.BounceField] == 0)
                 {

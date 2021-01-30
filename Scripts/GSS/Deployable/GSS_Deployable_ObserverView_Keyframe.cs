@@ -73,6 +73,7 @@ namespace PacketPeepScript
             AppendageHealthPools_6,
             AppendageHealthPools_7,
         }
+
         public string PeepWarning;
 
         public byte[] Bitfield;

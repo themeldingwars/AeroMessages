@@ -103,7 +103,7 @@ namespace PacketPeepScript
             Reset_SinCardFields_22      = 0xc1,
         }
 
-        public string UnableToParseWarning; // Will be set if we encounter an unhandled shadowfield
+        public string PeepWarning; // Will be set if we encounter an unhandled shadowfield
 
         public ushort? VehicleId;
         public byte[] Configuration;
@@ -420,7 +420,7 @@ namespace PacketPeepScript
                         break;
 
                     default:
-                        UnableToParseWarning = $"Dont know how to parse shadowfield {sfidx}";
+                        PeepWarning += $"Dont know how to parse shadowfield {sfidx}";
                         int remaining = (int)(Stream.baseStream.Length - Stream.baseStream.ByteOffset);
                         UnableToParse = Stream.Read.ByteArray(remaining);
                         break;

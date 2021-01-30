@@ -43,7 +43,7 @@ namespace PacketPeepScript
             ScopeBubbleInfo        = 0x22,
         }
 
-        public string UnableToParseWarning; // Will be set if we encounter an unhandled shadowfield
+        public string PeepWarning; // Will be set if we encounter an unhandled shadowfield
 
         public byte? Dynamic_01;
         public byte? Dynamic_03;
@@ -67,7 +67,7 @@ namespace PacketPeepScript
                         break;
 
                     default:
-                        UnableToParseWarning = $"Dont know how to parse shadowfield {sfidx}";
+                        PeepWarning += $"Dont know how to parse shadowfield {sfidx}";
                         int remaining = (int)(Stream.baseStream.Length - Stream.baseStream.ByteOffset);
                         UnableToParse = Stream.Read.ByteArray(remaining);
                         break;

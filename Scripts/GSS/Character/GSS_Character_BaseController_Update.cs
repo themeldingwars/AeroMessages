@@ -164,7 +164,7 @@ namespace PacketPeepScript
             Reset_SinCardFields_22       = 0xe8,
         }
 
-        public string UnableToParseWarning; // Will be set if we encounter an unhandled shadowfield
+        public string PeepWarning; // Will be set if we encounter an unhandled shadowfield
 
         public uint? TimePlayed;
         public uint? CurrentWeight;
@@ -756,7 +756,7 @@ namespace PacketPeepScript
                         break;
 
                     default:
-                        UnableToParseWarning = $"Dont know how to parse shadowfield {sfidx}";
+                        PeepWarning += $"Dont know how to parse shadowfield {sfidx}";
                         int remaining = (int)(Stream.baseStream.Length - Stream.baseStream.ByteOffset);
                         UnableToParse = Stream.Read.ByteArray(remaining);
                         break;

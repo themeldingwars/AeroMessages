@@ -201,7 +201,7 @@ namespace PacketPeepScript
             Reset_AppendageHealthPools_7 = 0xf3,
         }
 
-        public string UnableToParseWarning; // Will be set if we encounter an unhandled shadowfield
+        public string PeepWarning; // Will be set if we encounter an unhandled shadowfield
 
         public uint? Type; // Type, Sdb table 187, id column.
         public byte[] OwningEntity;
@@ -1833,7 +1833,7 @@ namespace PacketPeepScript
 
 
                     default:
-                        UnableToParseWarning = $"Dont know how to parse shadowfield {sfidx}";
+                        PeepWarning += $"Dont know how to parse shadowfield {sfidx}";
                         int remaining = (int)(Stream.baseStream.Length - Stream.baseStream.ByteOffset);
                         UnableToParse = Stream.Read.ByteArray(remaining);
                         break;

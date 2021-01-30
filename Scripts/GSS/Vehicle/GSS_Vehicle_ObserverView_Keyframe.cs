@@ -34,7 +34,7 @@ namespace PacketPeepScript
             SinCardFields_22,
         }
 
-        public string Warning;
+        public string PeepWarning;
 
         public byte[] Bitfield;
         public ushort VehicleType; // 0x00, Sdb table 47, id column.
@@ -140,95 +140,95 @@ namespace PacketPeepScript
 
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_0] == 0)
                 {
-                    Warning += "SinCardFields_0;";
+                    PeepWarning += "SinCardFields_0;";
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_1] == 0)
                 {
-                    Warning += "SinCardFields_1;";
+                    PeepWarning += "SinCardFields_1;";
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_2] == 0)
                 {
-                    Warning += "SinCardFields_2;";
+                    PeepWarning += "SinCardFields_2;";
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_3] == 0)
                 {
-                    Warning += "SinCardFields_3;";
+                    PeepWarning += "SinCardFields_3;";
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_4] == 0)
                 {
-                    Warning += "SinCardFields_4;";
+                    PeepWarning += "SinCardFields_4;";
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_5] == 0)
                 {
-                    Warning += "SinCardFields_5;";
+                    PeepWarning += "SinCardFields_5;";
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_6] == 0)
                 {
-                    Warning += "SinCardFields_6;";
+                    PeepWarning += "SinCardFields_6;";
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_7] == 0)
                 {
-                    Warning += "SinCardFields_7;";
+                    PeepWarning += "SinCardFields_7;";
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_8] == 0)
                 {
-                    Warning += "SinCardFields_8;";
+                    PeepWarning += "SinCardFields_8;";
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_9] == 0)
                 {
-                    Warning += "SinCardFields_9;";
+                    PeepWarning += "SinCardFields_9;";
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_10] == 0)
                 {
-                    Warning += "SinCardFields_10;";
+                    PeepWarning += "SinCardFields_10;";
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_11] == 0)
                 {
-                    Warning += "SinCardFields_11;";
+                    PeepWarning += "SinCardFields_11;";
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_12] == 0)
                 {
-                    Warning += "SinCardFields_12;";
+                    PeepWarning += "SinCardFields_12;";
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_13] == 0)
                 {
-                    Warning += "SinCardFields_13;";
+                    PeepWarning += "SinCardFields_13;";
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_14] == 0)
                 {
-                    Warning += "SinCardFields_14;";
+                    PeepWarning += "SinCardFields_14;";
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_15] == 0)
                 {
-                    Warning += "SinCardFields_15;";
+                    PeepWarning += "SinCardFields_15;";
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_16] == 0)
                 {
-                    Warning += "SinCardFields_16;";
+                    PeepWarning += "SinCardFields_16;";
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_17] == 0)
                 {
-                    Warning += "SinCardFields_17;";
+                    PeepWarning += "SinCardFields_17;";
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_18] == 0)
                 {
-                    Warning += "SinCardFields_18;";
+                    PeepWarning += "SinCardFields_18;";
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_19] == 0)
                 {
-                    Warning += "SinCardFields_19;";
+                    PeepWarning += "SinCardFields_19;";
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_20] == 0)
                 {
-                    Warning += "SinCardFields_20;";
+                    PeepWarning += "SinCardFields_20;";
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_21] == 0)
                 {
-                    Warning += "SinCardFields_21;";
+                    PeepWarning += "SinCardFields_21;";
                 }
                 if (Bitfield[(int)BitfieldIndex.SinCardFields_22] == 0)
                 {
-                    Warning += "SinCardFields_22;";
+                    PeepWarning += "SinCardFields_22;";
                 }
                 ScopeBubbleInfo = Stream.Read.ByteArray(8);
                 ScalingLevel = Stream.Read.UInt();
