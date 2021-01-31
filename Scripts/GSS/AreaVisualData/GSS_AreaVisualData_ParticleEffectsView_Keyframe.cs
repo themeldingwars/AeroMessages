@@ -61,64 +61,104 @@ namespace PacketPeepScript
             Bitfield = Stream.Read.BitArray(24); // Since only 20 bitfields should be only 3 bytes here 
                 
             if (Bitfield[(int)BitfieldIndex.ParticleEffects_0] == 0)
+            {
                 ParticleEffects_0 = Stream.Read.ParticleEffect();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ParticleEffects_1] == 0)
+            {
                 ParticleEffects_1 = Stream.Read.ParticleEffect();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ParticleEffects_2] == 0)
+            {
                 ParticleEffects_2 = Stream.Read.ParticleEffect();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ParticleEffects_3] == 0)
+            {
                 ParticleEffects_3 = Stream.Read.ParticleEffect();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ParticleEffects_4] == 0)
+            {
                 ParticleEffects_4 = Stream.Read.ParticleEffect();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ParticleEffects_5] == 0)
+            {
                 ParticleEffects_5 = Stream.Read.ParticleEffect();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ParticleEffects_6] == 0)
+            {
                 ParticleEffects_6 = Stream.Read.ParticleEffect();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ParticleEffects_7] == 0)
+            {
                 ParticleEffects_7 = Stream.Read.ParticleEffect();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ParticleEffects_8] == 0)
+            {
                 ParticleEffects_8 = Stream.Read.ParticleEffect();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ParticleEffects_9] == 0)
+            {
                 ParticleEffects_9 = Stream.Read.ParticleEffect();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ParticleEffects_10] == 0)
+            {
                 ParticleEffects_10 = Stream.Read.ParticleEffect();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ParticleEffects_11] == 0)
+            {
                 ParticleEffects_11 = Stream.Read.ParticleEffect();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ParticleEffects_12] == 0)
+            {
                 ParticleEffects_12 = Stream.Read.ParticleEffect();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ParticleEffects_13] == 0)
+            {
                 ParticleEffects_13 = Stream.Read.ParticleEffect();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ParticleEffects_14] == 0)
+            {
                 ParticleEffects_14 = Stream.Read.ParticleEffect();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ParticleEffects_15] == 0)
+            {
                 ParticleEffects_15 = Stream.Read.ParticleEffect();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ParticleEffects_16] == 0)
+            {
                 ParticleEffects_16 = Stream.Read.ParticleEffect();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ParticleEffects_17] == 0)
+            {
                 ParticleEffects_17 = Stream.Read.ParticleEffect();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ParticleEffects_18] == 0)
+            {
                 ParticleEffects_18 = Stream.Read.ParticleEffect();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ParticleEffects_19] == 0)
+            {
                 ParticleEffects_19 = Stream.Read.ParticleEffect();
+            }
 
         }
     }

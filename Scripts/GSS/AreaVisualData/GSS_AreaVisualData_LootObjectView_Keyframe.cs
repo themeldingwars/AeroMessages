@@ -71,76 +71,124 @@ namespace PacketPeepScript
                 Bitfield = Stream.Read.BitArray(24);
 
                 if (Bitfield[(int)BitfieldIndex.LootObjects_0] == 0)
+                {
                     LootObjects_0 = Stream.Read.LootObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.LootObjects_1] == 0)
+                {
                     LootObjects_1 = Stream.Read.LootObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.LootObjects_2] == 0)
+                {
                     LootObjects_2 = Stream.Read.LootObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.LootObjects_3] == 0)
+                {
                     LootObjects_3 = Stream.Read.LootObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.LootObjects_4] == 0)
+                {
                     LootObjects_4 = Stream.Read.LootObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.LootObjects_5] == 0)
+                {
                     LootObjects_5 = Stream.Read.LootObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.LootObjects_6] == 0)
+                {
                     LootObjects_6 = Stream.Read.LootObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.LootObjects_7] == 0)
+                {
                     LootObjects_7 = Stream.Read.LootObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.LootObjects_8] == 0)
+                {
                     LootObjects_8 = Stream.Read.LootObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.LootObjects_9] == 0)
+                {
                     LootObjects_9 = Stream.Read.LootObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.LootObjects_10] == 0)
+                {
                     LootObjects_10 = Stream.Read.LootObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.LootObjects_11] == 0)
+                {
                     LootObjects_11 = Stream.Read.LootObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.LootObjects_12] == 0)
+                {
                     LootObjects_12 = Stream.Read.LootObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.LootObjects_13] == 0)
+                {
                     LootObjects_13 = Stream.Read.LootObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.LootObjects_14] == 0)
+                {
                     LootObjects_14 = Stream.Read.LootObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.LootObjects_15] == 0)
+                {
                     LootObjects_15 = Stream.Read.LootObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.LootObjects_16] == 0)
+                {
                     LootObjects_16 = Stream.Read.LootObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.LootObjects_17] == 0)
+                {
                     LootObjects_17 = Stream.Read.LootObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.LootObjects_18] == 0)
+                {
                     LootObjects_18 = Stream.Read.LootObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.LootObjects_19] == 0)
+                {
                     LootObjects_19 = Stream.Read.LootObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.LootObjects_20] == 0)
+                {
                     LootObjects_20 = Stream.Read.LootObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.LootObjects_21] == 0)
+                {
                     LootObjects_21 = Stream.Read.LootObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.LootObjects_22] == 0)
+                {
                     LootObjects_22 = Stream.Read.LootObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.LootObjects_23] == 0)
+                {
                     LootObjects_23 = Stream.Read.LootObject();
+                }
 
                 int remaining = (int)(Stream.baseStream.Length - Stream.baseStream.ByteOffset);
                 Unk = Stream.Read.ByteArray(remaining);

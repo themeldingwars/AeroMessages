@@ -81,88 +81,144 @@ namespace PacketPeepScript
             ScopeBubbleInfo = Stream.Read.ByteArray(8);
 
             if (Bitfield[(int)BitfieldIndex.ContextFlags_0] == 0)
+            {
                 ContextFlags_0 = Stream.Read.ContextFlag();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ContextFlags_1] == 0)
+            {
                 ContextFlags_1 = Stream.Read.ContextFlag();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ContextFlags_2] == 0)
+            {
                 ContextFlags_2 = Stream.Read.ContextFlag();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ContextFlags_3] == 0)
+            {
                 ContextFlags_3 = Stream.Read.ContextFlag();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ContextFlags_4] == 0)
+            {
                 ContextFlags_4 = Stream.Read.ContextFlag();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ContextFlags_5] == 0)
+            {
                 ContextFlags_5 = Stream.Read.ContextFlag();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ContextFlags_6] == 0)
+            {
                 ContextFlags_6 = Stream.Read.ContextFlag();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ContextFlags_7] == 0)
+            {
                 ContextFlags_7 = Stream.Read.ContextFlag();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ContextFlags_8] == 0)
+            {
                 ContextFlags_8 = Stream.Read.ContextFlag();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ContextFlags_9] == 0)
+            {
                 ContextFlags_9 = Stream.Read.ContextFlag();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ContextFlags_10] == 0)
+            {
                 ContextFlags_10 = Stream.Read.ContextFlag();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ContextFlags_11] == 0)
+            {
                 ContextFlags_11 = Stream.Read.ContextFlag();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ContextFlags_12] == 0)
+            {
                 ContextFlags_12 = Stream.Read.ContextFlag();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ContextFlags_13] == 0)
+            {
                 ContextFlags_13 = Stream.Read.ContextFlag();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ContextFlags_14] == 0)
+            {
                 ContextFlags_14 = Stream.Read.ContextFlag();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ContextFlags_15] == 0)
+            {
                 ContextFlags_15 = Stream.Read.ContextFlag();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ContextFlags_16] == 0)
+            {
                 ContextFlags_16 = Stream.Read.ContextFlag();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ContextFlags_17] == 0)
+            {
                 ContextFlags_17 = Stream.Read.ContextFlag();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ContextFlags_18] == 0)
+            {
                 ContextFlags_18 = Stream.Read.ContextFlag();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ContextFlags_19] == 0)
+            {
                 ContextFlags_19 = Stream.Read.ContextFlag();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ContextFlags_20] == 0)
+            {
                 ContextFlags_20 = Stream.Read.ContextFlag();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ContextFlags_21] == 0)
+            {
                 ContextFlags_21 = Stream.Read.ContextFlag();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ContextFlags_22] == 0)
+            {
                 ContextFlags_22 = Stream.Read.ContextFlag();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ContextFlags_23] == 0)
+            {
                 ContextFlags_23 = Stream.Read.ContextFlag();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ContextTeams_0] == 0)
+            {
                 ContextTeams_0 = Stream.Read.ContextTeam();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ContextTeams_1] == 0)
+            {
                 ContextTeams_1 = Stream.Read.ContextTeam();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ContextTeams_2] == 0)
+            {
                 ContextTeams_2 = Stream.Read.ContextTeam();
+            }
 
             if (Bitfield[(int)BitfieldIndex.ContextTeams_3] == 0)
+            {
                 ContextTeams_3 = Stream.Read.ContextTeam();
+            }
 
         }
     }

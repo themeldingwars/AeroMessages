@@ -85,100 +85,164 @@ namespace PacketPeepScript
                 Bitfield = Stream.Read.BitArray(32);
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_0] == 0)
+                {
                     TinyObjects_0 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_1] == 0)
+                {
                     TinyObjects_1 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_2] == 0)
+                {
                     TinyObjects_2 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_3] == 0)
+                {
                     TinyObjects_3 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_4] == 0)
+                {
                     TinyObjects_4 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_5] == 0)
+                {
                     TinyObjects_5 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_6] == 0)
+                {
                     TinyObjects_6 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_7] == 0)
+                {
                     TinyObjects_7 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_8] == 0)
+                {
                     TinyObjects_8 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_9] == 0)
+                {
                     TinyObjects_9 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_10] == 0)
+                {
                     TinyObjects_10 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_11] == 0)
+                {
                     TinyObjects_11 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_12] == 0)
+                {
                     TinyObjects_12 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_13] == 0)
+                {
                     TinyObjects_13 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_14] == 0)
+                {
                     TinyObjects_14 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_15] == 0)
+                {
                     TinyObjects_15 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_16] == 0)
+                {
                     TinyObjects_16 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_17] == 0)
+                {
                     TinyObjects_17 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_18] == 0)
+                {
                     TinyObjects_18 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_19] == 0)
+                {
                     TinyObjects_19 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_20] == 0)
+                {
                     TinyObjects_20 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_21] == 0)
+                {
                     TinyObjects_21 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_22] == 0)
+                {
                     TinyObjects_22 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_23] == 0)
+                {
                     TinyObjects_23 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_24] == 0)
+                {
                     TinyObjects_24 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_25] == 0)
+                {
                     TinyObjects_25 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_26] == 0)
+                {
                     TinyObjects_26 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_27] == 0)
+                {
                     TinyObjects_27 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_28] == 0)
+                {
                     TinyObjects_28 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_29] == 0)
+                {
                     TinyObjects_29 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_30] == 0)
+                {
                     TinyObjects_30 = Stream.Read.TinyObject();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.TinyObjects_31] == 0)
+                {
                     TinyObjects_31 = Stream.Read.TinyObject();
+                }
                 
             }
         }

@@ -93,109 +93,179 @@ namespace PacketPeepScript
                 Position = Stream.Read.FloatArray(3);
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_0] == 0)
+                {
                     MapMarkers_0 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_1] == 0)
+                {
                     MapMarkers_1 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_2] == 0)
+                {
                     MapMarkers_2 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_3] == 0)
+                {
                     MapMarkers_3 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_4] == 0)
+                {
                     MapMarkers_4 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_5] == 0)
+                {
                     MapMarkers_5 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_6] == 0)
+                {
                     MapMarkers_6 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_7] == 0)
+                {
                     MapMarkers_7 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_8] == 0)
+                {
                     MapMarkers_8 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_9] == 0)
+                {
                     MapMarkers_9 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_10] == 0)
+                {
                     MapMarkers_10 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_11] == 0)
+                {
                     MapMarkers_11 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_12] == 0)
+                {
                     MapMarkers_12 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_13] == 0)
+                {
                     MapMarkers_13 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_14] == 0)
+                {
                     MapMarkers_14 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_15] == 0)
+                {
                     MapMarkers_15 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_16] == 0)
+                {
                     MapMarkers_16 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_17] == 0)
+                {
                     MapMarkers_17 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_18] == 0)
+                {
                     MapMarkers_18 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_19] == 0)
+                {
                     MapMarkers_19 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_20] == 0)
+                {
                     MapMarkers_20 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_21] == 0)
+                {
                     MapMarkers_21 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_22] == 0)
+                {
                     MapMarkers_22 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_23] == 0)
+                {
                     MapMarkers_23 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_24] == 0)
+                {
                     MapMarkers_24 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_25] == 0)
+                {
                     MapMarkers_25 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_26] == 0)
+                {
                     MapMarkers_26 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_27] == 0)
+                {
                     MapMarkers_27 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_28] == 0)
+                {
                     MapMarkers_28 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_29] == 0)
+                {
                     MapMarkers_29 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_30] == 0)
+                {
                     MapMarkers_30 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_31] == 0)
+                {
                     MapMarkers_31 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_32] == 0)
+                {
                     MapMarkers_32 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_33] == 0)
+                {
                     MapMarkers_33 = Stream.Read.MapMarker();
+                }
 
                 if (Bitfield[(int)BitfieldIndex.MapMarkers_34] == 0)
+                {
                     MapMarkers_34 = Stream.Read.MapMarker();
+                }
 
             }
             
