@@ -21,22 +21,29 @@ namespace PacketPeepScript
             PersonalFactionStance = 0x0a,
             ScalingLevel = 0x0b,
 
-            Unk_0x8b = 0x8b, // Some action/eventcall, no data
+            Clear_PersonalFactionStance = 0x8a,
         }
 
         public string PeepWarning; // Will be set if we encounter an unhandled shadowfield
 
-        public string GunnerId_Entity;
-
-        public ushort? SpawnPose_ShortTime; // May be off
-        public ushort[] SpawnPose_Data; // May be off
-        public float[] SpawnPose_Unpacked; // May be off
+        public uint? Type; // SDB Table 197
+        public string ParentObjId; 
+        public byte? ParentChildIndex; // Only observed 0x00
+        public string GunnerId;
+        //public ushort? SpawnPose_ShortTime; // Possible this is different from view
+        //public ushort[] SpawnPose_Rotation_Data; // Possible this is different from view
+        //public float[] SpawnPose_Rotation_Unpacked; // Possible this is different from view
         public uint? ProcessDelay;
-        public uint? WeaponFireBaseTime_Time;
+        //public ushort? WeaponFireBaseTime_ChangeTime; // Not 100% about this one
+        //public byte? WeaponFireBaseTime_Unk; // Not 100% about this one
+        public byte? Ammo_Count; // Limited examples, could be wrong
+        public ushort[] Ammo_Data; // Limited examples, could be wrong
+        public float? FireRateModifier;
+        public byte[] HostilityInfo;
+        public byte[] PersonalFactionStance;
+        public uint ScalingLevel;
 
-        public byte[] HostilityInfo_Faction;
-
-        public bool? Unk_0x8b;
+        public bool? Clear_PersonalFactionStance;
 
         public byte[] UnableToParse;
 
@@ -50,27 +57,51 @@ namespace PacketPeepScript
                 ShadowFieldIndex sfidx = (ShadowFieldIndex) (Stream.Read.Byte());
                 switch (sfidx)
                 {
+                    case ShadowFieldIndex.Type:
+                        Type = Stream.Read.UInt();
+                        break;
+                    case ShadowFieldIndex.ParentObjId:
+                        ParentObjId = Stream.Read.Entity();
+                        break;
+                    case ShadowFieldIndex.ParentChildIndex:
+                        ParentChildIndex = Stream.Read.Byte();
+                        break;
                     case ShadowFieldIndex.GunnerId:
-                        GunnerId_Entity = Stream.Read.Entity();
+                        GunnerId = Stream.Read.Entity();
                         break;
-                    case ShadowFieldIndex.SpawnPose: // May be off
-                        SpawnPose_ShortTime = Stream.Read.UShort();
-                        SpawnPose_Data = Stream.Read.UShortArray(4);
-                        SpawnPose_Unpacked = UnpackFloatArray(SpawnPose_Data);
-                        break;
+                    //case ShadowFieldIndex.SpawnPose:
+                    //    SpawnPose_ShortTime = Stream.Read.UShort();
+                    //    SpawnPose_Rotation_Data = Stream.Read.UShortArray(4);
+                    //    SpawnPose_Rotation_Unpacked = UnpackFloatArray(CurrentPose_Rotation_Data);
+                    //    break;
                     case ShadowFieldIndex.ProcessDelay:
                         ProcessDelay = Stream.Read.UInt();
                         break;
-                    case ShadowFieldIndex.WeaponFireBaseTime:
-                        WeaponFireBaseTime_Time = Stream.Read.UInt();
+                    //case ShadowFieldIndex.WeaponFireBaseTime:
+                    //    WeaponFireBaseTime = Stream.Read.UShort();
+                    //    WeaponFireBaseTime_Unk = Stream.Read.Byte();
+                    //    break;
+                    case ShadowFieldIndex.Ammo:
+                        Ammo_Count = Stream.Read.Byte();
+                        if (Ammo_Count > 0x00) {
+                            Ammo_Data = Stream.Read.UShortArray((int)Ammo_Count);
+                        }
                         break;
-    
+                    case ShadowFieldIndex.FireRateModifier:
+                        FireRateModifier = Stream.Read.UInt();
+                        break;
                     case ShadowFieldIndex.HostilityInfo:
-                        HostilityInfo_Faction = Stream.Read.ByteArray(2);
+                        HostilityInfo = Stream.Read.ByteArray(2);
+                        break;
+                    case ShadowFieldIndex.PersonalFactionStance:
+                        PersonalFactionStance = Stream.Read.ByteArray(20);
+                        break;
+                    case ShadowFieldIndex.ScalingLevel:
+                        ScalingLevel = Stream.Read.UInt();
                         break;
 
-                    case ShadowFieldIndex.Unk_0x8b:
-                        Unk_0x8b = true;
+                    case ShadowFieldIndex.Clear_PersonalFactionStance:
+                        Clear_PersonalFactionStance = true;
                         break;
 
                     default:

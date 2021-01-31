@@ -6,23 +6,27 @@ namespace PacketPeepScript
     [Script(MessageType.GSS, 40, 3, true)]
     public class TurretObserverViewKeyframe : BaseScript
     {
-        public byte Unk_MoreData; // When 0 we get another 20 bytes at the end of the message
-        public uint TurretTypeId; // SDB Table 197
-        public string ParentEntity; // Turret_ObserverView is added to this Deployable entity, get "unhandled viewcode" error if not specified.
-        public byte Unk2; // Only observed 0x00
-        public string Entity2;
-        public ushort Rotation_ShortTime;
-        public ushort[] Rotation_Data; // Assumption
-        public float[] Rotation_Unpacked; // Assumption
-        public uint Unk_0x05; // Shadow field index 0x05, 4 bytes
-        public uint FireBurst_Time;
-        public uint FireEnd_Time;
-        public byte Unk6_Count;
-        public ushort[] Unk6_Data; // Looks like 2 bytes each so assuming short
-        public float Unk7_Float;
-        public byte[] Faction;
-        public byte[] Unk_MoreData_1;
-        public byte[] Unk_MoreData_2;
+        enum BitfieldIndex : byte
+        {
+            PersonalFactionStance,
+        }
+
+        public byte[] Bitfield;
+        public uint Type; // SDB Table 197
+        public string ParentObjId; // Turret_ObserverView is added to this Deployable entity, get "unhandled viewcode" error if not specified.
+        public byte ParentChildIndex; // Only observed 0x00
+        public string GunnerId;
+        public ushort CurrentPose_ShortTime;
+        public ushort[] CurrentPose_Rotation_Data; // Assumption
+        public float[] CurrentPose_Rotation_Unpacked; // Assumption
+        public uint ProcessDelay; // Shadow field index 0x05, 4 bytes
+        public uint WeaponBurstFired;
+        public uint WeaponBurstEnded;
+        public byte Ammo_Count; // Limited examples, could be wrong
+        public ushort[] Ammo_Data; // Limited examples, could be wrong
+        public float FireRateModifier;
+        public byte[] HostilityInfo;
+        public byte[] PersonalFactionStance;
         
         public override void Read(Bitter.BinaryStream Stream)
         {
@@ -30,29 +34,30 @@ namespace PacketPeepScript
             MyExtensions.Stream = Stream;
             
             if (true) {
-                Unk_MoreData = Stream.Read.Byte();
-                TurretTypeId = Stream.Read.UInt();
+                Bitfield = Stream.Read.BitArray(8); // Only one bit is used :'D
+                Type = Stream.Read.UInt();
+                ParentObjId = Stream.Read.Entity();
+                ParentChildIndex = Stream.Read.Byte();
+                GunnerId = Stream.Read.Entity();
 
-                ParentEntity = Stream.Read.Entity();
+                CurrentPose_ShortTime = Stream.Read.UShort();
+                CurrentPose_Rotation_Data = Stream.Read.UShortArray(4);
+                CurrentPose_Rotation_Unpacked = UnpackFloatArray(CurrentPose_Rotation_Data);
 
-                Unk2 = Stream.Read.Byte();
-                Entity2 = Stream.Read.Entity();
+                ProcessDelay = Stream.Read.UInt();
+                WeaponBurstFired = Stream.Read.UInt();
+                WeaponBurstEnded = Stream.Read.UInt();
 
-                Rotation_ShortTime = Stream.Read.UShort();
-                Rotation_Data = Stream.Read.UShortArray(4);
-                Rotation_Unpacked = UnpackFloatArray(Rotation_Data);
-                Unk_0x05 = Stream.Read.UInt();
-                FireBurst_Time = Stream.Read.UInt();
-                FireEnd_Time = Stream.Read.UInt();
-                Unk6_Count = Stream.Read.Byte();
-                if (Unk6_Count > 0x00) {
-                    Unk6_Data = Stream.Read.UShortArray((int)Unk6_Count);
+                Ammo_Count = Stream.Read.Byte();
+                if (Ammo_Count > 0x00) {
+                    Ammo_Data = Stream.Read.UShortArray((int)Ammo_Count);
                 }
-                Unk7_Float = Stream.Read.Float();
-                Faction = Stream.Read.ByteArray(2);
-                if (Unk_MoreData == 0x00) {
-                    Unk_MoreData_1 = Stream.Read.ByteArray(10);
-                    Unk_MoreData_2 = Stream.Read.ByteArray(10);
+
+                FireRateModifier = Stream.Read.Float();
+                HostilityInfo = Stream.Read.ByteArray(2);
+                
+                if (Bitfield[(int)BitfieldIndex.PersonalFactionStance] == 0) {
+                    PersonalFactionStance = Stream.Read.ByteArray(20);
                 }
             }
             
