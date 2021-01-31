@@ -395,7 +395,6 @@ namespace PacketPeepScript
         }
     }
 
-    // Assuming same format as in keyframe
     public struct MapMarker
     {
         public uint? MarkerType; // SDB Table 155
@@ -422,7 +421,7 @@ namespace PacketPeepScript
             Position = R.HalfArray(3);
         }
 
-        public override string ToString() => $"MarkerType: {MarkerType}, Position: [{(Position != null ? String.Join(", ", Position) : "null")}]";
+        public override string ToString() => $"MarkerType: {MarkerType}, Position: [{(Position != null ? String.Join(", ", Position) : "null")}], EncounterId: {EncounterId}, EncounterMarkerId: {EncounterMarkerId},{(HasDuration != 0 ? $" ExpireAtTime: {ExpireAtTime}," : "")} Unk3: [{(Unk3 != null ? String.Join(", ", Unk3) : "null")}],";
     }
 
     public static class MyExtensions
