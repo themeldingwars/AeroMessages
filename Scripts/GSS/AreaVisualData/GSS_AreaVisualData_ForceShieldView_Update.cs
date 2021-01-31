@@ -1,4 +1,5 @@
 using Bitter;
+using System;
 using System.Collections.Generic;
 namespace PacketPeepScript
 {
@@ -372,14 +373,25 @@ namespace PacketPeepScript
 
     public struct ForceShield
     {
-        // TODO:
+        // Need to verify
+        public uint MaybeType;
+        public float[] Position;
+        public float[] Orientation;
+        public float[] Direction;
+        public byte Unk2;
+        public byte[] HostilityInfo;
 
         public ForceShield(Bitter.BinaryReader R)
         {
-            
+            MaybeType = R.UInt();
+            Position = R.HalfArray(3);
+            Orientation = R.HalfArray(4);
+            Direction = R.HalfArray(3);
+            Unk2 = R.Byte();
+            HostilityInfo = R.ByteArray(2);       
         }
 
-        public override string ToString() => $"";
+        public override string ToString() => $"MaybeType: {MaybeType}, Position: [{(Position != null ? String.Join(", ", Position) : "null")}], Orientation: [{(Orientation != null ? String.Join(", ", Orientation) : "null")}], Direction: [{(Direction != null ? String.Join(", ", Direction) : "null")}], Unk2: {Unk2}, HostilityInfo: [{(HostilityInfo != null ? String.Join(", ", HostilityInfo) : "null")}]";
     }
 
     public static class MyExtensions
