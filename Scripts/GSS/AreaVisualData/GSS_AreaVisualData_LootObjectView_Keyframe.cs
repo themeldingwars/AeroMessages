@@ -5,15 +5,60 @@ namespace PacketPeepScript
     [Script(MessageType.GSS, 24, 3, true)]
     public class AreaVisualDataLootObjectViewKeyframe : BaseScript
     {
-        // Just quickly scoping this out
-        public byte[] Unk1;
-        public uint Time1;
-        public byte Unk2;
-        public string Entity;
-        public byte Unk3;
-        public float[] Position;
-        public uint LootSdbId;
-        public uint Quantity;
+        enum BitfieldIndex : byte
+        {
+            LootObjects_0,
+            LootObjects_1,
+            LootObjects_2,
+            LootObjects_3,
+            LootObjects_4,
+            LootObjects_5,
+            LootObjects_6,
+            LootObjects_7,
+            LootObjects_8,
+            LootObjects_9,
+            LootObjects_10,
+            LootObjects_11,
+            LootObjects_12,
+            LootObjects_13,
+            LootObjects_14,
+            LootObjects_15,
+            LootObjects_16,
+            LootObjects_17,
+            LootObjects_18,
+            LootObjects_19,
+            LootObjects_20,
+            LootObjects_21,
+            LootObjects_22,
+            LootObjects_23,
+        }
+
+        public byte[] Bitfield;
+
+        public LootObject? LootObjects_0;
+        public LootObject? LootObjects_1;
+        public LootObject? LootObjects_2;
+        public LootObject? LootObjects_3;
+        public LootObject? LootObjects_4;
+        public LootObject? LootObjects_5;
+        public LootObject? LootObjects_6;
+        public LootObject? LootObjects_7;
+        public LootObject? LootObjects_8;
+        public LootObject? LootObjects_9;
+        public LootObject? LootObjects_10;
+        public LootObject? LootObjects_11;
+        public LootObject? LootObjects_12;
+        public LootObject? LootObjects_13;
+        public LootObject? LootObjects_14;
+        public LootObject? LootObjects_15;
+        public LootObject? LootObjects_16;
+        public LootObject? LootObjects_17;
+        public LootObject? LootObjects_18;
+        public LootObject? LootObjects_19;
+        public LootObject? LootObjects_20;
+        public LootObject? LootObjects_21;
+        public LootObject? LootObjects_22;
+        public LootObject? LootObjects_23;
 
         public byte[] Unk;
         
@@ -23,32 +68,125 @@ namespace PacketPeepScript
             MyExtensions.Stream = Stream;
             
             if (true) {
-                Unk1 = Stream.Read.ByteArray(3);
-                Time1 = Stream.Read.UInt();
+                Bitfield = Stream.Read.BitArray(24);
 
-                Unk2 = Stream.Read.Byte();
-                if (Unk2 == 1)
-                {
-                    Entity = Stream.Read.Entity();
-                }
+                if (Bitfield[(int)BitfieldIndex.LootObjects_0] == 0)
+                    LootObjects_0 = Stream.Read.LootObject();
 
-                Unk3 = Stream.Read.Byte();
-                if (Unk3 == 1) {
-                    Stream.baseStream.ByteOffset += 8;
-                }
-                else {
-                    Stream.baseStream.ByteOffset += 6;
-                }
+                if (Bitfield[(int)BitfieldIndex.LootObjects_1] == 0)
+                    LootObjects_1 = Stream.Read.LootObject();
 
-                Position = Stream.Read.FloatArray(3);
+                if (Bitfield[(int)BitfieldIndex.LootObjects_2] == 0)
+                    LootObjects_2 = Stream.Read.LootObject();
 
-                LootSdbId = Stream.Read.UInt();
-                Quantity = Stream.Read.UInt();
+                if (Bitfield[(int)BitfieldIndex.LootObjects_3] == 0)
+                    LootObjects_3 = Stream.Read.LootObject();
+
+                if (Bitfield[(int)BitfieldIndex.LootObjects_4] == 0)
+                    LootObjects_4 = Stream.Read.LootObject();
+
+                if (Bitfield[(int)BitfieldIndex.LootObjects_5] == 0)
+                    LootObjects_5 = Stream.Read.LootObject();
+
+                if (Bitfield[(int)BitfieldIndex.LootObjects_6] == 0)
+                    LootObjects_6 = Stream.Read.LootObject();
+
+                if (Bitfield[(int)BitfieldIndex.LootObjects_7] == 0)
+                    LootObjects_7 = Stream.Read.LootObject();
+
+                if (Bitfield[(int)BitfieldIndex.LootObjects_8] == 0)
+                    LootObjects_8 = Stream.Read.LootObject();
+
+                if (Bitfield[(int)BitfieldIndex.LootObjects_9] == 0)
+                    LootObjects_9 = Stream.Read.LootObject();
+
+                if (Bitfield[(int)BitfieldIndex.LootObjects_10] == 0)
+                    LootObjects_10 = Stream.Read.LootObject();
+
+                if (Bitfield[(int)BitfieldIndex.LootObjects_11] == 0)
+                    LootObjects_11 = Stream.Read.LootObject();
+
+                if (Bitfield[(int)BitfieldIndex.LootObjects_12] == 0)
+                    LootObjects_12 = Stream.Read.LootObject();
+
+                if (Bitfield[(int)BitfieldIndex.LootObjects_13] == 0)
+                    LootObjects_13 = Stream.Read.LootObject();
+
+                if (Bitfield[(int)BitfieldIndex.LootObjects_14] == 0)
+                    LootObjects_14 = Stream.Read.LootObject();
+
+                if (Bitfield[(int)BitfieldIndex.LootObjects_15] == 0)
+                    LootObjects_15 = Stream.Read.LootObject();
+
+                if (Bitfield[(int)BitfieldIndex.LootObjects_16] == 0)
+                    LootObjects_16 = Stream.Read.LootObject();
+
+                if (Bitfield[(int)BitfieldIndex.LootObjects_17] == 0)
+                    LootObjects_17 = Stream.Read.LootObject();
+
+                if (Bitfield[(int)BitfieldIndex.LootObjects_18] == 0)
+                    LootObjects_18 = Stream.Read.LootObject();
+
+                if (Bitfield[(int)BitfieldIndex.LootObjects_19] == 0)
+                    LootObjects_19 = Stream.Read.LootObject();
+
+                if (Bitfield[(int)BitfieldIndex.LootObjects_20] == 0)
+                    LootObjects_20 = Stream.Read.LootObject();
+
+                if (Bitfield[(int)BitfieldIndex.LootObjects_21] == 0)
+                    LootObjects_21 = Stream.Read.LootObject();
+
+                if (Bitfield[(int)BitfieldIndex.LootObjects_22] == 0)
+                    LootObjects_22 = Stream.Read.LootObject();
+
+                if (Bitfield[(int)BitfieldIndex.LootObjects_23] == 0)
+                    LootObjects_23 = Stream.Read.LootObject();
 
                 int remaining = (int)(Stream.baseStream.Length - Stream.baseStream.ByteOffset);
                 Unk = Stream.Read.ByteArray(remaining);
             }
         }
+    }
+
+    public struct LootObject
+    {
+        public uint Time1;
+        public byte Unk2;
+        public string Entity;
+        public byte Unk3;
+        public byte[] Unk4;
+        public float[] Position;
+        public uint LootSdbId;
+        public uint Quantity;
+
+        public LootObject(Bitter.BinaryReader R)
+        {
+            Time1 = R.UInt();
+
+            Unk2 = R.Byte();
+            if (Unk2 == 1)
+            {
+                Entity = R.Entity();
+            }
+            else {
+                Entity = "None";
+            }
+
+            Unk3 = R.Byte();
+            if (Unk3 == 1) {
+                Unk4 = R.ByteArray(8);
+            }
+            else {
+                Unk4 = R.ByteArray(6);
+            }
+
+            Position = R.FloatArray(3);
+
+            LootSdbId = R.UInt();
+            Quantity = R.UInt();
+        }
+
+        public override string ToString() => $"";
     }
 
     public static class MyExtensions
@@ -113,6 +251,21 @@ namespace PacketPeepScript
             }
             while (Stream.baseStream.ByteOffset < Stream.baseStream.Length);
             return ret;
+        }
+
+        public static LootObject LootObject(this Bitter.BinaryReader R)
+        {
+            return new LootObject(R);
+        }
+
+        public static LootObject[] LootObjectArray(this Bitter.BinaryReader R, int num)
+        {
+            List<LootObject> list = new List<LootObject>();
+            for (int i = 1; i <= num; i++)
+            {
+                list.Add(R.LootObject());
+            }
+            return list.ToArray();
         }
     }
 }

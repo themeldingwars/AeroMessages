@@ -1,270 +1,87 @@
 using Bitter;
+using System;
 using System.Collections.Generic;
 namespace PacketPeepScript
 {
     [Script(MessageType.GSS, 22, 3, true)]
     public class AreaVisualDataMapMarkerViewKeyframe : BaseScript
     {
-        public byte[] Bitfield_MarkerData; // Assuming all 4 bytes are for markers but have only observed the first 2
-        public byte? Unk1; // Always 7 in the captures, haven't played around with it.
+        enum BitfieldIndex : byte
+        {
+            MapMarkers_0,
+            MapMarkers_1,
+            MapMarkers_2,
+            MapMarkers_3,
+            MapMarkers_4,
+            MapMarkers_5,
+            MapMarkers_6,
+            MapMarkers_7,
+            MapMarkers_8,
+            MapMarkers_9,
+            MapMarkers_10,
+            MapMarkers_11,
+            MapMarkers_12,
+            MapMarkers_13,
+            MapMarkers_14,
+            MapMarkers_15,
+            MapMarkers_16,
+            MapMarkers_17,
+            MapMarkers_18,
+            MapMarkers_19,
+            MapMarkers_20,
+            MapMarkers_21,
+            MapMarkers_22,
+            MapMarkers_23,
+            MapMarkers_24,
+            MapMarkers_25,
+            MapMarkers_26,
+            MapMarkers_27,
+            MapMarkers_28,
+            MapMarkers_29,
+            MapMarkers_30,
+            MapMarkers_31,
+            MapMarkers_32,
+            MapMarkers_33,
+            MapMarkers_34,
+        }
+
+        public byte[] Bitfield; // 35 fields = 5 bytes, last bits are unused
         public float[] Position; // Used if the marker position is 0.
-
-        public uint? MapMarker_00_MarkerType; // SDB Table 155
-        public byte[] MapMarker_00_Unk3;
-        public string MapMarker_00_EncounterId;
-        public string MapMarker_00_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_00_HasDuration;
-        public uint? MapMarker_00_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_00_Position;
-
-        public uint? MapMarker_01_MarkerType; // SDB Table 155
-        public byte[] MapMarker_01_Unk3;
-        public string MapMarker_01_EncounterId;
-        public string MapMarker_01_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_01_HasDuration;
-        public uint? MapMarker_01_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_01_Position;
-
-        public uint? MapMarker_02_MarkerType; // SDB Table 155
-        public byte[] MapMarker_02_Unk3;
-        public string MapMarker_02_EncounterId;
-        public string MapMarker_02_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_02_HasDuration;
-        public uint? MapMarker_02_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_02_Position;
-
-        public uint? MapMarker_03_MarkerType; // SDB Table 155
-        public byte[] MapMarker_03_Unk3;
-        public string MapMarker_03_EncounterId;
-        public string MapMarker_03_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_03_HasDuration;
-        public uint? MapMarker_03_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_03_Position;
-
-        public uint? MapMarker_04_MarkerType; // SDB Table 155
-        public byte[] MapMarker_04_Unk3;
-        public string MapMarker_04_EncounterId;
-        public string MapMarker_04_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_04_HasDuration;
-        public uint? MapMarker_04_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_04_Position;
-
-        public uint? MapMarker_05_MarkerType; // SDB Table 155
-        public byte[] MapMarker_05_Unk3;
-        public string MapMarker_05_EncounterId;
-        public string MapMarker_05_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_05_HasDuration;
-        public uint? MapMarker_05_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_05_Position;
-
-        public uint? MapMarker_06_MarkerType; // SDB Table 155
-        public byte[] MapMarker_06_Unk3;
-        public string MapMarker_06_EncounterId;
-        public string MapMarker_06_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_06_HasDuration;
-        public uint? MapMarker_06_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_06_Position;
-
-        public uint? MapMarker_07_MarkerType; // SDB Table 155
-        public byte[] MapMarker_07_Unk3;
-        public string MapMarker_07_EncounterId;
-        public string MapMarker_07_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_07_HasDuration;
-        public uint? MapMarker_07_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_07_Position;
-
-        public uint? MapMarker_08_MarkerType; // SDB Table 155
-        public byte[] MapMarker_08_Unk3;
-        public string MapMarker_08_EncounterId;
-        public string MapMarker_08_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_08_HasDuration;
-        public uint? MapMarker_08_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_08_Position;
-
-        public uint? MapMarker_09_MarkerType; // SDB Table 155
-        public byte[] MapMarker_09_Unk3;
-        public string MapMarker_09_EncounterId;
-        public string MapMarker_09_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_09_HasDuration;
-        public uint? MapMarker_09_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_09_Position;
-
-        public uint? MapMarker_0a_MarkerType; // SDB Table 155
-        public byte[] MapMarker_0a_Unk3;
-        public string MapMarker_0a_EncounterId;
-        public string MapMarker_0a_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_0a_HasDuration;
-        public uint? MapMarker_0a_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_0a_Position;
-
-        public uint? MapMarker_0b_MarkerType; // SDB Table 155
-        public byte[] MapMarker_0b_Unk3;
-        public string MapMarker_0b_EncounterId;
-        public string MapMarker_0b_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_0b_HasDuration;
-        public uint? MapMarker_0b_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_0b_Position;
-
-        public uint? MapMarker_0c_MarkerType; // SDB Table 155
-        public byte[] MapMarker_0c_Unk3;
-        public string MapMarker_0c_EncounterId;
-        public string MapMarker_0c_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_0c_HasDuration;
-        public uint? MapMarker_0c_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_0c_Position;
-
-        public uint? MapMarker_0d_MarkerType; // SDB Table 155
-        public byte[] MapMarker_0d_Unk3;
-        public string MapMarker_0d_EncounterId;
-        public string MapMarker_0d_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_0d_HasDuration;
-        public uint? MapMarker_0d_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_0d_Position;
-
-        public uint? MapMarker_0e_MarkerType; // SDB Table 155
-        public byte[] MapMarker_0e_Unk3;
-        public string MapMarker_0e_EncounterId;
-        public string MapMarker_0e_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_0e_HasDuration;
-        public uint? MapMarker_0e_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_0e_Position;
-
-        public uint? MapMarker_0f_MarkerType; // SDB Table 155
-        public byte[] MapMarker_0f_Unk3;
-        public string MapMarker_0f_EncounterId;
-        public string MapMarker_0f_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_0f_HasDuration;
-        public uint? MapMarker_0f_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_0f_Position;
-
-        public uint? MapMarker_10_MarkerType; // SDB Table 155
-        public byte[] MapMarker_10_Unk3;
-        public string MapMarker_10_EncounterId;
-        public string MapMarker_10_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_10_HasDuration;
-        public uint? MapMarker_10_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_10_Position;
-
-        public uint? MapMarker_11_MarkerType; // SDB Table 155
-        public byte[] MapMarker_11_Unk3;
-        public string MapMarker_11_EncounterId;
-        public string MapMarker_11_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_11_HasDuration;
-        public uint? MapMarker_11_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_11_Position;
-
-        public uint? MapMarker_12_MarkerType; // SDB Table 155
-        public byte[] MapMarker_12_Unk3;
-        public string MapMarker_12_EncounterId;
-        public string MapMarker_12_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_12_HasDuration;
-        public uint? MapMarker_12_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_12_Position;
-
-        public uint? MapMarker_13_MarkerType; // SDB Table 155
-        public byte[] MapMarker_13_Unk3;
-        public string MapMarker_13_EncounterId;
-        public string MapMarker_13_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_13_HasDuration;
-        public uint? MapMarker_13_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_13_Position;
-
-        public uint? MapMarker_14_MarkerType; // SDB Table 155
-        public byte[] MapMarker_14_Unk3;
-        public string MapMarker_14_EncounterId;
-        public string MapMarker_14_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_14_HasDuration;
-        public uint? MapMarker_14_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_14_Position;
-
-        public uint? MapMarker_15_MarkerType; // SDB Table 155
-        public byte[] MapMarker_15_Unk3;
-        public string MapMarker_15_EncounterId;
-        public string MapMarker_15_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_15_HasDuration;
-        public uint? MapMarker_15_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_15_Position;
-
-        public uint? MapMarker_16_MarkerType; // SDB Table 155
-        public byte[] MapMarker_16_Unk3;
-        public string MapMarker_16_EncounterId;
-        public string MapMarker_16_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_16_HasDuration;
-        public uint? MapMarker_16_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_16_Position;
-
-        public uint? MapMarker_17_MarkerType; // SDB Table 155
-        public byte[] MapMarker_17_Unk3;
-        public string MapMarker_17_EncounterId;
-        public string MapMarker_17_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_17_HasDuration;
-        public uint? MapMarker_17_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_17_Position;
-
-        public uint? MapMarker_18_MarkerType; // SDB Table 155
-        public byte[] MapMarker_18_Unk3;
-        public string MapMarker_18_EncounterId;
-        public string MapMarker_18_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_18_HasDuration;
-        public uint? MapMarker_18_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_18_Position;
-
-        public uint? MapMarker_19_MarkerType; // SDB Table 155
-        public byte[] MapMarker_19_Unk3;
-        public string MapMarker_19_EncounterId;
-        public string MapMarker_19_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_19_HasDuration;
-        public uint? MapMarker_19_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_19_Position;
-
-        public uint? MapMarker_1a_MarkerType; // SDB Table 155
-        public byte[] MapMarker_1a_Unk3;
-        public string MapMarker_1a_EncounterId;
-        public string MapMarker_1a_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_1a_HasDuration;
-        public uint? MapMarker_1a_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_1a_Position;
-
-        public uint? MapMarker_1b_MarkerType; // SDB Table 155
-        public byte[] MapMarker_1b_Unk3;
-        public string MapMarker_1b_EncounterId;
-        public string MapMarker_1b_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_1b_HasDuration;
-        public uint? MapMarker_1b_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_1b_Position;
-
-        public uint? MapMarker_1c_MarkerType; // SDB Table 155
-        public byte[] MapMarker_1c_Unk3;
-        public string MapMarker_1c_EncounterId;
-        public string MapMarker_1c_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_1c_HasDuration;
-        public uint? MapMarker_1c_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_1c_Position;
-
-        public uint? MapMarker_1d_MarkerType; // SDB Table 155
-        public byte[] MapMarker_1d_Unk3;
-        public string MapMarker_1d_EncounterId;
-        public string MapMarker_1d_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_1d_HasDuration;
-        public uint? MapMarker_1d_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_1d_Position;
-
-        public uint? MapMarker_1e_MarkerType; // SDB Table 155
-        public byte[] MapMarker_1e_Unk3;
-        public string MapMarker_1e_EncounterId;
-        public string MapMarker_1e_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_1e_HasDuration;
-        public uint? MapMarker_1e_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_1e_Position;
-
-        public uint? MapMarker_1f_MarkerType; // SDB Table 155
-        public byte[] MapMarker_1f_Unk3;
-        public string MapMarker_1f_EncounterId;
-        public string MapMarker_1f_EncounterMarkerId; // No controller specified.
-        public byte? MapMarker_1f_HasDuration;
-        public uint? MapMarker_1f_ExpireAtTime; // Gametime ms
-        public float[] MapMarker_1f_Position;
-
+        public MapMarker? MapMarkers_0;
+        public MapMarker? MapMarkers_1;
+        public MapMarker? MapMarkers_2;
+        public MapMarker? MapMarkers_3;
+        public MapMarker? MapMarkers_4;
+        public MapMarker? MapMarkers_5;
+        public MapMarker? MapMarkers_6;
+        public MapMarker? MapMarkers_7;
+        public MapMarker? MapMarkers_8;
+        public MapMarker? MapMarkers_9;
+        public MapMarker? MapMarkers_10;
+        public MapMarker? MapMarkers_11;
+        public MapMarker? MapMarkers_12;
+        public MapMarker? MapMarkers_13;
+        public MapMarker? MapMarkers_14;
+        public MapMarker? MapMarkers_15;
+        public MapMarker? MapMarkers_16;
+        public MapMarker? MapMarkers_17;
+        public MapMarker? MapMarkers_18;
+        public MapMarker? MapMarkers_19;
+        public MapMarker? MapMarkers_20;
+        public MapMarker? MapMarkers_21;
+        public MapMarker? MapMarkers_22;
+        public MapMarker? MapMarkers_23;
+        public MapMarker? MapMarkers_24;
+        public MapMarker? MapMarkers_25;
+        public MapMarker? MapMarkers_26;
+        public MapMarker? MapMarkers_27;
+        public MapMarker? MapMarkers_28;
+        public MapMarker? MapMarkers_29;
+        public MapMarker? MapMarkers_30;
+        public MapMarker? MapMarkers_31;
+        public MapMarker? MapMarkers_32;
+        public MapMarker? MapMarkers_33;
+        public MapMarker? MapMarkers_34;
 
         public override void Read(Bitter.BinaryStream Stream)
         {
@@ -272,396 +89,146 @@ namespace PacketPeepScript
             MyExtensions.Stream = Stream;
 
             if (true) {
-                Bitfield_MarkerData = Stream.Read.BitArray(32);
-                Unk1 = Stream.Read.Byte();
+                Bitfield = Stream.Read.BitArray(40); // Only first 35 are used
                 Position = Stream.Read.FloatArray(3);
 
-                if (Bitfield_MarkerData[0] == 0x00) {
-                    MapMarker_00_MarkerType = Stream.Read.UInt();
-                    MapMarker_00_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_00_EncounterId = Stream.Read.Entity();
-                    MapMarker_00_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_00_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_00_HasDuration != 0x00) {
-                        MapMarker_00_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_00_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_0] == 0)
+                    MapMarkers_0 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[1] == 0x00) {
-                    MapMarker_01_MarkerType = Stream.Read.UInt();
-                    MapMarker_01_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_01_EncounterId = Stream.Read.Entity();
-                    MapMarker_01_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_01_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_01_HasDuration != 0x00) {
-                        MapMarker_01_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_01_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_1] == 0)
+                    MapMarkers_1 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[2] == 0x00) {
-                    MapMarker_02_MarkerType = Stream.Read.UInt();
-                    MapMarker_02_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_02_EncounterId = Stream.Read.Entity();
-                    MapMarker_02_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_02_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_02_HasDuration != 0x00) {
-                        MapMarker_02_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_02_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_2] == 0)
+                    MapMarkers_2 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[3] == 0x00) {
-                    MapMarker_03_MarkerType = Stream.Read.UInt();
-                    MapMarker_03_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_03_EncounterId = Stream.Read.Entity();
-                    MapMarker_03_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_03_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_03_HasDuration != 0x00) {
-                        MapMarker_03_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_03_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_3] == 0)
+                    MapMarkers_3 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[4] == 0x00) {
-                    MapMarker_04_MarkerType = Stream.Read.UInt();
-                    MapMarker_04_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_04_EncounterId = Stream.Read.Entity();
-                    MapMarker_04_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_04_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_04_HasDuration != 0x00) {
-                        MapMarker_04_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_04_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_4] == 0)
+                    MapMarkers_4 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[5] == 0x00) {
-                    MapMarker_05_MarkerType = Stream.Read.UInt();
-                    MapMarker_05_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_05_EncounterId = Stream.Read.Entity();
-                    MapMarker_05_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_05_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_05_HasDuration != 0x00) {
-                        MapMarker_05_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_05_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_5] == 0)
+                    MapMarkers_5 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[6] == 0x00) {
-                    MapMarker_06_MarkerType = Stream.Read.UInt();
-                    MapMarker_06_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_06_EncounterId = Stream.Read.Entity();
-                    MapMarker_06_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_06_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_06_HasDuration != 0x00) {
-                        MapMarker_06_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_06_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_6] == 0)
+                    MapMarkers_6 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[7] == 0x00) {
-                    MapMarker_07_MarkerType = Stream.Read.UInt();
-                    MapMarker_07_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_07_EncounterId = Stream.Read.Entity();
-                    MapMarker_07_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_07_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_07_HasDuration != 0x00) {
-                        MapMarker_07_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_07_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_7] == 0)
+                    MapMarkers_7 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[8] == 0x00) {
-                    MapMarker_08_MarkerType = Stream.Read.UInt();
-                    MapMarker_08_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_08_EncounterId = Stream.Read.Entity();
-                    MapMarker_08_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_08_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_08_HasDuration != 0x00) {
-                        MapMarker_08_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_08_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_8] == 0)
+                    MapMarkers_8 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[9] == 0x00) {
-                    MapMarker_09_MarkerType = Stream.Read.UInt();
-                    MapMarker_09_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_09_EncounterId = Stream.Read.Entity();
-                    MapMarker_09_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_09_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_09_HasDuration != 0x00) {
-                        MapMarker_09_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_09_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_9] == 0)
+                    MapMarkers_9 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[10] == 0x00) {
-                    MapMarker_0a_MarkerType = Stream.Read.UInt();
-                    MapMarker_0a_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_0a_EncounterId = Stream.Read.Entity();
-                    MapMarker_0a_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_0a_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_0a_HasDuration != 0x00) {
-                        MapMarker_0a_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_0a_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_10] == 0)
+                    MapMarkers_10 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[11] == 0x00) {
-                    MapMarker_0b_MarkerType = Stream.Read.UInt();
-                    MapMarker_0b_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_0b_EncounterId = Stream.Read.Entity();
-                    MapMarker_0b_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_0b_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_0b_HasDuration != 0x00) {
-                        MapMarker_0b_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_0b_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_11] == 0)
+                    MapMarkers_11 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[12] == 0x00) {
-                    MapMarker_0c_MarkerType = Stream.Read.UInt();
-                    MapMarker_0c_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_0c_EncounterId = Stream.Read.Entity();
-                    MapMarker_0c_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_0c_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_0c_HasDuration != 0x00) {
-                        MapMarker_0c_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_0c_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_12] == 0)
+                    MapMarkers_12 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[13] == 0x00) {
-                    MapMarker_0d_MarkerType = Stream.Read.UInt();
-                    MapMarker_0d_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_0d_EncounterId = Stream.Read.Entity();
-                    MapMarker_0d_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_0d_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_0d_HasDuration != 0x00) {
-                        MapMarker_0d_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_0d_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_13] == 0)
+                    MapMarkers_13 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[14] == 0x00) {
-                    MapMarker_0e_MarkerType = Stream.Read.UInt();
-                    MapMarker_0e_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_0e_EncounterId = Stream.Read.Entity();
-                    MapMarker_0e_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_0e_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_0e_HasDuration != 0x00) {
-                        MapMarker_0e_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_0e_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_14] == 0)
+                    MapMarkers_14 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[15] == 0x00) {
-                    MapMarker_0f_MarkerType = Stream.Read.UInt();
-                    MapMarker_0f_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_0f_EncounterId = Stream.Read.Entity();
-                    MapMarker_0f_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_0f_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_0f_HasDuration != 0x00) {
-                        MapMarker_0f_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_0f_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_15] == 0)
+                    MapMarkers_15 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[16] == 0x00) {
-                    MapMarker_10_MarkerType = Stream.Read.UInt();
-                    MapMarker_10_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_10_EncounterId = Stream.Read.Entity();
-                    MapMarker_10_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_10_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_10_HasDuration != 0x00) {
-                        MapMarker_10_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_10_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_16] == 0)
+                    MapMarkers_16 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[17] == 0x00) {
-                    MapMarker_11_MarkerType = Stream.Read.UInt();
-                    MapMarker_11_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_11_EncounterId = Stream.Read.Entity();
-                    MapMarker_11_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_11_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_11_HasDuration != 0x00) {
-                        MapMarker_11_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_11_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_17] == 0)
+                    MapMarkers_17 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[18] == 0x00) {
-                    MapMarker_12_MarkerType = Stream.Read.UInt();
-                    MapMarker_12_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_12_EncounterId = Stream.Read.Entity();
-                    MapMarker_12_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_12_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_12_HasDuration != 0x00) {
-                        MapMarker_12_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_12_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_18] == 0)
+                    MapMarkers_18 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[19] == 0x00) {
-                    MapMarker_13_MarkerType = Stream.Read.UInt();
-                    MapMarker_13_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_13_EncounterId = Stream.Read.Entity();
-                    MapMarker_13_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_13_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_13_HasDuration != 0x00) {
-                        MapMarker_13_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_13_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_19] == 0)
+                    MapMarkers_19 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[20] == 0x00) {
-                    MapMarker_14_MarkerType = Stream.Read.UInt();
-                    MapMarker_14_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_14_EncounterId = Stream.Read.Entity();
-                    MapMarker_14_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_14_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_14_HasDuration != 0x00) {
-                        MapMarker_14_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_14_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_20] == 0)
+                    MapMarkers_20 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[21] == 0x00) {
-                    MapMarker_15_MarkerType = Stream.Read.UInt();
-                    MapMarker_15_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_15_EncounterId = Stream.Read.Entity();
-                    MapMarker_15_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_15_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_15_HasDuration != 0x00) {
-                        MapMarker_15_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_15_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_21] == 0)
+                    MapMarkers_21 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[22] == 0x00) {
-                    MapMarker_16_MarkerType = Stream.Read.UInt();
-                    MapMarker_16_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_16_EncounterId = Stream.Read.Entity();
-                    MapMarker_16_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_16_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_16_HasDuration != 0x00) {
-                        MapMarker_16_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_16_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_22] == 0)
+                    MapMarkers_22 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[23] == 0x00) {
-                    MapMarker_17_MarkerType = Stream.Read.UInt();
-                    MapMarker_17_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_17_EncounterId = Stream.Read.Entity();
-                    MapMarker_17_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_17_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_17_HasDuration != 0x00) {
-                        MapMarker_17_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_17_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_23] == 0)
+                    MapMarkers_23 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[24] == 0x00) {
-                    MapMarker_18_MarkerType = Stream.Read.UInt();
-                    MapMarker_18_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_18_EncounterId = Stream.Read.Entity();
-                    MapMarker_18_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_18_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_18_HasDuration != 0x00) {
-                        MapMarker_18_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_18_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_24] == 0)
+                    MapMarkers_24 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[25] == 0x00) {
-                    MapMarker_19_MarkerType = Stream.Read.UInt();
-                    MapMarker_19_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_19_EncounterId = Stream.Read.Entity();
-                    MapMarker_19_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_19_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_19_HasDuration != 0x00) {
-                        MapMarker_19_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_19_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_25] == 0)
+                    MapMarkers_25 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[26] == 0x00) {
-                    MapMarker_1a_MarkerType = Stream.Read.UInt();
-                    MapMarker_1a_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_1a_EncounterId = Stream.Read.Entity();
-                    MapMarker_1a_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_1a_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_1a_HasDuration != 0x00) {
-                        MapMarker_1a_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_1a_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_26] == 0)
+                    MapMarkers_26 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[27] == 0x00) {
-                    MapMarker_1b_MarkerType = Stream.Read.UInt();
-                    MapMarker_1b_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_1b_EncounterId = Stream.Read.Entity();
-                    MapMarker_1b_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_1b_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_1b_HasDuration != 0x00) {
-                        MapMarker_1b_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_1b_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_27] == 0)
+                    MapMarkers_27 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[28] == 0x00) {
-                    MapMarker_1c_MarkerType = Stream.Read.UInt();
-                    MapMarker_1c_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_1c_EncounterId = Stream.Read.Entity();
-                    MapMarker_1c_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_1c_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_1c_HasDuration != 0x00) {
-                        MapMarker_1c_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_1c_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_28] == 0)
+                    MapMarkers_28 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[29] == 0x00) {
-                    MapMarker_1d_MarkerType = Stream.Read.UInt();
-                    MapMarker_1d_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_1d_EncounterId = Stream.Read.Entity();
-                    MapMarker_1d_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_1d_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_1d_HasDuration != 0x00) {
-                        MapMarker_1d_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_1d_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_29] == 0)
+                    MapMarkers_29 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[30] == 0x00) {
-                    MapMarker_1e_MarkerType = Stream.Read.UInt();
-                    MapMarker_1e_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_1e_EncounterId = Stream.Read.Entity();
-                    MapMarker_1e_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_1e_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_1e_HasDuration != 0x00) {
-                        MapMarker_1e_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_1e_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_30] == 0)
+                    MapMarkers_30 = Stream.Read.MapMarker();
 
-                if (Bitfield_MarkerData[31] == 0x00) {
-                    MapMarker_1f_MarkerType = Stream.Read.UInt();
-                    MapMarker_1f_Unk3 = Stream.Read.ByteArray(6);
-                    MapMarker_1f_EncounterId = Stream.Read.Entity();
-                    MapMarker_1f_EncounterMarkerId = Stream.Read.Entity();
-                    MapMarker_1f_HasDuration = Stream.Read.Byte();
-                    if (MapMarker_1f_HasDuration != 0x00) {
-                        MapMarker_1f_ExpireAtTime = Stream.Read.UInt();
-                    }
-                    MapMarker_1f_Position = Stream.Read.HalfArray(3);
-                }
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_31] == 0)
+                    MapMarkers_31 = Stream.Read.MapMarker();
+
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_32] == 0)
+                    MapMarkers_32 = Stream.Read.MapMarker();
+
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_33] == 0)
+                    MapMarkers_33 = Stream.Read.MapMarker();
+
+                if (Bitfield[(int)BitfieldIndex.MapMarkers_34] == 0)
+                    MapMarkers_34 = Stream.Read.MapMarker();
+
             }
             
         }
+    }
+
+    public struct MapMarker
+    {
+        public uint? MarkerType; // SDB Table 155
+        public byte[] Unk3;
+        public string EncounterId;
+        public string EncounterMarkerId; // No controller specified.
+        public byte? HasDuration;
+        public uint? ExpireAtTime; // Gametime ms
+        public float[] Position;
+
+        public MapMarker(Bitter.BinaryReader R)
+        {
+            MarkerType = R.UInt();
+            Unk3 = R.ByteArray(6);
+            EncounterId = R.Entity();
+            EncounterMarkerId = R.Entity();
+            HasDuration = R.Byte();
+            if (HasDuration != 0x00) {
+                ExpireAtTime = R.UInt();
+            }
+            else {
+                ExpireAtTime = 0;
+            }
+            Position = R.HalfArray(3);
+        }
+
+        public override string ToString() => $"MarkerType: {MarkerType}, Position: [{(Position != null ? String.Join(", ", Position) : "null")}]";
     }
 
     public static class MyExtensions
@@ -726,6 +293,21 @@ namespace PacketPeepScript
             }
             while (Stream.baseStream.ByteOffset < Stream.baseStream.Length);
             return ret;
+        }
+
+        public static MapMarker MapMarker(this Bitter.BinaryReader R)
+        {
+            return new MapMarker(R);
+        }
+
+        public static MapMarker[] MapMarkerArray(this Bitter.BinaryReader R, int num)
+        {
+            List<MapMarker> list = new List<MapMarker>();
+            for (int i = 1; i <= num; i++)
+            {
+                list.Add(R.MapMarker());
+            }
+            return list.ToArray();
         }
     }
 }

@@ -44,47 +44,118 @@ namespace PacketPeepScript
             MapMarkers_32 = 0x21,
             MapMarkers_33 = 0x22,
             MapMarkers_34 = 0x23,
+
+            Clear_MapMarkers_0 = 0x81,
+            Clear_MapMarkers_1 = 0x82,
+            Clear_MapMarkers_2 = 0x83,
+            Clear_MapMarkers_3 = 0x84,
+            Clear_MapMarkers_4 = 0x85,
+            Clear_MapMarkers_5 = 0x86,
+            Clear_MapMarkers_6 = 0x87,
+            Clear_MapMarkers_7 = 0x88,
+            Clear_MapMarkers_8 = 0x89,
+            Clear_MapMarkers_9 = 0x8a,
+            Clear_MapMarkers_10 = 0x8b,
+            Clear_MapMarkers_11 = 0x8c,
+            Clear_MapMarkers_12 = 0x8d,
+            Clear_MapMarkers_13 = 0x8e,
+            Clear_MapMarkers_14 = 0x8f,
+            Clear_MapMarkers_15 = 0x90,
+            Clear_MapMarkers_16 = 0x91,
+            Clear_MapMarkers_17 = 0x92,
+            Clear_MapMarkers_18 = 0x93,
+            Clear_MapMarkers_19 = 0x94,
+            Clear_MapMarkers_20 = 0x95,
+            Clear_MapMarkers_21 = 0x96,
+            Clear_MapMarkers_22 = 0x97,
+            Clear_MapMarkers_23 = 0x98,
+            Clear_MapMarkers_24 = 0x99,
+            Clear_MapMarkers_25 = 0x9a,
+            Clear_MapMarkers_26 = 0x9b,
+            Clear_MapMarkers_27 = 0x9c,
+            Clear_MapMarkers_28 = 0x9d,
+            Clear_MapMarkers_29 = 0x9e,
+            Clear_MapMarkers_30 = 0x9f,
+            Clear_MapMarkers_31 = 0xa0,
+            Clear_MapMarkers_32 = 0xa1,
+            Clear_MapMarkers_33 = 0xa2,
+            Clear_MapMarkers_34 = 0xa3,
         }
 
         public string PeepWarning; // Will be set if we encounter an unhandled shadowfield
 
         public float[] Position; // Used if the marker position is 0.
+        public MapMarker? MapMarkers_0;
+        public MapMarker? MapMarkers_1;
+        public MapMarker? MapMarkers_2;
+        public MapMarker? MapMarkers_3;
+        public MapMarker? MapMarkers_4;
+        public MapMarker? MapMarkers_5;
+        public MapMarker? MapMarkers_6;
+        public MapMarker? MapMarkers_7;
+        public MapMarker? MapMarkers_8;
+        public MapMarker? MapMarkers_9;
+        public MapMarker? MapMarkers_10;
+        public MapMarker? MapMarkers_11;
+        public MapMarker? MapMarkers_12;
+        public MapMarker? MapMarkers_13;
+        public MapMarker? MapMarkers_14;
+        public MapMarker? MapMarkers_15;
+        public MapMarker? MapMarkers_16;
+        public MapMarker? MapMarkers_17;
+        public MapMarker? MapMarkers_18;
+        public MapMarker? MapMarkers_19;
+        public MapMarker? MapMarkers_20;
+        public MapMarker? MapMarkers_21;
+        public MapMarker? MapMarkers_22;
+        public MapMarker? MapMarkers_23;
+        public MapMarker? MapMarkers_24;
+        public MapMarker? MapMarkers_25;
+        public MapMarker? MapMarkers_26;
+        public MapMarker? MapMarkers_27;
+        public MapMarker? MapMarkers_28;
+        public MapMarker? MapMarkers_29;
+        public MapMarker? MapMarkers_30;
+        public MapMarker? MapMarkers_31;
+        public MapMarker? MapMarkers_32;
+        public MapMarker? MapMarkers_33;
+        public MapMarker? MapMarkers_34;
 
-        public MapMarkersData? MapMarkers_0;
-        public MapMarkersData? MapMarkers_1;
-        public MapMarkersData? MapMarkers_2;
-        public MapMarkersData? MapMarkers_3;
-        public MapMarkersData? MapMarkers_4;
-        public MapMarkersData? MapMarkers_5;
-        public MapMarkersData? MapMarkers_6;
-        public MapMarkersData? MapMarkers_7;
-        public MapMarkersData? MapMarkers_8;
-        public MapMarkersData? MapMarkers_9;
-        public MapMarkersData? MapMarkers_10;
-        public MapMarkersData? MapMarkers_11;
-        public MapMarkersData? MapMarkers_12;
-        public MapMarkersData? MapMarkers_13;
-        public MapMarkersData? MapMarkers_14;
-        public MapMarkersData? MapMarkers_15;
-        public MapMarkersData? MapMarkers_16;
-        public MapMarkersData? MapMarkers_17;
-        public MapMarkersData? MapMarkers_18;
-        public MapMarkersData? MapMarkers_19;
-        public MapMarkersData? MapMarkers_20;
-        public MapMarkersData? MapMarkers_21;
-        public MapMarkersData? MapMarkers_22;
-        public MapMarkersData? MapMarkers_23;
-        public MapMarkersData? MapMarkers_24;
-        public MapMarkersData? MapMarkers_25;
-        public MapMarkersData? MapMarkers_26;
-        public MapMarkersData? MapMarkers_27;
-        public MapMarkersData? MapMarkers_28;
-        public MapMarkersData? MapMarkers_29;
-        public MapMarkersData? MapMarkers_30;
-        public MapMarkersData? MapMarkers_31;
-        public MapMarkersData? MapMarkers_32;
-        public MapMarkersData? MapMarkers_33;
-        public MapMarkersData? MapMarkers_34;
+        public bool? Clear_MapMarkers_0;
+        public bool? Clear_MapMarkers_1;
+        public bool? Clear_MapMarkers_2;
+        public bool? Clear_MapMarkers_3;
+        public bool? Clear_MapMarkers_4;
+        public bool? Clear_MapMarkers_5;
+        public bool? Clear_MapMarkers_6;
+        public bool? Clear_MapMarkers_7;
+        public bool? Clear_MapMarkers_8;
+        public bool? Clear_MapMarkers_9;
+        public bool? Clear_MapMarkers_10;
+        public bool? Clear_MapMarkers_11;
+        public bool? Clear_MapMarkers_12;
+        public bool? Clear_MapMarkers_13;
+        public bool? Clear_MapMarkers_14;
+        public bool? Clear_MapMarkers_15;
+        public bool? Clear_MapMarkers_16;
+        public bool? Clear_MapMarkers_17;
+        public bool? Clear_MapMarkers_18;
+        public bool? Clear_MapMarkers_19;
+        public bool? Clear_MapMarkers_20;
+        public bool? Clear_MapMarkers_21;
+        public bool? Clear_MapMarkers_22;
+        public bool? Clear_MapMarkers_23;
+        public bool? Clear_MapMarkers_24;
+        public bool? Clear_MapMarkers_25;
+        public bool? Clear_MapMarkers_26;
+        public bool? Clear_MapMarkers_27;
+        public bool? Clear_MapMarkers_28;
+        public bool? Clear_MapMarkers_29;
+        public bool? Clear_MapMarkers_30;
+        public bool? Clear_MapMarkers_31;
+        public bool? Clear_MapMarkers_32;
+        public bool? Clear_MapMarkers_33;
+        public bool? Clear_MapMarkers_34;
 
         public byte[] UnableToParse;
         
@@ -102,109 +173,215 @@ namespace PacketPeepScript
                 switch (sfidx)
                 {
                     case ShadowFieldIndex.MapMarkers_0:
-                        MapMarkers_0 = Stream.Read.MapMarkersData();
+                        MapMarkers_0 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_1:
-                        MapMarkers_1 = Stream.Read.MapMarkersData();
+                        MapMarkers_1 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_2:
-                        MapMarkers_2 = Stream.Read.MapMarkersData();
+                        MapMarkers_2 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_3:
-                        MapMarkers_3 = Stream.Read.MapMarkersData();
+                        MapMarkers_3 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_4:
-                        MapMarkers_4 = Stream.Read.MapMarkersData();
+                        MapMarkers_4 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_5:
-                        MapMarkers_5 = Stream.Read.MapMarkersData();
+                        MapMarkers_5 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_6:
-                        MapMarkers_6 = Stream.Read.MapMarkersData();
+                        MapMarkers_6 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_7:
-                        MapMarkers_7 = Stream.Read.MapMarkersData();
+                        MapMarkers_7 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_8:
-                        MapMarkers_8 = Stream.Read.MapMarkersData();
+                        MapMarkers_8 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_9:
-                        MapMarkers_9 = Stream.Read.MapMarkersData();
+                        MapMarkers_9 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_10:
-                        MapMarkers_10 = Stream.Read.MapMarkersData();
+                        MapMarkers_10 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_11:
-                        MapMarkers_11 = Stream.Read.MapMarkersData();
+                        MapMarkers_11 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_12:
-                        MapMarkers_12 = Stream.Read.MapMarkersData();
+                        MapMarkers_12 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_13:
-                        MapMarkers_13 = Stream.Read.MapMarkersData();
+                        MapMarkers_13 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_14:
-                        MapMarkers_14 = Stream.Read.MapMarkersData();
+                        MapMarkers_14 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_15:
-                        MapMarkers_15 = Stream.Read.MapMarkersData();
+                        MapMarkers_15 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_16:
-                        MapMarkers_16 = Stream.Read.MapMarkersData();
+                        MapMarkers_16 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_17:
-                        MapMarkers_17 = Stream.Read.MapMarkersData();
+                        MapMarkers_17 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_18:
-                        MapMarkers_18 = Stream.Read.MapMarkersData();
+                        MapMarkers_18 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_19:
-                        MapMarkers_19 = Stream.Read.MapMarkersData();
+                        MapMarkers_19 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_20:
-                        MapMarkers_20 = Stream.Read.MapMarkersData();
+                        MapMarkers_20 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_21:
-                        MapMarkers_21 = Stream.Read.MapMarkersData();
+                        MapMarkers_21 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_22:
-                        MapMarkers_22 = Stream.Read.MapMarkersData();
+                        MapMarkers_22 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_23:
-                        MapMarkers_23 = Stream.Read.MapMarkersData();
+                        MapMarkers_23 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_24:
-                        MapMarkers_24 = Stream.Read.MapMarkersData();
+                        MapMarkers_24 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_25:
-                        MapMarkers_25 = Stream.Read.MapMarkersData();
+                        MapMarkers_25 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_26:
-                        MapMarkers_26 = Stream.Read.MapMarkersData();
+                        MapMarkers_26 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_27:
-                        MapMarkers_27 = Stream.Read.MapMarkersData();
+                        MapMarkers_27 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_28:
-                        MapMarkers_28 = Stream.Read.MapMarkersData();
+                        MapMarkers_28 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_29:
-                        MapMarkers_29 = Stream.Read.MapMarkersData();
+                        MapMarkers_29 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_30:
-                        MapMarkers_30 = Stream.Read.MapMarkersData();
+                        MapMarkers_30 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_31:
-                        MapMarkers_31 = Stream.Read.MapMarkersData();
+                        MapMarkers_31 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_32:
-                        MapMarkers_32 = Stream.Read.MapMarkersData();
+                        MapMarkers_32 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_33:
-                        MapMarkers_33 = Stream.Read.MapMarkersData();
+                        MapMarkers_33 = Stream.Read.MapMarker();
                         break;
                     case ShadowFieldIndex.MapMarkers_34:
-                        MapMarkers_34 = Stream.Read.MapMarkersData();
+                        MapMarkers_34 = Stream.Read.MapMarker();
+                        break;
+
+                    case ShadowFieldIndex.Clear_MapMarkers_0:
+                        Clear_MapMarkers_0 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_1:
+                        Clear_MapMarkers_1 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_2:
+                        Clear_MapMarkers_2 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_3:
+                        Clear_MapMarkers_3 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_4:
+                        Clear_MapMarkers_4 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_5:
+                        Clear_MapMarkers_5 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_6:
+                        Clear_MapMarkers_6 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_7:
+                        Clear_MapMarkers_7 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_8:
+                        Clear_MapMarkers_8 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_9:
+                        Clear_MapMarkers_9 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_10:
+                        Clear_MapMarkers_10 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_11:
+                        Clear_MapMarkers_11 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_12:
+                        Clear_MapMarkers_12 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_13:
+                        Clear_MapMarkers_13 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_14:
+                        Clear_MapMarkers_14 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_15:
+                        Clear_MapMarkers_15 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_16:
+                        Clear_MapMarkers_16 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_17:
+                        Clear_MapMarkers_17 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_18:
+                        Clear_MapMarkers_18 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_19:
+                        Clear_MapMarkers_19 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_20:
+                        Clear_MapMarkers_20 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_21:
+                        Clear_MapMarkers_21 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_22:
+                        Clear_MapMarkers_22 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_23:
+                        Clear_MapMarkers_23 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_24:
+                        Clear_MapMarkers_24 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_25:
+                        Clear_MapMarkers_25 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_26:
+                        Clear_MapMarkers_26 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_27:
+                        Clear_MapMarkers_27 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_28:
+                        Clear_MapMarkers_28 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_29:
+                        Clear_MapMarkers_29 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_30:
+                        Clear_MapMarkers_30 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_31:
+                        Clear_MapMarkers_31 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_32:
+                        Clear_MapMarkers_32 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_33:
+                        Clear_MapMarkers_33 = true;
+                        break;
+                    case ShadowFieldIndex.Clear_MapMarkers_34:
+                        Clear_MapMarkers_34 = true;
                         break;
 
                     default:
@@ -219,7 +396,7 @@ namespace PacketPeepScript
     }
 
     // Assuming same format as in keyframe
-    public struct MapMarkersData
+    public struct MapMarker
     {
         public uint? MarkerType; // SDB Table 155
         public byte[] Unk3;
@@ -229,7 +406,7 @@ namespace PacketPeepScript
         public uint? ExpireAtTime; // Gametime ms
         public float[] Position;
 
-        public MapMarkersData(Bitter.BinaryReader R)
+        public MapMarker(Bitter.BinaryReader R)
         {
             MarkerType = R.UInt();
             Unk3 = R.ByteArray(6);
@@ -312,17 +489,17 @@ namespace PacketPeepScript
             return ret;
         }
 
-        public static MapMarkersData MapMarkersData(this Bitter.BinaryReader R)
+        public static MapMarker MapMarker(this Bitter.BinaryReader R)
         {
-            return new MapMarkersData(R);
+            return new MapMarker(R);
         }
 
-        public static MapMarkersData[] MapMarkersDataArray(this Bitter.BinaryReader R, int num)
+        public static MapMarker[] MapMarkerArray(this Bitter.BinaryReader R, int num)
         {
-            List<MapMarkersData> list = new List<MapMarkersData>();
+            List<MapMarker> list = new List<MapMarker>();
             for (int i = 1; i <= num; i++)
             {
-                list.Add(R.MapMarkersData());
+                list.Add(R.MapMarker());
             }
             return list.ToArray();
         }
