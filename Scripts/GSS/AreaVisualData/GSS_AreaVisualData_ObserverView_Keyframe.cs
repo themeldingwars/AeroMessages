@@ -1,4 +1,5 @@
 using Bitter;
+using System;
 using System.Collections.Generic;
 namespace PacketPeepScript
 {
@@ -42,34 +43,34 @@ namespace PacketPeepScript
         public byte[] Bitfield;
         public float[] Position;
         public byte[] ScopeBubbleInfo;
-        public ContextFlag ContextFlags_0;
-        public ContextFlag ContextFlags_1;
-        public ContextFlag ContextFlags_2;
-        public ContextFlag ContextFlags_3;
-        public ContextFlag ContextFlags_4;
-        public ContextFlag ContextFlags_5;
-        public ContextFlag ContextFlags_6;
-        public ContextFlag ContextFlags_7;
-        public ContextFlag ContextFlags_8;
-        public ContextFlag ContextFlags_9;
-        public ContextFlag ContextFlags_10;
-        public ContextFlag ContextFlags_11;
-        public ContextFlag ContextFlags_12;
-        public ContextFlag ContextFlags_13;
-        public ContextFlag ContextFlags_14;
-        public ContextFlag ContextFlags_15;
-        public ContextFlag ContextFlags_16;
-        public ContextFlag ContextFlags_17;
-        public ContextFlag ContextFlags_18;
-        public ContextFlag ContextFlags_19;
-        public ContextFlag ContextFlags_20;
-        public ContextFlag ContextFlags_21;
-        public ContextFlag ContextFlags_22;
-        public ContextFlag ContextFlags_23;
-        public ContextTeam ContextTeams_0;
-        public ContextTeam ContextTeams_1;
-        public ContextTeam ContextTeams_2;
-        public ContextTeam ContextTeams_3;
+        public ContextFlag? ContextFlags_0;
+        public ContextFlag? ContextFlags_1;
+        public ContextFlag? ContextFlags_2;
+        public ContextFlag? ContextFlags_3;
+        public ContextFlag? ContextFlags_4;
+        public ContextFlag? ContextFlags_5;
+        public ContextFlag? ContextFlags_6;
+        public ContextFlag? ContextFlags_7;
+        public ContextFlag? ContextFlags_8;
+        public ContextFlag? ContextFlags_9;
+        public ContextFlag? ContextFlags_10;
+        public ContextFlag? ContextFlags_11;
+        public ContextFlag? ContextFlags_12;
+        public ContextFlag? ContextFlags_13;
+        public ContextFlag? ContextFlags_14;
+        public ContextFlag? ContextFlags_15;
+        public ContextFlag? ContextFlags_16;
+        public ContextFlag? ContextFlags_17;
+        public ContextFlag? ContextFlags_18;
+        public ContextFlag? ContextFlags_19;
+        public ContextFlag? ContextFlags_20;
+        public ContextFlag? ContextFlags_21;
+        public ContextFlag? ContextFlags_22;
+        public ContextFlag? ContextFlags_23;
+        public ContextTeam? ContextTeams_0;
+        public ContextTeam? ContextTeams_1;
+        public ContextTeam? ContextTeams_2;
+        public ContextTeam? ContextTeams_3;
 
 
         public override void Read(Bitter.BinaryStream Stream)
@@ -225,13 +226,19 @@ namespace PacketPeepScript
 
     public struct ContextFlag
     {
+        public byte[] Unk;
 
         public ContextFlag(Bitter.BinaryReader R)
         {
-
+            Unk = R.ByteArray(3);
         }
 
-        public override string ToString() => $"ContextFlag";
+        string SafeRepr<T>(T[] arr)
+        {
+            return $"[{(arr != null ? String.Join(", ", arr) : "null")}]";
+        }
+
+        public override string ToString() => $"{SafeRepr(Unk)}";
     }
 
     public struct ContextTeam
