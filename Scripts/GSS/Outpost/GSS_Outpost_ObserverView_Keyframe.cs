@@ -5,27 +5,62 @@ namespace PacketPeepScript
     [Script(MessageType.GSS, 45, 3, true)]
     public class OutpostObserverViewKeyframe : BaseScript
     {
-        public byte[] Unk_Bitfield;
-        public uint NameLocalizationId;
+        enum BitfieldIndex : byte
+        {
+            NearbyResourceItems_0,
+            NearbyResourceItems_1,
+            NearbyResourceItems_2,
+            NearbyResourceItems_3,
+            NearbyResourceItems_4,
+            NearbyResourceItems_5,
+            NearbyResourceItems_6,
+            NearbyResourceItems_7,
+            NearbyResourceItems_8,
+            NearbyResourceItems_9,
+            NearbyResourceItems_10,
+            NearbyResourceItems_11,
+            NearbyResourceItems_12,
+            NearbyResourceItems_13,
+            NearbyResourceItems_14,
+            NearbyResourceItems_15,
+        }
+
+        public byte[] Bitfield;
+        public uint OutpostName;
         public float[] Position;
-        public uint LevelRangeId;
-        public byte Synced; // Doesn't look right, investigate
+        public uint LevelBandId;
+        public byte SinUnlockIndex;
         public int TeleportCost;
-        public float Progress;
-        public byte FactionId;
-        public byte Team;
-        public byte UnderAttack;
-        public byte OutpostType;
-        public uint PossibleBuffsId;
-        public byte PowerLevel;
-        public ushort MWCurrent;
-        public ushort MWMax;
-        public uint MapMarkerTypeId;
-        public float Radius;
-        public byte[] Unk3_1;
-        public byte[] Unk3_2;
+        public float Progress; // Dynamic_00
+        public byte FactionId; // Dynamic_01
+        public byte Team; // Dynamic_02
+        public byte UnderAttack; // Dynamic_03
+        public byte OutpostType; // Dynamic_04
+        public uint PossibleBuffsId; // Dynamic_05
+        public byte PowerLevel; // Dynamic_06
+        public ushort MWCurrent; // Dynamic_07
+        public ushort MWMax; // Dynamic_08
+        public uint MapMarkerTypeId; // Dynamic_09
+        public float Radius; // Dynamic_10
+        public byte[] Dynamic_11;
+        public uint NearbyResourceItems_0;
+        public uint NearbyResourceItems_1;
+        public uint NearbyResourceItems_2;
+        public uint NearbyResourceItems_3;
+        public uint NearbyResourceItems_4;
+        public uint NearbyResourceItems_5;
+        public uint NearbyResourceItems_6;
+        public uint NearbyResourceItems_7;
+        public uint NearbyResourceItems_8;
+        public uint NearbyResourceItems_9;
+        public uint NearbyResourceItems_10;
+        public uint NearbyResourceItems_11;
+        public uint NearbyResourceItems_12;
+        public uint NearbyResourceItems_13;
+        public uint NearbyResourceItems_14;
+        public uint NearbyResourceItems_15;
         public string EncounterId;
-        public byte[] Unk4;
+        public byte[] ScopeBubbleInfo;
 
         public override void Read(Bitter.BinaryStream Stream)
         {
@@ -33,12 +68,13 @@ namespace PacketPeepScript
             MyExtensions.Stream = Stream;
 
             if (true) {
-                Unk_Bitfield = Stream.Read.BitArray(16); 
-                NameLocalizationId = Stream.Read.UInt();
+                Bitfield = Stream.Read.BitArray(16); 
+                OutpostName = Stream.Read.UInt();
                 Position = Stream.Read.FloatArray(3);
-                LevelRangeId = Stream.Read.UInt();
-                Synced = Stream.Read.Byte();
+                LevelBandId = Stream.Read.UInt();
+                SinUnlockIndex = Stream.Read.Byte();
                 TeleportCost = Stream.Read.Int();
+
                 Progress = Stream.Read.Float();
                 FactionId = Stream.Read.Byte();
                 Team = Stream.Read.Byte();
@@ -50,12 +86,75 @@ namespace PacketPeepScript
                 MWMax = Stream.Read.UShort();
                 MapMarkerTypeId = Stream.Read.UInt();
                 Radius = Stream.Read.Float(); 
-                Unk3_1 = Stream.Read.ByteArray(4);
-                if (Unk_Bitfield[0] == 0x00) {
-                    Unk3_2 = Stream.Read.ByteArray(4);
+                Dynamic_11 = Stream.Read.ByteArray(4);
+
+                if (Bitfield[(int)BitfieldIndex.NearbyResourceItems_0] == 0)
+                {
+                    NearbyResourceItems_0 = Stream.Read.UInt();
                 }
-                EncounterId = Stream.Read.String();
-                Unk4 = Stream.Read.ByteArray(8);
+                if (Bitfield[(int)BitfieldIndex.NearbyResourceItems_1] == 0)
+                {
+                    NearbyResourceItems_1 = Stream.Read.UInt();
+                }
+                if (Bitfield[(int)BitfieldIndex.NearbyResourceItems_2] == 0)
+                {
+                    NearbyResourceItems_2 = Stream.Read.UInt();
+                }
+                if (Bitfield[(int)BitfieldIndex.NearbyResourceItems_3] == 0)
+                {
+                    NearbyResourceItems_3 = Stream.Read.UInt();
+                }
+                if (Bitfield[(int)BitfieldIndex.NearbyResourceItems_4] == 0)
+                {
+                    NearbyResourceItems_4 = Stream.Read.UInt();
+                }
+                if (Bitfield[(int)BitfieldIndex.NearbyResourceItems_5] == 0)
+                {
+                    NearbyResourceItems_5 = Stream.Read.UInt();
+                }
+                if (Bitfield[(int)BitfieldIndex.NearbyResourceItems_6] == 0)
+                {
+                    NearbyResourceItems_6 = Stream.Read.UInt();
+                }
+                if (Bitfield[(int)BitfieldIndex.NearbyResourceItems_7] == 0)
+                {
+                    NearbyResourceItems_7 = Stream.Read.UInt();
+                }
+                if (Bitfield[(int)BitfieldIndex.NearbyResourceItems_8] == 0)
+                {
+                    NearbyResourceItems_8 = Stream.Read.UInt();
+                }
+                if (Bitfield[(int)BitfieldIndex.NearbyResourceItems_9] == 0)
+                {
+                    NearbyResourceItems_9 = Stream.Read.UInt();
+                }
+                if (Bitfield[(int)BitfieldIndex.NearbyResourceItems_10] == 0)
+                {
+                    NearbyResourceItems_10 = Stream.Read.UInt();
+                }
+                if (Bitfield[(int)BitfieldIndex.NearbyResourceItems_11] == 0)
+                {
+                    NearbyResourceItems_11 = Stream.Read.UInt();
+                }
+                if (Bitfield[(int)BitfieldIndex.NearbyResourceItems_12] == 0)
+                {
+                    NearbyResourceItems_12 = Stream.Read.UInt();
+                }
+                if (Bitfield[(int)BitfieldIndex.NearbyResourceItems_13] == 0)
+                {
+                    NearbyResourceItems_13 = Stream.Read.UInt();
+                }
+                if (Bitfield[(int)BitfieldIndex.NearbyResourceItems_14] == 0)
+                {
+                    NearbyResourceItems_14 = Stream.Read.UInt();
+                }
+                if (Bitfield[(int)BitfieldIndex.NearbyResourceItems_15] == 0)
+                {
+                    NearbyResourceItems_15 = Stream.Read.UInt();
+                }
+
+                EncounterId = Stream.Read.Entity();
+                ScopeBubbleInfo = Stream.Read.ByteArray(8);
             }
             
         }
