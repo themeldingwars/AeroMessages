@@ -1,4 +1,5 @@
 using Bitter;
+using System;
 using System.Collections.Generic;
 namespace PacketPeepScript
 {
@@ -60,8 +61,6 @@ namespace PacketPeepScript
         public LootObject? LootObjects_22;
         public LootObject? LootObjects_23;
 
-        public byte[] Unk;
-        
         public override void Read(Bitter.BinaryStream Stream)
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
@@ -189,30 +188,29 @@ namespace PacketPeepScript
                 {
                     LootObjects_23 = Stream.Read.LootObject();
                 }
-
-                int remaining = (int)(Stream.baseStream.Length - Stream.baseStream.ByteOffset);
-                Unk = Stream.Read.ByteArray(remaining);
             }
         }
     }
 
     public struct LootObject
     {
-        public uint Time1;
-        public byte Unk2;
+        public uint Time;
+        public byte HaveEntity;
         public string Entity;
-        public byte Unk3;
+        public byte HaveHostility;
+        public byte[] Hostility;
         public byte[] Unk4;
         public float[] Position;
         public uint LootSdbId;
         public uint Quantity;
+        public byte[] Unk5;
 
         public LootObject(Bitter.BinaryReader R)
         {
-            Time1 = R.UInt();
+            Time = R.UInt();
 
-            Unk2 = R.Byte();
-            if (Unk2 == 1)
+            HaveEntity = R.Byte();
+            if (HaveEntity == 1)
             {
                 Entity = R.Entity();
             }
@@ -220,21 +218,25 @@ namespace PacketPeepScript
                 Entity = "None";
             }
 
-            Unk3 = R.Byte();
-            if (Unk3 == 1) {
-                Unk4 = R.ByteArray(8);
+            HaveHostility = R.Byte(); // Feel like this should be Hostility, but I didn't expect 2 bytes from it.
+            if (HaveHostility == 1) {
+                Hostility = R.ByteArray(2);
             }
             else {
-                Unk4 = R.ByteArray(6);
+                Hostility = null;
             }
+
+            Unk4 = R.ByteArray(6); // A direction in halfs?
 
             Position = R.FloatArray(3);
 
             LootSdbId = R.UInt();
             Quantity = R.UInt();
+
+            Unk5 = R.ByteArray(8); // A rotation in halfs, a scopebubble, or a guid?
         }
 
-        public override string ToString() => $"";
+        public override string ToString() => $"Loot: {LootSdbId}, Quantity: {Quantity}, Entity: {Entity},{(Hostility != null ? $" Hostility: [{String.Join(", ", Hostility)}]," : "")} Unk4: [{(Unk4 != null ? String.Join(", ", Unk4) : "null")}], Position: [{(Position != null ? String.Join(", ", Position) : "null")}], Unk5: [{(Unk5 != null ? String.Join(", ", Unk5) : "null")}], Time: {Time}";
     }
 
     public static class MyExtensions
