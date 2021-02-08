@@ -111,7 +111,6 @@ namespace PacketPeepScript
             CombatTimer_1 = 0x63,
             Nemeses = 0x64,
             SuperCharge = 0x65,
-
             NoSpreadFlags = 0x66,
             AppendageHealthPools_0 = 0x67,
             AppendageHealthPools_1 = 0x68,
@@ -168,7 +167,6 @@ namespace PacketPeepScript
             Clear_StatusEffects_29 = 0xbd,
             Clear_StatusEffects_30 = 0xbe,
             Clear_StatusEffects_31 = 0xbf,
-
             Clear_AppendageHealthPools_0 = 231,
             Clear_AppendageHealthPools_1 = 232,
             Clear_AppendageHealthPools_2 = 233,
