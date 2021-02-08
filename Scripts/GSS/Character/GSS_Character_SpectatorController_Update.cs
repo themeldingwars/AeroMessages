@@ -7,11 +7,15 @@ namespace PacketPeepScript
         enum ShadowFieldIndex : byte
         {
             PingTime = 0x00,
-            SpecatorMode = 0x01,
+            SpectatorMode = 0x01,
             CinematicCamera = 0x02,
         }
 
         public string PeepWarning; // Will be set if we encounter an unhandled shadowfield
+
+        public uint PingTime;
+        public byte SpectatorMode;
+        public byte[] CinematicCamera;
 
         public byte[] UnableToParse;
 
@@ -24,6 +28,18 @@ namespace PacketPeepScript
                 ShadowFieldIndex sfidx = (ShadowFieldIndex) (Stream.Read.Byte());
                 switch (sfidx)
                 {
+                    case ShadowFieldIndex.PingTime:
+                        PingTime = Stream.Read.UInt();
+                        break;
+
+                    case ShadowFieldIndex.SpectatorMode:
+                        SpectatorMode = Stream.Read.Byte();
+                        break;
+
+                    //case ShadowFieldIndex.CinematicCamera:
+                    //    CinematicCamera = Stream.Read.ByteArray(1);
+                    //    break;
+
                     default:
                         PeepWarning += $"Dont know how to parse shadowfield {sfidx}";
                         int remaining = (int)(Stream.baseStream.Length - Stream.baseStream.ByteOffset);
