@@ -285,6 +285,10 @@
           "Name": "MissionCompletionCounts",
           "Notes": ""
         },
+        "86": {
+          "Name": "ArcCompletionHistoryUpdate",
+          "Notes": ""
+        },
         "87": {
           "Name": "JobLedgerEntriesUpdate",
           "Notes": ""
