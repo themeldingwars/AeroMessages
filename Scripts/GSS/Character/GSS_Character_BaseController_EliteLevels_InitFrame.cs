@@ -3,29 +3,21 @@ using System;
 using System.Collections.Generic;
 namespace PacketPeepScript
 {
-    [Script(MessageType.GSS, 2, 186, true)]
-    public class CharacterBaseControllerEliteLevelsInitAllFrames : BaseScript
+    [Script(MessageType.GSS, 2, 187, true)]
+    public class CharacterBaseControllerEliteLevelsInitFrame : BaseScript
     {
-        public uint CurrentFrame_Id; 
-
-        public byte NumberOfFrames;
-        public FrameInfo[] Frames;
+        public FrameInfo Frame;
 
         public override void Read(Bitter.BinaryStream Stream)
         {
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-            if (true) {
-                CurrentFrame_Id = Stream.Read.UInt();
-                NumberOfFrames = Stream.Read.Byte();
-                Frames = Stream.Read.FrameInfoArray((int)NumberOfFrames);
-            }
+            Frame = Stream.Read.FrameInfo();
         }
     }
 
     public struct FrameInfo
     {
-        public uint ChassisId_1; // Might just be that the data is indexed by this or something
-        public uint ChassisId_2;
+        public uint ChassisId; // Note: Only one id when initing one frame
         public uint EliteRank;
         public uint EliteXP;
         public uint ElitePoints;
@@ -36,8 +28,7 @@ namespace PacketPeepScript
 
         public FrameInfo(Bitter.BinaryReader Read)
         {
-            ChassisId_1 = Read.UInt();
-            ChassisId_2 = Read.UInt();
+            ChassisId = Read.UInt();
             EliteRank = Read.UInt();
             EliteXP = Read.UInt();
             ElitePoints = Read.UInt();
@@ -47,7 +38,7 @@ namespace PacketPeepScript
             PreviousUpgrades = Read.PreviousUpgradeInfoArray((int)NumberOfPreviousUpgrades);
         }
 
-        public override string ToString() => $"Frame: {ChassisId_1}, Rank: {EliteRank}, XP: {EliteXP}, Points: {ElitePoints}, AvailableUpgrades: [{(AvailableUpgrades != null ? String.Join(", ", AvailableUpgrades) : "null")}], PreviousUpgrades: [{(PreviousUpgrades != null ? String.Join(", ", PreviousUpgrades) : "null")}]";
+        public override string ToString() => $"Frame: {ChassisId}, Rank: {EliteRank}, XP: {EliteXP}, Points: {ElitePoints}, AvailableUpgrades: [{(AvailableUpgrades != null ? String.Join(", ", AvailableUpgrades) : "null")}], PreviousUpgrades: [{(PreviousUpgrades != null ? String.Join(", ", PreviousUpgrades) : "null")}]";
     }
 
     public struct AvailableUpgradeInfo
