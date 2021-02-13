@@ -617,16 +617,16 @@ namespace PacketPeepScript
         public uint? CombatFlags;
         public uint? CombatFlags_Time;
 
-        public byte AppendageHealthPct_0; // Not sure
-        public byte AppendageHealthPct_1; // Not sure
-        public byte AppendageHealthPct_2; // Not sure
-        public byte AppendageHealthPct_3; // Not sure
-        public byte AppendageHealthPct_4; // Not sure
-        public byte AppendageHealthPct_5; // Not sure
-        public byte AppendageHealthPct_6; // Not sure
-        public byte AppendageHealthPct_7; // Not sure
-        public byte AppendageHealthPct_8; // Not sure
-        public byte AppendageHealthPct_9; // Not sure
+        public byte? AppendageHealthPct_0; // Not sure
+        public byte? AppendageHealthPct_1; // Not sure
+        public byte? AppendageHealthPct_2; // Not sure
+        public byte? AppendageHealthPct_3; // Not sure
+        public byte? AppendageHealthPct_4; // Not sure
+        public byte? AppendageHealthPct_5; // Not sure
+        public byte? AppendageHealthPct_6; // Not sure
+        public byte? AppendageHealthPct_7; // Not sure
+        public byte? AppendageHealthPct_8; // Not sure
+        public byte? AppendageHealthPct_9; // Not sure
 
         public string NPCTargetObjId_Entity;
         public ushort? BattleChatterTag;

@@ -143,29 +143,29 @@ namespace PacketPeepScript
 
         public uint? SinCardType;
 
-        public SinCardField SinCardFields_0;
-        public SinCardField SinCardFields_1;
-        public SinCardField SinCardFields_2;
-        public SinCardField SinCardFields_3;
-        public SinCardField SinCardFields_4;
-        public SinCardField SinCardFields_5;
-        public SinCardField SinCardFields_6;
-        public SinCardField SinCardFields_7;
-        public SinCardField SinCardFields_8;
-        public SinCardField SinCardFields_9;
-        public SinCardField SinCardFields_10;
-        public SinCardField SinCardFields_11;
-        public SinCardField SinCardFields_12;
-        public SinCardField SinCardFields_13;
-        public SinCardField SinCardFields_14;
-        public SinCardField SinCardFields_15;
-        public SinCardField SinCardFields_16;
-        public SinCardField SinCardFields_17;
-        public SinCardField SinCardFields_18;
-        public SinCardField SinCardFields_19;
-        public SinCardField SinCardFields_20;
-        public SinCardField SinCardFields_21;
-        public SinCardField SinCardFields_22;
+        public SinCardField? SinCardFields_0;
+        public SinCardField? SinCardFields_1;
+        public SinCardField? SinCardFields_2;
+        public SinCardField? SinCardFields_3;
+        public SinCardField? SinCardFields_4;
+        public SinCardField? SinCardFields_5;
+        public SinCardField? SinCardFields_6;
+        public SinCardField? SinCardFields_7;
+        public SinCardField? SinCardFields_8;
+        public SinCardField? SinCardFields_9;
+        public SinCardField? SinCardFields_10;
+        public SinCardField? SinCardFields_11;
+        public SinCardField? SinCardFields_12;
+        public SinCardField? SinCardFields_13;
+        public SinCardField? SinCardFields_14;
+        public SinCardField? SinCardFields_15;
+        public SinCardField? SinCardFields_16;
+        public SinCardField? SinCardFields_17;
+        public SinCardField? SinCardFields_18;
+        public SinCardField? SinCardFields_19;
+        public SinCardField? SinCardFields_20;
+        public SinCardField? SinCardFields_21;
+        public SinCardField? SinCardFields_22;
 
         public byte? AssetOverrides;
 

@@ -219,7 +219,7 @@ namespace PacketPeepScript
         public byte[] RegionUnlocks;
         public byte[] ScopeBubbleInfo;
         public byte[] ChatPartyLeaderId;
-        public uint ProgressionXp;
+        public uint? ProgressionXp;
 
         public byte[] PermanentStatusEffects;
 
@@ -243,54 +243,54 @@ namespace PacketPeepScript
         public byte[] ReputationZoneModifier;
         public byte[] ReputationVipModifier;
         public byte[] ReputationEventModifier;
-        public uint Wallet_RedBeans;
-        public uint Wallet_Epoch;
-        public uint Loyalty_CurrentPoints;
-        public uint Loyalty_LifetimePoints;
-        public uint Loyalty_Tier;
+        public uint? Wallet_RedBeans;
+        public uint? Wallet_Epoch;
+        public uint? Loyalty_CurrentPoints;
+        public uint? Loyalty_LifetimePoints;
+        public uint? Loyalty_Tier;
         public byte? Level;
         public byte? EffectiveLevel;
         public byte? LevelResetCount;
         //public byte[] OldestDeployables; // Dunno
-        public uint PerkRespecs;
+        public uint? PerkRespecs;
         //public byte[] ArcStatus; // Dunno
         public uint? LeaveZoneTime; // Guess
         public byte? ChatMuteStatus;
         public byte[] TimedDailyReward;
         //public byte[] TimedDailyRewardResult // Dunno
-        public uint SinCardType;
-        public SinCardField SinCardFields_0;
-        public SinCardField SinCardFields_1;
-        public SinCardField SinCardFields_2;
-        public SinCardField SinCardFields_3;
-        public SinCardField SinCardFields_4;
-        public SinCardField SinCardFields_5;
-        public SinCardField SinCardFields_6;
-        public SinCardField SinCardFields_7;
-        public SinCardField SinCardFields_8;
-        public SinCardField SinCardFields_9;
-        public SinCardField SinCardFields_10;
-        public SinCardField SinCardFields_11;
-        public SinCardField SinCardFields_12;
-        public SinCardField SinCardFields_13;
-        public SinCardField SinCardFields_14;
-        public SinCardField SinCardFields_15;
-        public SinCardField SinCardFields_16;
-        public SinCardField SinCardFields_17;
-        public SinCardField SinCardFields_18;
-        public SinCardField SinCardFields_19;
-        public SinCardField SinCardFields_20;
-        public SinCardField SinCardFields_21;
-        public SinCardField SinCardFields_22;
-        public ushort FriendCount;
-        public byte CAISStatus_State;
-        public uint CAISStatus_ElapsedSeconds; 
+        public uint? SinCardType;
+        public SinCardField? SinCardFields_0;
+        public SinCardField? SinCardFields_1;
+        public SinCardField? SinCardFields_2;
+        public SinCardField? SinCardFields_3;
+        public SinCardField? SinCardFields_4;
+        public SinCardField? SinCardFields_5;
+        public SinCardField? SinCardFields_6;
+        public SinCardField? SinCardFields_7;
+        public SinCardField? SinCardFields_8;
+        public SinCardField? SinCardFields_9;
+        public SinCardField? SinCardFields_10;
+        public SinCardField? SinCardFields_11;
+        public SinCardField? SinCardFields_12;
+        public SinCardField? SinCardFields_13;
+        public SinCardField? SinCardFields_14;
+        public SinCardField? SinCardFields_15;
+        public SinCardField? SinCardFields_16;
+        public SinCardField? SinCardFields_17;
+        public SinCardField? SinCardFields_18;
+        public SinCardField? SinCardFields_19;
+        public SinCardField? SinCardFields_20;
+        public SinCardField? SinCardFields_21;
+        public SinCardField? SinCardFields_22;
+        public ushort? FriendCount;
+        public byte? CAISStatus_State;
+        public uint? CAISStatus_ElapsedSeconds; 
         public byte[] ScalingLevel;
-        public uint PvPRank;
-        public uint PvPRankPoints;
-        public uint PvPTokens;
-        public uint BountyPointsLastClaimed;
-        public uint EliteLevel;
+        public uint? PvPRank;
+        public uint? PvPRankPoints;
+        public uint? PvPTokens;
+        public uint? BountyPointsLastClaimed;
+        public uint? EliteLevel;
 
 
         public bool? Clear_CinematicCamera;

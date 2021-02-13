@@ -23,92 +23,92 @@ namespace PacketPeepScript
         public string PeepWarning; // Will be set if we encounter an unhandled shadowfield
         
         // VisualOverrides, references a visual group?
-        public byte VisualOverrides_HaveData;
-        public byte VisualOverrides_UnkByte;
-        public uint VisualOverrides_VisualsGroupId;
+        public byte? VisualOverrides_HaveData;
+        public byte? VisualOverrides_UnkByte;
+        public uint? VisualOverrides_VisualsGroupId;
         
         // -- CurrentEquipment --
             // Chassis
-            public EquippedItemData Chassis;
-            public byte NumberOfChassisModules;
+            public EquippedItemData? Chassis;
+            public byte? NumberOfChassisModules;
             public EquippedItemData[] Chassis_Modules; // Gear, 4 byte id, 3 byte unk item data 
             
             // Chassis Visuals
-            public byte NumberOfChassisVisualsDecals;
+            public byte? NumberOfChassisVisualsDecals;
             public DecalData[] Chassis_Visuals_Decals;
 
-            public byte NumberOfChassisVisualsUnk1;
+            public byte? NumberOfChassisVisualsUnk1;
             public byte[] Chassis_Visuals_Unk1_Data; // (idk if this is right, parsing as 4 byte int)
 
-            public byte NumberOfChassisVisualsColors;
+            public byte? NumberOfChassisVisualsColors;
             public ColorData[] Chassis_Visuals_Colors;
 
-            public byte NumberOfChassisVisualsPalettes;
+            public byte? NumberOfChassisVisualsPalettes;
             public PaletteData[] Chassis_Visuals_Palettes;
 
-            public byte NumberOfChassisVisualsPatterns;
+            public byte? NumberOfChassisVisualsPatterns;
             public PatternData[] Chassis_Visuals_Patterns;
             // --
 
             public byte[] CurrentEquipment_Unk2;
 
-            public EquippedItemData Backpack; // Reactor
-            public byte NumberOfBackpackModules;
+            public EquippedItemData? Backpack; // Reactor
+            public byte? NumberOfBackpackModules;
             public EquippedItemData[] Backpack_Modules;
 
             public byte[] CurrentEquipment_Unk3;
 
-            public uint PrimaryWeapon;
+            public uint? PrimaryWeapon;
             public byte[] Unk_PrimaryWeapon_ItemData;
-            public byte NumberOfPrimaryWeaponVisualsColors;
+            public byte? NumberOfPrimaryWeaponVisualsColors;
             public ColorData[] PrimaryWeapon_Visuals_Colors;
-            public byte NumberOfPrimaryWeaponVisualsPalettes;
+            public byte? NumberOfPrimaryWeaponVisualsPalettes;
             public PaletteData[] PrimaryWeapon_Visuals_Palettes;
-            public byte NumberOfPrimaryWeaponVisualsPatterns;
+            public byte? NumberOfPrimaryWeaponVisualsPatterns;
             public PatternData[] PrimaryWeapon_Visuals_Patterns; 
-            public byte NumberOfPrimaryWeaponVisualsOrnaments;
+            public byte? NumberOfPrimaryWeaponVisualsOrnaments;
             public uint[] PrimaryWeapon_Visuals_Ornaments;
 
             public byte[] CurrentEquipment_Unk4;
 
-            public uint SecondaryWeapon;
+            public uint? SecondaryWeapon;
             public byte[] Unk_SecondaryWeapon_ItemData;
-            public byte NumberOfSecondaryWeaponVisualsColors;
+            public byte? NumberOfSecondaryWeaponVisualsColors;
             public ColorData[] SecondaryWeapon_Visuals_Colors;
-            public byte NumberOfSecondaryWeaponVisualsPalettes;
+            public byte? NumberOfSecondaryWeaponVisualsPalettes;
             public PaletteData[] SecondaryWeapon_Visuals_Palettes;
-            public byte NumberOfSecondaryWeaponVisualsPatterns;
+            public byte? NumberOfSecondaryWeaponVisualsPatterns;
             public PatternData[] SecondaryWeapon_Visuals_Patterns;
-            public byte NumberOfSecondaryWeaponVisualsOrnaments;
+            public byte? NumberOfSecondaryWeaponVisualsOrnaments;
             public uint[] SecondaryWeapon_Visuals_Ornaments;
 
             public byte[] CurrentEquipment_Unk5;
         // -- --
 
-        public byte Level;
-        public byte EffectiveLevel;
-        public byte LevelResetCount;
-        public byte CurrentDurabilityPct;
+        public byte? Level;
+        public byte? EffectiveLevel;
+        public byte? LevelResetCount;
+        public byte? CurrentDurabilityPct;
 
         // -- CharacterStats --
-            public ushort NumberOfItemAttributeCharacterStats;
+            public ushort? NumberOfItemAttributeCharacterStats;
             public StatData[] ItemAttribute_CharacterStats; // (6 byte, ushort id, float value)
             public byte[] CharacterStats_Unk7;
-            public ushort NumberOfPrimaryWeaponCharacterStats;
+            public ushort? NumberOfPrimaryWeaponCharacterStats;
             public StatData[] PrimaryWeapon_CharacterStats;
             public byte[] CharacterStats_Unk8;
-            public ushort NumberOfSecondaryWeaponCharacterStats;
+            public ushort? NumberOfSecondaryWeaponCharacterStats;
             public StatData[] SecondaryWeapon_CharacterStats;
             public byte[] CharacterStats_Unk9;
-            public ushort NumberOfAttributeCategories1CharacterStats;
+            public ushort? NumberOfAttributeCategories1CharacterStats;
             public StatData[] AttributeCategories_1_CharacterStats; // Yeah, there are two.
-            public ushort NumberOfAttributeCategories2CharacterStats;
+            public ushort? NumberOfAttributeCategories2CharacterStats;
             public StatData[] AttributeCategories_2_CharacterStats; // Maybe one for elite ranks and one for normal progression.
         // -- --
 
-        public uint ScalingLevel;
-        public uint PvP_Rank;
-        public uint Elite_Rank;
+        public uint? ScalingLevel;
+        public uint? PvP_Rank;
+        public uint? Elite_Rank;
 
         public byte[] UnableToParse;
 
@@ -134,28 +134,28 @@ namespace PacketPeepScript
                     case ShadowFieldIndex.CurrentEquipment:
                         Chassis = Stream.Read.EquippedItemData();
                         NumberOfChassisModules = Stream.Read.Byte();
-                        Chassis_Modules = Stream.Read.EquippedItemDataArray(NumberOfChassisModules);
+                        Chassis_Modules = Stream.Read.EquippedItemDataArray((int)NumberOfChassisModules);
                         NumberOfChassisVisualsDecals = Stream.Read.Byte();
-                        Chassis_Visuals_Decals = Stream.Read.DecalDataArray(NumberOfChassisVisualsDecals);
+                        Chassis_Visuals_Decals = Stream.Read.DecalDataArray((int)NumberOfChassisVisualsDecals);
 
                         NumberOfChassisVisualsUnk1 = Stream.Read.Byte();
                         if (NumberOfChassisVisualsUnk1 > 0)
                         {
-                            Chassis_Visuals_Unk1_Data = Stream.Read.ByteArray(4 * NumberOfChassisVisualsUnk1);
+                            Chassis_Visuals_Unk1_Data = Stream.Read.ByteArray(4 * (int)NumberOfChassisVisualsUnk1);
                         }
 
                         NumberOfChassisVisualsColors = Stream.Read.Byte();
-                        Chassis_Visuals_Colors = Stream.Read.ColorDataArray(NumberOfChassisVisualsColors);
+                        Chassis_Visuals_Colors = Stream.Read.ColorDataArray((int)NumberOfChassisVisualsColors);
 
                         NumberOfChassisVisualsPalettes = Stream.Read.Byte();
-                        Chassis_Visuals_Palettes = Stream.Read.PaletteDataArray(NumberOfChassisVisualsPalettes);
+                        Chassis_Visuals_Palettes = Stream.Read.PaletteDataArray((int)NumberOfChassisVisualsPalettes);
 
                         NumberOfChassisVisualsPatterns = Stream.Read.Byte();
-                        Chassis_Visuals_Patterns = Stream.Read.PatternDataArray( NumberOfChassisVisualsPatterns);
+                        Chassis_Visuals_Patterns = Stream.Read.PatternDataArray( (int)NumberOfChassisVisualsPatterns);
                         CurrentEquipment_Unk2 = Stream.Read.ByteArray(4);
                         Backpack = Stream.Read.EquippedItemData();
                         NumberOfBackpackModules = Stream.Read.Byte();
-                        Backpack_Modules = Stream.Read.EquippedItemDataArray(NumberOfBackpackModules);
+                        Backpack_Modules = Stream.Read.EquippedItemDataArray((int)NumberOfBackpackModules);
                         CurrentEquipment_Unk3 = Stream.Read.ByteArray(9);
                         PrimaryWeapon = Stream.Read.UInt();
 
@@ -173,16 +173,16 @@ namespace PacketPeepScript
                         }
 
                         NumberOfPrimaryWeaponVisualsColors = Stream.Read.Byte();
-                        PrimaryWeapon_Visuals_Colors = Stream.Read.ColorDataArray(NumberOfPrimaryWeaponVisualsColors);
+                        PrimaryWeapon_Visuals_Colors = Stream.Read.ColorDataArray((int)NumberOfPrimaryWeaponVisualsColors);
                         
                         NumberOfPrimaryWeaponVisualsPalettes = Stream.Read.Byte();
-                        PrimaryWeapon_Visuals_Palettes = Stream.Read.PaletteDataArray(NumberOfPrimaryWeaponVisualsPalettes);
+                        PrimaryWeapon_Visuals_Palettes = Stream.Read.PaletteDataArray((int)NumberOfPrimaryWeaponVisualsPalettes);
 
                         NumberOfPrimaryWeaponVisualsPatterns = Stream.Read.Byte();
-                        PrimaryWeapon_Visuals_Patterns = Stream.Read.PatternDataArray( NumberOfPrimaryWeaponVisualsPatterns);
+                        PrimaryWeapon_Visuals_Patterns = Stream.Read.PatternDataArray((int) NumberOfPrimaryWeaponVisualsPatterns);
 
                         NumberOfPrimaryWeaponVisualsOrnaments = Stream.Read.Byte();
-                        PrimaryWeapon_Visuals_Ornaments = Stream.Read.UIntArray(NumberOfPrimaryWeaponVisualsOrnaments);
+                        PrimaryWeapon_Visuals_Ornaments = Stream.Read.UIntArray((int)NumberOfPrimaryWeaponVisualsOrnaments);
 
                         CurrentEquipment_Unk4 = Stream.Read.ByteArray(11);
 
@@ -201,16 +201,16 @@ namespace PacketPeepScript
                         }
 
                         NumberOfSecondaryWeaponVisualsColors = Stream.Read.Byte();
-                        SecondaryWeapon_Visuals_Colors = Stream.Read.ColorDataArray( NumberOfSecondaryWeaponVisualsColors);
+                        SecondaryWeapon_Visuals_Colors = Stream.Read.ColorDataArray((int) NumberOfSecondaryWeaponVisualsColors);
 
                         NumberOfSecondaryWeaponVisualsPalettes = Stream.Read.Byte();
-                        SecondaryWeapon_Visuals_Palettes = Stream.Read.PaletteDataArray( NumberOfSecondaryWeaponVisualsPalettes);
+                        SecondaryWeapon_Visuals_Palettes = Stream.Read.PaletteDataArray((int) NumberOfSecondaryWeaponVisualsPalettes);
 
                         NumberOfSecondaryWeaponVisualsPatterns = Stream.Read.Byte();
-                        SecondaryWeapon_Visuals_Patterns = Stream.Read.PatternDataArray( NumberOfSecondaryWeaponVisualsPatterns);
+                        SecondaryWeapon_Visuals_Patterns = Stream.Read.PatternDataArray((int) NumberOfSecondaryWeaponVisualsPatterns);
 
                         NumberOfSecondaryWeaponVisualsOrnaments = Stream.Read.Byte();
-                        SecondaryWeapon_Visuals_Ornaments = Stream.Read.UIntArray(NumberOfSecondaryWeaponVisualsOrnaments);
+                        SecondaryWeapon_Visuals_Ornaments = Stream.Read.UIntArray((int)NumberOfSecondaryWeaponVisualsOrnaments);
 
                         CurrentEquipment_Unk5 = Stream.Read.ByteArray(11+5); // Not sure how much of this belongs to the weapon
                         break;
@@ -233,23 +233,23 @@ namespace PacketPeepScript
 
                     case ShadowFieldIndex.CharacterStats:
                         NumberOfItemAttributeCharacterStats = Stream.Read.UShort();
-                        ItemAttribute_CharacterStats = Stream.Read.StatDataArray(NumberOfItemAttributeCharacterStats);
+                        ItemAttribute_CharacterStats = Stream.Read.StatDataArray((int)NumberOfItemAttributeCharacterStats);
                         CharacterStats_Unk7 = Stream.Read.ByteArray(4);
 
                         NumberOfPrimaryWeaponCharacterStats = Stream.Read.UShort();
-                        PrimaryWeapon_CharacterStats = Stream.Read.StatDataArray(NumberOfPrimaryWeaponCharacterStats);
+                        PrimaryWeapon_CharacterStats = Stream.Read.StatDataArray((int)NumberOfPrimaryWeaponCharacterStats);
 
                         CharacterStats_Unk8 = Stream.Read.ByteArray(4);
 
                         NumberOfSecondaryWeaponCharacterStats = Stream.Read.UShort();
-                        SecondaryWeapon_CharacterStats = Stream.Read.StatDataArray(NumberOfSecondaryWeaponCharacterStats);
+                        SecondaryWeapon_CharacterStats = Stream.Read.StatDataArray((int)NumberOfSecondaryWeaponCharacterStats);
                         CharacterStats_Unk9 = Stream.Read.ByteArray(4);
 
                         NumberOfAttributeCategories1CharacterStats = Stream.Read.UShort();
-                        AttributeCategories_1_CharacterStats = Stream.Read.StatDataArray(NumberOfAttributeCategories1CharacterStats);
+                        AttributeCategories_1_CharacterStats = Stream.Read.StatDataArray((int)NumberOfAttributeCategories1CharacterStats);
 
                         NumberOfAttributeCategories2CharacterStats = Stream.Read.UShort();
-                        AttributeCategories_2_CharacterStats = Stream.Read.StatDataArray(NumberOfAttributeCategories2CharacterStats);
+                        AttributeCategories_2_CharacterStats = Stream.Read.StatDataArray((int)NumberOfAttributeCategories2CharacterStats);
 
                         break;
 
