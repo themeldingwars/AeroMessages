@@ -664,7 +664,7 @@ namespace PacketPeepScript
         public float? SuperCharge_Value;
         public byte? SuperCharge_Op;
 
-        public byte NoSpreadFlags;
+        public byte? NoSpreadFlags;
 
         public byte[] AppendageHealthPools_0;
         public byte[] AppendageHealthPools_1;
