@@ -14,13 +14,10 @@ namespace PacketPeepScript
             Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
             MyExtensions.Stream = Stream;
 
-            EncounterId = Stream.Read.StringZ();
+            EncounterId = Stream.Read.Entity();
 
             int remainingBytes = (int)(Stream.baseStream.Length - Stream.baseStream.ByteOffset);
             EncounterJSON = Stream.Read.String(remainingBytes);
-
-
-            
         }
     }
 
