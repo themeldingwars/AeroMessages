@@ -117,6 +117,7 @@ namespace PacketPeepScript
 
         public string AttachedTo_VehicleEntity1;
         public string AttachedTo_VehicleEntity2;
+        public byte? AttachedTo_Role;
         public byte[] AttachedTo_Bytes;
 
         public byte? SnapMount;
@@ -292,7 +293,8 @@ namespace PacketPeepScript
                         Entity();
                         AttachedTo_VehicleEntity2 = Stream.Read.
                         Entity();
-                        AttachedTo_Bytes = Stream.Read.ByteArray(3);
+                        AttachedTo_Role = Stream.Read.Byte();
+                        AttachedTo_Bytes = Stream.Read.ByteArray(2);
                         break;
 
                     case ShadowFieldIndex.SnapMount:

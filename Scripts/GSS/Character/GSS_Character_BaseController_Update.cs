@@ -206,6 +206,12 @@ namespace PacketPeepScript
 
         public ushort? EmoteID_Value; // Sdb table 73, id column
         public uint? EmoteID_Time;
+
+        public string AttachedTo_VehicleEntity1;
+        public string AttachedTo_VehicleEntity2;
+        public byte? AttachedTo_Role;
+        public byte[] AttachedTo_Bytes;
+
         public byte? SnapMount;
         public byte? SinFlags;
         public byte? SinFlagsPrivate;
@@ -456,6 +462,15 @@ namespace PacketPeepScript
                     case ShadowFieldIndex.EmoteID:
                         EmoteID_Value = Stream.Read.UShort();
                         EmoteID_Time = Stream.Read.UInt();
+                        break;
+
+                    case ShadowFieldIndex.AttachedTo:
+                        AttachedTo_VehicleEntity1 = Stream.Read.
+                        Entity();
+                        AttachedTo_VehicleEntity2 = Stream.Read.
+                        Entity();
+                        AttachedTo_Role = Stream.Read.Byte();
+                        AttachedTo_Bytes = Stream.Read.ByteArray(2);
                         break;
 
                     case ShadowFieldIndex.SnapMount:
