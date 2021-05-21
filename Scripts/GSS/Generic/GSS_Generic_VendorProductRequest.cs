@@ -1,16 +1,5 @@
-using Bitter;
-namespace PacketPeepScript
+[Aero(AeroType.Msg, AeroMsgType.GSS, AeroSrc.Client, 251, 31, Ver: 1962)]
+public partial class GenericVendorProductRequest : AeroBase
 {
-    [Script(MessageType.GSS, 0, 31, false)]
-    public class GenericVendorProductRequest : BaseScript
-    {
-        public uint TerminalId;
-
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-
-            TerminalId = Stream.Read.UInt();
-        }
-    }
+    public uint TerminalId;
 }

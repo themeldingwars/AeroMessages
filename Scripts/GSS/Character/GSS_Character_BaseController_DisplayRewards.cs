@@ -1,102 +1,49 @@
-using Bitter;
-using System.Collections.Generic;
-namespace PacketPeepScript
+[Aero(AeroType.Msg, AeroMsgType.GSS, AeroSrc.Server, 2, 133, Ver: 1962)]
+public partial class CharacterBaseControllerDisplayRewards : AeroBase
 {
-    [Script(MessageType.GSS, 2, 133, true)]
-    public class CharacterBaseControllerDisplayRewards : BaseScript
-    {
-        public uint IndexId; // Used by client when claiming
-        public uint TitleLocalizationId;
-        public byte[] Unk1;
-        public byte NumberOfStats;
-        public StatInfo[] Stats;
-        public byte NumberOfRewards;
-        public RewardInfo[] Rewards;
-        public byte[] Unk2;
-        public byte HaveExperience;
-        public uint Experience;
-        public byte[] Unk3;
+    public uint IndexId; // Used by client when claiming
 
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
+    [AeroSDB("dblocalization::LocalizedText", "id")]
+    public uint TitleLocalizationId;
 
-            IndexId = Stream.Read.UInt();
-            TitleLocalizationId = Stream.Read.UInt();
-            Unk1 = Stream.Read.ByteArray(4);
-            NumberOfStats = Stream.Read.Byte();
-            Stats = Stream.Read.StatInfoArray(NumberOfStats);
-            NumberOfRewards = Stream.Read.Byte();
-            Rewards = Stream.Read.RewardInfoArray(NumberOfRewards);
-            Unk2 = Stream.Read.ByteArray(9);
-            HaveExperience = Stream.Read.Byte();
-            Experience = Stream.Read.UInt();
-            Unk3 = Stream.Read.ByteArray(3);
-        }
-    }
+    [AeroArray(8)]
+    public byte[] Unk1;
 
-    public struct StatInfo
-    {
-        public uint LocalizationId;
-        public byte[] Unk;
+    [AeroArray(typeof(byte))]
+    public StatInfo[] Stats;
 
-        public StatInfo(Bitter.BinaryReader R)
-        {
-            LocalizationId = R.UInt();
-            Unk = R.ByteArray(6);
-        }
+    [AeroArray(typeof(byte))]
+    public RewardInfo[] Rewards;
 
-        public override string ToString() => $"{LocalizationId}";
-    }
+    [AeroArray(9)]
+    public byte[] Unk2;
 
-    public struct RewardInfo
-    {
-        public uint SdbId;
-        public ushort Quantity;
-        public ushort Unk1;
-        public byte[] Unk2;
+    public byte HaveExperience;
+    public uint Experience;
 
-        public RewardInfo(Bitter.BinaryReader R)
-        {
-            SdbId = R.UInt();
-            Quantity = R.UShort();
-            Unk1 = R.UShort();
-            Unk2 = R.ByteArray(11);
-        }
+    [AeroArray(3)]
+    public byte[] Unk3;
+}
 
-        public override string ToString() => $"{SdbId} x{Quantity} {(Unk1 != 0 ?  $"(Unk1: {Unk1})" : "")}";
-    }
 
-    public static class MyExtensions
-    {
-        public static StatInfo StatInfo(this Bitter.BinaryReader R)
-        {
-            return new StatInfo(R);
-        }
+[Aero(AeroType.Block)]
+public partial class StatInfo : AeroBase
+{
+    [AeroSDB("dblocalization::LocalizedText", "id")]
+    public uint LocalizationId;
 
-        public static StatInfo[] StatInfoArray(this Bitter.BinaryReader R, int num)
-        {
-            List<StatInfo> list = new List<StatInfo>();
-            for (int i = 1; i <= num; i++)
-            {
-                list.Add(R.StatInfo());
-            }
-            return list.ToArray();
-        }
+    [AeroArray(6)]
+    public byte[] Unk;
+}
 
-        public static RewardInfo RewardInfo(this Bitter.BinaryReader R)
-        {
-            return new RewardInfo(R);
-        }
+[Aero(AeroType.Block)]
+public partial class RewardInfo : AeroBase
+{
+    [AeroSDB("dbitems::RootItem", "sdb_id")]
+    public uint SdbId;
+    public ushort Quantity;
+    public ushort Unk1;
 
-        public static RewardInfo[] RewardInfoArray(this Bitter.BinaryReader R, int num)
-        {
-            List<RewardInfo> list = new List<RewardInfo>();
-            for (int i = 1; i <= num; i++)
-            {
-                list.Add(R.RewardInfo());
-            }
-            return list.ToArray();
-        }
-    }
+    [AeroArray(11)]
+    public byte[] Unk2;
 }

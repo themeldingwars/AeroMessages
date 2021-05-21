@@ -1,21 +1,9 @@
-using Bitter;
-namespace PacketPeepScript
+[Aero(AeroType.Msg, AeroMsgType.GSS, AeroSrc.Client, 251, 22, Ver: 1962)]
+public partial class GenericTrailRequest : AeroBase
 {
-    [Script(MessageType.GSS, 251, 22, false)]
-    public class GenericTrailRequest : BaseScript
-    {
+    [AeroArray(5)]
+    public byte[] Unk;
 
-        public byte[] Unk;
-        public float[] Position1;
-        public float[] Position2;
-
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-    
-            Unk = Stream.Read.ByteArray(5);
-            Position1 = Stream.Read.FloatArray(3);
-            Position2 = Stream.Read.FloatArray(3);
-        }
-    }
+    public Vector3 Position1;
+    public Vector3 Position2;
 }

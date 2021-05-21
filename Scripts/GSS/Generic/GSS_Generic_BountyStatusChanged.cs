@@ -1,19 +1,6 @@
-using Bitter;
-namespace PacketPeepScript
+[Aero(AeroType.Msg, AeroMsgType.GSS, AeroSrc.Server, 0, 69, Ver: 1962)]
+public partial class GenericBountyListPreviousAck : AeroBase
 {
-    [Script(MessageType.GSS, 0, 69, true)]
-    public class GenericBountyStatusChanged : BaseScript
-    {
-
-        public uint BountyId; // Unsure how this id works
-        public byte Status;
-
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-    
-            BountyId = Stream.Read.UInt();
-            Status = Stream.Read.Byte();
-        }
-    }
+    public uint BountyId; // Unsure how this id works
+    public byte Status;
 }

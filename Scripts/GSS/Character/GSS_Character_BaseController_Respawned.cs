@@ -1,18 +1,8 @@
-using Bitter;
-namespace PacketPeepScript
+[Aero(AeroType.Msg, AeroMsgType.GSS, AeroSrc.Server, 2, 103, Ver: 1962)]
+public partial class CharacterBaseControllerRespawned : AeroBase
 {
-    [Script(MessageType.GSS, 2, 103, true)]
-    public class CharacterBaseControllerRespawned : BaseScript
-    {
-        public ushort ShortTime;
-        public byte[] Unk;
+    public ushort ShortTime;
 
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-
-            ShortTime = Stream.Read.UShort();
-            Unk = Stream.Read.ByteArray(2);
-        }
-    }
+    [AeroArray(2)]
+    public byte[] Unk;
 }

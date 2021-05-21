@@ -1,16 +1,5 @@
-using Bitter;
-namespace PacketPeepScript
+[Aero(AeroType.Msg, AeroMsgType.GSS, AeroSrc.Client, 2, 182, Ver: 1962)]
+public partial class CharacterBaseControllerResourceNodeBeaconCalldownRequest : AeroBase
 {
-    [Script(MessageType.GSS, 2, 182, false)]
-    public class CharacterBaseControllerResourceNodeBeaconCalldownRequest : BaseScript
-    {
-        public float[] Position;
-
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-
-            Position = Stream.Read.FloatArray(3);
-        }
-    }
+    public Vector3 Position;
 }

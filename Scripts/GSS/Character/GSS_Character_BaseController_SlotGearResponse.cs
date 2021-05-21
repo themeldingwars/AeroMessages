@@ -1,21 +1,12 @@
-using Bitter;
-namespace PacketPeepScript
+[Aero(AeroType.Msg, AeroMsgType.GSS, AeroSrc.Server, 2, 154, Ver: 1962)]
+public partial class CharacterBaseControllerSlotGearResponse : AeroBase
 {
-    [Script(MessageType.GSS, 2, 154, true)]
-    public class CharacterBaseControllerSlotGearResponse : BaseScript
-    {
-        public uint LoadoutId;
-        public ulong ItemGUID;
-        public byte SlotIdx;
-        public byte[] Unk;
+    public uint LoadoutId;
+    public ulong ItemGUID;
 
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-            LoadoutId = Stream.Read.UInt();
-            ItemGUID = Stream.Read.ULong();
-            SlotIdx = Stream.Read.Byte();
-            Unk = Stream.Read.ByteArray(5); // 1 more byte than request
-        }
-    }
+    [AeroSDB("dbitems::LoadoutSlot", "id")]
+    public byte SlotIdx;
+
+    [AeroArray(5)]
+    public byte[] Unk; // 1 more byte than request
 }

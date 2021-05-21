@@ -1,16 +1,5 @@
-using Bitter;
-namespace PacketPeepScript
+[Aero(AeroType.Msg, AeroMsgType.GSS, AeroSrc.Client, 251, 19, Ver: 1962)]
+public partial class GenericScheduleUpdateRequest : AeroBase
 {
-    [Script(MessageType.GSS, 251, 19, false)]
-    public class GenericScheduleUpdateRequest : BaseScript
-    {
-        public uint Time;
-
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-
-            Time = Stream.Read.UInt();
-        }
-    }
+    public uint Time;
 }

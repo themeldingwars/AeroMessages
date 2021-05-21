@@ -1,16 +1,5 @@
-using Bitter;
-namespace PacketPeepScript
+[Aero(AeroType.Msg, AeroMsgType.GSS, AeroSrc.Server, 2, 190, Ver: 1962)]
+public partial class CharacterBaseControllerEliteLevelsIncreaseXP : AeroBase
 {
-    [Script(MessageType.GSS, 2, 190, true)]
-    public class CharacterBaseControllerEliteLevelsIncreaseXP : BaseScript
-    {
-        public uint XP;
-
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-
-            XP = Stream.Read.UInt();
-        }
-    }
+    public uint XP;
 }

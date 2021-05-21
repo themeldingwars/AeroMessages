@@ -1,15 +1,6 @@
-namespace PacketPeepScript
+[Aero(AeroType.Msg, MsgType.Control, 2, Ver: 1962)]
+public partial class MatrixAck : AeroBase
 {
-    [Script(MessageType.Control, 2)]
-    public class Matrix_ACK : BaseScript
-    {
-        public ushort NextSeqNum;
-        public ushort AckFor;
-
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            NextSeqNum = Stream.Read.UShort();
-            AckFor     = Stream.Read.UShort();
-        }
-    }
+    public ushort NextSeqNum;
+    public ushort AckForNum;
 }

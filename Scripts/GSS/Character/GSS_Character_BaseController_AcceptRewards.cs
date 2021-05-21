@@ -1,16 +1,5 @@
-using Bitter;
-namespace PacketPeepScript
+[Aero(AeroType.Msg, AeroMsgType.GSS, AeroSrc.Client, 2, 225, Ver: 1962)]
+public partial class CharacterBaseControllerAcceptRewards : AeroBase
 {
-    [Script(MessageType.GSS, 2, 225, false)]
-    public class CharacterBaseControllerAcceptRewards : BaseScript
-    {
-        public uint IndexId;
-
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-
-            IndexId = Stream.Read.UInt();
-        }
-    }
+    public uint IndexId;
 }

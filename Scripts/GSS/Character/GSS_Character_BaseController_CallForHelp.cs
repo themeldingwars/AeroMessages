@@ -1,16 +1,5 @@
-using Bitter;
-namespace PacketPeepScript
+[Aero(AeroType.Msg, AeroMsgType.GSS, AeroSrc.Client, 2, 151, Ver: 1962)]
+public partial class CharacterBaseControllerCallForHelp : AeroBase
 {
-    [Script(MessageType.GSS, 2, 151, false)]
-    public class CharacterBaseControllerCallForHelp : BaseScript
-    {
-        public uint Time;
-
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-
-            Time = Stream.Read.UInt();
-        }
-    }
+    public uint Time;
 }

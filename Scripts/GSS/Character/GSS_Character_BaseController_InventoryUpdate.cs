@@ -1,3 +1,213 @@
+[Aero(AeroType.Msg, AeroMsgType.GSS, AeroSrc.Server, 2, 129, Ver: 1962)]
+public partial class CharacterBaseControllerInventoryUpdate : AeroBase
+{
+    public byte ClearExistingData; // 1 for full update, 0 for partitial
+
+    [AeroArray(typeof(byte))] // TODO: Aero needs support for handling additional bytes if size is 255
+    public List<Item> Items;
+
+    [AeroArray(typeof(byte))]
+    public List<Resource> Resources;
+
+    [AeroArray(typeof(byte))]
+    public List<Loadout> Loadouts;
+
+    [AeroArray(3)]
+    public byte[] Unk_LastThree;
+}
+
+[Aero(AeroType.Block)]
+public partial class Item : AeroBase
+{
+    public byte Unk1;
+
+    [AeroSDB("dbitems::RootItem", "sdb_id")]
+    public uint SdbId;
+
+    public ulong GUID;
+    public byte SubInventory;
+
+    [AeroArray(4)]
+    public byte[] Unk2;
+
+    public byte DynamicFlags;
+    public ushort Durability;
+
+    [AeroArray(5)]
+    public byte[] Unk3;
+
+    [AeroArray(typeof(byte))]
+    public ulong[] Unk4_Data;
+
+    [AeroArray(2)]
+    public byte[] Unk5;
+
+    [AeroArray(typeof(byte))]
+    public uint[] Modules;
+}
+
+public partial class Resource : AeroBase 
+{
+    [AeroSDB("dbitems::RootItem", "sdb_id")]
+    public uint SdbId;
+
+    [AeroNullTermString]
+    public string TextKey; // Used for XP rewards?
+
+    public uint Quantity;
+    public byte SubInventory;
+
+    [AeroArray(4)]
+    public byte[] Unk2;
+}
+
+public partial class Loadout : AeroBase
+{
+    public uint FrameLoadoutId;
+
+    [AeroArray(4)]
+    public byte[] Unk; // The frame loadout id is used as a uint in other messages so these are unlikely to belong to it. Perhaps an internal loadout id?
+
+    [AeroNullTermString]
+    public string LoadoutName;
+
+    [AeroNullTermString]
+    public string LoadoutType;
+
+    [AeroSDB("dbitems::RootItem", "sdb_id")]
+    public uint ChassisID;
+    
+    [AeroArray(typeof(byte))]
+    public LoadoutConfig[] LoadoutConfigs;
+}
+
+public partial class LoadoutConfig : AeroBase
+{
+    public uint ConfigID;
+
+    [AeroNullTermString]
+    public string ConfigName;
+    
+    [AeroArray(typeof(byte))]
+    public LoadoutConfig_Item[] Items;
+    
+    [AeroArray(typeof(byte))]
+    public LoadoutConfig_Visual[] Visuals;
+    
+    [AeroArray(typeof(byte))]
+    public uint[] Perks;
+    
+    [AeroArray(13)]
+    public byte[] Unk;
+}
+
+public partial class LoadoutConfig_Item : AeroBase
+{
+    [AeroSDB("dbitems::LoadoutSlot", "id")]
+    public byte SlotIndex;
+    public ulong ItemGUID;
+}
+
+public partial class LoadoutConfig_Visual : AeroBase
+{
+    [Flags]
+    public enum LoadoutVisualType : byte {
+        Palette = 9,
+        Pattern = 10,
+        Decal = 11,
+
+        Glider = 13,
+        Vehicle = 14,
+    };
+
+    [AeroSDB("dbitems::RootItem", "sdb_id")]
+    public uint ItemSdbId;
+
+    public LoadoutVisualType VisualType;
+
+
+
+    [AeroIf(nameof(VisualType), LoadoutVisualType.Palette)]
+    
+    public byte[] Unk1;
+
+    public byte? Decal_TransformCount;
+    public float[] Decal_Transform;
+    public byte? Glider_Unk;
+    public byte? Vehicle_Unk;
+    public byte? Palette_Unk;
+    public byte? Pattern_TransformCount;
+    public float[] Pattern_Transform;
+    
+    public string UnknownTypeParsingError;
+
+    public void Read(BinaryStream Stream)
+    {
+        ItemSdbId = Stream.Read.UInt();
+        VisualType = (LoadoutVisualType) Stream.Read.Byte();
+        Unk1 = Stream.Read.ByteArray(8);
+
+        switch (VisualType)
+        {
+            case LoadoutVisualType.Palette:
+                Palette_Unk = Stream.Read.Byte();
+                break;
+
+            case LoadoutVisualType.Pattern:
+                Pattern_TransformCount = Stream.Read.Byte();
+                Pattern_Transform = Stream.Read.FloatArray((int)Pattern_TransformCount);
+                break;
+
+            case LoadoutVisualType.Decal:
+                Decal_TransformCount = Stream.Read.Byte();
+                Decal_Transform = Stream.Read.FloatArray((int)Decal_TransformCount);
+                break;
+
+            case LoadoutVisualType.Glider:
+                Glider_Unk = Stream.Read.Byte();
+                break;
+
+            case LoadoutVisualType.Vehicle:
+                Vehicle_Unk = Stream.Read.Byte();
+                break;
+            
+            default:
+                UnknownTypeParsingError = "Dont know how to parse this visual type! Implement!";
+                break;
+        }
+    }
+    
+    public void Write(BinaryStream Stream)
+    {
+        throw new System.NotImplementedException();
+    }
+    
+    public override string ToString() => $"{this.GetType().Name} Slot: {ItemSdbId} => {VisualType}";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 using System.Collections.Generic;
 using Bitter;
 namespace PacketPeepScript

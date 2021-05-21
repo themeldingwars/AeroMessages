@@ -1,16 +1,6 @@
-using Bitter;
-namespace PacketPeepScript
+[Aero(AeroType.Msg, AeroMsgType.GSS, AeroSrc.Client, 4, 169, Ver: 1962)]
+public partial class CharacterMissionAndMarkerControllerRequestAchievementStatus : AeroBase
 {
-    [Script(MessageType.GSS, 4, 169, false)]
-    public class CharacterMissionAndMarkerControllerRequestAchievementStatus : BaseScript
-    {
-        public uint AchievementId;
+    public uint AchievementId;
 
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-
-            AchievementId = Stream.Read.UInt();
-        }
-    }
 }

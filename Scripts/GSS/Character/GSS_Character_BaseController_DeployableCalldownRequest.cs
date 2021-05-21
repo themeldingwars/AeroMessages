@@ -1,21 +1,9 @@
-using Bitter;
-namespace PacketPeepScript
+[Aero(AeroType.Msg, AeroMsgType.GSS, AeroSrc.Client, 2, 180, Ver: 1962)]
+public partial class CharacterBaseControllerDeployableCalldownRequest : AeroBase
 {
-    [Script(MessageType.GSS, 2, 180, false)]
-    public class CharacterBaseControllerDeployableCalldownRequest : BaseScript
-    {
-        public uint DeployableId; // Sdb table 187, id column.
+    [AeroSDB("dbcharacter:Deploable", "id")]
+    public uint DeployableId;
 
-        public float[] Position;
-        public float[] Rotation;
-
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-
-            DeployableId = Stream.Read.UInt();
-            Position = Stream.Read.FloatArray(3);
-            Rotation = Stream.Read.FloatArray(4);
-        }
-    }
+    public Vector3 Position;
+    public Quaternion Rotation;
 }

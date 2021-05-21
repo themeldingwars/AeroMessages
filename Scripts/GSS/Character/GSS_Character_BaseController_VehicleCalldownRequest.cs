@@ -1,22 +1,9 @@
-using Bitter;
-namespace PacketPeepScript
+[Aero(AeroType.Msg, AeroMsgType.GSS, AeroSrc.Client, 2, 179, Ver: 1962)]
+public partial class CharacterBaseControllerVehicleCalldownRequest : AeroBase
 {
-    [Script(MessageType.GSS, 2, 179, false)]
-    public class CharacterBaseControllerVehicleCalldownRequest : BaseScript
-    {
-        public ushort VehicleID; // Sdb table 47, id column.
+    [AeroSDB("vcs::VehicleInfo", "id")]
+    public ushort VehicleID;
 
-        public float[] Position;
-        public float[] Rotation;
-
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-
-            VehicleID = Stream.Read.UShort();
-
-            Position = Stream.Read.FloatArray(3);
-            Rotation = Stream.Read.FloatArray(4);
-        }
-    }
+    public Vector3 Position;
+    public Quaternion Rotation;
 }

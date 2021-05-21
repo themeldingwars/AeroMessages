@@ -1,18 +1,9 @@
-using Bitter;
-namespace PacketPeepScript
+[Aero(AeroType.Msg, AeroMsgType.GSS, AeroSrc.Server, 28, 84, Ver: 1962)]
+public partial class VehicleCombatControllerAbilityFailed : AeroBase
 {
-    [Script(MessageType.GSS, 28, 84, true)]
-    public class VehicleCombatControllerAbilityFailed : BaseScript
-    {
-        public uint AbilityId;
-        public byte[] Unk;
+    [AeroSDB("apt::AbilityData", "id")]
+    public uint AbilityId;
 
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-
-            AbilityId = Stream.Read.UInt();
-            Unk = Stream.Read.ByteArray(4);
-        }
-    }
+    [AeroArray(4)]
+    public byte[] Unk;
 }

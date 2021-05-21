@@ -1,18 +1,10 @@
-using Bitter;
-namespace PacketPeepScript
+[Aero(AeroType.Msg, AeroMsgType.GSS, AeroSrc.Server, 0, 65, Ver: 1962)]
+public partial class GenericMissionStatusChanged : AeroBase
 {
-    [Script(MessageType.GSS, 0, 65, true)]
-    public class GenericMissionStatusChanged : BaseScript
-    {
-        public uint MissionID; // Sdb table 7, id column, and table 48, mission_id column
-        public byte[] Unk;
+    [AeroSDB("clientmissions::Mission","id")]
+    [AeroSDB("clientmissions::MissionObjective","mission_id")]
+    public uint MissionId;
 
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-
-            MissionID = Stream.Read.UInt();
-            Unk = Stream.Read.ByteArray(5);
-        }
-    }
+    [AeroArray(5)]
+    public byte[] Unk1;
 }

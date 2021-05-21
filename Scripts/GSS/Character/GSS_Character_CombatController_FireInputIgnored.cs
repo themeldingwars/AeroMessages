@@ -1,18 +1,6 @@
-using Bitter;
-namespace PacketPeepScript
+[Aero(AeroType.Msg, AeroMsgType.GSS, AeroSrc.Client, 5, 117, Ver: 1962)]
+public partial class CharacterCombatControllerFireInputIgnored : AeroBase
 {
-    [Script(MessageType.GSS, 5, 117, false)]
-    public class CharacterCombatControllerFireInputIgnored : BaseScript
-    {
-        public uint Time;
-        public byte Ignored;
-
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-
-            Time = Stream.Read.UInt();
-            Ignored = Stream.Read.Byte();
-        }
-    }
+    public uint Time;
+    public byte Ignored;
 }

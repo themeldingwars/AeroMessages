@@ -1,18 +1,9 @@
-using Bitter;
-namespace PacketPeepScript
+[Aero(AeroType.Msg, AeroMsgType.GSS, AeroSrc.Server, 5, 114, Ver: 1962)]
+public partial class CharacterCombatControllerForcedMovementCancelled : AeroBase
 {
-    [Script(MessageType.GSS, 5, 114, true)]
-    public class CharacterCombatControllerForcedMovementCancelled : BaseScript
-    {
-        public uint CommandId;
-        public ushort ShortTime;
 
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
+    [AeroSDB("apt::BaseCommandDef")]
+    public uint CommandId;
 
-            CommandId = Stream.Read.UInt();
-            ShortTime = Stream.Read.UShort();
-        }
-    }
+    public ushort ShortTime;
 }

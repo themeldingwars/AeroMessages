@@ -1,19 +1,7 @@
-using Bitter;
-namespace PacketPeepScript
-{
-    [Script(MessageType.GSS, 0, 108, true)]
-    public class GenericPlayDialogScriptMessage : BaseScript
-    {
-
-        public uint DialogId; // Sdb table 4, id column, always has a match. Sometimes hits on event_id in table 14 and table 55.
-        public byte Unk1;
-
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-
-            DialogId = Stream.Read.UInt();
-            Unk1 = Stream.Read.Byte();
-        }
-    }
+[Aero(AeroType.Msg, AeroMsgType.GSS, AeroSrc.Server, 0, 108, Ver: 1962)]
+public partial class GenericPlayDialogScriptMessage : AeroBase
+{   
+    [AeroSDB("dbdialogdata::DialogScript", "id")]
+    public uint DialogId;
+    public byte Unk1;
 }

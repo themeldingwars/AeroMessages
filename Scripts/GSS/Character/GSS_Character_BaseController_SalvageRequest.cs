@@ -1,52 +1,17 @@
-using Bitter;
-using System.Collections.Generic;
-namespace PacketPeepScript
+[Aero(AeroType.Msg, AeroMsgType.GSS, AeroSrc.Client, 2, 202, Ver: 1962)]
+public partial class CharacterBaseControllerSalvageRequest : AeroBase
 {
-    [Script(MessageType.GSS, 2, 202, false)]
-    public class CharacterBaseControllerSalvageRequest : BaseScript
-    {
-        public byte NumberOfItems;
-        public ItemSalvageRequest[] SalvageRequests;
+    [AeroArray(typeof(byte))]
+    public ItemSalvageRequest[] SalvageRequests;
+}
 
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-            NumberOfItems = Stream.Read.Byte();
-            SalvageRequests = Stream.Read.ItemSalvageRequestArray(NumberOfItems);
-        }
-    }
+[Aero(AeroType.Block)]
+public partial class ItemSalvageRequest : AeroBase
+{
+    public ulong GUID;
 
-    public struct ItemSalvageRequest
-    {
-        public ulong GUID;
-        public uint SdbId;
-        public uint Quantity; // (Needed when stackables like modules are salvaged in bulk)
+    [AeroSDB("dbitems::RootItem", "sdb_id")]
+    public uint SdbId;
 
-        public ItemSalvageRequest(Bitter.BinaryReader R)
-        {
-            GUID = R.ULong();
-            SdbId = R.UInt();
-            Quantity = R.UInt();
-        }
-
-        public override string ToString() => $"{(GUID != 0 ?  $"GUID: {GUID}, " : "")}SdbId: {SdbId}, Quantity: {Quantity}";
-    }
-
-    public static class MyExtensions
-    {
-        public static ItemSalvageRequest ItemSalvageRequest(this Bitter.BinaryReader R)
-        {
-            return new ItemSalvageRequest(R);
-        }
-
-        public static ItemSalvageRequest[] ItemSalvageRequestArray(this Bitter.BinaryReader R, int num)
-        {
-            List<ItemSalvageRequest> list = new List<ItemSalvageRequest>();
-            for (int i = 1; i <= num; i++)
-            {
-                list.Add(R.ItemSalvageRequest());
-            }
-            return list.ToArray();
-        }
-    }
+    public uint Quantity; // (Needed when stackables like modules are salvaged in bulk)
 }

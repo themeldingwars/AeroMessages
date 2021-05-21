@@ -1,50 +1,35 @@
-using Bitter;
-namespace PacketPeepScript
+[Aero(AeroType.Msg, MsgType.GSS, 2, 111, Ver: 1946)]
+public partial class ConfirmedPoseUpdate : AeroBase
 {
-    [Script(MessageType.GSS, 2, 111, true)]
-    public class CharacterBaseControllerConfirmedPoseUpdate : BaseScript
+    [Flags]
+    public Enum PoseType : byte
     {
-        public ushort ShortTime1;
-        public byte Flags;
-        public byte Unk3;
-
-        public float[] Type1_Position;
-        public float[] Type1_Rotation;
-        public short Type1_MovementState;
-
-        public float[] Velocity;
-
-        public float[] Type2_Aim;
-
-        public ushort Unk5; // Related to jumpjet energy. Rightmost byte appears equiv. to current jumpjet energy percent.
-        public short GroundTimePositiveAirTimeNegative; // Counts upwards from 0 when on ground. Counts downwards (into the negative) from 0 when in the air.
-        public short TimeSinceLastJump; // Sets to 0 when you jump from the ground.
-
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-
-            ShortTime1  = Stream.Read.UShort();
-            Flags = Stream.Read.Byte();
-            Unk3  = Stream.Read.Byte();
-
-            if ((Flags & 1) == 1)
-            {
-                Type1_Position = Stream.Read.FloatArray(3);
-                Type1_Rotation = Stream.Read.FloatArray(4);
-                Type1_MovementState = Stream.Read.Short();
-            }
-
-            Velocity = Stream.Read.FloatArray(3);
-
-            if ((Flags & 2) >> 1 == 1)
-            {
-                Type2_Aim = Stream.Read.FloatArray(3);
-            }
-
-            Unk5 = Stream.Read.UShort();
-            GroundTimePositiveAirTimeNegative = Stream.Read.Short();
-            TimeSinceLastJump = Stream.Read.Short();
-        }
+        Velocity = 0,
+        PosAndRot = 1,
+        Aim = 2
     }
+    
+    [Aero(AeroType.Block)]
+    public struct PosAndRotData
+    {
+        public Vector3 Pos;
+        public Quaterion Rot;
+        public short MovementState;
+    }
+
+    public ushort ShortTime1;
+    public PoseType Flags;
+    public byte Unk3;
+    
+    [AeroIf(nameof(Flags), PoseType.PosAndRot)]
+    public PosAndRotData PosAndRot;
+    
+    public Vector3 Velocity;
+    
+    [AeroIf(nameof(Flags), PoseType.Aim)]
+    public Vector3 Aim;
+    
+    public ushort Unk5;
+    public short GroundTimePositiveAirTimeNegative;
+    public short TimeSinceLastJump;
 }

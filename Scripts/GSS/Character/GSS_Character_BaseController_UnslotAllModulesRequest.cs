@@ -1,15 +1,5 @@
-using Bitter;
-namespace PacketPeepScript
+[Aero(AeroType.Msg, AeroMsgType.GSS, AeroSrc.Client, 2, 205, Ver: 1962)]
+public partial class CharacterBaseControllerSlotGearRequest : AeroBase
 {
-    [Script(MessageType.GSS, 2, 205, false)]
-    public class CharacterBaseControllerUnslotAllModulesRequest : BaseScript
-    {
-        public ulong ItemGUID;
-
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-            ItemGUID = Stream.Read.ULong();
-        }
-    }
+    public ulong ItemGUID;
 }

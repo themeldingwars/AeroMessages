@@ -1,18 +1,8 @@
-using Bitter;
-namespace PacketPeepScript
+[Aero(AeroType.Msg, AeroMsgType.GSS, AeroSrc.Server, 28, 83, Ver: 1962)]
+public partial class VehicleCombatControllerAbilityActivated : AeroBase
 {
-    [Script(MessageType.GSS, 28, 83, true)]
-    public class VehicleCombatControllerAbilityActivated : BaseScript
-    {
-        public uint AbilityId;
-        public uint Time;
+    [AeroSDB("apt::AbilityData", "id")]
+    public uint AbilityId;
 
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-
-            AbilityId = Stream.Read.UInt();
-            Time = Stream.Read.UInt();
-        }
-    }
+    public uint Time;
 }

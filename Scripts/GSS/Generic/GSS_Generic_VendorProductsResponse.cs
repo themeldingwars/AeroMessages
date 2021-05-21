@@ -1,191 +1,69 @@
-using Bitter;
-using System.Collections.Generic;
-namespace PacketPeepScript
+[Aero(AeroType.Msg, AeroMsgType.GSS, AeroSrc.Server, 0, 120, Ver: 1962)]
+public partial class GenericVendorProductsResponse : AeroBase
 {
-    [Script(MessageType.GSS, 0, 120, true)]
-    public class GenericVendorProductsResponse : BaseScript
-    {
+    public uint VendorId;
+    public ulong Id;
 
-        public uint VendorId;
-        public ulong Id;
-        public string Title;
-        public uint FactionId;
-        public byte NumberOfFactionDiscounts;
-        public FactionDiscount[] FactionDiscounts;
-        public byte NumberOfProducts;
-        public VendorProduct[] Products;
+    [AeroNullTermString]
+    public string Title;
 
+    [AeroSDB("dbcharacter::Faction", "id")]
+    public uint FactionId;
 
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-            MyExtensions.Stream = Stream;
-    
-            VendorId = Stream.Read.UInt();
-            Id = Stream.Read.ULong();
-            Title = Stream.Read.StringZ();
-            FactionId = Stream.Read.UInt();
-            NumberOfFactionDiscounts = Stream.Read.Byte();
-            FactionDiscounts = Stream.Read.FactionDiscountArray(NumberOfFactionDiscounts);
-            NumberOfProducts = Stream.Read.Byte();
-            Products = Stream.Read.VendorProductArray(NumberOfProducts);
-        }
-    }
+    [AeroArray(typeof(byte))]
+    public FactionDiscount[] FactionDiscounts;
 
-    public struct FactionDiscount
-    {
-        public uint MinRep;
-        public float Discount;
+    [AeroArray(typeof(byte))]
+    public VendorProduct[] Products;
+}
 
-        public FactionDiscount(Bitter.BinaryReader R)
-        {
-            MinRep = R.UInt();
-            Discount = R.Float();
-        }
+[Aero(AeroType.Block)]
+public partial class FactionDiscount : AeroBase
+{
+    public uint MinRep;
+    public float Discount;
+}
 
-        public override string ToString() => $"MinRep: {MinRep}, Discount: {Discount}";
-    }
+[Aero(AeroType.Block)]
+public partial class VendorProductPrice : AeroBase
+{
+    public ulong GUID;
 
-    public struct VendorProductPrice
-    {
-        public ulong GUID;
-        public string CurrencyType;
-        public uint CurrencyRemoteId;
-        public uint Amount;
+    [AeroNullTermString]
+    public string CurrencyType;
 
+    [AeroSDB("dbitems:RootItem", "sdb_id")]
+    public uint CurrencyRemoteId;
 
-        public VendorProductPrice(Bitter.BinaryReader R)
-        {
-            GUID = R.ULong();
-            CurrencyType = R.StringZ();
-            CurrencyRemoteId = R.UInt();
-            Amount = R.UInt();
-        }
+    public uint Amount;
+}
 
-        public override string ToString() => $"{Amount}x CurrencyRemoteId: {CurrencyRemoteId}";
-    }
+[Aero(AeroType.Block)]
+public partial class VendorProductRestriction : AeroBase
+{
+    [AeroNullTermString]
+    public string Type;
 
-    public struct VendorProductRestriction
-    {
-        public string Type;
-        public string OptionsJSON;
+    [AeroNullTermString]
+    public string OptionsJSON;
+}
 
+[Aero(AeroType.Block)]
+public partial class VendorProduct : AeroBase
+{
+    public ulong GUID;
 
-        public VendorProductRestriction(Bitter.BinaryReader R)
-        {
-            Type = R.StringZ();
-            OptionsJSON = R.StringZ();
-        }
+    [AeroSDB("dbitems:RootItem", "sdb_id")]
+    public uint SdbId;
 
-        public override string ToString() => $"Type: {Type}, Options: {OptionsJSON}";
-    }
+    public uint Quantity;
+    public uint Duration;
 
-    public struct VendorProduct
-    {
-        public ulong GUID;
-        public uint SdbId;
-        public uint Quantity;
-        public uint Duration;
-        public byte NumberOfPrices;
-        public VendorProductPrice[] Prices;
-        public byte NumberOfRestrictions;
-        public VendorProductRestriction[] Restrictions;
-        public byte Priority;
+    [AeroArray(typeof(byte))]
+    public VendorProductPrice[] Prices;
 
+    [AeroArray(typeof(byte))]
+    public VendorProductRestriction[] Restrictions;
 
-        public VendorProduct(Bitter.BinaryReader R)
-        {
-            GUID = R.ULong();
-            SdbId = R.UInt();
-            Quantity = R.UInt();
-            Duration = R.UInt();
-            NumberOfPrices = R.Byte();
-            Prices = R.VendorProductPriceArray(NumberOfPrices);
-            NumberOfRestrictions = R.Byte();
-            Restrictions = R.VendorProductRestrictionArray(NumberOfRestrictions);
-            Priority = R.Byte();
-        }
-
-        public override string ToString() => $"SdbId: {SdbId}, Prices: ${NumberOfPrices}, Restrictions: ${NumberOfRestrictions}";
-    }
-
-    public static class MyExtensions {
-        public static Bitter.BinaryStream Stream;
-        
-        public static string StringZ(this Bitter.BinaryReader rdr)
-        {
-            string ret = "";
-            do
-            {
-                byte b = rdr.Byte();
-                if (b == 0x00)
-                    break;
-                ret += (char)b;
-            }
-            while (Stream.baseStream.ByteOffset < Stream.baseStream.Length);
-            return ret;
-        }
-
-        public static VendorProduct VendorProduct(this Bitter.BinaryReader R)
-        {
-            return new VendorProduct(R);
-        }
-
-        public static VendorProduct[] VendorProductArray(this Bitter.BinaryReader R, int num)
-        {
-            List<VendorProduct> list = new List<VendorProduct>();
-            for (int i = 1; i <= num; i++)
-            {
-                list.Add(R.VendorProduct());
-            }
-            return list.ToArray();
-        }
-
-        public static FactionDiscount FactionDiscount(this Bitter.BinaryReader R)
-        {
-            return new FactionDiscount(R);
-        }
-
-        public static FactionDiscount[] FactionDiscountArray(this Bitter.BinaryReader R, int num)
-        {
-            List<FactionDiscount> list = new List<FactionDiscount>();
-            for (int i = 1; i <= num; i++)
-            {
-                list.Add(R.FactionDiscount());
-            }
-            return list.ToArray();
-        }
-
-        public static VendorProductPrice VendorProductPrice(this Bitter.BinaryReader R)
-        {
-            return new VendorProductPrice(R);
-        }
-
-        public static VendorProductPrice[] VendorProductPriceArray(this Bitter.BinaryReader R, int num)
-        {
-            List<VendorProductPrice> list = new List<VendorProductPrice>();
-            for (int i = 1; i <= num; i++)
-            {
-                list.Add(R.VendorProductPrice());
-            }
-            return list.ToArray();
-        }
-
-        public static VendorProductRestriction VendorProductRestriction(this Bitter.BinaryReader R)
-        {
-            return new VendorProductRestriction(R);
-        }
-
-        public static VendorProductRestriction[] VendorProductRestrictionArray(this Bitter.BinaryReader R, int num)
-        {
-            List<VendorProductRestriction> list = new List<VendorProductRestriction>();
-            for (int i = 1; i <= num; i++)
-            {
-                list.Add(R.VendorProductRestriction());
-            }
-            return list.ToArray();
-        }
-
-
-    }
+    public byte Priority;
 }

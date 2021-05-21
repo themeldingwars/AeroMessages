@@ -1,18 +1,8 @@
-using Bitter;
-namespace PacketPeepScript
+[Aero(AeroType.Msg, AeroMsgType.GSS, AeroSrc.Server, 5, 138, Ver: 1962)]
+public partial class CharacterCombatControllerActivateConsumable : AeroBase
 {
-    [Script(MessageType.GSS, 5, 138, false)]
-    public class CharacterCombatControllerActivateConsumable : BaseScript
-    {
-        public uint Time;
-        public uint ItemSdbId;
+    public uint Time;
 
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-
-            Time = Stream.Read.UInt();
-            ItemSdbId = Stream.Read.UInt();
-        }
-    }
+    [AeroSDB("dbitems::RootItem", "sdb_id")]
+    public uint ItemSdbId;
 }

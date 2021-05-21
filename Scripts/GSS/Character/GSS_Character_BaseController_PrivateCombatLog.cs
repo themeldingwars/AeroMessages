@@ -1,24 +1,9 @@
-using Bitter;
-namespace PacketPeepScript
+[Aero(AeroType.Msg, AeroMsgType.GSS, AeroSrc.Server, 2, 92, Ver: 1962)]
+public partial class CharacterBaseControllerPrivateCombatLog : AeroBase
 {
-    [Script(MessageType.GSS, 2, 92, true)]
-    public class CharacterBaseControllerPrivateCombatLog : BaseScript
-    {
-        
-        public byte[] Unk1;
+    [AeroArray(4)]
+    public byte[] Unk1;
 
-        public ushort DataLength;
-        public byte[] Data; // Multiple variations, often gametime towards the end of a row.
-
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-
-            Unk1 = Stream.Read.ByteArray(4);
-            DataLength = Stream.Read.UShort();
-            Data = Stream.Read.ByteArray(DataLength);
-        }
-
-        
-    }
+    [AeroArray(typeof(ushort))]
+    public byte[] Data; // Multiple variations, often gametime towards the end of a row.
 }

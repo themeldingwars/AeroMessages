@@ -1,52 +1,19 @@
-using Bitter;
-using System.Collections.Generic;
-namespace PacketPeepScript
+[Aero(AeroType.Msg, AeroMsgType.GSS, AeroSrc.Client, 2, 204, Ver: 1962)]
+public partial class CharacterBaseControllerSlotModuleRequest : AeroBase
 {
-    [Script(MessageType.GSS, 2, 204, false)]
-    public class CharacterBaseControllerSlotModuleRequest : BaseScript
-    {
-        public ulong ItemGUID;
-        public byte NumberOfModules;
-        public SlotModuleRequest[] Modules;
+    public ulong ItemGUID;
 
-        public override void Read(Bitter.BinaryStream Stream)
-        {
-            Stream.ByteOrder = BinaryStream.Endianness.LittleEndian;
-            ItemGUID = Stream.Read.ULong();
-            NumberOfModules = Stream.Read.Byte();
-            Modules = Stream.Read.SlotModuleRequestArray(NumberOfModules);
-        }
-    }
+    [AeroArray(typeof(byte))]
+    public SlotModuleRequest[] Modules;
+}
 
-    public struct SlotModuleRequest
-    {
-        public uint SdbId;
-        public byte SlotIdx;
+[Aero(AeroType.Block)]
+public partial class SlotModuleRequest : AeroBase
+{
+    [AeroSDB("dbitems::RootItem", "sdb_id")]
+    [AeroSDB("dbitems::ItemModuleSlots", "item_id")]
+    public uint SdbId;
 
-        public SlotModuleRequest(Bitter.BinaryReader R)
-        {
-            SdbId = R.UInt();
-            SlotIdx = R.Byte();
-        }
-
-        public override string ToString() => $"{SdbId} -> {SlotIdx}";
-    }
-
-    public static class MyExtensions
-    {
-        public static SlotModuleRequest SlotModuleRequest(this Bitter.BinaryReader R)
-        {
-            return new SlotModuleRequest(R);
-        }
-
-        public static SlotModuleRequest[] SlotModuleRequestArray(this Bitter.BinaryReader R, int num)
-        {
-            List<SlotModuleRequest> list = new List<SlotModuleRequest>();
-            for (int i = 1; i <= num; i++)
-            {
-                list.Add(R.SlotModuleRequest());
-            }
-            return list.ToArray();
-        }
-    }
+    [AeroSDB("dbitems::ItemModuleSlots", "slot_index")]
+    public byte SlotIdx;
 }
