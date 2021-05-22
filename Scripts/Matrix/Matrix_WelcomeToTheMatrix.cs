@@ -1,5 +1,12 @@
-[Aero(AeroType.Msg, MsgType.Matrix, 17, Ver: 1962)]
-public partial class WelcomeToTheMatrix : AeroBase
+/*
+META_BEGIN
+    MsgType: Matrix
+    MsgId: 35
+    MsgName: WelcomeToTheMatrix
+META_END
+ */
+[Aero]
+public partial class Matrix_WelcomeToTheMatrix
 {
     public ulong PlayerID;
     public ushort Unk1;

@@ -1,5 +1,12 @@
-[Aero(AeroType.Msg, MsgType.Matrix, 17, Ver: 1946)]
-public partial class Login : AeroBase
+/*
+META_BEGIN
+    MsgType: Matrix
+    MsgId: 17
+    MsgName: Login
+META_END
+ */
+[Aero]
+public partial class Matrix_Login
 {
     public byte Unk1;
     public ushort ClientVersion;
@@ -8,7 +15,7 @@ public partial class Login : AeroBase
     public ulong CharacterGUID;
     [AeroArray(13)]
     public byte[] Unk3;
-    [AeroNullTermString]
+    [AeroString]
     public string Red5Sig2; // From Web Requests to ClientAPI
     public byte Unk4;
     [AeroArray(-1)]
