@@ -7,3 +7,8 @@ packages/
 *.sln.docstates
 *.sdf
 *.opensdf
+.idea/
+*.sln.iml
+AeroMessages/.idea/.idea.AeroMessages/.idea/encodings.xml
+AeroMessages/.idea/.idea.AeroMessages/.idea/indexLayout.xml
+AeroMessages/.idea/.idea.AeroMessages/.idea/vcs.xml
