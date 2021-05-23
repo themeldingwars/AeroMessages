@@ -1,3 +1,207 @@
+/*
+META_BEGIN
+    MsgType: GSS
+    FromServer: True
+    TypeCode: 2
+    TypeName: Character::BaseController
+    MsgId: 4
+    MsgName: Keyframe
+META_END
+ */
+[Aero]
+public partial class Character_BaseController_Keyframe
+{
+    public ulong PlayerId; // Controller / Msg4 Specific
+
+    [AeroArray(5)]
+    public byte[] Bitfield; // Keyframe bitfield
+
+    // Begin Character_BaseController fields
+    
+    public uint TimePlayed;
+    public byte CurrentWeight;
+    public byte EncumberedWeight;
+    public AuthorizedTerminalData AuthorizedTerminal;
+    public uint PingTime;
+    public StaticInfoData StaticInfo;
+    public uint SpawnTime;
+    public byte VisualOverrides; // TODO: More data if non 0?
+    public EquipmentData CurrentEquipment;
+    public uint SelectedLoadout;
+    public uint SelectedLoadoutIsPvP;
+    public GibVisuals GibVusalsId;
+
+}
+
+[AeroBlock]
+public struct AuthorizedTerminalData
+{
+    public byte TerminalType;
+    public uint TerminalId;
+    public ulong TerminalEntityId;
+}
+
+[AeroBlock]
+public struct StaticInfoData
+{
+    [AeroString]
+    public string DisplayName;
+
+    [AeroString]
+    public string UniqueName;
+
+    public byte Gender;
+    public byte Race;
+
+    [AeroSDB("dbcharacter::CharInfo", "id")]
+    public uint CharInfoId;
+
+    [AeroSDB("dbcharacter::Head", "id")]
+    public uint HeadMain;
+
+    [AeroSDB("dbvisualrecords::EyeRecord", "id")]
+    public uint Eyes;
+
+    public byte Unk_1;
+    public byte IsNPC;
+    public byte StaffFlags; // ChatIconFlags might be a better name?
+
+    [AeroSDB("dbcharacter::Monster", "id")]
+    public uint CharacterTypeId;
+
+    [AeroSDB("dbcharacter::VoiceSet", "id")]
+    public uint VoiceSet;
+
+    [AeroSDB("dbcharacter::MonsterTitle", "id")]
+    public ushort TitleId;
+
+    [AeroSDB("dblocalization::LocalizedText", "id")]
+    public uint NameLocalizationId;
+
+    [AeroArray(typeof(byte))]
+    [AeroSDB("dbcharacter::HeadAccesory", "ha_id")] // TODO: Double check
+    public uint[] HeadAccessories;
+
+    [AeroSDB("dbitems::RootItem", "sdb_id")]
+    public uint LoadoutVehicle;
+
+    [AeroSDB("dbitems::RootItem", "sdb_id")]
+    public uint LoadoutGlider;
+
+    public VisualsBlock Visuals;
+
+    [AeroString]
+    public string ArmyTag;
+}
+
+[AeroBlock]
+public struct VisualsBlock
+{
+    [AeroArray(typeof(byte))]
+    public VisualsDecalsBlock[] Decals;
+
+    [AeroArray(typeof(byte))]
+    public uint[] Gradients;
+
+    [AeroArray(typeof(byte))]
+    public uint[] Colors;
+
+    [AeroArray(typeof(byte))]
+    public VisualsPaletteBlock[] Palettes;
+
+    [AeroArray(typeof(byte))]
+    public VisualsPatternBlock[] Patterns;
+
+    [AeroArray(typeof(byte))]
+    public uint[] OrnamentGroupIds;
+
+    [AeroArray(3)]
+    public byte[] Unk; // Presumed to be Morph Weights, Overlays and something else?
+}
+
+[AeroBlock]
+public struct VisualsDecalsBlock
+{
+    [AeroSDB("dbvisualrecords::TatooDecal", "id")] // TODO: Verify
+    public uint DecalId;
+    public uint Color;
+
+    [AeroArray(12)]
+    public half[] Transform;
+
+    public byte Usage;
+}
+
+[AeroBlock]
+public struct VisualsPaletteBlock
+{
+    public byte PaletteType;
+
+    [AeroSDB("dbvisualrecords::WarpaintPalette", "id")]
+    public uint PaletteId;
+}
+
+[AeroBlock]
+public struct VisualsPatternBlock
+{
+    [AeroSDB("dbvisualrecords::CziPattern", "id")]
+    public uint PatternId;
+
+    [AeroArray(4)]
+    public ushort[] TransformValues;
+
+    public byte Usage;
+}
+
+[AeroBlock]
+public struct EquipmentData
+{
+    public SlottedItem Chassis; // Battleframe
+
+    [AeroArray(typeof(byte))]
+    public SlottedItem[] ChassisModules; // Armor gear, perks
+
+    public VisualsBlock ChassisVisuals;
+
+    public SlottedItem Backpack; // Reactor
+
+    [AeroArray(typeof(byte))]
+    public SlottedItem[] BackpackModules; // Abilities
+
+    public VisualsBlock BackpackVisuals; // Assumption that seems to check out, however has no affect on in-game visuals?
+
+    public SlottedItem PrimaryWeapon; // SlotIdx 0
+    [AeroArray(typeof(byte))]
+    public SlottedItem[] PrimaryWeaponModules;
+}
+
+[AeroBlock]
+public struct SlottedItem
+{
+    [AeroSDB("dbitems::RootItem", "sdb_id")]
+    public uint SdbId;
+    public uint SlotIndex;
+
+    [AeroArray(2)]
+    public byte[] Unk;
+}
+
+[AeroBlock]
+public struct GibVisuals
+{
+    [AeroSDB("dbcharacter::GibVisuals", "id")]
+    public uint GibVisualsId;
+    public uint Time;
+}
+
+
+
+
+
+
+
+
+
 using System.Collections.Generic;
 using Bitter;
 namespace PacketPeepScript

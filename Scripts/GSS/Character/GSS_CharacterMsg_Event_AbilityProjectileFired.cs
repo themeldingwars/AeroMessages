@@ -30,6 +30,6 @@ public partial class Character_Event_AbilityProjectileFired
     public byte[] Unk5;
 
     public byte UnkFlag;
-    [AeroIf(UnkFlag, true)]
+    [AeroIf(nameof(UnkFlag), true)]
     public ulong UnkFlaggedEntity;
 }

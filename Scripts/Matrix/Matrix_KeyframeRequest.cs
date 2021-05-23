@@ -9,12 +9,12 @@ META_END
 public partial class Matrix_KeyframeRequest
 {
     public byte HaveRequestByEntityID;
-    [AeroIf(HaveRequestByEntityID, true)]
+    [AeroIf(nameof(HaveRequestByEntityID), true)]
     [AeroArray(typeof(byte))]
     public RequestByEntity[] EntityRequests;
 
     public byte HaveRequestByRefID;
-    [AeroIf(HaveRequestByRefID, true)]
+    [AeroIf(nameof(HaveRequestByRefID), true)]
     [AeroArray(typeof(byte))]
     public ushort[] RefRequests;
 
@@ -23,7 +23,7 @@ public partial class Matrix_KeyframeRequest
 [AeroBlock]
 public struct RequestByEntity
 {
-    public string Entity;
+    public ulong Entity;
     public ushort RefID;
     public byte Unk2;
     public uint Checksum;

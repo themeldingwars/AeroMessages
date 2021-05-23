@@ -14,7 +14,7 @@ public partial class Character_Event_CurrentPoseUpdate
     public byte Flags;
     public ushort ShortTime;
 
-    [AeroIf(Flags, 0x00)]
+    [AeroIf(nameof(Flags), 0x00)]
     public FullDataVersion Data;
 
     // Cba to implement these atm

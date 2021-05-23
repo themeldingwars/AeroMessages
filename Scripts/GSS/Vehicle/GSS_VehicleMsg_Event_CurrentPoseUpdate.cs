@@ -14,7 +14,7 @@ public partial class Vehicle_Event_CurrentPoseUpdate
     public byte Flags;
     public ushort ShortTime;
 
-    [AeroIf(Flags, 0x00)]
+    [AeroIf(nameof(Flags), 0x00)]
     AllContents Data;
 }
 

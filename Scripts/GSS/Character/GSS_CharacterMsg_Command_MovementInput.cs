@@ -24,19 +24,31 @@ public partial class Character_Command_MovementInput
     public byte MovementUnk3;
 
 
-    [AeroIf(MovementType & 1, 1)]
-    public Vector3 MovementType1_Position;
-    public Quaternion MovementType1_Rotation;
-    public short MovementType1_State;
+    [AeroIf(nameof(MovementType), Op.HasFlag, 1)]
+    public MovementType1 Data1;
 
     public Vector3 Velocity;
 
-    [AeroIf(MovementType & 2 >> 1, 1)]
-    public Vector3 MovementType2_AimDirection;
+    [AeroIf(nameof(MovementType), Op.HasFlag, 2)]
+    public MovementType2 Data2;
 
     public ushort JetpackEnergy;
     public short GroundTimePositiveAirTimeNegative;
     public short TimeSinceLastJump;
 
     public ushort EndShort;
+}
+
+[AeroBlock]
+public struct MovementType1
+{
+    public Vector3 MovementType1_Position;
+    public Quaternion MovementType1_Rotation;
+    public short MovementType1_State;
+}
+
+[AeroBlock]
+public struct MovementType2
+{
+    public Vector3 MovementType2_AimDirection;
 }

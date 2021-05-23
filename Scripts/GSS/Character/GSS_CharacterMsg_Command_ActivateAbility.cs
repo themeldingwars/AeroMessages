@@ -16,10 +16,10 @@ public partial class Character_Command_ActivateAbility
 
     public byte HaveTargetEntity;
 
-    [AeroIf(HaveTargetEntity, true)]
+    [AeroIf(nameof(HaveTargetEntity), true)]
     public TargetData APTTargetingData;
 
-    [AeroIf(HaveTargetEntity, false)]
+    [AeroIf(nameof(HaveTargetEntity), false)]
     public Vector3 UnkVector;
 }
 

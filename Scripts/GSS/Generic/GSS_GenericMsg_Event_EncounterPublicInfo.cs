@@ -13,6 +13,6 @@ public partial class Generic_Event_EncounterPublicInfo
 {
     public ulong EncounterId;
 
-    [AeroString(-1)]
+    [AeroString]
     public string EncounterJSON;
 }

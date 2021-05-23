@@ -24,12 +24,12 @@ public partial class Character_Event_DealtHit
     // There are some variations of this message that don't include target and/or dealer entity and I'm not sure the parsing works properly then.
     // TookHit has similiar variation.
     public byte HaveTargetEntity;
-    [AeroIf(HaveTargetEntity, true)]
+    [AeroIf(nameof(HaveTargetEntity), true)]
     public ulong TargetEntity;
 
     public byte HaveDealerEntity;
-    [AeroIf(HaveDealerEntity, true)]
-    public string DealerEntity;
+    [AeroIf(nameof(HaveDealerEntity), true)]
+    public ulong DealerEntity;
 
     public uint DamageValue;
 

@@ -138,21 +138,21 @@ public struct LoadoutConfig_Visual
     [AeroArray(8)]
     public byte[] Unk1;
 
-    [AeroIf(nameof(VisualType), LoadoutVisualType.Palette)]
+    [AeroIf(nameof(VisualType), Op.HasFlag, LoadoutVisualType.Palette)]
     public byte Palette_Unk;
     
-    [AeroIf(nameof(VisualType), LoadoutVisualType.Pattern)]
+    [AeroIf(nameof(VisualType), Op.HasFlag, LoadoutVisualType.Pattern)]
     [AeroArray(typeof(byte))]
     public float[] Pattern_Transform;
 
-    [AeroIf(nameof(VisualType), LoadoutVisualType.Decal)]
+    [AeroIf(nameof(VisualType), Op.HasFlag, LoadoutVisualType.Decal)]
     [AeroArray(typeof(byte))]
     public float[] Decal_Transform;
 
-    [AeroIf(nameof(VisualType), LoadoutVisualType.Glider)]
+    [AeroIf(nameof(VisualType), Op.HasFlag, LoadoutVisualType.Glider)]
     public byte Glider_Unk;
 
-    [AeroIf(nameof(VisualType), LoadoutVisualType.Vehicle)]
+    [AeroIf(nameof(VisualType), Op.HasFlag, LoadoutVisualType.Vehicle)]
     public byte Vehicle_Unk;
 
 }

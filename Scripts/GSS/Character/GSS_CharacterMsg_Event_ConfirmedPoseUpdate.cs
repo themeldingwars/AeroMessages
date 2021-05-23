@@ -31,12 +31,12 @@ public partial class Character_Event_ConfirmedPoseUpdate
     public PoseType Flags;
     public byte Unk3;
     
-    [AeroIf(nameof(Flags), PoseType.PosAndRot)]
+    [AeroIf(nameof(Flags), Op.HasFlag, PoseType.PosAndRot)]
     public PosAndRotData PosAndRot;
     
     public Vector3 Velocity;
     
-    [AeroIf(nameof(Flags), PoseType.Aim)]
+    [AeroIf(nameof(Flags), Op.HasFlag, PoseType.Aim)]
     public Vector3 Aim;
     
     public ushort Unk5;

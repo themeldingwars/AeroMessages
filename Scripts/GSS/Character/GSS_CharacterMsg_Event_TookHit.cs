@@ -17,10 +17,10 @@ public partial class Character_Event_TookHit
 
     public byte HaveDealerEntity;
 
-    [AeroIf(HaveDealerEntity, true)]
+    [AeroIf(nameof(HaveDealerEntity), true)]
     public Type1Data Data;
 
-    [AeroIf(HaveDealerEntity, false)]
+    [AeroIf(nameof(HaveDealerEntity), false)]
     public Type0Data Data;
     
     // Always

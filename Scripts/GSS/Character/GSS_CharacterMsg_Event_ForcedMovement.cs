@@ -16,10 +16,10 @@ public partial class Character_Event_ForcedMovement
     [AeroArray(5)]
     public byte[] Unk2;
 
-    [AeroIf(Flags, 0x01)]
+    [AeroIf(nameof(Flags), 0x01)]
     public Type1Data Data;
 
-    [AeroIf(Flags, 0x05)]
+    [AeroIf(nameof(Flags), 0x05)]
     public Type5Data Data;
 
 }
