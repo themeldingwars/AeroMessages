@@ -205,8 +205,9 @@ namespace AeroMessages.GSS.Character
         // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.TimedDailyRewardResult)]
         // --
 
+        // [AeroSDB("dbencounterdata::SinCardTemplate", "Id")]
+        // [AeroSDB("dbencounterdata::SinCardFields", "TemplateId")]
         public uint SinCardType;
-
 
         [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.SinCardFields_0)]
         public SinCardFieldData SinCardFields_0;
@@ -716,22 +717,22 @@ namespace AeroMessages.GSS.Character
             Boolean = 8,
         }
 
-        public SincardFieldDataType Type;
+        public SinCardFieldData.SincardFieldDataType Type;
 
-        [AeroIf(nameof(Type), SincardFieldDataType.LocalizationId)]
+        [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.LocalizationId)]
         public uint LocalizationId;
 
-        [AeroIf(nameof(Type), SincardFieldDataType.Integer)]
+        [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Integer)]
         public uint Integer;
 
-        [AeroIf(nameof(Type), SincardFieldDataType.EntityId)]
+        [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.EntityId)]
         public EntityId EntityId;
 
-        [AeroIf(nameof(Type), SincardFieldDataType.Enum)]
+        [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Enum)]
         [AeroString]
         public string Enum;
 
-        [AeroIf(nameof(Type), SincardFieldDataType.Short)]
+        [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Short)]
         public ushort Short;
     }
 }
