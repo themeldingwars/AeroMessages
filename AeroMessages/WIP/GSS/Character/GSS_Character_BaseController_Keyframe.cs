@@ -16,46 +16,46 @@ namespace AeroMessages.GSS.Character
     [Aero]
     public partial class Character_BaseController_Keyframe
     {
-        public enum BitfieldIndex : ulong
+        public enum BitfieldMask : ulong
         {
-            CinematicCamera        = 0UL,
-            PersonalFactionStance  = 1UL << 0,
-            AttachedTo             = 1UL << 1,
-            SinFactionsAcquiredBy  = 1UL << 2,
-            SinTeamsAqquiredBy     = 1UL << 3,
-            EncounterPartyTuple    = 1UL << 4,
-            LookAtTarget           = 1UL << 5,
-            CarryableObjects_0     = 1UL << 6,
-            CarryableObjects_1     = 1UL << 7,
-            CarryableObjects_2     = 1UL << 8,
-            CachedAssets           = 1UL << 9,
-            RespawnTimes           = 1UL << 10,
-            ArcStatus              = 1UL << 11,
-            LeaveZoneTime          = 1UL << 12,
-            TimedDailyRewardResult = 1UL << 13,
-            SinCardFields_0        = 1UL << 14,
-            SinCardFields_1        = 1UL << 15,
-            SinCardFields_2        = 1UL << 16,
-            SinCardFields_3        = 1UL << 17,
-            SinCardFields_4        = 1UL << 18,
-            SinCardFields_5        = 1UL << 19,
-            SinCardFields_6        = 1UL << 20,
-            SinCardFields_7        = 1UL << 21,
-            SinCardFields_8        = 1UL << 22,
-            SinCardFields_9        = 1UL << 23,
-            SinCardFields_10       = 1UL << 24,
-            SinCardFields_11       = 1UL << 25,
-            SinCardFields_12       = 1UL << 26,
-            SinCardFields_13       = 1UL << 27,
-            SinCardFields_14       = 1UL << 28,
-            SinCardFields_15       = 1UL << 29,
-            SinCardFields_16       = 1UL << 30,
-            SinCardFields_17       = 1UL << 31,
-            SinCardFields_18       = 1UL << 32,
-            SinCardFields_19       = 1UL << 33,
-            SinCardFields_20       = 1UL << 34,
-            SinCardFields_21       = 1UL << 35,
-            SinCardFields_22       = 1UL << 36,
+            CinematicCamera        = 1UL << 0,
+            PersonalFactionStance  = 1UL << 1,
+            AttachedTo             = 1UL << 2,
+            SinFactionsAcquiredBy  = 1UL << 3,
+            SinTeamsAqquiredBy     = 1UL << 4,
+            EncounterPartyTuple    = 1UL << 5,
+            LookAtTarget           = 1UL << 6,
+            CarryableObjects_0     = 1UL << 7,
+            CarryableObjects_1     = 1UL << 8,
+            CarryableObjects_2     = 1UL << 9,
+            CachedAssets           = 1UL << 10,
+            RespawnTimes           = 1UL << 11,
+            ArcStatus              = 1UL << 12,
+            LeaveZoneTime          = 1UL << 13,
+            TimedDailyRewardResult = 1UL << 14,
+            SinCardFields_0        = 1UL << 15,
+            SinCardFields_1        = 1UL << 16,
+            SinCardFields_2        = 1UL << 17,
+            SinCardFields_3        = 1UL << 18,
+            SinCardFields_4        = 1UL << 19,
+            SinCardFields_5        = 1UL << 20,
+            SinCardFields_6        = 1UL << 21,
+            SinCardFields_7        = 1UL << 22,
+            SinCardFields_8        = 1UL << 23,
+            SinCardFields_9        = 1UL << 24,
+            SinCardFields_10       = 1UL << 25,
+            SinCardFields_11       = 1UL << 26,
+            SinCardFields_12       = 1UL << 27,
+            SinCardFields_13       = 1UL << 28,
+            SinCardFields_14       = 1UL << 29,
+            SinCardFields_15       = 1UL << 30,
+            SinCardFields_16       = 1UL << 31,
+            SinCardFields_17       = 1UL << 32,
+            SinCardFields_18       = 1UL << 33,
+            SinCardFields_19       = 1UL << 34,
+            SinCardFields_20       = 1UL << 35,
+            SinCardFields_21       = 1UL << 36,
+            SinCardFields_22       = 1UL << 37,
         }
 
         public ulong PlayerId; // Controller / Msg4 Specific
@@ -82,13 +82,13 @@ namespace AeroMessages.GSS.Character
         public byte SpectatorMode;
 
         // TODO: Bitfield - Cinematic Camera
-        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.CinematicCamera)]
+        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.CinematicCamera)]
         // --
 
         public CharacterStateData CharacterState; 
         public HostilityInfoData HosilityInfo;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.PersonalFactionStance)]
+        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.PersonalFactionStance)]
         public PersonalFactionStanceData PersonalFactionStance;
         
         public uint CurrentHealth;
@@ -100,7 +100,7 @@ namespace AeroMessages.GSS.Character
         public CharacterStatsData CharacterStats;
         public EmoteData EmoteId;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.AttachedTo)]
+        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.AttachedTo)]
         public AttachedToData AttachedTo;
 
         public byte SnapMount;
@@ -108,11 +108,11 @@ namespace AeroMessages.GSS.Character
         public byte SinFlagsPrivate;
 
         // TODO: Bitfield - SinFactionsAcquiredBy
-        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.SinFactionsAcquiredBy)]
+        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.SinFactionsAcquiredBy)]
         // public SinFactionsAcquiredByData SinFactionsAcquiredBy;
         // --
         // TODO: Bitfield - SinTeamsAcquiredBy
-        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.SinTeamsAcquiredBy)]
+        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.SinTeamsAcquiredBy)]
         // public SinTeamsAcquiredByData SinTeamsAcquiredBy;
         // --
 
@@ -120,14 +120,14 @@ namespace AeroMessages.GSS.Character
         public byte ArmyIsOfficer;
 
         // TODO: Bitfield - EncounterPartyTuple
-        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.EncounterPartyTuple)]
+        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.EncounterPartyTuple)]
         // --
         
         [AeroArray(21)]
         public byte[] DockedParams;
 
         // TODO: Bitfield - LookAtTarget
-        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.LookAtTarget)]
+        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.LookAtTarget)]
         // public LookAtTargetData LookAtTarget;
         // --
 
@@ -142,19 +142,19 @@ namespace AeroMessages.GSS.Character
         public ScopeBubbleInfoData ScopeBubbleInfo;
 
         // TODO: Bitfield - CarryableObjects_0
-        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.CarryableObjects_0)]
+        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.CarryableObjects_0)]
         // -
         // TODO: Bitfield - CarryableObjects_1
-        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.CarryableObjects_1)]
+        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.CarryableObjects_1)]
         // -
         // TODO: Bitfield - CarryableObjects_2 
-        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.CarryableObjects_2)]
+        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.CarryableObjects_2)]
         // -
         // TODO: Bitfield - CachedAssets
-        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.CachedAssets)]
+        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.CachedAssets)]
         // -
         // TODO: Bitfield - RespawnTimes
-        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.RespawnTimes)]
+        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.RespawnTimes)]
         // -
      
         [AeroArray(4)]
@@ -191,10 +191,10 @@ namespace AeroMessages.GSS.Character
         public uint PerkRespecs;
 
         // TODO: Bitfield - ArcStatus  = 0x4c,
-        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.ArcStatus)]
+        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.ArcStatus)]
         // --
         // TODO: Bitfield - LeaveZoneTime  = 0x4d,
-        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.LeaveZoneTime)]
+        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.LeaveZoneTime)]
         // public uint LeaveZoneTime; // TOOD: Verify
         // --
         
@@ -202,80 +202,80 @@ namespace AeroMessages.GSS.Character
         public ulong TimedDailyReward;
 
         // TODO: Bitfield -  TimedDailyRewardResult      = 0x50,
-        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.TimedDailyRewardResult)]
+        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.TimedDailyRewardResult)]
         // --
 
         // [AeroSDB("dbencounterdata::SinCardTemplate", "Id")]
         // [AeroSDB("dbencounterdata::SinCardFields", "TemplateId")]
         public uint SinCardType;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.SinCardFields_0)]
+        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.SinCardFields_0)]
         public SinCardFieldData SinCardFields_0;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.SinCardFields_1)]
+        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.SinCardFields_1)]
         public SinCardFieldData SinCardFields_1;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.SinCardFields_2)]
+        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.SinCardFields_2)]
         public SinCardFieldData SinCardFields_2;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.SinCardFields_3)]
+        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.SinCardFields_3)]
         public SinCardFieldData SinCardFields_3;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.SinCardFields_4)]
+        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.SinCardFields_4)]
         public SinCardFieldData SinCardFields_4;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.SinCardFields_5)]
+        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.SinCardFields_5)]
         public SinCardFieldData SinCardFields_5;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.SinCardFields_6)]
+        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.SinCardFields_6)]
         public SinCardFieldData SinCardFields_6;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.SinCardFields_7)]
+        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.SinCardFields_7)]
         public SinCardFieldData SinCardFields_7;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.SinCardFields_8)]
+        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.SinCardFields_8)]
         public SinCardFieldData SinCardFields_8;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.SinCardFields_9)]
+        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.SinCardFields_9)]
         public SinCardFieldData SinCardFields_9;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.SinCardFields_10)]
+        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.SinCardFields_10)]
         public SinCardFieldData SinCardFields_10;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.SinCardFields_11)]
+        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.SinCardFields_11)]
         public SinCardFieldData SinCardFields_11;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.SinCardFields_12)]
+        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.SinCardFields_12)]
         public SinCardFieldData SinCardFields_12;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.SinCardFields_13)]
+        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.SinCardFields_13)]
         public SinCardFieldData SinCardFields_13;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.SinCardFields_14)]
+        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.SinCardFields_14)]
         public SinCardFieldData SinCardFields_14;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.SinCardFields_15)]
+        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.SinCardFields_15)]
         public SinCardFieldData SinCardFields_15;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.SinCardFields_16)]
+        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.SinCardFields_16)]
         public SinCardFieldData SinCardFields_16;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.SinCardFields_17)]
+        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.SinCardFields_17)]
         public SinCardFieldData SinCardFields_17;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.SinCardFields_18)]
+        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.SinCardFields_18)]
         public SinCardFieldData SinCardFields_18;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.SinCardFields_19)]
+        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.SinCardFields_19)]
         public SinCardFieldData SinCardFields_19;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.SinCardFields_20)]
+        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.SinCardFields_20)]
         public SinCardFieldData SinCardFields_20;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.SinCardFields_21)]
+        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.SinCardFields_21)]
         public SinCardFieldData SinCardFields_21;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldIndex.SinCardFields_22)]
+        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.HasFlag, BitfieldMask.SinCardFields_22)]
         public SinCardFieldData SinCardFields_22;
 
         public byte AssetOverrides; // TODO: Verify, probably an array 
@@ -511,18 +511,6 @@ namespace AeroMessages.GSS.Character
     }
 
     [AeroBlock]
-    public struct HostilityInfoData
-    {
-        public enum HostilityMode: byte
-        {
-            PvE = 1, // Id is Faction Id
-            PvP = 2, // Id is Team Id
-        }
-        public HostilityMode Mode;
-        public byte Id; // Faction/Team Id
-    }
-
-    [AeroBlock]
     public struct MaxVital
     {
         public uint Value;
@@ -536,43 +524,6 @@ namespace AeroMessages.GSS.Character
         public uint Delay;
         public float Recharge;
         public uint Time;
-    }
-
-    [AeroBlock]
-    public struct CharacterStatsData
-    {
-        [AeroArray(typeof(ushort))]
-        public StatsData[] ItemAttributes;
-
-        [AeroArray(4)]
-        public byte[] Unk1;
-
-        [AeroArray(typeof(ushort))]
-        public StatsData[] WeaponA;
-
-        [AeroArray(4)]
-        public byte[] Unk2;
-
-        [AeroArray(typeof(ushort))]
-        public StatsData[] WeaponB;
-
-        [AeroArray(4)]
-        public byte[] Unk3;
-
-        [AeroArray(typeof(ushort))]
-        public StatsData[] AttributeCategories1;
-
-        [AeroArray(typeof(ushort))]
-        public StatsData[] AttributeCategories2;
-    }
-
-    [AeroBlock]
-    public struct StatsData
-    {
-        //[AeroSDB("dbitems::AttributeDefinition", "id")]
-        public ushort Id;
-
-        public float Value;
     }
 
     [AeroBlock]
@@ -649,14 +600,6 @@ namespace AeroMessages.GSS.Character
     }
 
     [AeroBlock]
-    public struct PersonalFactionStanceData
-    {
-        // TODO: Verify
-        [AeroArray(20)]
-        public byte[] Unk;
-    }
-
-    [AeroBlock]
     public struct AttachedToData
     {
         public enum AttachmentRoleType : byte
@@ -676,19 +619,7 @@ namespace AeroMessages.GSS.Character
         public byte[] Unk;
     }
 
-    [AeroBlock]
-    public struct SinFactionsAcquiredByData
-    {
-        [AeroArray(2)]
-        public byte[] Unk;
-    }
 
-    [AeroBlock]
-    public struct SinTeamsAcquiredByData
-    {
-        [AeroArray(2)]
-        public byte[] Unk;
-    }
 
     [AeroBlock]
     public struct LookAtTargetData
@@ -700,39 +631,5 @@ namespace AeroMessages.GSS.Character
         public byte[] Unk;
     }
 
-    [AeroBlock]
-    public struct SinCardFieldData
-    {
-        public enum SincardFieldDataType : byte
-        {
-            // TODO: Verify
-            LocalizationId = 0,
-            Integer = 1,
-            EntityId = 2,
-            UnkType_3 = 3,
-            Enum = 4,
-            UnkType_5 = 5,
-            Short = 6,
-            Timer = 7,
-            Boolean = 8,
-        }
-
-        public SinCardFieldData.SincardFieldDataType Type;
-
-        [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.LocalizationId)]
-        public uint LocalizationId;
-
-        [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Integer)]
-        public uint Integer;
-
-        [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.EntityId)]
-        public EntityId EntityId;
-
-        [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Enum)]
-        [AeroString]
-        public string Enum;
-
-        [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Short)]
-        public ushort Short;
-    }
+    
 }
