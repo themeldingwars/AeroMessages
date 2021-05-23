@@ -1,12 +1,19 @@
-[Aero(AeroType.Msg, MsgType.Matrix, 37, Ver: 1962)]
-public partial class EnterZone : AeroBase
+/*
+META_BEGIN
+    MsgType: Matrix
+    MsgId: 37
+    MsgName: EnterZone
+META_END
+ */
+[Aero]
+public partial class Matrix_EnterZone
 {
     public ulong InstanceId;
     public uint ZoneId;
     public ulong ZoneTimestamp;
     public byte PreviewModeFlag;
 
-    [AeroNullTermString]
+    [AeroString]
     public string ZoneOwner;
 
     [AeroArray(6)]
@@ -19,7 +26,7 @@ public partial class EnterZone : AeroBase
     public byte[] Unk2;
     public uint Unk3_Millis;
 
-    [AeroNullTermString]
+    [AeroString]
     public string ZoneName;
 
     public byte Unk4;

@@ -1,5 +1,12 @@
-[Aero(AeroType.Msg, MsgType.Matrix, 20, Ver: 1962)]
-public partial class KeyframeRequest : AeroBase
+/*
+META_BEGIN
+    MsgType: Matrix
+    MsgId: 20
+    MsgName: KeyframeRequest
+META_END
+ */
+[Aero]
+public partial class Matrix_KeyframeRequest
 {
     public byte HaveRequestByEntityID;
     [AeroIf(HaveRequestByEntityID, true)]
@@ -13,7 +20,7 @@ public partial class KeyframeRequest : AeroBase
 
 }
 
-[Aero(AeroType.Block)]
+[AeroBlock]
 public struct RequestByEntity
 {
     public string Entity;
