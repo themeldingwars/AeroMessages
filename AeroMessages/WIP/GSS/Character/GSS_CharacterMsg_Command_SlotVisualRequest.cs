@@ -16,7 +16,7 @@ namespace AeroMessages.GSS.Character
     {
         public uint LoadoutId;
 
-        [AeroSDB("dbitems::RootItem", "sdb_id")]
+        //[AeroSDB("dbitems::RootItem", "sdb_id")]
         public uint ItemSdbId;
 
         public byte SlotIdx1; // ?

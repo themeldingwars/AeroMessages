@@ -311,39 +311,39 @@ namespace AeroMessages.GSS.Character
         public byte Gender;
         public byte Race;
 
-        [AeroSDB("dbcharacter::CharInfo", "id")]
+        //[AeroSDB("dbcharacter::CharInfo", "id")]
         public uint CharInfoId;
 
-        [AeroSDB("dbcharacter::Head", "id")]
+        //[AeroSDB("dbcharacter::Head", "id")]
         public uint HeadMain;
 
-        [AeroSDB("dbvisualrecords::EyeRecord", "id")]
+        //[AeroSDB("dbvisualrecords::EyeRecord", "id")]
         public uint Eyes;
 
         public byte Unk_1;
         public byte IsNPC;
         public byte StaffFlags; // ChatIconFlags might be a better name?
 
-        [AeroSDB("dbcharacter::Monster", "id")]
+        //[AeroSDB("dbcharacter::Monster", "id")]
         public uint CharacterTypeId;
 
-        [AeroSDB("dbcharacter::VoiceSet", "id")]
+        //[AeroSDB("dbcharacter::VoiceSet", "id")]
         public uint VoiceSet;
 
-        [AeroSDB("dbcharacter::MonsterTitle", "id")]
+        //[AeroSDB("dbcharacter::MonsterTitle", "id")]
         public ushort TitleId;
 
-        [AeroSDB("dblocalization::LocalizedText", "id")]
+        //[AeroSDB("dblocalization::LocalizedText", "id")]
         public uint NameLocalizationId;
 
         [AeroArray(typeof(byte))]
-        [AeroSDB("dbcharacter::HeadAccesory", "ha_id")] // TODO: Double check
+        //[AeroSDB("dbcharacter::HeadAccesory", "ha_id")] // TODO: Double check
         public uint[] HeadAccessories;
 
-        [AeroSDB("dbitems::RootItem", "sdb_id")]
+        //[AeroSDB("dbitems::RootItem", "sdb_id")]
         public uint LoadoutVehicle;
 
-        [AeroSDB("dbitems::RootItem", "sdb_id")]
+        //[AeroSDB("dbitems::RootItem", "sdb_id")]
         public uint LoadoutGlider;
 
         public VisualsBlock Visuals;
@@ -380,7 +380,7 @@ namespace AeroMessages.GSS.Character
     [AeroBlock]
     public struct VisualsDecalsBlock
     {
-        [AeroSDB("dbvisualrecords::TatooDecal", "id")] // TODO: Verify
+        //[AeroSDB("dbvisualrecords::TatooDecal", "id")] // TODO: Verify
         public uint DecalId;
         public uint Color;
 
@@ -395,14 +395,14 @@ namespace AeroMessages.GSS.Character
     {
         public byte PaletteType;
 
-        [AeroSDB("dbvisualrecords::WarpaintPalette", "id")]
+        //[AeroSDB("dbvisualrecords::WarpaintPalette", "id")]
         public uint PaletteId;
     }
 
     [AeroBlock]
     public struct VisualsPatternBlock
     {
-        [AeroSDB("dbvisualrecords::CziPattern", "id")]
+        //[AeroSDB("dbvisualrecords::CziPattern", "id")]
         public uint PatternId;
 
         [AeroArray(4)]
@@ -458,7 +458,7 @@ namespace AeroMessages.GSS.Character
     [AeroBlock]
     public struct SlottedItem
     {
-        [AeroSDB("dbitems::RootItem", "sdb_id")]
+        //[AeroSDB("dbitems::RootItem", "sdb_id")]
         public uint SdbId;
         public uint SlotIndex;
 
@@ -469,7 +469,7 @@ namespace AeroMessages.GSS.Character
     [AeroBlock]
     public struct GibVisuals
     {
-        [AeroSDB("dbcharacter::GibVisuals", "id")]
+        //[AeroSDB("dbcharacter::GibVisuals", "id")]
         public uint GibVisualsId;
         public uint Time;
     }
@@ -568,7 +568,7 @@ namespace AeroMessages.GSS.Character
     [AeroBlock]
     public struct StatsData
     {
-        [AeroSDB("dbitems::AttributeDefinition", "id")]
+        //[AeroSDB("dbitems::AttributeDefinition", "id")]
         public ushort Id;
 
         public float Value;
@@ -576,7 +576,7 @@ namespace AeroMessages.GSS.Character
 
     [AeroBlock]
     public struct EmoteData {
-        [AeroSDB("dbcharacter::EmoteRecord", "id")]
+        //[AeroSDB("dbcharacter::EmoteRecord", "id")]
         public ushort Id;
         public uint Time;
     }
@@ -611,7 +611,7 @@ namespace AeroMessages.GSS.Character
     [AeroBlock]
     public struct StatModifierData
     {
-        [AeroSDB("aptfs::StatModifierCommandDef", "id")] // TODO: Verify
+        //[AeroSDB("aptfs::StatModifierCommandDef", "id")] // TODO: Verify
         public uint ModifierId;
         public float StatValue;
     }

@@ -15,7 +15,7 @@ namespace AeroMessages.GSS.Character
     [Aero]
     public partial class Character_Command_DeployableCalldownRequest
     {
-        [AeroSDB("dbcharacter:Deploable", "id")]
+        //[AeroSDB("dbcharacter:Deploable", "id")]
         public uint DeployableId;
 
         public Vector3 Position;

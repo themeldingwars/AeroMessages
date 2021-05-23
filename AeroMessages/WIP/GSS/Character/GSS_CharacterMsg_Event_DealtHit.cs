@@ -38,7 +38,7 @@ namespace AeroMessages.GSS.Character
 
         public uint DamageValue;
 
-        [AeroSDB("dbcharacter::DamageType", "id")]
+        //[AeroSDB("dbcharacter::DamageType", "id")]
         public byte DamageType; // Sdb table 330, id column
 
         public byte Unk_3_byte;

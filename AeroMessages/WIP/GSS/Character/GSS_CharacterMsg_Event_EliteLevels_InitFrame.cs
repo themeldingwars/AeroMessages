@@ -20,7 +20,7 @@ namespace AeroMessages.GSS.Character
     [AeroBlock]
     public struct EliteFrameInfoSingle
     {
-        [AeroSDB("dbitems::Battleframe", "id")]
+        //[AeroSDB("dbitems::Battleframe", "id")]
         public uint ChassisId; // Note: Only one id when initing one frame
 
         public uint EliteRank;

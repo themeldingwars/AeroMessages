@@ -16,7 +16,7 @@ namespace AeroMessages.GSS.Character
     {
         public uint IndexId; // Used by client when claiming
 
-        [AeroSDB("dblocalization::LocalizedText", "id")]
+        //[AeroSDB("dblocalization::LocalizedText", "id")]
         public uint TitleLocalizationId;
 
         [AeroArray(8)]
@@ -42,7 +42,7 @@ namespace AeroMessages.GSS.Character
     [AeroBlock]
     public struct StatInfo
     {
-        [AeroSDB("dblocalization::LocalizedText", "id")]
+        //[AeroSDB("dblocalization::LocalizedText", "id")]
         public uint LocalizationId;
 
         [AeroArray(6)]
@@ -52,7 +52,7 @@ namespace AeroMessages.GSS.Character
     [AeroBlock]
     public struct RewardInfo
     {
-        [AeroSDB("dbitems::RootItem", "sdb_id")]
+        //[AeroSDB("dbitems::RootItem", "sdb_id")]
         public uint SdbId;
         public ushort Quantity;
         public ushort Unk1;

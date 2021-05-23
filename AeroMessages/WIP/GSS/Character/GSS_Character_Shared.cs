@@ -14,7 +14,7 @@ namespace AeroMessages.GSS.Character
         //public uint? ItemSDBId; // second additional info entry
         // ... more potentially
 
-        [AeroSDB("dblocalization::LocalizedText", "id")]
+        //[AeroSDB("dblocalization::LocalizedText", "id")]
         public uint LocalizationId;
     }
 

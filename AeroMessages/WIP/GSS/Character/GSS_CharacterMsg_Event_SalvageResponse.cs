@@ -25,7 +25,7 @@ namespace AeroMessages.GSS.Character
     {
         public ulong GUID;
 
-        [AeroSDB("dbitems::RootItem", "sdb_id")]
+        //[AeroSDB("dbitems::RootItem", "sdb_id")]
         public uint SdbId;
 
         public uint Quantity; // (Needed when stackables like modules are salvaged in bulk)

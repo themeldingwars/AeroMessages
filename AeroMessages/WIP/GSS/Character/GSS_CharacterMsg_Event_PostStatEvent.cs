@@ -15,7 +15,7 @@ namespace AeroMessages.GSS.Character
     [Aero]
     public partial class Character_Event_PostStatEvent
     {
-        [AeroSDB("dbstats::Stat", "Id")]
+        //[AeroSDB("dbstats::Stat", "Id")]
         public uint StatEventId;
         [AeroArray(typeof(uint))]
         public StatData[] Stats;

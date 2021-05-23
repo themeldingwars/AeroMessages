@@ -23,10 +23,10 @@ namespace AeroMessages.GSS.Character
     [AeroBlock]
     public struct EliteFrameInfoAll
     {
-        [AeroSDB("dbitems::Battleframe", "id")]
+        //[AeroSDB("dbitems::Battleframe", "id")]
         public uint ChassisId_1; // Might just be that the data is indexed by this or something
         
-        [AeroSDB("dbitems::Battleframe", "id")]
+        //[AeroSDB("dbitems::Battleframe", "id")]
         public uint ChassisId_2;
 
         public uint EliteRank;

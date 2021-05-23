@@ -35,7 +35,7 @@ namespace AeroMessages.GSS.Character
     [AeroBlock]
     public struct UnlockGroupEntry
     {
-        [AeroSDB("dbitems::Certificate", "id")]
+        //[AeroSDB("dbitems::Certificate", "id")]
         public uint CertId;
 
         [AeroArray(typeof(byte))]

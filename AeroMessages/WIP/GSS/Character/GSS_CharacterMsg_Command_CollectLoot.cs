@@ -20,7 +20,7 @@ namespace AeroMessages.GSS.Character
      [AeroArray(4)]
      public byte Unk;
 
-     [AeroSDB("dbitems:RootItem", "sdb_id")]
+     //[AeroSDB("dbitems:RootItem", "sdb_id")]
      public uint LootSdbID;
   }
 }

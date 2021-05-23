@@ -34,7 +34,7 @@ namespace AeroMessages.GSS.Character
     {
         public byte Unk1;
 
-        [AeroSDB("dbitems::RootItem", "sdb_id")]
+        //[AeroSDB("dbitems::RootItem", "sdb_id")]
         public uint SdbId;
 
         public ulong GUID;
@@ -62,7 +62,7 @@ namespace AeroMessages.GSS.Character
     [AeroBlock]
     public struct Resource 
     {
-        [AeroSDB("dbitems::RootItem", "sdb_id")]
+        //[AeroSDB("dbitems::RootItem", "sdb_id")]
         public uint SdbId;
 
         [AeroString]
@@ -89,7 +89,7 @@ namespace AeroMessages.GSS.Character
         [AeroString]
         public string LoadoutType;
 
-        [AeroSDB("dbitems::RootItem", "sdb_id")]
+        //[AeroSDB("dbitems::RootItem", "sdb_id")]
         public uint ChassisID;
         
         [AeroArray(typeof(byte))]
@@ -120,7 +120,7 @@ namespace AeroMessages.GSS.Character
     [AeroBlock]
     public struct LoadoutConfig_Item
     {
-        [AeroSDB("dbitems::LoadoutSlot", "id")]
+        //[AeroSDB("dbitems::LoadoutSlot", "id")]
         public byte SlotIndex;
         public ulong ItemGUID;
     }
@@ -138,7 +138,7 @@ namespace AeroMessages.GSS.Character
             Vehicle = 14,
         };
 
-        [AeroSDB("dbitems::RootItem", "sdb_id")]
+        //[AeroSDB("dbitems::RootItem", "sdb_id")]
         public uint ItemSdbId;
 
         public LoadoutVisualType VisualType;

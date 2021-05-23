@@ -14,7 +14,7 @@ namespace AeroMessages.GSS.Character
     [Aero]
     public partial class Character_Event_AbilityActivated
     {   
-        [AeroSDB("apt::AbilityData", "id")]
+        //[AeroSDB("apt::AbilityData", "id")]
         public uint Activated_AbilityId;
         public uint Activated_Time;
 
@@ -33,7 +33,7 @@ namespace AeroMessages.GSS.Character
     [AeroBlock]
     public struct ActiveCooldown
     {
-        [AeroSDB("apt::AbilityData", "id")]
+        //[AeroSDB("apt::AbilityData", "id")]
         public uint AbilityId;
         public uint Activated_Time;
         public uint ReadyAgain_Time;

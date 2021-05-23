@@ -14,7 +14,7 @@ namespace AeroMessages.GSS.Vehicle
     [Aero]
     public partial class Vehicle_Event_AbilityFailed
     {
-        [AeroSDB("apt::AbilityData", "id")]
+        //[AeroSDB("apt::AbilityData", "id")]
         public uint AbilityId;
 
         [AeroArray(4)]

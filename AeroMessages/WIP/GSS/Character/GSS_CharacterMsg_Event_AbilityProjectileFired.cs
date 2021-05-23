@@ -22,8 +22,8 @@ namespace AeroMessages.GSS.Character
         [AeroArray(3)]
         public ushort[] PackedAim; // TODO: Aero needs to unpack this to Vector3
 
-        [AeroSDB("dbitems::Ammo", "id")] // Definition
-        [AeroSDB("aptfs::FireProjectileCommandDef", "ammotype")] // Reference values, eg Range
+        //[AeroSDB("dbitems::Ammo", "id")] // Definition
+        //[AeroSDB("aptfs::FireProjectileCommandDef", "ammotype")] // Reference values, eg Range
         public ushort AmmoType;
         public float Range;
 
