@@ -21,10 +21,10 @@ namespace AeroMessages.GSS.Character
 
         public byte HaveTargetEntity;
 
-        [AeroIf(nameof(HaveTargetEntity), true)]
+        [AeroIf(nameof(HaveTargetEntity), 1)]
         public TargetData APTTargetingData;
 
-        [AeroIf(nameof(HaveTargetEntity), false)]
+        [AeroIf(nameof(HaveTargetEntity), 0)]
         public Vector3 UnkVector;
     }
 

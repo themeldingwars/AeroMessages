@@ -36,7 +36,7 @@ namespace AeroMessages.GSS.Character
         public byte[] Unk5;
 
         public byte UnkFlag;
-        [AeroIf(nameof(UnkFlag), true)]
+        [AeroIf(nameof(UnkFlag), 1)]
         public ulong UnkFlaggedEntity;
     }
 }

@@ -21,10 +21,10 @@ namespace AeroMessages.GSS.Character
 
         public byte HaveDealerEntity;
 
-        [AeroIf(nameof(HaveDealerEntity), true)]
+        [AeroIf(nameof(HaveDealerEntity), 1)]
         public TookHitType1Data Data1;
 
-        [AeroIf(nameof(HaveDealerEntity), false)]
+        [AeroIf(nameof(HaveDealerEntity), 0)]
         public TookHitType0Data Data0;
         
         // Always

@@ -60,8 +60,8 @@ namespace AeroMessages.GSS.Character
 
         public ulong PlayerId; // Controller / Msg4 Specific
 
-        [AeroArray(5)]
-        public byte[] Bitfield; // Keyframe bitfield
+        //[AeroArray(5)]
+        public Ulong5ByteBitmask<BitfieldMask> Bitfield; // Keyframe bitfield
 
         // Begin Character_BaseController fields
         

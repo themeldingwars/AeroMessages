@@ -10,6 +10,8 @@ META_END
  */
 using Aero.Gen.Attributes;
 using AeroMessages.Common;
+using static Aero.Gen.Attributes.AeroIfAttribute;
+
 namespace AeroMessages.GSS.Character
 {
     [Aero]
@@ -27,13 +29,13 @@ namespace AeroMessages.GSS.Character
         [AeroString]
         public string Key;
 
-        [AeroIf(nameof(Key), AeroIfAttribute.Ops.Equal, "FrameTypeId", "Volume", "DeathStreak", "AbilityId", "Distance")]
+        [AeroIf(nameof(Key), Ops.Equal, "FrameTypeId", "Volume", "DeathStreak", "AbilityId", "Distance")]
         public StatDataType0 DataType0;
 
-        [AeroIf(nameof(Key), AeroIfAttribute.Ops.Equal, "Value")]
+        [AeroIf(nameof(Key), Ops.Equal, "Value")]
         public StatDataType1 DataType1;
 
-        [AeroIf(nameof(Key), AeroIfAttribute.Ops.Equal, "PlayerGUID", "TargetGUID")]
+        [AeroIf(nameof(Key), Ops.Equal, "PlayerGUID", "TargetGUID")]
         public StatDataType2 DataType2;
     }
 
