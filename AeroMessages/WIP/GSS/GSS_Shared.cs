@@ -136,4 +136,12 @@ namespace AeroMessages.GSS
 
         public float Value;
     }
+
+    [AeroBlock]
+    public struct ScopeBubbleInfoData
+    {
+        // Don't know how this works but its used everywhere so keeping it in a struct
+        [AeroArray(8)]
+        public byte[] Unk;
+    }
 }
