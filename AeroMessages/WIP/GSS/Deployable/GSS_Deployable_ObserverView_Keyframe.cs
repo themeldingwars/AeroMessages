@@ -1,11 +1,13 @@
 using Aero.Gen.Attributes;
 using AeroMessages.Common;
 using System.Numerics;
+using System;
 namespace AeroMessages.GSS.Deployable
 {
     [Aero]
     public partial class Deployable_ObserverView
     {
+        [Flags]
         public enum BitfieldMask : ulong
         {
             StatusEffects_0        = 1UL << 0,

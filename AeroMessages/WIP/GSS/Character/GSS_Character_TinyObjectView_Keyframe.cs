@@ -11,11 +11,13 @@ META_END
 using Aero.Gen.Attributes;
 using AeroMessages.Common;
 using System.Numerics;
+using System;
 namespace AeroMessages.GSS.Character
 {
     [Aero]
     public partial class Character_TinyObjectView_Keyframe
     {
+        [Flags]
         public enum BitfieldMask : uint
         {
             TinyObjects_0         = 1U << 0,

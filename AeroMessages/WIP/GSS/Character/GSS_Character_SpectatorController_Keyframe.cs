@@ -11,11 +11,13 @@ META_END
 using Aero.Gen.Attributes;
 using AeroMessages.Common;
 using System.Numerics;
+using System;
 namespace AeroMessages.GSS.Character
 {
     [Aero]
     public partial class Character_SpectatorController_Keyframe
     {
+        [Flags]
         public enum BitfieldMask : byte
         {
             CinematicCamera  = 1 << 0,

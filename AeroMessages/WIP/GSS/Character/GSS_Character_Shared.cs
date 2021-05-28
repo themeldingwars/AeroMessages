@@ -290,6 +290,7 @@ namespace AeroMessages.GSS.Character
     [AeroBlock]
     public struct CombatFlagsData
     {
+        [Flags]
         public enum CharacterCombatFlags : uint
         {
             restrict_movement    = 1 << 0,

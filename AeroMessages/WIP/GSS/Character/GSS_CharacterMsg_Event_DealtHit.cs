@@ -10,13 +10,14 @@ META_END
  */
 using Aero.Gen.Attributes;
 using AeroMessages.Common;
+using System;
 namespace AeroMessages.GSS.Character
 {
     [Aero]
     public partial class Character_Event_DealtHit
     {
         /*
-        [System.Flags]
+        [Flags]
         public enum DamageResponseFlags : byte
         {
             Critical = 0,

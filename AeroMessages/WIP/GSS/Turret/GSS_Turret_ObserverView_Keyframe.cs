@@ -1,14 +1,16 @@
 using Aero.Gen.Attributes;
 using AeroMessages.Common;
 using System.Numerics;
+using System;
 namespace AeroMessages.GSS.Turret
 {
     [Aero]
     public partial class Turret_ObserverView
     {
+        [Flags]
         public enum BitfieldMask: byte
         {
-            PersonalFactionStance = 0,
+            PersonalFactionStance = 1 << 0,
         }
 
         public BitfieldMask Bitfield;

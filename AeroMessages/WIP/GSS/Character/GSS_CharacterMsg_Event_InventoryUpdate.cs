@@ -9,6 +9,7 @@ META_BEGIN
 META_END
  */
 using Aero.Gen.Attributes;
+using System;
 namespace AeroMessages.GSS.Character
 {
     [Aero]
@@ -128,7 +129,7 @@ namespace AeroMessages.GSS.Character
     [AeroBlock]
     public struct LoadoutConfig_Visual
     {
-        [System.Flags]
+        [Flags]
         public enum LoadoutVisualType : byte {
             Palette = 9,
             Pattern = 10,

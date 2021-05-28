@@ -1,12 +1,14 @@
 using Aero.Gen.Attributes;
 using AeroMessages.Common;
 using System.Numerics;
+using System;
 namespace AeroMessages.GSS.ResourceNode
 {
     // TODO: Need a capture or replay of these, this is mostly guesswork based on shadowfields and what the client seems to like.
     [Aero]
     public partial class ResourceNode_ObserverView
     {
+        [Flags]
         public enum BitfieldMask: ulong
         {
             StatusEffects_0 = 1UL << 0,

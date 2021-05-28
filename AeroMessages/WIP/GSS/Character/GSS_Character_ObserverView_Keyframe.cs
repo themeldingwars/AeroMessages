@@ -11,11 +11,13 @@ META_END
 using Aero.Gen.Attributes;
 using AeroMessages.Common;
 using System.Numerics;
+using System;
 namespace AeroMessages.GSS.Character
 {
     [Aero]
     public partial class Character_ObserverView_Keyframe
     {
+        [Flags]
         public enum BitfieldMask : uint
         {
             PersonalFactionStance  = 1U << 0,

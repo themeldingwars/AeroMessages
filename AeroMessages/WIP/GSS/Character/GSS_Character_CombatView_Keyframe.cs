@@ -11,11 +11,13 @@ META_END
 using Aero.Gen.Attributes;
 using AeroMessages.Common;
 using System.Numerics;
+using System;
 namespace AeroMessages.GSS.Character
 {
     [Aero]
     public partial class Character_CombatView_Keyframe
     {
+        [Flags]
         public enum BitfieldMask1 : uint
         {
             StatusEffects_0        = 1U << 0,
@@ -51,6 +53,7 @@ namespace AeroMessages.GSS.Character
             StatusEffects_30       = 1U << 30,
             StatusEffects_31       = 1U << 31,
         }
+        [Flags]
         public enum BitfieldMask2 : ushort
         {
             AppendageHealthPools_0 = 1 << 0, //1 << 32,

@@ -1,11 +1,13 @@
 using Aero.Gen.Attributes;
 using AeroMessages.Common;
 using System.Numerics;
+using System;
 namespace AeroMessages.GSS.Outpost
 {
     [Aero]
     public partial class Outpost_ObserverView
     {
+        [Flags]
         public enum BitfieldMask : ushort
         {
             NearbyResourceItems_0  = 1 << 0,
