@@ -1,4 +1,6 @@
 using Aero.Gen.Attributes;
+using AeroMessages.Common;
+using System.Numerics;
 namespace AeroMessages.GSS.Character
 {
     [AeroBlock]
@@ -23,5 +25,264 @@ namespace AeroMessages.GSS.Character
     {
         public uint UpgradeId; // TODO: Pinpoint sdb table
         public uint Count;
+    }
+
+    [AeroBlock]
+    public struct FireModeData
+    {
+        public byte Mode;
+        public uint Time;
+    }
+
+    [AeroBlock]
+    public struct WeaponIndexData
+    {
+        public byte Index;
+        [AeroArray(2)]
+        public byte[] Unk;
+        public uint Time;
+    }
+
+    [AeroBlock]
+    public struct StaticInfoData
+    {
+        [AeroString]
+        public string DisplayName;
+
+        [AeroString]
+        public string UniqueName;
+
+        public byte Gender;
+        public byte Race;
+
+        //[AeroSDB("dbcharacter::CharInfo", "id")]
+        public uint CharInfoId;
+
+        //[AeroSDB("dbcharacter::Head", "id")]
+        public uint HeadMain;
+
+        //[AeroSDB("dbvisualrecords::EyeRecord", "id")]
+        public uint Eyes;
+
+        public byte Unk_1;
+        public byte IsNPC;
+        public byte StaffFlags; // ChatIconFlags might be a better name?
+
+        //[AeroSDB("dbcharacter::Monster", "id")]
+        public uint CharacterTypeId;
+
+        //[AeroSDB("dbcharacter::VoiceSet", "id")]
+        public uint VoiceSet;
+
+        //[AeroSDB("dbcharacter::MonsterTitle", "id")]
+        public ushort TitleId;
+
+        //[AeroSDB("dblocalization::LocalizedText", "id")]
+        public uint NameLocalizationId;
+
+        [AeroArray(typeof(byte))]
+        //[AeroSDB("dbcharacter::HeadAccesory", "ha_id")] // TODO: Double check
+        public uint[] HeadAccessories;
+
+        //[AeroSDB("dbitems::RootItem", "sdb_id")]
+        public uint LoadoutVehicle;
+
+        //[AeroSDB("dbitems::RootItem", "sdb_id")]
+        public uint LoadoutGlider;
+
+        public VisualsBlock Visuals;
+
+        [AeroString]
+        public string ArmyTag;
+    }
+
+    [AeroBlock]
+    public struct VisualsBlock
+    {
+        [AeroArray(typeof(byte))]
+        public VisualsDecalsBlock[] Decals;
+
+        [AeroArray(typeof(byte))]
+        public uint[] Gradients;
+
+        [AeroArray(typeof(byte))]
+        public uint[] Colors;
+
+        [AeroArray(typeof(byte))]
+        public VisualsPaletteBlock[] Palettes;
+
+        [AeroArray(typeof(byte))]
+        public VisualsPatternBlock[] Patterns;
+
+        [AeroArray(typeof(byte))]
+        public uint[] OrnamentGroupIds;
+
+        [AeroArray(3)]
+        public byte[] Unk; // Presumed to be Morph Weights, Overlays and something else?
+    }
+
+    [AeroBlock]
+    public struct VisualsDecalsBlock
+    {
+        //[AeroSDB("dbvisualrecords::TatooDecal", "id")] // TODO: Verify
+        public uint DecalId;
+        public uint Color;
+
+        [AeroArray(12)]
+        public ushort[] Transform; // TODO: FIXME: Type should be Half ?
+
+        public byte Usage;
+    }
+
+    [AeroBlock]
+    public struct VisualsPaletteBlock
+    {
+        public byte PaletteType;
+
+        //[AeroSDB("dbvisualrecords::WarpaintPalette", "id")]
+        public uint PaletteId;
+    }
+
+    [AeroBlock]
+    public struct VisualsPatternBlock
+    {
+        //[AeroSDB("dbvisualrecords::CziPattern", "id")]
+        public uint PatternId;
+
+        [AeroArray(4)]
+        public ushort[] TransformValues;
+
+        public byte Usage;
+    }
+
+    [AeroBlock]
+    public struct EquipmentData
+    {
+        // Chassis
+        public SlottedItem Chassis; // Battleframe
+
+        [AeroArray(typeof(byte))]
+        public SlottedItem[] ChassisModules; // Armor gear, perks
+
+        public VisualsBlock ChassisVisuals;
+
+        // Backpack
+        public SlottedItem Backpack; // Reactor
+
+        [AeroArray(typeof(byte))]
+        public SlottedItem[] BackpackModules; // Abilities
+
+        public VisualsBlock BackpackVisuals; // Does not affect in-game visuals?
+
+        // Primary
+        public SlottedItem PrimaryWeapon; // SlotIdx 0
+
+        [AeroArray(typeof(byte))]
+        public SlottedItem[] PrimaryWeaponOptModules;
+
+        public VisualsBlock PrimaryWeaponVisuals;
+
+        [AeroArray(8)]
+        public byte[] PrimaryWeaponUnk;
+
+        // Secondary
+        public SlottedItem SecondaryWeapon; // SlotIdx 1
+        [AeroArray(typeof(byte))]
+        public SlottedItem[] SecondaryWeaponOptModules;
+
+        public VisualsBlock SecondaryWeaponVisuals;
+
+        [AeroArray(8)]
+        public byte[] SecondaryWeaponUnk;
+
+        [AeroArray(5)]
+        public byte[] EndUnk;
+    }
+
+    [AeroBlock]
+    public struct SlottedItem
+    {
+        //[AeroSDB("dbitems::RootItem", "sdb_id")]
+        public uint SdbId;
+        public uint SlotIndex;
+
+        [AeroArray(2)]
+        public byte[] Unk;
+    }
+
+    [AeroBlock]
+    public struct GibVisuals
+    {
+        //[AeroSDB("dbcharacter::GibVisuals", "id")]
+        public uint GibVisualsId;
+        public uint Time;
+    }
+
+    [AeroBlock]
+    public struct CharacterStateData
+    {
+        public enum CharacterStatus : byte
+        {
+            Spawning = 0,
+            Ghost = 1,
+            Dead = 2,
+            Respawning = 3,
+            Incapacitated = 4,
+            Traumatized = 5,
+            Living = 6
+        }
+
+        public CharacterStatus State;
+        public uint Time;
+    }
+
+    [AeroBlock]
+    public struct MaxVital
+    {
+        public uint Value;
+        public uint Time;
+    }
+
+    [AeroBlock]
+    public struct EmoteData {
+        //[AeroSDB("dbcharacter::EmoteRecord", "id")]
+        public ushort Id;
+        public uint Time;
+    }
+
+    [AeroBlock]
+    public struct AttachedToData
+    {
+        public enum AttachmentRoleType : byte
+        {
+            None = 0,
+            Driver = 1,
+            ActivePassenger = 3,
+            PassivePassenger = 4,
+            Turret = 5,
+        }
+
+        public EntityId Id1;
+        public EntityId Id2;
+        public AttachmentRoleType Role;
+
+        [AeroArray(2)]
+        public byte[] Unk;
+    }
+
+    [AeroBlock]
+    public struct LookAtTargetData
+    {
+        // TODO: Verify
+        public EntityId Target;
+        public Vector3 Position;
+        public uint Time;
+    }
+
+    [AeroBlock]
+    public struct RespawnTimesData
+    {
+        public uint Time1;
+        public uint Time2;
     }
 }
