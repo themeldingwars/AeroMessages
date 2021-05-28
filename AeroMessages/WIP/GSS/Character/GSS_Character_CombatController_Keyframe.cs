@@ -239,102 +239,74 @@ namespace AeroMessages.GSS.Character
         public byte AppendageHealthPct_8;
         public byte AppendageHealthPct_9;
     }
-}
 
+    
 
-[AeroBlock]
-public struct StatMultiplierData
-{
-    public float Value;
-    public uint Time;
-}
-
-[AeroBlock]
-public struct WeaponFireBaseTimeData
-{
-    public ushort ChangeTime; // Not 100% about this one
-    public byte Unk; // Not 100% about this one
-}  
-
-[AeroBlock]
-public struct CombatFlagsData
-{
-    [Flags]
-    public enum CharacterCombatFlags : uint
+    [AeroBlock]
+    public struct StatMultiplierData
     {
-        restrict_movement    = 1 << 0,
-        unk_2                = 1 << 1,
-        restrict_camera      = 1 << 2,
-        unk_8                = 1 << 3,
-        restrict_weapon      = 1 << 4,
-        remove_hitboxes      = 1 << 5, // Client projectile visuals pass through when this is set, so figure its the hitboxes. Other players can walk through us, but we cant walk through them.
-        restrict_abilities   = 1 << 6,
-        unk_128              = 1 << 7,
-        immune_falldamage    = 1 << 8, // You do not go into falling state when this is on, thus your character does not do the heavy landing.
-        restrict_sprint      = 1 << 9,
-        restrict_melee       = 1 << 10,
-        restrict_interaction = 1 << 11,
-        knock_down           = 1 << 12,
-        restrict_stumble     = 1 << 13,
-        move_through_objects = 1 << 14, // You can run through other characters. They can't run through you. Other objects are still solid.
-        reversed_controls    = 1 << 15,
+        public float Value;
+        public uint Time;
     }
 
-    public CharacterCombatFlags Value;
-    public uint Time;
-}
-
-[AeroBlock]
-public struct PermissionFlagsData
-{
-    [Flags]
-    public enum CharacterPermissionFlags : uint
+    [AeroBlock]
+    public struct WeaponFireBaseTimeData
     {
-        movement              = 1U << 0,
-        sprint                = 1U << 1,
-        jump                  = 1U << 2,
-        unk_3                 = 1U << 3,
-        weapon                = 1U << 4,
-        unk_5                 = 1U << 5,
-        abilities             = 1U << 6,
-        unk_7                 = 1U << 7,
-        unk_8                 = 1U << 8,
-        cheat_jump_midair     = 1U << 9,
-        glider                = 1U << 10,
-        unk_11                = 1U << 11,
-        jetpack               = 1U << 12,
-        unk_13                = 1U << 13,
-        unk_14                = 1U << 14,
-        unk_15                = 1U << 15,
-        new_character         = 1U << 16,
-        glider_hud            = 1U << 17,
-        crouch                = 1U << 18,
-        cheat_float           = 1U << 19,
-        detect_resources      = 1U << 20,
-        unk_21                = 1U << 21,
-        calldown_abilities    = 1U << 22,
-        unk_23                = 1U << 23,
-        unk_24                = 1U << 24,
-        unk_25                = 1U << 25,
-        unk_26                = 1U << 26,
-        self_revive           = 1U << 27,
-        respawn_input         = 1U << 28,
-        free_repairs          = 1U << 29,
-        battleframe_abilities = 1U << 30,
-        unk_31                = 1U << 31,
+        public ushort ChangeTime; // Not 100% about this one
+        public byte Unk; // Not 100% about this one
     }
 
-    public CharacterPermissionFlags Value;
+    [AeroBlock]
+    public struct PermissionFlagsData
+    {
+        public enum CharacterPermissionFlags : uint
+        {
+            movement              = 1U << 0,
+            sprint                = 1U << 1,
+            jump                  = 1U << 2,
+            unk_3                 = 1U << 3,
+            weapon                = 1U << 4,
+            unk_5                 = 1U << 5,
+            abilities             = 1U << 6,
+            unk_7                 = 1U << 7,
+            unk_8                 = 1U << 8,
+            cheat_jump_midair     = 1U << 9,
+            glider                = 1U << 10,
+            unk_11                = 1U << 11,
+            jetpack               = 1U << 12,
+            unk_13                = 1U << 13,
+            unk_14                = 1U << 14,
+            unk_15                = 1U << 15,
+            new_character         = 1U << 16,
+            glider_hud            = 1U << 17,
+            crouch                = 1U << 18,
+            cheat_float           = 1U << 19,
+            detect_resources      = 1U << 20,
+            unk_21                = 1U << 21,
+            calldown_abilities    = 1U << 22,
+            unk_23                = 1U << 23,
+            unk_24                = 1U << 24,
+            unk_25                = 1U << 25,
+            unk_26                = 1U << 26,
+            self_revive           = 1U << 27,
+            respawn_input         = 1U << 28,
+            free_repairs          = 1U << 29,
+            battleframe_abilities = 1U << 30,
+            unk_31                = 1U << 31,
+        }
 
-    [AeroArray(4)]
-    public byte[] Unk;
+        public CharacterPermissionFlags Value;
 
-    public uint Time;
-}
+        [AeroArray(4)]
+        public byte[] Unk;
 
-[AeroBlock]
-public struct SuperChargeData
-{
-    public ushort Value; // Half probably?
-    public byte Op; // Probably?
+        public uint Time;
+    }
+
+    [AeroBlock]
+    public struct SuperChargeData
+    {
+        public ushort Value; // Half probably?
+        public byte Op; // Probably?
+    }
 }
