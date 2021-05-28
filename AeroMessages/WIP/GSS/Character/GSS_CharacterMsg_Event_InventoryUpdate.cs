@@ -9,6 +9,7 @@ META_BEGIN
 META_END
  */
 using Aero.Gen.Attributes;
+using static Aero.Gen.Attributes.AeroIfAttribute;
 using System;
 namespace AeroMessages.GSS.Character
 {
@@ -147,21 +148,21 @@ namespace AeroMessages.GSS.Character
         [AeroArray(8)]
         public byte[] Unk1;
 
-        [AeroIf(nameof(VisualType), AeroIfAttribute.Ops.HasFlag, LoadoutVisualType.Palette)]
+        [AeroIf(nameof(VisualType), Ops.HasFlag, LoadoutVisualType.Palette)]
         public byte Palette_Unk;
         
-        [AeroIf(nameof(VisualType), AeroIfAttribute.Ops.HasFlag, LoadoutVisualType.Pattern)]
+        [AeroIf(nameof(VisualType), Ops.HasFlag, LoadoutVisualType.Pattern)]
         [AeroArray(typeof(byte))]
         public float[] Pattern_Transform;
 
-        [AeroIf(nameof(VisualType), AeroIfAttribute.Ops.HasFlag, LoadoutVisualType.Decal)]
+        [AeroIf(nameof(VisualType), Ops.HasFlag, LoadoutVisualType.Decal)]
         [AeroArray(typeof(byte))]
         public float[] Decal_Transform;
 
-        [AeroIf(nameof(VisualType), AeroIfAttribute.Ops.HasFlag, LoadoutVisualType.Glider)]
+        [AeroIf(nameof(VisualType), Ops.HasFlag, LoadoutVisualType.Glider)]
         public byte Glider_Unk;
 
-        [AeroIf(nameof(VisualType), AeroIfAttribute.Ops.HasFlag, LoadoutVisualType.Vehicle)]
+        [AeroIf(nameof(VisualType), Ops.HasFlag, LoadoutVisualType.Vehicle)]
         public byte Vehicle_Unk;
     }
 }

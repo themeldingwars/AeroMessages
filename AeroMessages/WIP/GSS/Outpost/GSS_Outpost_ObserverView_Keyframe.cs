@@ -1,4 +1,5 @@
 using Aero.Gen.Attributes;
+using static Aero.Gen.Attributes.AeroIfAttribute;
 using AeroMessages.Common;
 using System.Numerics;
 using System;
@@ -56,37 +57,37 @@ namespace AeroMessages.GSS.Outpost
         [AeroArray(4)]
         public byte[] Dynamic_11;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_0)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_0)]
         public uint NearbyResourceItems_0;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_1)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_1)]
         public uint NearbyResourceItems_1;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_2)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_2)]
         public uint NearbyResourceItems_2;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_3)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_3)]
         public uint NearbyResourceItems_3;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_4)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_4)]
         public uint NearbyResourceItems_4;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_5)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_5)]
         public uint NearbyResourceItems_5;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_6)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_6)]
         public uint NearbyResourceItems_6;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_7)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_7)]
         public uint NearbyResourceItems_7;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_8)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_8)]
         public uint NearbyResourceItems_8;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_9)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_9)]
         public uint NearbyResourceItems_9;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_10)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_10)]
         public uint NearbyResourceItems_10;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_11)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_11)]
         public uint NearbyResourceItems_11;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_12)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_12)]
         public uint NearbyResourceItems_12;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_13)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_13)]
         public uint NearbyResourceItems_13;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_14)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_14)]
         public uint NearbyResourceItems_14;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_15)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.NearbyResourceItems_15)]
         public uint NearbyResourceItems_15;
 
         public EntityId EncounterId;

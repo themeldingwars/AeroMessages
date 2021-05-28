@@ -1,4 +1,5 @@
 using Aero.Gen.Attributes;
+using static Aero.Gen.Attributes.AeroIfAttribute;
 using AeroMessages.Common;
 using System.Numerics;
 using System;
@@ -125,90 +126,90 @@ namespace AeroMessages.GSS.Deployable
         public ushort StatusEffectsChangeTime_30;
         public ushort StatusEffectsChangeTime_31;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_0)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_0)]
         public StatusEffectData StatusEffects_0;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_1)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_1)]
         public StatusEffectData StatusEffects_1;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_2)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_2)]
         public StatusEffectData StatusEffects_2;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_3)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_3)]
         public StatusEffectData StatusEffects_3;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_4)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_4)]
         public StatusEffectData StatusEffects_4;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_5)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_5)]
         public StatusEffectData StatusEffects_5;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_6)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_6)]
         public StatusEffectData StatusEffects_6;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_7)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_7)]
         public StatusEffectData StatusEffects_7;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_8)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_8)]
         public StatusEffectData StatusEffects_8;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_9)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_9)]
         public StatusEffectData StatusEffects_9;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_10)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_10)]
         public StatusEffectData StatusEffects_10;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_11)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_11)]
         public StatusEffectData StatusEffects_11;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_12)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_12)]
         public StatusEffectData StatusEffects_12;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_13)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_13)]
         public StatusEffectData StatusEffects_13;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_14)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_14)]
         public StatusEffectData StatusEffects_14;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_15)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_15)]
         public StatusEffectData StatusEffects_15;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_16)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_16)]
         public StatusEffectData StatusEffects_16;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_17)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_17)]
         public StatusEffectData StatusEffects_17;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_18)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_18)]
         public StatusEffectData StatusEffects_18;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_19)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_19)]
         public StatusEffectData StatusEffects_19;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_20)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_20)]
         public StatusEffectData StatusEffects_20;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_21)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_21)]
         public StatusEffectData StatusEffects_21;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_22)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_22)]
         public StatusEffectData StatusEffects_22;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_23)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_23)]
         public StatusEffectData StatusEffects_23;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_24)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_24)]
         public StatusEffectData StatusEffects_24;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_25)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_25)]
         public StatusEffectData StatusEffects_25;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_26)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_26)]
         public StatusEffectData StatusEffects_26;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_27)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_27)]
         public StatusEffectData StatusEffects_27;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_28)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_28)]
         public StatusEffectData StatusEffects_28;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_29)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_29)]
         public StatusEffectData StatusEffects_29;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_30)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_30)]
         public StatusEffectData StatusEffects_30;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_31)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_31)]
         public StatusEffectData StatusEffects_31;
 
         public HostilityInfoData HostilityInfo;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.PersonalFactionStance)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.PersonalFactionStance)]
         public PersonalFactionStanceData PersonalFactionStance;
 
         public uint GibVisualsID;
 
 
         // TODO: Bitfield - ForcedMovement
-        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.ForcedMovement)]
+        // [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.ForcedMovement)]
 
         public byte SinFlags;
 
         // TODO: Bitfield - SinFactionsAcquiredBy
-        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.SinFactionsAcquiredBy)]
+        // [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinFactionsAcquiredBy)]
         // public SinFactionsAcquiredByData SinFactionsAcquiredBy;
         // --
         // TODO: Bitfield - SinTeamsAcquiredBy
-        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.SinTeamsAcquiredBy)]
+        // [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinTeamsAcquiredBy)]
         // public SinTeamsAcquiredByData SinTeamsAcquiredBy;
         // --
 
@@ -223,78 +224,78 @@ namespace AeroMessages.GSS.Deployable
 
         public uint SinCardType;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_0)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_0)]
         public SinCardFieldData SinCardFields_0;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_1)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_1)]
         public SinCardFieldData SinCardFields_1;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_2)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_2)]
         public SinCardFieldData SinCardFields_2;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_3)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_3)]
         public SinCardFieldData SinCardFields_3;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_4)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_4)]
         public SinCardFieldData SinCardFields_4;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_5)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_5)]
         public SinCardFieldData SinCardFields_5;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_6)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_6)]
         public SinCardFieldData SinCardFields_6;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_7)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_7)]
         public SinCardFieldData SinCardFields_7;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_8)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_8)]
         public SinCardFieldData SinCardFields_8;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_9)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_9)]
         public SinCardFieldData SinCardFields_9;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_10)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_10)]
         public SinCardFieldData SinCardFields_10;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_11)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_11)]
         public SinCardFieldData SinCardFields_11;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_12)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_12)]
         public SinCardFieldData SinCardFields_12;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_13)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_13)]
         public SinCardFieldData SinCardFields_13;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_14)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_14)]
         public SinCardFieldData SinCardFields_14;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_15)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_15)]
         public SinCardFieldData SinCardFields_15;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_16)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_16)]
         public SinCardFieldData SinCardFields_16;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_17)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_17)]
         public SinCardFieldData SinCardFields_17;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_18)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_18)]
         public SinCardFieldData SinCardFields_18;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_19)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_19)]
         public SinCardFieldData SinCardFields_19;
 
         public uint ScalingLevel;
 
         // TODO: Bitfield - AppendageHealthPools
         /*
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.AppendageHealthPools_0)]
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.AppendageHealthPools_1)]
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.AppendageHealthPools_2)]
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.AppendageHealthPools_3)]
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.AppendageHealthPools_4)]
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.AppendageHealthPools_5)]
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.AppendageHealthPools_6)]
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.AppendageHealthPools_7)]     
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.AppendageHealthPools_0)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.AppendageHealthPools_1)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.AppendageHealthPools_2)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.AppendageHealthPools_3)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.AppendageHealthPools_4)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.AppendageHealthPools_5)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.AppendageHealthPools_6)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.AppendageHealthPools_7)]     
          */
 
         public byte AppendageHealthPct_0;

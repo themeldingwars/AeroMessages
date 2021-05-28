@@ -9,6 +9,7 @@ META_BEGIN
 META_END
  */
 using Aero.Gen.Attributes;
+using static Aero.Gen.Attributes.AeroIfAttribute;
 using AeroMessages.Common;
 using System.Numerics;
 using System;
@@ -56,69 +57,69 @@ namespace AeroMessages.GSS.AreaVisualData
 
         public BitfieldMask Bitfield;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_0)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_0)]
         public TinyObjectData TinyObjects_0;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_1)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_1)]
         public TinyObjectData TinyObjects_1;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_2)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_2)]
         public TinyObjectData TinyObjects_2;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_3)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_3)]
         public TinyObjectData TinyObjects_3;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_4)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_4)]
         public TinyObjectData TinyObjects_4;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_5)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_5)]
         public TinyObjectData TinyObjects_5;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_6)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_6)]
         public TinyObjectData TinyObjects_6;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_7)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_7)]
         public TinyObjectData TinyObjects_7;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_8)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_8)]
         public TinyObjectData TinyObjects_8;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_9)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_9)]
         public TinyObjectData TinyObjects_9;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_10)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_10)]
         public TinyObjectData TinyObjects_10;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_11)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_11)]
         public TinyObjectData TinyObjects_11;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_12)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_12)]
         public TinyObjectData TinyObjects_12;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_13)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_13)]
         public TinyObjectData TinyObjects_13;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_14)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_14)]
         public TinyObjectData TinyObjects_14;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_15)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_15)]
         public TinyObjectData TinyObjects_15;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_16)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_16)]
         public TinyObjectData TinyObjects_16;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_17)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_17)]
         public TinyObjectData TinyObjects_17;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_18)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_18)]
         public TinyObjectData TinyObjects_18;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_19)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_19)]
         public TinyObjectData TinyObjects_19;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_20)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_20)]
         public TinyObjectData TinyObjects_20;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_21)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_21)]
         public TinyObjectData TinyObjects_21;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_22)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_22)]
         public TinyObjectData TinyObjects_22;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_23)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_23)]
         public TinyObjectData TinyObjects_23;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_24)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_24)]
         public TinyObjectData TinyObjects_24;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_25)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_25)]
         public TinyObjectData TinyObjects_25;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_26)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_26)]
         public TinyObjectData TinyObjects_26;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_27)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_27)]
         public TinyObjectData TinyObjects_27;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_28)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_28)]
         public TinyObjectData TinyObjects_28;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_29)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_29)]
         public TinyObjectData TinyObjects_29;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_30)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_30)]
         public TinyObjectData TinyObjects_30;
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_31)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TinyObjects_31)]
         public TinyObjectData TinyObjects_31;
     }
 }

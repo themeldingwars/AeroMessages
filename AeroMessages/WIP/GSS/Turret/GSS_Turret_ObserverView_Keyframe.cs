@@ -8,8 +8,8 @@ META_BEGIN
     MsgName: Keyframe
 META_END
  */
-
 using Aero.Gen.Attributes;
+using static Aero.Gen.Attributes.AeroIfAttribute;
 using AeroMessages.Common;
 using System.Numerics;
 using System;
@@ -43,7 +43,7 @@ namespace AeroMessages.GSS.Turret
         
         public HostilityInfoData HostilityInfo;
 
-        [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.PersonalFactionStance)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.PersonalFactionStance)]
         public PersonalFactionStanceData PersonalFactionStance;
     }
 

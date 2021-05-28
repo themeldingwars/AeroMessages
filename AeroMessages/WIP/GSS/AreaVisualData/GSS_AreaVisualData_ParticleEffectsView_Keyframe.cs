@@ -9,6 +9,7 @@ META_BEGIN
 META_END
  */
 using Aero.Gen.Attributes;
+using static Aero.Gen.Attributes.AeroIfAttribute;
 using AeroMessages.Common;
 using System.Numerics;
 using System;
@@ -50,46 +51,46 @@ namespace AeroMessages.GSS.AreaVisualData
         public BitfieldMask1 Bitfield1;
         public BitfieldMask2 Bitfield2;
 
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_0)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_0)]
         public ParticleEffect ParticleEffects_0;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_1)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_1)]
         public ParticleEffect ParticleEffects_1;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_2)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_2)]
         public ParticleEffect ParticleEffects_2;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_3)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_3)]
         public ParticleEffect ParticleEffects_3;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_4)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_4)]
         public ParticleEffect ParticleEffects_4;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_5)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_5)]
         public ParticleEffect ParticleEffects_5;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_6)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_6)]
         public ParticleEffect ParticleEffects_6;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_7)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_7)]
         public ParticleEffect ParticleEffects_7;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_8)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_8)]
         public ParticleEffect ParticleEffects_8;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_9)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_9)]
         public ParticleEffect ParticleEffects_9;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_10)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_10)]
         public ParticleEffect ParticleEffects_10;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_11)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_11)]
         public ParticleEffect ParticleEffects_11;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_12)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_12)]
         public ParticleEffect ParticleEffects_12;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_13)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_13)]
         public ParticleEffect ParticleEffects_13;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_14)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_14)]
         public ParticleEffect ParticleEffects_14;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_15)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ParticleEffects_15)]
         public ParticleEffect ParticleEffects_15;
 
-        [AeroIf(nameof(Bitfield2), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask2.ParticleEffects_16)]
+        [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.ParticleEffects_16)]
         public ParticleEffect ParticleEffects_16;
-        [AeroIf(nameof(Bitfield2), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask2.ParticleEffects_17)]
+        [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.ParticleEffects_17)]
         public ParticleEffect ParticleEffects_17;
-        [AeroIf(nameof(Bitfield2), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask2.ParticleEffects_18)]
+        [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.ParticleEffects_18)]
         public ParticleEffect ParticleEffects_18;
-        [AeroIf(nameof(Bitfield2), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask2.ParticleEffects_19)]
+        [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.ParticleEffects_19)]
         public ParticleEffect ParticleEffects_19;
     }
 

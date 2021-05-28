@@ -9,6 +9,7 @@ META_BEGIN
 META_END
  */
 using Aero.Gen.Attributes;
+using static Aero.Gen.Attributes.AeroIfAttribute;
 using System.Numerics;
 using AeroMessages.Common;
 namespace AeroMessages.GSS.Character
@@ -29,12 +30,12 @@ namespace AeroMessages.GSS.Character
         public byte MovementUnk3;
 
 
-        [AeroIf(nameof(MovementType), AeroIfAttribute.Ops.HasFlag, 1)]
+        [AeroIf(nameof(MovementType), Ops.HasFlag, 1)]
         public MovementType1 Data1;
 
         public Vector3 Velocity;
 
-        [AeroIf(nameof(MovementType), AeroIfAttribute.Ops.HasFlag, 2)]
+        [AeroIf(nameof(MovementType), Ops.HasFlag, 2)]
         public MovementType2 Data2;
 
         public ushort JetpackEnergy;

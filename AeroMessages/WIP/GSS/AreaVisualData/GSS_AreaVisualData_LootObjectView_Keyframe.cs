@@ -9,6 +9,7 @@ META_BEGIN
 META_END
  */
 using Aero.Gen.Attributes;
+using static Aero.Gen.Attributes.AeroIfAttribute;
 using AeroMessages.Common;
 using System.Numerics;
 using System;
@@ -53,53 +54,53 @@ namespace AeroMessages.GSS.AreaVisualData
         public BitfieldMask1 Bitfield1;
         public BitfieldMask2 Bitfield2;
 
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_0)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_0)]
         public LootObjectData LootObjects_0;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_1)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_1)]
         public LootObjectData LootObjects_1;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_2)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_2)]
         public LootObjectData LootObjects_2;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_3)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_3)]
         public LootObjectData LootObjects_3;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_4)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_4)]
         public LootObjectData LootObjects_4;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_5)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_5)]
         public LootObjectData LootObjects_5;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_6)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_6)]
         public LootObjectData LootObjects_6;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_7)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_7)]
         public LootObjectData LootObjects_7;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_8)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_8)]
         public LootObjectData LootObjects_8;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_9)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_9)]
         public LootObjectData LootObjects_9;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_10)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_10)]
         public LootObjectData LootObjects_10;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_11)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_11)]
         public LootObjectData LootObjects_11;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_12)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_12)]
         public LootObjectData LootObjects_12;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_13)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_13)]
         public LootObjectData LootObjects_13;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_14)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_14)]
         public LootObjectData LootObjects_14;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_15)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.LootObjects_15)]
         public LootObjectData LootObjects_15;
-        [AeroIf(nameof(Bitfield2), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask2.LootObjects_16)]
+        [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.LootObjects_16)]
         public LootObjectData LootObjects_16;
-        [AeroIf(nameof(Bitfield2), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask2.LootObjects_17)]
+        [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.LootObjects_17)]
         public LootObjectData LootObjects_17;
-        [AeroIf(nameof(Bitfield2), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask2.LootObjects_18)]
+        [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.LootObjects_18)]
         public LootObjectData LootObjects_18;
-        [AeroIf(nameof(Bitfield2), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask2.LootObjects_19)]
+        [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.LootObjects_19)]
         public LootObjectData LootObjects_19;
-        [AeroIf(nameof(Bitfield2), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask2.LootObjects_20)]
+        [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.LootObjects_20)]
         public LootObjectData LootObjects_20;
-        [AeroIf(nameof(Bitfield2), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask2.LootObjects_21)]
+        [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.LootObjects_21)]
         public LootObjectData LootObjects_21;
-        [AeroIf(nameof(Bitfield2), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask2.LootObjects_22)]
+        [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.LootObjects_22)]
         public LootObjectData LootObjects_22;
-        [AeroIf(nameof(Bitfield2), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask2.LootObjects_23)]
+        [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.LootObjects_23)]
         public LootObjectData LootObjects_23;
     }
 

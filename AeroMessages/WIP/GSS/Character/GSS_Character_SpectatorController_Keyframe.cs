@@ -9,6 +9,7 @@ META_BEGIN
 META_END
  */
 using Aero.Gen.Attributes;
+using static Aero.Gen.Attributes.AeroIfAttribute;
 using AeroMessages.Common;
 using System.Numerics;
 using System;
@@ -31,7 +32,7 @@ namespace AeroMessages.GSS.Character
         public byte SpectatorMode;
 
         // TODO: Bitfield - Cinematic Camera
-        // [AeroIf(nameof(Bitfield), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask.CinematicCamera)]
+        // [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.CinematicCamera)]
         // --
     }
 }

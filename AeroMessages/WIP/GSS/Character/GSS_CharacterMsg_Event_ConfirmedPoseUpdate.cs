@@ -9,6 +9,7 @@ META_BEGIN
 META_END
  */
 using Aero.Gen.Attributes;
+using static Aero.Gen.Attributes.AeroIfAttribute;
 using System.Numerics;
 namespace AeroMessages.GSS.Character
 {
@@ -27,12 +28,12 @@ namespace AeroMessages.GSS.Character
         public PoseType Flags;
         public byte Unk3;
         
-        [AeroIf(nameof(Flags), AeroIfAttribute.Ops.HasFlag, PoseType.PosAndRot)]
+        [AeroIf(nameof(Flags), Ops.HasFlag, PoseType.PosAndRot)]
         public PosAndRotData PosAndRot;
         
         public Vector3 Velocity;
         
-        [AeroIf(nameof(Flags), AeroIfAttribute.Ops.HasFlag, PoseType.Aim)]
+        [AeroIf(nameof(Flags), Ops.HasFlag, PoseType.Aim)]
         public Vector3 Aim;
         
         public ushort Unk5;

@@ -9,6 +9,7 @@ META_BEGIN
 META_END
  */
 using Aero.Gen.Attributes;
+using static Aero.Gen.Attributes.AeroIfAttribute;
 using AeroMessages.Common;
 using System.Numerics;
 using System;
@@ -66,75 +67,75 @@ namespace AeroMessages.GSS.AreaVisualData
         public BitfieldMask2 Bitfield2;
         public Vector3 Position;
 
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_0)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_0)]
         public MapMarkerData MapMarkers_0;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_1)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_1)]
         public MapMarkerData MapMarkers_1;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_2)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_2)]
         public MapMarkerData MapMarkers_2;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_3)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_3)]
         public MapMarkerData MapMarkers_3;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_4)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_4)]
         public MapMarkerData MapMarkers_4;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_5)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_5)]
         public MapMarkerData MapMarkers_5;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_6)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_6)]
         public MapMarkerData MapMarkers_6;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_7)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_7)]
         public MapMarkerData MapMarkers_7;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_8)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_8)]
         public MapMarkerData MapMarkers_8;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_9)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_9)]
         public MapMarkerData MapMarkers_9;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_10)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_10)]
         public MapMarkerData MapMarkers_10;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_11)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_11)]
         public MapMarkerData MapMarkers_11;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_12)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_12)]
         public MapMarkerData MapMarkers_12;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_13)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_13)]
         public MapMarkerData MapMarkers_13;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_14)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_14)]
         public MapMarkerData MapMarkers_14;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_15)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_15)]
         public MapMarkerData MapMarkers_15;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_16)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_16)]
         public MapMarkerData MapMarkers_16;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_17)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_17)]
         public MapMarkerData MapMarkers_17;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_18)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_18)]
         public MapMarkerData MapMarkers_18;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_19)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_19)]
         public MapMarkerData MapMarkers_19;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_20)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_20)]
         public MapMarkerData MapMarkers_20;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_21)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_21)]
         public MapMarkerData MapMarkers_21;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_22)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_22)]
         public MapMarkerData MapMarkers_22;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_23)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_23)]
         public MapMarkerData MapMarkers_23;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_24)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_24)]
         public MapMarkerData MapMarkers_24;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_25)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_25)]
         public MapMarkerData MapMarkers_25;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_26)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_26)]
         public MapMarkerData MapMarkers_26;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_27)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_27)]
         public MapMarkerData MapMarkers_27;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_28)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_28)]
         public MapMarkerData MapMarkers_28;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_29)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_29)]
         public MapMarkerData MapMarkers_29;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_30)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_30)]
         public MapMarkerData MapMarkers_30;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_31)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.MapMarkers_31)]
         public MapMarkerData MapMarkers_31;
-        [AeroIf(nameof(Bitfield2), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask2.MapMarkers_32)]
+        [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.MapMarkers_32)]
         public MapMarkerData MapMarkers_32;
-        [AeroIf(nameof(Bitfield2), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask2.MapMarkers_33)]
+        [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.MapMarkers_33)]
         public MapMarkerData MapMarkers_33;
-        [AeroIf(nameof(Bitfield2), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask2.MapMarkers_34)]
+        [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.MapMarkers_34)]
         public MapMarkerData MapMarkers_34;
     }
 

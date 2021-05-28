@@ -9,6 +9,7 @@ META_BEGIN
 META_END
  */
 using Aero.Gen.Attributes;
+using static Aero.Gen.Attributes.AeroIfAttribute;
 using AeroMessages.Common;
 using System.Numerics;
 using System;
@@ -60,65 +61,65 @@ namespace AeroMessages.GSS.AreaVisualData
         public Vector3 Position;
         public ScopeBubbleInfoData ScopeBubbleInfo;
 
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_0)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_0)]
         public ContextFlag ContextFlags_0;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_1)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_1)]
         public ContextFlag ContextFlags_1;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_2)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_2)]
         public ContextFlag ContextFlags_2;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_3)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_3)]
         public ContextFlag ContextFlags_3;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_4)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_4)]
         public ContextFlag ContextFlags_4;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_5)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_5)]
         public ContextFlag ContextFlags_5;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_6)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_6)]
         public ContextFlag ContextFlags_6;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_7)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_7)]
         public ContextFlag ContextFlags_7;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_8)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_8)]
         public ContextFlag ContextFlags_8;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_9)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_9)]
         public ContextFlag ContextFlags_9;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_10)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_10)]
         public ContextFlag ContextFlags_10;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_11)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_11)]
         public ContextFlag ContextFlags_11;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_12)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_12)]
         public ContextFlag ContextFlags_12;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_13)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_13)]
         public ContextFlag ContextFlags_13;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_14)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_14)]
         public ContextFlag ContextFlags_14;
-        [AeroIf(nameof(Bitfield1), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_15)]
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ContextFlags_15)]
         public ContextFlag ContextFlags_15;
 
-        [AeroIf(nameof(Bitfield2), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask2.ContextFlags_16)]
+        [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.ContextFlags_16)]
         public ContextFlag ContextFlags_16;
-        [AeroIf(nameof(Bitfield2), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask2.ContextFlags_17)]
+        [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.ContextFlags_17)]
         public ContextFlag ContextFlags_17;
-        [AeroIf(nameof(Bitfield2), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask2.ContextFlags_18)]
+        [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.ContextFlags_18)]
         public ContextFlag ContextFlags_18;
-        [AeroIf(nameof(Bitfield2), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask2.ContextFlags_19)]
+        [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.ContextFlags_19)]
         public ContextFlag ContextFlags_19;
-        [AeroIf(nameof(Bitfield2), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask2.ContextFlags_20)]
+        [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.ContextFlags_20)]
         public ContextFlag ContextFlags_20;
-        [AeroIf(nameof(Bitfield2), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask2.ContextFlags_21)]
+        [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.ContextFlags_21)]
         public ContextFlag ContextFlags_21;
-        [AeroIf(nameof(Bitfield2), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask2.ContextFlags_22)]
+        [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.ContextFlags_22)]
         public ContextFlag ContextFlags_22;
-        [AeroIf(nameof(Bitfield2), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask2.ContextFlags_23)]
+        [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.ContextFlags_23)]
         public ContextFlag ContextFlags_23;
 
         // TODO: Bitfield - ConextTeams
         /*
-        [AeroIf(nameof(Bitfield2), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask2.ContextTeams_0)]
+        [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.ContextTeams_0)]
         public ContextTeam ContextTeams_0;
-        [AeroIf(nameof(Bitfield2), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask2.ContextTeams_1)]
+        [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.ContextTeams_1)]
         public ContextTeam ContextTeams_1;
-        [AeroIf(nameof(Bitfield2), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask2.ContextTeams_2)]
+        [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.ContextTeams_2)]
         public ContextTeam ContextTeams_2;
-        [AeroIf(nameof(Bitfield2), AeroIfAttribute.Ops.DoesntHaveFlag, BitfieldMask2.ContextTeams_3)]
+        [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.ContextTeams_3)]
         public ContextTeam ContextTeams_3;
         */
     }
