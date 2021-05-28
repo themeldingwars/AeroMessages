@@ -15,7 +15,7 @@ namespace AeroMessages.GSS.Deployable
     public struct HardpointChildIDData {
         public byte HaveChild;
 
-        [AeroIf(nameof(HaveChild), true)]
+        [AeroIf(nameof(HaveChild), 1)]
         public EntityId ChildId;
     }
 }

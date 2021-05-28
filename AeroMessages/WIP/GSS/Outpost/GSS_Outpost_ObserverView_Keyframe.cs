@@ -8,25 +8,25 @@ namespace AeroMessages.GSS.Outpost
     {
         public enum BitfieldMask : ushort
         {
-            NearbyResourceItems_0  = 1UL << 0,
-            NearbyResourceItems_1  = 1UL << 1,
-            NearbyResourceItems_2  = 1UL << 2,
-            NearbyResourceItems_3  = 1UL << 3,
-            NearbyResourceItems_4  = 1UL << 4,
-            NearbyResourceItems_5  = 1UL << 5,
-            NearbyResourceItems_6  = 1UL << 6,
-            NearbyResourceItems_7  = 1UL << 7,
-            NearbyResourceItems_8  = 1UL << 8,
-            NearbyResourceItems_9  = 1UL << 9,
-            NearbyResourceItems_10 = 1UL << 10,
-            NearbyResourceItems_11 = 1UL << 11,
-            NearbyResourceItems_12 = 1UL << 12,
-            NearbyResourceItems_13 = 1UL << 13,
-            NearbyResourceItems_14 = 1UL << 14,
-            NearbyResourceItems_15 = 1UL << 15,
+            NearbyResourceItems_0  = 1 << 0,
+            NearbyResourceItems_1  = 1 << 1,
+            NearbyResourceItems_2  = 1 << 2,
+            NearbyResourceItems_3  = 1 << 3,
+            NearbyResourceItems_4  = 1 << 4,
+            NearbyResourceItems_5  = 1 << 5,
+            NearbyResourceItems_6  = 1 << 6,
+            NearbyResourceItems_7  = 1 << 7,
+            NearbyResourceItems_8  = 1 << 8,
+            NearbyResourceItems_9  = 1 << 9,
+            NearbyResourceItems_10 = 1 << 10,
+            NearbyResourceItems_11 = 1 << 11,
+            NearbyResourceItems_12 = 1 << 12,
+            NearbyResourceItems_13 = 1 << 13,
+            NearbyResourceItems_14 = 1 << 14,
+            NearbyResourceItems_15 = 1 << 15,
         }
 
-        public ushort Bitfield;
+        public BitfieldMask Bitfield;
 
         //[AeroSDB("dblocalization::LocalizedText", "id")]
         public uint OutpostName;
