@@ -29,11 +29,11 @@ namespace AeroMessages.GSS.Character
         // There are some variations of this message that don't include target and/or dealer entity and I'm not sure the parsing works properly then.
         // TookHit has similiar variation.
         public byte HaveTargetEntity;
-        [AeroIf(nameof(HaveTargetEntity), true)]
+        [AeroIf(nameof(HaveTargetEntity), 1)]
         public EntityId TargetEntity;
 
         public byte HaveDealerEntity;
-        [AeroIf(nameof(HaveDealerEntity), true)]
+        [AeroIf(nameof(HaveDealerEntity), 1)]
         public EntityId DealerEntity;
 
         public uint DamageValue;

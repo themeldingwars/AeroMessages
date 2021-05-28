@@ -73,9 +73,8 @@ namespace AeroMessages.GSS.Deployable
             AppendageHealthPools_6 = 1UL << 62,
             AppendageHealthPools_7 = 1UL << 63,
         }
-
-        [AeroArray(8)]
-        public byte[] Bitfield;
+        
+        public BitfieldMask Bitfield;
 
         //[AeroSDB("dbcharacter::Deployable", "id")]
         public uint Type;
