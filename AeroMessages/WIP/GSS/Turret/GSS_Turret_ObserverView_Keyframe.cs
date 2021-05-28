@@ -1,3 +1,14 @@
+/*
+META_BEGIN
+    MsgType: GSS
+    FromServer: True
+    TypeCode: 40
+    TypeName: Turret::ObserverView
+    MsgId: 3
+    MsgName: Keyframe
+META_END
+ */
+
 using Aero.Gen.Attributes;
 using AeroMessages.Common;
 using System.Numerics;

@@ -144,4 +144,12 @@ namespace AeroMessages.GSS
         [AeroArray(8)]
         public byte[] Unk;
     }
+
+    [AeroBlock]
+    public struct TinyObjectData
+    {
+        public ushort TypeId;
+        public Vector3 Position;
+        public HostilityInfoData HostilityInfo;
+    }
 }

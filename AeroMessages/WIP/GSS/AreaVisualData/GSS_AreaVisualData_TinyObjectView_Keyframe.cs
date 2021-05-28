@@ -2,8 +2,8 @@
 META_BEGIN
     MsgType: GSS
     FromServer: True
-    TypeCode: 13
-    TypeName: Character::TinyObjectView
+    TypeCode: 23
+    TypeName: AreaVisualData::TinyObjectView
     MsgId: 3
     MsgName: Keyframe
 META_END
@@ -12,13 +12,13 @@ using Aero.Gen.Attributes;
 using AeroMessages.Common;
 using System.Numerics;
 using System;
-namespace AeroMessages.GSS.Character
+namespace AeroMessages.GSS.AreaVisualData
 {
     [Aero]
-    public partial class Character_TinyObjectView_Keyframe
+    public partial class AreaVisualData_TinyObjectView
     {
         [Flags]
-        public enum BitfieldMask : uint
+        public enum BitfieldMask: uint
         {
             TinyObjects_0         = 1U << 0,
             TinyObjects_1         = 1U << 1,
@@ -30,28 +30,28 @@ namespace AeroMessages.GSS.Character
             TinyObjects_7         = 1U << 7,
             TinyObjects_8         = 1U << 8,
             TinyObjects_9         = 1U << 9,
-            TinyObjects_10       = 1U << 10,
-            TinyObjects_11       = 1U << 11,
-            TinyObjects_12       = 1U << 12,
-            TinyObjects_13       = 1U << 13,
-            TinyObjects_14       = 1U << 14,
-            TinyObjects_15       = 1U << 15,
-            TinyObjects_16       = 1U << 16,
-            TinyObjects_17       = 1U << 17,
-            TinyObjects_18       = 1U << 18,
-            TinyObjects_19       = 1U << 19,
-            TinyObjects_20       = 1U << 20,
-            TinyObjects_21       = 1U << 21,
-            TinyObjects_22       = 1U << 22,
-            TinyObjects_23       = 1U << 23,
-            TinyObjects_24       = 1U << 24,
-            TinyObjects_25       = 1U << 25,
-            TinyObjects_26       = 1U << 26,
-            TinyObjects_27       = 1U << 27,
-            TinyObjects_28       = 1U << 28,
-            TinyObjects_29       = 1U << 29,
-            TinyObjects_30       = 1U << 30,
-            TinyObjects_31       = 1U << 31,
+            TinyObjects_10        = 1U << 10,
+            TinyObjects_11        = 1U << 11,
+            TinyObjects_12        = 1U << 12,
+            TinyObjects_13        = 1U << 13,
+            TinyObjects_14        = 1U << 14,
+            TinyObjects_15        = 1U << 15,
+            TinyObjects_16        = 1U << 16,
+            TinyObjects_17        = 1U << 17,
+            TinyObjects_18        = 1U << 18,
+            TinyObjects_19        = 1U << 19,
+            TinyObjects_20        = 1U << 20,
+            TinyObjects_21        = 1U << 21,
+            TinyObjects_22        = 1U << 22,
+            TinyObjects_23        = 1U << 23,
+            TinyObjects_24        = 1U << 24,
+            TinyObjects_25        = 1U << 25,
+            TinyObjects_26        = 1U << 26,
+            TinyObjects_27        = 1U << 27,
+            TinyObjects_28        = 1U << 28,
+            TinyObjects_29        = 1U << 29,
+            TinyObjects_30        = 1U << 30,
+            TinyObjects_31        = 1U << 31,
         }
 
         public BitfieldMask Bitfield;
