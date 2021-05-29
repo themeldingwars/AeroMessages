@@ -310,7 +310,7 @@ namespace AeroMessages.GSS.Character
     [AeroBlock]
     public struct SuperChargeData
     {
-        public ushort Value; // Half probably?
+        public HalfFloat Value;
         public byte Op; // Probably?
     }
 }

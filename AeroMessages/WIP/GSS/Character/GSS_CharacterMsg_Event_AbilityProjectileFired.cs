@@ -21,7 +21,7 @@ namespace AeroMessages.GSS.Character
         [AeroArray(3)]
         public ushort[] PackedUnk; // Could be a ruse, if not, what vector would this be???
         
-        public QuantisedVector3 PackedAim; // TODO: Aero needs to unpack this to Vector3
+        public QuantisedVector3 Aim;
 
         //[AeroSDB("dbitems::Ammo", "id")] // Definition
         //[AeroSDB("aptfs::FireProjectileCommandDef", "ammotype")] // Reference values, eg Range

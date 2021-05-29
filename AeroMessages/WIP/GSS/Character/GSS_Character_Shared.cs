@@ -129,8 +129,8 @@ namespace AeroMessages.GSS.Character
         public uint DecalId;
         public uint Color;
 
-        [AeroArray(12)]
-        public ushort[] Transform; // TODO: FIXME: Type should be Half ?
+        [AeroArray(3)]
+        public HalfVector4 Transform; // TODO: Verify
 
         public byte Usage;
     }
@@ -149,10 +149,7 @@ namespace AeroMessages.GSS.Character
     {
         //[AeroSDB("dbvisualrecords::CziPattern", "id")]
         public uint PatternId;
-
-        [AeroArray(4)]
-        public ushort[] TransformValues;
-
+        public HalfVector4 TransformValues; // TODO: Verify, Scale?
         public byte Usage;
     }
 

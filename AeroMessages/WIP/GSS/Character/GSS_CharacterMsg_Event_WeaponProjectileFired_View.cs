@@ -9,16 +9,14 @@ META_BEGIN
 META_END
  */
 using Aero.Gen.Attributes;
+using AeroMessages.Common;
 namespace AeroMessages.GSS.Character
 {
     [Aero]
     public partial class Character_Event_WeaponProjectileFired_View
     {
         public ushort ShortTime;
-
-        [AeroArray(3)]
-        public ushort[] PackedAim; // TODO: Aero needs to unpack to Vector3
-
+        public QuantisedVector3 Aim;
         public byte Unk;
     }
 }

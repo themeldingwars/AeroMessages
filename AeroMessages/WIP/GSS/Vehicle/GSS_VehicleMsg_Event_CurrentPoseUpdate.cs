@@ -9,6 +9,7 @@ META_BEGIN
 META_END
  */
 using Aero.Gen.Attributes;
+using AeroMessages.Common;
 using System.Numerics;
 namespace AeroMessages.GSS.Vehicle
 {
@@ -29,11 +30,7 @@ namespace AeroMessages.GSS.Vehicle
         public byte Unk1;
         public ushort MovementState;
         public Vector3 Position;
-
-        [AeroArray(4)]
-        public ushort[] PackedRotation; // TODO: Unpack ushorts to quaternion
-
-        [AeroArray(3)]
-        public ushort[] PackedDirection; // TODO: Unpack ushorts to vector3
+        public QuantisedQuaternion Rotation;
+        public QuantisedVector3 Direction;
     }
 }

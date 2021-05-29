@@ -155,7 +155,6 @@ namespace AeroMessages.GSS.AreaVisualData
         [AeroIf(nameof(HasDuration), 1)]
         public uint ExpireAtTime; // Gametime ms
 
-        [AeroArray(3)]
-        public ushort[] Position; // TODO: Need halfs
+        public HalfVector3 Position;
     }
 }

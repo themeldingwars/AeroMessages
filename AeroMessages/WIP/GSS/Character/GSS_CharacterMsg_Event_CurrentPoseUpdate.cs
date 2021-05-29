@@ -10,6 +10,7 @@ META_END
  */
 using Aero.Gen.Attributes;
 using System.Numerics;
+using AeroMessages.Common;
 namespace AeroMessages.GSS.Character
 {
     [Aero]
@@ -65,11 +66,7 @@ namespace AeroMessages.GSS.Character
         public byte Unk1;
         public ushort MovementState;
         public Vector3 Position;
-
-        [AeroArray(4)]
-        public ushort[] PackedRotation; // TODO: Aero needs to unpack to Quaternion
-
-        [AeroArray(3)]
-        public ushort[] PackedAim; // TODO: Aero needs to unpack to Vector3
+        public QuantisedQuaternion Rotation;
+        public QuantisedVector3 Aim;
     }
 }
