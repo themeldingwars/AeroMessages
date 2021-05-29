@@ -9,6 +9,8 @@ META_BEGIN
 META_END
  */
 using Aero.Gen.Attributes;
+using AeroMessages.Common;
+
 namespace AeroMessages.GSS.Character
 {
     [Aero]
@@ -18,9 +20,8 @@ namespace AeroMessages.GSS.Character
         
         [AeroArray(3)]
         public ushort[] PackedUnk; // Could be a ruse, if not, what vector would this be???
-
-        [AeroArray(3)]
-        public ushort[] PackedAim; // TODO: Aero needs to unpack this to Vector3
+        
+        public QuantisedVector3 PackedAim; // TODO: Aero needs to unpack this to Vector3
 
         //[AeroSDB("dbitems::Ammo", "id")] // Definition
         //[AeroSDB("aptfs::FireProjectileCommandDef", "ammotype")] // Reference values, eg Range

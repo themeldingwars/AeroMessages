@@ -132,15 +132,12 @@ namespace AeroMessages.GSS.AreaVisualData
         // TODO: Need to verify
         //[AeroSDB("dbzonemetadata::ForceShieldType", "id")]
         public uint MaybeType;
-
-        [AeroArray(3)]
-        public ushort[] Position; // TODO: Half support needed
-
-        [AeroArray(4)]
-        public ushort[] Orientation; // TODO: Half support needed 
-
-        [AeroArray(3)]
-        public ushort[] Direction; // TODO: Half support needed
+        
+        public HalfVector3 Position;
+        
+        public HalfVector4 Orientation;
+        
+        public HalfVector3 Direction;
 
         public byte Unk2;
         public HostilityInfoData HosilityInfo;
