@@ -9,13 +9,13 @@ META_BEGIN
 META_END
  */
 using Aero.Gen.Attributes;
+using AeroMessages.Common;
 namespace AeroMessages.GSS.Character
 {
     [Aero]
     public partial class Character_Event_ExitingAttachment
     {
         // Guessing
-        [AeroArray(3)]
-        public ushort[] PackedAim;
+        public QuantisedVector3 Direction;
     }
 }

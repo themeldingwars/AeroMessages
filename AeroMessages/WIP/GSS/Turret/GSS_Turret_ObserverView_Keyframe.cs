@@ -51,8 +51,8 @@ namespace AeroMessages.GSS.Turret
     public struct CurrentPoseStruct
     {
         public ushort ShortTime;
-        [AeroArray(4)]
-        public ushort[] PackedRotation; // Assumption, and Aero should unpack this to a quaternion
+ 
+        public QuantisedQuaternion Rotation; // Assumption
     }
 
     [AeroBlock]
