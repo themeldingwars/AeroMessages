@@ -16,6 +16,15 @@ namespace AeroMessages.GSS
     }
 
     [AeroBlock]
+    public struct HostilityData
+    {
+        public byte HaveHostility;
+
+        [AeroIf(nameof(HaveHostility), 1)]
+        public byte Id;
+    }
+
+    [AeroBlock]
     public struct PersonalFactionStanceData
     {
         // TODO: Verify

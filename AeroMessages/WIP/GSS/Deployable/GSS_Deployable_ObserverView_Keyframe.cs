@@ -222,6 +222,8 @@ namespace AeroMessages.GSS.Deployable
 
         public CharacterStatsData CharacterStats;
 
+        // [AeroSDB("dbencounterdata::SinCardTemplate", "Id")]
+        // [AeroSDB("dbencounterdata::SinCardFields", "TemplateId")]
         public uint SinCardType;
 
         [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_0)]
