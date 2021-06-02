@@ -16,7 +16,7 @@ using System;
 namespace AeroMessages.GSS.AreaVisualData
 {
     [Aero]
-    public partial class AreaVisualData_MapMarkerView
+    public partial class AreaVisualData_MapMarkerView_Keyframe
     {
         [Flags]
         public enum BitfieldMask1: uint

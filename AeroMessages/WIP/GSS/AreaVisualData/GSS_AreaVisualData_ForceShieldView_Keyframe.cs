@@ -16,7 +16,7 @@ using System;
 namespace AeroMessages.GSS.AreaVisualData
 {
     [Aero]
-    public partial class AreaVisualData_ForceShieldView
+    public partial class AreaVisualData_ForceShieldView_Keyframe
     {
         [Flags]
         public enum BitfieldMask: uint

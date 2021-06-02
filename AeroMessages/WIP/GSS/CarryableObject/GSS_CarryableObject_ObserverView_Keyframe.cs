@@ -16,7 +16,7 @@ using System;
 namespace AeroMessages.GSS.CarryableObject
 {
     [Aero]
-    public partial class CarryableObject_ObserverView
+    public partial class CarryableObject_ObserverView_Keyframe
     {
         [Flags]
         public enum BitfieldMask1 : uint

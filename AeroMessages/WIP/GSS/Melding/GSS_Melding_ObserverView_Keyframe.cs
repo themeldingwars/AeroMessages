@@ -4,7 +4,7 @@ using System.Numerics;
 namespace AeroMessages.GSS.Melding
 {
     [Aero]
-    public partial class Melding_ObserverView
+    public partial class Melding_ObserverView_Keyframe
     {
         [AeroString]
         public string PerimiterSetName;

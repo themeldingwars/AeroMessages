@@ -7,7 +7,7 @@ namespace AeroMessages.GSS.ResourceNode
 {
     // TODO: Need a capture or replay of these, this is mostly guesswork based on shadowfields and what the client seems to like.
     [Aero]
-    public partial class ResourceNode_ObserverView
+    public partial class ResourceNode_ObserverView_Keyframe
     {
         [Flags]
         public enum BitfieldMask: ulong

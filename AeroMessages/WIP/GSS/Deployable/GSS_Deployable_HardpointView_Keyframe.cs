@@ -4,7 +4,7 @@ using System.Numerics;
 namespace AeroMessages.GSS.Deployable
 {
     [Aero]
-    public partial class Deployable_HardpointView
+    public partial class Deployable_HardpointView_Keyframe
     {
         //[AeroSDB("dbcharacter::Deployable", "id")]
         public uint HardpointChildType; // DeployableTypeId Of the selected deployable

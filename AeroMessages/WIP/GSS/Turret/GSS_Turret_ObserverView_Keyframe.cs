@@ -16,7 +16,7 @@ using System;
 namespace AeroMessages.GSS.Turret
 {
     [Aero]
-    public partial class Turret_ObserverView
+    public partial class Turret_ObserverView_Keyframe
     {
         [Flags]
         public enum BitfieldMask: byte

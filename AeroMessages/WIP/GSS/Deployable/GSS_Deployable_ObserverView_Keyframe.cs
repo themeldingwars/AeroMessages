@@ -6,7 +6,7 @@ using System;
 namespace AeroMessages.GSS.Deployable
 {
     [Aero]
-    public partial class Deployable_ObserverView
+    public partial class Deployable_ObserverView_Keyframe
     {
         [Flags]
         public enum BitfieldMask : ulong

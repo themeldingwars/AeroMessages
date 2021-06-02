@@ -6,7 +6,7 @@ using System;
 namespace AeroMessages.GSS.Outpost
 {
     [Aero]
-    public partial class Outpost_ObserverView
+    public partial class Outpost_ObserverView_Keyframe
     {
         [Flags]
         public enum BitfieldMask : ushort

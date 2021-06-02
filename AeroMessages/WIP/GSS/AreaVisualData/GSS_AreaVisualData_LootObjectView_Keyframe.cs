@@ -16,7 +16,7 @@ using System;
 namespace AeroMessages.GSS.AreaVisualData
 {
     [Aero]
-    public partial class AreaVisualData_LootObjectView
+    public partial class AreaVisualData_LootObjectView_Keyframe
     {
         [Flags]
         public enum BitfieldMask1: ushort
