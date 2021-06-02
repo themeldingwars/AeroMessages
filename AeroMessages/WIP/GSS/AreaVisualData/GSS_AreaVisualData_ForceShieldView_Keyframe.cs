@@ -130,7 +130,7 @@ namespace AeroMessages.GSS.AreaVisualData
     public struct ForceShieldData
     {
         // TODO: Need to verify
-        //[AeroSDB("dbzonemetadata::ForceShieldType", "id")]
+        [AeroSdb("dbzonemetadata::ForceShieldType", "id")]
         public uint MaybeType;
         
         public HalfVector3 Position;

@@ -26,7 +26,7 @@ namespace AeroMessages.GSS.Turret
 
         public BitfieldMask Bitfield;
 
-        //[AeroSDB("dbcharacter::Turret", "id")]
+        [AeroSdb("dbcharacter::Turret", "id")]
         public uint Type; // SDB Table 197
 
         public EntityId ParentObjId; // Turret_ObserverView is added to this Deployable entity, get "unhandled viewcode" error if not specified.

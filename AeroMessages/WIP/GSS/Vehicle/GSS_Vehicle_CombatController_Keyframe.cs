@@ -157,23 +157,23 @@ namespace AeroMessages.GSS.Vehicle
         [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.StatusEffects_31)]
         public StatusEffectData StatusEffects_31;
 
-        //[AeroSDB("apt::AbilityData", "id")]
+        [AeroSdb("apt::AbilityData", "id")]
         public uint SlottedAbility_0;
-        //[AeroSDB("apt::AbilityData", "id")]
+        [AeroSdb("apt::AbilityData", "id")]
         public uint SlottedAbility_1;
-        //[AeroSDB("apt::AbilityData", "id")]
+        [AeroSdb("apt::AbilityData", "id")]
         public uint SlottedAbility_2;
-        //[AeroSDB("apt::AbilityData", "id")]
+        [AeroSdb("apt::AbilityData", "id")]
         public uint SlottedAbility_3;
-        //[AeroSDB("apt::AbilityData", "id")]
+        [AeroSdb("apt::AbilityData", "id")]
         public uint SlottedAbility_4;
-        //[AeroSDB("apt::AbilityData", "id")]
+        [AeroSdb("apt::AbilityData", "id")]
         public uint SlottedAbility_5;
-        //[AeroSDB("apt::AbilityData", "id")]
+        [AeroSdb("apt::AbilityData", "id")]
         public uint SlottedAbility_6;
-        //[AeroSDB("apt::AbilityData", "id")]
+        [AeroSdb("apt::AbilityData", "id")]
         public uint SlottedAbility_7;
-        //[AeroSDB("apt::AbilityData", "id")]
+        [AeroSdb("apt::AbilityData", "id")]
         public uint SlottedAbility_8;
     }
 }

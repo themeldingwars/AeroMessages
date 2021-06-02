@@ -113,8 +113,8 @@ namespace AeroMessages.GSS.Character
         [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.RespawnTimes)]
         public RespawnTimesData RespawnTimes;
 
-        // [AeroSDB("dbencounterdata::SinCardTemplate", "Id")]
-        // [AeroSDB("dbencounterdata::SinCardFields", "TemplateId")]
+        [AeroSdb("dbencounterdata::SinCardTemplate", "Id")]
+        //[AeroSdb("dbencounterdata::SinCardFields", "TemplateId")]
         public uint SinCardType;
 
         [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_0)]

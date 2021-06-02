@@ -206,8 +206,8 @@ namespace AeroMessages.GSS.Character
         // [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.TimedDailyRewardResult)]
         // --
 
-        // [AeroSDB("dbencounterdata::SinCardTemplate", "Id")]
-        // [AeroSDB("dbencounterdata::SinCardFields", "TemplateId")]
+        [AeroSdb("dbencounterdata::SinCardTemplate", "Id")]
+        //[AeroSdb("dbencounterdata::SinCardFields", "TemplateId")]
         public uint SinCardType;
 
         [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_0)]
@@ -348,7 +348,7 @@ namespace AeroMessages.GSS.Character
     [AeroBlock]
     public struct StatModifierData
     {
-        //[AeroSDB("aptfs::StatModifierCommandDef", "id")] // TODO: Verify
+        [AeroSdb("aptfs::StatModifierCommandDef", "id")] // TODO: Verify
         public uint ModifierId;
         public float StatValue;
     }

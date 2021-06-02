@@ -85,7 +85,7 @@ namespace AeroMessages.GSS
     [AeroBlock]
     public struct StatusEffectData
     {
-        // [AeroSDB("apt::StatusEffectData", "id")]
+        [AeroSdb("apt::StatusEffectData", "id")]
         public uint Id;
 
         public byte Unk;
@@ -140,7 +140,7 @@ namespace AeroMessages.GSS
     [AeroBlock]
     public struct StatsData
     {
-        //[AeroSDB("dbitems::AttributeDefinition", "id")]
+        [AeroSdb("dbitems::AttributeDefinition", "id")]
         public ushort Id;
 
         public float Value;

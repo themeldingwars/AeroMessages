@@ -16,7 +16,7 @@ namespace AeroMessages.GSS.Character
     {
         public uint Time;
 
-        //[AeroSDB("dbitems::RootItem", "sdb_id")]
+        [AeroSdb("dbitems::RootItem", "sdb_id")]
         public uint ItemSdbId;
     }
 }

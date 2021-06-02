@@ -17,7 +17,7 @@ namespace AeroMessages.GSS.Character
         public uint LoadoutId;
         public ulong ItemGUID;
 
-        //[AeroSDB("dbitems::LoadoutSlot", "id")]
+        [AeroSdb("dbitems::LoadoutSlot", "id")]
         public byte SlotIdx;
 
         [AeroArray(5)]

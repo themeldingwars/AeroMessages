@@ -19,8 +19,8 @@ namespace AeroMessages.GSS.Generic
         [AeroArray(7)]
         public byte[] Unk1;
 
-        //[AeroSDB("clientmissions::Mission","id")]
-        //[AeroSDB("clientmissions::MissionObjective","mission_id")]
+        [AeroSdb("clientmissions::Mission","id")]
+        //[AeroSdb("clientmissions::MissionObjective","mission_id")]
         public uint MissionId;
 
         [AeroArray(9)]

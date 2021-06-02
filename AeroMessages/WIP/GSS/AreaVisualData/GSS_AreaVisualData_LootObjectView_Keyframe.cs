@@ -122,7 +122,7 @@ namespace AeroMessages.GSS.AreaVisualData
 
         public Vector3 Position;
 
-        //[AeroSDB("dbitems::RootItem", "sdb_id")]
+        [AeroSdb("dbitems::RootItem", "sdb_id")]
         public uint LootSdbId;
         public uint Quantity;
 

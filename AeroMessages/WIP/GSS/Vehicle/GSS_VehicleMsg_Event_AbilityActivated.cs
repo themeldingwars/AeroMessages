@@ -14,7 +14,7 @@ namespace AeroMessages.GSS.Vehicle
     [Aero]
     public partial class Vehicle_Event_AbilityActivated
     {
-        //[AeroSDB("apt::AbilityData", "id")]
+        [AeroSdb("apt::AbilityData", "id")]
         public uint AbilityId;
 
         public uint Time;

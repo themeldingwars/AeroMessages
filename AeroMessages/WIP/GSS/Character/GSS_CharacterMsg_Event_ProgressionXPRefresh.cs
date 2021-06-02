@@ -21,7 +21,7 @@ namespace AeroMessages.GSS.Character
     [AeroBlock]
     public struct ProgressionFrameInfo
     {
-        //[AeroSDB("dbitems::RootItem", "sdb_id")]
+        [AeroSdb("dbitems::RootItem", "sdb_id")]
         public uint ChassisID;
 
         public uint XpValue1;

@@ -23,8 +23,8 @@ namespace AeroMessages.GSS.Character
         
         public QuantisedVector3 Aim;
 
-        //[AeroSDB("dbitems::Ammo", "id")] // Definition
-        //[AeroSDB("aptfs::FireProjectileCommandDef", "ammotype")] // Reference values, eg Range
+        [AeroSdb("dbitems::Ammo", "id")] // Definition
+        //[AeroSdb("aptfs::FireProjectileCommandDef", "ammotype")] // Reference values, eg Range
         public ushort AmmoType;
         public float Range;
 

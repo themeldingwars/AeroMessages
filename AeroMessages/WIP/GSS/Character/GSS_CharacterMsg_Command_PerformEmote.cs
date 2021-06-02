@@ -16,7 +16,7 @@ namespace AeroMessages.GSS.Character
     {
         public uint Time;
 
-        //[AeroSDB("dbcharacter::EmoteRecord", "id")]
+        [AeroSdb("dbcharacter::EmoteRecord", "id")]
         public ushort EmoteId;
     }
 }

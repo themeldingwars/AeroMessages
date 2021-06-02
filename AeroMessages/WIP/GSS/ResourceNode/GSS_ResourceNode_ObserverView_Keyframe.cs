@@ -50,13 +50,13 @@ namespace AeroMessages.GSS.ResourceNode
         //[AeroArray(5)]
         public Ulong5ByteBitmask<BitfieldMask> Bitfield;
 
-        //[AeroSDB("dbzonemetadata::ResourceNodeType")] // TODO: Verify
+        [AeroSdb("dbzonemetadata::ResourceNodeType", "id")] // TODO: Verify
         public uint NodeType;
 
         public ThumpingCharacterInfoStruct ThumpingCharacterInfo;
         public Vector3 Position;
 
-        //[AeroSDB("dbitems::ResourceNodeBeacon")]
+        [AeroSdb("dbitems::ResourceNodeBeacon", "id")]
         public uint BeaconId;
         public byte CurrentHealthPct;
         public uint MaxHealth;

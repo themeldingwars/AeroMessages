@@ -15,7 +15,7 @@ namespace AeroMessages.GSS.Character
     [Aero]
     public partial class Character_Command_VehicleCalldownRequest
     {
-        //[AeroSDB("vcs::VehicleInfo", "id")]
+        [AeroSdb("vcs::VehicleInfo", "id")]
         public ushort VehicleID;
 
         public Vector3 Position;

@@ -142,7 +142,7 @@ namespace AeroMessages.GSS.AreaVisualData
     [AeroBlock]
     public struct MapMarkerData
     {
-        //[AeroSDB("dbencounterdata::MapMarkerInfo", "id")]
+        [AeroSdb("dbencounterdata::MapMarkerInfo", "id")]
         public uint MarkerType;
 
         [AeroArray(6)]

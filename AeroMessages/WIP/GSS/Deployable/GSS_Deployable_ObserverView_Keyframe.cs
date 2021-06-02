@@ -79,10 +79,10 @@ namespace AeroMessages.GSS.Deployable
         
         public BitfieldMask Bitfield;
 
-        //[AeroSDB("dbcharacter::Deployable", "id")]
+        [AeroSdb("dbcharacter::Deployable", "id")]
         public uint Type;
         public EntityId Owner;
-        //[AeroSDB("apt::AbilityData", "id")]
+        [AeroSdb("apt::AbilityData", "id")]
         public uint AbilitySrcId; // example in msgidx 123396
         public Vector3 Position;
         public Quaternion Orientation; // Rotation
@@ -222,8 +222,8 @@ namespace AeroMessages.GSS.Deployable
 
         public CharacterStatsData CharacterStats;
 
-        // [AeroSDB("dbencounterdata::SinCardTemplate", "Id")]
-        // [AeroSDB("dbencounterdata::SinCardFields", "TemplateId")]
+        [AeroSdb("dbencounterdata::SinCardTemplate", "Id")]
+        //[AeroSdb("dbencounterdata::SinCardFields", "TemplateId")]
         public uint SinCardType;
 
         [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_0)]

@@ -14,7 +14,7 @@ namespace AeroMessages.GSS.Generic
     [Aero]
     public partial class Generic_Event_PlayDialogScriptMessage
     {   
-        //[AeroSDB("dbdialogdata::DialogScript", "id")]
+        [AeroSdb("dbdialogdata::DialogScript", "id")]
         public uint DialogId;
         public byte Unk1;
     }

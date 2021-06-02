@@ -23,11 +23,11 @@ namespace AeroMessages.GSS.Character
     [AeroBlock]
     public struct SlotModuleRequest
     {
-        //[AeroSDB("dbitems::RootItem", "sdb_id")]
-        //[AeroSDB("dbitems::ItemModuleSlots", "item_id")]
+        [AeroSdb("dbitems::RootItem", "sdb_id")]
+        //[AeroSdb("dbitems::ItemModuleSlots", "item_id")]
         public uint SdbId;
 
-        //[AeroSDB("dbitems::ItemModuleSlots", "slot_index")]
+        [AeroSdb("dbitems::ItemModuleSlots", "slot_index")]
         public byte SlotIdx;
     }
 }

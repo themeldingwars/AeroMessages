@@ -51,7 +51,7 @@ namespace AeroMessages.GSS.Vehicle
 
         public BitfieldMask Bitfield;
 
-        //[AeroSDB("vcs::VehicleInfo", "id")]
+        [AeroSdb("vcs::VehicleInfo", "id")]
         public ushort VehicleID;
 
         [AeroArray(32)]
@@ -67,7 +67,7 @@ namespace AeroMessages.GSS.Vehicle
         [AeroString]
         public string OwnerName;
 
-        //[AeroSDB("dblocalization::LocalizedText", "id")]
+        [AeroSdb("dblocalization::LocalizedText", "id")]
         public uint OwnerLocalString;
 
         public EntityId OccupantIds_0;
@@ -124,8 +124,8 @@ namespace AeroMessages.GSS.Vehicle
         public byte WaterLevelAndDesc;
         public byte EffectsFlags;
 
-        // [AeroSDB("dbencounterdata::SinCardTemplate", "Id")]
-        // [AeroSDB("dbencounterdata::SinCardFields", "TemplateId")]
+        [AeroSdb("dbencounterdata::SinCardTemplate", "Id")]
+        //[AeroSdb("dbencounterdata::SinCardFields", "TemplateId")]
         public uint SinCardType;
         
         [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinCardFields_0)]

@@ -20,7 +20,7 @@ namespace AeroMessages.GSS.Generic
         [AeroString]
         public string Title;
 
-        //[AeroSDB("dbcharacter::Faction", "id")]
+        [AeroSdb("dbcharacter::Faction", "id")]
         public uint FactionId;
 
         [AeroArray(typeof(byte))]
@@ -45,7 +45,7 @@ namespace AeroMessages.GSS.Generic
         [AeroString]
         public string CurrencyType;
 
-        //[AeroSDB("dbitems:RootItem", "sdb_id")]
+        [AeroSdb("dbitems:RootItem", "sdb_id")]
         public uint CurrencyRemoteId;
 
         public uint Amount;
@@ -66,7 +66,7 @@ namespace AeroMessages.GSS.Generic
     {
         public ulong GUID;
 
-        //[AeroSDB("dbitems:RootItem", "sdb_id")]
+        [AeroSdb("dbitems:RootItem", "sdb_id")]
         public uint SdbId;
 
         public uint Quantity;

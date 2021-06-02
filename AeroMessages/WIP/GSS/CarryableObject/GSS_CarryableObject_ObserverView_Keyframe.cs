@@ -92,7 +92,7 @@ namespace AeroMessages.GSS.CarryableObject
         public BitfieldMask1 Bitfield1;
         public BitfieldMask2 Bitfield2;
 
-        //[AeroSDB("dbitems::CarryableObject", "id")]
+        [AeroSdb("dbitems::CarryableObject", "id")]
         public uint CarryableObjectTypeId;
 
         [AeroString]
@@ -214,8 +214,8 @@ namespace AeroMessages.GSS.CarryableObject
         public byte AllowFriendlyPickup; // guess
         public byte AllowHostilePickup; // guess
 
-        // [AeroSDB("dbencounterdata::SinCardTemplate", "Id")]
-        // [AeroSDB("dbencounterdata::SinCardFields", "TemplateId")]
+        [AeroSdb("dbencounterdata::SinCardTemplate", "Id")]
+        //[AeroSdb("dbencounterdata::SinCardFields", "TemplateId")]
         public uint SinCardType;
 
         [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.SinCardFields_0)]

@@ -31,18 +31,18 @@ namespace AeroMessages.GSS.Outpost
 
         public BitfieldMask Bitfield;
 
-        //[AeroSDB("dblocalization::LocalizedText", "id")]
+        [AeroSdb("dblocalization::LocalizedText", "id")]
         public uint OutpostName;
 
         public Vector3 Position;
 
-        //[AeroSDB("dbitems::LevelBand", "id")]
+        [AeroSdb("dbitems::LevelBand", "id")]
         public uint LevelBandId;
         public byte SinUnlockIndex;
         public int TeleportCost;
         public float Progress; // Dynamic_00
 
-        //[AeroSDB("dbcharacter::Faction", "id")]
+        [AeroSdb("dbcharacter::Faction", "id")]
         public byte FactionId; // Dynamic_01
         public byte Team; // Dynamic_02
         public byte UnderAttack; // Dynamic_03

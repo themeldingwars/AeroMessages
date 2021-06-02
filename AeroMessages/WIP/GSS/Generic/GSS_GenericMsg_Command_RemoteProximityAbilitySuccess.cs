@@ -18,7 +18,7 @@ namespace AeroMessages.GSS.Generic
         public EntityId Source;
         public byte Unk;
 
-        //[AeroSDB("aptfs::RegisterClientProximityCommandDef", "id")]
+        [AeroSdb("aptfs::RegisterClientProximityCommandDef", "id")]
         public uint ClientProximityCommandId;
 
         [AeroArray(typeof(byte))]

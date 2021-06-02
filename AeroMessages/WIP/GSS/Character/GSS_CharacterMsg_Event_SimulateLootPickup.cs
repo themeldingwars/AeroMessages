@@ -14,7 +14,7 @@ namespace AeroMessages.GSS.Character
     [Aero]
     public partial class Character_Event_SimulateLootPickup
     {
-        //[AeroSDB("dbitems::RootItem", "sdb_id")]
+        [AeroSdb("dbitems::RootItem", "sdb_id")]
         public uint LootSdbID;
 
         //[AeroArray(-1)]

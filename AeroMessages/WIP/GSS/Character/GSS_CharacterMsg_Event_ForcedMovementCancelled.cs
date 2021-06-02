@@ -15,7 +15,7 @@ namespace AeroMessages.GSS.Character
     public partial class CharacterCombat_Event_ForcedMovementCancelled
     {
 
-        //[AeroSDB("apt::BaseCommandDef")]
+        [AeroSdb("apt::BaseCommandDef", "id")]
         public uint CommandId;
 
         public ushort ShortTime;
