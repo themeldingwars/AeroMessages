@@ -111,7 +111,7 @@ namespace AeroMessages.GSS.AreaVisualData
         [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.ContextFlags_23)]
         public ContextFlag ContextFlags_23;
 
-        // TODO: Bitfield - ConextTeams
+        // TODO: Bitfield - ContextTeams
         /*
         [AeroIf(nameof(Bitfield2), Ops.DoesntHaveFlag, BitfieldMask2.ContextTeams_0)]
         public ContextTeam ContextTeams_0;

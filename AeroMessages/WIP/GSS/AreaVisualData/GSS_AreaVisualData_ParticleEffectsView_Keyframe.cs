@@ -3,7 +3,7 @@ META_BEGIN
     MsgType: GSS
     FromServer: True
     TypeCode: 21
-    TypeName: AreaVisualData::MapMarkerView
+    TypeName: AreaVisualData::ParticleEffectsView
     MsgId: 3
     MsgName: Keyframe
 META_END

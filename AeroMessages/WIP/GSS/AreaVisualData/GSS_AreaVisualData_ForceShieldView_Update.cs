@@ -4,8 +4,8 @@ META_BEGIN
     FromServer: True
     TypeCode: 25
     TypeName: AreaVisualData::ForceShieldView
-    MsgId: 3
-    MsgName: Keyframe
+    MsgId: 1
+    MsgName: Update
 META_END
  */
 using Aero.Gen.Attributes;

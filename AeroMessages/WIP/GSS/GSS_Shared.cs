@@ -157,6 +157,7 @@ namespace AeroMessages.GSS
     [AeroBlock]
     public struct TinyObjectData
     {
+        [AeroSdb("dbcharacter::TinyObject", "id")]
         public ushort TypeId;
         public Vector3 Position;
         public HostilityInfoData HostilityInfo;
