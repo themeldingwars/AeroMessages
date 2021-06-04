@@ -1,3 +1,7 @@
+/*
+WONTPORT
+Just shadowfields for something not seen in captures
+ */
 using Bitter;
 using System;
 using System.Collections.Generic;

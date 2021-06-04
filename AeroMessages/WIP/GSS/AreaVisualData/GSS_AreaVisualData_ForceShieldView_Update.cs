@@ -132,6 +132,6 @@ namespace AeroMessages.GSS.AreaVisualData
     public partial class AreaVisualData_ForceShieldView_Update
     {
         [AeroArray(-66)]
-        public AreaVisualData_ForceShieldView_ShadowFieldUpdate[] Updates;    
+        public AreaVisualData_ForceShieldView_ShadowFieldUpdate[] Updates;
     }
 }

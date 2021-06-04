@@ -1,3 +1,7 @@
+/*
+This isn't based on a capture, just guesswork based on the shadowfield names and the observer view
+Need to investigate futher
+ */
 using Bitter;
 using System;
 using System.Collections.Generic;

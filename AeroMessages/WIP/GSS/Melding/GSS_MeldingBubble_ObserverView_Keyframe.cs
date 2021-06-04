@@ -4,7 +4,7 @@ using System.Numerics;
 namespace AeroMessages.GSS.MeldingBubble
 {
     [Aero]
-    public partial class MeldingBubble_ObserverView
+    public partial class MeldingBubble_ObserverView_Keyframe
     {
         public PositionStruct Position;
         public RadiusStruct Radius;
