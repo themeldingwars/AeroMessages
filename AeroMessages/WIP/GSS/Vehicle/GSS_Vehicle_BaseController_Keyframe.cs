@@ -54,7 +54,7 @@ namespace AeroMessages.GSS.Vehicle
         public BitfieldMask Bitfield;
 
         [AeroSdb("vcs::VehicleInfo", "id")]
-        public ushort VehicleID;
+        public ushort VehicleId;
 
         [AeroArray(32)]
         public byte[] Configuration;

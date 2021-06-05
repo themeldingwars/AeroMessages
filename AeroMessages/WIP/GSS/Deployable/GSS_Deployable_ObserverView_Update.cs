@@ -141,8 +141,8 @@ namespace AeroMessages.GSS.Deployable
         [AeroIf(nameof(Idx), ShadowFieldIndex.Type)]
         [AeroSdb("dbcharacter::Deployable", "id")]
         public uint Type;
-        [AeroIf(nameof(Idx), ShadowFieldIndex.Owner)]
-        public EntityId Owner;
+        [AeroIf(nameof(Idx), ShadowFieldIndex.OwningEntity)]
+        public EntityId OwningEntity;
         [AeroIf(nameof(Idx), ShadowFieldIndex.AbilitySrcId)]
         [AeroSdb("apt::AbilityData", "id")]
         public uint AbilitySrcId; // example in msgidx 123396
