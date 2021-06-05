@@ -19,7 +19,7 @@ namespace AeroMessages.GSS.Character
         [AeroSdb("dblocalization::LocalizedText", "id")]
         public uint TitleLocalizationId;
 
-        [AeroArray(8)]
+        [AeroArray(4)]
         public byte[] Unk1;
 
         [AeroArray(typeof(byte))]
