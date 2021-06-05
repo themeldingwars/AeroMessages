@@ -140,6 +140,6 @@ namespace AeroMessages.GSS.AreaVisualData
         public HalfVector3 Direction;
 
         public byte Unk2;
-        public HostilityInfoData HosilityInfo;
+        public HostilityInfoData HostilityInfo;
     }
 }

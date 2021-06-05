@@ -79,7 +79,7 @@ namespace AeroMessages.GSS.Character
         public EquipmentData CurrentEquipment;
         public uint SelectedLoadout;
         public uint SelectedLoadoutIsPvP;
-        public GibVisuals GibVusalsId;
+        public GibVisuals GibVisualsId;
         public CharacterSpawnPose SpawnPose;
         public uint ProcessDelay;
         public byte SpectatorMode;
@@ -89,7 +89,7 @@ namespace AeroMessages.GSS.Character
         // --
 
         public CharacterStateData CharacterState; 
-        public HostilityInfoData HosilityInfo;
+        public HostilityInfoData HostilityInfo;
 
         [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.PersonalFactionStance)]
         public PersonalFactionStanceData PersonalFactionStance;
@@ -101,7 +101,7 @@ namespace AeroMessages.GSS.Character
         public byte CurrentDurabilityPct;
         public EnergyParamsData EnergyParams;
         public CharacterStatsData CharacterStats;
-        public EmoteData EmoteId;
+        public EmoteData EmoteID;
 
         [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.AttachedTo)]
         public AttachedToData AttachedTo;

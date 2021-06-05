@@ -175,7 +175,7 @@ namespace AeroMessages.GSS.Character
         public StatMultiplierData RunSpeedMult;
         public StatMultiplierData FwdRunSpeedMult;
         public StatMultiplierData JumpHeightMult;
-        public StatMultiplierData AirContorlMult;
+        public StatMultiplierData AirControlMult;
         public StatMultiplierData ThrustStrengthMult;
         public StatMultiplierData ThrustAirControl;
         public StatMultiplierData Friction;

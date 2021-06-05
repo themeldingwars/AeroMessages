@@ -61,10 +61,10 @@ namespace AeroMessages.GSS.Character
 
         public uint SpawnTime;
         public byte EffectsFlags;
-        public GibVisuals GibVusalsId;
+        public GibVisuals GibVisualsId;
         public uint ProcessDelay;
         public CharacterStateData CharacterState; 
-        public HostilityInfoData HosilityInfo;
+        public HostilityInfoData HostilityInfo;
 
         [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.PersonalFactionStance)]
         public PersonalFactionStanceData PersonalFactionStance;

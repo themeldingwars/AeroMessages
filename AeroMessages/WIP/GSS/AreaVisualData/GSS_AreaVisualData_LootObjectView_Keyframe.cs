@@ -115,7 +115,7 @@ namespace AeroMessages.GSS.AreaVisualData
 
         public byte HaveHostility;
         [AeroIf(nameof(HaveHostility), 1)]
-        public HostilityInfoData HosilityInfo;
+        public HostilityInfoData HostilityInfo;
 
         [AeroArray(6)]
         public byte[] Unk4; // A direction in halfs?

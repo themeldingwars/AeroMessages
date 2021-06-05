@@ -16,6 +16,12 @@ namespace AeroMessages.GSS.Character
     [Aero]
     public partial class Character_MovementView_Keyframe
     {
+        public MovementData Movement;
+    }
+
+    [AeroBlock]
+    public struct MovementData
+    {
         public Vector3 Position;
         public Quaternion Rotation;
         public Vector3 Aim;

@@ -16,10 +16,7 @@ namespace AeroMessages.GSS.Character
     [Aero]
     public partial class Character_EquipmentView_Keyframe
     {
-        public byte VisualOverrides_HaveData;
-        [AeroIf(nameof(VisualOverrides_HaveData), 1)]
-        public VisualOverridesData VisualOverrides;
-
+        public VisualOverridesField VisualOverrides;
         public EquipmentData CurrentEquipment;
         public byte Level;
         public byte EffectiveLevel;
@@ -27,8 +24,16 @@ namespace AeroMessages.GSS.Character
         public byte CurrentDurabilityPct;
         public CharacterStatsData CharacterStats;
         public uint ScalingLevel;
-        public uint PvP_Rank;
-        public uint Elite_Rank;
+        public uint PvPRank;
+        public uint EliteLevel;
+    }
+
+    [AeroBlock]
+    public struct VisualOverridesField
+    {
+        public byte HaveData;
+        [AeroIf(nameof(HaveData), 1)]
+        public VisualOverridesData Data;
     }
 
     [AeroBlock]
