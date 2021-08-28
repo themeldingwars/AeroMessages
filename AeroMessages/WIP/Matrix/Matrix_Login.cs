@@ -26,7 +26,31 @@ namespace AeroMessages.Matrix
         [AeroString]
         public string Red5Sig2; // Comma separated list of base64 sig somethings
 
-        [AeroArray(376)]
-        public byte[] Red5Sig1; // From Web Requests to ClientAPI
+        public byte Unk4;
+
+        public MatrixTicket Ticket;
+    }
+
+    [AeroBlock]
+    public struct MatrixTicket
+    {
+        [AeroArray(45)]
+        public byte[] Part1;
+        [AeroArray(45)]
+        public byte[] Part2;
+        [AeroArray(45)]
+        public byte[] Part3;
+        [AeroArray(45)]
+        public byte[] Part4;
+        [AeroArray(45)]
+        public byte[] Part5;
+        [AeroArray(45)]
+        public byte[] Part6;
+        [AeroArray(45)]
+        public byte[] Part7;
+        [AeroArray(45)]
+        public byte[] Part8;
+        [AeroArray(10)]
+        public byte[] Part9;
     }
 }
