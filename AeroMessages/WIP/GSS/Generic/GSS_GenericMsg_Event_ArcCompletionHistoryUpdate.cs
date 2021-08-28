@@ -1,0 +1,33 @@
+/*
+META_BEGIN
+    MsgType: GSS
+    FromServer: True
+    TypeCode: 0
+    TypeName: Generic
+    MsgId: 86
+    MsgName: ArcCompletionHistoryUpdate
+META_END
+ */
+using Aero.Gen.Attributes;
+namespace AeroMessages.GSS.Generic
+{
+    [Aero]
+    public partial class Generic_Event_ArcCompletionHistoryUpdate
+    {
+        public ulong MaybeGUID;
+
+        public byte Unk1;
+
+        [AeroArray(typeof(byte))]
+        public ArcBlock[] Data;
+    }
+
+    [AeroBlock]
+    public struct ArcBlock
+    {
+        public uint Unk1; // Id?
+        public uint Unk2; // State related
+        public uint Unk3; // State related
+        public uint Unk4; // Timestamp?
+    }
+}
