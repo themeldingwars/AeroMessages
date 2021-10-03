@@ -11,9 +11,11 @@ META_END
 using Aero.Gen.Attributes;
 using AeroMessages.Common;
 using System;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Character
 {
     [Aero]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 5, 107)]
     public partial class Character_Event_DealtHit
     {
         /*

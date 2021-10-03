@@ -1,6 +1,7 @@
 using Aero.Gen.Attributes;
 using AeroMessages.Common;
 using System.Numerics;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Turret
 {
     [AeroBlock]
@@ -52,6 +53,7 @@ namespace AeroMessages.GSS.Turret
     }
 
     [Aero]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 40, 1)]
     public partial class Turret_ObserverView_Update
     {
         [AeroArray(-22)]

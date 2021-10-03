@@ -1,5 +1,6 @@
 using Aero.Gen.Attributes;
 using static Aero.Gen.Attributes.AeroIfAttribute;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 using System.Numerics;
 using System;
@@ -47,6 +48,7 @@ namespace AeroMessages.GSS.Character
     }
 
     [Aero]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 9, 1)]
     public partial class Character_EquipmentView_Update
     {
         [AeroArray(-20)]

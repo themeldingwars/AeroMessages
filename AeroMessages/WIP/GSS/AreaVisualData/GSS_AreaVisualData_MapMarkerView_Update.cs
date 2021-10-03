@@ -10,6 +10,7 @@ META_END
  */
 using Aero.Gen.Attributes;
 using static Aero.Gen.Attributes.AeroIfAttribute;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 using System.Numerics;
 using System;
@@ -135,6 +136,7 @@ namespace AeroMessages.GSS.AreaVisualData
     }
 
     [Aero]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 22, 1)]
     public partial class AreaVisualData_MapMarkerView_Update
     {
         [AeroArray(-68)]

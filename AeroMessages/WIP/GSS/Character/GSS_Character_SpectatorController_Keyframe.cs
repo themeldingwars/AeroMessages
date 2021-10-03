@@ -10,12 +10,14 @@ META_END
  */
 using Aero.Gen.Attributes;
 using static Aero.Gen.Attributes.AeroIfAttribute;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 using System.Numerics;
 using System;
 namespace AeroMessages.GSS.Character
 {
     [Aero]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 7, 4)]
     public partial class Character_SpectatorController_Keyframe
     {
         [Flags]

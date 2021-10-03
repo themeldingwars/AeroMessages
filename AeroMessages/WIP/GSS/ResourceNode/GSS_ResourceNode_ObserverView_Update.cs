@@ -1,5 +1,6 @@
 using Aero.Gen.Attributes;
 using static Aero.Gen.Attributes.AeroIfAttribute;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 using System.Numerics;
 using System;
@@ -245,6 +246,7 @@ namespace AeroMessages.GSS.ResourceNode
     }
 
     [Aero]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 48, 1)]
     public partial class ResourceNode_ObserverView_Update
     {
         [AeroArray(-148)]

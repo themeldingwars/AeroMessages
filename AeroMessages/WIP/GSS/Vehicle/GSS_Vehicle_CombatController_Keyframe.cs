@@ -10,12 +10,14 @@ META_END
  */
 using Aero.Gen.Attributes;
 using static Aero.Gen.Attributes.AeroIfAttribute;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 using System.Numerics;
 using System;
 namespace AeroMessages.GSS.Vehicle
 {
     [Aero]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 28, 4)]
     public partial class Vehicle_CombatController_Keyframe
     {
         [Flags]

@@ -10,12 +10,14 @@ META_END
  */
 using Aero.Gen.Attributes;
 using static Aero.Gen.Attributes.AeroIfAttribute;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 using System.Numerics;
 using System;
 namespace AeroMessages.GSS.CarryableObject
 {
     [Aero]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 51, 3)]
     public partial class CarryableObject_ObserverView_Keyframe
     {
         [Flags]

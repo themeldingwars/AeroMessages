@@ -10,12 +10,14 @@ META_END
  */
 using Aero.Gen.Attributes;
 using static Aero.Gen.Attributes.AeroIfAttribute;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
-using System.Numerics;
 using System;
+using System.Numerics;
 namespace AeroMessages.GSS.AreaVisualData
 {
     [Aero]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 25, 3)]
     public partial class AreaVisualData_ForceShieldView_Keyframe
     {
         [Flags]

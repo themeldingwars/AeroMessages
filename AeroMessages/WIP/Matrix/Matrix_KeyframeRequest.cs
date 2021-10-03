@@ -8,9 +8,11 @@ META_END
 using System.Numerics;
 using System.Runtime.InteropServices;
 using Aero.Gen.Attributes;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.Matrix
 {
     [Aero]
+    [AeroMessageId(MsgType.Matrix, MsgSrc.Command, 20)]
     public partial class Matrix_KeyframeRequest
     {
         public byte HaveRequestByEntityID;

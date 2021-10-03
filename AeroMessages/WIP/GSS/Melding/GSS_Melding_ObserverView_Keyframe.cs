@@ -1,9 +1,11 @@
 using Aero.Gen.Attributes;
 using AeroMessages.Common;
 using System.Numerics;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Melding
 {
     [Aero]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 16, 3)]
     public partial class Melding_ObserverView_Keyframe
     {
         [AeroString]

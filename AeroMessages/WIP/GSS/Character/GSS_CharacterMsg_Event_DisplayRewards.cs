@@ -9,9 +9,11 @@ META_BEGIN
 META_END
  */
 using Aero.Gen.Attributes;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Character
 {
     [Aero]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 133)]
     public partial class Character_Event_DisplayRewards
     {
         public uint IndexId; // Used by client when claiming

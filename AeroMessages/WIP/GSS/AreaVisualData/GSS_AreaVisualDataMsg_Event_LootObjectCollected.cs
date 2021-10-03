@@ -9,10 +9,12 @@ META_BEGIN
 META_END
  */
 using Aero.Gen.Attributes;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 namespace AeroMessages.GSS.AreaVisualData
 {
     [Aero]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 24, 83)]
     public partial class AreaVisualData_LootObjectView_LootObjectCollected
     {
         [AeroArray(4)]

@@ -6,9 +6,11 @@ META_BEGIN
 META_END
  */
 using Aero.Gen.Attributes;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.Matrix
 {
     [Aero]
+    [AeroMessageId(MsgType.Matrix, MsgSrc.Message, 35)]
     public partial class Matrix_WelcomeToTheMatrix
     {
         public ulong PlayerID;

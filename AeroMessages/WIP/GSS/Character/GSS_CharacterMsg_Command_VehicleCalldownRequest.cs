@@ -9,10 +9,12 @@ META_BEGIN
 META_END
  */
 using Aero.Gen.Attributes;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using System.Numerics;
 namespace AeroMessages.GSS.Character
 {
     [Aero]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 179)]
     public partial class Character_Command_VehicleCalldownRequest
     {
         [AeroSdb("vcs::VehicleInfo", "id")]

@@ -1,6 +1,7 @@
 using Aero.Gen.Attributes;
 using AeroMessages.Common;
 using System.Numerics;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Melding
 {
     [AeroBlock]
@@ -128,6 +129,7 @@ namespace AeroMessages.GSS.Melding
     }
 
     [Aero]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 45, 1)]
     public partial class Outpost_ObserverView_Update
     {
         [AeroArray(-70)]

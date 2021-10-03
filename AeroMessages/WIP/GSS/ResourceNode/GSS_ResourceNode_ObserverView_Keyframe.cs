@@ -1,5 +1,6 @@
 using Aero.Gen.Attributes;
 using static Aero.Gen.Attributes.AeroIfAttribute;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 using System.Numerics;
 using System;
@@ -7,6 +8,7 @@ namespace AeroMessages.GSS.ResourceNode
 {
     // TODO: Need a capture or replay of these, this is mostly guesswork based on shadowfields and what the client seems to like.
     [Aero]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 48, 3)]
     public partial class ResourceNode_ObserverView_Keyframe
     {
         [Flags]

@@ -11,9 +11,11 @@ META_END
 using Aero.Gen.Attributes;
 using AeroMessages.Common;
 using System.Numerics;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Vehicle
 {
     [Aero]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 31, 86)]
     public partial class Vehicle_Event_CurrentPoseUpdate
     {
         public byte Flags;

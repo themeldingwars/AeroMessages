@@ -9,9 +9,11 @@ META_BEGIN
 META_END
  */
 using Aero.Gen.Attributes;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Character
 {
     [Aero]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 130)]
     public partial class Character_Event_UnlocksUpdate
     {
         public byte ClearExistingData; // 1 for full update, 0 for partitial

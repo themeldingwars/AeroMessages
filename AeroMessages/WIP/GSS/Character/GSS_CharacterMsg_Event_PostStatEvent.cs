@@ -11,10 +11,11 @@ META_END
 using Aero.Gen.Attributes;
 using AeroMessages.Common;
 using static Aero.Gen.Attributes.AeroIfAttribute;
-
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Character
 {
     [Aero]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 184)]
     public partial class Character_Event_PostStatEvent
     {
         [AeroSdb("dbstats::Stat", "Id")]

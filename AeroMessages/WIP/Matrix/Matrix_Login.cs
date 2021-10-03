@@ -6,9 +6,11 @@ META_BEGIN
 META_END
  */
 using Aero.Gen.Attributes;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.Matrix
 {
     [Aero]
+    [AeroMessageId(MsgType.Matrix, MsgSrc.Command, 17)]
     public partial class Matrix_Login
     {
         public byte Unk1;

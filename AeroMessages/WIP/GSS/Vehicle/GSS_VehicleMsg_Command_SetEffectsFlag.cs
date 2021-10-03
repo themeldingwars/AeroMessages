@@ -9,9 +9,11 @@ META_BEGIN
 META_END
  */
 using Aero.Gen.Attributes;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Vehicle
 {
     [Aero]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 27, 90)]
     public partial class Vehicle_Command_SetEffectsFlag
     {
         public byte UnkByte1; // Not sure if this indicates the flag being toggled or if it's something that can be toggled in general.

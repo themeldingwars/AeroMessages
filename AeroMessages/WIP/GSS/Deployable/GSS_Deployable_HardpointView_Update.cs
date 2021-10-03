@@ -1,5 +1,6 @@
 using Aero.Gen.Attributes;
 using static Aero.Gen.Attributes.AeroIfAttribute;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 using System.Numerics;
 using System;
@@ -25,6 +26,7 @@ namespace AeroMessages.GSS.Deployable
     }
 
     [Aero]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 37, 1)]
     public partial class Deployable_HardpointView_Update
     {
         [AeroArray(-4)]

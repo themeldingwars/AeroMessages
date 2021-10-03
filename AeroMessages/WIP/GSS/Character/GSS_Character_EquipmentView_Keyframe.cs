@@ -11,9 +11,11 @@ META_END
 using Aero.Gen.Attributes;
 using AeroMessages.Common;
 using System.Numerics;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Character
 {
     [Aero]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 9, 3)]
     public partial class Character_EquipmentView_Keyframe
     {
         public VisualOverridesField VisualOverrides;

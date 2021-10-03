@@ -10,9 +10,11 @@ META_END
  */
 using Aero.Gen.Attributes;
 using AeroMessages.Common;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Character
 {
     [Aero]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 5, 105)]
     public partial class Character_Event_TookHit
     {
         // There are some variations of this message that don't include dealer entity.

@@ -5,11 +5,13 @@ META_BEGIN
     MsgName: EnterZone
 META_END
  */
-using Aero.Gen.Attributes;
 using System;
+using Aero.Gen.Attributes;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.Matrix
 {
     [Aero]
+    [AeroMessageId(MsgType.Matrix, MsgSrc.Message, 37)]
     public partial class Matrix_EnterZone
     {
         public ulong InstanceId;

@@ -10,11 +10,13 @@ META_END
  */
 using Aero.Gen.Attributes;
 using static Aero.Gen.Attributes.AeroIfAttribute;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using System.Numerics;
 using AeroMessages.Common;
 namespace AeroMessages.GSS.Character
 {
     [Aero]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 115)]
     public partial class Character_Command_MovementInput
     {
         public ushort ShortTime;

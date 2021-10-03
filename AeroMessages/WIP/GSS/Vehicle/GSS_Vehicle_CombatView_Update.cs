@@ -1,5 +1,6 @@
 using Aero.Gen.Attributes;
 using static Aero.Gen.Attributes.AeroIfAttribute;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 using System.Numerics;
 using System;
@@ -209,6 +210,7 @@ namespace AeroMessages.GSS.Vehicle
     }
 
     [Aero]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 30, 1)]
     public partial class Vehicle_CombatView_Update
     {
         [AeroArray(-126)]
