@@ -1,4 +1,5 @@
 ﻿using System;
+using Aero.Gen.Attributes;
 using AeroMessages.Matrix;
 
 namespace AeroMessages
@@ -14,6 +15,8 @@ namespace AeroMessages
             var size   = loginMsg.GetPackedSize();
             var packBuffer = new byte[size];
             loginMsg.Pack(packBuffer.AsSpan());
+
+            var routingTest = AeroRouting.GetNewMessageHandler(AeroMessageIdAttribute.MsgType.Matrix, AeroMessageIdAttribute.MsgSrc.Command, 1);
         }
     }
 }
