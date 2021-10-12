@@ -16,10 +16,6 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 86)]
     public partial class Generic_Event_ArcCompletionHistoryUpdate
     {
-        public ulong MaybeGUID;
-
-        public byte Unk1;
-
         [AeroArray(typeof(byte))]
         public ArcBlock[] Data;
     }
