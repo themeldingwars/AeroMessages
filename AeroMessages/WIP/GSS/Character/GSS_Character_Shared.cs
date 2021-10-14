@@ -311,4 +311,20 @@ namespace AeroMessages.GSS.Character
         public CharacterCombatFlags Value;
         public uint Time;
     }
+    
+    [Flags]
+    public enum MovementDataType : byte
+    {
+        Velocity  = 0,
+        PosAndRot = 1,
+        Aim       = 2
+    }
+    
+    [AeroBlock]
+    public struct MovementPosAndRot
+    {
+        public Vector3    Pos;
+        public Quaternion Rot;
+        public short      MovementState;
+    }
 }

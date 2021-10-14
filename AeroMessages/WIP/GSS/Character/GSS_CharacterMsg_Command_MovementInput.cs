@@ -27,18 +27,19 @@ namespace AeroMessages.GSS.Character
         public byte Unk6;
 
         // Movement state
-        public ushort MovementUnk1;
-        public byte MovementType;
-        public byte MovementUnk3;
+        // TODO: Break this out into its own block and share with Character_Event_ConfirmedPoseUpdate?
+        public ushort           MovementUnk1;
+        public MovementDataType MovementType;
+        public byte             MovementUnk3;
 
 
-        [AeroIf(nameof(MovementType), Ops.HasFlag, 1)]
-        public MovementType1 Data1;
+        [AeroIf(nameof(MovementType), Ops.HasFlag, MovementDataType.PosAndRot)]
+        public MovementPosAndRot PosAndRot;
 
         public Vector3 Velocity;
 
-        [AeroIf(nameof(MovementType), Ops.HasFlag, 2)]
-        public MovementType2 Data2;
+        [AeroIf(nameof(MovementType), Ops.HasFlag, MovementDataType.Aim)]
+        public Vector3 Aim;
 
         public ushort JetpackEnergy;
         public short GroundTimePositiveAirTimeNegative;
@@ -46,19 +47,4 @@ namespace AeroMessages.GSS.Character
 
         public ushort EndShort;
     }
-
-    [AeroBlock]
-    public struct MovementType1
-    {
-        public Vector3 MovementType1_Position;
-        public Quaternion MovementType1_Rotation;
-        public short MovementType1_State;
-    }
-
-    [AeroBlock]
-    public struct MovementType2
-    {
-        public Vector3 MovementType2_AimDirection;
-    }
-
 }
