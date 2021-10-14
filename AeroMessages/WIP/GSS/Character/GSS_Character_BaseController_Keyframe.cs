@@ -61,12 +61,12 @@ namespace AeroMessages.GSS.Character
         [Flags]
         public enum BitfieldMask2 : byte
         {
-            SinCardFields_17       = 1U << 0, // << 32,
-            SinCardFields_18       = 1U << 1, // << 33,
-            SinCardFields_19       = 1U << 2, // << 34,
-            SinCardFields_20       = 1U << 3, // << 35,
-            SinCardFields_21       = 1U << 4, // << 36,
-            SinCardFields_22       = 1U << 5, // << 37,
+            SinCardFields_17       = 1 << 0, // << 32,
+            SinCardFields_18       = 1 << 1, // << 33,
+            SinCardFields_19       = 1 << 2, // << 34,
+            SinCardFields_20       = 1 << 3, // << 35,
+            SinCardFields_21       = 1 << 4, // << 36,
+            SinCardFields_22       = 1 << 5, // << 37,
         }
 
         public ulong PlayerId; // Controller / Msg4 Specific
