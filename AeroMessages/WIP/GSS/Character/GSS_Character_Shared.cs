@@ -202,7 +202,7 @@ namespace AeroMessages.GSS.Character
     {
         [AeroSdb("dbitems::RootItem", "sdb_id")]
         public uint SdbId;
-        public uint SlotIndex;
+        public byte SlotIndex;
 
         [AeroArray(2)]
         public byte[] Unk;
