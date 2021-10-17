@@ -130,7 +130,7 @@ namespace AeroMessages.GSS.Character
         public uint Color;
 
         [AeroArray(3)]
-        public HalfVector4 Transform; // TODO: Verify
+        public HalfVector4[] Transform; // TODO: Verify
 
         public byte Usage;
     }

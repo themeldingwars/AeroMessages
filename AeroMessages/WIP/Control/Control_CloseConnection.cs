@@ -14,6 +14,6 @@ namespace AeroMessages.Control
     public partial class Control_CloseConnection
     {
         [AeroArray(3)]
-        public float Unk;
+        public float[] Unk;
     }
 }
