@@ -289,7 +289,7 @@ namespace AeroMessages.GSS.Character
 
         public byte AssetOverrides; // TODO: Verify, probably an array 
 
-        public byte FriendCount;
+        public ushort FriendCount;
 
         public CAISStatusData CAISStatus;
 
