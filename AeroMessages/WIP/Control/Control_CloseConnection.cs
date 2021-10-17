@@ -13,7 +13,7 @@ namespace AeroMessages.Control
     [AeroMessageId(MsgType.Control, MsgSrc.Both, 0)]
     public partial class Control_CloseConnection
     {
-        [AeroArray(3)]
-        public float[] Unk;
+        [AeroArray(4)]
+        public byte[] Unk;
     }
 }
