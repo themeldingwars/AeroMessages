@@ -382,7 +382,7 @@ namespace AeroMessages.GSS.Character
         [AeroIf(nameof(Idx), ShadowFieldIndex.AssetOverrides)]
         public byte AssetOverrides;
         [AeroIf(nameof(Idx), ShadowFieldIndex.FriendCount)]
-        public byte FriendCount;
+        public ushort FriendCount;
         [AeroIf(nameof(Idx), ShadowFieldIndex.CAISStatus)]
         public CAISStatusData CAISStatus;
         [AeroIf(nameof(Idx), ShadowFieldIndex.ScalingLevel)]

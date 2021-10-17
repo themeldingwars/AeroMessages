@@ -109,7 +109,7 @@ namespace AeroMessages.GSS.Character
         [AeroIf(nameof(Idx), ShadowFieldIndex.OwnerId)]
         public ulong OwnerId;
         [AeroIf(nameof(Idx), ShadowFieldIndex.NPCType)]
-        public uint NPCType;
+        public ushort NPCType;
 
         [AeroIf(nameof(Idx), ShadowFieldIndex.DockedParams)]
         [AeroArray(21)]
