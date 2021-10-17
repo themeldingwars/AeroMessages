@@ -14,7 +14,7 @@ using System.Numerics;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Character
 {
-    [Aero]
+    /*[Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 12, 3)]
     public partial class Character_MovementView_Keyframe
     {
@@ -29,5 +29,5 @@ namespace AeroMessages.GSS.Character
         public Vector3 Aim;
         public ushort MovementState;
         public uint Time;
-    }
+    }*/
 }

@@ -4,6 +4,8 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 using System.Numerics;
 using System;
+using AeroMessages.GSS.Character.MovementView;
+
 namespace AeroMessages.GSS.Character
 {
     [AeroBlock]
