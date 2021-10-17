@@ -18,21 +18,36 @@ namespace AeroMessages.GSS.Character
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 5, 107)]
     public partial class Character_Event_DealtHit
     {
-        /*
+        public byte UnknownFlag;
+
+        [AeroIf(nameof(UnknownFlag), 0)]
+        public Variation0 Type0;
+
+        [AeroIf(nameof(UnknownFlag), 1)]
+        public Variation1 Type1;
+        
+    }
+
+    [AeroBlock]
+    public struct Variation0
+    {
+        public byte Unk1;
+        public byte Unk2;
+    }
+
+    [AeroBlock]
+    public struct Variation1
+    {
         [Flags]
         public enum DamageResponseFlags : byte
         {
-            Critical = 0,
-            Unk = 1,
-            Effective = 3,
-            Resisted = 4
+            Critical  = 1 << 0,
+            Unk       = 1 << 1,
+            Effective = 1 << 2,
+            Resisted  = 1 << 3,
+            Immune    = 12,
         }
-        */
 
-        // There are some variations of this message that don't include target and/or dealer entity and I'm not sure the parsing works properly then.
-        // TookHit has similiar variation.
-        public byte HaveTargetEntity;
-        [AeroIf(nameof(HaveTargetEntity), 1)]
         public EntityId TargetEntity;
 
         public byte HaveDealerEntity;
@@ -42,7 +57,7 @@ namespace AeroMessages.GSS.Character
         public uint DamageValue;
 
         [AeroSdb("dbcharacter::DamageType", "id")]
-        public byte DamageType; // Sdb table 330, id column
+        public byte DamageType;
 
         public byte Unk_3_byte;
 
@@ -52,6 +67,6 @@ namespace AeroMessages.GSS.Character
         // 4 - Effective
         // 8 - Resisted
         // (Effective+Resisted => Immune)
-        public byte DamageFlags;
+        public DamageResponseFlags DamageFlags;
     }
 }
