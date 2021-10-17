@@ -20,8 +20,36 @@ namespace AeroMessages.GSS.Character
     {
         public byte ClearExistingData; // 1 for full update, 0 for partitial
 
-        [AeroArray(typeof(byte))] // TODO: Aero needs support for handling additional bytes if size is 255
-        public Item[] Items;
+
+        // TODO: Aero needs support for handling additional entries if size is 255
+        // TEMP: Hack that supports up to 765 items
+        public byte ItemsPart1Length;
+        [AeroIf(nameof(ItemsPart1Length), Ops.Equal, 255)]
+        [AeroArray(255)]
+        public Item[] ItemsPart1Full;
+
+        [AeroIf(nameof(ItemsPart1Length), Ops.NotEqual, 255)]
+        [AeroArray(nameof(ItemsPart1Length))] 
+        public Item[] ItemsPart1;
+
+        [AeroIf(nameof(ItemsPart1Length), Ops.Equal, 255)]
+        public byte ItemsPart2Length;
+
+        [AeroIf(nameof(ItemsPart2Length), Ops.Equal, 255)]
+        [AeroArray(255)]
+        public Item[] ItemsPart2Full;
+
+        [AeroIf(nameof(ItemsPart2Length), Ops.NotEqual, 255)]
+        [AeroArray(nameof(ItemsPart2Length))] 
+        public Item[] ItemsPart2;
+
+        [AeroIf(nameof(ItemsPart2Length), Ops.Equal, 255)]
+        public byte ItemsPart3Length;
+
+        [AeroIf(nameof(ItemsPart3Length), Ops.NotEqual, 255)]
+        [AeroArray(nameof(ItemsPart3Length))] 
+        public Item[] ItemsPart3;
+        // ---
 
         [AeroArray(typeof(byte))]
         public Resource[] Resources;
@@ -150,21 +178,21 @@ namespace AeroMessages.GSS.Character
         [AeroArray(8)]
         public byte[] Unk1;
 
-        [AeroIf(nameof(VisualType), Ops.HasFlag, LoadoutVisualType.Palette)]
+        [AeroIf(nameof(VisualType), Ops.Equal, LoadoutVisualType.Palette)]
         public byte Palette_Unk;
         
-        [AeroIf(nameof(VisualType), Ops.HasFlag, LoadoutVisualType.Pattern)]
+        [AeroIf(nameof(VisualType), Ops.Equal, LoadoutVisualType.Pattern)]
         [AeroArray(typeof(byte))]
         public float[] Pattern_Transform;
 
-        [AeroIf(nameof(VisualType), Ops.HasFlag, LoadoutVisualType.Decal)]
+        [AeroIf(nameof(VisualType), Ops.Equal, LoadoutVisualType.Decal)]
         [AeroArray(typeof(byte))]
         public float[] Decal_Transform;
 
-        [AeroIf(nameof(VisualType), Ops.HasFlag, LoadoutVisualType.Glider)]
+        [AeroIf(nameof(VisualType), Ops.Equal, LoadoutVisualType.Glider)]
         public byte Glider_Unk;
 
-        [AeroIf(nameof(VisualType), Ops.HasFlag, LoadoutVisualType.Vehicle)]
+        [AeroIf(nameof(VisualType), Ops.Equal, LoadoutVisualType.Vehicle)]
         public byte Vehicle_Unk;
     }
 }
