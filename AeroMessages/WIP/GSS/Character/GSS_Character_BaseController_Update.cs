@@ -129,13 +129,12 @@ namespace AeroMessages.GSS.Character
 
         public ShadowFieldIndex Idx;
 
-
         [AeroIf(nameof(Idx), ShadowFieldIndex.TimePlayed)]
         public uint TimePlayed;
         [AeroIf(nameof(Idx), ShadowFieldIndex.CurrentWeight)]
-        public byte CurrentWeight;
+        public uint CurrentWeight;
         [AeroIf(nameof(Idx), ShadowFieldIndex.EncumberedWeight)]
-        public byte EncumberedWeight;
+        public uint EncumberedWeight;
         [AeroIf(nameof(Idx), ShadowFieldIndex.AuthorizedTerminal)]
         public AuthorizedTerminalData AuthorizedTerminal;
         [AeroIf(nameof(Idx), ShadowFieldIndex.PingTime)]

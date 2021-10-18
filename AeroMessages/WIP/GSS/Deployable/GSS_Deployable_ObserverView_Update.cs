@@ -305,7 +305,9 @@ namespace AeroMessages.GSS.Deployable
 
 
         // TODO: Bitfield - ForcedMovement
-        // [AeroIf(nameof(Idx), ShadowFieldIndex.ForcedMovement)]
+        [AeroIf(nameof(Idx), ShadowFieldIndex.ForcedMovement)]
+        [AeroArray(30)]
+        public byte[] ForcedMovement;
 
         [AeroIf(nameof(Idx), ShadowFieldIndex.SinFlags)]
         public byte SinFlags;

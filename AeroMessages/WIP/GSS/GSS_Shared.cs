@@ -59,7 +59,7 @@ namespace AeroMessages.GSS
             Enum = 4,
             UnkType_5 = 5,
             Short = 6,
-            Timer = 7,
+            Timer = 7, // ? Maybe entity?
             Boolean = 8,
         }
 
@@ -80,6 +80,10 @@ namespace AeroMessages.GSS
 
         [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Short)]
         public ushort Short;
+
+        [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Timer)]
+        [AeroArray(9)]
+        public byte[] Timer;
     }
 
     [AeroBlock]
