@@ -139,7 +139,7 @@ namespace AeroMessages.GSS.CarryableObject
         [AeroIf(nameof(Idx), ShadowFieldIndex.Orientation)]
         public Quaternion Orientation;
         [AeroIf(nameof(Idx), ShadowFieldIndex.Hostility)]
-        public HostilityData Hostility;
+        public HostilityInfoData Hostility;
         [AeroIf(nameof(Idx), ShadowFieldIndex.PersonalFactionStance)]
         public PersonalFactionStanceData PersonalFactionStance;
         [AeroIf(nameof(Idx), ShadowFieldIndex.CarryingCharacterId)]

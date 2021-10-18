@@ -1,6 +1,8 @@
 using Aero.Gen.Attributes;
 using AeroMessages.Common;
 using System.Numerics;
+using static Aero.Gen.Attributes.AeroIfAttribute;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS
 {
     [AeroBlock]
@@ -8,20 +10,14 @@ namespace AeroMessages.GSS
     {
         public enum HostilityMode: byte
         {
+            None = 0,
             PvE = 1, // Id is Faction Id
             PvP = 2, // Id is Team Id
         }
         public HostilityMode Mode;
+
+        [AeroIf(nameof(Mode), Ops.NotEqual, HostilityMode.None)]
         public byte Id; // Faction/Team Id
-    }
-
-    [AeroBlock]
-    public struct HostilityData
-    {
-        public byte HaveHostility;
-
-        [AeroIf(nameof(HaveHostility), 1)]
-        public byte Id;
     }
 
     [AeroBlock]

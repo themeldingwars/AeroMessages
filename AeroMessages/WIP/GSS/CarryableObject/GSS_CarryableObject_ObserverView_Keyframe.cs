@@ -103,13 +103,13 @@ namespace AeroMessages.GSS.CarryableObject
         public Vector3 Position;
         public Quaternion Orientation;
 
-        public HostilityData Hostility; // Different from usual?
+        public HostilityInfoData Hostility;
 
         [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.PersonalFactionStance)]
         public PersonalFactionStanceData PersonalFactionStance;
 
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.CarryingCharacterId)]
         public EntityId CarryingCharacterId;
-
 
         [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.ForcedMovement)]
         [AeroArray(30)]
