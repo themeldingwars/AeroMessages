@@ -245,8 +245,8 @@ namespace AeroMessages.GSS.ResourceNode
         public ScopeBubbleInfoData ScopeBubbleInfo;
     }
 
-    [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 48, 1)]
+    //[Aero]
+    //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 48, 1)]
     public partial class ResourceNode_ObserverView_Update
     {
         [AeroArray(-148)]

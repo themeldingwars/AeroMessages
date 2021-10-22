@@ -135,8 +135,8 @@ namespace AeroMessages.GSS.AreaVisualData
         public MapMarkerData MapMarkers_34;
     }
 
-    [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 22, 1)]
+    //[Aero]
+    //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 22, 1)]
     public partial class AreaVisualData_MapMarkerView_Update
     {
         [AeroArray(-68)]

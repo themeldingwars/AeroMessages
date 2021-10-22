@@ -120,8 +120,8 @@ namespace AeroMessages.GSS.AreaVisualData
         */
     }
 
-    [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 20, 1)]
+    //[Aero]
+    //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 20, 1)]
     public partial class AreaVisualData_ObserverView_Update
     {
         [AeroArray(-60)]

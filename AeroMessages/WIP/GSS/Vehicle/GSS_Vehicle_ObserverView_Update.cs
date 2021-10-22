@@ -239,8 +239,8 @@ namespace AeroMessages.GSS.Vehicle
         public uint ScalingLevel;
     }
 
-    [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 29, 1)]
+    //[Aero]
+    //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 29, 1)]
     public partial class Vehicle_ObserverView_Update
     {
         [AeroArray(-124)]

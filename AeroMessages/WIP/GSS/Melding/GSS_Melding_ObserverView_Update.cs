@@ -27,8 +27,8 @@ namespace AeroMessages.GSS.Melding
         public ScopeBubbleInfoData ScopeBubbleInfo;
     }
 
-    [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 16, 1)]
+    //[Aero]
+    //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 16, 1)]
     public partial class Melding_ObserverView_Update
     {
         [AeroArray(-6)]

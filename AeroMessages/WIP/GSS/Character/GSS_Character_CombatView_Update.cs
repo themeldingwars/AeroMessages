@@ -348,8 +348,8 @@ namespace AeroMessages.GSS.Character
         public byte[] MimicOffset; // Many cases of values but not sure what they are, hardly fitting for floats, maybe something packed
     }
 
-    [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 11, 1)]
+    //[Aero]
+    //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 11, 1)]
     public partial class Character_CombatView_Update
     {
         [AeroArray(-216)]

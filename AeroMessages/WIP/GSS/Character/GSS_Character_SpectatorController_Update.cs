@@ -28,8 +28,8 @@ namespace AeroMessages.GSS.Character
         // --
     }
 
-    [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 7, 1)]
+    //[Aero]
+    //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 7, 1)]
     public partial class Character_SpectatorController_Update
     {
         [AeroArray(-6)]

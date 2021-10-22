@@ -188,8 +188,8 @@ namespace AeroMessages.GSS.Character
         public byte AssetOverrides;
     }
 
-    [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 8, 1)]
+    //[Aero]
+    //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 8, 1)]
     public partial class Character_ObserverView_Update
     {
         [AeroArray(-100)]

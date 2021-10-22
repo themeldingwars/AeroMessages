@@ -87,8 +87,8 @@ namespace AeroMessages.GSS.AreaVisualData
         public ParticleEffect ParticleEffects_19;
     }
 
-    [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 21, 1)]
+    //[Aero]
+    //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 21, 1)]
     public partial class AreaVisualData_ParticleEffectsView_Update
     {
         [AeroArray(-60)]

@@ -23,8 +23,8 @@ namespace AeroMessages.GSS.Vehicle
         public Vector3 SpawnVelocity;
     }
 
-    [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 31, 1)]
+    //[Aero]
+    //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 31, 1)]
     public partial class Vehicle_MovementView_Update
     {
         [AeroArray(-4)]

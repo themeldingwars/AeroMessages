@@ -245,8 +245,8 @@ namespace AeroMessages.GSS.Vehicle
         public uint SlottedAbility_8;
     }
 
-    [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 28, 1)]
+    //[Aero]
+    //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 28, 1)]
     public partial class Vehicle_CombatController_Update
     {
         [AeroArray(-144)]

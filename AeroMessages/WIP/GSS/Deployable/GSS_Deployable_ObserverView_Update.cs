@@ -432,8 +432,8 @@ namespace AeroMessages.GSS.Deployable
         public byte AppendageHealthPct_7;
     }
 
-    [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 35, 1)]
+    //[Aero]
+    //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 35, 1)]
     public partial class Deployable_ObserverView_Update
     {
         [AeroArray(-6)]

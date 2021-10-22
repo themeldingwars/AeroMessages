@@ -129,8 +129,8 @@ namespace AeroMessages.GSS.AreaVisualData
         public ScopeBubbleInfoData ScopeBubbleInfo;
     }
 
-    [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 25, 1)]
+    //[Aero]
+    //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 25, 1)]
     public partial class AreaVisualData_ForceShieldView_Update
     {
         [AeroArray(-66)]

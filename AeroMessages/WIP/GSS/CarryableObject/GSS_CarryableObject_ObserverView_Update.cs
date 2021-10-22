@@ -341,8 +341,8 @@ namespace AeroMessages.GSS.CarryableObject
 
     }
 
-    [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 51, 1)]
+    //[Aero]
+    //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 51, 1)]
     public partial class CarryableObject_ObserverView_Update
     {
         [AeroArray(-206)]

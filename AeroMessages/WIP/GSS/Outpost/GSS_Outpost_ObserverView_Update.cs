@@ -128,8 +128,8 @@ namespace AeroMessages.GSS.Melding
 
     }
 
-    [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 45, 1)]
+    //[Aero]
+    //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 45, 1)]
     public partial class Outpost_ObserverView_Update
     {
         [AeroArray(-70)]

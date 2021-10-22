@@ -313,4 +313,30 @@ namespace AeroMessages.GSS.Deployable
         public byte AppendageHealthPct_6;
         public byte AppendageHealthPct_7;
     }
+
+
+    [AeroBlock]
+    public struct ForcedMovementData
+    {
+        public byte Flags;
+
+        [AeroArray(5)]
+        public byte[] Unk2;
+
+        [AeroIf(nameof(Flags), 0x01)]
+        [AeroArray(30)]
+        public byte[] Data1;
+
+        [AeroIf(nameof(Flags), 0x05)]
+        [AeroArray(5)]
+        public byte[] Data5;
+
+
+        [AeroIf(nameof(Flags), Ops.NotEqual, 0x01)]
+        [AeroIf(nameof(Flags), Ops.NotEqual, 0x01)]
+        [AeroIf(nameof(Flags), Ops.NotEqual, 0x05)]
+        [AeroArray(999990)]
+        public byte[] DataErr;
+
+    }
 }

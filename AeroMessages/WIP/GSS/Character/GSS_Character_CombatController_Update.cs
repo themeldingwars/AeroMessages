@@ -381,8 +381,8 @@ namespace AeroMessages.GSS.Character
         public byte AppendageHealthPct_9;
     }
 
-    [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 5, 1)]
+    //[Aero]
+    //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 5, 1)]
     public partial class Character_CombatController_Update
     {
         [AeroArray(-244)]

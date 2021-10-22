@@ -123,8 +123,8 @@ namespace AeroMessages.GSS.AreaVisualData
         public TinyObjectData TinyObjects_31;
     }
 
-    [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 23, 1)]
+    //[Aero]
+    //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 23, 1)]
     public partial class AreaVisualData_TinyObjectView_Update
     {
         [AeroArray(-64)]

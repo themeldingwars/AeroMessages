@@ -113,8 +113,8 @@ namespace AeroMessages.GSS.Character
         public TinyObjectData TinyObjects_31;
     }
 
-    [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 13, 1)]
+    //[Aero]
+    //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 13, 1)]
     public partial class Character_TinyObjectView_Update
     {
         [AeroArray(-100)]

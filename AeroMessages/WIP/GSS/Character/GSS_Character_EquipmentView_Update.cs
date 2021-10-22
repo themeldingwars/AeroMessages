@@ -47,8 +47,8 @@ namespace AeroMessages.GSS.Character
         public uint EliteLevel;
     }
 
-    [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 9, 1)]
+    //[Aero]
+    //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 9, 1)]
     public partial class Character_EquipmentView_Update
     {
         [AeroArray(-20)]

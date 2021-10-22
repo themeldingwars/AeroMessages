@@ -277,8 +277,8 @@ namespace AeroMessages.GSS.Vehicle
 
     }
 
-    [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 27, 1)]
+    //[Aero]
+    //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 27, 1)]
     public partial class Vehicle_BaseController_Update
     {
         [AeroArray(-142)]

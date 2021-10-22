@@ -25,8 +25,8 @@ namespace AeroMessages.GSS.Deployable
         public HardpointChildIDData HardpointChildId;
     }
 
-    [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 37, 1)]
+    //[Aero]
+    ///[AeroMessageId(MsgType.GSS, MsgSrc.Message, 37, 1)]
     public partial class Deployable_HardpointView_Update
     {
         [AeroArray(-4)]

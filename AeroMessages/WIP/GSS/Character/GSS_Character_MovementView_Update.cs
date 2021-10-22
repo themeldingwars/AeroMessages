@@ -22,8 +22,8 @@ namespace AeroMessages.GSS.Character
         public MovementData Movement;
     }
 
-    [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 12, 1)]
+    //[Aero]
+    //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 12, 1)]
     public partial class Character_MovementView_Update
     {
         [AeroArray(-2)]

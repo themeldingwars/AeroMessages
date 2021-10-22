@@ -52,8 +52,8 @@ namespace AeroMessages.GSS.Turret
         public PersonalFactionStanceData PersonalFactionStance;
     }
 
-    [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 40, 1)]
+    //[Aero]
+    //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 40, 1)]
     public partial class Turret_ObserverView_Update
     {
         [AeroArray(-22)]

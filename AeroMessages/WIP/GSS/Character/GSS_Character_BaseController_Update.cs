@@ -399,8 +399,8 @@ namespace AeroMessages.GSS.Character
 
     }
 
-    [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 1)]
+    //[Aero]
+    //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 1)]
     public partial class Character_BaseController_Update
     {
         [AeroArray(-226)]

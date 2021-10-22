@@ -209,8 +209,8 @@ namespace AeroMessages.GSS.Vehicle
         public StatusEffectData StatusEffects_31;
     }
 
-    [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 30, 1)]
+    //[Aero]
+    //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 30, 1)]
     public partial class Vehicle_CombatView_Update
     {
         [AeroArray(-126)]

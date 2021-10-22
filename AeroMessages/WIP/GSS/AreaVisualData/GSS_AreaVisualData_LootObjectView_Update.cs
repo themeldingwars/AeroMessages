@@ -99,8 +99,8 @@ namespace AeroMessages.GSS.AreaVisualData
         public LootObjectData LootObjects_23;
     }
 
-    [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 24, 1)]
+    //[Aero]
+    //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 24, 1)]
     public partial class AreaVisualData_LootObjectView_Update
     {
         [AeroArray(-48)]
