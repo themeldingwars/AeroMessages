@@ -19,6 +19,6 @@ namespace AeroMessages.Common
         public byte LengthByte2;
         
         // Be careful if doing this style, it can break the inspector, should be fine for array or string lengths, but not in ifs
-        public int Length => (LengthByte2 != 0 ? (LengthByte2 | ((byte) LengthByte1 ^ 0x80) << 8) : (int) LengthByte1);
+        public int Length => (((int)LengthByte1 & 0x80) == 0x80 ? (LengthByte2 | ((byte) LengthByte1 ^ 0x80) << 8) : (int) LengthByte1);
     }
 }
