@@ -200,20 +200,20 @@ namespace AeroMessages.GSS.Deployable
 
         public uint GibVisualsID;
 
-
         // TODO: Bitfield - ForcedMovement
         [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.ForcedMovement)]
-        [AeroArray(30)]
-        public byte[] ForcedMovement;
+        public ForcedMovementData ForcedMovementData;
 
         public byte SinFlags;
 
         // TODO: Bitfield - SinFactionsAcquiredBy
-        // [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinFactionsAcquiredBy)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinFactionsAcquiredBy)]
+        public byte FIXME_SinFactionsAcquiredBy;
         // public SinFactionsAcquiredByData SinFactionsAcquiredBy;
         // --
         // TODO: Bitfield - SinTeamsAcquiredBy
-        // [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinTeamsAcquiredBy)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.SinTeamsAcquiredBy)]
+        public byte FIXME_SinTeamsAcquiredBy;
         // public SinTeamsAcquiredByData SinTeamsAcquiredBy;
         // --
 
@@ -293,17 +293,23 @@ namespace AeroMessages.GSS.Deployable
         public uint ScalingLevel;
 
         // TODO: Bitfield - AppendageHealthPools
-        /*
         [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.AppendageHealthPools_0)]
+        public byte FIXME_AppendageHealthPools_0;
         [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.AppendageHealthPools_1)]
+        public byte FIXME_AppendageHealthPools_1;
         [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.AppendageHealthPools_2)]
+        public byte FIXME_AppendageHealthPools_2;
         [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.AppendageHealthPools_3)]
+        public byte FIXME_AppendageHealthPools_3;
         [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.AppendageHealthPools_4)]
+        public byte FIXME_AppendageHealthPools_4;
         [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.AppendageHealthPools_5)]
+        public byte FIXME_AppendageHealthPools_5;
         [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.AppendageHealthPools_6)]
-        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.AppendageHealthPools_7)]     
-         */
-
+        public byte FIXME_AppendageHealthPools_6;
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.AppendageHealthPools_7)]
+        public byte FIXME_AppendageHealthPools_7;     
+        
         public byte AppendageHealthPct_0;
         public byte AppendageHealthPct_1;
         public byte AppendageHealthPct_2;
@@ -327,16 +333,22 @@ namespace AeroMessages.GSS.Deployable
         [AeroArray(30)]
         public byte[] Data1;
 
+        [AeroIf(nameof(Flags), 0x03)]
+        [AeroArray(74)]
+        public byte[] Data3;
+
         [AeroIf(nameof(Flags), 0x05)]
         [AeroArray(5)]
         public byte[] Data5;
 
+        [AeroIf(nameof(Flags), 0x09)]
+        [AeroArray(24)]
+        public byte[] Data9; // 2x uint (time), 4x float
 
         [AeroIf(nameof(Flags), Ops.NotEqual, 0x01)]
-        [AeroIf(nameof(Flags), Ops.NotEqual, 0x01)]
+        [AeroIf(nameof(Flags), Ops.NotEqual, 0x03)]
         [AeroIf(nameof(Flags), Ops.NotEqual, 0x05)]
-        [AeroArray(999990)]
-        public byte[] DataErr;
-
+        [AeroIf(nameof(Flags), Ops.NotEqual, 0x09)]
+        public byte FIXME_UNKNOWN_FLAGS;
     }
 }
