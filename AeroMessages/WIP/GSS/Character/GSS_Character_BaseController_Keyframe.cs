@@ -150,15 +150,15 @@ namespace AeroMessages.GSS.Character
 
         public ScopeBubbleInfoData ScopeBubbleInfo;
 
-        // TODO: Bitfield1 - CarryableObjects_0
-        // [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.CarryableObjects_0)]
-        // -
-        // TODO: Bitfield1 - CarryableObjects_1
-        // [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.CarryableObjects_1)]
-        // -
-        // TODO: Bitfield1 - CarryableObjects_2 
-        // [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.CarryableObjects_2)]
-        // -
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.CarryableObjects_0)]
+        public CarryableObject CarryableObjects_0;
+
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.CarryableObjects_1)]
+        public CarryableObject CarryableObjects_1;
+
+        [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.CarryableObjects_2)]
+        public CarryableObject CarryableObjects_2;
+
         // TODO: Bitfield1 - CachedAssets
         // [AeroIf(nameof(Bitfield1), Ops.DoesntHaveFlag, BitfieldMask1.CachedAssets)]
         // -

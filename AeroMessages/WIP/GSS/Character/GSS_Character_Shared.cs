@@ -327,4 +327,11 @@ namespace AeroMessages.GSS.Character
         public Quaternion Rot;
         public short      MovementState;
     }
+
+    [AeroBlock]
+    public struct CarryableObject
+    {
+        public EntityId Target;
+        public uint TypeId;
+    }
 }

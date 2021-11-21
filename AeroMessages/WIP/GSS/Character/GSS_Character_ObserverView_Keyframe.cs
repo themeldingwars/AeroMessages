@@ -103,14 +103,14 @@ namespace AeroMessages.GSS.Character
 
         public byte WaterLevelAndDesc;
 
-        // TODO: Bitfield - CarryableObjects_0
-        // [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.CarryableObjects_0)]
-        // -
-        // TODO: Bitfield - CarryableObjects_1
-        // [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.CarryableObjects_1)]
-        // -
-        // TODO: Bitfield - CarryableObjects_2 
-        // [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.CarryableObjects_2)]
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.CarryableObjects_0)]
+        public CarryableObject CarryableObjects_0;
+
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.CarryableObjects_1)]
+        public CarryableObject CarryableObjects_1;
+
+        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.CarryableObjects_2)]
+        public CarryableObject CarryableObjects_2;
 
         [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.RespawnTimes)]
         public RespawnTimesData RespawnTimes;
