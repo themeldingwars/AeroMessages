@@ -16,37 +16,35 @@ using System.Numerics;
 using System;
 namespace AeroMessages.GSS.Turret
 {
-    [Aero]
+    [Aero(true)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 40, 1)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 40, 3)]
-    public partial class Turret_ObserverView_Keyframe
+    public partial class Turret_ObserverView
     {
-        [Flags]
-        public enum BitfieldMask: byte
-        {
-            PersonalFactionStance = 1 << 0,
-        }
-
-        public BitfieldMask Bitfield;
-
         [AeroSdb("dbcharacter::Turret", "id")]
-        public uint Type;
-
-        public EntityId ParentObjId; // Turret_ObserverView is added to this Deployable entity, get "unhandled viewcode" error if not specified.
-        public byte ParentChildIndex; // Only observed 0x00
-        public EntityId GunnerId;
+        private uint Type;
         
-        public CurrentPoseStruct CurrentPose;
-
-        public uint ProcessDelay;
-        public uint WeaponBurstFired;
-        public uint WeaponBurstEnded;
-        public AmmoStruct Ammo;
-        public float FireRateModifier;
+        private EntityId ParentObjId; // Turret_ObserverView is added to this Deployable entity, get "unhandled viewcode" error if not specified.
         
-        public HostilityInfoData HostilityInfo;
-
-        [AeroIf(nameof(Bitfield), Ops.DoesntHaveFlag, BitfieldMask.PersonalFactionStance)]
-        public PersonalFactionStanceData PersonalFactionStance;
+        private byte ParentChildIndex; // Only observed 0x00
+        
+        private EntityId GunnerId;
+        
+        private CurrentPoseStruct CurrentPose;
+        
+        private uint ProcessDelay;
+        
+        private uint WeaponBurstFired;
+        
+        private uint WeaponBurstEnded;
+        
+        private AmmoStruct Ammo;
+        
+        private float FireRateModifier;
+        
+        private HostilityInfoData HostilityInfo;
+        
+        [AeroNullable] private PersonalFactionStanceData PersonalFactionStance;
     }
 
     [AeroBlock]

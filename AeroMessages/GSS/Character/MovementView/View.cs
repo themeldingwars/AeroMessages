@@ -11,12 +11,13 @@ META_END
 using Aero.Gen.Attributes;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
-namespace AeroMessages.GSS.Character.MovementView
+namespace AeroMessages.GSS.Character
 {
-    [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 12, 3)]
+    [Aero(true)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 12, 1)]  // update
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 12, 3)] // view keyframe
     public partial class Keyframe
     {
-        public MovementData Movement;
+        private MovementData Movement; 
     }
 }

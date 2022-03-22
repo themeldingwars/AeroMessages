@@ -54,9 +54,9 @@ namespace AeroMessages.GSS.Turret
 
     //[Aero]
     //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 40, 1)]
-    public partial class Turret_ObserverView_Update
+    /*public partial class Turret_ObserverView_Update
     {
         [AeroArray(-22)]
         public Turret_ObserverView_ShadowFieldUpdate[] Updates;
-    }
+    }*/
 }

@@ -1,14 +1,8 @@
-using Aero.Gen.Attributes;
-using static Aero.Gen.Attributes.AeroIfAttribute;
-using static Aero.Gen.Attributes.AeroMessageIdAttribute;
-using AeroMessages.Common;
-using System.Numerics;
-using System;
-using AeroMessages.GSS.Character.MovementView;
+
 
 namespace AeroMessages.GSS.Character
 {
-    [AeroBlock]
+    /*[AeroBlock]
     public struct Character_MovementView_ShadowFieldUpdate
     {
         public enum ShadowFieldIndex : byte
@@ -28,5 +22,5 @@ namespace AeroMessages.GSS.Character
     {
         [AeroArray(-2)]
         public Character_MovementView_ShadowFieldUpdate[] Updates;
-    }
+    }*/
 }

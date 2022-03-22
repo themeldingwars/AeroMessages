@@ -1,7 +1,7 @@
 ﻿using System.Numerics;
 using Aero.Gen.Attributes;
 
-namespace AeroMessages.GSS.Character.MovementView
+namespace AeroMessages.GSS.Character
 {
     [AeroBlock]
     public struct MovementData

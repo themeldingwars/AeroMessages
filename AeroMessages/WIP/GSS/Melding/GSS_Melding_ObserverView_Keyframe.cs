@@ -4,15 +4,15 @@ using System.Numerics;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Melding
 {
-    [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 16, 3)]
-    public partial class Melding_ObserverView_Keyframe
+    [Aero(true)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 16, 1)] // update
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 16, 3)] // view keyframe
+    public partial class Melding_ObserverView
     {
         [AeroString]
-        public string PerimiterSetName;
-
-        public ActiveDataStruct ActiveData;
-        public ScopeBubbleInfoData ScopeBubbleInfo;
+        private string PerimiterSetName;
+        private ActiveDataStruct    ActiveData;
+        private ScopeBubbleInfoData ScopeBubbleInfo;
     }
 
     [AeroBlock]

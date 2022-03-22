@@ -16,9 +16,9 @@ namespace AeroMessages.GSS.Character
 {
     /*[Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 12, 3)]
-    public partial class Character_MovementView_Keyframe
+    public partial class MovementView
     {
-        public MovementData Movement;
+        private MovementData Movement;
     }
 
     [AeroBlock]
