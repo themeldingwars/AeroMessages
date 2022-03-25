@@ -62,7 +62,7 @@ namespace AeroMessages.GSS.Vehicle
         private uint ProcessDelay;
         private HostilityInfoData HostilityInfo;
         
-        [AeroNullable] public PersonalFactionStanceData PersonalFactionStance;
+        [AeroNullable] private PersonalFactionStanceData PersonalFactionStance;
 
         private uint CurrentHealth;
         private uint MaxHealth;

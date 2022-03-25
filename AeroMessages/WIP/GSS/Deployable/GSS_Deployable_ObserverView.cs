@@ -168,7 +168,7 @@ namespace AeroMessages.GSS.Deployable
         [AeroNullable] private byte AppendageHealthPools_4;
         [AeroNullable] private byte AppendageHealthPools_5;
         [AeroNullable] private byte AppendageHealthPools_6;
-        [AeroNullable] private byte AppendageHealthPools_7;     
+        [AeroNullable] private byte AppendageHealthPools_7; 
         
         private byte AppendageHealthPct_0;
         private byte AppendageHealthPct_1;
