@@ -1,13 +1,3 @@
-/*
-META_BEGIN
-    MsgType: GSS
-    FromServer: True
-    TypeCode: 40
-    TypeName: Turret::ObserverView
-    MsgId: 3
-    MsgName: Keyframe
-META_END
- */
 using Aero.Gen.Attributes;
 using static Aero.Gen.Attributes.AeroIfAttribute;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
