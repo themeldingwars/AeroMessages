@@ -1,10 +1,11 @@
 using Aero.Gen.Attributes;
 using AeroMessages.Common;
 using System.Numerics;
+using Aero.Gen;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Deployable
 {
-    [Aero(true)]
+    [Aero(AeroGenTypes.View)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 37, 1)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 37, 3)]
     public partial class Deployable_HardpointView

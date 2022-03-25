@@ -1,10 +1,11 @@
 using Aero.Gen.Attributes;
 using AeroMessages.Common;
 using System.Numerics;
+using Aero.Gen;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Character
 {
-    [Aero(true)]
+    [Aero(AeroGenTypes.View)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 9, 1)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 9, 3)]
     public partial class Character_EquipmentView

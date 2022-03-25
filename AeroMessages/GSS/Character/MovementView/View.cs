@@ -8,12 +8,14 @@ META_BEGIN
     MsgName: Keyframe
 META_END
  */
+
+using Aero.Gen;
 using Aero.Gen.Attributes;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.Character
 {
-    [Aero(true)]
+    [Aero(AeroGenTypes.View)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 12, 1)]  // update
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 12, 3)] // view keyframe
     public partial class Keyframe

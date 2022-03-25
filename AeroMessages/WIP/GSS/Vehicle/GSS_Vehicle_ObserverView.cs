@@ -4,9 +4,11 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 using System.Numerics;
 using System;
+using Aero.Gen;
+
 namespace AeroMessages.GSS.Vehicle
 {
-    [Aero(true)]
+    [Aero(AeroGenTypes.View)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 29, 1)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 29, 3)]
     public partial class Vehicle_ObserverView

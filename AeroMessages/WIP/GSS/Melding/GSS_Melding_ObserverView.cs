@@ -1,10 +1,11 @@
 using Aero.Gen.Attributes;
 using AeroMessages.Common;
 using System.Numerics;
+using Aero.Gen;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Melding
 {
-    [Aero(true)]
+    [Aero(AeroGenTypes.View)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 16, 1)] // update
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 16, 3)] // view keyframe
     public partial class Melding_ObserverView

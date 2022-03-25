@@ -4,9 +4,11 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 using System.Numerics;
 using System;
+using Aero.Gen;
+
 namespace AeroMessages.GSS.AreaVisualData
 {
-    [Aero(true)]
+    [Aero(AeroGenTypes.View)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 20, 1)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 20, 3)]
     public partial class AreaVisualData_ObserverView

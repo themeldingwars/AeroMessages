@@ -4,9 +4,11 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 using System.Numerics;
 using System;
+using Aero.Gen;
+
 namespace AeroMessages.GSS.Deployable
 {
-    [Aero(true)]
+    [Aero(AeroGenTypes.View)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 35, 1)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 35, 3)]
     public partial class Deployable_ObserverView
