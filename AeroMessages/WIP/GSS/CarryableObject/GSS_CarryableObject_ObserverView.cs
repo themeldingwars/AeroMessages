@@ -29,9 +29,8 @@ namespace AeroMessages.GSS.CarryableObject
         [AeroNullable] private EntityId CarryingCharacterId;
 
         [AeroNullable]
-        [AeroArray(30)]
-        private byte[] ForcedMovement; // TODO: Needs indepth parsing, first byte is type/flags. Maybe use a shared struct, check Deployable.
-
+        private ForcedMovementData ForcedMovement;
+        
         private ushort StatusEffectsChangeTime_0;
         private ushort StatusEffectsChangeTime_1;
         private ushort StatusEffectsChangeTime_2;
@@ -182,5 +181,14 @@ namespace AeroMessages.GSS.CarryableObject
         public Vector3 Position;
         public Vector3 MaybeVelocity;
         public uint Time;
+    }
+
+
+    [AeroBlock]
+    public struct ForcedMovementData
+    {
+        [AeroArray(30)]
+        private byte[] ForcedMovement; // TODO: Needs indepth parsing, first byte is type/flags. Maybe use a shared struct, check Deployable.
+
     }
 }

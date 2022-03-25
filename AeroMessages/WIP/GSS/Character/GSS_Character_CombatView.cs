@@ -125,18 +125,24 @@ namespace AeroMessages.GSS.Character
         private byte AppendageHealthPct_8;
         private byte AppendageHealthPct_9;
 
-        [AeroNullable]
-        [AeroArray(8)]
-        private byte[] NPCTargetObjId;
+
 
         [AeroNullable]
-        [AeroArray(2)]
-        private byte[] BattleChatterTag;
+        private EntityId NPCTargetObjId;
+
+        [AeroNullable] private BattleChatterTagData BattleChatterTag;
 
         [AeroArray(8)]
         private byte[] MimicParent; // Have yet to find a proper example, but ends up being 0s consistently so thats good
 
         [AeroArray(12)]
         private byte[] MimicOffset; // Many cases of values but not sure what they are, hardly fitting for floats, maybe something packed
+    }
+
+    [AeroBlock]
+    public struct BattleChatterTagData
+    {
+        [AeroArray(2)]
+        public byte[] Tag;
     }
 }
