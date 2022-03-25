@@ -4,15 +4,16 @@ using System.Numerics;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.MeldingBubble
 {
-    [Aero]
+    [Aero(true)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 18, 1)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 18, 3)]
-    public partial class MeldingBubble_ObserverView_Keyframe
+    public partial class MeldingBubble_ObserverView
     {
-        public PositionStruct Position;
-        public RadiusStruct Radius;
-        public byte BubbleType;
-        public byte FxFlags;
-        public ScopeBubbleInfoData ScopeBubbleInfo;
+        private PositionStruct Position;
+        private RadiusStruct Radius;
+        private byte BubbleType;
+        private byte FxFlags;
+        private ScopeBubbleInfoData ScopeBubbleInfo;
     }
 
     [AeroBlock]
