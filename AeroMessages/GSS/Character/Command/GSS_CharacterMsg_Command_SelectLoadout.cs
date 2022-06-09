@@ -4,7 +4,7 @@ namespace AeroMessages.GSS.Character
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 150)]
-    public partial class Character_Combat_SelectLoadout
+    public partial class Character_Command_SelectLoadout
     {
         public uint LoadoutId;
         public byte Unk;

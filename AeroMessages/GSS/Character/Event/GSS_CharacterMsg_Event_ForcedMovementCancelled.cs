@@ -4,7 +4,7 @@ namespace AeroMessages.GSS.Character
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 5, 114)]
-    public partial class CharacterCombat_Event_ForcedMovementCancelled
+    public partial class Character_Event_ForcedMovementCancelled
     {
 
         [AeroSdb("apt::BaseCommandDef", "id")]

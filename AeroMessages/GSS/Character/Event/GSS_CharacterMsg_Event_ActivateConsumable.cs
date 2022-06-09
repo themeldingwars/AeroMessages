@@ -4,7 +4,7 @@ namespace AeroMessages.GSS.Character
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 5, 138)]
-    public partial class CharacterCombatControllerActivateConsumable
+    public partial class Character_Event_ActivateConsumable
     {
         public uint Time;
 
