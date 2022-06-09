@@ -101,7 +101,7 @@ namespace AeroMessages.GSS.Character
         private byte Level;
         private byte EffectiveLevel;
         private byte LevelResetCount;
-        private byte OldestDeployables; // TODO: Verify, probably an array
+        private OldestDeployablesData OldestDeployables;
         private uint PerkRespecs;
 
         [AeroNullable] private ArcStatusData ArcStatus;
@@ -269,6 +269,19 @@ namespace AeroMessages.GSS.Character
     [AeroBlock]
     public struct TimedDailyRewardResultData
     {
-        public byte TODO; // TODO
+        [AeroArray(25)]
+        public byte[] Unk;
     }
+
+    [AeroBlock]
+    public struct OldestDeployablesData
+    {
+        // Pure guesswork
+        public byte Unk1;
+        public EntityId Deployable;
+        public uint Unk2;
+        public byte Unk3;
+    }
+
+    
 }

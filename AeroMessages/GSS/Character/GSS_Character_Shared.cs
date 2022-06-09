@@ -339,7 +339,9 @@ namespace AeroMessages.GSS.Character
     [AeroBlock]
     public struct CinematicCameraData
     {
-        public byte TODO; // TODO
+        // msgidx gameplay:840302
+        [AeroArray(40)]
+        public byte[] Unk;
     }
 
     [AeroBlock]
