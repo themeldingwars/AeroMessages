@@ -3,7 +3,7 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Vehicle
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 28, 87)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Command, 28, 87)]
     public partial class Vehicle_Command_ActivateAbility
     {
         public uint Time;

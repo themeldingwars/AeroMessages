@@ -4,8 +4,8 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Vehicle
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 27, 83)]
-    public partial class Vehicle_Event_MovementInput
+    [AeroMessageId(MsgType.GSS, MsgSrc.Command, 27, 83)]
+    public partial class Vehicle_Command_MovementInput
     {   
         public Vector3 Position;
         public Quaternion Rotation;
