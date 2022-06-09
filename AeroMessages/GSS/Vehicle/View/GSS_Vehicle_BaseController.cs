@@ -4,11 +4,13 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 using System.Numerics;
 using System;
+using Aero.Gen;
+
 namespace AeroMessages.GSS.Vehicle
 {
-    [Aero]
+    [Aero(AeroGenTypes.Controller)]
     //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 27, 4)]
-    //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 27, 1)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 27, 1)]
     public partial class Vehicle_BaseController
     {
         [AeroSdb("vcs::VehicleInfo", "id")]
