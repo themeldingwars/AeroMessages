@@ -9,7 +9,7 @@ using Aero.Gen;
 namespace AeroMessages.GSS.Character
 {
     [Aero(AeroGenTypes.Controller)]
-    //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 1)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 1)]
     //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 4)]
     public partial class Character_BaseController
     {   

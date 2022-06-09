@@ -10,7 +10,7 @@ namespace AeroMessages.GSS.Character
 {
     [Aero(AeroGenTypes.Controller)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 7, 1)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 7, 4)]
+    //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 7, 4)]
     public partial class Character_SpectatorController
     {
         private uint PingTime;
