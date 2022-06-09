@@ -8,7 +8,7 @@ namespace AeroMessages
     {
         public Test()
         {
-            var loginMsg = new Login();
+            var loginMsg = new Matrix_Login();
             var buffer   = new byte[100];
             loginMsg.Unpack(buffer.AsSpan());
             
