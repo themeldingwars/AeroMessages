@@ -137,16 +137,16 @@ namespace AeroMessages.GSS.Character
         [AeroNullable] private byte AppendageHealthPools_8;
         [AeroNullable] private byte AppendageHealthPools_9;
 
-        public byte AppendageHealthPct_0;
-        public byte AppendageHealthPct_1;
-        public byte AppendageHealthPct_2;
-        public byte AppendageHealthPct_3;
-        public byte AppendageHealthPct_4;
-        public byte AppendageHealthPct_5;
-        public byte AppendageHealthPct_6;
-        public byte AppendageHealthPct_7;
-        public byte AppendageHealthPct_8;
-        public byte AppendageHealthPct_9;
+        private byte AppendageHealthPct_0;
+        private byte AppendageHealthPct_1;
+        private byte AppendageHealthPct_2;
+        private byte AppendageHealthPct_3;
+        private byte AppendageHealthPct_4;
+        private byte AppendageHealthPct_5;
+        private byte AppendageHealthPct_6;
+        private byte AppendageHealthPct_7;
+        private byte AppendageHealthPct_8;
+        private byte AppendageHealthPct_9;
     }
 
     
