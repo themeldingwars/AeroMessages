@@ -40,8 +40,7 @@ namespace AeroMessages.GSS.Character
         private ulong OwnerId;
         private ushort NPCType; // Could also be that DockedParams is 2 bytes shorter for ObserverView compared to BaseController
 
-        [AeroArray(21)]
-        private byte[] DockedParams;
+        private DockedParamsData DockedParams;
 
         [AeroNullable] private LookAtTargetData LookAtTarget;
 

@@ -164,6 +164,7 @@ namespace AeroMessages.GSS.Character
 
         public VisualsBlock ChassisVisuals;
 
+
         // Backpack
         public SlottedItem Backpack; // Reactor
 
@@ -333,5 +334,18 @@ namespace AeroMessages.GSS.Character
     {
         public EntityId Target;
         public uint TypeId;
+    }
+
+    [AeroBlock]
+    public struct CinematicCameraData
+    {
+        public byte TODO; // TODO
+    }
+
+    [AeroBlock]
+    public struct DockedParamsData
+    {
+        [AeroArray(21)]
+        private byte[] Unk;
     }
 }
