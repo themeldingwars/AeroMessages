@@ -281,8 +281,8 @@ namespace AeroMessages.GSS.Character
     [AeroBlock]
     public struct RespawnTimesData
     {
-        public uint Time1;
-        public uint Time2;
+        public uint ForcedAt;
+        public uint AvailableAt;
     }
 
     [AeroBlock]
