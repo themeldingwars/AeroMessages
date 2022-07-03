@@ -188,8 +188,10 @@ namespace AeroMessages.GSS.V66.Deployable.View
     {
         public byte Flags;
 
-        [AeroArray(5)]
+        [AeroArray(4)]
         public byte[] Unk2;
+
+        public byte Unk3;
 
         [AeroIf(nameof(Flags), 0x01)]
         [AeroArray(30)]
@@ -207,10 +209,15 @@ namespace AeroMessages.GSS.V66.Deployable.View
         [AeroArray(24)]
         public byte[] Data9; // 2x uint (time), 4x float
 
+        [AeroIf(nameof(Flags), 0x0b)]
+        [AeroArray(44)]
+        public byte[] Data11;
+
         [AeroIf(nameof(Flags), Ops.NotEqual, 0x01)]
         [AeroIf(nameof(Flags), Ops.NotEqual, 0x03)]
         [AeroIf(nameof(Flags), Ops.NotEqual, 0x05)]
         [AeroIf(nameof(Flags), Ops.NotEqual, 0x09)]
+        [AeroIf(nameof(Flags), Ops.NotEqual, 0x0b)]
         public byte FIXME_UNKNOWN_FLAGS;
     }
 }
