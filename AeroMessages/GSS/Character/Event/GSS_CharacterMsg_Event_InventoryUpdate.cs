@@ -48,7 +48,7 @@ namespace AeroMessages.GSS.Character
         public Loadout[] Loadouts;
 
         [AeroArray(3)]
-        public byte[] Unk_LastThree;
+        public byte[] Unk_LastThree; // Could it be that they are used to remove Items, Resources and Loadouts? Since the first ones are used to add/update.
     }
 
     [AeroBlock]
@@ -135,8 +135,13 @@ namespace AeroMessages.GSS.Character
         [AeroArray(typeof(byte))]
         public uint[] Perks;
         
-        [AeroArray(13)]
-        public byte[] Unk;
+        [AeroArray(4)]
+        public byte[] Unk1; // Feels like it should be related to perks, but couldn't find anything.
+
+        public uint PerkBandwidth;
+        public uint PerkRespecLockRemainingSeconds;
+
+        public byte Unk2; // Throws unpack error, maybe visual overrides
     }
 
     [AeroBlock]
@@ -145,44 +150,5 @@ namespace AeroMessages.GSS.Character
         [AeroSdb("dbitems::LoadoutSlot", "id")]
         public byte SlotIndex;
         public ulong ItemGUID;
-    }
-
-    [AeroBlock]
-    public struct LoadoutConfig_Visual
-    {
-        [Flags]
-        public enum LoadoutVisualType : byte {
-            Palette = 9,
-            Pattern = 10,
-            Decal = 11,
-
-            Glider = 13,
-            Vehicle = 14,
-        };
-
-        [AeroSdb("dbitems::RootItem", "sdb_id")]
-        public uint ItemSdbId;
-
-        public LoadoutVisualType VisualType;
-
-        [AeroArray(8)]
-        public byte[] Unk1;
-
-        [AeroIf(nameof(VisualType), Ops.Equal, LoadoutVisualType.Palette)]
-        public byte Palette_Unk;
-        
-        [AeroIf(nameof(VisualType), Ops.Equal, LoadoutVisualType.Pattern)]
-        [AeroArray(typeof(byte))]
-        public float[] Pattern_Transform;
-
-        [AeroIf(nameof(VisualType), Ops.Equal, LoadoutVisualType.Decal)]
-        [AeroArray(typeof(byte))]
-        public float[] Decal_Transform;
-
-        [AeroIf(nameof(VisualType), Ops.Equal, LoadoutVisualType.Glider)]
-        public byte Glider_Unk;
-
-        [AeroIf(nameof(VisualType), Ops.Equal, LoadoutVisualType.Vehicle)]
-        public byte Vehicle_Unk;
     }
 }

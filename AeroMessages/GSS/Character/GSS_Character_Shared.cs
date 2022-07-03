@@ -360,4 +360,28 @@ namespace AeroMessages.GSS.Character
         public ushort     MovementState;
         public uint       Time;
     }
+
+    [AeroBlock]
+    public struct LoadoutConfig_Visual
+    {
+        [Flags]
+        public enum LoadoutVisualType : byte {
+            Palette = 9,
+            Pattern = 10,
+            Decal = 11,
+
+            Glider = 13,
+            Vehicle = 14,
+        };
+
+        [AeroSdb("dbitems::RootItem", "sdb_id")]
+        public uint ItemSdbId;
+
+        public LoadoutVisualType VisualType;
+        public uint Data1; // Pattern: 1 == Armor, 2 == Bodysuit 
+        public uint Data2; // Color?
+
+        [AeroArray(typeof(byte))]
+        public float[] Transform;
+    }
 }
