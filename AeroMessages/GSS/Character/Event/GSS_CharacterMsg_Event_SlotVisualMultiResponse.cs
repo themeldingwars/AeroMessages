@@ -3,7 +3,7 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Character
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Event, 2, 156)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 156)]
     public partial class Character_Event_SlotVisualMultiResponse
     {   
         // Not confirmed that these are the loadout and config

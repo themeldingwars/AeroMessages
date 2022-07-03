@@ -10,7 +10,7 @@ namespace AeroMessages.GSS.Character
 {
     [Aero(AeroGenTypes.Controller)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 5, 1)]
-    //[AeroMessageId(MsgType.GSS, MsgSrc.Message, 5, 4)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 5, 4)]
     public partial class Character_CombatController
     {
         private ushort StatusEffectsChangeTime_0;

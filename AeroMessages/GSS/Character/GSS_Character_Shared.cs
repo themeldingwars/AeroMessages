@@ -213,7 +213,7 @@ namespace AeroMessages.GSS.Character
     public struct GibVisuals
     {
         [AeroSdb("dbcharacter::GibVisuals", "id")]
-        public uint GibVisualsId;
+        public uint Id;
         public uint Time;
     }
 
