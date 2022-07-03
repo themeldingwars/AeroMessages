@@ -162,4 +162,13 @@ namespace AeroMessages.GSS.V66
         public Vector3 Position;
         public HostilityInfoData HostilityInfo;
     }
+
+    [AeroBlock]
+    public struct AppendageHealthPoolData
+    {
+        public uint Unk1; // Health or a chain id?
+
+        [AeroArray(8)]
+        public byte[] Unk2;
+    }
 }

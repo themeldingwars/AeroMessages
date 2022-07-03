@@ -102,17 +102,16 @@ namespace AeroMessages.GSS.V66.Character.View
         private uint EquipmentLoadTime;
         private CombatFlagsData CombatFlags;
 
-        // TODO: Bitfield - AppendageHealthPools
-        [AeroNullable] private byte AppendageHealthPools_0;
-        [AeroNullable] private byte AppendageHealthPools_1;
-        [AeroNullable] private byte AppendageHealthPools_2;
-        [AeroNullable] private byte AppendageHealthPools_3;
-        [AeroNullable] private byte AppendageHealthPools_4;
-        [AeroNullable] private byte AppendageHealthPools_5;
-        [AeroNullable] private byte AppendageHealthPools_6;
-        [AeroNullable] private byte AppendageHealthPools_7;
-        [AeroNullable] private byte AppendageHealthPools_8;
-        [AeroNullable] private byte AppendageHealthPools_9;
+        [AeroNullable] private AppendageHealthPoolData AppendageHealthPools_0;
+        [AeroNullable] private AppendageHealthPoolData AppendageHealthPools_1;
+        [AeroNullable] private AppendageHealthPoolData AppendageHealthPools_2;
+        [AeroNullable] private AppendageHealthPoolData AppendageHealthPools_3;
+        [AeroNullable] private AppendageHealthPoolData AppendageHealthPools_4;
+        [AeroNullable] private AppendageHealthPoolData AppendageHealthPools_5;
+        [AeroNullable] private AppendageHealthPoolData AppendageHealthPools_6;
+        [AeroNullable] private AppendageHealthPoolData AppendageHealthPools_7;
+        [AeroNullable] private AppendageHealthPoolData AppendageHealthPools_8;
+        [AeroNullable] private AppendageHealthPoolData AppendageHealthPools_9;
 
         private byte AppendageHealthPct_0;
         private byte AppendageHealthPct_1;
