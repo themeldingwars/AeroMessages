@@ -1,6 +1,6 @@
 ﻿using System;
 using Aero.Gen.Attributes;
-using AeroMessages.Matrix;
+using AeroMessages.Matrix.V25;
 
 namespace AeroMessages
 {
@@ -8,7 +8,7 @@ namespace AeroMessages
     {
         public Test()
         {
-            var loginMsg = new Matrix_Login();
+            var loginMsg = new Login();
             var buffer   = new byte[100];
             loginMsg.Unpack(buffer.AsSpan());
             
