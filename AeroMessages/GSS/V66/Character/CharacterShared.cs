@@ -118,8 +118,13 @@ namespace AeroMessages.GSS.V66.Character
         [AeroArray(typeof(byte))]
         public uint[] OrnamentGroupIds;
 
-        [AeroArray(3)]
-        public byte[] Unk; // Presumed to be Morph Weights, Overlays and something else?
+        public byte Unk;
+
+        [AeroArray(typeof(byte))]
+        public HalfFloat[] MorphWeights;
+
+        [AeroArray(typeof(byte))]
+        public VisualsOverlayBlock[] Overlays;
     }
 
     [AeroBlock]
@@ -152,6 +157,22 @@ namespace AeroMessages.GSS.V66.Character
         public HalfVector4 TransformValues; // TODO: Verify, Scale?
         public byte Usage;
     }
+
+    [AeroBlock]
+    public struct VisualsOverlayBlock
+    {
+        [AeroSdb("dbvisualrecords::OverlayRecord", "id")]
+        public ushort OverlayId;
+
+        [AeroString(3)]
+        public string Color1;
+
+        [AeroString(3)]
+        public string Color2;
+
+        public byte Opacity;
+    }
+
 
     [AeroBlock]
     public struct EquipmentData
