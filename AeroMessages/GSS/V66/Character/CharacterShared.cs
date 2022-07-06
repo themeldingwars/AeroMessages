@@ -118,7 +118,8 @@ namespace AeroMessages.GSS.V66.Character
         [AeroArray(typeof(byte))]
         public uint[] OrnamentGroupIds;
 
-        public byte Unk;
+        [AeroArray(typeof(byte))]
+        public uint[] CziMapAssetIds; // First/Lowest byte is not part of the AssetId
 
         [AeroArray(typeof(byte))]
         public HalfFloat[] MorphWeights;
@@ -155,7 +156,7 @@ namespace AeroMessages.GSS.V66.Character
         [AeroSdb("dbvisualrecords::CziPattern", "id")]
         public uint PatternId;
         public HalfVector4 TransformValues; // TODO: Verify, Scale?
-        public byte Usage;
+        public byte Usage; // 0, 1, 2, 3 permitted
     }
 
     [AeroBlock]
