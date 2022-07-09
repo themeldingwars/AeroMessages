@@ -141,7 +141,9 @@ namespace AeroMessages.GSS.V66.Character.Event
         public uint PerkBandwidth;
         public uint PerkRespecLockRemainingSeconds;
 
-        public byte Unk2; // Throws unpack error, maybe visual overrides
+        public byte HaveExtraData;
+        [AeroIf(nameof(HaveExtraData), Ops.Equal, 1)]
+        public LoadoutConfig_Extra ExtraData;
     }
 
     [AeroBlock]
@@ -150,5 +152,72 @@ namespace AeroMessages.GSS.V66.Character.Event
         [AeroSdb("dbitems::LoadoutSlot", "id")]
         public byte SlotIndex;
         public ulong ItemGUID;
+    }
+
+    [AeroBlock]
+    public struct LoadoutConfig_Extra
+    {
+        [AeroArray(18)]
+        public byte[] Unk1;
+
+        [AeroArray(typeof(byte))]
+        public uint[] Unk2;
+
+        public VisualsBlock UnkVisualsBlock;
+
+        [AeroSdb("dbitems::RootItem", "sdb_id")]
+        public uint VehicleId;
+
+        [AeroSdb("dbitems::RootItem", "sdb_id")]
+        public uint GliderId;
+
+        [AeroArray(typeof(byte))]
+        public ulong[] Unk3;
+
+        [AeroSdb("dbvisualrecords::WarpaintPalette", "id")]
+        public uint OverrideWeaponsPaletteId;
+
+        [AeroArray(typeof(byte))]
+        public uint[] Unk4;
+
+        [AeroArray(12)]
+        public byte[] Unk5;
+
+        public LoadoutConfig_Extra_ItemThing Chassis;
+
+        [AeroArray(typeof(byte))]
+        public LoadoutConfig_Extra_ItemThing[] Weapons;
+
+        [AeroArray(typeof(byte))]
+        public VisualOverride[] VisualOverrides;
+
+        public LoadoutConfig_Extra_ItemThing Backpack;
+
+        [AeroArray(4)]
+        public byte[] Unk6;
+
+        public uint UnkPerkRespecRemainingSecRelated;
+        public byte ArchetypeLevel;
+
+        [AeroArray(4)]
+        public byte[] Unk7;
+    }
+
+    [AeroBlock]
+    public struct LoadoutConfig_Extra_ItemThing
+    {
+        public SlottedItem Item;
+
+        [AeroArray(typeof(byte))]
+        public SlottedItem[] Modules;
+
+        public VisualsBlock Visuals;
+    }
+
+    [AeroBlock]
+    public struct VisualOverride
+    {
+        public byte SlotTypeId;
+        public uint VisualId;
     }
 }
