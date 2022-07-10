@@ -101,7 +101,7 @@ namespace AeroMessages.GSS.V66.Character.Controller
         private byte Level;
         private byte EffectiveLevel;
         private byte LevelResetCount;
-        private OldestDeployablesData OldestDeployables;
+        private OldestDeployablesField OldestDeployables;
         private uint PerkRespecs;
 
         [AeroNullable] private ArcStatusData ArcStatus;
@@ -274,14 +274,19 @@ namespace AeroMessages.GSS.V66.Character.Controller
     }
 
     [AeroBlock]
+    public struct OldestDeployablesField
+    {
+        [AeroArray(typeof(byte))]
+        public OldestDeployablesData[] Data;
+        
+    }
+
+    [AeroBlock]
     public struct OldestDeployablesData
     {
-        // Pure guesswork
-        public byte Unk1;
         public EntityId Deployable;
         public uint Unk2;
         public byte Unk3;
     }
-
     
 }

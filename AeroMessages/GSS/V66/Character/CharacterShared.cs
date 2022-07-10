@@ -370,7 +370,7 @@ namespace AeroMessages.GSS.V66.Character
     public struct DockedParamsData
     {
         [AeroArray(21)]
-        private byte[] Unk;
+        public byte[] Unk;
     }
 
     [AeroBlock]
@@ -410,10 +410,8 @@ namespace AeroMessages.GSS.V66.Character
     [AeroBlock]
     public struct VisualOverridesField
     {
-        //[AeroArray(typeof(byte))]
-        //public VisualOverridesData Data;
-        
-        public byte Data;
+        [AeroArray(typeof(byte))]
+        public VisualOverridesData[] Data;
     }
 
     [AeroBlock]
@@ -426,11 +424,9 @@ namespace AeroMessages.GSS.V66.Character
     [AeroBlock]
     public struct AssetOverridesField
     {
-        //[AeroArray(typeof(byte))]
-        //[AeroSdb("dbvisualrecords::AssetOverrideGroup", "id")]
-        //public uint[] Ids;
-        
-        public byte Data;
+        [AeroArray(typeof(byte))]
+        [AeroSdb("dbvisualrecords::AssetOverrideGroup", "id")]
+        public uint[] Ids; 
     }
 
     
