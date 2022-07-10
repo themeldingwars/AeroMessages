@@ -406,4 +406,32 @@ namespace AeroMessages.GSS.V66.Character
         [AeroArray(typeof(byte))]
         public float[] Transform;
     }
+
+    [AeroBlock]
+    public struct VisualOverridesField
+    {
+        //[AeroArray(typeof(byte))]
+        //public VisualOverridesData Data;
+        
+        public byte Data;
+    }
+
+    [AeroBlock]
+    public struct VisualOverridesData
+    {
+        public byte SlotType; // 0 Chassis, 11 Backpack?
+        public uint VisualsGroupId;
+    }
+
+    [AeroBlock]
+    public struct AssetOverridesField
+    {
+        //[AeroArray(typeof(byte))]
+        //[AeroSdb("dbvisualrecords::AssetOverrideGroup", "id")]
+        //public uint[] Ids;
+        
+        public byte Data;
+    }
+
+    
 }

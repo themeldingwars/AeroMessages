@@ -20,7 +20,7 @@ namespace AeroMessages.GSS.V66.Character.Controller
         private uint PingTime;
         private StaticInfoData StaticInfo;
         private uint SpawnTime;
-        private byte VisualOverrides; // TODO: More data if non 0?
+        private VisualOverridesField VisualOverrides;
         private EquipmentData CurrentEquipment;
         private uint SelectedLoadout;
         private uint SelectedLoadoutIsPvP;
@@ -140,7 +140,7 @@ namespace AeroMessages.GSS.V66.Character.Controller
         [AeroNullable] private SinCardFieldData SinCardFields_21;
         [AeroNullable] private SinCardFieldData SinCardFields_22;
         
-        private byte AssetOverrides; // TODO: Verify, probably an array 
+        private AssetOverridesField AssetOverrides;
         private ushort FriendCount;
         private CAISStatusData CAISStatus;
         private uint ScalingLevel;

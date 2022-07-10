@@ -104,6 +104,6 @@ namespace AeroMessages.GSS.V66.Character.View
 
         [AeroNullable] private SinCardFieldData SinCardFields_22;
 
-        private byte AssetOverrides;
+        private AssetOverridesField AssetOverrides;
     }
 }

@@ -189,7 +189,7 @@ namespace AeroMessages.GSS.V66.Character.Event
         public LoadoutConfig_Extra_ItemThing[] Weapons;
 
         [AeroArray(typeof(byte))]
-        public VisualOverride[] VisualOverrides;
+        public VisualOverridesData[] VisualOverrides;
 
         public LoadoutConfig_Extra_ItemThing Backpack;
 
@@ -212,12 +212,5 @@ namespace AeroMessages.GSS.V66.Character.Event
         public SlottedItem[] Modules;
 
         public VisualsBlock Visuals;
-    }
-
-    [AeroBlock]
-    public struct VisualOverride
-    {
-        public byte SlotTypeId;
-        public uint VisualId;
     }
 }

@@ -21,19 +21,4 @@ namespace AeroMessages.GSS.V66.Character.View
         private uint PvPRank;
         private uint EliteLevel;
     }
-
-    [AeroBlock]
-    public struct VisualOverridesField
-    {
-        public byte HaveData;
-        [AeroIf(nameof(HaveData), 1)]
-        public VisualOverridesData Data;
-    }
-
-    [AeroBlock]
-    public struct VisualOverridesData
-    {
-        public byte UnkByte;
-        public uint VisualsGroupId;
-    }
 }
