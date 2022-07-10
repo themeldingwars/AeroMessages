@@ -38,8 +38,8 @@ namespace AeroMessages.GSS.V66.Character.Controller
 
         private uint CurrentHealth;
         private uint CurrentShields;
-        private MaxVital MaxHealth;
         private MaxVital MaxShields;
+        private MaxVital MaxHealth;
         private byte CurrentDurabilityPct;
         private EnergyParamsData EnergyParams;
         private CharacterStatsData CharacterStats;
