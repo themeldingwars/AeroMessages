@@ -9,6 +9,6 @@ namespace AeroMessages.Matrix.V25
         public uint Unk1;
         public uint Unk2;
         public ushort Unk3;
-        public byte Unk4;
+        public byte Unk4; // When debuglag.matrixDev is set to 1, Unk4 == 2. Otherwise == 0.
     }
 }
