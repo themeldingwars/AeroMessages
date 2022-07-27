@@ -12,21 +12,15 @@ namespace AeroMessages.GSS.V66.Character.Command
         public byte AbilitySlotIndex;
 
         public byte HaveTargetEntity;
-
         [AeroIf(nameof(HaveTargetEntity), 1)]
-        public TargetData APTTargetingData;
-
-        [AeroIf(nameof(HaveTargetEntity), 0)]
-        public Vector3 UnkVector;
-    }
-
-    [AeroBlock]
-    public struct TargetData
-    {
         public EntityId Target;
-        public EntityId Initiator;
 
-        [AeroArray(5)]
-        public byte[] Unk_1;
+        // Sometimes floats
+        // Sometimes the Data1+Data2 is an entity id...
+        [AeroArray(4)] public byte[] Data1; // Who the hell
+        [AeroArray(4)] public byte[] Data2; // Thought this was reasonable
+        [AeroArray(4)] public byte[] Data3; // Fffffff
+
+        public byte TraceAbilities; // traceAbilities command in console toggles this
     }
 }
