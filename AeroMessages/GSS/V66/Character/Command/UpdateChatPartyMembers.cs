@@ -1,4 +1,5 @@
 using Aero.Gen.Attributes;
+using AeroMessages.Common;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.V66.Character.Command
 {
@@ -6,13 +7,7 @@ namespace AeroMessages.GSS.V66.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 185)]
     public partial class UpdateChatPartyMembers
     {
-        [AeroArray(9)]
-        public byte[] Unk1;
-
-        [AeroString]
-        public string InvitedCharacterName;
-
-        public byte Unk2; // I'm seeing 0b, it could be chat channel for squad
-        public ulong InvitingEntity;
+        [AeroArray(typeof(byte))] public ChatPartyMember[] Data;
+        public EntityId InvitingEntity;
     }
 }

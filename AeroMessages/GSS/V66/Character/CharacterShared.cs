@@ -429,5 +429,11 @@ namespace AeroMessages.GSS.V66.Character
         public uint[] Ids; 
     }
 
-    
+    [AeroBlock]
+    public struct ChatPartyMember
+    {
+        public EntityId Id;
+        [AeroString] public string Name;
+        public byte State;
+    }
 }

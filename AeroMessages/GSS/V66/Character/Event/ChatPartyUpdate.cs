@@ -8,28 +8,14 @@ namespace AeroMessages.GSS.V66.Character.Event
     public partial class ChatPartyUpdate
     {
         public EntityId Begin_Entity;
-
-        [AeroString]
-        public string Begin_Name;
-
-        [AeroArray(10)]
-        public byte[] Unk1;
+        [AeroString] public string Begin_Name;
+        public ulong Begin_Long;
+        [AeroString] public string Begin_String2;
+        public byte Begin_Byte;
 
         [AeroArray(typeof(byte))]
-        ChatPartyMember[] Members;
+        public ChatPartyMember[] Members;
 
         public EntityId End_Entity;
-    }
-
-
-    [AeroBlock]
-    public struct ChatPartyMember
-    {
-        public EntityId Id;
-
-        [AeroString]
-        public string Name;
-
-        public byte Unk; // Status?
     }
 }
