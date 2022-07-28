@@ -7,15 +7,12 @@ namespace AeroMessages.GSS.V66.Character.Command
     public partial class ReportProjectileHit
     {
         public ushort Unk1;
-
         public ushort ShortTime; // Time when this hit is reported
-        public byte Unk2_Always1;
-
-        public ushort Unk3_1; // Could it be weapon recoil/shake values?
-        public ushort Unk3_2; // Could it be weapon recoil/shake values?
-
-        public byte TravelTime; // Appears related to the distance/time projectile travelled before hitting.
-        public byte BodyPartHit; // Appears related to the body part, the value might reference a bone/hardpoint or something.
-        public byte Unk4_Always39; // 0x27
+        public byte Unk2;
+        public byte Unk3;
+        public byte Unk4;
+        public byte Unk5;
+        public ushort TravelTime; // Appears related to the distance/time projectile travelled before hitting.
+        public ushort BodyPartHit; // Appears related to the body part, the value might reference a bone/hardpoint or something.
     }
 }
