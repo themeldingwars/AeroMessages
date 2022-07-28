@@ -15,6 +15,7 @@ namespace AeroMessages.GSS.V66.Character.Command
         }
         public NonDevDebugCommandType Type;
         public byte Enabled;
-        [AeroArray(4)] public byte[] Unk;
+        [AeroArray(3)] public byte[] Unk1;
+        [AeroString] public string Unk2;
     }
 }
