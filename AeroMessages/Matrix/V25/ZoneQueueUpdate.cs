@@ -1,0 +1,12 @@
+using Aero.Gen.Attributes;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
+namespace AeroMessages.Matrix.V25
+{
+    [Aero]
+    [AeroMessageId(MsgType.Matrix, MsgSrc.Message, 62)]
+    public partial class ZoneQueueUpdate
+    {
+        public uint Unk1;
+        public uint Unk2;
+    }
+}
