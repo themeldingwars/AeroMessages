@@ -15,6 +15,6 @@ namespace AeroMessages.Matrix.V25
         public uint Unk5;
         public ushort Unk6;
         public ushort Unk7;
-        public ushort Unk8;
+        [AeroArray(typeof(ushort))] public byte[] Unk8; // FUN_016eed70, not 100%
     }
 }
