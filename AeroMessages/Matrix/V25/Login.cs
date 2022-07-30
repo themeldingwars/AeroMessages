@@ -17,8 +17,16 @@ namespace AeroMessages.Matrix.V25
         public byte Unk7;
         public byte Unk8;
         [AeroString] public string Red5Sig2; // Comma separated list of base64 sig somethings
-        public byte Unk9; // ? Might be a struct
+        public byte HaveUnk9;
+        [AeroIf(nameof(HaveUnk9), 1)] public LoginUnk9Data Unk9;
         public MatrixTicket Ticket;
+    }
+
+    [AeroBlock]
+    public struct LoginUnk9Data
+    {
+        public ulong A1;
+        [AeroString] public string A2;
     }
 
     [AeroBlock]
