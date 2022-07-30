@@ -19,14 +19,14 @@ namespace AeroMessages.GSS.V66.Character.Command
         // 009e5820
         public byte HaveUnk2;
         [AeroIf(nameof(HaveUnk2), 1)]
-        [AeroString] public string Unk2;
+        [AeroString] public string Unk2; // Whisper target name?
 
-        public byte Unk3;
+        public byte Unk3; // This seems like a type indicator for Unk4
 
         // 009f25a0
         public byte HaveUnk4;
         [AeroIf(nameof(HaveUnk4), 1)]
-        public ChatUnk4Data Unk4;
+        public ChatUnk4Data Unk4; // Binary data
     }
 
     [AeroBlock]
