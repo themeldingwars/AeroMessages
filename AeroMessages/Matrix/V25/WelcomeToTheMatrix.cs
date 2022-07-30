@@ -7,7 +7,7 @@ namespace AeroMessages.Matrix.V25
     public partial class WelcomeToTheMatrix
     {
         public ulong PlayerID;
-        public ushort Unk1;
-        public ushort Unk2;
+        [AeroArray(typeof(ushort))] public byte[] Unk1; // FUN_016eed70, not 100%
+        [AeroArray(typeof(ushort))] public byte[] Unk2; // FUN_016eed70, not 100%
     }
 }
