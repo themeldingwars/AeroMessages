@@ -5,7 +5,7 @@ namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 32)]
-    public partial class Generic_Event_EncounterToUIMessage
+    public partial class EncounterToUIMessage
     {
         public EntityId EncounterId;
 

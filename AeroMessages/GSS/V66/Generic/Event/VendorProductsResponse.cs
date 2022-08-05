@@ -4,7 +4,7 @@ namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 120)]
-    public partial class Generic_Event_VendorProductsResponse
+    public partial class VendorProductsResponse
     {
         public uint VendorId;
         public ulong Id;

@@ -5,7 +5,7 @@ namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 251, 21)]
-    public partial class Generic_Command_RemoteProximityAbilitySuccess
+    public partial class RemoteProximityAbilitySuccess
     {
         public EntityId Source;
         public byte Unk;

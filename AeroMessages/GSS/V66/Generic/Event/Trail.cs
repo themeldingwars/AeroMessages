@@ -5,7 +5,7 @@ namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 98)]
-    public partial class Generic_Event_Trail
+    public partial class Trail
     {
         [AeroArray(5)]
         public byte[] Unk;

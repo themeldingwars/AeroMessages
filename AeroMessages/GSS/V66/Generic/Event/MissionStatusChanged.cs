@@ -4,7 +4,7 @@ namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 65)]
-    public partial class Generic_Event_MissionStatusChanged
+    public partial class MissionStatusChanged
     {
         [AeroSdb("clientmissions::Mission","id")]
         //[AeroSdb("clientmissions::MissionObjective","mission_id")]

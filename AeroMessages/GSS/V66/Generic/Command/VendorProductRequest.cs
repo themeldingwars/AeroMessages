@@ -4,7 +4,7 @@ namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 251, 31)]
-    public partial class Generic_Command_VendorProductRequest
+    public partial class VendorProductRequest
     {
         public uint TerminalId;
     }

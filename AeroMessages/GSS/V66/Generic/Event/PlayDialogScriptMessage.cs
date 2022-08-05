@@ -4,7 +4,7 @@ namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 108)]
-    public partial class Generic_Event_PlayDialogScriptMessage
+    public partial class PlayDialogScriptMessage
     {   
         [AeroSdb("dbdialogdata::DialogScript", "id")]
         public uint DialogId;

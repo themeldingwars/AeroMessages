@@ -4,7 +4,7 @@ namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 68)]
-    public partial class Generic_Event_MissionActivationAck
+    public partial class MissionActivationAck
     {
         [AeroSdb("clientmissions::Mission","id")]
         //[AeroSdb("clientmissions::MissionObjective","mission_id")]

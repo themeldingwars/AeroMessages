@@ -4,7 +4,7 @@ namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 106)]
-    public partial class Generic_Event_PlaySoundId
+    public partial class PlaySoundId
     {   
         // Sdb table 14, record_id column?
         // Looks like there are variations of the message

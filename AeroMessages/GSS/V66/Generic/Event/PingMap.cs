@@ -5,7 +5,7 @@ namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 110)]
-    public partial class Generic_Event_PingMap
+    public partial class PingMap
     {   
         public Vector3 Position;
 

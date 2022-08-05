@@ -5,7 +5,7 @@ namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 91)]
-    public partial class Generic_Event_InteractableStatusChanged
+    public partial class InteractableStatusChanged
     {
         public EntityId Target;
 

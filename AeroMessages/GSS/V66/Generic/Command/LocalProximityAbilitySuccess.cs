@@ -5,7 +5,7 @@ namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 251, 20)]
-    public partial class Generic_Command_LocalProximityAbilitySuccess
+    public partial class LocalProximityAbilitySuccess
     {
         public EntityId Source;
         public byte Unk;

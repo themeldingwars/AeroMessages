@@ -5,7 +5,7 @@ namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 118)]
-    public partial class Generic_Event_ChatMessageList
+    public partial class ChatMessageList
     {
         public byte Unk1;
         public EntityId SenderId;

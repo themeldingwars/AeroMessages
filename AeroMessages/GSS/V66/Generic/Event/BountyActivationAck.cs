@@ -4,7 +4,7 @@ namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 71)]
-    public partial class Generic_Event_BountyActivationAck
+    public partial class BountyActivationAck
     {
         public uint BountyId; // Unsure how this id works
 

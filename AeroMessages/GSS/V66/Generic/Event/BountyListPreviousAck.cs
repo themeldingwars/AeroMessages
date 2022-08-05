@@ -4,7 +4,7 @@ namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 77)]
-    public partial class Generic_Event_BountyListPreviousAck
+    public partial class BountyListPreviousAck
     {
         [AeroArray(3)]
         public byte[] Unk;

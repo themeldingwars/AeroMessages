@@ -4,7 +4,7 @@ namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 86)]
-    public partial class Generic_Event_ArcCompletionHistoryUpdate
+    public partial class ArcCompletionHistoryUpdate
     {
         [AeroArray(typeof(byte))]
         public ArcBlock[] Data;

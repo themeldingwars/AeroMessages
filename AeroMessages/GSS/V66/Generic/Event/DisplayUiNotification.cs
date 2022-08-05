@@ -4,7 +4,7 @@ namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 103)]
-    public partial class Generic_Event_DisplayUiNotification
+    public partial class DisplayUiNotification
     {
         [AeroSdb("dblocalization::LocalizedText", "id")]
         public uint LocalizedTextId;
