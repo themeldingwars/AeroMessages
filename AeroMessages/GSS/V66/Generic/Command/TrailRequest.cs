@@ -7,9 +7,8 @@ namespace AeroMessages.GSS.V66.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 251, 22)]
     public partial class TrailRequest
     {
-        [AeroArray(5)]
-        public byte[] Unk;
-
+        public uint Unk1;
+        public byte Unk2;
         public Vector3 Position1;
         public Vector3 Position2;
     }
