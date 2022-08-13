@@ -6,7 +6,7 @@ namespace AeroMessages.GSS.V66.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 100)]
     public partial class ChallengeSetReady
     {
-        [AeroArray(8)] public byte[] Unk1;
+        public ulong Unk1;
         public byte Unk2; // Ready state?
     }
 }

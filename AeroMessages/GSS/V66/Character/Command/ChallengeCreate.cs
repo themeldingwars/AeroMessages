@@ -6,6 +6,6 @@ namespace AeroMessages.GSS.V66.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 94)]
     public partial class ChallengeCreate
     {
-        public byte Unk;
+        [AeroArray(typeof(byte))] public ulong[] Unk;
     }
 }
