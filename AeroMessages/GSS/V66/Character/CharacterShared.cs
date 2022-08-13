@@ -297,7 +297,7 @@ namespace AeroMessages.GSS.V66.Character
         // TODO: Verify
         public EntityId Target;
         public Vector3 Position;
-        public uint Time;
+        public uint Time; // TODO: Seems like this is a float too?
     }
 
     [AeroBlock]
