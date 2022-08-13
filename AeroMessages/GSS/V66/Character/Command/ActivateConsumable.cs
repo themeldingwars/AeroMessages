@@ -1,9 +1,9 @@
 using Aero.Gen.Attributes;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
-namespace AeroMessages.GSS.V66.Character.Event
+namespace AeroMessages.GSS.V66.Character.Command
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 5, 138)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Command, 5, 138)]
     public partial class ActivateConsumable
     {
         public uint Time;
