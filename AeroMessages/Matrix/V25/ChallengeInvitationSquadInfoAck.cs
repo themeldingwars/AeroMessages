@@ -9,6 +9,6 @@ namespace AeroMessages.Matrix.V25
     {
         public ulong ChallengeId; // Assumption
         public ulong Unk1;
-        public string Unk2;
+        [AeroString] public string Unk2;
     }
 }
