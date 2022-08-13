@@ -7,24 +7,6 @@ namespace AeroMessages.Matrix.V25
     [AeroMessageId(MsgType.Matrix, MsgSrc.Message, 28)]
     public partial class UpdateDevZoneInfo
     { 
-        [AeroArray(typeof(byte))]
-        public DevZoneInfo1[] Unk1;
-
-        [AeroArray(typeof(byte))]
-        public DevZoneInfo2[] Unk2;
-    }
-
-    [AeroBlock]
-    public struct DevZoneInfo1
-    {
-        [AeroString] public string Unk1;
-        public ushort Unk2;
-    }
-
-    [AeroBlock]
-    public struct DevZoneInfo2
-    {
-        [AeroString] public string Unk1;
-        public uint Unk2;
+        public DevZoneInfoData DevZoneInfo;
     }
 }

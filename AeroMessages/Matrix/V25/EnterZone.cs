@@ -21,9 +21,9 @@ namespace AeroMessages.Matrix.V25
         public uint Unk3_Millis;
         [AeroString] public string ZoneName;
 
-        public byte HaveUnk4; // Seems to be a big thing when not 0
-        [AeroIf(nameof(HaveUnk4), 1)]
-        public EZU4Data Unk4;
+        public byte HaveDevZoneInfo;
+        [AeroIf(nameof(HaveDevZoneInfo), 1)]
+        public DevZoneInfoData DevZoneInfo;
         // --
 
         public ulong ZoneTime_Unk1;
@@ -41,29 +41,5 @@ namespace AeroMessages.Matrix.V25
         // --
 
         public byte SpectatorModeFlag;
-    }
-
-    [AeroBlock]
-    public struct EZU4Data
-    {
-        // FUN_00755d40
-        [AeroArray(typeof(byte))] EZU4Data_00755d40 Unk1;
-
-        // FUN_00756a50
-        [AeroArray(typeof(byte))] EZU4Data_00756a50 Unk2;
-    }   
-
-    [AeroBlock]
-    public struct EZU4Data_00755d40
-    {
-        [AeroString] public string A1;
-        public ushort A2;
-    }
-
-    [AeroBlock]
-    public struct EZU4Data_00756a50
-    {
-        [AeroString] public string B1;
-        public uint B2;
     }
 }
