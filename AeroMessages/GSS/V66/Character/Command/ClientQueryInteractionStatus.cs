@@ -7,7 +7,7 @@ namespace AeroMessages.GSS.V66.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 186)]
     public partial class ClientQueryInteractionStatus
     {
-       public EntityId Entity;
-       public byte Unk;
+        public EntityId Entity;
+        public byte Unk;
     }
 }
