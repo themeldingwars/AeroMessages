@@ -6,6 +6,7 @@
         <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
         <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)GeneratedFiles</CompilerGeneratedFilesOutputPath>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <NoWarn>0169,8509,0219</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>
