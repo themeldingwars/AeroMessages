@@ -4,7 +4,7 @@ using System.Numerics;
 namespace AeroMessages.GSS.V66.Character.Command
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 195)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 193)]
     public partial class NonDevDebugCommand
     {
         public enum NonDevDebugCommandType : byte
