@@ -10,7 +10,7 @@ namespace AeroMessages.GSS.V66.Character.Command
         [AeroString]
         public string[] Keys;
 
-        [AeroArray(12)]
-        public byte[] Unk;
+        public ulong Unk2;
+        public uint Unk3;
     }
 }
