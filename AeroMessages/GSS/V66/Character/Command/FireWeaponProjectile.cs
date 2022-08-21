@@ -9,6 +9,9 @@ namespace AeroMessages.GSS.V66.Character.Command
     {
         public uint Time;
         public Vector3 AimDirection;
-        public byte Unk_Always0;
+
+        public byte HaveUnkVector;
+        [AeroIf(nameof(HaveUnkVector), 1)] // != 0
+        public Vector3 UnkVector;
     }
 }
