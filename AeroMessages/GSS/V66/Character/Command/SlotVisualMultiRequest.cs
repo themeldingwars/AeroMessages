@@ -12,6 +12,19 @@ namespace AeroMessages.GSS.V66.Character.Command
         [AeroArray(typeof(byte))]
         public LoadoutConfig_Visual[] Visuals;
 
-        public byte UnkLast; // Maybe something related to purchasing visuals?
+        [AeroArray(typeof(byte))]
+        public UnkLastVisualsRequestData[] UnkLast; // Maybe something related to purchasing visuals?
+    }
+
+    [AeroBlock]
+    public struct UnkLastVisualsRequestData
+    {
+        public uint Unk1;
+        [AeroString] public string Unk2;
+        public uint Unk3;
+        public uint Unk4;
+        [AeroString] public string Unk5;
+        public uint Unk6;
+        public uint Unk7;
     }
 }
