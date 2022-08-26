@@ -14,7 +14,8 @@ namespace AeroMessages.GSS.V66.Character.Command
         public byte SlotIdx1; // ?
         public byte SlotIdx2; // ?
 
-        [AeroArray(9)]
-        public byte[] Unk;
+        public uint Unk1;
+        public uint Unk2;
+        [AeroArray(typeof(byte))] public uint[] Unk3;
     }
 }
