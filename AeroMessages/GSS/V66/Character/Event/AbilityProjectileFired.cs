@@ -19,13 +19,12 @@ namespace AeroMessages.GSS.V66.Character.Event
         public ushort AmmoType;
         public float Range;
 
-        [AeroArray(14)]
-        public byte[] Unk1;
-
-        public ushort Hardpoint;
-
-        [AeroArray(2)]
-        public byte[] Unk5;
+        public uint Unk1;
+        public byte Unk2;
+        public float Unk3;
+        public byte Unk4;
+        public uint Unk5;
+        public uint Unk6; // Hardpoint?
 
         public byte UnkFlag;
         [AeroIf(nameof(UnkFlag), 1)]
