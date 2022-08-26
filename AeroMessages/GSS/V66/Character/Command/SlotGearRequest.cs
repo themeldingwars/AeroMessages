@@ -12,7 +12,6 @@ namespace AeroMessages.GSS.V66.Character.Command
         [AeroSdb("dbitems::LoadoutSlot", "id")]
         public byte SlotIdx;
 
-        [AeroArray(4)]
-        public byte[] Unk;
+        public uint Unk;
     }
 }
