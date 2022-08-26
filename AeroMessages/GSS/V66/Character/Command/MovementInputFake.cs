@@ -27,10 +27,10 @@ namespace AeroMessages.GSS.V66.Character.Command
         public byte Unk13;
 
         // FUN_009c1930
-        // Optional MovementInputData from MovementInput
-        public byte HaveMovementInputData;
-        [AeroIf(nameof(HaveMovementInputData), 1)]
-        public MovementInputData Data;
+        // Optional MovementPoseData
+        public byte HaveMovementPoseData;
+        [AeroIf(nameof(HaveMovementPoseData), 1)]
+        public MovementPoseData Data;
         // --
         
         // Last part same as MovementInput

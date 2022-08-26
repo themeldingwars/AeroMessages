@@ -1,4 +1,6 @@
 using Aero.Gen.Attributes;
+using static Aero.Gen.Attributes.AeroIfAttribute;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 using System.Numerics;
 using System;
@@ -339,16 +341,125 @@ namespace AeroMessages.GSS.V66.Character
     public enum MovementDataType : byte
     {
         Velocity  = 0,
-        PosAndRot = 1,
+        PosRotState = 1,
         Aim       = 2
     }
-    
+
     [AeroBlock]
-    public struct MovementPosAndRot
+    public struct MovementPoseData
+    {
+        // FUN_009f04d0
+        // Movement state
+        public ushort           MovementUnk1;
+        public MovementDataType MovementType;
+        public byte             MovementUnk3;
+
+        [AeroIf(nameof(MovementType), Ops.HasFlag, MovementDataType.PosRotState)]
+        public MovementPosRotState PosRotState;
+
+        public Vector3 Velocity;
+
+        [AeroIf(nameof(MovementType), Ops.HasFlag, MovementDataType.Aim)]
+        public Vector3 Aim;
+
+        public ushort JetpackEnergy;
+        public short GroundTimePositiveAirTimeNegative;
+        public short TimeSinceLastJump;
+
+        // Looks like 1 more byte should be read here and based on it a lot of more shit can happen
+        //   FUN_00a00700
+        public byte HaveMoreData;
+        [AeroIf(nameof(HaveMoreData), 1)] // != 0
+        public MovementPoseMoreData UnkData;
+        //   --
+        // --
+    }
+
+    [AeroBlock]
+    public struct MovementPosRotState
     {
         public Vector3    Pos;
         public Quaternion Rot;
         public short      MovementState;
+    }
+
+    [AeroBlock]
+    public struct MovementPoseMoreData
+    {
+        // FUN_00a00570
+        public MovementPoseMoreDataGroup Unk1;
+        public MovementPoseMoreDataGroup Unk2;
+        public MovementPoseMoreDataGroup Unk3;
+        public MovementPoseMoreDataGroup Unk4;
+        public MovementPoseMoreDataGroup Unk5;
+        public MovementPoseMoreDataGroup Unk6;
+        public MovementPoseMoreDataGroup Unk7;
+    }
+
+    [AeroBlock]
+    public struct MovementPoseMoreDataGroup
+    {
+        // Just making an assumption and trying to stay sane
+        public ushort Unk1;
+        public MovementPoseMoreData1 Unk2;
+        public ushort Unk3;
+        public MovementPoseMoreData2 Unk4;
+    }
+
+    [AeroBlock]
+    public struct MovementPoseMoreData1
+    {
+        // FUN_00a08f70
+        public Vector3 Unk1;
+        public Quaternion Unk2;
+        public Vector3 Unk3;
+    }
+
+    [AeroBlock]
+    public struct MovementPoseMoreData2
+    {
+        // FUN_00a00360
+        public byte HaveData;
+        [AeroIf(nameof(HaveData), 1)]
+        public MovementPoseMoreData2Inner Data;
+    }
+
+    [AeroBlock]
+    public struct MovementPoseMoreData2Inner
+    {
+        // FUN_00a00120
+        public ushort Unk1;
+        public Vector3 Unk2;
+        public byte Unk3;
+        public byte Unk4;
+        public ushort Unk5;
+        public short Unk6;
+        public short Unk7;
+
+        //  FUN_009ffed0
+        public byte HaveUnk8;
+        [AeroIf(nameof(HaveUnk8), 1)]
+        public MovementPoseMoreData2InnerUnk8Data Unk8;
+        // --
+        public Vector3 Unk9;
+        public Vector3 Unk10;
+        public byte Unk11;
+    }
+
+    [AeroBlock]
+    public struct MovementPoseMoreData2InnerUnk8Data
+    {
+        [AeroArray(typeof(byte))] MovementPoseMoreData2InnerUnk8Data1[] Unk1;
+        [AeroArray(typeof(byte))] float[] Unk2; // Not certain that its floats
+    }
+
+    [AeroBlock]
+    public struct MovementPoseMoreData2InnerUnk8Data1
+    {
+        // FUN_009ff520
+        // 6x4, assuming two vectors
+        public Vector3 Unk1;
+        public Vector3 Unk2;
     }
 
     [AeroBlock]
