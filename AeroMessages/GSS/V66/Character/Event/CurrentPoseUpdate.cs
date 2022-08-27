@@ -2,56 +2,73 @@ using Aero.Gen.Attributes;
 using System.Numerics;
 using AeroMessages.Common;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
+using static Aero.Gen.Attributes.AeroIfAttribute;
 namespace AeroMessages.GSS.V66.Character.Event
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 12, 110)]
     public partial class CurrentPoseUpdate
-    {
-        public byte Flags;
+    {   
+        public enum CurrentPoseUpdateFlags: byte
+        {
+            ShortTime = 0x00,
+            MovementState = 0x02,
+            Position = 0x0c,
+            Rotation = 0x30,
+            Aim = 0xc0,
+        }
+
+        public CurrentPoseUpdateFlags Flags;
+
+        public byte CalcFlagValue1 => ((byte)(Flags & CurrentPoseUpdateFlags.Rotation));
+        public byte CalcFlagValue2 => ((byte)(Flags & CurrentPoseUpdateFlags.Aim));
+
+        // ShortTime
+        [AeroIf(nameof(Flags), Ops.DoesntHaveFlag, CurrentPoseUpdateFlags.ShortTime)]
         public ushort ShortTime;
 
-        [AeroIf(nameof(Flags), 0x00)]
-        public FullDataVersion Data;
+        [AeroIf(nameof(Flags), Ops.HasFlag, CurrentPoseUpdateFlags.ShortTime)]
+        public byte ShortTimeAlt;
 
-        // Cba to implement these atm
-        /*
-        if ((Flags & 1) == 0) {
-            Unk1 = Stream.Read.Byte();
-        }
-        if ((Flags & 2) == 0) {
-            MovementState = Stream.Read.UShort();
-        }
+        // Unknown byte
+        public byte UnkAlwaysPresent;
 
-        if (Flags == 0x62 || Flags == 0x30) {
-            Position = Stream.Read.FloatArray(3); // Looks right to me
-        }
-        */
+        // Movement State
+        [AeroIf(nameof(Flags), Ops.DoesntHaveFlag, CurrentPoseUpdateFlags.MovementState)]
+        public ushort MovementState;
 
-        // This was working well until I found an ent where (Flags & 4).
-        // That ent had many other messages that broke the pattern.
-        // So I guess either the other flags or the value of Unk1 has an impact as well.
-        /*
-        if ((Flags & 8) == 0) {
-            Flag_3_Value = Stream.Read.ByteArray(3);
-        }
-        if ((Flags & 16) == 0) {
-            Flag_4_Value = Stream.Read.ByteArray(3);
-        }
-        if ((Flags & 32) == 0) {
-            Flag_5_Value = Stream.Read.ByteArray(1);
-        }
-        if ((Flags & 64) == 0) {
-            Flag_6_Value = Stream.Read.ByteArray(3);
-        }
-        if ((Flags & 128) == 0) {
-            Flag_7_Value = Stream.Read.ByteArray(3);
-        }
-         */
+        // Position
+        [AeroIf(nameof(Flags), Ops.DoesntHaveFlag, CurrentPoseUpdateFlags.Position)]
+        public Vector3 Position;
 
+        [AeroIf(nameof(Flags), Ops.HasFlag, CurrentPoseUpdateFlags.Position)]
+        [AeroArray(3)]
+        public byte[] PositionAlt;
 
+        // Rotation
+        [AeroIf(nameof(CalcFlagValue1), 0x00)]
+        public QuantisedQuaternion Rotation;
+
+        [AeroIf(nameof(CalcFlagValue1), 0x10)]
+        public byte RotAltLastByte_1; // Same byte, just difficulties with logic
+
+        [AeroIf(nameof(CalcFlagValue1), 0x20)]
+        [AeroArray(2)] public byte[] RotAltBytes;
+
+        [AeroIf(nameof(CalcFlagValue1), 0x20)]
+        public byte RotAltLastByte_2; // Same byte, just difficulties with logic
+
+        // Aim
+        [AeroIf(nameof(Flags), Ops.DoesntHaveFlag, CurrentPoseUpdateFlags.Aim)]
+        public QuantisedVector3 Aim;
+
+        [AeroIf(nameof(Flags), Ops.HasFlag, CurrentPoseUpdateFlags.Aim)]
+        [AeroIf(nameof(CalcFlagValue2), Ops.NotEqual, (byte) CurrentPoseUpdateFlags.Aim)]
+        [AeroArray(3)]
+        public byte[] AimAlt;
     }
 
+    /*
     [AeroBlock]
     public struct FullDataVersion
     {
@@ -61,4 +78,5 @@ namespace AeroMessages.GSS.V66.Character.Event
         public QuantisedQuaternion Rotation;
         public QuantisedVector3 Aim;
     }
+    */
 }
