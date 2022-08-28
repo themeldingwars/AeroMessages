@@ -182,13 +182,4 @@ namespace AeroMessages.GSS.V66.CarryableObject.View
         public Vector3 MaybeVelocity;
         public uint Time;
     }
-
-
-    [AeroBlock]
-    public struct ForcedMovementData
-    {
-        [AeroArray(30)]
-        private byte[] ForcedMovement; // TODO: Needs indepth parsing, first byte is type/flags. Maybe use a shared struct, check Deployable.
-
-    }
 }

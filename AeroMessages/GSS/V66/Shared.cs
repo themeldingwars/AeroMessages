@@ -171,4 +171,187 @@ namespace AeroMessages.GSS.V66
         [AeroArray(8)]
         public byte[] Unk2;
     }
+
+    [AeroBlock]
+    public struct ForcedMovementData
+    {
+        public byte Type;
+        public uint Unk1;
+
+        public byte HaveUnk2;
+        [AeroIf(nameof(HaveUnk2), 1)]
+        public ulong Unk2;
+
+        [AeroIf(nameof(Type), 0x01)]
+        public ForcedMovementType1Params Params1;
+
+        [AeroIf(nameof(Type), 0x02)]
+        public ForcedMovementType2Params Params2;
+
+        [AeroIf(nameof(Type), 0x03)]
+        public ForcedMovementType3Params Params3;
+
+        [AeroIf(nameof(Type), 0x04)]
+        public ForcedMovementType4Params Params4;
+
+        [AeroIf(nameof(Type), 0x05)]
+        public ForcedMovementType5Params Params5;
+
+        [AeroIf(nameof(Type), 0x06)]
+        public ForcedMovementType6Params Params6;
+
+        [AeroIf(nameof(Type), 0x07)]
+        public ForcedMovementType7Params Params7;
+
+        [AeroIf(nameof(Type), 0x08)]
+        public ForcedMovementType8Params Params8;
+
+        [AeroIf(nameof(Type), 0x09)]
+        public ForcedMovementType9Params Params9;
+
+        [AeroIf(nameof(Type), 0x0a)]
+        public ForcedMovementType10Params Params10;
+
+        [AeroIf(nameof(Type), 0x0b)]
+        public ForcedMovementType11Params Params11;
+
+        [AeroIf(nameof(Type), 0x0c)]
+        public ForcedMovementType12Params Params12;
+
+        [AeroIf(nameof(Type), 0x0d)]
+        public ForcedMovementType13Params Params13;
+    }
+
+    [AeroBlock]
+    public struct ForcedMovementType1Params
+    {
+        public Vector3 Position;
+        public Vector3 Direction;
+        public Vector3 Velocity;
+        public uint Time;
+    }
+
+    [AeroBlock]
+    public struct ForcedMovementType2Params
+    {
+        public Vector3 Unk1;
+        public Vector3 Unk2;
+        public uint Time1;
+        public uint Time2;
+        public float Unk5;
+        public byte Unk6;
+        public byte Unk7;
+    }
+
+    [AeroBlock]
+    public struct ForcedMovementType3Params
+    {
+        public uint Time1;
+        public uint Time2;
+        public Vector3 Unk3;
+        public Quaternion Unk4;
+        public Vector3 Unk5;
+        public Quaternion Unk6;
+        public float Unk7;
+        public float Unk8;
+        public byte Unk9;
+        public byte Unk10;
+    }
+
+    [AeroBlock]
+    public struct ForcedMovementType4Params
+    {
+        public Vector3 Unk1;
+        public uint Time1;
+        public uint Time2;
+        public float Unk4;
+        public Vector3 Unk5;
+    }
+
+    [AeroBlock]
+    public struct ForcedMovementType5Params
+    {
+        public Vector3 Velocity; // Bit of an assumption
+        public uint Time1;
+        public uint Time2;
+        public byte Unk2;
+    }
+
+    [AeroBlock]
+    public struct ForcedMovementType6Params
+    {
+        public Vector3 Unk1;
+        public uint Time1;
+        public uint Time2;
+        public float Extra;
+    }
+
+    [AeroBlock]
+    public struct ForcedMovementType8Params
+    {
+        public Vector3 Unk1;
+        public uint Time1;
+        public uint Time2;
+        public float Extra;
+    }
+
+    [AeroBlock]
+    public struct ForcedMovementType9Params
+    {
+        public uint Time1;
+        public uint Time2;
+        public float Unk1;
+        public Vector3 Unk2;
+    }
+
+    [AeroBlock]
+    public struct ForcedMovementType10Params
+    {
+        public uint Time1;
+        public uint Time2;
+        public Vector3 Unk1;
+        public float Unk2;
+        public float Unk3;
+        public byte Unk4;
+    }
+
+    [AeroBlock]
+    public struct ForcedMovementType11Params
+    {
+        public uint Time1;
+        public uint Time2;
+        public Vector3 Unk1;
+        public Quaternion Unk2;
+    }
+
+    [AeroBlock]
+    public struct ForcedMovementType12Params
+    {
+        public Vector3 Unk1;
+        public uint Time1;
+        public uint Time2;
+    }
+
+    [AeroBlock]
+    public struct ForcedMovementType7Params
+    {
+        public uint Time1;
+        public uint Time2;
+    }
+
+    [AeroBlock]
+    public struct ForcedMovementType13Params
+    {
+        public uint Time1;
+        public uint Time2;
+        public ulong Unk1;
+        public Vector3 Unk2;
+        public float Unk3;
+        public float Unk4;
+        public float Unk5;
+        public float Unk6;
+        public byte Unk7;
+        public float Unk8;
+        public float Unk9;
+    }
 }
