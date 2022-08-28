@@ -12,17 +12,16 @@ namespace AeroMessages.GSS.V66.Character.Event
         [AeroSdb("dblocalization::LocalizedText", "id")]
         public uint TitleLocalizationId;
 
-        [AeroArray(4)]
-        public byte[] Unk1;
+        public uint Unk1;
 
         [AeroArray(typeof(byte))]
         public StatInfo[] Stats;
 
         [AeroArray(typeof(byte))]
-        public RewardInfoData[] Rewards;
+        public RewardInfoData[] Rewards1;
 
         [AeroArray(typeof(byte))]
-        public Unk2Info[] Unk2;
+        public RewardInfoData[] Rewards2;
 
         public EntityId ResourceTargetId;
         public byte ResourceTargetType; // "0": DEFAULT, "1": PERMANENT, "2": TEMPORARY, "3": "OUTPOST" ...
@@ -44,8 +43,9 @@ namespace AeroMessages.GSS.V66.Character.Event
         [AeroSdb("dblocalization::LocalizedText", "id")]
         public uint LocalizationId;
 
-        [AeroArray(6)]
-        public byte[] Unk;
+        public byte Unk1;
+        public uint Unk2;
+        [AeroString] public string Unk3;
     }
 
     [AeroBlock]
@@ -69,14 +69,5 @@ namespace AeroMessages.GSS.V66.Character.Event
         public byte FactionId;
 
         public uint Amount;
-    }
-
-    [AeroBlock]
-    public struct Unk2Info
-    {
-        [AeroArray(19)]
-        public byte[] Data; // ?
-    }
-
-    
+    }  
 }
