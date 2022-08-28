@@ -574,4 +574,24 @@ namespace AeroMessages.GSS.V66.Character
         [AeroArray(5)]
         public byte[] Unk;
     }
+
+    [AeroBlock]
+    public struct DuelData
+    {
+        // FUN_009db930
+        public byte Unk1;
+        [AeroString] public string Unk2;
+        public EntityId RequestingEntity;
+        [AeroString] public string Unk3;
+        public EntityId Unk4;
+        [AeroString] public string TargetName;
+        [AeroArray(typeof(byte))] public ulong[] Unk5;
+        [AeroArray(typeof(byte))] public ulong[] Unk6;
+        public ushort Unk7;
+        public ushort Unk8;
+        public uint Unk9;
+        public byte Unk10;
+        public ulong TargetEntity; // TODO: Verify this
+        // --
+    }
 }
