@@ -8,26 +8,12 @@ namespace AeroMessages.GSS.V66.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 5, 107)]
     public partial class DealtHit
     {
-        public byte UnknownFlag;
+        public byte HaveDamageData;
+        [AeroIf(nameof(HaveDamageData), 1)]
+        public HitDamageData Data;
 
-        [AeroIf(nameof(UnknownFlag), 0)]
-        public Variation0 Type0;
+        public byte Unk;
 
-        [AeroIf(nameof(UnknownFlag), 1)]
-        public Variation1 Type1;
-        
-    }
-
-    [AeroBlock]
-    public struct Variation0
-    {
-        public byte Unk1;
-        public byte Unk2;
-    }
-
-    [AeroBlock]
-    public struct Variation1
-    {
         [Flags]
         public enum DamageResponseFlags : byte
         {
@@ -35,9 +21,14 @@ namespace AeroMessages.GSS.V66.Character.Event
             Unk       = 1 << 1,
             Effective = 1 << 2,
             Resisted  = 1 << 3,
-            Immune    = 12,
+            Immune    = 12, // (Effective+Resisted => Immune)
         }
+        public DamageResponseFlags DamageFlags;
+    }
 
+    [AeroBlock]
+    public struct HitDamageData
+    {
         public EntityId TargetEntity;
 
         public byte HaveDealerEntity;
@@ -48,15 +39,5 @@ namespace AeroMessages.GSS.V66.Character.Event
 
         [AeroSdb("dbcharacter::DamageType", "id")]
         public byte DamageType;
-
-        public byte Unk_3_byte;
-
-        // Damage Response Flags
-        // 1 - Critical
-        // 2 - ???
-        // 4 - Effective
-        // 8 - Resisted
-        // (Effective+Resisted => Immune)
-        public DamageResponseFlags DamageFlags;
     }
 }
