@@ -47,8 +47,13 @@ namespace AeroMessages.GSS.V66.Character.Event
         [AeroArray(typeof(byte))]
         public Loadout[] Loadouts;
 
-        [AeroArray(3)]
-        public byte[] Unk_LastThree; // Could it be that they are used to remove Items, Resources and Loadouts? Since the first ones are used to add/update.
+        public byte Unk;
+
+        [AeroArray(typeof(byte))]
+        public Item[] SecondItems; // ?
+
+        [AeroArray(typeof(byte))]
+        public Resource[] SecondResources; // ?
     }
 
     [AeroBlock]
@@ -61,24 +66,27 @@ namespace AeroMessages.GSS.V66.Character.Event
 
         public ulong GUID;
         public byte SubInventory;
-
-        [AeroArray(4)]
-        public byte[] Unk2;
-
+        public uint Unk2;
         public byte DynamicFlags;
         public ushort Durability;
-
-        [AeroArray(5)]
-        public byte[] Unk3;
+        public ushort Unk3;
+        public ushort Unk4;
+        public byte Unk5;
 
         [AeroArray(typeof(byte))]
-        public ulong[] Unk4_Data;
+        public ItemUnkData[] Unk6;
 
-        [AeroArray(2)]
-        public byte[] Unk5;
+        public ushort Unk7;
 
         [AeroArray(typeof(byte))]
         public uint[] Modules;
+    }
+
+    [AeroBlock]
+    public struct ItemUnkData
+    {
+        public uint Unk1;
+        public uint Unk2;
     }
 
     [AeroBlock]
@@ -92,18 +100,14 @@ namespace AeroMessages.GSS.V66.Character.Event
 
         public uint Quantity;
         public byte SubInventory;
-
-        [AeroArray(4)]
-        public byte[] Unk2;
+        public uint Unk2;
     }
 
     [AeroBlock]
     public struct Loadout
     {
         public uint FrameLoadoutId;
-
-        [AeroArray(4)]
-        public byte[] Unk; // The frame loadout id is used as a uint in other messages so these are unlikely to belong to it. Perhaps an internal loadout id?
+        public uint Unk; // The frame loadout id is used as a uint in other messages so these are unlikely to belong to it. Perhaps an internal loadout id?
 
         [AeroString]
         public string LoadoutName;
@@ -134,10 +138,8 @@ namespace AeroMessages.GSS.V66.Character.Event
         
         [AeroArray(typeof(byte))]
         public uint[] Perks;
-        
-        [AeroArray(4)]
-        public byte[] Unk1; // Feels like it should be related to perks, but couldn't find anything.
 
+        public uint Unk1; // Feels like it should be related to perks, but couldn't find anything.
         public uint PerkBandwidth;
         public uint PerkRespecLockRemainingSeconds;
 
@@ -157,8 +159,13 @@ namespace AeroMessages.GSS.V66.Character.Event
     [AeroBlock]
     public struct LoadoutConfig_Extra
     {
-        [AeroArray(18)]
-        public byte[] Unk1;
+        // FUN_009e9fa0
+        public int Unk1_1;
+        public byte Unk1_2;
+        public byte Unk1_3;
+        public uint Unk1_4;
+        public uint Unk1_5;
+        public uint Unk1_6;
 
         [AeroArray(typeof(byte))]
         public uint[] Unk2;
@@ -172,7 +179,7 @@ namespace AeroMessages.GSS.V66.Character.Event
         public uint GliderId;
 
         [AeroArray(typeof(byte))]
-        public ulong[] Unk3;
+        public LoadoutConfig_Extra_UnkThing[] Unk3;
 
         [AeroSdb("dbvisualrecords::WarpaintPalette", "id")]
         public uint OverrideWeaponsPaletteId;
@@ -180,8 +187,10 @@ namespace AeroMessages.GSS.V66.Character.Event
         [AeroArray(typeof(byte))]
         public uint[] Unk4;
 
-        [AeroArray(12)]
-        public byte[] Unk5;
+        public uint Unk5_1;
+        public uint Unk5_2;
+        public uint Unk5_3;
+        // --
 
         public LoadoutConfig_Extra_ItemThing Chassis;
 
@@ -212,5 +221,12 @@ namespace AeroMessages.GSS.V66.Character.Event
         public SlottedItem[] Modules;
 
         public VisualsBlock Visuals;
+    }
+
+    [AeroBlock]
+    public struct LoadoutConfig_Extra_UnkThing
+    {
+        public uint Unk1;
+        public uint Unk2;
     }
 }
