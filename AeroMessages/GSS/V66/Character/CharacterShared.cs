@@ -623,4 +623,15 @@ namespace AeroMessages.GSS.V66.Character
         public ulong TargetEntity; // TODO: Verify this
         // --
     }
+
+    [AeroBlock]
+    public struct LootDistributionData
+    {
+        public ulong Unk1; // Entity?
+        [AeroString] public string Unk2;
+        public byte Unk3;
+        public ushort Unk4;
+        public byte Unk5;
+        public byte Unk6;
+    }
 }
