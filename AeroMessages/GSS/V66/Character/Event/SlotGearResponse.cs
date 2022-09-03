@@ -6,13 +6,13 @@ namespace AeroMessages.GSS.V66.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 154)]
     public partial class SlotGearResponse
     {
-        public uint LoadoutId;
+        public int LoadoutId;
         public ulong ItemGUID;
 
         [AeroSdb("dbitems::LoadoutSlot", "id")]
         public byte SlotIdx;
 
-        [AeroArray(5)]
-        public byte[] Unk; // 1 more byte than request
+        public uint Unk1;
+        public byte Result; // 1 = Success, 0 = Failure
     }
 }
