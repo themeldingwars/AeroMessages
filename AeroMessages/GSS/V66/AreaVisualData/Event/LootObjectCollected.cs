@@ -7,9 +7,7 @@ namespace AeroMessages.GSS.V66.AreaVisualData.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 24, 83)]
     public partial class LootObjectCollected // LootObjectView
     {
-        [AeroArray(4)]
-        public byte[] Unk;
-
+        public uint Unk1;
         public EntityId LootedByEntity; // Could be the opposite
         public EntityId LootedToEntity; // Could be the opposite
     }
