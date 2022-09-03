@@ -6,7 +6,7 @@ namespace AeroMessages.GSS.V66.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 206)]
     public partial class SlotGearRequest
     {
-        public uint LoadoutId;
+        public int LoadoutId;
         public ulong ItemGUID;
 
         [AeroSdb("dbitems::LoadoutSlot", "id")]
