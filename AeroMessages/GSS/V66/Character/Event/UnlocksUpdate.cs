@@ -19,9 +19,10 @@ namespace AeroMessages.GSS.V66.Character.Event
         public string Key;
 
         [AeroArray(typeof(byte))] // TODO: Aero needs support for handling additional bytes if size is 255
-        UnlockGroupEntry[] Entries;
+        public UnlockGroupEntry[] AddEntries;
 
-        public byte UnkEndOfKeyByte;
+        [AeroArray(typeof(byte))]
+        public UnlockGroupEntrySmall[] RemEntries; // Guessing that this is for removing stuff
     }
 
     [AeroBlock]
@@ -30,13 +31,21 @@ namespace AeroMessages.GSS.V66.Character.Event
         [AeroSdb("dbitems::Certificate", "id")]
         public uint CertId;
 
-        [AeroArray(typeof(byte))]
-        public uint[] Unk1_Data;
+        public byte HaveUnk1;
+        [AeroIf(nameof(HaveUnk1), 1)] public uint Unk1;
+        public byte HaveUnk2;
+        [AeroIf(nameof(HaveUnk2), 1)] public uint Unk2;
+        public byte HaveUnk3;
+        [AeroIf(nameof(HaveUnk3), 1)] [AeroString] public string Unk3;
+    }
 
-        [AeroArray(typeof(byte))]
-        public uint[] Unk2_Data;
+    [AeroBlock]
+    public struct UnlockGroupEntrySmall
+    {
+        [AeroSdb("dbitems::Certificate", "id")]
+        public uint CertId;
 
-        [AeroArray(typeof(byte))]
-        public uint[] Unk3_Data;
+        public byte HaveUnk2;
+        [AeroIf(nameof(HaveUnk2), 1)] public uint Unk2;
     }
 }
