@@ -7,10 +7,7 @@ namespace AeroMessages.GSS.V66.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 5, 124)]
     public partial class RemoveInteractives
     {
-        //[AeroArray(typeof(byte))]
-        //public ulong[] Entity;
-        
-        public byte Unk1; // TODO: Test if length
-        public EntityId Entity;
+        [AeroArray(typeof(byte))]
+        public EntityId[] Entities;
     }
 }
