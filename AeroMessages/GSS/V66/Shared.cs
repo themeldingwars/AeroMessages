@@ -354,4 +354,70 @@ namespace AeroMessages.GSS.V66
         public float Unk8;
         public float Unk9;
     }
+
+    [AeroBlock]
+    public struct GenericKeyVariablePair
+    {
+        // FUN_016f6360
+        [AeroString] public string Key;
+        public VariableType Value;
+    }
+
+    [AeroBlock]
+    public struct VariableType
+    {
+        // FUN_016f55c0
+        public uint TypeSelector;
+
+        [AeroIf(nameof(TypeSelector), 1)]
+        [AeroString] public string Value1;
+
+        [AeroIf(nameof(TypeSelector), 2)]
+        public sbyte Value2;
+
+        [AeroIf(nameof(TypeSelector), 3)]
+        public short Value3;
+
+        [AeroIf(nameof(TypeSelector), 4)]
+        public int Value4;
+
+        [AeroIf(nameof(TypeSelector), 5)]
+        public long Value5;
+
+        [AeroIf(nameof(TypeSelector), 6)]
+        public byte Value6;
+
+        [AeroIf(nameof(TypeSelector), 7)]
+        public ushort Value7;
+
+        [AeroIf(nameof(TypeSelector), 8)]
+        public uint Value8;
+
+        [AeroIf(nameof(TypeSelector), 9)]
+        public ulong Value9;
+
+        [AeroIf(nameof(TypeSelector), 10)]
+        public ushort Value10; // Half or Quantised Float?
+
+        [AeroIf(nameof(TypeSelector), 0xb)]
+        public float Value11;
+
+        [AeroIf(nameof(TypeSelector), 0xc)]
+        public double Value12; // Assumption
+
+        [AeroIf(nameof(TypeSelector), 0xd)]
+        public byte Value13;
+
+        [AeroIf(nameof(TypeSelector), 0xe)]
+        public EntityId Value14; // GUID
+
+        // Tempt the devil and you shall face the wrath of six thousand errors
+        /*
+        [AeroIf(nameof(TypeSelector), 0xf)]
+        [AeroArray(typeof(int))] public GenericKeyVariablePair[] Value15; // Double Inception
+
+        [AeroIf(nameof(TypeSelector), 0x10)]
+        [AeroArray(typeof(byte))] public VariableType[] Value16; // Regular Inception
+        */
+    }
 }

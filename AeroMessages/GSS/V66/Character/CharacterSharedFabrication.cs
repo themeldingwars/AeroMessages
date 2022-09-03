@@ -27,7 +27,7 @@ namespace AeroMessages.GSS.V66.Character
         [AeroArray(typeof(byte))] public FabricationData_00d9aab0[] Unk16;
         [AeroArray(typeof(byte))] public uint[] Unk17;
         [AeroArray(typeof(byte))] public FabricationData_00d9ad00[] Unk18;
-        [AeroArray(typeof(int))] public FabricationData_016f6360[] Unk19;
+        [AeroArray(typeof(int))] public GenericKeyVariablePair[] Unk19;
     }
 
     [AeroBlock]
@@ -59,69 +59,5 @@ namespace AeroMessages.GSS.V66.Character
     {
         public uint Unk1;
         public uint Unk2;
-    }
-
-    [AeroBlock]
-    public struct FabricationData_016f6360
-    {
-        [AeroString] public string Unk1;
-        public FabricationData_VariableType_016f55c0 Unk2;
-    }
-
-    [AeroBlock]
-    public struct FabricationData_VariableType_016f55c0
-    {
-        public uint TypeSelector;
-
-        [AeroIf(nameof(TypeSelector), 1)]
-        [AeroString] public string Value1;
-
-        [AeroIf(nameof(TypeSelector), 2)]
-        public sbyte Value2;
-
-        [AeroIf(nameof(TypeSelector), 3)]
-        public short Value3;
-
-        [AeroIf(nameof(TypeSelector), 4)]
-        public int Value4;
-
-        [AeroIf(nameof(TypeSelector), 5)]
-        public long Value5;
-
-        [AeroIf(nameof(TypeSelector), 6)]
-        public byte Value6;
-
-        [AeroIf(nameof(TypeSelector), 7)]
-        public ushort Value7;
-
-        [AeroIf(nameof(TypeSelector), 8)]
-        public uint Value8;
-
-        [AeroIf(nameof(TypeSelector), 9)]
-        public ulong Value9;
-
-        [AeroIf(nameof(TypeSelector), 10)]
-        public ushort Value10; // Half or Quantised Float?
-
-        [AeroIf(nameof(TypeSelector), 0xb)]
-        public float Value11;
-
-        [AeroIf(nameof(TypeSelector), 0xc)]
-        public double Value12; // Assumption
-
-        [AeroIf(nameof(TypeSelector), 0xd)]
-        public byte Value13;
-
-        [AeroIf(nameof(TypeSelector), 0xe)]
-        public ulong Value14; // ?
-
-        // Tempt the devil and you shall face the wrath of six thousand errors
-        /*
-        [AeroIf(nameof(TypeSelector), 0xf)]
-        [AeroArray(typeof(int))] public FabricationData_016f6360[] Value15; // Double Inception
-
-        [AeroIf(nameof(TypeSelector), 0x10)]
-        [AeroArray(typeof(byte))] public FabricationData_VariableType_016f55c0[] Value16; // Regular Inception
-        */
     }
 }
