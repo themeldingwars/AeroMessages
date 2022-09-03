@@ -7,7 +7,7 @@ namespace AeroMessages.GSS.V66.Generic
     public partial class BountyAbortAck
     {
         public uint BountyId; // Unsure how this id works
-        [AeroArray(2)]
-        public byte[] Unk1;
+        public byte Unk1;
+        public byte Unk2;
     }
 }

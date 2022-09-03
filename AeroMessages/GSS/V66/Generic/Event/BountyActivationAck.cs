@@ -7,19 +7,17 @@ namespace AeroMessages.GSS.V66.Generic
     public partial class BountyActivationAck
     {
         public uint BountyId; // Unsure how this id works
-
-        [AeroArray(7)]
-        public byte[] Unk1;
+        public byte Unk1;
+        public byte Unk2;
+        public byte Unk3;
+        public uint Unk4;
 
         [AeroSdb("clientmissions::Mission","id")]
         //[AeroSdb("clientmissions::MissionObjective","mission_id")]
         public uint MissionId;
 
-        [AeroArray(9)]
-        public byte[] Unk2;
-
-        [AeroString]
-        public string Name;
-
+        public byte Unk5;
+        public ulong Unk6;
+        [AeroString] public string Name;
     }
 }
