@@ -7,8 +7,7 @@ namespace AeroMessages.GSS.V66.Character.Event
     public partial class Respawned
     {
         public ushort ShortTime;
-
-        [AeroArray(2)]
-        public byte[] Unk;
+        public sbyte Unk1;
+        public byte Unk2;
     }
 }
