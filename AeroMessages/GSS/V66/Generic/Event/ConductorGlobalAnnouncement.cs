@@ -1,5 +1,7 @@
 using Aero.Gen.Attributes;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
+using System.Numerics;
+using AeroMessages.Common;
 namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
@@ -19,14 +21,14 @@ namespace AeroMessages.GSS.V66.Generic
         [AeroString] public string Unk4;
         [AeroString] public string Unk5;
         public byte HaveUnk6;
-        [AeroIf(nameof(HaveUnk6))] public GlobalAnnouncementDataType1 Unk6;
+        [AeroIf(nameof(HaveUnk6), 1)] public GlobalAnnouncementDataType1 Unk6;
         public byte HaveUnk7;
-        [AeroIf(nameof(HaveUnk7))] public GlobalAnnouncementDataType2 Unk7;
+        [AeroIf(nameof(HaveUnk7), 1)] public GlobalAnnouncementDataType2 Unk7;
         [AeroString] public string Unk8;
         public byte HaveUnk9;
-        [AeroIf(nameof(HaveUnk9))] public GlobalAnnouncementDataType3 Unk9;
+        [AeroIf(nameof(HaveUnk9), 1)] public GlobalAnnouncementDataType3 Unk9;
         public byte HaveUnk10;
-        [AeroIf(nameof(HaveUnk10))] public GlobalAnnouncementDataType4 Unk10;
+        [AeroIf(nameof(HaveUnk10), 1)] public GlobalAnnouncementDataType4 Unk10;
     }
 
     [AeroBlock]
@@ -35,7 +37,7 @@ namespace AeroMessages.GSS.V66.Generic
         // FUN_00c3bb10
         public uint Unk1;
         public byte HaveUnk2;
-        [AeroIf(nameof(HaveUnk2))] public uint Unk2;
+        [AeroIf(nameof(HaveUnk2), 1)] public uint Unk2;
     }
 
     [AeroBlock]
@@ -44,7 +46,7 @@ namespace AeroMessages.GSS.V66.Generic
         // FUN_00c3bd50
         public uint Unk1;
         public byte HaveUnk2;
-        [AeroIf(nameof(HaveUnk2))] public uint Unk2;
+        [AeroIf(nameof(HaveUnk2), 1)] public uint Unk2;
     }
 
     [AeroBlock]
