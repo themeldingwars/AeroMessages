@@ -8,13 +8,10 @@ namespace AeroMessages.GSS.V66.Character.Event
     public partial class TrackerEvent
     {
         public EntityId Entity;
-
-        [AeroArray(6)]
-        public byte[] Unk1;
-
-        [AeroString]
-        public string Text;
-
-        public byte Unk2;
+        public byte Unk1;
+        public uint Unk2;
+        public byte Unk3;
+        [AeroString] public string Text;
+        public byte Unk4;
     }
 }
