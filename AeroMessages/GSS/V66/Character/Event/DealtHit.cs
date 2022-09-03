@@ -8,36 +8,9 @@ namespace AeroMessages.GSS.V66.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 5, 107)]
     public partial class DealtHit
     {
-        public byte HaveDamageData;
-        [AeroIf(nameof(HaveDamageData), 1)]
-        public HitDamageData Data;
-
-        public byte Unk;
-
-        [Flags]
-        public enum DamageResponseFlags : byte
-        {
-            Critical  = 1 << 0,
-            Unk       = 1 << 1,
-            Effective = 1 << 2,
-            Resisted  = 1 << 3,
-            Immune    = 12, // (Effective+Resisted => Immune)
-        }
+        public byte HaveDamage;
+        [AeroIf(nameof(HaveDamage), 1)] public DamageHitStruct DamageData;
+        public byte Unk1;
         public DamageResponseFlags DamageFlags;
-    }
-
-    [AeroBlock]
-    public struct HitDamageData
-    {
-        public EntityId TargetEntity;
-
-        public byte HaveDealerEntity;
-        [AeroIf(nameof(HaveDealerEntity), 1)]
-        public EntityId DealerEntity;
-
-        public uint DamageValue;
-
-        [AeroSdb("dbcharacter::DamageType", "id")]
-        public byte DamageType;
     }
 }
