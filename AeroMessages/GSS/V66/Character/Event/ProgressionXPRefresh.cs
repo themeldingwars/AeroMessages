@@ -15,12 +15,9 @@ namespace AeroMessages.GSS.V66.Character.Event
     {
         [AeroSdb("dbitems::RootItem", "sdb_id")]
         public uint ChassisID;
-
         public uint XpValue1;
         public uint XpValue2;
-        public byte CurrentLevel;
-
-        [AeroArray(7)]
-        public byte[] Unk;
+        public uint CurrentLevel;
+        public uint Unk;
     }
 }
