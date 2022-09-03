@@ -5,10 +5,8 @@ namespace AeroMessages.GSS.V66.Character.Event
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 156)]
     public partial class SlotVisualMultiResponse
-    {   
-        // Not confirmed that these are the loadout and config
-        // Alternatively it could be the loadout item guid
-        public uint LoadoutId;
+    {
+        public int LoadoutId;
         public uint ConfigId; // Assumption. If so, 0: PvE, 1: PvP
 
         [AeroArray(typeof(byte))]
