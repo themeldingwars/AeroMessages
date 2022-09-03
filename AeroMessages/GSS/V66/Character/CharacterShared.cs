@@ -183,43 +183,23 @@ namespace AeroMessages.GSS.V66.Character
         // Chassis
         public SlottedItem Chassis; // Battleframe
 
-        [AeroArray(typeof(byte))]
-        public SlottedItem[] ChassisModules; // Armor gear, perks
-
-        public VisualsBlock ChassisVisuals;
-
-
         // Backpack
         public SlottedItem Backpack; // Reactor
 
-        [AeroArray(typeof(byte))]
-        public SlottedItem[] BackpackModules; // Abilities
-
-        public VisualsBlock BackpackVisuals; // Does not affect in-game visuals?
-
         // Primary
-        public SlottedItem PrimaryWeapon; // SlotIdx 0
-
-        [AeroArray(typeof(byte))]
-        public SlottedItem[] PrimaryWeaponOptModules;
-
-        public VisualsBlock PrimaryWeaponVisuals;
-
-        [AeroArray(8)]
-        public byte[] PrimaryWeaponUnk;
+        public SlottedWeapon PrimaryWeapon; // SlotIdx 0
 
         // Secondary
-        public SlottedItem SecondaryWeapon; // SlotIdx 1
-        [AeroArray(typeof(byte))]
-        public SlottedItem[] SecondaryWeaponOptModules;
+        public SlottedWeapon SecondaryWeapon; // SlotIdx 1
 
-        public VisualsBlock SecondaryWeaponVisuals;
+        public uint EndUnk1;
+        public byte EndUnk2;
+    }
 
-        [AeroArray(8)]
-        public byte[] SecondaryWeaponUnk;
-
-        [AeroArray(5)]
-        public byte[] EndUnk;
+    [Flags]
+    public enum SlottedItemFlags : byte
+    {
+        HaveMoreData    = 1 << 1,
     }
 
     [AeroBlock]
@@ -228,9 +208,58 @@ namespace AeroMessages.GSS.V66.Character
         [AeroSdb("dbitems::RootItem", "sdb_id")]
         public uint SdbId;
         public byte SlotIndex;
+        public SlottedItemFlags Flags;
+        public byte Unk2;
 
-        [AeroArray(2)]
-        public byte[] Unk;
+        [AeroIf(nameof(Flags), Ops.HasFlag, SlottedItemFlags.HaveMoreData)]
+        public SlottedItemUnkData UnkData;
+
+        [AeroArray(typeof(byte))]
+        public SlottedModule[] Modules;
+
+        public VisualsBlock Visuals;
+    }
+
+    [AeroBlock]
+    public struct SlottedWeapon
+    {
+        public SlottedItem Item;
+        public uint Unk1;
+        public uint Unk2;
+    }
+
+    [AeroBlock]
+    public struct SlottedModule
+    {
+        [AeroSdb("dbitems::RootItem", "sdb_id")]
+        public uint SdbId;
+        public byte SlotIndex;
+        public SlottedItemFlags Flags; // Apply Lsh 8
+        public byte Unk2;
+
+        [AeroIf(nameof(Flags), Ops.HasFlag, SlottedItemFlags.HaveMoreData)] // Use 0x200 as the flag
+        public SlottedItemUnkData UnkData;
+    }
+
+    [AeroBlock]
+    public struct SlottedItemUnkData
+    {
+        public ulong Unk1;
+        [AeroArray(typeof(byte))] public SlottedItemUnk2x4[] Unk2;
+        public ushort Unk3;
+        public ushort Unk4;
+        public uint Unk5;
+        public byte Unk6;
+        public uint Unk7;
+        [AeroArray(typeof(byte))] public uint[] Unk8;
+        public byte Unk9;
+    }
+
+    [AeroBlock]
+    public struct SlottedItemUnk2x4
+    {
+        public uint Unk1;
+        public uint Unk2;
     }
 
     [AeroBlock]

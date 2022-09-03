@@ -192,35 +192,20 @@ namespace AeroMessages.GSS.V66.Character.Event
         public uint Unk5_3;
         // --
 
-        public LoadoutConfig_Extra_ItemThing Chassis;
+        public SlottedItem Chassis;
 
         [AeroArray(typeof(byte))]
-        public LoadoutConfig_Extra_ItemThing[] Weapons;
+        public SlottedItem[] Weapons;
 
         [AeroArray(typeof(byte))]
         public VisualOverridesData[] VisualOverrides;
 
-        public LoadoutConfig_Extra_ItemThing Backpack;
+        public SlottedItem Backpack;
 
-        [AeroArray(4)]
-        public byte[] Unk6;
-
+        public uint Unk6;
         public uint UnkPerkRespecRemainingSecRelated;
         public byte ArchetypeLevel;
-
-        [AeroArray(4)]
-        public byte[] Unk7;
-    }
-
-    [AeroBlock]
-    public struct LoadoutConfig_Extra_ItemThing
-    {
-        public SlottedItem Item;
-
-        [AeroArray(typeof(byte))]
-        public SlottedItem[] Modules;
-
-        public VisualsBlock Visuals;
+        public uint Unk7;
     }
 
     [AeroBlock]
