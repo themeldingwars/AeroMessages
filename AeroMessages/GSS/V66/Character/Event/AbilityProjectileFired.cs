@@ -19,7 +19,7 @@ namespace AeroMessages.GSS.V66.Character.Event
         public ushort AmmoType;
         public float Range;
 
-        public uint Unk1;
+        public int Unk1;
         public byte Unk2;
         public float Unk3;
         public byte Unk4;
