@@ -1,6 +1,7 @@
 using Aero.Gen.Attributes;
 using AeroMessages.Common;
 using System.Numerics;
+using System;
 using static Aero.Gen.Attributes.AeroIfAttribute;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.V66
@@ -419,5 +420,30 @@ namespace AeroMessages.GSS.V66
         [AeroIf(nameof(TypeSelector), 0x10)]
         [AeroArray(typeof(byte))] public VariableType[] Value16; // Regular Inception
         */
+    }
+
+    [Flags]
+    public enum DamageResponseFlags : byte
+    {
+        Critical  = 1 << 0,
+        Unk       = 1 << 1,
+        Effective = 1 << 2,
+        Resisted  = 1 << 3,
+        Immune    = 12, // (Effective+Resisted => Immune)
+    }
+
+    [AeroBlock]
+    public struct DamageHitStruct
+    {
+        public EntityId Target;
+
+        public byte HaveDealer;
+        [AeroIf(nameof(HaveDealer), 1)]
+        public EntityId Dealer;
+
+        public int DamageValue;
+
+        [AeroSdb("dbcharacter::DamageType", "id")]
+        public byte DamageType;
     }
 }
