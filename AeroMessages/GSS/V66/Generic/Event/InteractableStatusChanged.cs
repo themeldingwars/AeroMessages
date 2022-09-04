@@ -7,11 +7,9 @@ namespace AeroMessages.GSS.V66.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 91)]
     public partial class InteractableStatusChanged
     {
+        public byte Unk1;
+        public uint Unk2;
         public EntityId Target;
-
-        [AeroArray(5)]
-        public byte[] Unk;
-
-        public byte Interactable;
+        public byte Unk3;
     }
 }

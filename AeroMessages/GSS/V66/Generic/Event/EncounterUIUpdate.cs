@@ -8,8 +8,7 @@ namespace AeroMessages.GSS.V66.Generic
     public partial class EncounterUIUpdate
     {
         public EntityId EncounterId;
-
-        //[AeroArray(-1)]
-        //public byte[] Unk;
+        [AeroArray(typeof(ushort))] public byte[] BlobData;
+        [AeroString] public string Unk; // Consume remaining bytes, this is probably json?
     }
 }

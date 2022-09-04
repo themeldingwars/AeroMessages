@@ -8,9 +8,14 @@ namespace AeroMessages.GSS.V66.Generic
     {
         [AeroSdb("clientmissions::Mission","id")]
         //[AeroSdb("clientmissions::MissionObjective","mission_id")]
-        public uint MissionId;
+        public ulong MissionId;
 
-        [AeroArray(5)]
-        public byte[] Unk1;
+        public byte Status; // Some special type, guess it has to be status
+    }
+
+    public enum MissionStatus : byte
+    {
+        Unk2 = 2,
+        Unk3 = 3,
     }
 }

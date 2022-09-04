@@ -6,12 +6,13 @@ namespace AeroMessages.GSS.V66.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 64)]
     public partial class MissionObjectiveUpdated
     {
+        // Its a bit weird that its using 8 bytes for the mission id but yeah
+
         [AeroSdb("clientmissions::Mission","id")]
         //[AeroSdb("clientmissions::MissionObjective","mission_id")]
-        public uint MissionId;
+        public ulong MissionId;
 
-        [AeroArray(8)]
-        public byte[] Unk1;
+        public uint Unk1;
 
         [AeroString]
         public string TextObjectiveTitle;
@@ -19,7 +20,8 @@ namespace AeroMessages.GSS.V66.Generic
         [AeroString]
         public string TextObjectiveProgress;
 
-        [AeroArray(5)]
-        public byte[] Unk2;
+        public byte Unk2; // Some special type
+
+        public float Unk3;
     }
 }

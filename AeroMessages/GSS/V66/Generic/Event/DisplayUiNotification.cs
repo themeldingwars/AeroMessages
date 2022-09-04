@@ -8,8 +8,17 @@ namespace AeroMessages.GSS.V66.Generic
     {
         [AeroSdb("dblocalization::LocalizedText", "id")]
         public uint LocalizedTextId;
+        public uint Unk1;
+        [AeroArray(typeof(byte))] public UiNotificationData[] Unk2;
+        public byte Unk3;
+    }
 
-        [AeroArray(6)]
-        public byte[] Unk;
+    [AeroBlock]
+    public struct UiNotificationData
+    {
+        public byte Unk1;
+        [AeroString] public string Unk2;
+        public int Unk3;
+        public int Unk4;
     }
 }
