@@ -8,8 +8,6 @@ namespace AeroMessages.GSS.V66.Generic
     public partial class PingMap
     {   
         public Vector3 Position;
-
-        [AeroArray(4)]
-        public byte[] Unk1;
+        public uint Unk;
     }
 }

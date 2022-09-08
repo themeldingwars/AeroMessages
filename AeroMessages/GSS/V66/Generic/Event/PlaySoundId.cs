@@ -9,12 +9,7 @@ namespace AeroMessages.GSS.V66.Generic
         // Sdb table 14, record_id column?
         // Looks like there are variations of the message
         // Record id works for some messages but not all.
-        public uint Id_UInt;
-
-        [AeroArray(4)]
-        public byte[] Unk1;
-
-        [AeroArray(8)]
-        public byte[] Unk2;
+        public long Unk1; // An int64?
+        public ulong Unk2;
     }
 }

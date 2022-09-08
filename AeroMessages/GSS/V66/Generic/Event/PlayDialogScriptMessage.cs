@@ -8,6 +8,7 @@ namespace AeroMessages.GSS.V66.Generic
     {   
         [AeroSdb("dbdialogdata::DialogScript", "id")]
         public uint DialogId;
-        public byte Unk1;
+        
+        [AeroArray(typeof(byte))] public ulong[] Unk1;
     }
 }
