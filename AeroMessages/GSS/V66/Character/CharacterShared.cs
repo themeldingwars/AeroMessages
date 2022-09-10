@@ -502,15 +502,52 @@ namespace AeroMessages.GSS.V66.Character
     public struct CinematicCameraData
     {
         // msgidx gameplay:840302
-        [AeroArray(40)]
-        public byte[] Unk;
+        [AeroArray(5)] public float[] Unk1; // Five floats... Whats what.
+
+        public byte Unk2;
+
+        public byte HaveUnk3;
+        [AeroIf(nameof(HaveUnk3), 1)]
+        public ulong Unk3;
+
+        public byte HaveUnk4;
+        [AeroIf(nameof(HaveUnk4), 1)]
+        public CinematicCameraData1 Unk4;
+
+        public byte HaveUnk5;
+        [AeroIf(nameof(HaveUnk5), 1)]
+        public CinematicCameraData2 Unk5;
+    }
+
+    [AeroBlock]
+    public struct CinematicCameraData1
+    {
+        public Vector3 Unk1;
+        public byte Unk2; // signed?
+        public byte Unk3; // signed?
+        public byte Unk4; // signed?
+        public byte Unk5; // signed?
+        public byte Unk6;
+        [AeroArray(8)] public byte[] Unk7; // Memcpy
+        public byte Unk8;
+        public byte Unk9;
+        public byte Unk10;
+        public uint Unk11;
+    }
+
+    [AeroBlock]
+    public struct CinematicCameraData2
+    {
+        public uint Unk1;
+        public float Unk2;
     }
 
     [AeroBlock]
     public struct DockedParamsData
     {
-        [AeroArray(21)]
-        public byte[] Unk;
+        public EntityId Unk1;
+        public Vector3 Unk2;
+        public byte Unk3;
     }
 
     [AeroBlock]
@@ -633,5 +670,12 @@ namespace AeroMessages.GSS.V66.Character
         public ushort Unk4;
         public byte Unk5;
         public byte Unk6;
+    }
+
+    [AeroBlock]
+    public struct WalletData
+    {
+        public uint Beans;
+        public uint Epoch;
     }
 }

@@ -212,13 +212,6 @@ namespace AeroMessages.GSS.V66.Character.Controller
     }
 
     [AeroBlock]
-    public struct WalletData
-    {
-        public uint Beans;
-        public uint Epoch;
-    }
-
-    [AeroBlock]
     public struct LoyaltyData
     {
         public uint Current;
