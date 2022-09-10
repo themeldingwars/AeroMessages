@@ -8,7 +8,6 @@ namespace AeroMessages.GSS.V66.Vehicle.Event
     {
         [AeroSdb("apt::AbilityData", "id")]
         public uint AbilityId;
-
         public uint Time;
     }
 }
