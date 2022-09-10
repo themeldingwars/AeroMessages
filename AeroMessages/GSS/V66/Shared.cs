@@ -126,8 +126,10 @@ namespace AeroMessages.GSS.V66
         [AeroArray(typeof(byte))]
         public EntityId[] Entities;
 
-        [AeroArray(29)]
-        public byte[] UnkData;
+        public byte Unk1;
+        public Vector3 Unk2;
+        public Vector3 Unk3;
+        public int Unk4;
         public float Float1;
         public float Float2;
     }
@@ -172,9 +174,8 @@ namespace AeroMessages.GSS.V66
     [AeroBlock]
     public struct ScopeBubbleInfoData
     {
-        // Don't know how this works but its used everywhere so keeping it in a struct
-        [AeroArray(8)]
-        public byte[] Unk;
+        public uint Unk1;
+        public uint Unk2;
     }
 
     [AeroBlock]
