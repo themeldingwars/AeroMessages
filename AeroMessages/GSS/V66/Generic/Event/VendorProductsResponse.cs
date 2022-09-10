@@ -8,6 +8,7 @@ namespace AeroMessages.GSS.V66.Generic
     {
         public uint VendorId;
         public ulong Id;
+        public uint RemoteId;
 
         [AeroString]
         public string Title;
