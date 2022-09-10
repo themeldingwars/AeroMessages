@@ -439,9 +439,9 @@ namespace AeroMessages.GSS.V66.Character
     public struct MovementPoseMoreData1
     {
         // FUN_00a08f70
-        public Vector3 Unk1;
-        public Quaternion Unk2;
-        public Vector3 Unk3;
+        public Vector3 Position;
+        public Quaternion Rotation;
+        public Vector3 Direction;
     }
 
     [AeroBlock]

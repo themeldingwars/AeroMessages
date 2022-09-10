@@ -446,4 +446,112 @@ namespace AeroMessages.GSS.V66
         [AeroSdb("dbcharacter::DamageType", "id")]
         public byte DamageType;
     }
+
+    [AeroBlock]
+    public struct CurrentPoseUpdateData
+    {
+        // Shared between vehicle and character
+        public enum CurrentPoseUpdateFlags: byte
+        {
+            ShortTime = 0x00,
+            MovementState = 0x02,
+            Position = 0x0c,
+            Rotation = 0x30,
+            Aim = 0xc0,
+        }
+
+        public CurrentPoseUpdateFlags Flags;
+
+        public byte CalcFlagValue1 => ((byte)(Flags & CurrentPoseUpdateFlags.Rotation));
+        public byte CalcFlagValue2 => ((byte)(Flags & CurrentPoseUpdateFlags.Aim));
+
+        // ShortTime
+        [AeroIf(nameof(Flags), Ops.DoesntHaveFlag, CurrentPoseUpdateFlags.ShortTime)]
+        public ushort ShortTime;
+
+        [AeroIf(nameof(Flags), Ops.HasFlag, CurrentPoseUpdateFlags.ShortTime)]
+        public byte ShortTimeAlt;
+
+        // Unknown byte
+        public byte UnkAlwaysPresent;
+
+        // Movement State
+        [AeroIf(nameof(Flags), Ops.DoesntHaveFlag, CurrentPoseUpdateFlags.MovementState)]
+        public ushort MovementState;
+
+        // Position
+        [AeroIf(nameof(Flags), Ops.DoesntHaveFlag, CurrentPoseUpdateFlags.Position)]
+        public Vector3 Position;
+
+        [AeroIf(nameof(Flags), Ops.HasFlag, CurrentPoseUpdateFlags.Position)]
+        [AeroArray(3)]
+        public byte[] PositionAlt;
+
+        // Rotation
+        [AeroIf(nameof(CalcFlagValue1), 0x00)]
+        public QuantisedQuaternion Rotation;
+
+        [AeroIf(nameof(CalcFlagValue1), 0x10)]
+        public byte RotAltLastByte_1; // Same byte, just difficulties with logic
+
+        [AeroIf(nameof(CalcFlagValue1), 0x20)]
+        [AeroArray(2)] public byte[] RotAltBytes;
+
+        [AeroIf(nameof(CalcFlagValue1), 0x20)]
+        public byte RotAltLastByte_2; // Same byte, just difficulties with logic
+
+        // Aim
+        [AeroIf(nameof(Flags), Ops.DoesntHaveFlag, CurrentPoseUpdateFlags.Aim)]
+        public QuantisedVector3 Aim;
+
+        [AeroIf(nameof(Flags), Ops.HasFlag, CurrentPoseUpdateFlags.Aim)]
+        [AeroIf(nameof(CalcFlagValue2), Ops.NotEqual, (byte) CurrentPoseUpdateFlags.Aim)]
+        [AeroArray(3)]
+        public byte[] AimAlt;
+    }
+
+    [AeroBlock]
+    public struct TookDebugWeaponHitData
+    {
+        public byte Unk1;
+        public uint Unk2;
+        public uint Unk3;
+        public ushort Unk4;
+        public Vector3 Unk5;
+        public Vector3 Unk6;
+        public uint Unk7;
+        
+        public byte HaveUnk8;
+        [AeroIf(nameof(HaveUnk8), 1)] public TookDebugWeaponHitRelatedData Unk8;
+
+        public byte HaveUnk9;
+        [AeroIf(nameof(HaveUnk9), 1)] public TookDebugWeaponHitRelatedData2 Unk9;
+    }
+
+    [AeroBlock]
+    public struct TookDebugWeaponHitRelatedData
+    {
+        public ulong Unk1;
+        public Vector3 Unk2;
+        public Quaternion Unk3;
+        public sbyte Unk4;
+        public byte Unk5;
+    }
+
+    [AeroBlock]
+    public struct TookDebugWeaponHitRelatedData2
+    {
+        // FUN_009f6bb0
+        public ulong Unk1;
+
+        // 009f6020
+        [AeroArray(typeof(byte))] public MaybeMatrix[] Unk2;
+    }
+
+    [AeroBlock]
+    public struct MaybeMatrix
+    {
+        // 00a093e0
+        [AeroArray(4)] uint[] Unk;
+    }
 }
