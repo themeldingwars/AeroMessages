@@ -38,20 +38,16 @@ namespace AeroMessages.GSS.V66
 
     [AeroBlock]
     public struct PersonalFactionStanceData
-    {
-        // TODO: Verify
-        [AeroArray(20)]
-        public byte[] Unk;
-        
-        
-
+    {   
+        public PFSData Unk1;
+        public PFSData Unk2;
     }
 
     [AeroBlock]
     public struct PFSData
     {
         public ushort Header;
-        public uint Length => ((Header >> 6) + 1) << 3;
+        public uint Length => (((uint)Header >> 6) + 1) << 3;
         [AeroArray(nameof(Length))] public byte[] Data;
     }
 
