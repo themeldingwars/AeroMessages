@@ -1,6 +1,8 @@
 using Aero.Gen.Attributes;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
+using AeroMessages.Common;
 using System.Numerics;
+using System;
 namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]

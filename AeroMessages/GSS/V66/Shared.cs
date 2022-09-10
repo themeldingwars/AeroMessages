@@ -447,19 +447,19 @@ namespace AeroMessages.GSS.V66
         public byte DamageType;
     }
 
+    // Shared between vehicle and character
+    public enum CurrentPoseUpdateFlags: byte
+    {
+        ShortTime = 0x00,
+        MovementState = 0x02,
+        Position = 0x0c,
+        Rotation = 0x30,
+        Aim = 0xc0,
+    }
+
     [AeroBlock]
     public struct CurrentPoseUpdateData
     {
-        // Shared between vehicle and character
-        public enum CurrentPoseUpdateFlags: byte
-        {
-            ShortTime = 0x00,
-            MovementState = 0x02,
-            Position = 0x0c,
-            Rotation = 0x30,
-            Aim = 0xc0,
-        }
-
         public CurrentPoseUpdateFlags Flags;
 
         public byte CalcFlagValue1 => ((byte)(Flags & CurrentPoseUpdateFlags.Rotation));
