@@ -5,9 +5,9 @@ using Aero.Gen;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.V66.Character.View
 {
-    [Aero(AeroGenTypes.View)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 14, 1)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 14, 3)]
+    // [Aero(AeroGenTypes.View)]
+    // [AeroMessageId(MsgType.GSS, MsgSrc.Message, 14, 1)]
+    // [AeroMessageId(MsgType.GSS, MsgSrc.Message, 14, 3)]
     public partial class DynamicProjectileView
     {
         /*

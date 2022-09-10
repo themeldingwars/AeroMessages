@@ -8,9 +8,9 @@ using Aero.Gen;
 
 namespace AeroMessages.GSS.V66.Character.Controller
 {
-    [Aero(AeroGenTypes.Controller)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 3, 1)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 3, 4)]
+    // [Aero(AeroGenTypes.Controller)]
+    // [AeroMessageId(MsgType.GSS, MsgSrc.Message, 3, 1)]
+    // [AeroMessageId(MsgType.GSS, MsgSrc.Message, 3, 4)]
     public partial class NPCController
     {
         // TODO Meaningless

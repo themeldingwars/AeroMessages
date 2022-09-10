@@ -5,9 +5,9 @@ using Aero.Gen;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.V66.LootStoreExtension.View
 {
-    [Aero(AeroGenTypes.View)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 53, 1)] // Update
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 53, 3)] // ViewKeyframe
+    // [Aero(AeroGenTypes.View)]
+    // [AeroMessageId(MsgType.GSS, MsgSrc.Message, 53, 1)] // Update
+    // [AeroMessageId(MsgType.GSS, MsgSrc.Message, 53, 3)] // ViewKeyframe
     public partial class LootObjectView
     {
         /*
