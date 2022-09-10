@@ -9,16 +9,31 @@ namespace AeroMessages.GSS.V66
     [AeroBlock]
     public struct HostilityInfoData
     {
-        public enum HostilityMode: byte
+        [Flags]
+        public enum HostilityFlags : byte
         {
-            None = 0,
-            PvE = 1, // Id is Faction Id
-            PvP = 2, // Id is Team Id
+            Faction = 1 << 0,
+            Team = 1 << 1,
+            Unk2 = 1 << 2,
+            Unk3 = 1 << 3,
+            Unk4 = 1 << 4,
         }
-        public HostilityMode Mode;
+        public HostilityFlags Flags;
 
-        [AeroIf(nameof(Mode), Ops.NotEqual, HostilityMode.None)]
-        public byte Id; // Faction/Team Id
+        [AeroIf(nameof(Flags), Ops.HasFlag, HostilityFlags.Faction)]
+        public byte FactionId;
+
+        [AeroIf(nameof(Flags), Ops.HasFlag, HostilityFlags.Team)]
+        public byte TeamId;
+
+        [AeroIf(nameof(Flags), Ops.HasFlag, HostilityFlags.Unk2)]
+        public ushort Unk2;
+
+        [AeroIf(nameof(Flags), Ops.HasFlag, HostilityFlags.Unk3)]
+        public ushort Unk3;
+
+        [AeroIf(nameof(Flags), Ops.HasFlag, HostilityFlags.Unk4)]
+        public byte Unk4;
     }
 
     [AeroBlock]
@@ -27,6 +42,17 @@ namespace AeroMessages.GSS.V66
         // TODO: Verify
         [AeroArray(20)]
         public byte[] Unk;
+        
+        
+
+    }
+
+    [AeroBlock]
+    public struct PFSData
+    {
+        public ushort Header;
+        public uint Length => ((Header >> 6) + 1) << 3;
+        [AeroArray(nameof(Length))] public byte[] Data;
     }
 
     [AeroBlock]
@@ -553,5 +579,12 @@ namespace AeroMessages.GSS.V66
     {
         // 00a093e0
         [AeroArray(4)] uint[] Unk;
+    }
+
+    [AeroBlock]
+    public struct WeaponFireBaseTimeData
+    {
+        public ushort ChangeTime; // Not 100% about this one
+        public byte Unk; // Not 100% about this one
     }
 }

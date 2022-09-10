@@ -158,13 +158,6 @@ namespace AeroMessages.GSS.V66.Character.Controller
     }
 
     [AeroBlock]
-    public struct WeaponFireBaseTimeData
-    {
-        public ushort ChangeTime; // Not 100% about this one
-        public byte Unk; // Not 100% about this one
-    }
-
-    [AeroBlock]
     public struct PermissionFlagsData
     {
         [Flags]

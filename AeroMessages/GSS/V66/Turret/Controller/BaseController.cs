@@ -13,22 +13,31 @@ namespace AeroMessages.GSS.V66.Turret.Controller
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 39, 4)]
     public partial class BaseController
     {
-        // TODO
-        /*
-        Type = 0x00,
-        ParentObjId = 0x01,
-        ParentChildIndex = 0x02,
-        GunnerId = 0x03,
-        SpawnPose = 0x04,
-        ProcessDelay = 0x05,
-        WeaponFireBaseTime = 0x06,
-        Ammo = 0x07,
-        FireRateModifier = 0x08,
-        HostilityInfo = 0x9, // Faction
-        PersonalFactionStance = 0x0a,
-        ScalingLevel = 0x0b,
+        [AeroSdb("dbcharacter::Turret", "id")]
+        private uint Type;
+        private EntityId ParentObjId; // Turret_ObserverView is added to this Deployable entity, get "unhandled viewcode" error if not specified.
+        private byte ParentChildIndex; // Only observed 0x00
+        private EntityId GunnerId;
+        private SpawnPoseData SpawnPose;
+        private uint ProcessDelay;
+        private WeaponFireBaseTimeData WeaponFireBaseTime;
+        private AmmoData Ammo;
+        private float FireRateModifier;
+        private HostilityInfoData HostilityInfo;
+        [AeroNullable] private PersonalFactionStanceData PersonalFactionStance;
+        private uint ScalingLevel;
+    }
 
-        Clear_PersonalFactionStance = 0x8a,
-         */
+    [AeroBlock]
+    public struct SpawnPoseData
+    {
+        public Quaternion Rotation; // Assumption
+        public uint Time; // Assumption
+    }
+
+    [AeroBlock]
+    public struct AmmoData
+    {
+        [AeroArray(typeof(byte))] public ushort[] Ammo;
     }
 }
