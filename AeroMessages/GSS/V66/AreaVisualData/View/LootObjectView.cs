@@ -43,25 +43,30 @@ namespace AeroMessages.GSS.V66.AreaVisualData.View
     public struct LootObjectData
     {
         public uint Time;
-        public byte HaveEntity;
 
+        public byte HaveEntity;
         [AeroIf(nameof(HaveEntity), 1)]
         public EntityId Entity;
 
-        public byte HaveHostility;
-        [AeroIf(nameof(HaveHostility), 1)]
-        public HostilityInfoData HostilityInfo;
+        public byte HaveUnk3;
+        [AeroIf(nameof(HaveUnk3), 1)]
+        public LootObjectUnkOptionalData Unk3; // I thought this was hostility but maybe not?
 
-        [AeroArray(6)]
-        public byte[] Unk4; // A direction in halfs?
-
+        public HalfVector3 Unk4;
         public Vector3 Position;
 
         [AeroSdb("dbitems::RootItem", "sdb_id")]
         public uint LootSdbId;
-        public uint Quantity;
+        public byte Quantity;
+        public ushort Unk5;
+        public byte Unk6;
+        [AeroArray(2)] public uint[] Unk7; // Unk type
+    }
 
-        [AeroArray(8)]
-        public byte[] Unk5; // A rotation in halfs, a scopebubble, or a guid?
+    [AeroBlock]
+    public struct LootObjectUnkOptionalData
+    {
+        public byte Unk1;
+        public byte Unk2;
     }
 }
