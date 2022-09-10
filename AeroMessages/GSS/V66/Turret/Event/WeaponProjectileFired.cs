@@ -5,10 +5,12 @@ namespace AeroMessages.GSS.V66.Turret.Event
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 40, 83)]
-    public partial class ProjectileFired
+    public partial class WeaponProjectileFired
     {
         public uint Time;
         public Vector3 Aim;
-        public byte Unk;
+        public byte HaveMoreData;
+        [AeroIf(nameof(HaveMoreData), 1)]
+        public Vector3 MoreData;
     }
 }
