@@ -103,13 +103,10 @@ namespace AeroMessages.GSS.V66.ResourceNode.View
     [AeroBlock]
     public struct ThumpingCharacterInfoStruct
     {
-        public EntityId OwnerId1; // total assumption, similar to vehicle
-        public EntityId OwnerId2; // total assumption, similar to vehicle
-
-        [AeroString]
-        public string Owner;
-
-        public uint UnkMaybeTime;
+        public EntityId OwnerId1;
+        public EntityId OwnerId2;
+        [AeroString] public string Owner;
+        public float Unk;
     }
 
     [AeroBlock]
