@@ -191,9 +191,11 @@ namespace AeroMessages.GSS.V66
     public struct AppendageHealthPoolData
     {
         public uint Unk1; // Health or a chain id?
-
-        [AeroArray(8)]
-        public byte[] Unk2;
+        public uint Unk2;
+        [AeroString] public string Hardpoint;
+        public byte Unk4;
+        public byte Unk5;
+        public byte Unk6;
     }
 
     [AeroBlock]
