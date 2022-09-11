@@ -39,16 +39,16 @@ namespace AeroMessages.GSS.V66
     [AeroBlock]
     public struct PersonalFactionStanceData
     {   
-        public PFSData Unk1;
-        public PFSData Unk2;
+        public PersonalFactionStanceBitfield Unk1;
+        public PersonalFactionStanceBitfield Unk2;
     }
 
     [AeroBlock]
-    public struct PFSData
+    public struct PersonalFactionStanceBitfield
     {
-        public ushort Header;
-        public uint Length => (((uint)Header >> 6) + 1) << 3;
-        [AeroArray(nameof(Length))] public byte[] Data;
+        public ushort NumFactions; // 50
+        public uint NumBytes => (((uint)NumFactions >> 6) + 1) << 3; // 8
+        [AeroArray(nameof(NumBytes))] public byte[] Bitfield; // 1 bit per faction, 8 bytes per 64 factions
     }
 
     [AeroBlock]
