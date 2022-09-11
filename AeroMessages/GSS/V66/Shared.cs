@@ -70,16 +70,20 @@ namespace AeroMessages.GSS.V66
     {
         public enum SincardFieldDataType : byte
         {
-            // TODO: Verify
             LocalizationId = 0,
-            Integer = 1,
+            Float = 1,
             EntityId = 2,
-            UnkType_3 = 3,
-            Enum = 4,
-            UnkType_5 = 5,
+            Guid = 3,
+            EnumByte = 4,
+            // 5 goto the delete
             Short = 6,
-            Timer = 7, // ? Maybe entity?
-            Boolean = 8,
+            Complicated = 7, // Timer?
+        }
+
+        [Flags]
+        public enum ComplicatedDataFlags : byte
+        {
+            Long = 2,
         }
 
         public SinCardFieldData.SincardFieldDataType Type;
@@ -87,22 +91,28 @@ namespace AeroMessages.GSS.V66
         [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.LocalizationId)]
         public uint LocalizationId;
 
-        [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Integer)]
-        public uint Integer;
+        [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Float)]
+        public float Float;
 
         [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.EntityId)]
         public EntityId EntityId;
 
-        [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Enum)]
-        [AeroString]
-        public string Enum;
+        [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.EnumByte)]
+        public byte EnumByte;
 
         [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Short)]
         public ushort Short;
 
-        [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Timer)]
-        [AeroArray(9)]
-        public byte[] Timer;
+        [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Complicated)]
+        public ComplicatedDataFlags Value7Flag;
+
+        [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Complicated)]
+        [AeroIf(nameof(Value7Flag), Ops.DoesntHaveFlag, SinCardFieldData.ComplicatedDataFlags.Long)]
+        public ulong Value7Long;
+
+        [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Complicated)]
+        [AeroIf(nameof(Value7Flag), Ops.HasFlag, SinCardFieldData.ComplicatedDataFlags.Long)]
+        public float Value7Float;
     }
 
     [AeroBlock]

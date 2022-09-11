@@ -25,47 +25,6 @@ namespace AeroMessages.GSS.V66.Generic
         public ulong Unk1;
         public ulong Unk2;
         public int Unk3;
-        [AeroArray(typeof(byte))] EncounterComplicatedData[] Unk4;
-    }
-
-    [AeroBlock]
-    public struct EncounterComplicatedData
-    {
-        [Flags]
-        public enum EncounterComplicatedDataFlags : byte
-        {
-            Long  = 1 << 1,
-        }
-
-        public byte Type;
-
-        [AeroIf(nameof(Type), 0)]
-        public uint Value0;
-
-        [AeroIf(nameof(Type), 1)]
-        public float Value1;
-
-        [AeroIf(nameof(Type), 2)]
-        public ulong Value2;
-
-        [AeroIf(nameof(Type), 3)]
-        public ulong Value3;
-
-        [AeroIf(nameof(Type), 4)]
-        public byte Value4;
-
-        [AeroIf(nameof(Type), 6)]
-        public short Value6;
-
-        [AeroIf(nameof(Type), 7)]
-        public EncounterComplicatedDataFlags Value7Flag;
-
-        [AeroIf(nameof(Type), 7)]
-        [AeroIf(nameof(Value7Flag), Ops.HasFlag, EncounterComplicatedDataFlags.Long)]
-        public ulong Value7Long;
-
-        [AeroIf(nameof(Type), 7)]
-        [AeroIf(nameof(Value7Flag), Ops.DoesntHaveFlag, EncounterComplicatedDataFlags.Long)]
-        public float Value7Float;
+        [AeroArray(typeof(byte))] SinCardFieldData[] Unk4;
     }
 }
