@@ -54,15 +54,15 @@ namespace AeroMessages.GSS.V66
     [AeroBlock]
     public struct SinFactionsAcquiredByData
     {
-        [AeroArray(2)]
-        public byte[] Unk;
+        [AeroArray(typeof(byte))]
+        public byte[] Factions;
     }
 
     [AeroBlock]
     public struct SinTeamsAcquiredByData
     {
-        [AeroArray(2)]
-        public byte[] Unk;
+        [AeroArray(typeof(byte))]
+        public byte[] Factions;
     }
 
     [AeroBlock]
