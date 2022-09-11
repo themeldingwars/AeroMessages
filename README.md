@@ -1,4 +1,4 @@
-# PacketPeepData
+# AeroMessages
 
 This repository contains the definitions for the network packets that feed into our serialization code generator Aero.
 
