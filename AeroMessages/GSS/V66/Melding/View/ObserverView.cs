@@ -19,22 +19,12 @@ namespace AeroMessages.GSS.V66.Melding.View
     [AeroBlock]
     public struct ActiveDataStruct
     {
-        [AeroArray(4)]
-        public byte[] Unk1;
-
-        [AeroArray(13)]
-        public byte[] Unk2_Consistent;
-
-        [AeroArray(typeof(byte))]
-        public Vector3[] ControlPoints_1;
-
-        [AeroArray(typeof(byte))]
-        public Vector3[] Offsets_1;
-
-        [AeroArray(typeof(byte))]
-        public Vector3[] ControlPoints_2;
-
-        [AeroArray(typeof(byte))]
-        public Vector3[] Offsets_2;
+        public ulong Unk1;
+        public ulong Unk2;
+        public byte Unk3;
+        [AeroArray(typeof(byte))] public Vector3[] ControlPoints_1;
+        [AeroArray(typeof(byte))] public Vector3[] Offsets_1;
+        [AeroArray(typeof(byte))] public Vector3[] ControlPoints_2;
+        [AeroArray(typeof(byte))] public Vector3[] Offsets_2;
     }
 }
