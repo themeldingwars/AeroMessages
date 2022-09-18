@@ -8,7 +8,6 @@ using Aero.Gen;
 
 namespace AeroMessages.GSS.V66.ResourceNode.View
 {
-    // TODO: Need a capture or replay of these, this is mostly guesswork based on shadowfields and what the client seems to like.
     [Aero(AeroGenTypes.View)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 48, 1)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 48, 3)]
