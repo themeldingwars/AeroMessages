@@ -15,9 +15,7 @@ namespace AeroMessages.GSS.V66.Vehicle.View
     {
         [AeroSdb("vcs::VehicleInfo", "id")]
         private ushort VehicleType;
-
-        [AeroArray(32)]
-        private byte[] Configuration;
+        private ConfigurationData Configuration;
 
         [AeroArray(4)]
         private byte[] Flags;
@@ -38,28 +36,16 @@ namespace AeroMessages.GSS.V66.Vehicle.View
         private EntityId OccupantIds_3;
         private EntityId OccupantIds_4;
         private EntityId OccupantIds_5;
-
-        [AeroArray(13)]
-        private byte[] DeployableIds_0;
-        [AeroArray(13)]
-        private byte[] DeployableIds_1;
-        [AeroArray(13)]
-        private byte[] DeployableIds_2;
-        [AeroArray(13)]
-        private byte[] DeployableIds_3;
-        [AeroArray(13)]
-        private byte[] DeployableIds_4;
-        [AeroArray(13)]
-        private byte[] DeployableIds_5;
-        [AeroArray(13)]
-        private byte[] DeployableIds_6;
-        [AeroArray(13)]
-        private byte[] DeployableIds_7;
-        [AeroArray(13)]
-        private byte[] DeployableIds_8;
-        [AeroArray(13)]
-        private byte[] DeployableIds_9;
-
+        private DeployableIdsData DeployableIds_0;
+        private DeployableIdsData DeployableIds_1;
+        private DeployableIdsData DeployableIds_2;
+        private DeployableIdsData DeployableIds_3;
+        private DeployableIdsData DeployableIds_4;
+        private DeployableIdsData DeployableIds_5;
+        private DeployableIdsData DeployableIds_6;
+        private DeployableIdsData DeployableIds_7;
+        private DeployableIdsData DeployableIds_8;
+        private DeployableIdsData DeployableIds_9;
         private byte SnapMount;
         private ProcessDelayData ProcessDelay;
         private HostilityInfoData HostilityInfo;
@@ -72,12 +58,8 @@ namespace AeroMessages.GSS.V66.Vehicle.View
         private uint MaxShields;
         private byte SinFlags;
 
-        // TODO: Bitfield - SinFactionsAcquiredBy
         [AeroNullable] private SinFactionsAcquiredByData SinFactionsAcquiredBy;
-        // --
-        // TODO: Bitfield - SinTeamsAcquiredBy
         [AeroNullable] private SinTeamsAcquiredByData SinTeamsAcquiredBy;
-        // --
 
         private byte WaterLevelAndDesc;
         private byte EffectsFlags;
@@ -87,49 +69,27 @@ namespace AeroMessages.GSS.V66.Vehicle.View
         private uint SinCardType;
         
         [AeroNullable] private SinCardFieldData SinCardFields_0;
-
         [AeroNullable] private SinCardFieldData SinCardFields_1;
-
         [AeroNullable] private SinCardFieldData SinCardFields_2;
-
         [AeroNullable] private SinCardFieldData SinCardFields_3;
-
         [AeroNullable] private SinCardFieldData SinCardFields_4;
-
         [AeroNullable] private SinCardFieldData SinCardFields_5;
-
         [AeroNullable] private SinCardFieldData SinCardFields_6;
-
         [AeroNullable] private SinCardFieldData SinCardFields_7;
-
         [AeroNullable] private SinCardFieldData SinCardFields_8;
-
         [AeroNullable] private SinCardFieldData SinCardFields_9;
-
         [AeroNullable] private SinCardFieldData SinCardFields_10;
-
         [AeroNullable] private SinCardFieldData SinCardFields_11;
-
         [AeroNullable] private SinCardFieldData SinCardFields_12;
-
         [AeroNullable] private SinCardFieldData SinCardFields_13;
-
         [AeroNullable] private SinCardFieldData SinCardFields_14;
-
         [AeroNullable] private SinCardFieldData SinCardFields_15;
-
         [AeroNullable] private SinCardFieldData SinCardFields_16;
-
         [AeroNullable] private SinCardFieldData SinCardFields_17;
-
         [AeroNullable] private SinCardFieldData SinCardFields_18;
-
         [AeroNullable] private SinCardFieldData SinCardFields_19;
-
         [AeroNullable] private SinCardFieldData SinCardFields_20;
-
         [AeroNullable] private SinCardFieldData SinCardFields_21;
-
         [AeroNullable] private SinCardFieldData SinCardFields_22;
 
         private ScopeBubbleInfoData ScopeBubbleInfo;

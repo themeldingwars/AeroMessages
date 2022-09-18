@@ -15,4 +15,18 @@ namespace AeroMessages.GSS.V66.Vehicle
         public ushort State;
         public uint Time;
     }
+
+    [AeroBlock]
+    public struct ConfigurationData
+    {
+        [AeroArray(8)] public uint[] Data;
+    }
+
+    [AeroBlock]
+    public struct DeployableIdsData
+    {
+        public EntityId Target;
+        public uint Unk1;
+        public byte Unk2;
+    }
 }

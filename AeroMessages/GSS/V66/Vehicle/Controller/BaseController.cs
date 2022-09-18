@@ -15,9 +15,7 @@ namespace AeroMessages.GSS.V66.Vehicle.Controller
     {
         [AeroSdb("vcs::VehicleInfo", "id")]
         private ushort VehicleId;
-
-        [AeroArray(32)]
-        private byte[] Configuration;
+        private ConfigurationData Configuration;
 
         [AeroArray(4)]
         private byte[] Flags;
@@ -38,28 +36,16 @@ namespace AeroMessages.GSS.V66.Vehicle.Controller
         private EntityId OccupantIds_3;
         private EntityId OccupantIds_4;
         private EntityId OccupantIds_5;
-
-        [AeroArray(13)]
-        private byte[] DeployableIds_0;
-        [AeroArray(13)]
-        private byte[] DeployableIds_1;
-        [AeroArray(13)]
-        private byte[] DeployableIds_2;
-        [AeroArray(13)]
-        private byte[] DeployableIds_3;
-        [AeroArray(13)]
-        private byte[] DeployableIds_4;
-        [AeroArray(13)]
-        private byte[] DeployableIds_5;
-        [AeroArray(13)]
-        private byte[] DeployableIds_6;
-        [AeroArray(13)]
-        private byte[] DeployableIds_7;
-        [AeroArray(13)]
-        private byte[] DeployableIds_8;
-        [AeroArray(13)]
-        private byte[] DeployableIds_9;
-
+        private DeployableIdsData DeployableIds_0;
+        private DeployableIdsData DeployableIds_1;
+        private DeployableIdsData DeployableIds_2;
+        private DeployableIdsData DeployableIds_3;
+        private DeployableIdsData DeployableIds_4;
+        private DeployableIdsData DeployableIds_5;
+        private DeployableIdsData DeployableIds_6;
+        private DeployableIdsData DeployableIds_7;
+        private DeployableIdsData DeployableIds_8;
+        private DeployableIdsData DeployableIds_9;
         private byte SnapMount;
         private SpawnPoseData SpawnPose;
         private Vector3 SpawnVelocity;
