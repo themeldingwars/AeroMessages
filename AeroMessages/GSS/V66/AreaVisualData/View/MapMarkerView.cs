@@ -56,10 +56,9 @@ namespace AeroMessages.GSS.V66.AreaVisualData.View
     public struct MapMarkerData
     {
         [AeroSdb("dbencounterdata::MapMarkerInfo", "id")]
-        public uint MarkerType;
-
-        [AeroArray(6)]
-        public byte[] Unk3;
+        public ushort MarkerType; // Weird
+        public uint Unk2;
+        public uint Unk3;
 
         public EntityId EncounterId;
         public EntityId EncounterMarkerId; // No controller specified.

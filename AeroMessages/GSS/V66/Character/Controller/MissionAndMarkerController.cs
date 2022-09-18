@@ -114,14 +114,10 @@ namespace AeroMessages.GSS.V66.Character.Controller
     [AeroBlock]
     public struct PersonalMapMarkerData
     {
-        public uint SomeId; // ?
-
         [AeroSdb("dbencounterdata::MapMarkerInfo", "id")]
-        public uint MarkerType;
-
-        [AeroArray(2)]
-        public byte[] Unk3;
-
+        public ushort MarkerType; // Weird
+        public uint Unk2;
+        public uint Unk3;
         public EntityId EncounterId;
         public EntityId EncounterMarkerId; // No controller specified.
 
@@ -135,12 +131,31 @@ namespace AeroMessages.GSS.V66.Character.Controller
     [AeroBlock]
     public struct AreaMapMarkerData
     {
-        public byte FIXME;
+        public uint Unk2;
+        public uint Unk3;
+        public EntityId EncounterId;
+        public EntityId EncounterMarkerId; // No controller specified.
+
+        public byte HasDuration;
+        [AeroIf(nameof(HasDuration), 1)]
+        public uint ExpireAtTime; // Gametime ms
+
+        public Vector3 Position;
+
+        [AeroArray(typeof(byte))] public AeraMapMarkerInnerData[] Unk4;
+    }
+
+    [AeroBlock]
+    public struct AeraMapMarkerInnerData
+    {
+        public uint Unk1;
+        public uint Unk2;
     }
 
     [AeroBlock]
     public struct ContextFlagData
     {
-        public byte FIXME;
+        public ushort Unk1;
+        public byte Unk2;
     }
 }
