@@ -16,21 +16,13 @@ namespace AeroMessages.GSS.V66.CarryableObject.View
         [AeroSdb("dbitems::CarryableObject", "id")]
         private uint CarryableObjectTypeId;
 
-        [AeroString]
-        private string Name;
-
+        [AeroString] private string Name;
         private Vector3 Position;
         private Quaternion Orientation;
-
         private HostilityInfoData Hostility;
-
         [AeroNullable] private PersonalFactionStanceData PersonalFactionStance;
-
         [AeroNullable] private EntityId CarryingCharacterId;
-
-        [AeroNullable]
-        private ForcedMovementData ForcedMovement;
-        
+        [AeroNullable] private ForcedMovementData ForcedMovement;
         private ushort StatusEffectsChangeTime_0;
         private ushort StatusEffectsChangeTime_1;
         private ushort StatusEffectsChangeTime_2;
@@ -63,7 +55,6 @@ namespace AeroMessages.GSS.V66.CarryableObject.View
         private ushort StatusEffectsChangeTime_29;
         private ushort StatusEffectsChangeTime_30;
         private ushort StatusEffectsChangeTime_31;
-
         [AeroNullable] private StatusEffectData StatusEffects_0;
         [AeroNullable] private StatusEffectData StatusEffects_1;
         [AeroNullable] private StatusEffectData StatusEffects_2;
@@ -96,83 +87,55 @@ namespace AeroMessages.GSS.V66.CarryableObject.View
         [AeroNullable] private StatusEffectData StatusEffects_29;
         [AeroNullable] private StatusEffectData StatusEffects_30;
         [AeroNullable] private StatusEffectData StatusEffects_31;
-
-        private byte AllowFriendlyPickup; // guess
-        private byte AllowHostilePickup; // guess
+        private byte AllowFriendlyPickup;
+        private byte AllowHostilePickup;
 
         [AeroSdb("dbencounterdata::SinCardTemplate", "Id")]
         //[AeroSdb("dbencounterdata::SinCardFields", "TemplateId")]
         private uint SinCardType;
 
         [AeroNullable] private SinCardFieldData SinCardFields_0;
-
         [AeroNullable] private SinCardFieldData SinCardFields_1;
-
         [AeroNullable] private SinCardFieldData SinCardFields_2;
-
         [AeroNullable] private SinCardFieldData SinCardFields_3;
-
         [AeroNullable] private SinCardFieldData SinCardFields_4;
-
         [AeroNullable] private SinCardFieldData SinCardFields_5;
-
         [AeroNullable] private SinCardFieldData SinCardFields_6;
-
         [AeroNullable] private SinCardFieldData SinCardFields_7;
-
         [AeroNullable] private SinCardFieldData SinCardFields_8;
-
         [AeroNullable] private SinCardFieldData SinCardFields_9;
-
         [AeroNullable] private SinCardFieldData SinCardFields_10;
-
         [AeroNullable] private SinCardFieldData SinCardFields_11;
-
         [AeroNullable] private SinCardFieldData SinCardFields_12;
-
         [AeroNullable] private SinCardFieldData SinCardFields_13;
-
         [AeroNullable] private SinCardFieldData SinCardFields_14;
-
         [AeroNullable] private SinCardFieldData SinCardFields_15;
-
         [AeroNullable] private SinCardFieldData SinCardFields_16;
-
         [AeroNullable] private SinCardFieldData SinCardFields_17;
-
         [AeroNullable] private SinCardFieldData SinCardFields_18;
-
         [AeroNullable] private SinCardFieldData SinCardFields_19;
-
         [AeroNullable] private SinCardFieldData SinCardFields_20;
-
         [AeroNullable] private SinCardFieldData SinCardFields_21;
-
         [AeroNullable] private SinCardFieldData SinCardFields_22;
-
-        private byte VisualInfoGroupIndex; // TODO: Verify
-
+        private byte VisualInfoGroupIndex;
         [AeroNullable] private ThrownFieldData ThrownField;
-
         [AeroNullable] private SeekFieldData SeekField;
-
         [AeroNullable] private BounceFieldData BounceField;
-
         private ScopeBubbleInfoData ScopeBubbleInfo;
     }
 
     [AeroBlock]
     public struct ThrownFieldData
     {
-        [AeroArray(4)]
-        public float[] ThrownField_Unk1_Floats;
-        public byte ThrownField_Unk2_Byte;
+        [AeroArray(4)] public float[] Unk1;
+        public byte Unk2;
     }
 
     [AeroBlock]
     public struct SeekFieldData
     {
-        // TODO:
+        public ulong Unk1;
+        [AeroArray(8)] public float[] Unk2;
     }
 
     [AeroBlock]
