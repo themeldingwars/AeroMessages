@@ -120,7 +120,7 @@ namespace AeroMessages.GSS.V66.Character.Controller
         private uint CombatTimer_0;
         private byte CombatTimer_1;
 
-        private byte Nemeses; // TODO: Likely more if we have content
+        private NemesesData Nemeses;
 
         private SuperChargeData SuperCharge;
         private byte NoSpreadFlags;
@@ -161,7 +161,7 @@ namespace AeroMessages.GSS.V66.Character.Controller
     public struct PermissionFlagsData
     {
         [Flags]
-        public enum CharacterPermissionFlags : uint
+        public enum CharacterPermissionFlags : ulong
         {
             movement              = 1U << 0,
             sprint                = 1U << 1,
@@ -195,13 +195,10 @@ namespace AeroMessages.GSS.V66.Character.Controller
             free_repairs          = 1U << 29,
             battleframe_abilities = 1U << 30,
             unk_31                = 1U << 31,
+            // another 32 bits
         }
 
         public CharacterPermissionFlags Value;
-
-        [AeroArray(4)]
-        public byte[] Unk;
-
         public uint Time;
     }
 
@@ -210,5 +207,11 @@ namespace AeroMessages.GSS.V66.Character.Controller
     {
         public HalfFloat Value;
         public byte Op; // Probably?
+    }
+
+    [AeroBlock]
+    public struct NemesesData
+    {
+        [AeroArray(typeof(byte))] public ulong[] Values;
     }
 }

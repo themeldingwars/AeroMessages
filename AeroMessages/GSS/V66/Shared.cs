@@ -593,14 +593,14 @@ namespace AeroMessages.GSS.V66
     [AeroBlock]
     public struct WeaponFireBaseTimeData
     {
-        public ushort ChangeTime; // Not 100% about this one
-        public byte Unk; // Not 100% about this one
+        public ushort ChangeTime;
+        public byte Unk;
     }
 
     [AeroBlock]
     public struct ProcessDelayData
     {
-        public ushort Unk1;
-        public ushort Unk2;
+        public ushort Unk1; // Unknown type
+        public ushort Unk2; // Unknown type
     }
 }

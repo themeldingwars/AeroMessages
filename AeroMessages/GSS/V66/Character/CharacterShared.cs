@@ -41,8 +41,8 @@ namespace AeroMessages.GSS.V66.Character
     public struct WeaponIndexData
     {
         public byte Index;
-        [AeroArray(2)]
-        public byte[] Unk;
+        public byte Unk1;
+        public byte Unk2;
         public uint Time;
     }
 
