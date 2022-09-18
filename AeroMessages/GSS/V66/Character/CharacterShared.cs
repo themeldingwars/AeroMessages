@@ -317,18 +317,16 @@ namespace AeroMessages.GSS.V66.Character
         public EntityId Id1;
         public EntityId Id2;
         public AttachmentRoleType Role;
-
-        [AeroArray(2)]
-        public byte[] Unk;
+        public byte Unk2;
+        public byte Unk3;
     }
 
     [AeroBlock]
     public struct LookAtTargetData
     {
-        // TODO: Verify
         public EntityId Target;
-        public Vector3 Position;
-        public uint Time; // TODO: Seems like this is a float too?
+        public Vector3 Position; // TODO: Verify
+        public float Unk;
     }
 
     [AeroBlock]
