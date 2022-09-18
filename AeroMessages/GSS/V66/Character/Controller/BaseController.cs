@@ -26,7 +26,7 @@ namespace AeroMessages.GSS.V66.Character.Controller
         private uint SelectedLoadoutIsPvP;
         private GibVisuals GibVisualsId;
         private CharacterSpawnPose SpawnPose;
-        private uint ProcessDelay;
+        private ProcessDelayData ProcessDelay;
         private byte SpectatorMode;
 
         [AeroNullable] private CinematicCameraData CinematicCamera;
@@ -63,8 +63,8 @@ namespace AeroMessages.GSS.V66.Character.Controller
 
         [AeroNullable] private LookAtTargetData LookAtTarget;
 
-        private ulong ZoneUnlocks; // Presumably a bitfield
-        private ulong RegionUnlocks; // Presumably a bitfield based of SDB dbzonemetadata::UnlockRegionSubZoneBits
+        private ulong ZoneUnlocks; // Bitfield
+        private ulong RegionUnlocks; // Bitfield based of SDB dbzonemetadata::UnlockRegionSubZoneBits
         private EntityId ChatPartyLeaderId;
         private ScopeBubbleInfoData ScopeBubbleInfo;
 
@@ -105,10 +105,10 @@ namespace AeroMessages.GSS.V66.Character.Controller
         private uint PerkRespecs;
 
         [AeroNullable] private ArcStatusData ArcStatus;
-        [AeroNullable] private LeaveZoneTimeData LeaveZoneTime;
+        [AeroNullable] private uint LeaveZoneTime;
 
-        private byte ChatMuteStatus; // TODO: Verify
-        private ulong TimedDailyReward;
+        private byte ChatMuteStatus;
+        private TimedDailyRewardData TimedDailyReward;
 
         [AeroNullable] private TimedDailyRewardResultData TimedDailyRewardResult;
 
@@ -168,11 +168,14 @@ namespace AeroMessages.GSS.V66.Character.Controller
         public Vector3 AimDirection;
         public Vector3 Velocity;
         public ushort MovementState;
-        public ushort Unk; // ???
+        public byte Unk1; // ???
+        public byte Unk2;// ???
         public ushort JetpackEnergy;
         public short AirGroundTimer;
         public short JumpTimer;
-        public byte UnkLast;
+        public byte HaveMoreData;
+        [AeroIf(nameof(HaveMoreData), 1)] // != 0
+        public MovementPoseMoreData UnkData;
     }
 
     [AeroBlock]
@@ -187,7 +190,6 @@ namespace AeroMessages.GSS.V66.Character.Controller
     [AeroBlock]
     public struct PermanentStatusEffectsData
     {
-        // TODO: Verify
         [AeroArray(typeof(byte))]
         public PermanentStatusEffectsInnerData[] Effects;
     }
@@ -195,13 +197,20 @@ namespace AeroMessages.GSS.V66.Character.Controller
     [AeroBlock]
     public struct PermanentStatusEffectsInnerData
     {
-        // TODO: Verify
-        public uint Id;
-
-        [AeroArray(12)]
-        public byte[] Unk;
+        public uint Id; // TODO: Verify
+        public uint Unk2;
+        public ulong Unk3;
     }
 
+    [AeroBlock]
+    public struct TimedDailyRewardData
+    {
+        public byte Unk1;
+        public byte Unk2;
+        public byte Unk3;
+        public byte Unk4;
+        public uint Unk5;
+    }
 
     [AeroBlock]
     public struct StatModifierData
@@ -222,7 +231,6 @@ namespace AeroMessages.GSS.V66.Character.Controller
     [AeroBlock]
     public struct CAISStatusData
     {
-        // TODO: Verify states
         public enum CAISState: byte
         {
             None = 0,
@@ -238,32 +246,48 @@ namespace AeroMessages.GSS.V66.Character.Controller
     [AeroBlock]
     public struct EncounterPartyTupleData
     {
-        public byte TODO; // TODO
+        public ulong Unk1;
+        public byte Unk2;
     }
 
     [AeroBlock]
     public struct CachedAssetsData
     {
-        public byte TODO; // TODO
+        [AeroArray(typeof(byte))]
+        public CachedAssetsInnerData[] Data;
     }
+
+    [AeroBlock]
+    public struct CachedAssetsInnerData
+    {
+        public ulong Unk1;
+        public byte Unk2;
+        [AeroArray(typeof(byte))] public CachedAssetsDeepData[] Unk3;
+    }
+
+    [AeroBlock]
+    public struct CachedAssetsDeepData
+    {
+        public byte Unk1;
+        [AeroArray(typeof(byte))] public uint[] Unk2;
+    }
+
 
     [AeroBlock]
     public struct ArcStatusData
     {
-        public byte TODO; // TODO
-    }
-
-    [AeroBlock]
-    public struct LeaveZoneTimeData
-    {
-        public uint TODO; // TODO
+        public ulong Unk1;
+        public uint Unk2;
+        public byte Unk3;
+        public byte Unk4;
     }
 
     [AeroBlock]
     public struct TimedDailyRewardResultData
     {
-        [AeroArray(25)]
-        public byte[] Unk;
+        [AeroArray(3)] public uint[] Unk1;
+        [AeroArray(3)] public uint[] Unk2;
+        public byte Unk3;  
     }
 
     [AeroBlock]
