@@ -149,21 +149,15 @@ namespace AeroMessages.GSS.V66
     {
         [AeroArray(typeof(ushort))]
         public StatsData[] ItemAttributes;
-
-        [AeroArray(4)]
-        public byte[] Unk1;
+        public uint Unk1;
 
         [AeroArray(typeof(ushort))]
         public StatsData[] WeaponA;
-
-        [AeroArray(4)]
-        public byte[] Unk2;
+        public uint Unk2;
 
         [AeroArray(typeof(ushort))]
         public StatsData[] WeaponB;
-
-        [AeroArray(4)]
-        public byte[] Unk3;
+        public uint Unk3;
 
         [AeroArray(typeof(ushort))]
         public StatsData[] AttributeCategories1;
