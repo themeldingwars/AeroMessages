@@ -19,7 +19,7 @@ namespace AeroMessages.GSS.V66.Turret.Controller
         private byte ParentChildIndex; // Only observed 0x00
         private EntityId GunnerId;
         private SpawnPoseData SpawnPose;
-        private uint ProcessDelay;
+        private ProcessDelayData ProcessDelay;
         private WeaponFireBaseTimeData WeaponFireBaseTime;
         private AmmoData Ammo;
         private float FireRateModifier;

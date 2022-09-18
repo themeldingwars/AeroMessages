@@ -61,7 +61,7 @@ namespace AeroMessages.GSS.V66.Vehicle.View
         private byte[] DeployableIds_9;
 
         private byte SnapMount;
-        private uint ProcessDelay;
+        private ProcessDelayData ProcessDelay;
         private HostilityInfoData HostilityInfo;
         
         [AeroNullable] private PersonalFactionStanceData PersonalFactionStance;

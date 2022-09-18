@@ -17,7 +17,7 @@ namespace AeroMessages.GSS.V66.Character.View
         private uint SpawnTime;
         private byte EffectsFlags;
         private GibVisuals GibVisualsID;
-        private uint ProcessDelay;
+        private ProcessDelayData ProcessDelay;
         private CharacterStateData CharacterState; 
         private HostilityInfoData HostilityInfo;
 

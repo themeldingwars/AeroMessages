@@ -24,7 +24,7 @@ namespace AeroMessages.GSS.V66.Turret.View
         
         private CurrentPoseStruct CurrentPose;
         
-        private uint ProcessDelay;
+        private ProcessDelayData ProcessDelay;
         
         private uint WeaponBurstFired;
         

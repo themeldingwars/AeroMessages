@@ -64,7 +64,7 @@ namespace AeroMessages.GSS.V66.Vehicle.Controller
         private SpawnPoseData SpawnPose;
         private Vector3 SpawnVelocity;
         private CurrentPoseData CurrentPose;
-        private uint ProcessDelay;
+        private ProcessDelayData ProcessDelay;
         private HostilityInfoData HostilityInfo;
         
         [AeroNullable] private PersonalFactionStanceData PersonalFactionStance;
