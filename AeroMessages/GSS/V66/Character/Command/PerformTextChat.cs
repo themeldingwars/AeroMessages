@@ -17,9 +17,9 @@ namespace AeroMessages.GSS.V66.Character.Command
         public ulong Unk1;
 
         // 009e5820
-        public byte HaveUnk2;
-        [AeroIf(nameof(HaveUnk2), 1)]
-        [AeroString] public string Unk2; // Whisper target name?
+        public byte HaveTargetName;
+        [AeroIf(nameof(HaveTargetName), 1)]
+        [AeroString] public string TargetName;
 
         public byte Unk3; // This seems like a type indicator for Unk4
 
