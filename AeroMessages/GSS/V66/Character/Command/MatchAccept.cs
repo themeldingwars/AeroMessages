@@ -6,8 +6,8 @@ namespace AeroMessages.GSS.V66.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 93)]
     public partial class MatchAccept
     {
-        public uint Unk1;
-        public ulong Unk2;
-        public byte Unk3;
+        public uint Matchmaker;
+        public ulong MatchId;
+        public byte Accept;
     }
 }
