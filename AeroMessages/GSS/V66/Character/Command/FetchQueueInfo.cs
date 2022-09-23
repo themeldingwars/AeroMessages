@@ -11,6 +11,8 @@ namespace AeroMessages.GSS.V66.Character.Command
         public string[] Keys;
 
         public ulong Unk2;
-        public uint Unk3;
+
+        [AeroSdb("dbitems::Battleframe", "id")]
+        public uint ChassisId;
     }
 }
