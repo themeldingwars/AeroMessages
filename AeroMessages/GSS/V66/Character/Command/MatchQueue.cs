@@ -22,7 +22,7 @@ namespace AeroMessages.GSS.V66.Character.Command
     [AeroBlock]
     public struct MatchQueueData
     {
-        public uint Unk1; // Type uncertain
-        public uint Unk2; // Type uncertain
+        public uint QueueId;
+        public uint DifficultyId;
     }
 }
