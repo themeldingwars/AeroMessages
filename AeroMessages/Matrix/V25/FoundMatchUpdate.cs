@@ -8,12 +8,19 @@ namespace AeroMessages.Matrix.V25
     [AeroMessageId(MsgType.Matrix, MsgSrc.Message, 44)]
     public partial class FoundMatchUpdate
     {
-        public uint Unk1;
-        public ulong Unk2;
-        public byte Unk3;
-        public ushort Unk4;
-        public ushort Unk5;
-        public ushort Unk6;
-        public ushort Unk7;
+        public enum MatchUpdateState : byte
+        {
+            Initializing = 0, // Mission Approved
+            WaitingForPlayers = 1,
+            WaitingForServer = 2,
+            Launching = 3,
+        }
+        public uint Matchmaker;
+        public ulong MatchId;
+        public MatchUpdateState State;
+        public ushort NumPlayersNeeded;
+        public ushort NumPlayersAccepted;
+        public ushort StateSecondsTotal;
+        public ushort StateSecondsRemaining;
     }
 }
