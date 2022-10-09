@@ -9,8 +9,8 @@ namespace AeroMessages.GSS.V66.Character.Event
     {
         public uint IndexId; // Used by client when claiming
 
-        [AeroSdb("dblocalization::LocalizedText", "id")]
-        public uint TitleLocalizationId;
+        [AeroSdb("dblocalization::UITextMap", "id")]
+        public uint TitleTextId;
 
         public uint Unk1;
 
