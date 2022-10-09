@@ -6,6 +6,6 @@ namespace AeroMessages.GSS.V66.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 155)]
     public partial class AssignBounties
     {
-        public byte Unk1;
+        public byte Unk1; // 4 = RequestGroupBounty
     }
 }

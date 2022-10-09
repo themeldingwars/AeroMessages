@@ -9,7 +9,7 @@ namespace AeroMessages.GSS.V66.Generic
         public uint BountyId; // Unsure how this id works
         public byte Unk1;
         public byte Unk2;
-        public byte Unk3;
+        public byte Unk3; // Row / type?
         public uint Unk4;
 
         [AeroSdb("clientmissions::Mission","id")]

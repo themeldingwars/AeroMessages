@@ -14,9 +14,9 @@ namespace AeroMessages.GSS.V66.Generic
     public struct ArcBlock
     {
         [AeroSdb("dbencounterdata::Arcs", "id")]
-        public uint Id; // Id?
+        public uint ArcId;
         public uint Unk2; // State related
         public uint Unk3; // State related
-        public uint MaybeTimestamp; // Timestamp?
+        public uint CompletionTimeEpoch;
     }
 }
