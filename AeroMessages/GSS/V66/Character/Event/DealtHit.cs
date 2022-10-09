@@ -10,7 +10,7 @@ namespace AeroMessages.GSS.V66.Character.Event
     {
         public byte HaveDamage;
         [AeroIf(nameof(HaveDamage), 1)] public DamageHitStruct DamageData;
-        public byte Unk1;
+        public byte RepeatHitIdx; // Value that allows for repeating previously sent hits without including the full data
         public DamageResponseFlags DamageFlags;
     }
 }

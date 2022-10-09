@@ -11,7 +11,7 @@ namespace AeroMessages.GSS.V66.Deployable.Events
         // These are in DealtHit too
         public byte HaveDamage;
         [AeroIf(nameof(HaveDamage), 1)] public DamageHitStruct DamageData;
-        public byte Unk1;
+        public byte RepeatHitIdx; // Value that allows for repeating previously sent hits without including the full data
         public DamageResponseFlags DamageFlags;
 
         // Unique to TookHit
