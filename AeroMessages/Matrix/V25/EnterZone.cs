@@ -26,9 +26,7 @@ namespace AeroMessages.Matrix.V25
         public DevZoneInfoData DevZoneInfo;
         // --
 
-        public ulong ZoneTime_Unk1;
-        public float ZoneTime_Unk2;
-        public float ZoneTime_Unk3;
+        public ZoneTimeSyncData ZoneTimeSyncInfo;
 
         // -- FUN_00757770
         public ulong Unk5_MicroUnix;

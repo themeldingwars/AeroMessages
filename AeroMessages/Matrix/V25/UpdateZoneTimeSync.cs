@@ -8,8 +8,6 @@ namespace AeroMessages.Matrix.V25
     [AeroMessageId(MsgType.Matrix, MsgSrc.Message, 38)]
     public partial class UpdateZoneTimeSync
     {
-        public ulong Unk1;
-        public float Unk2;
-        public float Unk3;
+        public ZoneTimeSyncData Data;
     }
 }
