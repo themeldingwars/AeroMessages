@@ -6,6 +6,6 @@ namespace AeroMessages.GSS.V66.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 112)]
     public partial class PublicDebugMovementUpdate
     {
-        public MovementPoseMoreData UnkData;
+        public MovementPoseDebugData DebugData;
     }
 }

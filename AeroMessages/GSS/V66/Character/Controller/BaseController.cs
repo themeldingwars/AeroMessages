@@ -173,9 +173,9 @@ namespace AeroMessages.GSS.V66.Character.Controller
         public ushort JetpackEnergy;
         public short AirGroundTimer;
         public short JumpTimer;
-        public byte HaveMoreData;
-        [AeroIf(nameof(HaveMoreData), 1)] // != 0
-        public MovementPoseMoreData UnkData;
+        public byte HaveDebugData;
+        [AeroIf(nameof(HaveDebugData), 1)] // != 0
+        public MovementPoseDebugData DebugData;
     }
 
     [AeroBlock]
