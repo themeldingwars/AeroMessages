@@ -376,10 +376,9 @@ namespace AeroMessages.GSS.V66.Character
     public struct MovementPoseData
     {
         // FUN_009f04d0
-        // Movement state
-        public ushort           MovementUnk1;
+        public ushort           ShortTime;
         public MovementDataType MovementType;
-        public byte             MovementUnk3;
+        public byte             MovementUnk3; // Seems to range 0-6 with 0 being the most common
 
         [AeroIf(nameof(MovementType), Ops.HasFlag, MovementDataType.PosRotState)]
         public MovementPosRotState PosRotState;

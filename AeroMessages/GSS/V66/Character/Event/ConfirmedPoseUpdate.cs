@@ -9,6 +9,6 @@ namespace AeroMessages.GSS.V66.Character.Event
     public partial class ConfirmedPoseUpdate
     {
         public MovementPoseData PoseData;
-        public ushort Unk;
+        public ushort NextShortTime;
     }
 }
