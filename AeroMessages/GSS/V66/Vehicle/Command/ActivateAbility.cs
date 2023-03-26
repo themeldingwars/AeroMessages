@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.V66.Vehicle.Command
     {
         public uint Time;
         public byte AbilityIdx; // 0x05 == Honk, 0x08 == SIN, lookup in vehicle components
-        [AeroArray(typeof(byte))] public ulong[] Unk1;
+        [AeroArray(typeof(byte))] public EntityId[] Targets;
         public byte Unk2; // TraceAbilities?
     }
 }
