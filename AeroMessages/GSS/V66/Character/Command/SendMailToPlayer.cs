@@ -16,8 +16,9 @@ namespace AeroMessages.GSS.V66.Character.Command
     [AeroBlock]
     public struct MailData {
         public uint Unk1;
-        public ulong Unk2;
-        public uint Unk3;
+        [AeroString] public string Unk2;
+        public ulong Unk3;
         public uint Unk4;
+        public uint Unk5;
     }
 }
