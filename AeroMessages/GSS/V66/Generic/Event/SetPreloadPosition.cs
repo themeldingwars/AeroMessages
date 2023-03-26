@@ -7,8 +7,6 @@ namespace AeroMessages.GSS.V66.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 105)]
     public partial class SetPreloadPosition
     {   
-        public uint Unk1;
-        [AeroArray(typeof(byte))] public int[] Unk2; // 00b0af40
-        [AeroArray(4)] public Vector4 Unk3;
+        [AeroArray(4)] public Vector4 Location;
     }
 }
