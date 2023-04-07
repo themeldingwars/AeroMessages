@@ -27,17 +27,7 @@ namespace AeroMessages.Matrix.V25
         // --
 
         public ZoneTimeSyncData ZoneTimeSyncInfo;
-
-        // -- FUN_00757770
-        public ulong Unk5_MicroUnix;
-        public ulong Unk6_MicroUnix;
-        [AeroArray(4)] public byte[] Timescale_1;
-        public float Timescale_2;
-        public ulong Unk7;
-        public ulong Unk8;
-        public byte Unk9;
-        // --
-
+        public GameClockInfoData GameClockInfo;
         public byte SpectatorModeFlag;
     }
 }

@@ -37,4 +37,15 @@ namespace AeroMessages.Matrix.V25
         public float DayLengthFactor; // Default 12.0. Higher values make the day phase shorter. Probably how many seconds of daytime per realtime second.
         public float DayPhaseOffset; // This modifier changes the time of day but not on reset.
     }
+
+    [AeroBlock]
+    public struct GameClockInfoData
+    {
+        public ulong MicroUnix_1;
+        public ulong MicroUnix_2;
+        public double Timescale;
+        public ulong Unk3;
+        public ulong Unk4;
+        public byte Paused;
+    }
 }
