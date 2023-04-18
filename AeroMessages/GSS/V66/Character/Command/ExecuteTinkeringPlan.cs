@@ -8,9 +8,9 @@ namespace AeroMessages.GSS.V66.Character.Command
     public partial class ExecuteTinkeringPlan
     {
         public uint Unk1;
-        [AeroArray(typeof(byte))] TinkeringData[] Unk2;
-        [AeroArray(typeof(byte))] TinkeringData[] Unk3;
-        [AeroArray(typeof(byte))] TinkeringData[] Unk4;
+        [AeroArray(typeof(byte))] public TinkeringData[] Unk2;
+        [AeroArray(typeof(byte))] public TinkeringData[] Unk3;
+        [AeroArray(typeof(byte))] public TinkeringData[] Unk4;
     }
 
     [AeroBlock]

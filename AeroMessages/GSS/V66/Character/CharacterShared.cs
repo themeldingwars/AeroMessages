@@ -471,8 +471,8 @@ namespace AeroMessages.GSS.V66.Character
     [AeroBlock]
     public struct MovementPoseDebugData2Collision
     {
-        [AeroArray(typeof(byte))] MovementPoseDebugData2Arrow[] Arrows; // debugmovement.drawCollision
-        [AeroArray(typeof(byte))] float[] Unk2; // Not certain that its floats
+        [AeroArray(typeof(byte))] public MovementPoseDebugData2Arrow[] Arrows; // debugmovement.drawCollision
+        [AeroArray(typeof(byte))] public float[] Unk2; // Not certain that its floats
     }
 
     [AeroBlock]

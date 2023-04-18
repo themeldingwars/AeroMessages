@@ -25,6 +25,6 @@ namespace AeroMessages.GSS.V66.Generic
         public ulong Unk1;
         public ulong Unk2;
         public int Unk3;
-        [AeroArray(typeof(byte))] SinCardFieldData[] Unk4;
+        [AeroArray(typeof(byte))] public SinCardFieldData[] Unk4;
     }
 }

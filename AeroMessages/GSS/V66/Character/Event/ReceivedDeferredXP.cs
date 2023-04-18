@@ -6,7 +6,7 @@ namespace AeroMessages.GSS.V66.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 90)]
     public partial class ReceivedDeferredXP
     {
-        [AeroArray(typeof(byte))] DeferredXPData[] Data;
+        [AeroArray(typeof(byte))] public DeferredXPData[] Data;
     }
 
     [AeroBlock]

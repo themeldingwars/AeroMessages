@@ -8,10 +8,10 @@ namespace AeroMessages.Matrix.V25
     public struct DevZoneInfoData
     {
         // FUN_00755d40
-        [AeroArray(typeof(byte))] DevPortsData DevPorts;
+        [AeroArray(typeof(byte))] public DevPortsData DevPorts;
 
         // FUN_00756a50
-        [AeroArray(typeof(byte))] DevPidsData DevPids;
+        [AeroArray(typeof(byte))] public DevPidsData DevPids;
     }   
 
     [AeroBlock]

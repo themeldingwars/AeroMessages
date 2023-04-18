@@ -8,7 +8,7 @@ namespace AeroMessages.Matrix.V25
     [AeroMessageId(MsgType.Matrix, MsgSrc.Message, 42)]
     public partial class MatchQueueResponse
     {
-        [AeroArray(typeof(byte))] MatchQueueResponseData Unk1;
+        [AeroArray(typeof(byte))] public MatchQueueResponseData Unk1;
         public uint Unk2;
     }
 

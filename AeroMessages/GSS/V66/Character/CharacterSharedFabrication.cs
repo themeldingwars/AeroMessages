@@ -36,7 +36,7 @@ namespace AeroMessages.GSS.V66.Character
         public uint Unk1;
         public uint Unk2;
         public uint Unk3;
-        [AeroArray(typeof(byte))] FabricationData_00d9a1a0[] Unk4;
+        [AeroArray(typeof(byte))] public FabricationData_00d9a1a0[] Unk4;
     }
 
     [AeroBlock]

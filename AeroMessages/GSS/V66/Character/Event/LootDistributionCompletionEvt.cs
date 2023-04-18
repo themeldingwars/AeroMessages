@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.V66.Character.Event
     {
         public uint Unk1;
         public byte Unk2;
-        [AeroArray(typeof(byte))] LootDistributionData[] Unk3;
+        [AeroArray(typeof(byte))] public LootDistributionData[] Unk3;
         public ulong Unk4;
     }
 }

@@ -18,7 +18,7 @@ namespace AeroMessages.GSS.V66.Character.Event
         public uint Unk2;
         public uint Unk3;
         public uint Unk4;
-        [AeroArray(typeof(byte))] ResourceLocationInfoInner[] Unk5;
+        [AeroArray(typeof(byte))] public ResourceLocationInfoInner[] Unk5;
     }
 
     [AeroBlock]

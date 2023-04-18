@@ -13,7 +13,7 @@ namespace AeroMessages.GSS.V66.Character.Event
         public uint Unk3;
         public uint Unk4;
         public byte Unk5;
-        [AeroArray(typeof(byte))] VendorTokenThing[] Unk6;
+        [AeroArray(typeof(byte))] public VendorTokenThing[] Unk6;
     }
 
     [AeroBlock]
