@@ -13,12 +13,16 @@ namespace AeroMessages.Matrix.V25
         public ulong ZoneTimestamp;
         public byte PreviewModeFlag;
         [AeroString] public string ZoneOwner;
-        public ushort Unk1_1; // Looks like Build Number
-        public uint Unk1_2; // Looks like Build Source Revision
+
+        public ushort StreamingProtocol;
+        public uint Unk1_2; // Very close to source_revision: 117123 reported by client vs 117237 in capture
+
         public byte HotfixLevel;
         public ulong MatchId;
+
         public byte Unk2;
         public uint Unk3_Millis;
+
         [AeroString] public string ZoneName;
 
         public byte HaveDevZoneInfo;
