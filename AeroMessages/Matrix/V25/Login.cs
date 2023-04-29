@@ -6,8 +6,7 @@ namespace AeroMessages.Matrix.V25
     [AeroMessageId(MsgType.Matrix, MsgSrc.Command, 17)]
     public partial class Login
     {
-        public byte Unk1;
-
+        public byte CharacterIsDev;
         public uint ClientVersion;
 
         [AeroString] public string Unk2;
