@@ -15,8 +15,8 @@ namespace AeroMessages.Matrix.V25
         public ClientPreferencesData ClientPreferences;
 
         public byte Unk7;
-        public byte Unk8;
 
+        public byte Locale;
         [AeroString] public string Red5Sig2; // Comma separated list of base64 sig somethings
 
         public byte HaveUnk9;
