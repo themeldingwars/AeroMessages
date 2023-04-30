@@ -6,7 +6,14 @@ namespace AeroMessages.Matrix.V25
     [AeroMessageId(MsgType.Matrix, MsgSrc.Command, 21)]
     public partial class DEVExecuteCommand
     {
-        public byte Unk1;
-        [AeroArray(typeof(byte))] [AeroString] public string[] Unk2;
+        public enum DevCommandType : byte
+        {
+            Matrix = 0, // mxcmd
+            GSS = 1, // gscmd
+            Social = 2, // socmd
+            Stats = 3 // statscmd
+        }
+        public DevCommandType Type;
+        [AeroArray(typeof(byte))] [AeroString] public string[] Arguments;
     }
 }
