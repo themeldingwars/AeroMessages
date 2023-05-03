@@ -8,10 +8,10 @@ namespace AeroMessages.Matrix.V25
     [AeroMessageId(MsgType.Matrix, MsgSrc.Message, 41)]
     public partial class MatrixStatus
     {
-        public uint Unk1;
-        public uint Unk2;
-        public byte Unk3;
-        public byte Unk4;
+        public int MatrixBytesPerSecond; // The BytesPerSecond value shown in the graph
+        public int MatrixBytesPerSecond2; // Almost always same as BytesPerSecond, exceptions in some of the early messages. Might be packet loss related?
+        public byte PacketUploss; // The client side label for this value
+        public byte PacketDownloss; // The client side label for this value
         public ushort Unk5;
         public byte Unk6;
 
