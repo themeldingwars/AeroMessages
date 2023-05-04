@@ -6,7 +6,7 @@ namespace AeroMessages.Matrix.V25
     [AeroMessageId(MsgType.Matrix, MsgSrc.Message, 62)]
     public partial class ZoneQueueUpdate
     {
-        public uint Unk1;
-        public uint Unk2;
+        public uint QueuePosition;
+        public uint QueueLength;
     }
 }
