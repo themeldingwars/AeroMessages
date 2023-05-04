@@ -8,10 +8,17 @@ namespace AeroMessages.Matrix.V25
     [AeroMessageId(MsgType.Matrix, MsgSrc.Command, 31)]
     public partial class LogInstrumentation
     {
-        public byte Unk1;
-        [AeroString] public string Key1;
-        [AeroString] public string Key2;
-        [AeroString] public string Key3;
-        [AeroString] public string JSON;
+        public enum LogInstrumentationType : byte
+        {
+            Event = 0,
+            Error = 1,
+            Crash = 2,
+            UI = 3
+        }
+        public LogInstrumentationType Type;
+        [AeroString] public string Action;
+        [AeroString] public string Message;
+        [AeroString] public string UIComponentName;
+        [AeroString] public string Data; // Can be JSON
     }
 }
