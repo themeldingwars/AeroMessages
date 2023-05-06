@@ -18,6 +18,6 @@ namespace AeroMessages.Matrix.V25
         }
 
         public ClientLoginFlags Flags;
-        public ulong Unk2;
+        public ulong SpectatorTargetGuid;
     }
 }
