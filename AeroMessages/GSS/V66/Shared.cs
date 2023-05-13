@@ -597,4 +597,12 @@ namespace AeroMessages.GSS.V66
         public ushort Unk1; // Unknown type
         public ushort Unk2; // Unknown type
     }
+
+    [AeroBlock]
+    public struct GeoReportData
+    {
+        public uint Unk1;
+        public ushort Unk2;
+        public uint Unk3;   
+    }
 }

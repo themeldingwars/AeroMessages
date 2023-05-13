@@ -12,12 +12,4 @@ namespace AeroMessages.GSS.V66.Character.Event
         public byte Unk3;
         [AeroArray(typeof(byte))] public GeoReportData[] Data;
     }
-
-    [AeroBlock]
-    public struct GeoReportData
-    {
-        public uint Unk1;
-        public ushort Unk2;
-        public uint Unk3;   
-    }
 }
