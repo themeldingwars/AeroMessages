@@ -11,28 +11,14 @@ namespace AeroMessages.GSS.V66.Character.Command
         [AeroString] public string Message;
         public byte Channel;
 
-        // 009fe600
-        public byte HaveUnk1;
-        [AeroIf(nameof(HaveUnk1), 1)]
-        public ulong Unk1;
+        public byte HaveEntity;
+        [AeroIf(nameof(HaveEntity), 1)]
+        public ulong Entity;
 
-        // 009e5820
         public byte HaveTargetName;
         [AeroIf(nameof(HaveTargetName), 1)]
         [AeroString] public string TargetName;
 
-        public byte Unk3; // This seems like a type indicator for Unk4
-
-        // 009f25a0
-        public byte HaveUnk4;
-        [AeroIf(nameof(HaveUnk4), 1)]
-        public ChatUnk4Data Unk4; // Binary data
-    }
-
-    [AeroBlock]
-    public struct ChatUnk4Data
-    {
-        [AeroArray(typeof(ushort))]
-        public byte[] Data;
+        public ChatMessageAlternateData AlternateData;
     }
 }
