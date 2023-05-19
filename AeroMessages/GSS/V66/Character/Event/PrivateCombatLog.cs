@@ -6,10 +6,8 @@ namespace AeroMessages.GSS.V66.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 92)]
     public partial class PrivateCombatLog
     {
-        // Yeah, this is how the parser reads it...
         public int HaveData;
         [AeroIf(nameof(HaveData), 1)]
-        [AeroArray(typeof(ushort))]
-        public byte[] Data; // Multiple variations, often gametime towards the end of a row.
+        public CombatLogMessage Data;
     }
 }

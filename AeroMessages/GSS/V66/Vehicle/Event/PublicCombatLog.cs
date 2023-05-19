@@ -1,5 +1,4 @@
 using Aero.Gen.Attributes;
-using System.Numerics;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.V66.Vehicle.Event
 {
@@ -9,7 +8,6 @@ namespace AeroMessages.GSS.V66.Vehicle.Event
     {
         public int HaveData;
         [AeroIf(nameof(HaveData), 1)]
-        [AeroArray(typeof(ushort))]
-        public byte[] Data;
+        public CombatLogMessage Data;
     }
 }
