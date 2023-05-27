@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.V66.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 95)]
     public partial class DebugLagSimulationSample
     {
-        public ushort Unk1; // Presumably short time but does not seem to be respected in that case.
+        public ushort ServerFrame;
         public ushort SimulationDuration;
         public ushort SimulatedObjects;
         public ushort TotalObjects;
