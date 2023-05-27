@@ -8,12 +8,12 @@ namespace AeroMessages.Matrix.V25
     [AeroMessageId(MsgType.Matrix, MsgSrc.Message, 64)]
     public partial class DebugLagSampleClient
     {
-        public ushort Unk1;
-        public ushort Unk2;
-        public ushort Unk3;
-        public ushort Unk4;
-        public ushort Unk5;
-        public ushort Unk6;
-        public ushort Unk7;
+        public ushort TotalBudgetBytes;
+        public ushort KeyframesBudgetBytes;
+        public ushort ReservedBudgetBytes;
+        public ushort UnreliableBudgetBytes;
+        public ushort KeyframesRequested;
+        public ushort KeyframesQueued;
+        public ushort BatchingDelayMs;
     }
 }
