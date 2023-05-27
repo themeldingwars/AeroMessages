@@ -8,9 +8,9 @@ namespace AeroMessages.GSS.V66.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 96)]
     public partial class DebugLagRaiaSample
     {
-        public ushort Unk1;
-        public ushort Unk2;
-        public ushort Unk3;
-        public ushort Unk4;
+        public ushort RaiaFrameMs;
+        public ushort RaiaUpdateDurationMs;
+        public ushort UpdatedObjects;
+        public ushort TotalObjects;
     }
 }
