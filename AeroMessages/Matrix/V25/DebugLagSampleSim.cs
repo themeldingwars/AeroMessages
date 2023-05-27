@@ -8,7 +8,7 @@ namespace AeroMessages.Matrix.V25
     [AeroMessageId(MsgType.Matrix, MsgSrc.Message, 63)]
     public partial class DebugLagSampleSim
     {
-        public ushort Unk1;
-        public ushort Unk2;
+        public ushort MatrixFrameMs;
+        public ushort MatrixUpdateDuration;
     }
 }
