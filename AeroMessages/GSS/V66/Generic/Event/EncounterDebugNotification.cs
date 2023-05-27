@@ -1,4 +1,5 @@
 using Aero.Gen.Attributes;
+using AeroMessages.Common;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.V66.Generic
 {
@@ -6,8 +7,8 @@ namespace AeroMessages.GSS.V66.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 99)]
     public partial class EncounterDebugNotification
     {
-        public ulong Unk1;
-        [AeroString] public string Unk2;
-        [AeroString] public string Unk3;
+        public EntityId EncounterId;
+        [AeroString] public string Notification;
+        [AeroString] public string Display; // 'chat', 'broadcast' have behaviors. Defaults to log to console.
     }
 }
