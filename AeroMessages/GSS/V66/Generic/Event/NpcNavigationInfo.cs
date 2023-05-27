@@ -1,6 +1,7 @@
 using Aero.Gen.Attributes;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
+using System.Numerics;
 namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
@@ -8,16 +9,8 @@ namespace AeroMessages.GSS.V66.Generic
     public partial class NpcNavigationInfo
     {
         public EntityId Unk1;
-        [AeroArray(typeof(byte))] public NpcNavigationData1[] Unk2;
+        [AeroArray(typeof(byte))] public Vector3[] Unk2;
         [AeroArray(typeof(byte))] public NpcNavigationData2[] Unk3;
-    }
-
-    [AeroBlock]
-    public struct NpcNavigationData1
-    {
-        public uint Unk1;
-        public uint Unk2;
-        public uint Unk3;
     }
 
     [AeroBlock]
