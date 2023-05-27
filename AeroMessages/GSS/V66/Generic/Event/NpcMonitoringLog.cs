@@ -6,8 +6,8 @@ namespace AeroMessages.GSS.V66.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 53)]
     public partial class NpcMonitoringLog
     {
-        [AeroString] public string Unk1;
-        public byte Unk2;
-        [AeroString] public string Unk3;
+        [AeroString] public string Prefix;
+        public byte LogLevel;
+        [AeroString] public string Text;
     }
 }
