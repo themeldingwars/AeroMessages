@@ -542,13 +542,27 @@ namespace AeroMessages.GSS.V66
     [AeroBlock]
     public struct TookDebugWeaponHitData
     {
-        public byte Unk1;
-        public uint Unk2;
-        public uint Unk3;
+        public enum DebugTraceType : byte
+        {
+            ERROR = 0,
+            Spawn = 1,
+            Bounce = 2,
+            Posefile_Hit = 3,
+            Ragdoll_Hit = 4,
+            Ragdoll_Miss = 5,
+            Impact = 6,
+            Shot = 7,
+            Detonate = 8,
+            Timeout = 9,
+            Validated = 10,
+        }
+        public DebugTraceType TraceType;
+        public uint Unk2_TraceId;
+        public uint Time;
         public ushort Unk4;
-        public Vector3 Unk5;
-        public Vector3 Unk6;
-        public uint Unk7;
+        public Vector3 Position;
+        public Vector3 Direction; // Not normalized
+        public uint Unk7_Id;
         
         public byte HaveUnk8;
         [AeroIf(nameof(HaveUnk8), 1)] public TookDebugWeaponHitRelatedData Unk8;
@@ -560,7 +574,7 @@ namespace AeroMessages.GSS.V66
     [AeroBlock]
     public struct TookDebugWeaponHitRelatedData
     {
-        public ulong Unk1;
+        public EntityId Target;
         public Vector3 Unk2;
         public Quaternion Unk3;
         public sbyte Unk4;
@@ -570,18 +584,17 @@ namespace AeroMessages.GSS.V66
     [AeroBlock]
     public struct TookDebugWeaponHitRelatedData2
     {
-        // FUN_009f6bb0
-        public ulong Unk1;
+        // 009f6bb0
+        public EntityId Target;
 
         // 009f6020
-        [AeroArray(typeof(byte))] public MaybeMatrix[] Unk2;
+        [AeroArray(typeof(byte))] public DbgMatrix4x4[] Unk2;
     }
 
     [AeroBlock]
-    public struct MaybeMatrix
+    public struct DbgMatrix4x4
     {
-        // 00a093e0
-        [AeroArray(4)] uint[] Unk;
+        [AeroArray(4)] public Vector4[] Row;
     }
 
     [AeroBlock]
