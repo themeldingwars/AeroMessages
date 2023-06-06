@@ -9,11 +9,12 @@ namespace AeroMessages.Matrix.V25
     public partial class MatrixStatus
     {
         public int MatrixBytesPerSecond; // The BytesPerSecond value shown in the graph
-        public int MatrixBytesPerSecond2; // Almost always same as BytesPerSecond, exceptions in some of the early messages. Might be packet loss related?
+        public int GameShapedBytes; // MatrixBytesPerSecond is subtracted from this value before it is displayed as Game Shaped Bytes.
         public byte PacketUploss; // The client side label for this value
         public byte PacketDownloss; // The client side label for this value
-        public ushort Unk5;
-        public byte Unk6;
+
+        public ushort Unk5; // related: "prefs.probe_segment_bytes > TARGET_MSS_UNDERSHOOT"
+        public byte IsEverlastingGobsocket; // When changed to 1, triggers a notice "Everlasting Gobsocket".
 
         // -- FUN_00754d40
         public byte HaveUnk7;
