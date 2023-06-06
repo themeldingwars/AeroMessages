@@ -8,6 +8,6 @@ namespace AeroMessages.Matrix.V25
     [AeroMessageId(MsgType.Matrix, MsgSrc.Command, 23)]
     public partial class RequestPause
     {
-        public ulong Unk1;
+        public EntityId Sender;
     }
 }

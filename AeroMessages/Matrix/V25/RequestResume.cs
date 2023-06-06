@@ -8,6 +8,6 @@ namespace AeroMessages.Matrix.V25
     [AeroMessageId(MsgType.Matrix, MsgSrc.Command, 24)]
     public partial class RequestResume
     {
-        public ulong Unk1;
+        public EntityId Sender;
     }
 }
