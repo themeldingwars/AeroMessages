@@ -10,8 +10,7 @@ namespace AeroMessages.Matrix.V25
     [AeroMessageId(MsgType.Matrix, MsgSrc.Command, 25)]
     public partial class ClientStatus
     {
-        public uint Unk1; // Some form of uptime
-
+        public uint ClientTime; // Miliseconds Client System Uptime (like TimeSyncRequest)
         public ushort RoundTripTime;
         public ushort ElapsedMs;
         public uint BytesDown;
