@@ -9,6 +9,7 @@ namespace AeroMessages.Matrix.V25
     public partial class ServerProfilerSendNames
     {
         [AeroArray(typeof(byte))] public ServerProfilerSendNamesData[] Unk1;
+        [AeroArray(typeof(byte))] public ServerProfilerSendNamesData[] Unk2;
     }
 
     [AeroBlock]
