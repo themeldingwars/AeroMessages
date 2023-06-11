@@ -8,16 +8,16 @@ namespace AeroMessages.Matrix.V25
     [AeroMessageId(MsgType.Matrix, MsgSrc.Message, 42)]
     public partial class MatchQueueResponse
     {
-        [AeroArray(typeof(byte))] public MatchQueueResponseData Unk1;
-        public uint Unk2;
+        [AeroArray(typeof(byte))] public MatchQueueResponseData Queues;
+        public uint Matchmaker;
     }
 
     [AeroBlock]
     public struct MatchQueueResponseData
     {
-        public uint Unk1;
-        public uint Unk2;
-        [AeroString] public string Unk3;
-        [AeroString] public string Unk4;
+        public uint QueueId; // Assumption
+        public uint DifficultyId; // Assumption
+        [AeroString] public string QueueName;
+        [AeroString] public string QueueType;
     }
 }
