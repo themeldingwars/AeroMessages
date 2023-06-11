@@ -8,7 +8,7 @@ namespace AeroMessages.Matrix.V25
     [AeroMessageId(MsgType.Matrix, MsgSrc.Command, 33)]
     public partial class SendEmergencyChat
     {
-        [AeroString] public string Unk1;
+        [AeroString] public string Text;
         public uint Unk2;
     }
 }
