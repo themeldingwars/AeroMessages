@@ -6,13 +6,13 @@ namespace AeroMessages.GSS.V66.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 90)]
     public partial class MatchQueue
     {
-        [AeroArray(typeof(byte))] public MatchQueueData[] Unk1;
+        [AeroArray(typeof(byte))] public MatchQueueData[] Queues;
         public ulong Unk2;
         public ulong Unk3;
         [AeroArray(typeof(byte))] public float[] Unk4;
-        public uint Unk5;
+        public uint ChassisId;
         public ulong Unk6;
-        public uint Unk7;
+        public uint Matchmaker;
         public uint Unk8;
         [AeroString] public string Unk9;
         public byte Unk10;
