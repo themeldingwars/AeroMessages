@@ -6,6 +6,6 @@ namespace AeroMessages.GSS.V66.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 197)]
     public partial class SetMovementSimulation
     {
-        public ushort Unk1;
+        public ushort UpdatePeriodMax; // network.updatePeriodMax
     }
 }
