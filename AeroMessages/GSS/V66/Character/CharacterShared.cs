@@ -449,13 +449,13 @@ namespace AeroMessages.GSS.V66.Character
     public struct MovementPoseDebugData2
     {
         // FUN_00a00120
-        public ushort Unk1;
+        public ushort ShortTime;
         public Vector3 Velocity; // debugmovement.drawVelocity
         public byte Unk3;
         public byte Unk4;
-        public ushort Unk5;
-        public short Unk6;
-        public short Unk7;
+        public ushort JetpackEnergy;
+        public short GroundTimePositiveAirTimeNegative;
+        public short TimeSinceLastJump;
 
         //  FUN_009ffed0
         public byte HaveCollisionData;
