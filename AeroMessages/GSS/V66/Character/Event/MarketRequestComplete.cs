@@ -6,11 +6,17 @@ namespace AeroMessages.GSS.V66.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 83)]
     public partial class MarketRequestComplete
     {
-        public byte Unk1;
-        public ulong Unk2;
-        public byte Unk3;
-        [AeroString] public string Unk4;
-        [AeroString] public string Unk5;
-        [AeroString] public string Unk6;
+        public enum MarketRequestType : byte
+        {
+            ListItemForSale = 0,
+            SendMailToPlayer = 1,
+            FillBuyOrder = 2,
+        };
+        public MarketRequestType Type;
+        public ulong Reference;
+        public byte Failed;
+        [AeroString] public string Code;
+        [AeroString] public string Message;
+        [AeroString] public string ListingId;
     }
 }
