@@ -10,8 +10,8 @@ namespace AeroMessages.GSS.V66.Character.Command
         public uint Time;
         public Vector3 AimDirection;
 
-        public byte HaveUnkVector;
-        [AeroIf(nameof(HaveUnkVector), 1)] // != 0
-        public Vector3 UnkVector;
+        public byte HaveShooterVelocity;
+        [AeroIf(nameof(HaveShooterVelocity), 1)] // != 0
+        public Vector3 ShooterVelocity;
     }
 }
