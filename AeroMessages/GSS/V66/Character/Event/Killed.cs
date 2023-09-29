@@ -4,7 +4,7 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.V66.Character.Event
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 8, 108)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 11, 108)]
     public partial class Killed
     {
         public ushort ShortTime;
