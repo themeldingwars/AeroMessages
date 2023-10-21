@@ -6,6 +6,12 @@ namespace AeroMessages.GSS.V66.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 184)]
     public partial class GeographicalReportRequest
     {
-        public byte Unk1;
+        public enum ClientGeographicalReportRequestFeedback : byte
+        {
+            OK = 0,
+            NOTHUMPINGZONE = 1,
+            INVALIDSURFACE = 2,
+        }
+        public ClientGeographicalReportRequestFeedback Feedback;
     }
 }
