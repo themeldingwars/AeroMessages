@@ -22,6 +22,6 @@ namespace AeroMessages.GSS.V66.Generic
 
         public byte Unk2; // Some special type
 
-        public float Unk3;
+        public float Unk3; // Progress as Percentage
     }
 }
