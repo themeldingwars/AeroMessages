@@ -100,15 +100,6 @@ namespace AeroMessages.GSS.V66.ResourceNode.View
     }
 
     [AeroBlock]
-    public struct ThumpingCharacterInfoStruct
-    {
-        public EntityId OwnerId1;
-        public EntityId OwnerId2;
-        [AeroString] public string Owner;
-        public float Unk;
-    }
-
-    [AeroBlock]
     public struct StateInfoStruct
     {
        public byte State;

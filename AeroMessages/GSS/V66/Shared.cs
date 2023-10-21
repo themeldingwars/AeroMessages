@@ -612,11 +612,11 @@ namespace AeroMessages.GSS.V66
     }
 
     [AeroBlock]
-    public struct GeoReportData
+    public struct ResourceCompositionData
     {
-        public uint Unk1;
-        public ushort Unk2;
-        public uint Unk3;   
+        public uint ItemTypeId;
+        public ushort ResourceQuality;
+        public float Percent;   
     }
 
     [AeroBlock]
@@ -910,9 +910,9 @@ namespace AeroMessages.GSS.V66
 
         // Guesswork
         public ulong GRA_Unk1;
-        public uint GRA_Unk2; // Maybe same as GRR_Unk1?
+        public uint GRA_Unk2; // Maybe same as GRR_Unk1? ScanId?
         public Vector3 GRA_Position;
-        [AeroArray(typeof(byte))] public GeoReportData[] Data;
+        [AeroArray(typeof(byte))] public ResourceCompositionData[] Data;
 
     }
 
@@ -922,7 +922,7 @@ namespace AeroMessages.GSS.V66
         public ushort DataLength;
 
         // Guesswork
-        public uint GRR_Unk1; // Maybe same as GRA_Unk2?
+        public uint GRR_Unk1; // Maybe same as GRA_Unk2? ScanId?
     }
 
     [AeroBlock]
@@ -964,5 +964,14 @@ namespace AeroMessages.GSS.V66
 
         // Guesswork
         public sbyte FROR_StatusType;
+    }
+
+    [AeroBlock]
+    public struct ThumpingCharacterInfoStruct
+    {
+        public EntityId OwnerId1;
+        public EntityId OwnerId2;
+        [AeroString] public string Owner;
+        public float Unk;
     }
 }
