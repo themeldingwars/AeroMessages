@@ -7,9 +7,9 @@ namespace AeroMessages.GSS.V66.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 139)]
     public partial class GeographicalReportResponse
     {
-        public uint Unk1;
-        public Vector3 Unk2;
-        public byte Unk3;
-        [AeroArray(typeof(byte))] public GeoReportData[] Data;
+        public uint ScanId;
+        public Vector3 Position;
+        public byte Valid; // If 0, game will ignore composition and present as "empty".
+        [AeroArray(typeof(byte))] public ResourceCompositionData[] Composition;
     }
 }
