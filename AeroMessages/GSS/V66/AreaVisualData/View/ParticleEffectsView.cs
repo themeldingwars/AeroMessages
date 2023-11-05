@@ -34,14 +34,4 @@ namespace AeroMessages.GSS.V66.AreaVisualData.View
         [AeroNullable] private ParticleEffect ParticleEffects_18;
         [AeroNullable] private ParticleEffect ParticleEffects_19;
     }
-
-    [AeroBlock]
-    public struct ParticleEffect
-    {
-        public EntityId SomeEntityId;
-        public uint Unk2;
-        public Vector3 Position;
-        [AeroArray(17)]
-        public byte[] Unk3;
-    }
 }
