@@ -6,6 +6,6 @@ namespace AeroMessages.GSS.V66.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 223)]
     public partial class ClaimDailyRewardStreak
     {
-        public uint Unk1;
+        public uint StreakLength;
     }
 }
