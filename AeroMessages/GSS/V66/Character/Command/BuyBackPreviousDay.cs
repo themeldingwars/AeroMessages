@@ -6,6 +6,6 @@ namespace AeroMessages.GSS.V66.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 224)]
     public partial class BuyBackPreviousDay
     {
-        public uint Unk1;
+        public uint Day;
     }
 }
