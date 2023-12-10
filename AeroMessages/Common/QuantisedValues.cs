@@ -1,5 +1,7 @@
 ﻿using System.Numerics;
+using System;
 using Aero.Gen.Attributes;
+
 
 namespace AeroMessages.Common
 {
@@ -20,7 +22,14 @@ namespace AeroMessages.Common
 
         public static implicit operator QuantisedFloat(float d)
         {
-            ushort result = (ushort)(32767 * d);
+            const float factor = 1.0f / 32767.0f;
+
+            if (Math.Sign(d) < 0)
+            {
+                d = (d / -1.0f) + 1.0f;
+            }
+
+            ushort result = (ushort)Math.Ceiling(d / factor);
             return new QuantisedFloat { Value = result};
         }
     }
