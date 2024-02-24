@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.V66.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 129)]
     public partial class InventoryUpdate
     {
-        public byte ClearExistingData; // 1 for full update, 0 for partitial
+        public byte ClearExistingData; // 1 for full, 0 for partitial
 
 
         // TODO: Aero needs support for handling additional entries if size is 255
@@ -66,7 +66,7 @@ namespace AeroMessages.GSS.V66.Character.Event
 
         public ulong GUID;
         public byte SubInventory;
-        public uint Unk2;
+        public uint TimestampEpoch; // Unix Seconds
         public byte DynamicFlags;
         public ushort Durability;
         public ushort Unk3;
