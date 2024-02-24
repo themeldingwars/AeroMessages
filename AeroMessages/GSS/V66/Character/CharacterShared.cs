@@ -670,4 +670,13 @@ namespace AeroMessages.GSS.V66.Character
         public uint Beans;
         public uint Epoch;
     }
+
+    [Flags]
+    public enum MovementInputFlags : byte
+    {
+        JumpPressed = 1 << 0, // Player is holding down Jump key
+        Sprinting = 1 << 1, // The character is sprinting or will sprint if moved
+        Crouching = 1 << 2, // The character is crouching
+        SprintPressed = 1 << 3, // Player is holding down Sprint key
+    }
 }

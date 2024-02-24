@@ -3,28 +3,30 @@ using static Aero.Gen.Attributes.AeroIfAttribute;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using System.Numerics;
 using AeroMessages.Common;
+using AeroMessages.GSS.V66.Character;
+
 namespace AeroMessages.GSS.V66.Character.Command
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 116)]
     public partial class MovementInputFake
     {
-        // First part same as MovementInput
+        // First part parses the same as MovementInput (Assuming same things then)
         public ushort ShortTime;
-        public byte Unk2;
-        public byte Unk3;
-        public short Unk4;
-        public short Unk5;
-        public byte Unk6;
+        public sbyte HorizontalInput;
+        public sbyte VerticalInput;
+        public HalfFloat HeadingPitch;
+        public HalfFloat HeadingYaw;
+        public MovementInputFlags InputFlags;
 
         // not the same~
-        public byte Unk7;
-        public byte Unk8;
-        public byte Unk9;
-        public byte Unk10;
-        public byte Unk11;
-        public byte Unk12;
-        public byte Unk13;
+        public sbyte Unk7;
+        public sbyte Unk8;
+        public sbyte Unk9;
+        public sbyte Unk10;
+        public sbyte Unk11;
+        public sbyte Unk12;
+        public sbyte Unk13;
 
         // FUN_009c1930
         // Optional MovementPoseData
@@ -35,6 +37,6 @@ namespace AeroMessages.GSS.V66.Character.Command
         
         // Last part same as MovementInput
         public ushort EndShort;
-        public byte EndByte;
+        public byte InterpolationDelay; // Assumption based on MovementInput
     }
 }
