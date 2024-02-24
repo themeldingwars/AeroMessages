@@ -178,7 +178,7 @@ namespace AeroMessages.GSS.V66
     [AeroBlock]
     public struct ScopeBubbleInfoData
     {
-        public uint Unk1;
+        public uint Layer;
         public uint Unk2;
     }
 
