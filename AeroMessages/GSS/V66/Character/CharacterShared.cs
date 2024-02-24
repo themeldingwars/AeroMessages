@@ -46,6 +46,14 @@ namespace AeroMessages.GSS.V66.Character
         public uint Time;
     }
 
+    [Flags]
+    public enum TargetFlags : byte
+    {
+        IsNPC = 1 << 0,
+        MissionGiver = 1 << 1,
+        Unk8 = 1 << 3, // Aranhas, Skivers?
+    }
+
     [AeroBlock]
     public struct StaticInfoData
     {
@@ -68,7 +76,7 @@ namespace AeroMessages.GSS.V66.Character
         public uint Eyes;
 
         public byte Unk_1;
-        public byte IsNPC;
+        public TargetFlags TargetFlags;
         public byte StaffFlags; // ChatIconFlags might be a better name?
 
         [AeroSdb("dbcharacter::Monster", "id")]
