@@ -687,4 +687,18 @@ namespace AeroMessages.GSS.V66.Character
         Crouching = 1 << 2, // The character is crouching
         SprintPressed = 1 << 3, // Player is holding down Sprint key
     }
+
+    [AeroBlock]
+    public struct RewardInfoData
+    {
+        [AeroSdb("dbitems::RootItem", "sdb_id")]
+        public uint SdbId;
+        public ushort Quantity; // Total quantity awarded
+        public ushort Quality; // Looks to be remnant of the 1-1000 quality system.
+        public ushort Boosted; // Amount of quantity that is boosted
+        public uint Module1; // Parsed as an array by UI
+        public uint Module2; // Only if Module1 is set
+
+        public byte Unk;
+    }
 }

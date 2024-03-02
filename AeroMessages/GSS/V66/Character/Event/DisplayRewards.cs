@@ -49,20 +49,6 @@ namespace AeroMessages.GSS.V66.Character.Event
     }
 
     [AeroBlock]
-    public struct RewardInfoData
-    {
-        [AeroSdb("dbitems::RootItem", "sdb_id")]
-        public uint SdbId;
-        public ushort Quantity; // Total quantity awarded
-        public ushort Quality; // Looks to be remnant of the 1-1000 quality system.
-        public ushort Boosted; // Amount of quantity that is boosted
-        public uint Module1; // Parsed as an array by UI
-        public uint Module2; // Only if Module1 is set
-
-        public byte Unk;
-    }
-
-    [AeroBlock]
     public struct ReputationInfo
     {
         [AeroSdb("dbcharacter::Faction", "id")]
