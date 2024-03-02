@@ -26,6 +26,8 @@ namespace AeroMessages.Common
                 Value = (ushort)(HalfLookup.Base[(u >> 23) & 0x1ff] + ((u & 0x007fffff) >> HalfLookup.Shift[u >> 23]))
             };
         }
+
+        public override string ToString() => $"{(float)this}";
     }
     
     [AeroBlock]

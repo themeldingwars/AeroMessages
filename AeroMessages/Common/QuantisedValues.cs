@@ -32,6 +32,8 @@ namespace AeroMessages.Common
             ushort result = (ushort)Math.Ceiling(d / factor);
             return new QuantisedFloat { Value = result};
         }
+
+        public override string ToString() => $"{(float)this}";
     }
     
     [AeroBlock]
