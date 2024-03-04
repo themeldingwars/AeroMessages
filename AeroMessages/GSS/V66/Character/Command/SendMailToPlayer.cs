@@ -10,11 +10,11 @@ namespace AeroMessages.GSS.V66.Character.Command
         [AeroString] public string Recipient;
         [AeroString] public string Subject;
         [AeroString] public string Body;
-        [AeroArray(typeof(byte))] public MailData[] Attachments;
+        [AeroArray(typeof(byte))] public MailAttachmentData[] Attachments;
     }
 
     [AeroBlock]
-    public struct MailData {
+    public struct MailAttachmentData {
         public uint ItemSdbId;
         [AeroString] public string Unk;
         public ulong ItemGuid;
