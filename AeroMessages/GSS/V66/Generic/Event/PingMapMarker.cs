@@ -7,7 +7,7 @@ namespace AeroMessages.GSS.V66.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 111)]
     public partial class PingMapMarker
     {   
-        public ulong Unk1; // Marker guid?
-        public uint Unk2;
+        public ulong EncounterMarkerId; // Marker guid?
+        public uint Type;
     }
 }
