@@ -14,7 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Aero.Gen" Version="1.2.15" />
+      <PackageReference Include="Aero.Gen" Version="1.2.16" />
     </ItemGroup>
 
 </Project>
