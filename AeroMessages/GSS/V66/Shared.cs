@@ -73,17 +73,22 @@ namespace AeroMessages.GSS.V66
             LocalizationId = 0,
             Float = 1,
             EntityId = 2,
-            Guid = 3,
+            // Flight_status template, timestamp in microseconds
+            Eta = 3,
+            // One of CardType / FadeDistance[Jetball] / ShowThroughGeometryDistance / MinimapIcon / IconTint
             EnumByte = 4,
             // 5 goto the delete
             Short = 6,
-            Complicated = 7, // Timer?
+            Timer = 7,
+            // Changes falsy default value to true and vice versa, has no explicit value like other types
+            BoolToggle = 8
         }
 
-        [Flags]
-        public enum ComplicatedDataFlags : byte
+        public enum TimerState : byte
         {
-            Long = 2,
+            CountingDown = 1,
+            // Paused = 2, todo: doesnt work in UI?
+            CountingDownPaused = 3,
         }
 
         public SinCardFieldData.SincardFieldDataType Type;
@@ -97,22 +102,113 @@ namespace AeroMessages.GSS.V66
         [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.EntityId)]
         public EntityId EntityId;
 
+        [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Eta)]
+        public ulong EtaMicro;
+
         [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.EnumByte)]
         public byte EnumByte;
 
         [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Short)]
         public ushort Short;
 
-        [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Complicated)]
-        public ComplicatedDataFlags Value7Flag;
+        [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Timer)]
+        public TimerState Timer;
 
-        [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Complicated)]
-        [AeroIf(nameof(Value7Flag), Ops.DoesntHaveFlag, SinCardFieldData.ComplicatedDataFlags.Long)]
-        public ulong Value7Long;
+        [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Timer)]
+        [AeroIf(nameof(Timer), SinCardFieldData.TimerState.CountingDown)]
+        public ulong TimerMicro;
 
-        [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Complicated)]
-        [AeroIf(nameof(Value7Flag), Ops.HasFlag, SinCardFieldData.ComplicatedDataFlags.Long)]
-        public float Value7Float;
+        [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Timer)]
+        [AeroIf(nameof(Timer), Ops.Equal, SinCardFieldData.TimerState.CountingDownPaused)]
+        public float TimerSeconds;
+
+        public enum CardType : byte
+        {
+            Shoot = 0,
+            Defend = 6,
+            Drive = 13,
+            Execute = 19,
+            Revive = 27,
+            Purchase = 34,
+            Interact = 43,
+            Collect = 52,
+            Hack = 60,
+            Bounty = 65,
+            Warning = 72,
+            SonicDetonator = 80,
+            Infected = 96,
+            Exit = 105,
+            Ballgame = 110,
+            Alert = 119,
+            Danger = 125,
+            Battery = 132
+        }
+
+        public enum FadeDistance : byte
+        {
+            At15 = 0,
+            At50 = 3,
+            At100 = 6,
+            At200 = 10,
+            At500 = 14,
+            At1000 = 18,
+            Never = 23
+        }
+
+        public enum ShowThroughGeometryDistance : byte
+        {
+            Never = 0,
+            At15 = 6,
+            At50 = 9,
+            At75 = 12,
+            At100 = 15,
+            At150 = 19,
+            Always = 23
+        }
+
+        public enum FadeDistanceJetball : byte
+        {
+            Never = 0,
+            At15 = 6,
+            At50 = 9,
+            At75 = 12,
+            At100 = 15,
+            At150 = 19,
+            Always = 23
+        }
+
+        public enum MinimapIcon : byte
+        {
+            Default = 0,
+            Shoot = 8,
+            Defend = 14,
+            Drive = 21,
+            Execute = 27,
+            Revive = 35,
+            Purchase = 42,
+            Interact = 51,
+            Collect = 60,
+            Hack = 68,
+            Bounty = 73,
+            Warning = 80,
+            SonicDetonator = 88,
+            Infected = 104,
+            Exit = 113,
+            Ballgame = 118,
+            Alert = 127,
+            Danger = 133,
+            Battery = 140
+        }
+
+        public enum IconTint : byte
+        {
+            Default = 0,
+            Red = 8,
+            Blue = 12,
+            White = 17,
+            Purple = 23,
+            Green = 30
+        }
     }
 
     [AeroBlock]
