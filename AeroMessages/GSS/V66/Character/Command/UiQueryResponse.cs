@@ -6,16 +6,20 @@ namespace AeroMessages.GSS.V66.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 59)]
     public partial class UiQueryResponse
     {
-        public ulong Unk1;
-        public uint Unk2;
-        public byte Unk3;
-        [AeroArray(typeof(byte))] public UiQueryResponseData Unk4;
+        public ulong QueryGuid;
+
+        [AeroSdb("dbencounterdata::EncUiQueryOption", "id")]
+        public uint SelectedOptionId;
+
+        [AeroArray(typeof(byte))] public UiQueryResponseOutput[] Outputs;
     }
 
     [AeroBlock]
-    public struct UiQueryResponseData
+    public struct UiQueryResponseOutput
     {
-        public uint Unk1;
-        public uint Unk2;
+        [AeroSdb("dbencounterdata::EncUiQueryOutput", "id")]
+        public uint Id;
+
+        public float Amount;
     }
 }

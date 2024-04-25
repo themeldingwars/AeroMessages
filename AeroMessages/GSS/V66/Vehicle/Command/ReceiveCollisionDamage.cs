@@ -7,8 +7,8 @@ namespace AeroMessages.GSS.V66.Vehicle.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 27, 86)]
     public partial class ReceiveCollisionDamage
     {
-        public ushort Value; // Not really sure about this value
-        public byte HaveEntity; // Possibly number of entities we collided with, or just if we collided with one
+        public ushort ShortTime; // Time when this collision is reported
+        public byte HaveEntity; // 0 or 1; separate messages are sent if collided with multiple entities at once
         [AeroIf(nameof(HaveEntity), 1)]
         public EntityId CollidedWithEntity;
     }
