@@ -6,16 +6,25 @@ namespace AeroMessages.GSS.V66.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 143)]
     public partial class NewUiQuery
     {
-        public ulong Unk1;
-        public uint Unk2;
-        public uint Unk3;
-        [AeroArray(typeof(byte))] public NewUiQuery2x4Data[] Unk4;
+        public ulong QueryGuid;
+
+        [AeroSdb("dbencounterdata::EncUiQuery", "id")]
+        // [AeroSdb("dbencounterdata::EncUiQueryInput", "query_id")]
+        public uint Type;
+
+        [AeroSdb("dbencounterdata::EncUiQuery", "localized_text")]
+        // [AeroSdb("dblocalization::LocalizedText", "id")]
+        public uint Prompt;
+
+        [AeroArray(typeof(byte))] public NewUiQueryInput[] Inputs;
     }
 
     [AeroBlock]
-    public struct NewUiQuery2x4Data
+    public struct NewUiQueryInput
     {
-        public uint Unk1;
-        public uint Unk2;
+        [AeroSdb("dbencounterdata::EncUiQueryInput", "id")]
+        public uint Id;
+
+        public uint Value;
     }
 }
