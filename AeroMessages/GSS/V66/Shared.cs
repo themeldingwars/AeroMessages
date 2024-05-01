@@ -84,11 +84,13 @@ namespace AeroMessages.GSS.V66
             BoolToggle = 8
         }
 
+        [Flags]
         public enum TimerState : byte
         {
+            CountingUp = 0,
             CountingDown = 1,
-            // Paused = 2, todo: doesnt work in UI?
-            CountingDownPaused = 3,
+            Paused = 2, // doesnt work in UI, use CountingDownPaused instead
+            CountingDownPaused = CountingDown | Paused
         }
 
         public SinCardFieldData.SincardFieldDataType Type;
@@ -115,11 +117,11 @@ namespace AeroMessages.GSS.V66
         public TimerState Timer;
 
         [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Timer)]
-        [AeroIf(nameof(Timer), SinCardFieldData.TimerState.CountingDown)]
+        [AeroIf(nameof(Timer), Ops.DoesntHaveFlag, SinCardFieldData.TimerState.Paused)]
         public ulong TimerMicro;
 
         [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Timer)]
-        [AeroIf(nameof(Timer), Ops.Equal, SinCardFieldData.TimerState.CountingDownPaused)]
+        [AeroIf(nameof(Timer), Ops.HasFlag, SinCardFieldData.TimerState.Paused)]
         public float TimerSeconds;
 
         public enum CardType : byte
