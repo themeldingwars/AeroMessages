@@ -6,11 +6,21 @@ namespace AeroMessages.GSS.V66.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 103)]
     public partial class DisplayUiNotification
     {
+        public enum BannerType : byte
+        {
+            Normal = 1,
+            MoneyBomb = 2,
+        }
+
         [AeroSdb("dblocalization::LocalizedText", "id")]
         public uint LocalizedTextId;
-        public uint Unk1;
+
+        public uint Duration; // seconds
+
         [AeroArray(typeof(byte))] public UiNotificationData[] Unk2;
-        public byte Unk3;
+
+        [AeroSdb("dbcharacter::BannerType", "id")]
+        public BannerType Banner;
     }
 
     [AeroBlock]
