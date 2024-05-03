@@ -10,7 +10,7 @@ namespace AeroMessages.GSS.V66.Generic
     {   
         public EntityId Player; // Assumption
         public byte Unk1;
-        public uint Unk2;
+        public uint ChassisId;
         public byte Unk3;
         public byte Unk4; // Alt read
         public sbyte Unk5;
