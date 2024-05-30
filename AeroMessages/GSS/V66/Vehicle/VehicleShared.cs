@@ -1,11 +1,17 @@
 using Aero.Gen.Attributes;
-using static Aero.Gen.Attributes.AeroIfAttribute;
-using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 using System.Numerics;
-using System;
+
 namespace AeroMessages.GSS.V66.Vehicle
 {
+    public enum AbilitySlotIndex : byte
+    {
+        Honk = 5,
+        Boost = 6,
+        Utility = 7,
+        SIN = 8,
+    }
+
     [AeroBlock]
     public struct CurrentPoseData
     {

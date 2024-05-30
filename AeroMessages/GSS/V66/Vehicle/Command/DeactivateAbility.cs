@@ -7,6 +7,6 @@ namespace AeroMessages.GSS.V66.Vehicle.Command
     public partial class DeactivateAbility
     {
         public uint Time;
-        public byte AbilityIdx; // 0x05 == Honk, 0x08 == SIN, lookup in vehicle components
+        public AbilitySlotIndex AbilitySlotIndex;
     }
 }

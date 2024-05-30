@@ -8,8 +8,8 @@ namespace AeroMessages.GSS.V66.Vehicle.Command
     public partial class ActivateAbility
     {
         public uint Time;
-        public byte AbilityIdx; // 0x05 == Honk, 0x08 == SIN, lookup in vehicle components
+        public AbilitySlotIndex AbilitySlotIndex;
         [AeroArray(typeof(byte))] public EntityId[] Targets;
-        public byte Unk2; // TraceAbilities?
+        public byte TraceAbilities; // traceAbilities command in console toggles this
     }
 }
