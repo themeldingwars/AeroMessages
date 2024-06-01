@@ -375,9 +375,9 @@ namespace AeroMessages.GSS.V66.Character
     [Flags]
     public enum MovementDataType : byte
     {
-        Velocity  = 0,
+        Velocity = 0,
         PosRotState = 1,
-        Aim       = 2
+        Aim = 2
     }
 
     [AeroBlock]
@@ -386,7 +386,7 @@ namespace AeroMessages.GSS.V66.Character
         // FUN_009f04d0
         public ushort           ShortTime;
         public MovementDataType MovementType;
-        public byte             MovementUnk3; // Seems to range 0-6 with 0 being the most common
+        public byte             WaterLevelAndDesc; // ddddllll
 
         [AeroIf(nameof(MovementType), Ops.HasFlag, MovementDataType.PosRotState)]
         public MovementPosRotState PosRotState;
