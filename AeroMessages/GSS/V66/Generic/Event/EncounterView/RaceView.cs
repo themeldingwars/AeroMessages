@@ -9,8 +9,10 @@ namespace AeroMessages.GSS.V66.Generic.Event.EncounterView
     {
         private ushort race_type;
 
+        [AeroSdb("dblocalization::LocalizedText", "id")]
         private uint track_name;
 
+        [AeroSdb("dblocalization::LocalizedText", "id")]
         private uint challenge_name;
 
         private ushort waypoint_counter;
