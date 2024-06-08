@@ -7,8 +7,22 @@ namespace AeroMessages.GSS.V66.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 101)]
     public partial class EncounterUIUpdate
     {
+        public EncounterUIUpdate(int size)
+        {
+            _size = size;
+        }
+
+        public EncounterUIUpdate()
+        {
+        }
+
         public EntityId EncounterId;
+
         [AeroArray(typeof(ushort))] public byte[] BlobData;
-        [AeroString] public string Unk; // Consume remaining bytes, this is probably json?
+
+        private int _size;
+
+        [AeroArray(nameof(_size))]
+        public byte[] ShadowFieldValues;
     }
 }
