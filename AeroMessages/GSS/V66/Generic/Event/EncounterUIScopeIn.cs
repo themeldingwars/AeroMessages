@@ -1,30 +1,48 @@
 using Aero.Gen.Attributes;
 using AeroMessages.Common;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
-using static Aero.Gen.Attributes.AeroIfAttribute;
-using System;
+
 namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 100)]
     public partial class EncounterUIScopeIn
     {
+        public EncounterUIScopeIn(int size)
+        {
+            _size = size;
+        }
+
+        public EncounterUIScopeIn()
+        {
+        }
+
         public EntityId EncounterId;
 
         [AeroArray(typeof(ushort))]
-        public byte[] BlobData; // Text keys with values inbetween or?
+        public byte[] Header;
 
-        public ushort Unk1;
-        [AeroArray(typeof(byte))] public EncounterUIData[] Unk2;
-        [AeroString] public string Unk3; // Consume remaining bytes, this is probably json?
+        public ushort SchemaVersion; // must be equal to 2
+
+        [AeroArray(typeof(byte))] public SinCardData[] SinCard;
+
+        private int _size;
+
+        [AeroArray(nameof(_size))]
+        public byte[] ShadowFieldValues;
     }
 
     [AeroBlock]
-    public struct EncounterUIData
+    public struct SinCardData
     {
-        public ulong Unk1;
-        public ulong Unk2;
-        public int Unk3;
-        [AeroArray(typeof(byte))] public SinCardFieldData[] Unk4;
+        public ulong Guid;
+
+        public EntityId Target;
+
+        [AeroSdb("dbencounterdata::SinCardTemplate", "Id")]
+        //[AeroSdb("dbencounterdata::SinCardFields", "TemplateId")]
+        public int Type;
+
+        [AeroArray(typeof(byte))] public SinCardFieldData[] Fields;
     }
 }

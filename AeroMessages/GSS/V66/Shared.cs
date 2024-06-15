@@ -66,6 +66,27 @@ namespace AeroMessages.GSS.V66
     }
 
     [AeroBlock]
+    public struct Timer
+    {
+        [Flags]
+        public enum TimerState : byte
+        {
+            CountingUp = 0,
+            CountingDown = 1,
+            Paused = 2, // doesnt work in UI, use CountingDownPaused instead
+            CountingDownPaused = CountingDown | Paused
+        }
+
+        public TimerState State;
+
+        [AeroIf(nameof(State), Ops.DoesntHaveFlag, TimerState.Paused)]
+        public ulong Micro;
+
+        [AeroIf(nameof(State), Ops.HasFlag, TimerState.Paused)]
+        public float Seconds;
+    }
+
+    [AeroBlock]
     public struct SinCardFieldData
     {
         public enum SincardFieldDataType : byte
@@ -82,15 +103,6 @@ namespace AeroMessages.GSS.V66
             Timer = 7,
             // Changes falsy default value to true and vice versa, has no explicit value like other types
             BoolToggle = 8
-        }
-
-        [Flags]
-        public enum TimerState : byte
-        {
-            CountingUp = 0,
-            CountingDown = 1,
-            Paused = 2, // doesnt work in UI, use CountingDownPaused instead
-            CountingDownPaused = CountingDown | Paused
         }
 
         public SinCardFieldData.SincardFieldDataType Type;
@@ -114,15 +126,7 @@ namespace AeroMessages.GSS.V66
         public ushort Short;
 
         [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Timer)]
-        public TimerState Timer;
-
-        [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Timer)]
-        [AeroIf(nameof(Timer), Ops.DoesntHaveFlag, SinCardFieldData.TimerState.Paused)]
-        public ulong TimerMicro;
-
-        [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Timer)]
-        [AeroIf(nameof(Timer), Ops.HasFlag, SinCardFieldData.TimerState.Paused)]
-        public float TimerSeconds;
+        public Timer Timer;
 
         public enum CardType : byte
         {
