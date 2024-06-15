@@ -9,16 +9,8 @@ namespace AeroMessages.GSS.V66.Generic
     public partial class NpcVoxelInfo
     {
         public EntityId Unk1;
-        public NpcVoxelInfoData Unk2;
+        [AeroArray(typeof(byte))] public Vector3[] Unk2;
         [AeroArray(typeof(byte))] public uint[] Unk3;
-        public byte Unk4;
-    }
-
-    [AeroBlock]
-    public struct NpcVoxelInfoData
-    {
-        public uint Unk1;
-        public uint Unk2;
-        public uint Unk3;
+        public byte Unk4; // 0 seems to clear?
     }
 }

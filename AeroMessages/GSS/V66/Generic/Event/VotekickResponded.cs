@@ -7,11 +7,11 @@ namespace AeroMessages.GSS.V66.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 34)]
     public partial class VotekickResponded
     {
-        public ulong Unk1;
-        [AeroString] public string Unk2;
-        [AeroString] public string Unk3;
-        public sbyte Unk4;
-        public ushort Unk5;
-        public ushort Unk6;
+        public ulong DefendantId;
+        [AeroString] public string Defendant;
+        [AeroString] public string Respondant;
+        public sbyte ShouldKick;
+        public ushort VotesFor;
+        public ushort VotesAgainst;
     }
 }

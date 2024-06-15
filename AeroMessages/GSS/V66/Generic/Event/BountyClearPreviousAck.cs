@@ -6,7 +6,7 @@ namespace AeroMessages.GSS.V66.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 76)]
     public partial class BountyClearPreviousAck
     {
-        public byte Unk1;
-        public byte Unk2;
+        public byte Success;
+        public byte Unk2; // Count or category?
     }
 }

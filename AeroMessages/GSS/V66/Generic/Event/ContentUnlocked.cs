@@ -8,8 +8,8 @@ namespace AeroMessages.GSS.V66.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 84)]
     public partial class ContentUnlocked
     {
-        [AeroString] public string Unk1;
-        public uint Unk2;
-        public ulong Unk3;
+        [AeroString] public string ContentType;
+        public uint ContentId;
+        public ulong Duration;
     }
 }

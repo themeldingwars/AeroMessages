@@ -6,7 +6,7 @@ namespace AeroMessages.GSS.V66.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 66)]
     public partial class MissionReturnToChanged
     {
-        public uint Unk1; // Mission id?
+        public uint MissionId; // Assumption
         public byte Unk2;
     }
 }

@@ -6,14 +6,14 @@ namespace AeroMessages.GSS.V66.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 67)]
     public partial class MissionsAvailable
     {
-        [AeroArray(typeof(byte))] public MissionsAvailableData[] Unk1;
+        [AeroArray(typeof(byte))] public MissionsAvailableData[] Missions;
         public ulong Unk2;
     }
 
     [AeroBlock]
     public struct MissionsAvailableData
     {
-        public uint Unk1;
-        public byte Unk2;
+        public uint MissionId;
+        public byte MissionAvailability; // 0,1,2,3
     }
 }

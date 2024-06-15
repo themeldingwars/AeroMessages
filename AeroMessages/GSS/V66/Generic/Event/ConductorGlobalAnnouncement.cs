@@ -9,7 +9,7 @@ namespace AeroMessages.GSS.V66.Generic
     public partial class ConductorGlobalAnnouncement
     {
         public GlobalAnnouncementData Data;
-        public byte Unk2;
+        public byte Activated; // [0,1]
     }
 
     [AeroBlock]
@@ -17,7 +17,7 @@ namespace AeroMessages.GSS.V66.Generic
     {
         public uint Unk1;
         public uint Unk2;
-        public uint Unk3;
+        public uint Unk3; // ActionId?
         [AeroString] public string Unk4;
         [AeroString] public string Unk5;
         public byte HaveUnk6;

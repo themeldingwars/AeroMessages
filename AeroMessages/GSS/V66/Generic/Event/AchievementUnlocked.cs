@@ -6,6 +6,6 @@ namespace AeroMessages.GSS.V66.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 81)]
     public partial class AchievementUnlocked
     {
-        public ulong Unk;
+        public ulong Unk; // MissionId
     }
 }

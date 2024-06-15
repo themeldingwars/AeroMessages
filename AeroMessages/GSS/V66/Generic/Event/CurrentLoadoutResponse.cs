@@ -9,7 +9,7 @@ namespace AeroMessages.GSS.V66.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 119)]
     public partial class CurrentLoadoutResponse
     {
-        public EntityId Unk1;
+        public EntityId PlayerId;
         public int Unk2;
         public int Unk3;
         [AeroString] public string Unk4;

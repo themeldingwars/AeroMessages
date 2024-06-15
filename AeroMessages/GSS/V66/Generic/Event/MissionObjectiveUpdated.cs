@@ -12,7 +12,7 @@ namespace AeroMessages.GSS.V66.Generic
         //[AeroSdb("clientmissions::MissionObjective","mission_id")]
         public ulong MissionId;
 
-        public uint Unk1;
+        public uint ObjectiveIdx;
 
         [AeroString]
         public string TextObjectiveTitle;
@@ -20,7 +20,7 @@ namespace AeroMessages.GSS.V66.Generic
         [AeroString]
         public string TextObjectiveProgress;
 
-        public byte Unk2; // Some special type
+        public byte Status; // Some special type (2 => completed)
 
         public float Unk3; // Progress as Percentage
     }

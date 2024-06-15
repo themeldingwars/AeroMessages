@@ -6,8 +6,7 @@ namespace AeroMessages.GSS.V66.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 77)]
     public partial class BountyListPreviousAck
     {
-
-        public byte Unk1;
+        public byte Success;
         [AeroString(typeof(ushort))] public string JSON;
     }
 }

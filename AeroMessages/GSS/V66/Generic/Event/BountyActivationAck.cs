@@ -6,9 +6,9 @@ namespace AeroMessages.GSS.V66.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 71)]
     public partial class BountyActivationAck
     {
-        public uint BountyId; // Unsure how this id works
-        public byte Unk1;
-        public byte Unk2;
+        public uint BountyDefId;
+        public byte Success;
+        public byte Reason; // [0-17]
         public byte Unk3; // Row / type?
         public uint Unk4;
 

@@ -6,7 +6,7 @@ namespace AeroMessages.GSS.V66.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 69)]
     public partial class BountyStatusChanged
     {
-        public uint BountyId; // Unsure how this id works
+        public uint BountyDefId;
         public byte Status;
     }
 }

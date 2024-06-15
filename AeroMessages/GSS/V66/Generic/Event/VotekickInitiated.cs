@@ -7,11 +7,11 @@ namespace AeroMessages.GSS.V66.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 33)]
     public partial class VotekickInitiated
     {
-        public ulong Unk1;
-        [AeroString] public string Unk2;
-        [AeroString] public string Unk3;
-        public uint Unk4;
-        public ulong Unk5;
-        public sbyte Unk6;
+        public ulong DefendantId;
+        [AeroString] public string Defendant;
+        [AeroString] public string Initiator;
+        public uint NumVoters;
+        public ulong Timeout; // Double
+        public sbyte IsParticipant;
     }
 }

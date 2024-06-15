@@ -6,6 +6,6 @@ namespace AeroMessages.GSS.V66.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 79)]
     public partial class DisplayUiTrackBounty
     {
-        public uint Unk; // BountyId?
+        public uint BountyDefId;
     }
 }

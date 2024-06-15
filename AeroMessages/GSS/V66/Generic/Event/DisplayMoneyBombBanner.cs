@@ -6,8 +6,9 @@ namespace AeroMessages.GSS.V66.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 104)]
     public partial class DisplayMoneyBombBanner
     {
-        public uint Unk1;
-        [AeroString] public string Unk2;
-        public uint Unk3;
+        [AeroSdb("dbcharacter::MoneyBombBanner", "id")]
+        public uint SdbId;
+        [AeroString] public string SponsoredByName;
+        public uint Duration;
     }
 }
