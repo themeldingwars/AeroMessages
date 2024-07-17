@@ -317,9 +317,9 @@ namespace AeroMessages.GSS.V66.Character
         {
             None = 0,
             Driver = 1,
-            ActivePassenger = 3,
-            PassivePassenger = 4,
-            Turret = 5,
+            ActivePassenger = 2,
+            PassivePassenger = 3,
+            Turret = 4,
         }
 
         public EntityId Id1;
