@@ -7,13 +7,13 @@ namespace AeroMessages.GSS.V66.Character.Event
     public partial class FactionReputationUpdate
     {
         [AeroArray(typeof(byte))] public FactionReputationData[] Data;
-        public byte Unk2;
+        public byte HideUiNotification;
     }
 
     [AeroBlock]
     public struct FactionReputationData
     {
-        public byte Unk1;
-        public uint Unk2;
+        public byte FactionId;
+        public uint Points;
     }
 }
