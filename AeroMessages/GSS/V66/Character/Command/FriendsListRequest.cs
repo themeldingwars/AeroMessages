@@ -6,6 +6,6 @@ namespace AeroMessages.GSS.V66.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 248)]
     public partial class FriendsListRequest
     {
-        public uint Page; // Assumption
+        public uint Page;
     }
 }

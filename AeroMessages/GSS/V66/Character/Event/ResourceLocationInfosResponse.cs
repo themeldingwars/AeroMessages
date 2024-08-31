@@ -14,9 +14,9 @@ namespace AeroMessages.GSS.V66.Character.Event
     [AeroBlock]
     public struct ResourceLocationInfo
     {
-        public uint Unk1; // x?
-        public uint Unk2; // y?
-        public uint Unk3; // z?
+        public float Unk1; // x?
+        public float Unk2; // y?
+        public float Unk3; // z?
         public uint Unk4; // radius?
         [AeroArray(typeof(byte))] public ResourceLocationInfoInner[] Unk5; // 'composition'
     }
