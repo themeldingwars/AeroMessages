@@ -1,3 +1,4 @@
+using System.Numerics;
 using Aero.Gen.Attributes;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.V66.Character.Event
@@ -6,16 +7,18 @@ namespace AeroMessages.GSS.V66.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 138)]
     public partial class FoundResourceAreas
     {
-        [AeroArray(typeof(byte))] public ResourceAreaData[] Data;
+        [AeroArray(typeof(byte))] public ResourceArea[] Data;
     }
 
     [AeroBlock]
-    public struct ResourceAreaData
+    public struct ResourceArea
     {
-        public uint Unk1;
-        public uint Unk2;
-        public uint Unk3;
+        public Vector3 Center;
+
         public uint Unk4;
-        public uint Unk5;
+
+        [AeroSdb("dbzonemetadata::ResourceNodeTypeResource", "node_type_id")]
+        // [AeroSdb("dbzonemetadata::ResourceNodeType", "id")]
+        public uint NodeTypeId;
     }
 }

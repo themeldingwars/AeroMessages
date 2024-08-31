@@ -13,7 +13,9 @@ namespace AeroMessages.GSS.V66.Character.Event
     [AeroBlock]
     public struct FactionReputationData
     {
+        [AeroSdb("dbcharacter::Faction", "id")]
         public byte FactionId;
+
         public uint Points;
     }
 }

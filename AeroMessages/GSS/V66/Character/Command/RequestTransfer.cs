@@ -6,7 +6,9 @@ namespace AeroMessages.GSS.V66.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 199)]
     public partial class RequestTransfer
     {
-        public uint Unk1;
+        [AeroSdb("dbzonemetadata::ZoneRecord", "id")]
+        public uint ZoneId;
+
         public byte Unk2;
     }
 }

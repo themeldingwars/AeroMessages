@@ -41,7 +41,7 @@ namespace AeroMessages.GSS.V66.Generic
 
         [AeroSdb("dbencounterdata::SinCardTemplate", "Id")]
         //[AeroSdb("dbencounterdata::SinCardFields", "TemplateId")]
-        public int Type;
+        public uint Type;
 
         [AeroArray(typeof(byte))] public SinCardFieldData[] Fields;
     }
