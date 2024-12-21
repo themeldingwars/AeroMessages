@@ -12,10 +12,10 @@ namespace AeroMessages.GSS.V66.AreaVisualData
         public Vector3 Position;
         public byte HaveUnk4;
         [AeroIf(nameof(HaveUnk4), 1)] public Vector3 Unk4;
-        public QuantisedQuaternion Rotation; // Guesswork
+        public QuantisedQuaternion Rotation;
         public byte Unk9; // loop?
         public uint Unk10; // group? time?
-        public HalfFloat Unk11; // scale?
+        public HalfFloat Scale;
         public byte HaveUnk12;
         [AeroIf(nameof(HaveUnk12), 1)] public ParticleEffectUnkData Unk12;
     }
