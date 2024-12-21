@@ -40,11 +40,18 @@ namespace AeroMessages.GSS.V66.Character.Event
     [AeroBlock]
     public struct StatInfo
     {
-        [AeroSdb("dblocalization::LocalizedText", "id")]
-        public uint LocalizationId;
+        public enum StatType : byte
+        {
+            Amount = 0,
+            Percent = 1,
+            Time = 2,
+        }
 
-        public byte Unk1;
-        public uint Unk2;
+        [AeroSdb("dblocalization::LocalizedText", "id")]
+        public uint NameId;
+
+        public StatType Type;
+        public float Value;
         [AeroString] public string Unk3;
     }
 
