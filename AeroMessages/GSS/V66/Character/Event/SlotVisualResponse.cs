@@ -13,6 +13,6 @@ namespace AeroMessages.GSS.V66.Character.Event
         public byte SlotIdx; // Assumption
 
         public uint VisualSdbId; // Assumption
-        public byte Result; // Assumption. 1 = Success, 0 = Failure
+        public sbyte Result; // Assumption. 1 = Success, 0 = Failure
     }
 }

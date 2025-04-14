@@ -33,7 +33,7 @@ namespace AeroMessages.Matrix.V25
     [AeroBlock]
     public struct ZoneTimeSyncData
     {
-        public ulong FictionDateTimeOffsetMicros; // Adds onto the servertime, changing the fiction date zone_time.
+        public long FictionDateTimeOffsetMicros; // Adds onto the servertime, changing the fiction date zone_time.
         public float DayLengthFactor; // Default 12.0. Higher values make the day phase shorter. Probably how many seconds of daytime per realtime second.
         public float DayPhaseOffset; // This modifier changes the time of day but not on reset.
     }

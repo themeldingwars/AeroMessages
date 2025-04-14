@@ -7,6 +7,6 @@ namespace AeroMessages.GSS.V66.Character.Command
     public partial class UseScope
     {
         public uint Time;
-        public byte InScope;
+        public sbyte InScope;
     }
 }

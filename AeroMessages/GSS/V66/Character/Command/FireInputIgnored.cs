@@ -7,6 +7,6 @@ namespace AeroMessages.GSS.V66.Character.Command
     public partial class FireInputIgnored
     {
         public uint Time;
-        public byte Ignored;
+        public sbyte Ignored;
     }
 }

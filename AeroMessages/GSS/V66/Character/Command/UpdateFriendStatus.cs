@@ -9,7 +9,7 @@ namespace AeroMessages.GSS.V66.Character.Command
         [AeroString]
         public string TargetName;
 
-        public byte Unk1;
+        public sbyte Unk1;
 
         public byte HaveUnk2;
         [AeroIf(nameof(HaveUnk2), 1)]

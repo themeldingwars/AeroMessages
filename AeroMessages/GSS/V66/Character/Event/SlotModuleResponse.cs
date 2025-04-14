@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.V66.Character.Event
     {
         public ulong ItemGUID;
         [AeroArray(typeof(byte))] public SlotModuleResponseData[] Unk1;
-        public byte Unk2;
+        public sbyte Unk2;
     }
 
     [AeroBlock]

@@ -12,6 +12,6 @@ namespace AeroMessages.GSS.V66.Character.Event
         [AeroArray(typeof(byte))]
         public LoadoutConfig_Visual[] Visuals;
 
-        public byte Result; // 1 = Success, 0 = Failure
+        public sbyte Result; // 1 = Success, 0 = Failure
     }
 }

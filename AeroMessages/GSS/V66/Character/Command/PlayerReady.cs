@@ -6,8 +6,8 @@ namespace AeroMessages.GSS.V66.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 88)]
     public partial class PlayerReady
     {
-        public byte Unk1;
-        public byte Unk2;
+        public sbyte Unk1;
+        public sbyte Unk2;
         
         public byte HaveUnk3;
         [AeroIf(nameof(HaveUnk3), 1)]

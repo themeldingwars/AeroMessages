@@ -6,7 +6,7 @@ namespace AeroMessages.GSS.V66.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 131)]
     public partial class WorkbenchUpdate
     {
-        public byte ClearExistingData; // Assumption
+        public sbyte ClearExistingData; // Assumption
         [AeroArray(typeof(byte))] public ulong[] Unk2; // Maybe ids for active things?
         [AeroArray(typeof(byte))] public WorkbenchUpdateData[] Data;
     }

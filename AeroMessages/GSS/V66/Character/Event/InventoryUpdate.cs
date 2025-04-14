@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.V66.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 129)]
     public partial class InventoryUpdate
     {
-        public byte ClearExistingData; // 1 for full, 0 for partitial
+        public sbyte ClearExistingData; // 1 for full, 0 for partitial
 
 
         // TODO: Aero needs support for handling additional entries if size is 255
@@ -47,7 +47,7 @@ namespace AeroMessages.GSS.V66.Character.Event
         [AeroArray(typeof(byte))]
         public Loadout[] Loadouts;
 
-        public byte Unk;
+        public sbyte Unk;
 
         [AeroArray(typeof(byte))]
         public Item[] SecondItems; // ?
@@ -106,8 +106,8 @@ namespace AeroMessages.GSS.V66.Character.Event
     [AeroBlock]
     public struct Loadout
     {
-        public uint FrameLoadoutId;
-        public uint Unk; // The frame loadout id is used as a uint in other messages so these are unlikely to belong to it. Perhaps an internal loadout id?
+        public uint FrameLoadoutId; // Unsure if int
+        public uint Unk; // The frame loadout id is used as int in other messages so these are unlikely to belong to it. Perhaps an internal loadout id?
 
         [AeroString]
         public string LoadoutName;

@@ -7,7 +7,7 @@ namespace AeroMessages.GSS.V66.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 148)]
     public partial class CharacterLoaded
     {
-        public byte Unk1;
-        public byte Unk2;
+        public sbyte Unk1;
+        public sbyte Unk2;
     }
 }

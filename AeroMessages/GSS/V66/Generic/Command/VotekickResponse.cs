@@ -8,6 +8,6 @@ namespace AeroMessages.GSS.V66.Generic
     public partial class VotekickResponse
     {
         public ulong Unk1;
-        public byte Unk2;
+        public sbyte Unk2;
     }
 }

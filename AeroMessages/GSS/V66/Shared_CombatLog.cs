@@ -40,7 +40,7 @@ namespace AeroMessages.GSS.V66
             Type15 = 15, // Ability related?
             Type16 = 16,
             Type17 = 17,
-            Type18 = 18,
+            Type18 = 18, // PvpStats?
             Type19 = 19,
             Type20 = 20,
             Type21 = 21,

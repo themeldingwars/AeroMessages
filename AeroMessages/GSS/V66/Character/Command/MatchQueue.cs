@@ -15,7 +15,7 @@ namespace AeroMessages.GSS.V66.Character.Command
         public uint Matchmaker;
         public uint Unk8;
         [AeroString] public string Unk9;
-        public byte Unk10;
+        public sbyte Unk10;
         [AeroString] public string Unk11;
     }
 

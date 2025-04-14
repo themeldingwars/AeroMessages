@@ -6,7 +6,7 @@ namespace AeroMessages.GSS.V66.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 208)]
     public partial class SlotVisualMultiRequest
     {
-        public uint LoadoutId;
+        public int LoadoutId;
         public uint ConfigId; // Assumption. If so, 0: PvE, 1: PvP
 
         [AeroArray(typeof(byte))]

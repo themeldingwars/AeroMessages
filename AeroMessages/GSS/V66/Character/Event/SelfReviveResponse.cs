@@ -6,7 +6,7 @@ namespace AeroMessages.GSS.V66.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 161)]
     public partial class SelfReviveResponse
     {
-        public byte Unk1;
+        public sbyte Unk1;
         public uint Unk2;
         public uint Unk3;
     }

@@ -9,6 +9,6 @@ namespace AeroMessages.Matrix.V25
     {
         public ulong ChallengeId; // Assumption
         [AeroString] public string Unk1; // Assumption
-        public byte Unk2;
+        public sbyte Unk2;
     }
 }

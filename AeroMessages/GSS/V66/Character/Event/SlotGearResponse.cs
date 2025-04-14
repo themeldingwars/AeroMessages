@@ -13,6 +13,6 @@ namespace AeroMessages.GSS.V66.Character.Event
         public byte SlotIdx;
 
         public uint Unk1;
-        public byte Result; // 1 = Success, 0 = Failure
+        public sbyte Result; // 1 = Success, 0 = Failure
     }
 }

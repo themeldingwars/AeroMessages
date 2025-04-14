@@ -6,6 +6,6 @@ namespace AeroMessages.GSS.V66.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 236)]
     public partial class EquipExperimentalLoadout
     {
-        public uint LoadoutId;
+        public uint LoadoutId; // Unsigned
     }
 }

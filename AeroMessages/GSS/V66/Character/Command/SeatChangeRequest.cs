@@ -6,6 +6,6 @@ namespace AeroMessages.GSS.V66.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 216)]
     public partial class SeatChangeRequest
     {
-        public byte RequestedSeatIndex;
+        public sbyte RequestedSeatIndex;
     }
 }

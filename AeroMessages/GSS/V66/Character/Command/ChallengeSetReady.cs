@@ -7,6 +7,6 @@ namespace AeroMessages.GSS.V66.Character.Command
     public partial class ChallengeSetReady
     {
         public ulong Unk1;
-        public byte Unk2; // Ready state?
+        public sbyte Unk2; // Ready state?
     }
 }

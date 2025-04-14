@@ -223,7 +223,7 @@ namespace AeroMessages.GSS.V66
         [AeroSdb("apt::StatusEffectData", "id")]
         public uint Id;
 
-        public byte Unk;
+        public byte Stack;
         public EntityId Initiator;
         public uint Time;
         public byte MoreDataFlag;
@@ -626,7 +626,7 @@ namespace AeroMessages.GSS.V66
         public byte RotAltLastByte_1; // Same byte, just difficulties with logic
 
         [AeroIf(nameof(CalcFlagValue1), 0x20)]
-        [AeroArray(2)] public byte[] RotAltBytes;
+        [AeroArray(2)] public sbyte[] RotAltBytes;
 
         [AeroIf(nameof(CalcFlagValue1), 0x20)]
         public byte RotAltLastByte_2; // Same byte, just difficulties with logic

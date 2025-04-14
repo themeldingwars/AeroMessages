@@ -645,7 +645,7 @@ namespace AeroMessages.GSS.V66.Character
     public struct DuelData
     {
         // FUN_009db930
-        public byte Unk1;
+        public sbyte Unk1;
         [AeroString] public string Unk2;
         public EntityId RequestingEntity;
         [AeroString] public string Unk3;

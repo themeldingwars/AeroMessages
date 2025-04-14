@@ -6,7 +6,7 @@ namespace AeroMessages.GSS.V66.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 145)]
     public partial class FetchQueueInfoResponse
     {
-        public byte Succes;
+        public sbyte Succes;
         [AeroArray(typeof(byte))] public FetchQueueData[] Queues;
     }
 

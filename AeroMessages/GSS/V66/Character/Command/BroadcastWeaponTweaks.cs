@@ -7,6 +7,6 @@ namespace AeroMessages.GSS.V66.Character.Command
     public partial class BroadcastWeaponTweaks
     {
         public byte Unk1;
-        public byte Unk2;
+        public sbyte Unk2;
     }
 }

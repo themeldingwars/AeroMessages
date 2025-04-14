@@ -8,6 +8,6 @@ namespace AeroMessages.GSS.V66.Character.Command
     {
         public uint Matchmaker;
         public ulong MatchId;
-        public byte Accept;
+        public sbyte Accept;
     }
 }

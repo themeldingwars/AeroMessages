@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.V66.Generic
     public partial class RemoteProximityAbilitySuccess
     {
         public EntityId Source;
-        public byte Unk;
+        public sbyte Unk;
 
         [AeroSdb("aptfs::RegisterClientProximityCommandDef", "id")]
         public uint ClientProximityCommandId;

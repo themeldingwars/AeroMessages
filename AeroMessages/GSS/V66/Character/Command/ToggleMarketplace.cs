@@ -6,6 +6,6 @@ namespace AeroMessages.GSS.V66.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 86)]
     public partial class ToggleMarketplace
     {
-        public byte Unk1;
+        public sbyte Unk1;
     }
 }

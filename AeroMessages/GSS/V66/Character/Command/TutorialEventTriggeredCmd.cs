@@ -8,6 +8,6 @@ namespace AeroMessages.GSS.V66.Character.Command
     {
         public uint Unk1;
         public ulong Unk2;
-        public byte Unk3;
+        public sbyte Unk3;
     }
 }

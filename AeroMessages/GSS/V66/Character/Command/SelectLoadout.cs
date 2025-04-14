@@ -6,7 +6,7 @@ namespace AeroMessages.GSS.V66.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 150)]
     public partial class SelectLoadout
     {
-        public uint LoadoutId;
-        public byte Unk;
+        public int LoadoutId;
+        public sbyte Unk;
     }
 }

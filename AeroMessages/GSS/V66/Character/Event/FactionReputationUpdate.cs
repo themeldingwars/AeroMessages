@@ -7,7 +7,7 @@ namespace AeroMessages.GSS.V66.Character.Event
     public partial class FactionReputationUpdate
     {
         [AeroArray(typeof(byte))] public FactionReputationData[] Data;
-        public byte HideUiNotification;
+        public sbyte HideUiNotification;
     }
 
     [AeroBlock]

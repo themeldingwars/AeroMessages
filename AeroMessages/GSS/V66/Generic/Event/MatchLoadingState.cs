@@ -7,7 +7,7 @@ namespace AeroMessages.GSS.V66.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 44)]
     public partial class MatchLoadingState
     {
-        public byte Unk1;
+        public sbyte Unk1;
         [AeroArray(typeof(byte))] public MatchLoadingStateData[] Unk2;
     }
 

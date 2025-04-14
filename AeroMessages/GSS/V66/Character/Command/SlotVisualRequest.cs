@@ -6,7 +6,7 @@ namespace AeroMessages.GSS.V66.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 207)]
     public partial class SlotVisualRequest
     {
-        public uint LoadoutId;
+        public int LoadoutId;
 
         [AeroSdb("dbitems::RootItem", "sdb_id")]
         public uint ItemSdbId;

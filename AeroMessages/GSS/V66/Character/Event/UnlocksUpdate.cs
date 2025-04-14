@@ -6,7 +6,7 @@ namespace AeroMessages.GSS.V66.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 130)]
     public partial class UnlocksUpdate
     {
-        public byte ClearExistingData; // 1 for full update, 0 for partitial
+        public sbyte ClearExistingData; // 1 for full update, 0 for partitial
 
         [AeroArray(typeof(byte))]
         public UnlockGroup[] Groups;

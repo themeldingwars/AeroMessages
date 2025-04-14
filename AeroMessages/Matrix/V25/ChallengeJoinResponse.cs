@@ -8,9 +8,9 @@ namespace AeroMessages.Matrix.V25
     public partial class ChallengeJoinResponse
     {
         public ulong ChallengeId; // Assumption
-        public byte Unk1;
-        public byte Unk2;
-        public byte Unk3;
+        public sbyte Unk1;
+        public sbyte Unk2;
+        public sbyte Unk3;
         public uint Unk4;
         [AeroArray(typeof(byte))] public ChallengeJoinResponseUnk5Data Unk5;
         public uint Unk6;
