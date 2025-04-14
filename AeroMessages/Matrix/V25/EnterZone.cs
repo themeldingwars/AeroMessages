@@ -7,24 +7,19 @@ namespace AeroMessages.Matrix.V25
     [AeroMessageId(MsgType.Matrix, MsgSrc.Message, 37)]
     public partial class EnterZone
     {
-        // -- FUN_00757370
+        // -- ZoneInfo
         public ulong InstanceId;
         public uint ZoneId;
-        public ulong ZoneTimestamp;
-        public byte PreviewModeFlag;
+        public long ZoneTimestamp;
+        public ZoneFlags ZoneFlags;
         [AeroString] public string ZoneOwner;
-
         public ushort StreamingProtocol;
-        public uint Unk1_2; // Very close to source_revision: 117123 reported by client vs 117237 in capture
-
+        public uint SvnRevision;
         public byte HotfixLevel;
         public ulong MatchId;
-
-        public byte Unk2;
-        public uint Unk3_Millis;
-
+        public sbyte Unk2;
+        public uint SimulationSeedMs;
         [AeroString] public string ZoneName;
-
         public byte HaveDevZoneInfo;
         [AeroIf(nameof(HaveDevZoneInfo), 1)]
         public DevZoneInfoData DevZoneInfo;
@@ -32,6 +27,14 @@ namespace AeroMessages.Matrix.V25
 
         public ZoneTimeSyncData ZoneTimeSyncInfo;
         public GameClockInfoData GameClockInfo;
-        public byte SpectatorModeFlag;
+        public sbyte SpectatorModeFlag;
+    }
+
+    [Flags]
+    public enum ZoneFlags : byte
+    {
+        ZonePreview = 1 << 0,
+        DataPreview = 1 << 1,
+        AssetPreview = 1 << 2,
     }
 }
