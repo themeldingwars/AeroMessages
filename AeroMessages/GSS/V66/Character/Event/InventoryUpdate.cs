@@ -106,7 +106,7 @@ namespace AeroMessages.GSS.V66.Character.Event
     [AeroBlock]
     public struct Loadout
     {
-        public uint FrameLoadoutId; // Unsure if int
+        public int FrameLoadoutId;
         public uint Unk; // The frame loadout id is used as int in other messages so these are unlikely to belong to it. Perhaps an internal loadout id?
 
         [AeroString]

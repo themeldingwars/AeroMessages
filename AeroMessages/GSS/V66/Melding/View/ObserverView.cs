@@ -19,14 +19,12 @@ namespace AeroMessages.GSS.V66.Melding.View
     [AeroBlock]
     public struct ActiveDataStruct
     {
-        public ulong Unk1;
-        public ulong Unk2;
+        public ulong TimestampMicro;
+        public ulong Unk2; // 1000000
         public byte Unk3;
-        // FromTangents / FromPoints?
-        [AeroArray(typeof(byte))] public Vector3[] ControlPoints_1;
-        [AeroArray(typeof(byte))] public Vector3[] Offsets_1;
-        // ToTangents / ToPoints?
-        [AeroArray(typeof(byte))] public Vector3[] ControlPoints_2;
-        [AeroArray(typeof(byte))] public Vector3[] Offsets_2;
+        [AeroArray(typeof(byte))] public Vector3[] FromPoints;
+        [AeroArray(typeof(byte))] public Vector3[] FromTangents;
+        [AeroArray(typeof(byte))] public Vector3[] ToPoints;
+        [AeroArray(typeof(byte))] public Vector3[] ToTangets;
     }
 }

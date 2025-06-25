@@ -9,7 +9,7 @@ namespace AeroMessages.GSS.V66.Character.Command
         public ulong Unk1;
         public ulong Unk2;
         public uint Unk3;
-        public uint Unk4; // Unsure about type
+        public int Unk4;
         [AeroString] public string Unk5;
         public ulong Unk6;
         [AeroString] public string Unk7;

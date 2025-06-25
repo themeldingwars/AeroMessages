@@ -13,16 +13,16 @@ namespace AeroMessages.GSS.V66.Character.Controller
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 4)]
     public partial class BaseController
     {   
-        private uint TimePlayed;
-        private uint CurrentWeight;
-        private uint EncumberedWeight;
+        private int TimePlayed;
+        private int CurrentWeight;
+        private int EncumberedWeight;
         private AuthorizedTerminalData AuthorizedTerminal;
         private uint PingTime;
         private StaticInfoData StaticInfo;
         private uint SpawnTime;
         private VisualOverridesField VisualOverrides;
         private EquipmentData CurrentEquipment;
-        private uint SelectedLoadout;
+        private int SelectedLoadout;
         private uint SelectedLoadoutIsPvP;
         private GibVisuals GibVisualsId;
         private CharacterSpawnPose SpawnPose;
@@ -36,8 +36,8 @@ namespace AeroMessages.GSS.V66.Character.Controller
 
         [AeroNullable] private PersonalFactionStanceData PersonalFactionStance;
 
-        private uint CurrentHealth;
-        private uint CurrentShields;
+        private int CurrentHealth;
+        private int CurrentShields;
         private MaxVital MaxShields;
         private MaxVital MaxHealth;
         private byte CurrentDurabilityPct;
@@ -55,7 +55,7 @@ namespace AeroMessages.GSS.V66.Character.Controller
         [AeroNullable] private SinTeamsAcquiredByData SinTeamsAcquiredBy;
 
         private ulong ArmyGUID;
-        private byte ArmyIsOfficer;
+        private sbyte ArmyIsOfficer;
 
         [AeroNullable] private EncounterPartyTupleData EncounterPartyTuple;
 
@@ -169,7 +169,7 @@ namespace AeroMessages.GSS.V66.Character.Controller
         public Vector3 Velocity;
         public ushort MovementState;
         public byte Unk1; // ???
-        public byte Unk2;// ???
+        public byte Unk2; // ???
         public ushort JetpackEnergy;
         public short AirGroundTimer;
         public short JumpTimer;
@@ -279,7 +279,6 @@ namespace AeroMessages.GSS.V66.Character.Controller
         [AeroArray(typeof(byte))] public uint[] Unk2;
     }
 
-
     [AeroBlock]
     public struct ArcStatusData
     {
@@ -312,5 +311,4 @@ namespace AeroMessages.GSS.V66.Character.Controller
         public uint Unk2;
         public byte Unk3;
     }
-    
 }

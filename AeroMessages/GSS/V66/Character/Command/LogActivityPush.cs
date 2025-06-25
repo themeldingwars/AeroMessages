@@ -6,6 +6,6 @@ namespace AeroMessages.GSS.V66.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 175)]
     public partial class LogActivityPush
     {
-        public uint Unk; // Unsure about type
+        public int Unk;
     }
 }

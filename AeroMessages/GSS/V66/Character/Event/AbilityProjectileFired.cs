@@ -8,17 +8,13 @@ namespace AeroMessages.GSS.V66.Character.Event
     public partial class AbilityProjectileFired
     {
         public ushort ShortTime;
-        
-        [AeroArray(3)]
-        public ushort[] PackedUnk; // Could be a ruse, if not, what vector would this be???
-        
+        public HalfVector3 MaybeHalfs; // ???
         public QuantisedVector3 Aim;
 
         [AeroSdb("dbitems::Ammo", "id")] // Definition
         //[AeroSdb("aptfs::FireProjectileCommandDef", "ammotype")] // Reference values, eg Range
         public ushort AmmoType;
         public float Range;
-
         public int Unk1;
         public byte Unk2;
         public float Unk3;

@@ -9,7 +9,7 @@ namespace AeroMessages.GSS.V66.Character.Command
         public ulong Unk1;
         public ulong Unk2;
         public uint Unk3;
-        [AeroArray(4)] public byte[] Unk4; // FIXME: What type is this
+        public int Unk4;
         public ulong Unk5;
     }
 }

@@ -299,7 +299,7 @@ namespace AeroMessages.GSS.V66.Character
     [AeroBlock]
     public struct MaxVital
     {
-        public uint Value;
+        public int Value;
         public uint Time;
     }
 
