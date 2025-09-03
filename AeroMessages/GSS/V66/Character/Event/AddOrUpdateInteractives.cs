@@ -7,12 +7,12 @@ namespace AeroMessages.GSS.V66.Character.Event
     public partial class AddOrUpdateInteractives
     {
         [AeroArray(typeof(byte))]
-        public ulong[] Entities;
+        public ulong[] Entities; // "Interactives"
 
         [AeroArray(typeof(byte))]
-        public byte[] InteractionTypes;
+        public byte[] InteractionTypes; // "Types"
 
         [AeroArray(typeof(byte))]
-        public uint[] InteractionDurationsMs;
+        public uint[] InteractionDurationsMs; // "Durations"
     }
 }
