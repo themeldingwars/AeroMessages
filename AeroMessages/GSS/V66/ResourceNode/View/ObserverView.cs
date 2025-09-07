@@ -1,10 +1,7 @@
-using Aero.Gen.Attributes;
-using static Aero.Gen.Attributes.AeroIfAttribute;
-using static Aero.Gen.Attributes.AeroMessageIdAttribute;
-using AeroMessages.Common;
 using System.Numerics;
-using System;
 using Aero.Gen;
+using Aero.Gen.Attributes;
+using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.ResourceNode.View
 {
@@ -13,7 +10,8 @@ namespace AeroMessages.GSS.V66.ResourceNode.View
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 48, 3)]
     public partial class ObserverView
     {
-        [AeroSdb("dbzonemetadata::ResourceNodeType", "id")] // TODO: Verify
+        [AeroSdb("dbzonemetadata::ResourceNodeType", "id")]
+        [AeroSdb("dbzonemetadata::ResourceNodeTypeResource", "node_type_id")]
         private uint NodeType;
 
         private ThumpingCharacterInfoStruct ThumpingCharacterInfo;

@@ -6,10 +6,10 @@ namespace AeroMessages.GSS.V66.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 231)]
     public partial class FlushCharacterCache
     {
-        public sbyte Unk1;
-        public sbyte Unk2;
-        public sbyte Unk3;
-        public sbyte Unk4;
-        public sbyte Unk5;
+        public sbyte Items;
+        public sbyte SlotGear;
+        public sbyte XpLevel;
+        public sbyte Mission;
+        public sbyte All;
     }
 }
