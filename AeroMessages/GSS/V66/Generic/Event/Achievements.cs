@@ -16,6 +16,6 @@ namespace AeroMessages.GSS.V66.Generic
         [AeroSdb("clientmissions::Mission", "id")] // when is_achievement == 1
         [AeroSdb("clientmissions::AchievementSetLink", "achievement_id")]
         public uint AchievementId;
-        public byte IsCombatAward; // based on FUN_00ecf790
+        public byte Completed; // 1 = Completed, 0 = Incomplete
     }
 }
