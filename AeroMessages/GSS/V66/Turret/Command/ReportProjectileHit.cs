@@ -10,11 +10,14 @@ namespace AeroMessages.GSS.V66.Turret.Command
     {
         public ushort TraceRef; // Part of the uint used to group trace data in debugweapon.
         public ushort ShortTime; // Time when this hit is reported
-        public byte Unk2;
-        public sbyte Unk3;
-        public sbyte Unk4;
-        public sbyte Unk5;
-        public HalfFloat Unk6;
-        public ushort BodyPartHit; // Appears related to the body part, the value might reference a bone/hardpoint or something.
+        public byte Unk2; // Usually 1, capture has a few cases of 2 or 3. Maybe like CombatLogSource? Or related to the hitreg/prediction?
+
+        // Seems to be the direction onto the part of the ragdoll that was hit.
+        public sbyte QuantisedDirectionX;
+        public sbyte QuantisedDirectionY;
+        public sbyte QuantisedDirectionZ;
+
+        public HalfFloat Distance; // Possibly the delta of the ray segment at which it hits (caps around 1 and loops)
+        public ushort PhysicsMaterialId; // Userdata of the ragdoll part that was hit
     }
 }
