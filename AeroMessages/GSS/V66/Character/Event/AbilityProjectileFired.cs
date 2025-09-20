@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.V66.Character.Event
     public partial class AbilityProjectileFired
     {
         public ushort ShortTime;
-        public HalfVector3 MaybeHalfs; // ???
+        public HalfVector3 MaybeHalfs; // ShooterVelocity?
         public QuantisedVector3 Aim;
 
         [AeroSdb("dbitems::Ammo", "id")] // Definition
@@ -16,14 +16,14 @@ namespace AeroMessages.GSS.V66.Character.Event
         public ushort AmmoType;
         public float Range;
         public int Unk1;
-        public byte Unk2;
+        public byte Unk2; // Burstcount?
         public float Unk3;
         public byte Unk4;
         public uint Unk5;
-        public uint Unk6; // Hardpoint?
+        public uint Hardpoint;
 
         public byte UnkFlag;
         [AeroIf(nameof(UnkFlag), 1)]
-        public ulong UnkFlaggedEntity;
+        public ulong UnkFlaggedEntity; // Maybe for "homing_target" or "aim_at_target"?
     }
 }
