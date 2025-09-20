@@ -9,8 +9,9 @@ namespace AeroMessages.GSS.V66.Character.Event
     {
         public ushort ShortTime;
         public QuantisedVector3 Aim;
-        public byte HaveMoreData;
-        [AeroIf(nameof(HaveMoreData), 1)]
-        public HalfVector3 MoreData; // Not sure, 3x2
+
+        public byte HaveShooterVelocity; // ShooterVelocity is an assumption but it would match FireWeaponProjectile
+        [AeroIf(nameof(HaveShooterVelocity), 1)]
+        public HalfVector3 ShooterVelocity;
     }
 }
