@@ -1,4 +1,5 @@
 using Aero.Gen.Attributes;
+using AeroMessages.Common;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.V66.Character.Command
 {
@@ -6,6 +7,6 @@ namespace AeroMessages.GSS.V66.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 212)]
     public partial class LeaveEncounterParty
     {
-        public ulong Unk1;
+        public EntityId EncounterId;
     }
 }

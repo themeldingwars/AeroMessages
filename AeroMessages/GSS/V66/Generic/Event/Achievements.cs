@@ -13,7 +13,9 @@ namespace AeroMessages.GSS.V66.Generic
     [AeroBlock]
     public struct AchievementData
     {
-        public uint Unk1; // Achievement Id?
-        public byte Unk2; // Status?
+        [AeroSdb("clientmissions::Mission", "id")] // when is_achievement == 1
+        [AeroSdb("clientmissions::AchievementSetLink", "achievement_id")]
+        public uint AchievementId;
+        public byte Completed; // 1 = Completed, 0 = Incomplete
     }
 }

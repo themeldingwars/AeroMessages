@@ -15,6 +15,8 @@ namespace AeroMessages.GSS.V66.Character.Event
     [AeroBlock]
     public struct UnlockGroup
     {
+        // Values: certificate, titles, market_slots, inventory_expansions,
+        // decals, czi_patterns, visual_overrides, warpaints
         [AeroString]
         public string Key;
 
@@ -29,7 +31,8 @@ namespace AeroMessages.GSS.V66.Character.Event
     public struct UnlockGroupEntry
     {
         [AeroSdb("dbitems::Certificate", "id")]
-        public uint CertId;
+        [AeroSdb("dbcharacter::MonsterTitle", "id")]
+        public uint UnlockId;
 
         public byte HaveUnk1;
         [AeroIf(nameof(HaveUnk1), 1)] public uint Unk1;

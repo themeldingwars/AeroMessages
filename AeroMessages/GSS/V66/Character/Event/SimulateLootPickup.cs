@@ -7,8 +7,14 @@ namespace AeroMessages.GSS.V66.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 132)]
     public partial class SimulateLootPickup
     {
+        public enum Type : byte
+        {
+            MatchReward = 2,
+            EncounterReward = 3,
+            // VendorPurchase = ?
+        }
         public RewardInfoData Item;
-        public byte RewardType; // 2 = match_reward, 3 = encounter_reward
+        public Type RewardType;
         public byte HaveLootedBy;
         [AeroIf(nameof(HaveLootedBy), 1)]
         public EntityId LootedBy;
