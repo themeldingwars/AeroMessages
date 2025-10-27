@@ -38,9 +38,9 @@ namespace AeroMessages.GSS.V66
 
     [AeroBlock]
     public struct PersonalFactionStanceData
-    {   
-        public PersonalFactionStanceBitfield Unk1;
-        public PersonalFactionStanceBitfield Unk2;
+    {
+        public PersonalFactionStanceBitfield Friendly;
+        public PersonalFactionStanceBitfield Hostile;
     }
 
     [AeroBlock]
