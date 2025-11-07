@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.V66.LootStoreExtension.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 53, 83)]
     public partial class LootObjectCollected // LootObjectView
     {
-        public uint Unk1;
+        public uint LootIndex; // Assumption
         public EntityId LootedByEntity; // Could be the opposite
         public EntityId LootedToEntity; // Could be the opposite
     }

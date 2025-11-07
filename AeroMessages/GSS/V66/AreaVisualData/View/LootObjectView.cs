@@ -60,7 +60,7 @@ namespace AeroMessages.GSS.V66.AreaVisualData.View
         public byte Quantity;
         public ushort Unk5;
         public byte Unk6;
-        [AeroArray(2)] public uint[] Unk7; // Unk type
+        [AeroArray(2)] public uint[] Unk7; // Unk type, this is a do while with 2 laps which doesn't match scope bubble
     }
 
     [AeroBlock]

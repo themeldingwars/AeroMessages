@@ -32,7 +32,6 @@ namespace AeroMessages.GSS.V66.AreaVisualData.View
         [AeroNullable] private ContextFlag ContextFlags_13;
         [AeroNullable] private ContextFlag ContextFlags_14;
         [AeroNullable] private ContextFlag ContextFlags_15;
-
         [AeroNullable] private ContextFlag ContextFlags_16;
         [AeroNullable] private ContextFlag ContextFlags_17;
         [AeroNullable] private ContextFlag ContextFlags_18;
@@ -42,7 +41,6 @@ namespace AeroMessages.GSS.V66.AreaVisualData.View
         [AeroNullable] private ContextFlag ContextFlags_22;
         [AeroNullable] private ContextFlag ContextFlags_23;
 
-        // TODO: Bitfield - ContextTeams
         [AeroNullable] private ContextTeam ContextTeams_0;
         [AeroNullable] private ContextTeam ContextTeams_1;
         [AeroNullable] private ContextTeam ContextTeams_2;
@@ -52,16 +50,14 @@ namespace AeroMessages.GSS.V66.AreaVisualData.View
     [AeroBlock]
     public struct ContextFlag
     {
-        [AeroArray(3)]
-        public byte[] Unk;
+        public ushort Unk1;
+        public byte Unk2;
     }
 
-    
     [AeroBlock]
     public struct ContextTeam
     {
-        // TODO
-        public byte Unk; // Not confirmed
+        public ushort Unk;
+        public HostilityInfoData HostilityInfo;
     }
-     
 }
