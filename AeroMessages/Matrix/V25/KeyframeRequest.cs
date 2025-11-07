@@ -11,13 +11,12 @@ namespace AeroMessages.Matrix.V25
         public byte HaveRequestByEntityID;
         [AeroIf(nameof(HaveRequestByEntityID), 1)]
         [AeroArray(typeof(byte))]
-        public RequestByEntity[] EntityRequests;
+        public RequestByEntity[] EntityRequests; // mRequestingKeyframes?
 
         public byte HaveRequestByRefID;
         [AeroIf(nameof(HaveRequestByRefID), 1)]
         [AeroArray(typeof(byte))]
-        public ushort[] RefRequests;
-
+        public ushort[] RefRequests; // mRequestingViewIndices?
     }
 
     [AeroBlock]

@@ -229,7 +229,7 @@ namespace AeroMessages.GSS.V66
         public byte MoreDataFlag;
 
         [AeroIf(nameof(MoreDataFlag), 1)]
-        public StatusEffectMoreData MoreData;   
+        public StatusEffectMoreData MoreData;
     }
 
     [AeroBlock]
@@ -556,11 +556,11 @@ namespace AeroMessages.GSS.V66
     [Flags]
     public enum DamageResponseFlags : byte
     {
-        Critical  = 1 << 0,
-        Unk       = 1 << 1,
+        Critical = 1 << 0,
+        Unk = 1 << 1,
         Effective = 1 << 2,
-        Resisted  = 1 << 3,
-        Immune    = 12, // (Effective+Resisted => Immune)
+        Resisted = 1 << 3,
+        Immune = 12, // (Effective+Resisted => Immune)
     }
 
     [AeroBlock]
@@ -579,7 +579,7 @@ namespace AeroMessages.GSS.V66
     }
 
     // Shared between vehicle and character
-    public enum CurrentPoseUpdateFlags: byte
+    public enum CurrentPoseUpdateFlags : byte
     {
         ShortTime = 0x00,
         MovementState = 0x02,
@@ -636,7 +636,7 @@ namespace AeroMessages.GSS.V66
         public QuantisedVector3 Aim;
 
         [AeroIf(nameof(Flags), Ops.HasFlag, CurrentPoseUpdateFlags.Aim)]
-        [AeroIf(nameof(CalcFlagValue2), Ops.NotEqual, (byte) CurrentPoseUpdateFlags.Aim)]
+        [AeroIf(nameof(CalcFlagValue2), Ops.NotEqual, (byte)CurrentPoseUpdateFlags.Aim)]
         [AeroArray(3)]
         public byte[] AimAlt;
     }
@@ -665,32 +665,32 @@ namespace AeroMessages.GSS.V66
         public Vector3 Position;
         public Vector3 Direction; // Not normalized
         public uint Unk7_Id;
-        
-        public byte HaveUnk8;
-        [AeroIf(nameof(HaveUnk8), 1)] public TookDebugWeaponHitRelatedData Unk8;
 
-        public byte HaveUnk9;
-        [AeroIf(nameof(HaveUnk9), 1)] public TookDebugWeaponHitRelatedData2 Unk9;
+        public byte HaveUnk8;
+        [AeroIf(nameof(HaveUnk8), 1)] public TookDebugWeaponHitRelatedData Unk8; // Pose? Actor?
+
+        public byte HaveRagdoll;
+        [AeroIf(nameof(HaveRagdoll), 1)] public TookDebugWeaponHitRagdollData Ragdoll;
     }
 
     [AeroBlock]
     public struct TookDebugWeaponHitRelatedData
     {
         public EntityId Target;
-        public Vector3 Unk2;
-        public Quaternion Unk3;
+        public Vector3 Origin;
+        public Quaternion Orientation;
         public sbyte Unk4;
         public byte Unk5;
     }
 
     [AeroBlock]
-    public struct TookDebugWeaponHitRelatedData2
+    public struct TookDebugWeaponHitRagdollData
     {
         // 009f6bb0
         public EntityId Target;
 
         // 009f6020
-        [AeroArray(typeof(byte))] public DbgMatrix4x4[] Unk2;
+        [AeroArray(typeof(byte))] public DbgMatrix4x4[] Transforms;
     }
 
     [AeroBlock]
@@ -718,7 +718,7 @@ namespace AeroMessages.GSS.V66
     {
         public uint ItemTypeId;
         public ushort ResourceQuality;
-        public float Percent;   
+        public float Percent;
     }
 
     [AeroBlock]
@@ -752,79 +752,79 @@ namespace AeroMessages.GSS.V66
         public byte HaveAltData;
 
         [AeroIf(nameof(HaveAltData), 1)]
-        [AeroIf(nameof(AlternateType),ChatMessageAlternateType.ChatDuelResult)]
+        [AeroIf(nameof(AlternateType), ChatMessageAlternateType.ChatDuelResult)]
         public ChatAltData_ChatDuelResult AltData_ChatDuelResult;
 
         [AeroIf(nameof(HaveAltData), 1)]
-        [AeroIf(nameof(AlternateType),ChatMessageAlternateType.ChatVendingMachineWinnerInfo)]
+        [AeroIf(nameof(AlternateType), ChatMessageAlternateType.ChatVendingMachineWinnerInfo)]
         public ChatAltData_ChatVendingMachineWinnerInfo AltData_ChatVendingMachineWinnerInfo;
 
         [AeroIf(nameof(HaveAltData), 1)]
-        [AeroIf(nameof(AlternateType),ChatMessageAlternateType.ChatUnlockedAchievement)]
+        [AeroIf(nameof(AlternateType), ChatMessageAlternateType.ChatUnlockedAchievement)]
         public ChatAltData_ChatUnlockedAchievement AltData_ChatUnlockedAchievement;
 
         [AeroIf(nameof(HaveAltData), 1)]
-        [AeroIf(nameof(AlternateType),ChatMessageAlternateType.SquadInviteForward)]
+        [AeroIf(nameof(AlternateType), ChatMessageAlternateType.SquadInviteForward)]
         public ChatAltData_SquadInviteForward AltData_SquadInviteForward;
 
         [AeroIf(nameof(HaveAltData), 1)]
-        [AeroIf(nameof(AlternateType),ChatMessageAlternateType.PlayerStateDetails)]
+        [AeroIf(nameof(AlternateType), ChatMessageAlternateType.PlayerStateDetails)]
         public ChatAltData_PlayerStateDetails AltData_PlayerStateDetails;
 
         [AeroIf(nameof(HaveAltData), 1)]
-        [AeroIf(nameof(AlternateType),ChatMessageAlternateType.RequestPlayerStateDetails)]
+        [AeroIf(nameof(AlternateType), ChatMessageAlternateType.RequestPlayerStateDetails)]
         public ChatAltData_RequestPlayerStateDetails AltData_RequestPlayerStateDetails;
 
         [AeroIf(nameof(HaveAltData), 1)]
-        [AeroIf(nameof(AlternateType),ChatMessageAlternateType.PlayerDisconnected)]
+        [AeroIf(nameof(AlternateType), ChatMessageAlternateType.PlayerDisconnected)]
         public ChatAltData_PlayerDisconnected AltData_PlayerDisconnected;
 
         [AeroIf(nameof(HaveAltData), 1)]
-        [AeroIf(nameof(AlternateType),ChatMessageAlternateType.PlayerTransferring)]
+        [AeroIf(nameof(AlternateType), ChatMessageAlternateType.PlayerTransferring)]
         public ChatAltData_PlayerTransferring AltData_PlayerTransferring;
 
         [AeroIf(nameof(HaveAltData), 1)]
-        [AeroIf(nameof(AlternateType),ChatMessageAlternateType.GroupPreferences)]
+        [AeroIf(nameof(AlternateType), ChatMessageAlternateType.GroupPreferences)]
         public ChatAltData_GroupPreferences AltData_GroupPreferences;
 
         [AeroIf(nameof(HaveAltData), 1)]
-        [AeroIf(nameof(AlternateType),ChatMessageAlternateType.GroupWaypoint)]
+        [AeroIf(nameof(AlternateType), ChatMessageAlternateType.GroupWaypoint)]
         public ChatAltData_GroupWaypoint AltData_GroupWaypoint;
 
         [AeroIf(nameof(HaveAltData), 1)]
-        [AeroIf(nameof(AlternateType),ChatMessageAlternateType.SquadMatchQueue)]
+        [AeroIf(nameof(AlternateType), ChatMessageAlternateType.SquadMatchQueue)]
         public ChatAltData_SquadMatchQueue AltData_SquadMatchQueue;
 
         [AeroIf(nameof(HaveAltData), 1)]
-        [AeroIf(nameof(AlternateType),ChatMessageAlternateType.SquadQueueIneligibility)]
+        [AeroIf(nameof(AlternateType), ChatMessageAlternateType.SquadQueueIneligibility)]
         public ChatAltData_SquadQueueIneligibility AltData_SquadQueueIneligibility;
 
         [AeroIf(nameof(HaveAltData), 1)]
-        [AeroIf(nameof(AlternateType),ChatMessageAlternateType.SquadRequestInvite)]
+        [AeroIf(nameof(AlternateType), ChatMessageAlternateType.SquadRequestInvite)]
         public ChatAltData_SquadRequestInvite AltData_SquadRequestInvite;
 
         [AeroIf(nameof(HaveAltData), 1)]
-        [AeroIf(nameof(AlternateType),ChatMessageAlternateType.GeoReportAdded)]
+        [AeroIf(nameof(AlternateType), ChatMessageAlternateType.GeoReportAdded)]
         public ChatAltData_GeoReportAdded AltData_GeoReportAdded;
 
         [AeroIf(nameof(HaveAltData), 1)]
-        [AeroIf(nameof(AlternateType),ChatMessageAlternateType.GeoReportRemoved)]
+        [AeroIf(nameof(AlternateType), ChatMessageAlternateType.GeoReportRemoved)]
         public ChatAltData_GeoReportRemoved AltData_GeoReportRemoved;
 
         [AeroIf(nameof(HaveAltData), 1)]
-        [AeroIf(nameof(AlternateType),ChatMessageAlternateType.QuickChatMessage)]
+        [AeroIf(nameof(AlternateType), ChatMessageAlternateType.QuickChatMessage)]
         public ChatAltData_QuickChatMessage AltData_QuickChatMessage;
 
         [AeroIf(nameof(HaveAltData), 1)]
-        [AeroIf(nameof(AlternateType),ChatMessageAlternateType.LootCollected)]
+        [AeroIf(nameof(AlternateType), ChatMessageAlternateType.LootCollected)]
         public ChatAltData_LootCollected AltData_LootCollected;
 
         [AeroIf(nameof(HaveAltData), 1)]
-        [AeroIf(nameof(AlternateType),ChatMessageAlternateType.JoinLeaderHint)]
+        [AeroIf(nameof(AlternateType), ChatMessageAlternateType.JoinLeaderHint)]
         public ChatAltData_JoinLeaderHint AltData_JoinLeaderHint;
 
         [AeroIf(nameof(HaveAltData), 1)]
-        [AeroIf(nameof(AlternateType),ChatMessageAlternateType.FriendRequestOrRemove)]
+        [AeroIf(nameof(AlternateType), ChatMessageAlternateType.FriendRequestOrRemove)]
         public ChatAltData_FriendRequestOrRemove AltData_FriendRequestOrRemove;
     }
 
@@ -899,9 +899,9 @@ namespace AeroMessages.GSS.V66
     public struct PSDData
     {
         public ulong PSDD_Unk1;
-        public uint  PSDD_Unk2;
-        public byte  PSDD_Unk3;
-        public byte  PSDD_Unk4;
+        public uint PSDD_Unk2;
+        public byte PSDD_Unk3;
+        public byte PSDD_Unk4;
     }
 
     [AeroBlock]
@@ -1031,7 +1031,7 @@ namespace AeroMessages.GSS.V66
     public struct ChatAltData_QuickChatMessage
     {
         public ushort DataLength;
-        
+
         // Guesswork
         public uint QCM_Id;
     }
