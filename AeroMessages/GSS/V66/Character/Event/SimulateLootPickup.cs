@@ -9,9 +9,11 @@ namespace AeroMessages.GSS.V66.Character.Event
     {
         public enum Type : byte
         {
+            None = 0,
+            General = 1,
             MatchReward = 2,
             EncounterReward = 3,
-            // VendorPurchase = ?
+            MissionReward = 4,
         }
         public RewardInfoData Item;
         public Type RewardType;

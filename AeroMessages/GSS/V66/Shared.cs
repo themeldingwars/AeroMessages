@@ -324,22 +324,22 @@ namespace AeroMessages.GSS.V66
         public ForcedMovementType3Params Params3;
 
         [AeroIf(nameof(Type), 0x04)]
-        public ForcedMovementType4Params Params4;
+        public ForcedMovementType4Params Params4; // Uses rope cvars
 
         [AeroIf(nameof(Type), 0x05)]
         public ForcedMovementType5Params Params5;
 
         [AeroIf(nameof(Type), 0x06)]
-        public ForcedMovementType6Params Params6;
+        public ForcedMovementType6Params Params6; // Uses bullrush cvars
 
         [AeroIf(nameof(Type), 0x07)]
         public ForcedMovementType7Params Params7;
 
         [AeroIf(nameof(Type), 0x08)]
-        public ForcedMovementType8Params Params8;
+        public ForcedMovementType8Params Params8; // Uses grapple cvars
 
         [AeroIf(nameof(Type), 0x09)]
-        public ForcedMovementType9Params Params9;
+        public ForcedMovementType9Params Params9; // Uses "tweak.PlayerGravity" cvar
 
         [AeroIf(nameof(Type), 0x0a)]
         public ForcedMovementType10Params Params10;
