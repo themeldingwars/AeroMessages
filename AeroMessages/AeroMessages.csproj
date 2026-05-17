@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
 
         <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
         <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)GeneratedFiles</CompilerGeneratedFilesOutputPath>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <NoWarn>0169,8509,0219</NoWarn>
+        <NoWarn>0169,8509,0219,9191</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>

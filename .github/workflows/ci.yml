@@ -17,8 +17,8 @@ jobs:
         - { name: Linux, os: ubuntu-latest }
         - { name: Windows VS2022, os: windows-2022 }
         dotnet:
-        - { name: .NET 6, version: '6.0.x' }
-        - { name: .NET 7, version: '7.0.x' }
+        - { name: .NET 10, version: '10.0.x' }
+        - { name: .NET 11, version: '11.0.x' }
 
     steps:
       - name: Checkout
