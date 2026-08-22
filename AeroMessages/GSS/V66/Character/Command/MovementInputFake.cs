@@ -1,9 +1,6 @@
 using Aero.Gen.Attributes;
-using static Aero.Gen.Attributes.AeroIfAttribute;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
-using System.Numerics;
 using AeroMessages.Common;
-using AeroMessages.GSS.V66.Character;
 
 namespace AeroMessages.GSS.V66.Character.Command
 {
@@ -34,7 +31,7 @@ namespace AeroMessages.GSS.V66.Character.Command
         [AeroIf(nameof(HaveMovementPoseData), 1)]
         public MovementPoseData Data;
         // --
-        
+
         // Last part same as MovementInput
         public ushort EndShort;
         public byte InterpolationDelay; // Assumption based on MovementInput

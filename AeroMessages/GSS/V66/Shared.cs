@@ -3,7 +3,7 @@ using AeroMessages.Common;
 using System.Numerics;
 using System;
 using static Aero.Gen.Attributes.AeroIfAttribute;
-using static Aero.Gen.Attributes.AeroMessageIdAttribute;
+
 namespace AeroMessages.GSS.V66
 {
     [AeroBlock]

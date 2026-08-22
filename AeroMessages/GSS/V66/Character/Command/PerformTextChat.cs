@@ -1,7 +1,6 @@
 using Aero.Gen.Attributes;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
-using System.Numerics;
-using static Aero.Gen.Attributes.AeroIfAttribute;
+
 namespace AeroMessages.GSS.V66.Character.Command
 {
     [Aero]

@@ -1,14 +1,12 @@
 using Aero.Gen.Attributes;
-using System.Numerics;
-using AeroMessages.Common;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
-using static Aero.Gen.Attributes.AeroIfAttribute;
+
 namespace AeroMessages.GSS.V66.Character.Event
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 175)]
     public partial class DailyLoginRewardsUpdateEvt
-    {   
+    {
         [AeroArray(typeof(byte))] public DailyRewardsLoginData[] LoginData;
         [AeroArray(typeof(byte))] public DailyRewardStreakData[] StreakData;
         public uint StreakLength;

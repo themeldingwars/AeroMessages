@@ -2,19 +2,18 @@
 using System;
 using Aero.Gen.Attributes;
 
-
 namespace AeroMessages.Common
 {
     [AeroBlock]
     public struct QuantisedFloat
     {
         public ushort Value;
-        
+
         public static implicit operator float(QuantisedFloat d)
         {
             var result = (1.0f / 32767f) * d.Value;
             if (result >= 0) {
-                result = (result -1f) * -1f; 
+                result = (result -1f) * -1f;
             }
 
             return result;

@@ -1,5 +1,6 @@
 using Aero.Gen.Attributes;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
+
 namespace AeroMessages.Matrix.V25
 {
     [Aero]

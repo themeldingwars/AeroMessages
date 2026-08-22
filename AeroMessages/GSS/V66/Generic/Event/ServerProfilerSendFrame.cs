@@ -1,12 +1,12 @@
 using Aero.Gen.Attributes;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
-using System.Numerics;
+
 namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 47)]
     public partial class ServerProfilerSendFrame
-    {   
+    {
         [AeroArray(typeof(byte))] public ServerProfilerFrameData[] Unk1;
     }
 

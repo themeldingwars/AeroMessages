@@ -8,7 +8,7 @@ namespace AeroMessages.Common
     public struct HalfFloat
     {
         public ushort Value;
-        
+
         public static implicit operator float(HalfFloat d)
         {
             HalfLookup.FloatUIntMapLookup.UInt =
@@ -29,13 +29,13 @@ namespace AeroMessages.Common
 
         public override string ToString() => $"{(float)this}";
     }
-    
+
     [AeroBlock]
     public struct HalfVector2
     {
         public HalfFloat X;
         public HalfFloat Y;
-        
+
         public static implicit operator Vector2(HalfVector2 d)
         {
             return new()
@@ -54,14 +54,14 @@ namespace AeroMessages.Common
             };
         }
     }
-    
+
     [AeroBlock]
     public struct HalfVector3
     {
         public HalfFloat X;
         public HalfFloat Y;
         public HalfFloat Z;
-        
+
         public static implicit operator Vector3(HalfVector3 d)
         {
             return new()
@@ -82,7 +82,7 @@ namespace AeroMessages.Common
             };
         }
     }
-    
+
     [AeroBlock]
     public struct HalfVector4
     {
@@ -90,7 +90,7 @@ namespace AeroMessages.Common
         public HalfFloat Y;
         public HalfFloat Z;
         public HalfFloat W;
-        
+
         public static implicit operator Vector4(HalfVector4 d)
         {
             return new()
@@ -113,7 +113,7 @@ namespace AeroMessages.Common
             };
         }
     }
-    
+
     [AeroBlock]
     public struct HalfQuaternion
     {
@@ -121,7 +121,7 @@ namespace AeroMessages.Common
         public HalfFloat Y;
         public HalfFloat Z;
         public HalfFloat W;
-        
+
         public static implicit operator Quaternion(HalfQuaternion d)
         {
             return new()

@@ -1,8 +1,3 @@
-using Aero.Gen.Attributes;
-using AeroMessages.Common;
-using System.Numerics;
-using Aero.Gen;
-using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.V66.LootStoreExtension.View
 {
     // [Aero(AeroGenTypes.View)]

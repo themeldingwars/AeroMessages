@@ -1,5 +1,6 @@
 using Aero.Gen.Attributes;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
+
 namespace AeroMessages.GSS.V66.Character.Event
 {
     [Aero]
@@ -17,7 +18,7 @@ namespace AeroMessages.GSS.V66.Character.Event
     {
         [AeroSdb("dbitems::Battleframe", "id")]
         public uint ChassisId_1; // Might just be that the data is indexed by this or something
-        
+
         [AeroSdb("dbitems::Battleframe", "id")]
         public uint ChassisId_2;
 

@@ -1,7 +1,7 @@
 using Aero.Gen.Attributes;
 using AeroMessages.Common;
 using System.Numerics;
-using System;
+
 namespace AeroMessages.GSS.V66.AreaVisualData
 {
     [AeroBlock]
@@ -19,7 +19,7 @@ namespace AeroMessages.GSS.V66.AreaVisualData
         public byte HaveUnk12;
         [AeroIf(nameof(HaveUnk12), 1)] public ParticleEffectUnkData Unk12;
     }
-    
+
     [AeroBlock]
     public struct ParticleEffectUnkData
     {

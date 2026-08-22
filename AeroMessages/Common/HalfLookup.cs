@@ -9,7 +9,7 @@ namespace Bitter
     {
         public static FloatByteMap FloatByteMapLookup = new FloatByteMap();
         public static FloatUIntMap FloatUIntMapLookup = new FloatUIntMap();
-        
+
         public static uint[] Mantissa = new uint[2048];
         public static uint[] Exponent = new uint[64];
         public static ushort[] Offset = new ushort[64];
@@ -104,7 +104,7 @@ namespace Bitter
             }
         }
     }
-    
+
     [StructLayout(LayoutKind.Explicit)]
     public struct FloatByteMap
     {
@@ -121,5 +121,4 @@ namespace Bitter
         [FieldOffset(0)] public float Float;
         [FieldOffset(0)] public uint  UInt;
     }
-    
 }

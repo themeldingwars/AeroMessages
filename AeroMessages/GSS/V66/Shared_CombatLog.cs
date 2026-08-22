@@ -1,9 +1,6 @@
 using Aero.Gen.Attributes;
-using AeroMessages.Common;
 using System.Numerics;
-using System;
-using static Aero.Gen.Attributes.AeroIfAttribute;
-using static Aero.Gen.Attributes.AeroMessageIdAttribute;
+
 namespace AeroMessages.GSS.V66
 {
     [AeroBlock]
@@ -102,7 +99,6 @@ namespace AeroMessages.GSS.V66
             StatusFx_Update = 7, // Guesswork
             StatusFx_Remove = 8 // Sketchy - gameplay2016:537 shows 8984 is applied via 8, one impactapplyeffect and it is in a remove_chain.
         };
-
 
         public CombatSourceType SourceType;
         public CombatLogType LogType;

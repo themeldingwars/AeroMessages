@@ -1,9 +1,9 @@
 using Aero.Gen.Attributes;
 using static Aero.Gen.Attributes.AeroIfAttribute;
-using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 using System.Numerics;
 using System;
+
 namespace AeroMessages.GSS.V66.Character
 {
     [AeroBlock]
@@ -371,7 +371,7 @@ namespace AeroMessages.GSS.V66.Character
         public CharacterCombatFlags Value;
         public uint Time;
     }
-    
+
     [Flags]
     public enum MovementDataType : byte
     {
@@ -470,7 +470,7 @@ namespace AeroMessages.GSS.V66.Character
         [AeroIf(nameof(HaveCollisionData), 1)]
         public MovementPoseDebugData2Collision Unk8;
         // --
-        
+
         public Vector3 Unk9;
         public Vector3 Unk10;
         public byte Unk11;
@@ -577,7 +577,7 @@ namespace AeroMessages.GSS.V66.Character
         public uint ItemSdbId;
 
         public LoadoutVisualType VisualType;
-        public uint Data1; // Pattern: 1 == Armor, 2 == Bodysuit 
+        public uint Data1; // Pattern: 1 == Armor, 2 == Bodysuit
         public uint Data2; // Color?
 
         [AeroArray(typeof(byte))]
@@ -603,7 +603,7 @@ namespace AeroMessages.GSS.V66.Character
     {
         [AeroArray(typeof(byte))]
         [AeroSdb("dbvisualrecords::AssetOverrideGroup", "id")]
-        public uint[] Ids; 
+        public uint[] Ids;
     }
 
     [AeroBlock]

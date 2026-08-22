@@ -1,9 +1,7 @@
 using Aero.Gen.Attributes;
-using static Aero.Gen.Attributes.AeroIfAttribute;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 using System.Numerics;
-using System;
 using Aero.Gen;
 
 namespace AeroMessages.GSS.V66.Character.Controller
@@ -12,7 +10,7 @@ namespace AeroMessages.GSS.V66.Character.Controller
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 1)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 4)]
     public partial class BaseController
-    {   
+    {
         private int TimePlayed;
         private int CurrentWeight;
         private int EncumberedWeight;
@@ -31,7 +29,7 @@ namespace AeroMessages.GSS.V66.Character.Controller
 
         [AeroNullable] private CinematicCameraData CinematicCamera;
 
-        private CharacterStateData CharacterState; 
+        private CharacterStateData CharacterState;
         private HostilityInfoData HostilityInfo;
 
         [AeroNullable] private PersonalFactionStanceData PersonalFactionStance;
@@ -139,7 +137,7 @@ namespace AeroMessages.GSS.V66.Character.Controller
         [AeroNullable] private SinCardFieldData SinCardFields_20;
         [AeroNullable] private SinCardFieldData SinCardFields_21;
         [AeroNullable] private SinCardFieldData SinCardFields_22;
-        
+
         private AssetOverridesField AssetOverrides;
         private ushort FriendCount;
         private CAISStatusData CAISStatus;
@@ -148,7 +146,7 @@ namespace AeroMessages.GSS.V66.Character.Controller
         private uint PvPRankPoints;
         private uint PvPTokens;
         private uint BountyPointsLastClaimed;
-        private uint EliteLevel; 
+        private uint EliteLevel;
     }
 
     [AeroBlock]
@@ -293,7 +291,7 @@ namespace AeroMessages.GSS.V66.Character.Controller
     {
         [AeroArray(3)] public uint[] Unk1;
         [AeroArray(3)] public uint[] Unk2;
-        public byte Unk3;  
+        public byte Unk3;
     }
 
     [AeroBlock]
@@ -301,7 +299,6 @@ namespace AeroMessages.GSS.V66.Character.Controller
     {
         [AeroArray(typeof(byte))]
         public OldestDeployablesData[] Data;
-        
     }
 
     [AeroBlock]

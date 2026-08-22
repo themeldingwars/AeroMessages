@@ -1,8 +1,6 @@
 using Aero.Gen.Attributes;
-using static Aero.Gen.Attributes.AeroIfAttribute;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
-using System;
 using System.Numerics;
 using Aero.Gen;
 
@@ -57,11 +55,9 @@ namespace AeroMessages.GSS.V66.AreaVisualData.View
         // TODO: Need to verify
         [AeroSdb("dbzonemetadata::ForceShieldType", "id")]
         public uint MaybeType;
-        
+
         public HalfVector3 Position;
-        
         public HalfVector4 Orientation;
-        
         public HalfVector3 Direction;
 
         public byte Unk2;

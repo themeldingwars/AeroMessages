@@ -8,10 +8,10 @@ namespace AeroMessages.Common
     // I hate this :<
     [AeroBlock]
     public struct Ulong5ByteBitmask<T> where T : Enum
-    { 
+    {
         [AeroArray(5)]
         public byte[] Bytes;
-    
+
         public static implicit operator T(Ulong5ByteBitmask<T> d)
         {
             ulong test = 0;
@@ -20,7 +20,7 @@ namespace AeroMessages.Common
             test |= (ulong)d.Bytes[2] << 16;
             test |= (ulong)d.Bytes[3] << 8;
             test |= d.Bytes[4];
-                
+
             return Unsafe.As<ulong, T>(ref test);
         }
 

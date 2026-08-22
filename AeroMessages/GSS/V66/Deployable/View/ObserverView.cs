@@ -1,9 +1,7 @@
 using Aero.Gen.Attributes;
-using static Aero.Gen.Attributes.AeroIfAttribute;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 using System.Numerics;
-using System;
 using Aero.Gen;
 
 namespace AeroMessages.GSS.V66.Deployable.View
@@ -112,7 +110,7 @@ namespace AeroMessages.GSS.V66.Deployable.View
         [AeroArray(typeof(byte))]
         private ushort[] WarpaintColors;
 
-        private byte VisualInfoGroupIndex; // TODO: Verify 
+        private byte VisualInfoGroupIndex; // TODO: Verify
 
         private CharacterStatsData CharacterStats;
 
@@ -169,8 +167,8 @@ namespace AeroMessages.GSS.V66.Deployable.View
         [AeroNullable] private AppendageHealthPoolData AppendageHealthPools_4;
         [AeroNullable] private AppendageHealthPoolData AppendageHealthPools_5;
         [AeroNullable] private AppendageHealthPoolData AppendageHealthPools_6;
-        [AeroNullable] private AppendageHealthPoolData AppendageHealthPools_7; 
-        
+        [AeroNullable] private AppendageHealthPoolData AppendageHealthPools_7;
+
         private byte AppendageHealthPct_0;
         private byte AppendageHealthPct_1;
         private byte AppendageHealthPct_2;

@@ -1,12 +1,12 @@
 using Aero.Gen.Attributes;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
-using System.Numerics;
+
 namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 36)]
     public partial class ScoreBoardInit
-    {   
+    {
         [AeroArray(typeof(byte))] public ScoreBoardInitData[] Unk1;
         public sbyte Unk2;
         public sbyte Unk3;

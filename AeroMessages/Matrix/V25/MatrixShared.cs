@@ -1,7 +1,5 @@
 using Aero.Gen.Attributes;
-using AeroMessages.Common;
-using System.Numerics;
-using System;
+
 namespace AeroMessages.Matrix.V25
 {
     [AeroBlock]
@@ -12,7 +10,7 @@ namespace AeroMessages.Matrix.V25
 
         // FUN_00756a50
         [AeroArray(typeof(byte))] public DevPidsData DevPids;
-    }   
+    }
 
     [AeroBlock]
     public struct DevPortsData

@@ -1,8 +1,8 @@
 using Aero.Gen.Attributes;
 using AeroMessages.Common;
 using System.Numerics;
-using static Aero.Gen.Attributes.AeroIfAttribute;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
+
 namespace AeroMessages.GSS.V66.Character.Event
 {
     [Aero]

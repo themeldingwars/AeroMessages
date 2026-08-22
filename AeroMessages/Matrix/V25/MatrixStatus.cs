@@ -1,7 +1,6 @@
-using System.Numerics;
-using System.Runtime.InteropServices;
 using Aero.Gen.Attributes;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
+
 namespace AeroMessages.Matrix.V25
 {
     [Aero]
@@ -24,7 +23,7 @@ namespace AeroMessages.Matrix.V25
 
         [AeroArray(typeof(ushort))] public byte[] Unk8; // FUN_016eed70, not 100%
     }
-    
+
     [AeroBlock]
     public struct MatrixStatusUnk7Data
     {

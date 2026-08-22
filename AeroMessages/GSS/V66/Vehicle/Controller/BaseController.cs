@@ -1,9 +1,7 @@
 using Aero.Gen.Attributes;
-using static Aero.Gen.Attributes.AeroIfAttribute;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 using System.Numerics;
-using System;
 using Aero.Gen;
 
 namespace AeroMessages.GSS.V66.Vehicle.Controller
@@ -52,7 +50,7 @@ namespace AeroMessages.GSS.V66.Vehicle.Controller
         private CurrentPoseData CurrentPose;
         private ProcessDelayData ProcessDelay;
         private HostilityInfoData HostilityInfo;
-        
+
         [AeroNullable] private PersonalFactionStanceData PersonalFactionStance;
 
         private uint CurrentHealth;
@@ -71,7 +69,7 @@ namespace AeroMessages.GSS.V66.Vehicle.Controller
         [AeroSdb("dbencounterdata::SinCardTemplate", "Id")]
         //[AeroSdb("dbencounterdata::SinCardFields", "TemplateId")]
         private uint SinCardType;
-        
+
         [AeroNullable] private SinCardFieldData SinCardFields_0;
         [AeroNullable] private SinCardFieldData SinCardFields_1;
         [AeroNullable] private SinCardFieldData SinCardFields_2;

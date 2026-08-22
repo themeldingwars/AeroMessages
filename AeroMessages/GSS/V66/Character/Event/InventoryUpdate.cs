@@ -1,7 +1,7 @@
 using Aero.Gen.Attributes;
 using static Aero.Gen.Attributes.AeroIfAttribute;
-using System;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
+
 namespace AeroMessages.GSS.V66.Character.Event
 {
     [Aero]
@@ -19,7 +19,7 @@ namespace AeroMessages.GSS.V66.Character.Event
         public Item[] ItemsPart1Full;
 
         [AeroIf(nameof(ItemsPart1Length), Ops.NotEqual, 255)]
-        [AeroArray(nameof(ItemsPart1Length))] 
+        [AeroArray(nameof(ItemsPart1Length))]
         public Item[] ItemsPart1;
 
         [AeroIf(nameof(ItemsPart1Length), Ops.Equal, 255)]
@@ -30,14 +30,14 @@ namespace AeroMessages.GSS.V66.Character.Event
         public Item[] ItemsPart2Full;
 
         [AeroIf(nameof(ItemsPart2Length), Ops.NotEqual, 255)]
-        [AeroArray(nameof(ItemsPart2Length))] 
+        [AeroArray(nameof(ItemsPart2Length))]
         public Item[] ItemsPart2;
 
         [AeroIf(nameof(ItemsPart2Length), Ops.Equal, 255)]
         public byte ItemsPart3Length;
 
         [AeroIf(nameof(ItemsPart3Length), Ops.NotEqual, 255)]
-        [AeroArray(nameof(ItemsPart3Length))] 
+        [AeroArray(nameof(ItemsPart3Length))]
         public Item[] ItemsPart3;
         // ---
 
@@ -90,7 +90,7 @@ namespace AeroMessages.GSS.V66.Character.Event
     }
 
     [AeroBlock]
-    public struct Resource 
+    public struct Resource
     {
         [AeroSdb("dbitems::RootItem", "sdb_id")]
         public uint SdbId;
@@ -117,7 +117,7 @@ namespace AeroMessages.GSS.V66.Character.Event
 
         [AeroSdb("dbitems::RootItem", "sdb_id")]
         public uint ChassisID;
-        
+
         [AeroArray(typeof(byte))]
         public LoadoutConfig[] LoadoutConfigs;
     }
@@ -129,13 +129,13 @@ namespace AeroMessages.GSS.V66.Character.Event
 
         [AeroString]
         public string ConfigName;
-        
+
         [AeroArray(typeof(byte))]
         public LoadoutConfig_Item[] Items;
-        
+
         [AeroArray(typeof(byte))]
         public LoadoutConfig_Visual[] Visuals;
-        
+
         [AeroArray(typeof(byte))]
         public uint[] Perks;
 

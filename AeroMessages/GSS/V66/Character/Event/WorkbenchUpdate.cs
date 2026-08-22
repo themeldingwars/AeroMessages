@@ -1,5 +1,6 @@
 using Aero.Gen.Attributes;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
+
 namespace AeroMessages.GSS.V66.Character.Event
 {
     [Aero]
@@ -38,7 +39,7 @@ namespace AeroMessages.GSS.V66.Character.Event
     [AeroBlock]
     public struct WorkbenchUpdateInner1_1
     {
-        public uint Unk1;   
+        public uint Unk1;
         public uint Unk2;
         public uint Unk3;
         [AeroString] public string Unk4;
@@ -47,7 +48,7 @@ namespace AeroMessages.GSS.V66.Character.Event
     [AeroBlock]
     public struct WorkbenchUpdateInner2
     {
-        public uint Unk1;   
+        public uint Unk1;
         public uint Unk2;
         public uint Unk3;
         [AeroArray(typeof(byte))] public uint[] Unk4;

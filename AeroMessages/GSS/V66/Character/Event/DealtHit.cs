@@ -1,7 +1,6 @@
 using Aero.Gen.Attributes;
-using AeroMessages.Common;
-using System;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
+
 namespace AeroMessages.GSS.V66.Character.Event
 {
     [Aero]
