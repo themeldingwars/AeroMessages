@@ -701,4 +701,122 @@ namespace AeroMessages.GSS.V66.Character
 
         public byte Unk;
     }
+
+    [AeroBlock]
+    public struct WeaponTweakData
+    {
+        public uint TemplateId;
+        [AeroString] public string Name;
+        public float Agility;
+        public float Range;
+        public uint DamagePerRound;
+        public uint MsReturn;
+        public uint MsRiseReturnDelay;
+        public uint MsSpreadReturn;
+        public uint MsSpreadReturnDelay;
+        public uint MsAgilityReturn;
+        public uint MsAgilityReturnDelay;
+        public float MinRiseFrac;
+        public float MinSlideFrac;
+        public float MinSpreadFrac;
+        public uint RiseRampTime;
+        public uint SlideRampTime;
+        public uint SpreadRampTime;
+        public float RiseRampExponent;
+        public float SlideRampExponent;
+        public float SpreadRampExponent;
+        public float MinRisePerBurst;
+        public float RisePerBurst;
+        public float MaxRise;
+        public float MinSlidePerBurst;
+        public float SlidePerBurst;
+        public float MaxSlide;
+        public float RisePermanentFrac;
+        public float SlidePermanentFrac;
+        public float OvermaxRisePermanentFrac; // Assumption
+        public float OvermaxSlidePermanentFrac; // Assumption
+        public float MinSpread;
+        public float SpreadPerBurst;
+        public float MaxSpread;
+        public float StartingSpread;
+        public float NoSpreadChance;
+        public uint MsChargeup;
+        public uint MsChargeupMin;
+        public uint MsChargeupMax;
+        public uint MsOverchargeDelay;
+        public uint MsPerBurst;
+        public uint MsBurstDuration;
+        public uint FireType;
+        public byte RoundsPerBurst;
+        public byte MinRoundsPerBurst;
+        public byte AmmoPerBurst;
+        public byte MinAmmoPerBurst;
+        public uint ReloadTime;
+        public uint ReloadPenalty;
+        public byte UiReticleName;
+        public byte RoundReload;
+        public ushort Baseclipsize;
+        public ushort MaxAmmo;
+        public uint ClipRegenMs;
+        public float InitialJitter;
+        public float MaxJitter;
+        public uint JitterRampTime;
+        public float CamRecoilBase;
+        public float CamRecoilShake;
+        public uint CamRecoilRecoverMs;
+        public uint WeaponFlags;
+        public uint MinDamage;
+        public ushort AmmoId;
+        public byte MaxTargets;
+        public byte BurstbonusPerTarget;
+        public float TargetingRange;
+        public float AimAssistCos;
+        public float HeadshotMult;
+        public float HitshakeMult;
+        public uint BurstAbilityId;
+        public uint AttackAbilityId;
+        public uint ReloadAbilityId;
+        public uint ClipEmptyAbilityId;
+        public uint OverchargeAbilityId;
+        public uint MeleeAbilityId;
+        public uint UnderbarrelId;
+        public uint ScopeId;
+        public byte SlotIndexForPrng;
+        public float FpVisualOffsetX;
+        public float FpVisualOffsetY;
+        public float FpVisualOffsetZ;
+        public float FpVisualOrientX;
+        public float FpVisualOrientY;
+        public float FpVisualOrientZ;
+        public float FpVisualFov;
+        public byte AnimArmedId;
+        public byte AnimArmedPriority;
+        public byte AnimFireType;
+        public byte AnimReloadType;
+        public byte AnimChargeType;
+        public uint EquipEnterMs;
+        public uint EquipExitMs;
+        public float AiSwayMinX;
+        public float AiSwayMinY;
+        public float AiSwayMaxX;
+        public float AiSwayMaxY;
+        public uint AiSwayConvergenceMs;
+        public uint AiSwayHperiod;
+        public uint AiSwayVperiod;
+        public float RunPerriseMult;
+        public float JumpPerriseMult;
+        public float RunPerslideMult;
+        public float JumpPerslideMult;
+        public float RunMinSpreadAdd;
+        public float JumpMinSpreadAdd;
+        public float RunRiseRampMult;
+        public float JumpRiseRampMult;
+        public float RunSlideRampMult;
+        public float JumpSlideRampMult;
+        public float RunSpreadRampMult; // Not part of the weapon template
+        public float JumpSpreadRampMult; // Not part of the weapon template
+        public uint _0x190_; // ???
+        public float MaleScale; // Assumed
+        public float FemaleScale; // Confirmed
+    }
 }

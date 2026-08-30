@@ -8,7 +8,8 @@ namespace AeroMessages.GSS.V66.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.BroadcastWeaponTweaks, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V67)]
     public partial class BroadcastWeaponTweaks
     {
-        public byte Unk1;
-        public sbyte Unk2;
+        public byte Weapon;
+        public sbyte Mode;
+        public WeaponTweakData Data;
     }
 }
