@@ -1,11 +1,12 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using AeroMessages.Common;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Character.Command
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 189)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.PickupCarryableObjectByProximity, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V67)]
     public partial class PickupCarryableObjectByProximity
     {
         public EntityId Carryable;

@@ -1,10 +1,11 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Character.Command
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 141)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.NPCSetInteractionType, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V67)]
     public partial class NPCSetInteractionType
     {
         public byte Unk1;

@@ -1,11 +1,12 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using System.Numerics;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Character.Event
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 139)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.GeographicalReportResponse, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V67)]
     public partial class GeographicalReportResponse
     {
         public uint ScanId;

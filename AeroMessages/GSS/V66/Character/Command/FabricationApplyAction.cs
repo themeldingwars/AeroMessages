@@ -1,10 +1,11 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Character.Command
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 244)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.Fabrication_ApplyAction, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V67)]
     public partial class FabricationApplyAction
     {
         public uint Unk1;

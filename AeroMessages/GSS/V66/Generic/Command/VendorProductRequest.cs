@@ -1,10 +1,11 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Command, 251, 31)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Both, GssMessage.VendorProductRequest, GssVersion.V1, GssVersion.V67)]
     public partial class VendorProductRequest
     {
         public uint TerminalId;

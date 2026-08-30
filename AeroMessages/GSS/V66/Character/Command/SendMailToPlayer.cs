@@ -1,10 +1,11 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Character.Command
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 84)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.SendMailToPlayer, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V67)]
     public partial class SendMailToPlayer
     {
         public ulong ClientGeneratedGuid;

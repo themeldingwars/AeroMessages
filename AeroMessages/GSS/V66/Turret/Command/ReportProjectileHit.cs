@@ -1,11 +1,12 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using AeroMessages.Common;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Turret.Command
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Command, 39, 87)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssTurretCommand.ReportProjectileHit, GssTurretView.BaseController, GssVersion.V1, GssVersion.V67)]
     public partial class ReportProjectileHit
     {
         public ushort TraceRef; // Part of the uint used to group trace data in debugweapon.

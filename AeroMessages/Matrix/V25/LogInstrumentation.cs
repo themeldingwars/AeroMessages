@@ -1,10 +1,11 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.Matrix.V25
 {
     [Aero]
-    [AeroMessageId(MsgType.Matrix, MsgSrc.Command, 31)]
+    [AeroMessageId(MsgType.Matrix, MsgSrc.Command, MatrixMessage.LogInstrumentation, MatrixVersion.V18, MatrixVersion.V26)]
     public partial class LogInstrumentation
     {
         public enum LogInstrumentationType : byte

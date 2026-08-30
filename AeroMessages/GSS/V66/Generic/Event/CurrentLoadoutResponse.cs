@@ -1,4 +1,5 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 using AeroMessages.GSS.V66.Character.Event;
@@ -6,7 +7,7 @@ using AeroMessages.GSS.V66.Character.Event;
 namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 119)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.CurrentLoadoutResponse, GssVersion.V1, GssVersion.V67)]
     public partial class CurrentLoadoutResponse
     {
         public EntityId PlayerId;

@@ -1,12 +1,12 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using Aero.Gen;
 
 namespace AeroMessages.GSS.V66.Character.View
 {
     [Aero(AeroGenTypes.View)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 13, 1)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 13, 3)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterView.TinyObjectView, GssVersion.V1, GssVersion.V67)]
     public partial class TinyObjectView
     {
         [AeroNullable] private TinyObjectData TinyObjects_0;

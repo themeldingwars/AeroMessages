@@ -1,4 +1,5 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 using System.Numerics;
@@ -7,8 +8,7 @@ using Aero.Gen;
 namespace AeroMessages.GSS.V66.AreaVisualData.View
 {
     [Aero(AeroGenTypes.View)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 25, 1)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 25, 3)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssAreaVisualDataView.ForceShieldView, GssVersion.V1, GssVersion.V67)]
     public partial class ForceShieldView
     {
         private Vector3 Position;

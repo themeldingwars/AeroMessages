@@ -1,10 +1,11 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Character.Event
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 98)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.Stumble, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V67)]
     public partial class Stumble
     {
         public ushort Unk1;

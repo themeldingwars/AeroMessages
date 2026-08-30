@@ -1,10 +1,11 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Character.Command
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 197)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.SetMovementSimulation, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V67)]
     public partial class SetMovementSimulation
     {
         public ushort UpdatePeriodMax; // network.updatePeriodMax

@@ -1,4 +1,5 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 using Aero.Gen;
@@ -6,8 +7,7 @@ using Aero.Gen;
 namespace AeroMessages.GSS.V66.Turret.View
 {
     [Aero(AeroGenTypes.View)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 40, 1)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 40, 3)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssTurretView.ObserverView, GssVersion.V1, GssVersion.V67)]
     public partial class ObserverView
     {
         [AeroSdb("dbcharacter::Turret", "id")]

@@ -1,10 +1,11 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Character.Event
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 8, 93)] // Not sure controller
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.AnimationUpdated, GssCharacterView.ObserverView, GssVersion.V1, GssVersion.V67)] // Not sure controller
     public partial class AnimationUpdated
     {
         public ushort Unk1;

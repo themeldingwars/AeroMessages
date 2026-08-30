@@ -1,11 +1,12 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Character.Event
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 5, 97)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 11, 97)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.ProjectileHitReported, GssCharacterView.CombatController, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.ProjectileHitReported, GssCharacterView.CombatView, GssVersion.V1, GssVersion.V67)]
     public partial class ProjectileHitReported
     {
         public ushort TraceRef; // Part of the uint used to group trace data in debugweapon.

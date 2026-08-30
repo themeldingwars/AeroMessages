@@ -1,10 +1,11 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Character.Command
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 90)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.MatchQueue, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V67)]
     public partial class MatchQueue
     {
         [AeroArray(typeof(byte))] public MatchQueueData[] Queues;

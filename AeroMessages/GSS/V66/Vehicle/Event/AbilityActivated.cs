@@ -1,10 +1,11 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Vehicle.Event
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 28, 83)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssVehicleMessage.AbilityActivated, GssVehicleView.CombatController, GssVersion.V1, GssVersion.V67)]
     public partial class AbilityActivated
     {
         [AeroSdb("apt::AbilityData", "id")]

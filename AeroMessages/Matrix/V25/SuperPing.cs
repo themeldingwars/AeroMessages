@@ -1,11 +1,12 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using AeroMessages.Common;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.Matrix.V25
 {
     [Aero]
-    [AeroMessageId(MsgType.Matrix, MsgSrc.Command, 28)]
+    [AeroMessageId(MsgType.Matrix, MsgSrc.Command, MatrixMessage.SuperPing, MatrixVersion.V1, MatrixVersion.V26)]
     public partial class SuperPing
     {
         [AeroArray(typeof(byte))]

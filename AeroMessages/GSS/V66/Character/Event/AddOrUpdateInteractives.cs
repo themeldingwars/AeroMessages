@@ -1,10 +1,11 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Character.Event
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 5, 123)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.AddOrUpdateInteractives, GssCharacterView.CombatController, GssVersion.V1, GssVersion.V67)]
     public partial class AddOrUpdateInteractives
     {
         [AeroArray(typeof(byte))]

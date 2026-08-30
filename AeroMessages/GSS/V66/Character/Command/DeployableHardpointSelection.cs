@@ -1,11 +1,12 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 
 namespace AeroMessages.GSS.V66.Character.Command
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 181)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.DeployableHardpointSelection, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V67)]
     public partial class DeployableHardpointSelection
     {
         public EntityId Unk1;

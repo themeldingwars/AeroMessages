@@ -1,10 +1,11 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 122)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.ConductorGlobalAnnouncement, GssVersion.V1, GssVersion.V67)]
     public partial class ConductorGlobalAnnouncement
     {
         public GlobalAnnouncementData Data;

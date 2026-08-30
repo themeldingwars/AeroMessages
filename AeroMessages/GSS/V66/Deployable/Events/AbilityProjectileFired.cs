@@ -1,11 +1,12 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 
 namespace AeroMessages.GSS.V66.Deployable.Events
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 35, 84)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssDeployableMessage.AbilityProjectileFired, GssDeployableView.ObserverView, GssVersion.V1, GssVersion.V67)]
     public partial class AbilityProjectileFired
     {
         public ushort ShortTime;

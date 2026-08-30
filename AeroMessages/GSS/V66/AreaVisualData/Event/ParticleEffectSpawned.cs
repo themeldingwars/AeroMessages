@@ -1,10 +1,11 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.AreaVisualData.Event
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 25, 85)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssAreaVisualDataMessage.ParticleEffectSpawned, GssAreaVisualDataView.ForceShieldView, GssVersion.V1, GssVersion.V67)]
     public partial class ParticleEffectSpawned
     {
         public ParticleEffect Data;

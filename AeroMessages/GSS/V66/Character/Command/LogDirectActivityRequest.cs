@@ -1,10 +1,11 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Character.Command
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 174)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.LogDirectActivityRequest, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V67)]
     public partial class LogDirectActivityRequest
     {
         public uint Unk; // Unsure about type

@@ -1,10 +1,11 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Character.Command
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 112)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.TempSlotAbilities, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V67)]
     public partial class TempSlotAbilities
     {
         [AeroArray(4)] public uint[] Unk1;

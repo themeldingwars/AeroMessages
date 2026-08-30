@@ -1,11 +1,12 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 
 namespace AeroMessages.Matrix.V25
 {
     [Aero]
-    [AeroMessageId(MsgType.Matrix, MsgSrc.Message, 65)]
+    [AeroMessageId(MsgType.Matrix, MsgSrc.Message, MatrixMessage.LFGMatchFound, MatrixVersion.V14, MatrixVersion.V26)]
     public partial class LFGMatchFound
     {
         public ulong MatchId;

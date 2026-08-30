@@ -1,10 +1,11 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Character.Command
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 236)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.EquipExperimentalLoadout, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V67)]
     public partial class EquipExperimentalLoadout
     {
         public uint LoadoutId; // Unsigned

@@ -1,11 +1,12 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using System.Numerics;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 110)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.PingMap, GssVersion.V1, GssVersion.V67)]
     public partial class PingMap
     {
         public enum PingMapType : uint

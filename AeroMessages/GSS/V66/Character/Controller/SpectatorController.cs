@@ -1,12 +1,12 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using Aero.Gen;
 
 namespace AeroMessages.GSS.V66.Character.Controller
 {
     [Aero(AeroGenTypes.Controller)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 7, 1)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 7, 4)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterView.SpectatorController, GssVersion.V1, GssVersion.V67)]
     public partial class SpectatorController
     {
         private uint PingTime;

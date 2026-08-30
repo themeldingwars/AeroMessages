@@ -1,11 +1,12 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using System.Numerics;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 98)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.Trail, GssVersion.V1, GssVersion.V67)]
     public partial class Trail
     {
         public uint Unk1;

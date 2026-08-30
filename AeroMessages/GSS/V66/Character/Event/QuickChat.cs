@@ -1,10 +1,11 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Character.Event
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 99)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.QuickChat, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V67)]
     public partial class QuickChat
     {
         public uint Unk1;

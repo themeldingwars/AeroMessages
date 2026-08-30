@@ -1,10 +1,11 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 72)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.BountyListActiveAck, GssVersion.V1, GssVersion.V67)]
     public partial class BountyListActiveAck
     {
         public byte Success;

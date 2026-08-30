@@ -1,11 +1,12 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using AeroMessages.Common;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 118)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.ChatMessageList, GssVersion.V1, GssVersion.V67)]
     public partial class ChatMessageList
     {
         [AeroArray(typeof(byte))] public ChatMessageData[] Messages;

@@ -1,10 +1,11 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Character.Event
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 8, 102)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.JumpRolled, GssCharacterView.ObserverView, GssVersion.V1, GssVersion.V67)]
     public partial class JumpRolled
     {
         public ushort ShortTime;

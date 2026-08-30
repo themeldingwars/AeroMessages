@@ -1,10 +1,11 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Character.Command
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 202)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.SalvageRequest, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V67)]
     public partial class SalvageRequest
     {
         [AeroArray(typeof(byte))]

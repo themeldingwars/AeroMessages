@@ -1,10 +1,11 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 94)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.DebugLagPlayerSample, GssVersion.V1, GssVersion.V67)]
     public partial class DebugLagPlayerSample
     {
         // These three seem to be timestamps relative to the gameclock timer but also each other.

@@ -1,10 +1,11 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 88)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.TrackRecipe, GssVersion.V1, GssVersion.V67)]
     public partial class TrackRecipe
     {
         public uint Recipe;

@@ -1,13 +1,13 @@
 using System.Numerics;
 using Aero.Gen;
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.ResourceNode.View
 {
     [Aero(AeroGenTypes.View)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 48, 1)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 48, 3)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssResourceNodeView.ObserverView, GssVersion.V1, GssVersion.V67)]
     public partial class ObserverView
     {
         [AeroSdb("dbzonemetadata::ResourceNodeType", "id")]

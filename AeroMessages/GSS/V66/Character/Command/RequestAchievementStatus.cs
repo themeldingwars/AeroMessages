@@ -1,10 +1,11 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Character.Command
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Command, 4, 169)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.RequestAchievementStatus, GssCharacterView.MissionAndMarkerController, GssVersion.V1, GssVersion.V67)]
     public partial class RequestAchievementStatus
     {
         public uint AchievementId;

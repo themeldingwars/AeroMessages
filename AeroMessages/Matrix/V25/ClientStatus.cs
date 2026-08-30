@@ -1,11 +1,12 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 
 namespace AeroMessages.Matrix.V25
 {
     [Aero]
-    [AeroMessageId(MsgType.Matrix, MsgSrc.Command, 25)]
+    [AeroMessageId(MsgType.Matrix, MsgSrc.Command, MatrixMessage.ClientStatus, MatrixVersion.V1, MatrixVersion.V26)]
     public partial class ClientStatus
     {
         public uint ClientTime; // Miliseconds Client System Uptime (like TimeSyncRequest)

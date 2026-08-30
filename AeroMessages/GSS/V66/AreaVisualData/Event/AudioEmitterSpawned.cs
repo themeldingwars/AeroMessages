@@ -1,11 +1,12 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using System.Numerics;
 
 namespace AeroMessages.GSS.V66.AreaVisualData.Event
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 20, 84)] // Assuming its on the ObserverView?
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssAreaVisualDataMessage.AudioEmitterSpawned, GssAreaVisualDataView.ObserverView, GssVersion.V1, GssVersion.V67)]
     public partial class AudioEmitterSpawned
     {
         public long Unk1;

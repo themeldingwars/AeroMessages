@@ -1,12 +1,12 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using Aero.Gen;
 
 namespace AeroMessages.GSS.V66.AreaVisualData.View
 {
     [Aero(AeroGenTypes.View)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 21, 1)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 21, 3)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssAreaVisualDataView.ParticleEffectsView, GssVersion.V1, GssVersion.V67)]
     public partial class ParticleEffectsView
     {
         [AeroNullable] private ParticleEffect ParticleEffects_0;

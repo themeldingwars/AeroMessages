@@ -1,4 +1,5 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 using System.Numerics;
@@ -6,7 +7,7 @@ using System.Numerics;
 namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 54)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.NpcNavigationInfo, GssVersion.V1, GssVersion.V67)]
     public partial class NpcNavigationInfo
     {
         public EntityId Unk1;

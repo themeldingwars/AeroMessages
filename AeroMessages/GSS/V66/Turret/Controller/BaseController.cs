@@ -1,4 +1,5 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 using System.Numerics;
@@ -7,8 +8,7 @@ using Aero.Gen;
 namespace AeroMessages.GSS.V66.Turret.Controller
 {
     [Aero(AeroGenTypes.Controller)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 39, 1)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 39, 4)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssTurretView.BaseController, GssVersion.V1, GssVersion.V67)]
     public partial class BaseController
     {
         [AeroSdb("dbcharacter::Turret", "id")]

@@ -1,11 +1,12 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 
 namespace AeroMessages.Matrix.V25
 {
     [Aero]
-    [AeroMessageId(MsgType.Matrix, MsgSrc.Message, 56)]
+    [AeroMessageId(MsgType.Matrix, MsgSrc.Message, MatrixMessage.ForceUnqueue, MatrixVersion.V3, MatrixVersion.V26)]
     public partial class ForceUnqueue
     {
         public enum QueueErrorReason : byte

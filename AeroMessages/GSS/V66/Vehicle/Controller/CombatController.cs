@@ -1,12 +1,12 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using Aero.Gen;
 
 namespace AeroMessages.GSS.V66.Vehicle.Controller
 {
     [Aero(AeroGenTypes.Controller)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 28, 1)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 28, 4)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssVehicleView.CombatController, GssVersion.V1, GssVersion.V67)]
     public partial class CombatController
     {
         private ushort StatusEffectsChangeTime_0;

@@ -1,10 +1,11 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.Matrix.V25
 {
     [Aero]
-    [AeroMessageId(MsgType.Matrix, MsgSrc.Message, 62)]
+    [AeroMessageId(MsgType.Matrix, MsgSrc.Message, MatrixMessage.ZoneQueueUpdate, MatrixVersion.V5, MatrixVersion.V26)]
     public partial class ZoneQueueUpdate
     {
         public uint QueuePosition;

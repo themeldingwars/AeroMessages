@@ -8,7 +8,6 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.V66.Events
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 8)]
     public partial class RoutedMultipleMessage1
     {
         [AeroArray(0)] public RoutedBlockStorage[] DataBlocks = new RoutedBlockStorage[0];

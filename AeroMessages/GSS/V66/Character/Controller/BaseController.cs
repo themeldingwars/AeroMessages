@@ -1,4 +1,5 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 using System.Numerics;
@@ -7,8 +8,7 @@ using Aero.Gen;
 namespace AeroMessages.GSS.V66.Character.Controller
 {
     [Aero(AeroGenTypes.Controller)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 1)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 2, 4)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V67)]
     public partial class BaseController
     {
         private int TimePlayed;

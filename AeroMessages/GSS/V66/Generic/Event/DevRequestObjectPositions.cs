@@ -1,11 +1,12 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using System.Numerics;
 
 namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 61)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.DevRequestObjectPositions, GssVersion.V1, GssVersion.V67)]
     public partial class DevRequestObjectPositions
     {
         public byte Show; // Seems to ignore stuff if 0 and will not print log unless 1.

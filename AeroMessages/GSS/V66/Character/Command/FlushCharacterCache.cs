@@ -1,10 +1,11 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Character.Command
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Command, 2, 231)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.FlushCharacterCache, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V67)]
     public partial class FlushCharacterCache
     {
         public sbyte All;

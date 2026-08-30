@@ -1,10 +1,11 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.GSS.V66.Generic
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 0, 44)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.MatchLoadingState, GssVersion.V1, GssVersion.V67)]
     public partial class MatchLoadingState
     {
         public sbyte Unk1;

@@ -1,11 +1,12 @@
 using System;
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
 namespace AeroMessages.Matrix.V25
 {
     [Aero]
-    [AeroMessageId(MsgType.Matrix, MsgSrc.Command, 18)]
+    [AeroMessageId(MsgType.Matrix, MsgSrc.Command, MatrixMessage.EnterZoneAck, MatrixVersion.V1, MatrixVersion.V26)]
     public partial class EnterZoneAck
     {
         [Flags]

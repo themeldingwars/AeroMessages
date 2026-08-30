@@ -1,4 +1,5 @@
 using Aero.Gen.Attributes;
+using Aero.Protocol;
 using System.Numerics;
 using Aero.Gen;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
@@ -6,8 +7,7 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.V66.Melding.View
 {
     [Aero(AeroGenTypes.View)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 16, 1)] // update
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, 16, 3)] // view keyframe
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMeldingView.ObserverView, GssVersion.V1, GssVersion.V67)]
     public partial class ObserverView
     {
         [AeroString]
