@@ -14,6 +14,6 @@ namespace AeroMessages.GSS.Character.Event
         public byte Unk4;
         public byte HaveUnk5;
         [AeroIf(nameof(HaveUnk5), 1)]
-        [AeroArray(typeof(ushort))] public byte[] Unk5;
+        [AeroBlob(typeof(ushort))] public byte[] Unk5;
     }
 }

@@ -20,7 +20,7 @@ namespace AeroMessages.GSS.Generic
 
         public EntityId EncounterId;
 
-        [AeroArray(typeof(ushort))] public byte[] BlobData;
+        [AeroBlob(typeof(ushort))] public byte[] BlobData;
 
         private int _size;
 

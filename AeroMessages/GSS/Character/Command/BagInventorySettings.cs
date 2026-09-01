@@ -8,15 +8,8 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.BagInventorySettings, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V67)]
     public partial class BagInventorySettings
     {
-        public byte HaveUnk1;
-        [AeroIf(nameof(HaveUnk1), 1)]
-        public UShortBlobData Unk1;
-    }
-
-    [AeroBlock]
-    public struct UShortBlobData
-    {
-        [AeroArray(typeof(ushort))]
-        public byte[] Data;
+        public byte HaveData;
+        [AeroIf(nameof(HaveData), 1)]
+        [AeroBlob] public byte[] Data;
     }
 }

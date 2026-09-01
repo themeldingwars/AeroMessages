@@ -24,7 +24,7 @@ namespace AeroMessages.Matrix
         public byte HaveUnk9;
         [AeroIf(nameof(HaveUnk9), 1)] public LoginUnk9Data Unk9;
 
-        public MatrixTicket Ticket;
+        [AeroBlob] public byte[] Ticket;
     }
 
     [AeroBlock]
@@ -32,28 +32,5 @@ namespace AeroMessages.Matrix
     {
         public ulong A1;
         [AeroString] public string A2;
-    }
-
-    [AeroBlock]
-    public struct MatrixTicket
-    {
-        [AeroArray(45)]
-        public byte[] Part1;
-        [AeroArray(45)]
-        public byte[] Part2;
-        [AeroArray(45)]
-        public byte[] Part3;
-        [AeroArray(45)]
-        public byte[] Part4;
-        [AeroArray(45)]
-        public byte[] Part5;
-        [AeroArray(45)]
-        public byte[] Part6;
-        [AeroArray(45)]
-        public byte[] Part7;
-        [AeroArray(45)]
-        public byte[] Part8;
-        [AeroArray(10)]
-        public byte[] Part9;
     }
 }

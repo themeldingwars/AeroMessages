@@ -22,7 +22,7 @@ namespace AeroMessages.Matrix
         [AeroArray(typeof(byte))] public MatrixStatusUnk7Data[] Unk7;
         // --
 
-        [AeroArray(typeof(ushort))] public byte[] Unk8; // FUN_016eed70, not 100%
+        [AeroBlob(typeof(ushort))] public byte[] Unk8;
     }
 
     [AeroBlock]

@@ -17,6 +17,6 @@ namespace AeroMessages.Matrix
         public HalfFloat QualityOfServiceDown;
         public HalfFloat QualityOfServiceUp;
 
-        [AeroArray(typeof(ushort))] public byte[] Unk8; // FUN_016eed70, not 100%
+        [AeroBlob(typeof(ushort))] public byte[] Unk8;
     }
 }

@@ -14,7 +14,7 @@ namespace AeroMessages.GSS.Generic
         // Simliar to PublicCombatLog
         public int HaveData;
         [AeroIf(nameof(HaveData), 1)]
-        [AeroArray(typeof(ushort))]
+        [AeroBlob(typeof(ushort))]
         public byte[] Data;
         /*
         byte a (enum) (!= 0)
