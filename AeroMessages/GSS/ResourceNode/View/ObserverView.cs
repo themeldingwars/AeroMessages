@@ -4,7 +4,7 @@ using Aero.Gen.Attributes;
 using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
-namespace AeroMessages.GSS.V66.ResourceNode.View
+namespace AeroMessages.GSS.ResourceNode.View
 {
     [Aero(AeroGenTypes.View)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssResourceNodeView.ObserverView, GssVersion.V1, GssVersion.V67)]

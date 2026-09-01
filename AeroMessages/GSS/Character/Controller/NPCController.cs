@@ -1,4 +1,4 @@
-namespace AeroMessages.GSS.V66.Character.Controller
+namespace AeroMessages.GSS.Character.Controller
 {
     // [Aero(AeroGenTypes.Controller)]
     // [AeroMessageId(MsgType.GSS, MsgSrc.Message, 3, 1)]

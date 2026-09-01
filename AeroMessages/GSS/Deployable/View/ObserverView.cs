@@ -5,7 +5,7 @@ using AeroMessages.Common;
 using System.Numerics;
 using Aero.Gen;
 
-namespace AeroMessages.GSS.V66.Deployable.View
+namespace AeroMessages.GSS.Deployable.View
 {
     [Aero(AeroGenTypes.View)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssDeployableView.ObserverView, GssVersion.V1, GssVersion.V67)]

@@ -3,7 +3,7 @@ using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using Aero.Gen;
 
-namespace AeroMessages.GSS.V66.Vehicle.Controller
+namespace AeroMessages.GSS.Vehicle.Controller
 {
     [Aero(AeroGenTypes.Controller)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssVehicleView.CombatController, GssVersion.V1, GssVersion.V67)]

@@ -4,7 +4,7 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 using Aero.Gen;
 
-namespace AeroMessages.GSS.V66.Character.Controller
+namespace AeroMessages.GSS.Character.Controller
 {
     [Aero(AeroGenTypes.Controller)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterView.LocalEffectsController, GssVersion.V1, GssVersion.V67)]

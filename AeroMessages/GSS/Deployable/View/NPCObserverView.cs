@@ -1,4 +1,4 @@
-namespace AeroMessages.GSS.V66.Deployable.View
+namespace AeroMessages.GSS.Deployable.View
 {
     // [Aero(AeroGenTypes.View)]
     // [AeroMessageId(MsgType.GSS, MsgSrc.Message, 36, 1)]

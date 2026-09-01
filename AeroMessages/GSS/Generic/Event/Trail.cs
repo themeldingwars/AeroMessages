@@ -3,7 +3,7 @@ using Aero.Protocol;
 using System.Numerics;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
-namespace AeroMessages.GSS.V66.Generic
+namespace AeroMessages.GSS.Generic
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.Trail, GssVersion.V1, GssVersion.V67)]

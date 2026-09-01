@@ -2,7 +2,7 @@ using Aero.Gen.Attributes;
 using AeroMessages.Common;
 using System.Numerics;
 
-namespace AeroMessages.GSS.V66.AreaVisualData
+namespace AeroMessages.GSS.AreaVisualData
 {
     [AeroBlock]
     public struct ParticleEffect

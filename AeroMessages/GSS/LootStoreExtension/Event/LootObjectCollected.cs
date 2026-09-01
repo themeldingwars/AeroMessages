@@ -3,7 +3,7 @@ using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 
-namespace AeroMessages.GSS.V66.LootStoreExtension.Event
+namespace AeroMessages.GSS.LootStoreExtension.Event
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssLootStoreExtensionMessage.LootObjectCollected, GssLootStoreExtensionView.LootObjectView, GssVersion.V11, GssVersion.V67)]

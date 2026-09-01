@@ -4,7 +4,7 @@ using System.Numerics;
 using Aero.Gen;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
-namespace AeroMessages.GSS.V66.MeldingBubble.View
+namespace AeroMessages.GSS.MeldingBubble.View
 {
     [Aero(AeroGenTypes.View)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMeldingBubbleView.ObserverView, GssVersion.V1, GssVersion.V67)]

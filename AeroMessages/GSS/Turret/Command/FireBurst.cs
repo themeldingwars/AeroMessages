@@ -3,7 +3,7 @@ using Aero.Protocol;
 using System.Numerics;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
-namespace AeroMessages.GSS.V66.Turret.Command
+namespace AeroMessages.GSS.Turret.Command
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssTurretCommand.FireBurst, GssTurretView.BaseController, GssVersion.V1, GssVersion.V67)]

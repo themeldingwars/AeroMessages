@@ -4,7 +4,7 @@ using AeroMessages.Common;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using System.Numerics;
 
-namespace AeroMessages.GSS.V66.Character.Event
+namespace AeroMessages.GSS.Character.Event
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.TrackerPulse, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V67)]

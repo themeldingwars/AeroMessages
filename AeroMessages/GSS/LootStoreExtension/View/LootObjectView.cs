@@ -1,4 +1,4 @@
-namespace AeroMessages.GSS.V66.LootStoreExtension.View
+namespace AeroMessages.GSS.LootStoreExtension.View
 {
     // [Aero(AeroGenTypes.View)]
     // [AeroMessageId(MsgType.GSS, MsgSrc.Message, 53, 1)] // Update

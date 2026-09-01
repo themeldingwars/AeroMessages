@@ -1,6 +1,6 @@
 ﻿using System;
 using Aero.Gen.Attributes;
-using AeroMessages.Matrix.V25;
+using AeroMessages.Matrix;
 
 namespace AeroMessages
 {

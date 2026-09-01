@@ -2,9 +2,9 @@ using Aero.Gen.Attributes;
 using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
-using AeroMessages.GSS.V66.Character.Event;
+using AeroMessages.GSS.Character.Event;
 
-namespace AeroMessages.GSS.V66.Generic
+namespace AeroMessages.GSS.Generic
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.CurrentLoadoutResponse, GssVersion.V1, GssVersion.V67)]

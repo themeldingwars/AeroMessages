@@ -3,7 +3,7 @@ using Aero.Protocol;
 using AeroMessages.Common;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
-namespace AeroMessages.GSS.V66.Vehicle.Command
+namespace AeroMessages.GSS.Vehicle.Command
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssVehicleCommand.ReceiveCollisionDamage, GssVehicleView.BaseController, GssVersion.V1, GssVersion.V67)]

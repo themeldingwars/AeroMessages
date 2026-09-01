@@ -2,7 +2,7 @@ using Aero.Gen.Attributes;
 using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
-namespace AeroMessages.GSS.V66.Deployable.Events
+namespace AeroMessages.GSS.Deployable.Events
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssDeployableMessage.PublicCombatLog, GssDeployableView.ObserverView, GssVersion.V1, GssVersion.V67)]

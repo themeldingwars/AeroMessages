@@ -5,7 +5,7 @@ using AeroMessages.Common;
 using System.Numerics;
 using Aero.Gen;
 
-namespace AeroMessages.GSS.V66.Turret.Controller
+namespace AeroMessages.GSS.Turret.Controller
 {
     [Aero(AeroGenTypes.Controller)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssTurretView.BaseController, GssVersion.V1, GssVersion.V67)]

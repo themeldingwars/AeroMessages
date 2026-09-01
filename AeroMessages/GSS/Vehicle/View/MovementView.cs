@@ -4,7 +4,7 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using System.Numerics;
 using Aero.Gen;
 
-namespace AeroMessages.GSS.V66.Vehicle.View
+namespace AeroMessages.GSS.Vehicle.View
 {
     [Aero(AeroGenTypes.View)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssVehicleView.MovementView, GssVersion.V1, GssVersion.V67)]

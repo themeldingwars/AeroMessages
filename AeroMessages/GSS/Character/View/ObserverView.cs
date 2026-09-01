@@ -3,7 +3,7 @@ using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using Aero.Gen;
 
-namespace AeroMessages.GSS.V66.Character.View
+namespace AeroMessages.GSS.Character.View
 {
     [Aero(AeroGenTypes.View)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterView.ObserverView, GssVersion.V1, GssVersion.V67)]

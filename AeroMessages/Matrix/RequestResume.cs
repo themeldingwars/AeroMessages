@@ -3,7 +3,7 @@ using Aero.Protocol;
 using AeroMessages.Common;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
-namespace AeroMessages.Matrix.V25
+namespace AeroMessages.Matrix
 {
     [Aero]
     [AeroMessageId(MsgType.Matrix, MsgSrc.Command, MatrixMessage.RequestResume, MatrixVersion.V5, MatrixVersion.V26)]

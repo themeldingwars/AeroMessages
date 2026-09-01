@@ -4,7 +4,7 @@ using AeroMessages.Common;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using System.Numerics;
 
-namespace AeroMessages.GSS.V66.Generic
+namespace AeroMessages.GSS.Generic
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.NpcVoxelInfo, GssVersion.V1, GssVersion.V67)]

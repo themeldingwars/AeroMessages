@@ -2,7 +2,7 @@ using Aero.Gen.Attributes;
 using AeroMessages.Common;
 using System.Numerics;
 
-namespace AeroMessages.GSS.V66.Vehicle
+namespace AeroMessages.GSS.Vehicle
 {
     public enum AbilitySlotIndex : byte
     {

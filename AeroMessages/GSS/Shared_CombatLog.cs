@@ -1,7 +1,7 @@
 using Aero.Gen.Attributes;
 using System.Numerics;
 
-namespace AeroMessages.GSS.V66
+namespace AeroMessages.GSS
 {
     [AeroBlock]
     public struct CombatLogMessage

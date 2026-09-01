@@ -5,7 +5,7 @@ using AeroMessages.Common;
 using System.Numerics;
 using Aero.Gen;
 
-namespace AeroMessages.GSS.V66.Vehicle.Controller
+namespace AeroMessages.GSS.Vehicle.Controller
 {
     [Aero(AeroGenTypes.Controller)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssVehicleView.BaseController, GssVersion.V1, GssVersion.V67)]

@@ -4,7 +4,7 @@ using System.Numerics;
 using System;
 using static Aero.Gen.Attributes.AeroIfAttribute;
 
-namespace AeroMessages.GSS.V66
+namespace AeroMessages.GSS
 {
     [AeroBlock]
     public struct HostilityInfoData

@@ -5,7 +5,7 @@ using Aero.Gen.Attributes;
 using AeroMessages.Common;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 
-namespace AeroMessages.GSS.V66.Events
+namespace AeroMessages.GSS.Events
 {
     [Aero]
     public partial class RoutedMultipleMessage1

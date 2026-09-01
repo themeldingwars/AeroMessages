@@ -4,7 +4,7 @@ using AeroMessages.Common;
 using System.Numerics;
 using System;
 
-namespace AeroMessages.GSS.V66.Character
+namespace AeroMessages.GSS.Character
 {
     [AeroBlock]
     public struct EliteAvailableUpgradeInfo

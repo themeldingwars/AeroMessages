@@ -1,6 +1,6 @@
 using Aero.Gen.Attributes;
 
-namespace AeroMessages.Matrix.V25
+namespace AeroMessages.Matrix
 {
     [AeroBlock]
     public struct DevZoneInfoData

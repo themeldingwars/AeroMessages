@@ -5,7 +5,7 @@ using AeroMessages.Common;
 using System;
 using Aero.Gen;
 
-namespace AeroMessages.GSS.V66.Character.Controller
+namespace AeroMessages.GSS.Character.Controller
 {
     [Aero(AeroGenTypes.Controller)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterView.CombatController, GssVersion.V1, GssVersion.V67)]

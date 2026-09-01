@@ -1,7 +1,7 @@
 using Aero.Gen.Attributes;
 using System.Numerics;
 
-namespace AeroMessages.GSS.V66.Character
+namespace AeroMessages.GSS.Character
 {
     [AeroBlock]
     public struct FabricationCommonData1

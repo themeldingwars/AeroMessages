@@ -2,7 +2,7 @@
 using Aero.Gen.Attributes;
 using AeroMessages.Common;
 
-namespace AeroMessages.GSS.V66.Generic.Event.EncounterView
+namespace AeroMessages.GSS.Generic.Event.EncounterView
 {
     [Aero(AeroGenTypes.View)]
     [AeroEncounter("arc")]

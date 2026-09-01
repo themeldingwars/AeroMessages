@@ -4,7 +4,7 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using AeroMessages.Common;
 using Aero.Gen;
 
-namespace AeroMessages.GSS.V66.Turret.View
+namespace AeroMessages.GSS.Turret.View
 {
     [Aero(AeroGenTypes.View)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssTurretView.ObserverView, GssVersion.V1, GssVersion.V67)]

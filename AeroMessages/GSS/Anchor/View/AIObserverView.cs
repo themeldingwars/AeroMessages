@@ -1,4 +1,4 @@
-namespace AeroMessages.GSS.V66.Anchor.View
+namespace AeroMessages.GSS.Anchor.View
 {
     // [Aero(AeroGenTypes.View)]
     // [AeroMessageId(MsgType.GSS, MsgSrc.Message, 33, 1)]

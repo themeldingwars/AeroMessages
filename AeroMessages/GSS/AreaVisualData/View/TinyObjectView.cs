@@ -3,7 +3,7 @@ using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 using Aero.Gen;
 
-namespace AeroMessages.GSS.V66.AreaVisualData.View
+namespace AeroMessages.GSS.AreaVisualData.View
 {
     [Aero(AeroGenTypes.View)]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssAreaVisualDataView.TinyObjectView, GssVersion.V1, GssVersion.V67)]
