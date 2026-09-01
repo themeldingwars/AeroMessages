@@ -9,7 +9,7 @@ jobs:
   build:
     name: ${{ matrix.platform.name }} ${{ matrix.dotnet.name }}
     runs-on: ${{ matrix.platform.os }}
-    
+
     strategy:
       fail-fast: false
       matrix:
@@ -17,8 +17,8 @@ jobs:
         - { name: Linux, os: ubuntu-latest }
         - { name: Windows VS2022, os: windows-2022 }
         dotnet:
-        - { name: .NET 6, version: '6.0.x' }
-        - { name: .NET 7, version: '7.0.x' }
+        - { name: .NET 8, version: '8.0.x' }
+        - { name: .NET 10, version: '10.0.x' }
 
     steps:
       - name: Checkout
