@@ -6,7 +6,7 @@ using System.Numerics;
 namespace AeroMessages.GSS.Generic
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.DebugEncounterVolumes, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.DebugEncounterVolumes, GssVersion.V1, GssVersion.V74)]
     public partial class DebugEncounterVolumes
     {
         [AeroArray(typeof(byte))] public DbgVol1 Unk1;

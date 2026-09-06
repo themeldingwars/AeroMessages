@@ -5,7 +5,7 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Character.Event
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.Fabrication_Claim_Response, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.Fabrication_Claim_Response, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class FabricationClaimResponse
     {
         public FabricationCommonData1 Response;

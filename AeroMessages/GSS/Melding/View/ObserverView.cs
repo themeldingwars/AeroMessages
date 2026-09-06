@@ -7,7 +7,7 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Melding.View
 {
     [Aero(AeroGenTypes.View)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMeldingView.ObserverView, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMeldingView.ObserverView, GssVersion.V1, GssVersion.V74)]
     public partial class ObserverView
     {
         [AeroString]

@@ -5,7 +5,7 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.Matrix
 {
     [Aero]
-    [AeroMessageId(MsgType.Matrix, MsgSrc.Message, MatrixMessage.ServerProfiler_SendNames, MatrixVersion.V5, MatrixVersion.V26)]
+    [AeroMessageId(MsgType.Matrix, MsgSrc.Message, MatrixMessage.ServerProfiler_SendNames, MatrixVersion.V5, MatrixVersion.V32)]
     public partial class ServerProfilerSendNames
     {
         [AeroArray(typeof(byte))] public ServerProfilerSendNamesData[] Unk1;

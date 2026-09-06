@@ -8,7 +8,7 @@ using Aero.Gen;
 namespace AeroMessages.GSS.Vehicle.Controller
 {
     [Aero(AeroGenTypes.Controller)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssVehicleView.BaseController, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssVehicleView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class BaseController
     {
         [AeroSdb("vcs::VehicleInfo", "id")]

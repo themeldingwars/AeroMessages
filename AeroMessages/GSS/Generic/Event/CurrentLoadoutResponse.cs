@@ -7,7 +7,7 @@ using AeroMessages.GSS.Character.Event;
 namespace AeroMessages.GSS.Generic
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.CurrentLoadoutResponse, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.CurrentLoadoutResponse, GssVersion.V1, GssVersion.V74)]
     public partial class CurrentLoadoutResponse
     {
         public EntityId PlayerId;

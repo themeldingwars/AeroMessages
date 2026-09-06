@@ -6,7 +6,7 @@ using AeroMessages.Common;
 namespace AeroMessages.GSS.Character.Command
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.VendorPurchaseRequest, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.VendorPurchaseRequest, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class VendorPurchaseRequest
     {
         public ulong Unk1;

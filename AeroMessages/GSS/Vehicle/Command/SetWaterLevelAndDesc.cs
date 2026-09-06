@@ -5,7 +5,7 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Vehicle.Command
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssVehicleCommand.SetWaterLevelAndDesc, GssVehicleView.BaseController, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssVehicleCommand.SetWaterLevelAndDesc, GssVehicleView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class SetWaterLevelAndDesc
     {
         public byte Value;

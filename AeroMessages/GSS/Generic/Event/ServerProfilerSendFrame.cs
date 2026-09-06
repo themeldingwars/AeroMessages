@@ -5,7 +5,7 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Generic
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.ServerProfiler_SendFrame, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.ServerProfiler_SendFrame, GssVersion.V1, GssVersion.V74)]
     public partial class ServerProfilerSendFrame
     {
         [AeroArray(typeof(byte))] public ServerProfilerFrameData[] Unk1;

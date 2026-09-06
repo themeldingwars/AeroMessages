@@ -6,7 +6,7 @@ using AeroMessages.Common;
 namespace AeroMessages.Matrix
 {
     [Aero]
-    [AeroMessageId(MsgType.Matrix, MsgSrc.Message, MatrixMessage.ForceUnqueue, MatrixVersion.V3, MatrixVersion.V26)]
+    [AeroMessageId(MsgType.Matrix, MsgSrc.Message, MatrixMessage.ForceUnqueue, MatrixVersion.V3, MatrixVersion.V32)]
     public partial class ForceUnqueue
     {
         public enum QueueErrorReason : byte

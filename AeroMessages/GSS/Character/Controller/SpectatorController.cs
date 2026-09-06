@@ -6,7 +6,7 @@ using Aero.Gen;
 namespace AeroMessages.GSS.Character.Controller
 {
     [Aero(AeroGenTypes.Controller)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterView.SpectatorController, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterView.SpectatorController, GssVersion.V1, GssVersion.V74)]
     public partial class SpectatorController
     {
         private uint PingTime;

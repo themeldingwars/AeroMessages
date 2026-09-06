@@ -6,7 +6,7 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Character.Event
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.InventoryUpdate, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.InventoryUpdate, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class InventoryUpdate
     {
         public sbyte ClearExistingData; // 1 for full, 0 for partitial

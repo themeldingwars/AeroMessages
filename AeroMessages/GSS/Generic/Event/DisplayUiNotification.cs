@@ -5,7 +5,7 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Generic
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.DisplayUiNotification, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.DisplayUiNotification, GssVersion.V1, GssVersion.V74)]
     public partial class DisplayUiNotification
     {
         public enum BannerType : byte

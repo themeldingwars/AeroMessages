@@ -8,7 +8,7 @@ using Aero.Gen;
 namespace AeroMessages.GSS.Turret.Controller
 {
     [Aero(AeroGenTypes.Controller)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssTurretView.BaseController, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssTurretView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class BaseController
     {
         [AeroSdb("dbcharacter::Turret", "id")]

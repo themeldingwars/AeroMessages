@@ -6,7 +6,7 @@ using System.Numerics;
 namespace AeroMessages.GSS.Character.Command
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.AiSignal, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V67)] // Not sure what controller it would be assoicated with
+    [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.AiSignal, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)] // Not sure what controller it would be assoicated with
     public partial class AiSignal
     {
         [AeroString] public string Unk1;

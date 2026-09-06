@@ -6,7 +6,7 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Generic
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.EncounterUIScopeIn, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.EncounterUIScopeIn, GssVersion.V1, GssVersion.V74)]
     public partial class EncounterUIScopeIn
     {
         public EncounterUIScopeIn(int size)

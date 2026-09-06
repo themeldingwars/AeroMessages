@@ -6,7 +6,7 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.Matrix
 {
     [Aero]
-    [AeroMessageId(MsgType.Matrix, MsgSrc.Message, MatrixMessage.ChallengeInvitation, MatrixVersion.V5, MatrixVersion.V26)]
+    [AeroMessageId(MsgType.Matrix, MsgSrc.Message, MatrixMessage.ChallengeInvitation, MatrixVersion.V5, MatrixVersion.V32)]
     public partial class ChallengeInvitation
     {
         public ulong ChallengeId;

@@ -8,7 +8,7 @@ using Aero.Gen;
 namespace AeroMessages.GSS.CarryableObject.View
 {
     [Aero(AeroGenTypes.View)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCarryableObjectView.ObserverView, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCarryableObjectView.ObserverView, GssVersion.V1, GssVersion.V74)]
     public partial class ObserverView
     {
         [AeroSdb("dbitems::CarryableObject", "id")]

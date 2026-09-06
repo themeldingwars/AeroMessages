@@ -6,7 +6,7 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Turret.Command
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssTurretCommand.FireWeaponProjectile, GssTurretView.BaseController, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssTurretCommand.FireWeaponProjectile, GssTurretView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class FireWeaponProjectile
     {
         public uint Time;

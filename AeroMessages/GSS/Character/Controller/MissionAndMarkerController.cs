@@ -8,7 +8,7 @@ using Aero.Gen;
 namespace AeroMessages.GSS.Character.Controller
 {
     [Aero(AeroGenTypes.Controller)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterView.MissionAndMarkerController, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterView.MissionAndMarkerController, GssVersion.V1, GssVersion.V74)]
     public partial class MissionAndMarkerController
     {
         [AeroNullable] private PersonalMapMarkerData PersonalMapMarkers_0;

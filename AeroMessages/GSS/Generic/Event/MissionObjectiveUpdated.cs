@@ -5,7 +5,7 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Generic
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.MissionObjectiveUpdated, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.MissionObjectiveUpdated, GssVersion.V1, GssVersion.V74)]
     public partial class MissionObjectiveUpdated
     {
         // Its a bit weird that its using 8 bytes for the mission id but yeah

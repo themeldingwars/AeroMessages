@@ -7,7 +7,7 @@ using System.Numerics;
 namespace AeroMessages.GSS.Generic
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.NpcNavigationInfo, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.NpcNavigationInfo, GssVersion.V1, GssVersion.V74)]
     public partial class NpcNavigationInfo
     {
         public EntityId Unk1;

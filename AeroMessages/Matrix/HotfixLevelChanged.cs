@@ -5,7 +5,7 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.Matrix
 {
     [Aero]
-    [AeroMessageId(MsgType.Matrix, MsgSrc.Message, MatrixMessage.HotfixLevelChanged, MatrixVersion.V15, MatrixVersion.V26)]
+    [AeroMessageId(MsgType.Matrix, MsgSrc.Message, MatrixMessage.HotfixLevelChanged, MatrixVersion.V15, MatrixVersion.V32)]
     public partial class HotfixLevelChanged
     {
         public byte Level;

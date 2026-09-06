@@ -6,7 +6,7 @@ using AeroMessages.Common;
 namespace AeroMessages.GSS.Vehicle.Command
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssVehicleCommand.ActivateAbility, GssVehicleView.CombatController, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssVehicleCommand.ActivateAbility, GssVehicleView.CombatController, GssVersion.V1, GssVersion.V74)]
     public partial class ActivateAbility
     {
         public uint Time;

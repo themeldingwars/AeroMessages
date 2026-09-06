@@ -6,7 +6,7 @@ using System.Numerics;
 namespace AeroMessages.GSS.Generic
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.DevRequestObjectPositions, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.DevRequestObjectPositions, GssVersion.V1, GssVersion.V74)]
     public partial class DevRequestObjectPositions
     {
         public byte Show; // Seems to ignore stuff if 0 and will not print log unless 1.

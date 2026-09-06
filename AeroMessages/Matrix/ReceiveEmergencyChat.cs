@@ -6,7 +6,7 @@ using AeroMessages.Common;
 namespace AeroMessages.Matrix
 {
     [Aero]
-    [AeroMessageId(MsgType.Matrix, MsgSrc.Message, MatrixMessage.ReceiveEmergencyChat, MatrixVersion.V25, MatrixVersion.V26)]
+    [AeroMessageId(MsgType.Matrix, MsgSrc.Message, MatrixMessage.ReceiveEmergencyChat, MatrixVersion.V25, MatrixVersion.V32)]
     public partial class ReceiveEmergencyChat
     {
         public EntityId AuthorId;

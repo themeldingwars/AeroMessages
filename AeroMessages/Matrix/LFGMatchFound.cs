@@ -6,7 +6,7 @@ using AeroMessages.Common;
 namespace AeroMessages.Matrix
 {
     [Aero]
-    [AeroMessageId(MsgType.Matrix, MsgSrc.Message, MatrixMessage.LFGMatchFound, MatrixVersion.V14, MatrixVersion.V26)]
+    [AeroMessageId(MsgType.Matrix, MsgSrc.Message, MatrixMessage.LFGMatchFound, MatrixVersion.V14, MatrixVersion.V32)]
     public partial class LFGMatchFound
     {
         public ulong MatchId;

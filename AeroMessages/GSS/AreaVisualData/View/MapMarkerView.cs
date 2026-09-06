@@ -8,7 +8,7 @@ using Aero.Gen;
 namespace AeroMessages.GSS.AreaVisualData.View
 {
     [Aero(AeroGenTypes.View)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssAreaVisualDataView.MapMarkerView, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssAreaVisualDataView.MapMarkerView, GssVersion.V1, GssVersion.V74)]
     public partial class MapMarkerView
     {
         private Vector3 Position;

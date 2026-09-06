@@ -5,7 +5,7 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.Matrix
 {
     [Aero]
-    [AeroMessageId(MsgType.Matrix, MsgSrc.Message, MatrixMessage.MatchQueueUpdate, MatrixVersion.V3, MatrixVersion.V26)]
+    [AeroMessageId(MsgType.Matrix, MsgSrc.Message, MatrixMessage.MatchQueueUpdate, MatrixVersion.V3, MatrixVersion.V32)]
     public partial class MatchQueueUpdate
     {
         public uint Unk1;

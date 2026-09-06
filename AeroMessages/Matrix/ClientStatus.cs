@@ -6,7 +6,7 @@ using AeroMessages.Common;
 namespace AeroMessages.Matrix
 {
     [Aero]
-    [AeroMessageId(MsgType.Matrix, MsgSrc.Command, MatrixMessage.ClientStatus, MatrixVersion.V1, MatrixVersion.V26)]
+    [AeroMessageId(MsgType.Matrix, MsgSrc.Command, MatrixMessage.ClientStatus, MatrixVersion.V1, MatrixVersion.V32)]
     public partial class ClientStatus
     {
         public uint ClientTime; // Miliseconds Client System Uptime (like TimeSyncRequest)

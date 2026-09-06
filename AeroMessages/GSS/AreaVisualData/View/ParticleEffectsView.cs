@@ -6,7 +6,7 @@ using Aero.Gen;
 namespace AeroMessages.GSS.AreaVisualData.View
 {
     [Aero(AeroGenTypes.View)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssAreaVisualDataView.ParticleEffectsView, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssAreaVisualDataView.ParticleEffectsView, GssVersion.V1, GssVersion.V74)]
     public partial class ParticleEffectsView
     {
         [AeroNullable] private ParticleEffect ParticleEffects_0;

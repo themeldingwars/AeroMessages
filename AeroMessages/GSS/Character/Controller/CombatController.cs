@@ -8,7 +8,7 @@ using Aero.Gen;
 namespace AeroMessages.GSS.Character.Controller
 {
     [Aero(AeroGenTypes.Controller)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterView.CombatController, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterView.CombatController, GssVersion.V1, GssVersion.V74)]
     public partial class CombatController
     {
         private ushort StatusEffectsChangeTime_0;

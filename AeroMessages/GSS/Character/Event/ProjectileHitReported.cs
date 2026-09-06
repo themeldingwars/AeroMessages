@@ -5,8 +5,8 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Character.Event
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.ProjectileHitReported, GssCharacterView.CombatController, GssVersion.V1, GssVersion.V67)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.ProjectileHitReported, GssCharacterView.CombatView, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.ProjectileHitReported, GssCharacterView.CombatController, GssVersion.V1, GssVersion.V74)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.ProjectileHitReported, GssCharacterView.CombatView, GssVersion.V1, GssVersion.V74)]
     public partial class ProjectileHitReported
     {
         public ushort TraceRef; // Part of the uint used to group trace data in debugweapon.

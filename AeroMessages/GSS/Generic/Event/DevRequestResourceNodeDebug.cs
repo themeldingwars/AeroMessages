@@ -6,7 +6,7 @@ using System.Numerics;
 namespace AeroMessages.GSS.Generic
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.DevRequestResourceNodeDebug, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.DevRequestResourceNodeDebug, GssVersion.V1, GssVersion.V74)]
     public partial class DevRequestResourceNodeDebug
     {
         [AeroArray(typeof(byte))] public Vector3[] TestedPathLocations;

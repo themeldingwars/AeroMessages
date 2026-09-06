@@ -6,7 +6,7 @@ using AeroMessages.Common;
 namespace AeroMessages.GSS.Character.Command
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.MovementInputFake, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.MovementInputFake, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class MovementInputFake
     {
         // First part parses the same as MovementInput (Assuming same things then)

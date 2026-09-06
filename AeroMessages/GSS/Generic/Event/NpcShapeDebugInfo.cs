@@ -7,7 +7,7 @@ using System.Numerics;
 namespace AeroMessages.GSS.Generic
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.NpcShapeDebugInfo, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.NpcShapeDebugInfo, GssVersion.V1, GssVersion.V74)]
     public partial class NpcShapeDebugInfo
     {
         public EntityId Unk1; // Primary key

@@ -6,7 +6,7 @@ using System.Numerics;
 namespace AeroMessages.GSS.Generic
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.PlaySoundIdAtLocation, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.PlaySoundIdAtLocation, GssVersion.V1, GssVersion.V74)]
     public partial class PlaySoundIdAtLocation
     {
         public long Unk1; // An int64?

@@ -6,7 +6,7 @@ using AeroMessages.Common;
 namespace AeroMessages.GSS.Generic
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.ScoreBoardUpdatePlayerStatus, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.ScoreBoardUpdatePlayerStatus, GssVersion.V1, GssVersion.V74)]
     public partial class ScoreBoardUpdatePlayerStatus
     {
         public EntityId Player; // Assumption

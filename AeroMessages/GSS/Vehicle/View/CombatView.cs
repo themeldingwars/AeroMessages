@@ -6,7 +6,7 @@ using Aero.Gen;
 namespace AeroMessages.GSS.Vehicle.View
 {
     [Aero(AeroGenTypes.View)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssVehicleView.CombatView, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssVehicleView.CombatView, GssVersion.V1, GssVersion.V74)]
     public partial class CombatView
     {
         private ushort StatusEffectsChangeTime_0;

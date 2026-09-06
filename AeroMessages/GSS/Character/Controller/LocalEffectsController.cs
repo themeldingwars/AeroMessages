@@ -7,7 +7,7 @@ using Aero.Gen;
 namespace AeroMessages.GSS.Character.Controller
 {
     [Aero(AeroGenTypes.Controller)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterView.LocalEffectsController, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterView.LocalEffectsController, GssVersion.V1, GssVersion.V74)]
     public partial class LocalEffectsController
     {
         [AeroNullable] private LocalEffectsData LocalStatusEffects_0;

@@ -5,7 +5,7 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Generic
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.GlobalCounterUpdate, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.GlobalCounterUpdate, GssVersion.V1, GssVersion.V74)]
     public partial class GlobalCounterUpdate
     {
         [AeroString] public string Unk1;

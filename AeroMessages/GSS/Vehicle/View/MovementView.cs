@@ -7,7 +7,7 @@ using Aero.Gen;
 namespace AeroMessages.GSS.Vehicle.View
 {
     [Aero(AeroGenTypes.View)]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssVehicleView.MovementView, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssVehicleView.MovementView, GssVersion.V1, GssVersion.V74)]
     public partial class MovementView
     {
         private CurrentPoseData CurrentPose;

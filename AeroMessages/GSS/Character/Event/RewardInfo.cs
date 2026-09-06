@@ -6,7 +6,7 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Character.Event
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.RewardInfo, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V67)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.RewardInfo, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class RewardInfo
     {
         public byte RewardType; // If not 0xf, isExp will be true.
