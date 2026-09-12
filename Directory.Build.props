@@ -1,0 +1,11 @@
+<Project>
+    <PropertyGroup>
+        <Company>The Melding Wars</Company>
+        <Product>AeroMessages</Product>
+        <Authors>The Melding Wars</Authors>
+        <Copyright>Copyright © 2020-2026 The Melding Wars</Copyright>
+        <NeutralLanguage>en-US</NeutralLanguage>
+        <RepositoryUrl>https://github.com/themeldingwars/AeroMessages</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+    </PropertyGroup>
+</Project>
