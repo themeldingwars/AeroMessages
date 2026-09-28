@@ -14,7 +14,7 @@ namespace AeroMessages.GSS.Character.Event
         [AeroSdb("dblocalization::UITextMap", "id")]
         public uint TitleTextId;
 
-        public uint Unk1;
+        public uint EventId; // world object/event id, gives the event name and icon
 
         [AeroArray(typeof(byte))]
         public StatInfo[] Stats;
@@ -44,9 +44,11 @@ namespace AeroMessages.GSS.Character.Event
     {
         public enum StatType : byte
         {
-            Amount = 0,
+            NumericValue = 0,
             Percent = 1,
             Time = 2,
+            LocalizedString = 3, // Value is a localized text id
+            String = 4, // StringValue is shown instead of Value
         }
 
         [AeroSdb("dblocalization::LocalizedText", "id")]
@@ -54,7 +56,7 @@ namespace AeroMessages.GSS.Character.Event
 
         public StatType Type;
         public float Value;
-        [AeroString] public string Unk3;
+        [AeroString] public string StringValue;
     }
 
     [AeroBlock]
