@@ -18,7 +18,7 @@ namespace AeroMessages.GSS.Generic
         //[AeroSdb("clientmissions::MissionObjective","mission_id")]
         public uint MissionId;
 
-        public byte Unk5;
+        public byte IsRare;
         public long Unk6;
         [AeroString] public string Name;
     }
