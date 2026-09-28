@@ -9,8 +9,8 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.InteractedWithCompleted, GssCharacterView.CombatController, GssVersion.V1, GssVersion.V74)]
     public partial class InteractedWithCompleted
     {
-        public EntityId Unk1;
-        public byte Unk2;
-        public byte Unk3;
+        public EntityId InteractorId;
+        public InteractionType InteractionType;
+        public byte Percent;
     }
 }
