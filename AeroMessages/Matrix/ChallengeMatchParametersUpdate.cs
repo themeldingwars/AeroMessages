@@ -9,6 +9,6 @@ namespace AeroMessages.Matrix
     public partial class ChallengeMatchParametersUpdate
     {
         public ulong ChallengeId; // Assumption
-        public uint Unk1;
+        public uint Unk1; // selects a roster member like ChallengeJoinResponse.Unk6
     }
 }
