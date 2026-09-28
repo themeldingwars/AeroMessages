@@ -41,7 +41,7 @@ namespace AeroMessages.GSS.Character
     public struct WeaponIndexData
     {
         public byte Index;
-        public byte Unk1;
+        public byte PreviousIndex;
         public byte Unk2;
         public uint Time;
     }
@@ -325,7 +325,7 @@ namespace AeroMessages.GSS.Character
         public EntityId Id1;
         public EntityId Id2;
         public AttachmentRoleType Role;
-        public byte Unk2;
+        public byte Posture; // posture of the vcs Driver/Passenger/TurretComponentDef or dbcharacter::Turret seat
         public byte Unk3;
     }
 
