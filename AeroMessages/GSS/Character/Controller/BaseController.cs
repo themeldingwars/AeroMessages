@@ -203,15 +203,8 @@ namespace AeroMessages.GSS.Character.Controller
     [AeroBlock]
     public struct TimedDailyRewardData
     {
-        public enum TimedDailyRewardState: byte
-        {
-            IDLE = 0,
-            STARTED = 1,
-            ROLLED = 2,
-            ERROR = 3,
-        }
         public byte Stage;
-        public TimedDailyRewardState State;
+        public TokenMachineState State;
         public byte RollNumber;
         public byte MaxRolls;
         public uint CountdownToTime; // countdown_secs, time ms in the future when this reward should be given
