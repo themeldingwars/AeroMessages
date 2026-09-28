@@ -125,15 +125,15 @@ namespace AeroMessages.GSS.CarryableObject.View
     [AeroBlock]
     public struct ThrownFieldData
     {
-        [AeroArray(4)] public float[] Unk1;
-        public byte Unk2;
+        [AeroArray(4)] public float[] Unk1; // the same four motion parameters as SeekFieldData.Unk2[4..7]
+        public sbyte Unk2;
     }
 
     [AeroBlock]
     public struct SeekFieldData
     {
-        public ulong Unk1;
-        [AeroArray(8)] public float[] Unk2;
+        public ulong Unk1; // seek target
+        [AeroArray(8)] public float[] Unk2; // [0..2] target point, [4..7] the ThrownFieldData.Unk1 parameters
     }
 
     [AeroBlock]
