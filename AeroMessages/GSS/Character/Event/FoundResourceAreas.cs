@@ -19,7 +19,7 @@ namespace AeroMessages.GSS.Character.Event
         public float Y;
         public float Radius; // on the horizontal plane
 
-        public uint Unk4;
+        public uint Seed; // seeds the random resource layout of the area
 
         [AeroSdb("dbzonemetadata::ResourceNodeTypeResource", "node_type_id")]
         // [AeroSdb("dbzonemetadata::ResourceNodeType", "id")]
