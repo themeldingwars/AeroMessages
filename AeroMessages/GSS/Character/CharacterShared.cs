@@ -695,6 +695,27 @@ namespace AeroMessages.GSS.Character
         WeeklyPvP = 7,
     }
 
+    // The client's interaction type names (0x00780d60)
+    public enum InteractionType : byte
+    {
+        None = 0,
+        Execute = 1,
+        Revive = 2,
+        Vehicle = 3,
+        Doctor = 4,
+        Transport = 5,
+        Repair = 6,
+        Hack = 7,
+        Generic = 8,
+        List = 9,
+        Collect = 10,
+        GenericHold = 11,
+        Vendor = 12,
+        Search = 13,
+        Grab = 14,
+        HolsterTalk = 15,
+    }
+
     public enum DuelState : byte
     {
         Uninitialized = 0,
