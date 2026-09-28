@@ -9,9 +9,9 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.EncounterUIUpdate, GssVersion.V1, GssVersion.V74)]
     public partial class EncounterUIUpdate
     {
+        // Size is ignored, kept for compatibility
         public EncounterUIUpdate(int size)
         {
-            _size = size;
         }
 
         public EncounterUIUpdate()
@@ -22,9 +22,7 @@ namespace AeroMessages.GSS.Generic
 
         [AeroBlob(typeof(ushort))] public byte[] BlobData;
 
-        private int _size;
-
-        [AeroArray(nameof(_size))]
-        public byte[] ShadowFieldValues;
+        // Shadow field changes for the encounter view announced in EncounterUIScopeIn
+        [AeroBlob] public byte[] ShadowFieldValues;
     }
 }

@@ -14,7 +14,8 @@ namespace AeroMessages.GSS.Generic
         [AeroString]
         public string Header;
 
-        [AeroString]
-        public string JSON;
+        // JSON text up to the end of the message, the closing quote of every string is sent as a 0 byte
+        [AeroBlob]
+        public byte[] JSON;
     }
 }
