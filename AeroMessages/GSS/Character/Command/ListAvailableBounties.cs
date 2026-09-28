@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.ListAvailableBounties, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class ListAvailableBounties
     {
-        public byte Unk1;
+        public BountyCategory Category;
         public uint Unk2;
     }
 }
