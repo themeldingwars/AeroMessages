@@ -11,7 +11,7 @@ namespace AeroMessages.GSS.Character
     {
         public uint UpgradeId; // TODO: Pinpoint sdb table
         public uint Unk_1;
-        public uint StatValue; // Not float?
+        public float StatValue;
 
         [AeroArray(typeof(byte))]
         public uint[] AdditionalInfo;
