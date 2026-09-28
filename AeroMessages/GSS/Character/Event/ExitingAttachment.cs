@@ -9,7 +9,6 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.ExitingAttachment, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class ExitingAttachment
     {
-        // Guessing
-        public QuantisedVector3 Direction;
+        public HalfVector3 Direction; // selects the vehicle's exit/interact point, more a position than a direction
     }
 }
