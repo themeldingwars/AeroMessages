@@ -8,9 +8,9 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.ChallengeSetRoleAndTeam, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class ChallengeSetRoleAndTeam
     {
-        public ulong Unk1;
-        public ulong Unk2;
-        public byte Unk3;
-        public byte Unk4;
+        public ulong ChallengeId;
+        public ulong MemberId;
+        public byte IsSpectator;
+        public uint Team;
     }
 }
