@@ -16,12 +16,20 @@ namespace AeroMessages.GSS.Character
     {
         public uint SequenceId;
         public uint RecipeId; // dbfabrication::Recipe
-        public Vector3 Unk3;
-        public Vector3 Unk4;
-        public Vector3 Unk5;
+        public float ActionsLeft;
+        public float TurnsUsed;
+        public float BuildPoints;
+        public float BuildPower;
+        public float QualityPoints;
+        public float QualityPower;
+        public float Quantity;
+        public float BuildTime;
+        public float Level;
         public uint ResultIndex;
         public uint NextRarityAt;
-        public Vector3 Unk8;
+        public float ResetCount;
+        public float TinkeringChance;
+        public float UpgradeChance;
         public uint Flags; // bits 0..2 rarity, bit 5 autogen, bit 6 soulbound
         public long StartedAt;
         public long EndsAt;
