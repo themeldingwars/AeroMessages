@@ -57,7 +57,7 @@ namespace AeroMessages.GSS.AreaVisualData.View
         public uint MaybeType;
 
         public HalfVector3 Position;
-        public HalfVector4 Orientation;
+        public QuantisedQuaternion Orientation;
         public HalfVector3 Direction;
 
         public byte Unk2;
