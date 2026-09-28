@@ -9,7 +9,7 @@ namespace AeroMessages.Matrix
     public partial class ChallengeRosterUpdate
     {
         public ulong ChallengeId; // Assumption
-        [AeroArray(typeof(byte))] public ChallengeRosterUpdateData Updates;
+        [AeroArray(typeof(byte))] public ChallengeRosterUpdateData[] Updates;
     }
 
     [AeroBlock]
