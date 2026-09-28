@@ -8,13 +8,13 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.ListItemForSale, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class ListItemForSale
     {
-        public ulong Unk1;
-        public ulong Unk2;
-        public uint Unk3;
-        public int Unk4;
+        public ulong RequestId;
+        public ulong ItemGuid;
+        public uint ItemSdbId;
+        public int Quantity;
         [AeroString] public string Unk5;
-        public ulong Unk6;
+        public long Price; // The client unpacks a UInt64, but sends an int sign-extended to 64 bit
         [AeroString] public string Unk7;
-        public byte Unk8;
+        public byte Duration;
     }
 }
