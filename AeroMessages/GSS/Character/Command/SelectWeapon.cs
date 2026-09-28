@@ -10,6 +10,6 @@ namespace AeroMessages.GSS.Character.Command
     {
         public uint Time;
         public byte SelectedWeaponIndex;
-        public byte Unk3; // This is related to the selected weapon but idk what it is, maybe slot that we are selecting weapon for or something (not that we have multiple slots that are swappable?) Firemode?
+        public byte PreviousWeaponIndex; // Weapon index before this swap, echoed in the Combat views WeaponIndex
     }
 }
