@@ -11,9 +11,9 @@ namespace AeroMessages.GSS.Generic
     public partial class CurrentLoadoutResponse
     {
         public EntityId PlayerId;
-        public int Unk2;
-        public int Unk3;
-        [AeroString] public string Unk4;
+        public int PveLoadoutId;
+        public int PvpLoadoutId;
+        [AeroString] public string LoadoutName;
         [AeroString] public string Unk5;
         public uint Unk6;
         [AeroArray(typeof(byte))] public LoadoutConfig[] LoadoutConfigs;

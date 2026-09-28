@@ -15,9 +15,9 @@ namespace AeroMessages.GSS.Generic
     [AeroBlock]
     public struct GlobalAnnouncementData
     {
-        public uint Unk1;
-        public uint Unk2;
-        public uint Unk3; // ActionId?
+        public uint StartTime;
+        public uint EndTime;
+        public uint ActionId;
         [AeroString] public string Unk4;
         [AeroString] public string Unk5;
         public byte HaveUnk6;
@@ -27,8 +27,8 @@ namespace AeroMessages.GSS.Generic
         [AeroString] public string Unk8;
         public byte HaveUnk9;
         [AeroIf(nameof(HaveUnk9), 1)] public GlobalAnnouncementDataType3 Unk9;
-        public byte HaveUnk10;
-        [AeroIf(nameof(HaveUnk10), 1)] public GlobalAnnouncementDataType4 Unk10;
+        public byte HaveAnnouncement;
+        [AeroIf(nameof(HaveAnnouncement), 1)] public GlobalAnnouncementDataType4 Announcement;
     }
 
     [AeroBlock]
@@ -61,8 +61,10 @@ namespace AeroMessages.GSS.Generic
     public struct GlobalAnnouncementDataType4
     {
         // FUN_00c3c280
-        public uint Unk1;
-        public uint Unk2;
-        [AeroString] public string Unk3;
+        [AeroSdb("dblocalization::LocalizedText", "id")]
+        public uint ChatTextId;
+        [AeroSdb("dblocalization::LocalizedText", "id")]
+        public uint BannerTextId;
+        [AeroString] public string BannerStyle;
     }
 }
