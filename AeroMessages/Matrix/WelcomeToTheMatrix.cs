@@ -8,7 +8,7 @@ namespace AeroMessages.Matrix
     [AeroMessageId(MsgType.Matrix, MsgSrc.Message, MatrixMessage.WelcomeToTheMatrix, MatrixVersion.V1, MatrixVersion.V32)]
     public partial class WelcomeToTheMatrix
     {
-        public ulong PlayerID;
+        public ulong PlayerID; // Also sent as the owner id in controller keyframes and controller removes
         [AeroBlob(typeof(ushort))] public byte[] Unk1;
         [AeroBlob(typeof(ushort))] public byte[] Unk2;
     }
