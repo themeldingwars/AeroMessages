@@ -9,6 +9,6 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.SetPreloadPosition, GssVersion.V1, GssVersion.V74)]
     public partial class SetPreloadPosition
     {
-        [AeroArray(4)] public Vector4 Location;
+        [AeroArray(4)] public Vector4[] Location; // 4x4 transform matrix, row 3 is the position
     }
 }
