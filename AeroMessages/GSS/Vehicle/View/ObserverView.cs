@@ -59,7 +59,7 @@ namespace AeroMessages.GSS.Vehicle.View
         [AeroNullable] private SinTeamsAcquiredByData SinTeamsAcquiredBy;
 
         private byte WaterLevelAndDesc;
-        private byte EffectsFlags;
+        private byte EffectsFlags; // bit 0 = headlights on
 
         [AeroSdb("dbencounterdata::SinCardTemplate", "Id")]
         //[AeroSdb("dbencounterdata::SinCardFields", "TemplateId")]
