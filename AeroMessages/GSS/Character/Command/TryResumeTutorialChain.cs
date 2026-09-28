@@ -6,6 +6,7 @@ namespace AeroMessages.GSS.Character.Command
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.TryResumeTutorialChain, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.TryResumeTutorialChain, GssCharacterView.MissionAndMarkerController, GssVersion.V74, GssVersion.V74)]
     public partial class TryResumeTutorialChain
     {
         // Nothing to parse
