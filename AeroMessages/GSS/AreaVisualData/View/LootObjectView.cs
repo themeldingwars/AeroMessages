@@ -46,11 +46,11 @@ namespace AeroMessages.GSS.AreaVisualData.View
         [AeroIf(nameof(HaveEntity), 1)]
         public EntityId Entity;
 
-        public byte HaveUnk3;
-        [AeroIf(nameof(HaveUnk3), 1)]
-        public LootObjectUnkOptionalData Unk3; // I thought this was hostility but maybe not?
+        public byte HaveFaction;
+        [AeroIf(nameof(HaveFaction), 1)]
+        public LootObjectUnkOptionalData Faction; // only sent when there is no owning Entity
 
-        public HalfVector3 Unk4;
+        public HalfVector3 OriginOffset; // Position + OriginOffset = point the loot was dropped from
         public Vector3 Position;
 
         [AeroSdb("dbitems::RootItem", "sdb_id")]
@@ -58,13 +58,15 @@ namespace AeroMessages.GSS.AreaVisualData.View
         public byte Quantity;
         public ushort Unk5;
         public byte Unk6;
-        [AeroArray(2)] public uint[] Unk7; // Unk type, this is a do while with 2 laps which doesn't match scope bubble
+        [AeroSdb("dbitems::ItemModule", "id")]
+        [AeroArray(2)] public uint[] ItemModules; // 0 = none
     }
 
     [AeroBlock]
     public struct LootObjectUnkOptionalData
     {
-        public byte Unk1;
+        [AeroSdb("dbcharacter::Faction", "id")]
+        public byte FactionId;
         public byte Unk2;
     }
 }
