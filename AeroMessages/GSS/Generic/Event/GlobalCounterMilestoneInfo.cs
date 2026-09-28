@@ -24,7 +24,7 @@ namespace AeroMessages.GSS.Generic
     {
         public ulong Unk1;
         [AeroString] public string Unk2;
-        public float Unk3; // unsure type
+        public uint Unk3;
     }
 
     [AeroBlock]
