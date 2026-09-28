@@ -8,6 +8,6 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.LFGLeave, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class LFGLeave
     {
-        public ulong Unk1;
+        public ulong MatchId;
     }
 }
