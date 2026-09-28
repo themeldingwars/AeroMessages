@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.MissionReturnToChanged, GssVersion.V1, GssVersion.V74)]
     public partial class MissionReturnToChanged
     {
-        public uint MissionId; // Assumption
-        public byte Unk2;
+        public uint MissionId;
+        public byte Enabled;
     }
 }

@@ -8,29 +8,29 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.GlobalCounterMilestoneInfo, GssVersion.V1, GssVersion.V74)]
     public partial class GlobalCounterMilestoneInfo
     {
-        [AeroArray(typeof(byte))] public GCMilestoneInfo1[] Unk1;
-        [AeroArray(typeof(byte))] public GCMilestoneInfo2[] Unk2;
+        [AeroArray(typeof(byte))] public GCMilestoneInfo1[] LeaderboardMilestones;
+        [AeroArray(typeof(byte))] public GCMilestoneInfo2[] LeaderboardIndices;
     }
 
     [AeroBlock]
     public struct GCMilestoneInfo1
     {
-        [AeroString] public string Unk1;
-        [AeroArray(typeof(byte))] public GCMilestoneInfo1Inner1[] Unk2;
+        [AeroString] public string LeaderboardName;
+        [AeroArray(typeof(byte))] public GCMilestoneInfo1Inner1[] Milestones;
     }
 
     [AeroBlock]
     public struct GCMilestoneInfo1Inner1
     {
-        public ulong Unk1;
-        [AeroString] public string Unk2;
-        public uint Unk3;
+        public ulong Milestone;
+        [AeroString] public string Message;
+        public uint AchievedAt;
     }
 
     [AeroBlock]
     public struct GCMilestoneInfo2
     {
-        [AeroString] public string Unk1;
-        public int Unk2;
+        [AeroString] public string LeaderboardName;
+        public int Index;
     }
 }
