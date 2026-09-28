@@ -48,18 +48,18 @@ namespace AeroMessages.GSS.Character.Event
         public byte DisplayLevel;
         public byte MaxSuggestedLevel;
         [AeroString] public string DifficultyKey;
-        public ushort PlayerCount1;
-        public ushort PlayerCount2;
-        public ushort PlayerCount3;
         public ushort MinPlayers;
+        public ushort Unk2;
         public ushort MaxPlayers;
+        public ushort Unk4;
+        public ushort Unk5;
     }
 
     [AeroBlock]
     public struct QueueRewardsItemData
     {
-        public uint Unk1;
-        public uint Unk2;
+        public uint ItemSdbId;
+        public uint Quantity;
     }
 
     [AeroBlock]
