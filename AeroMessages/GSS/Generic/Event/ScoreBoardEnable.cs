@@ -8,6 +8,6 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.ScoreBoardEnable, GssVersion.V1, GssVersion.V74)]
     public partial class ScoreBoardEnable
     {
-        public sbyte Unk1;
+        public sbyte Enabled;
     }
 }
