@@ -9,6 +9,6 @@ namespace AeroMessages.GSS.Character.Command
     public partial class JobLedgerOperation
     {
         [AeroString] public string Unk1;
-        [AeroArray(typeof(byte))] public float[] Unk2; // Unsure about type
+        [AeroArray(typeof(byte))] public uint[] Unk2;
     }
 }
