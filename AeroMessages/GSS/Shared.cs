@@ -319,11 +319,12 @@ namespace AeroMessages.GSS
     public struct ForcedMovementData
     {
         public byte Type;
-        public uint Unk1;
+        [AeroSdb("apt::BaseCommandDef", "id")]
+        public uint CommandId; // aptfs Movement*CommandDef that started it, 0 or 1 when not from a command
 
-        public byte HaveUnk2;
-        [AeroIf(nameof(HaveUnk2), 1)]
-        public ulong Unk2;
+        public byte HaveRelativeTo;
+        [AeroIf(nameof(HaveRelativeTo), 1)]
+        public ulong RelativeTo; // entity the positions are relative to (the vehicle a deployable is attached to)
 
         [AeroIf(nameof(Type), 0x01)]
         public ForcedMovementType1Params Params1;
@@ -377,8 +378,8 @@ namespace AeroMessages.GSS
     [AeroBlock]
     public struct ForcedMovementType2Params
     {
-        public Vector3 Unk1;
-        public Vector3 Unk2;
+        public Vector3 Destination;
+        public Vector3 Up; // unit axis the slide offset is applied along
         public uint StartTime;
         public uint EndTime;
         public float Unk5;
@@ -392,12 +393,12 @@ namespace AeroMessages.GSS
     {
         public uint Time1;
         public uint Time2;
-        public Vector3 Unk3;
-        public Quaternion Unk4;
-        public Vector3 Unk5;
-        public Quaternion Unk6;
-        public float Unk7;
-        public float Unk8;
+        public Vector3 StartPosition;
+        public Quaternion StartRotation;
+        public Vector3 EndPosition;
+        public Quaternion EndRotation;
+        public float VerticalVelocity; // initial upward speed of the arc, m/s
+        public float Gravity; // m/s^2
         public byte Unk9;
         public byte Unk10;
     }
@@ -721,8 +722,8 @@ namespace AeroMessages.GSS
     [AeroBlock]
     public struct ProcessDelayData
     {
-        public ushort Unk1; // Unknown type
-        public ushort Unk2; // Unknown type
+        public ushort ChangeTime; // low 16 bits of the server time in ms
+        public ushort DelayMs; // 0..300
     }
 
     [AeroBlock]
@@ -910,8 +911,9 @@ namespace AeroMessages.GSS
     [AeroBlock]
     public struct PSDData
     {
-        public ulong PSDD_Unk1;
-        public uint PSDD_Unk2;
+        public ulong EncounterId; // arc encounter the player is in (typecode 0x31)
+        [AeroSdb("dbencounterdata::Arcs", "id")]
+        public uint ArcId;
         public byte PSDD_Unk3;
         public byte PSDD_Unk4;
     }
@@ -920,7 +922,7 @@ namespace AeroMessages.GSS
     public struct ChatAltData_RequestPlayerStateDetails
     {
         public ushort DataLength;
-        // No additional data
+        [AeroArray(nameof(DataLength))] public byte[] Data; // 1962: DataLength 1, one 0 byte
         // Does something on squad and platoon channel, and something different on friends channel.
     }
 
@@ -970,8 +972,9 @@ namespace AeroMessages.GSS
     [AeroBlock]
     public struct GroupWaypoint_Data
     {
-        public uint Unk1;
-        public ulong Unk2;
+        [AeroSdb("dbzonemetadata::ZoneRecord", "id")]
+        public uint ZoneId;
+        public ulong InstanceId;
         public uint Unk3;
         public Vector3 Position;
     }
