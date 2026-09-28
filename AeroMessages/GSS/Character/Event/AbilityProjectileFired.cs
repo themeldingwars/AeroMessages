@@ -10,22 +10,22 @@ namespace AeroMessages.GSS.Character.Event
     public partial class AbilityProjectileFired
     {
         public ushort ShortTime;
-        public HalfVector3 MaybeHalfs; // ShooterVelocity?
+        public HalfVector3 OriginOffset; // Projectile origin relative to the shooter position, world axes
         public QuantisedVector3 Aim;
 
         [AeroSdb("dbitems::Ammo", "id")] // Definition
         //[AeroSdb("aptfs::FireProjectileCommandDef", "ammotype")] // Reference values, eg Range
         public ushort AmmoType;
         public float Range;
-        public int Unk1;
-        public byte Unk2; // Burstcount?
-        public float Unk3;
-        public byte Unk4;
-        public uint Unk5;
+        public int Damage;
+        public byte BurstCount;
+        public float Spread;
+        public byte Unk4; // Fixed per FireProjectileCommandDef, not a column of it
+        public uint Unk5; // Always 0
         public uint Hardpoint;
 
-        public byte UnkFlag;
-        [AeroIf(nameof(UnkFlag), 1)]
-        public ulong UnkFlaggedEntity; // Maybe for "homing_target" or "aim_at_target"?
+        public byte HaveHomingTarget;
+        [AeroIf(nameof(HaveHomingTarget), 1)]
+        public EntityId HomingTarget;
     }
 }
