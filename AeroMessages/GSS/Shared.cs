@@ -123,7 +123,7 @@ namespace AeroMessages.GSS
         public byte EnumByte;
 
         [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Short)]
-        public ushort Short;
+        public short Short;
 
         [AeroIf(nameof(Type), SinCardFieldData.SincardFieldDataType.Timer)]
         public Timer Timer;
