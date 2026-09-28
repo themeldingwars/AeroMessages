@@ -716,6 +716,23 @@ namespace AeroMessages.GSS.Character
         HolsterTalk = 15,
     }
 
+    // Game.SpendTokenAtVendor sends Roll, Game.ClaimTokenVendorRewards sends Commit
+    public enum VendorTokenMachineAction : byte
+    {
+        Roll = 0,
+        Reroll = 1,
+        Rickroll = 2,
+        Commit = 3,
+    }
+
+    public enum VendorTokenMachineState : byte
+    {
+        Idle = 0,
+        Started = 1,
+        Rolled = 2,
+        Error = 3,
+    }
+
     public enum DuelState : byte
     {
         Uninitialized = 0,
