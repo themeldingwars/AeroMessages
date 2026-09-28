@@ -14,13 +14,13 @@ namespace AeroMessages.GSS.Character.Command
         public ulong ProductID;
         public ulong PriceID;
 
-        public byte HaveUnk2;
-        [AeroIf(nameof(HaveUnk2), 0x01)] // FIXME: The check should be != 0
-        public uint ScuffedVendorID; // Half of the ulong...?
+        public byte HaveRemoteVendorId;
+        [AeroIf(nameof(HaveRemoteVendorId), 0x01)] // FIXME: The check should be != 0
+        public uint RemoteVendorId;
 
-        public byte HaveUnk3;
-        [AeroIf(nameof(HaveUnk3), 0x01)] // FIXME: The check should be != 0
-        public uint VendorRemoteID;
+        public byte HaveVendorId;
+        [AeroIf(nameof(HaveVendorId), 0x01)] // FIXME: The check should be != 0
+        public uint VendorId;
 
         public byte HaveUnk4;
         [AeroIf(nameof(HaveUnk4), 0x01)] // FIXME: The check should be != 0
