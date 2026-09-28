@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.UiNamedVariableUpdate, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class UiNamedVariableUpdate
     {
-        public uint Unk1;
-        public float Unk2;
+        public uint VariableId;
+        public float Value;
     }
 }
