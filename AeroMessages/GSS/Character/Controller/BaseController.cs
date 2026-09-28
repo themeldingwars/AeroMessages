@@ -197,7 +197,7 @@ namespace AeroMessages.GSS.Character.Controller
     {
         public uint Id; // TODO: Verify
         public uint Unk2;
-        public ulong Unk3;
+        public ulong TimestampMicro; // unix time in microseconds
     }
 
     [AeroBlock]
