@@ -8,6 +8,6 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.JobLedgerEntriesUpdate, GssVersion.V1, GssVersion.V74)]
     public partial class JobLedgerEntriesUpdate
     {
-        [AeroArray(typeof(byte))] public uint[] Unk;
+        [AeroArray(typeof(byte))] public uint[] ArcIds;
     }
 }

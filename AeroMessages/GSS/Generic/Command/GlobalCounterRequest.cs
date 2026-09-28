@@ -8,6 +8,6 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Both, GssMessage.GlobalCounterRequest, GssVersion.V1, GssVersion.V74)]
     public partial class GlobalCounterRequest
     {
-        [AeroString] public string Unk;
+        [AeroString] public string LeaderboardName;
     }
 }
