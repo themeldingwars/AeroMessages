@@ -7,6 +7,7 @@ namespace AeroMessages.GSS.Vehicle.Event
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssVehicleMessage.DebugMovementUpdate, GssVehicleView.MovementView, GssVersion.V16, GssVersion.V74)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssVehicleMessage.DebugMovementUpdate, GssVehicleView.BaseController, GssVersion.V74, GssVersion.V74)]
     public partial class DebugMovementUpdate
     {
         public byte Unk1;
