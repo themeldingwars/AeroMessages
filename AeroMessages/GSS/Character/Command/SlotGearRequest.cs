@@ -14,6 +14,6 @@ namespace AeroMessages.GSS.Character.Command
         [AeroSdb("dbitems::LoadoutSlot", "id")]
         public byte SlotIdx;
 
-        public uint Unk;
+        public uint ConfigId; // 0 PvE, 1 PvP
     }
 }
