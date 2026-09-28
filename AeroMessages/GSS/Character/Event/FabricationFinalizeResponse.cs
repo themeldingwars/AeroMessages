@@ -8,6 +8,6 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.Fabrication_Finalize_Response, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class FabricationFinalizeResponse
     {
-        public uint Unk1;
+        public uint Finalized; // 0 = aborted
     }
 }

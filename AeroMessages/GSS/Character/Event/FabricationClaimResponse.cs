@@ -9,6 +9,6 @@ namespace AeroMessages.GSS.Character.Event
     public partial class FabricationClaimResponse
     {
         public FabricationCommonData1 Response;
-        public uint Unk2;
+        public uint Success; // 0 = failed
     }
 }
