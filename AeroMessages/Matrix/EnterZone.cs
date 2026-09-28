@@ -20,7 +20,7 @@ namespace AeroMessages.Matrix
         public byte HotfixLevel;
         public ulong MatchId;
         public sbyte Unk2;
-        public uint SimulationSeedMs;
+        public uint SimulationSeedMs; // GSS game time in ms at GameClockInfo.MicroUnix_2
         [AeroString] public string ZoneName;
         public byte HaveDevZoneInfo;
         [AeroIf(nameof(HaveDevZoneInfo), 1)]

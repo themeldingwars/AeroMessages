@@ -40,7 +40,7 @@ namespace AeroMessages.Matrix
     public struct GameClockInfoData
     {
         public ulong MicroUnix_1;
-        public ulong MicroUnix_2;
+        public ulong MicroUnix_2; // Server unix time when the GSS game time was EnterZone.SimulationSeedMs
         public double Timescale;
         public ulong Unk3;
         public ulong Unk4;
