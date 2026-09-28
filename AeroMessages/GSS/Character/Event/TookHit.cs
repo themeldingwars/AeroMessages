@@ -17,6 +17,6 @@ namespace AeroMessages.GSS.Character.Event
 
         // Unique to TookHit
         public ushort ShortTime;
-        public byte Unk2;
+        public byte ViewKickScale; // camera kick multiplier, value * 10 / 255
     }
 }
