@@ -15,7 +15,9 @@ namespace AeroMessages.GSS.Character.Event
     [AeroBlock]
     public struct ResourceArea
     {
-        public Vector3 Center;
+        public float X;
+        public float Y;
+        public float Radius; // on the horizontal plane
 
         public uint Unk4;
 
