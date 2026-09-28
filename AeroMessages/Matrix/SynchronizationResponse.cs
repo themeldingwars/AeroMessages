@@ -8,6 +8,7 @@ namespace AeroMessages.Matrix
     [AeroMessageId(MsgType.Matrix, MsgSrc.Command, MatrixMessage.SynchronizationResponse, MatrixVersion.V1, MatrixVersion.V32)]
     public partial class SynchronizationResponse
     {
-        // TODO
+        // RedHanded anti-cheat payload, opaque (looks encrypted)
+        [AeroBlob] public byte[] Data;
     }
 }
