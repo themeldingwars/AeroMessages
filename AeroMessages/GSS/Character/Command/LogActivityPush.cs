@@ -8,6 +8,6 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.LogActivityPush, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class LogActivityPush
     {
-        public int Unk;
+        public int BoredGauge;
     }
 }

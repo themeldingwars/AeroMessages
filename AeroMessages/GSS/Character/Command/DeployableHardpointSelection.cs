@@ -9,7 +9,7 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.DeployableHardpointSelection, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class DeployableHardpointSelection
     {
-        public EntityId Unk1;
-        public uint Unk2;
+        public EntityId DeployableEntity;
+        public uint SelectionId;
     }
 }

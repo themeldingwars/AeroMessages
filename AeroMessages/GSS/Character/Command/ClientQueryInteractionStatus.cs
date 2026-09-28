@@ -10,6 +10,6 @@ namespace AeroMessages.GSS.Character.Command
     public partial class ClientQueryInteractionStatus
     {
         public EntityId Entity;
-        public byte Unk;
+        public byte StopQuery; // 1 on the last query for the entity, after that the client stops polling it
     }
 }
