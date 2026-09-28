@@ -19,8 +19,8 @@ namespace AeroMessages.GSS.Deployable.Events
         public int Damage;
         public byte BurstCount;
         public float Spread;
-        public byte Unk4; // Fixed per FireProjectileCommandDef, not a column of it
-        public uint Unk5; // Always 0
+        public byte SpreadSeed; // added to the shot index to seed the per-shot spread offset
+        public uint Unk5; // Always 0, copied into the spawned projectile's parameters
         public uint Hardpoint;
 
         public byte HaveHomingTarget;

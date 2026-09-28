@@ -11,8 +11,8 @@ namespace AeroMessages.GSS.Turret.Event
     {
         public uint Time;
         public Vector3 Aim;
-        public byte HaveMoreData;
-        [AeroIf(nameof(HaveMoreData), 1)]
-        public Vector3 MoreData;
+        public byte HaveShooterVelocity; // same field as Character WeaponProjectileFired.ShooterVelocity
+        [AeroIf(nameof(HaveShooterVelocity), 1)]
+        public Vector3 ShooterVelocity;
     }
 }
