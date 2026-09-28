@@ -8,6 +8,6 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.TrackBounty, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class TrackBounty
     {
-        public uint Unk1;
+        public uint BountyDefId;
     }
 }
