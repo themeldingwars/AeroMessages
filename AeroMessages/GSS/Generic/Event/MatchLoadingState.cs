@@ -1,6 +1,7 @@
 using Aero.Gen.Attributes;
 using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
+using AeroMessages.Common;
 
 namespace AeroMessages.GSS.Generic
 {
@@ -9,14 +10,14 @@ namespace AeroMessages.GSS.Generic
     public partial class MatchLoadingState
     {
         public sbyte Unk1;
-        [AeroArray(typeof(byte))] public MatchLoadingStateData[] Unk2;
+        [AeroArray(typeof(byte))] public MatchLoadingStateData[] Players;
     }
 
     [AeroBlock]
     public struct MatchLoadingStateData
     {
-        public ulong Unk1;
-        [AeroString] public string Unk2;
+        public EntityId Player;
+        [AeroString] public string Name;
         public byte Unk3;
     }
 }
