@@ -37,11 +37,11 @@ namespace AeroMessages.Matrix
     [AeroBlock]
     public struct GameClockInfoData
     {
-        public ulong MicroUnix_1;
-        public ulong MicroUnix_2; // Server unix time when the GSS game time was EnterZone.SimulationSeedMs
+        public ulong EarliestUnixMicros;
+        public ulong SimulationSeedUnixMicros;
         public double Timescale;
-        public ulong Unk3;
-        public ulong Unk4;
+        public ulong PausedAtMicros; // the clock stays at this value while Paused is set
+        public ulong ClockOffsetMicros; // added to every computed game clock time
         public byte Paused;
     }
 

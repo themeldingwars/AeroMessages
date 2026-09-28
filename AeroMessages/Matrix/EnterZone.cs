@@ -19,8 +19,8 @@ namespace AeroMessages.Matrix
         public uint SvnRevision;
         public byte HotfixLevel;
         public ulong MatchId;
-        public sbyte Unk2;
-        public uint SimulationSeedMs; // GSS game time in ms at GameClockInfo.MicroUnix_2
+        public sbyte Unk2; // not read by the 1962 client
+        public uint SimulationSeedMs; // GSS game time in ms at GameClockInfo.SimulationSeedUnixMicros
         [AeroString] public string ZoneName;
         public byte HaveDevZoneInfo;
         [AeroIf(nameof(HaveDevZoneInfo), 1)]
