@@ -8,6 +8,6 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.AbortBounty, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class AbortBounty
     {
-        public uint Unk;
+        public uint BountyDefId;
     }
 }
