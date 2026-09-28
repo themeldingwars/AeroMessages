@@ -10,8 +10,8 @@ namespace AeroMessages.GSS.Character.Event
     public partial class TrackerEvent
     {
         public EntityId Entity;
-        public byte Unk1;
-        public uint Unk2;
+        public byte Unk1; // 2 deployable, 1 character, 0 when tracking ends
+        public uint Unk2; // dbcharacter::Deployable id for deployables
         public byte Unk3;
         [AeroString] public string Text;
         public byte Unk4;
