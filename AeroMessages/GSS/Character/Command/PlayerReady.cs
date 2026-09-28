@@ -8,11 +8,11 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.PlayerReady, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class PlayerReady
     {
-        public sbyte Unk1;
-        public sbyte Unk2;
+        public sbyte ControllerReady;
+        public sbyte StreamingComplete;
 
-        public byte HaveUnk3;
-        [AeroIf(nameof(HaveUnk3), 1)]
-        [AeroArray(typeof(byte))] public ulong[] Unk3;
+        public byte HaveSquadMemberIds;
+        [AeroIf(nameof(HaveSquadMemberIds), 1)]
+        [AeroArray(typeof(byte))] public ulong[] SquadMemberIds;
     }
 }
