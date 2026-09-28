@@ -17,6 +17,6 @@ namespace AeroMessages.Matrix
         public HalfFloat QualityOfServiceDown;
         public HalfFloat QualityOfServiceUp;
 
-        [AeroBlob(typeof(ushort))] public byte[] Unk8;
+        [AeroBlob(typeof(ushort))] public byte[] Unk8; // always empty from the 1962 client
     }
 }
