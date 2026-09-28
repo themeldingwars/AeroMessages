@@ -17,6 +17,6 @@ namespace AeroMessages.GSS.Deployable.Events
 
         // Unique to TookHit
         public ushort ShortTime;
-        public byte Unk2;
+        public byte ViewKickScale; // camera kick multiplier, value * 10 / 255, the client never reads it for deployables
     }
 }
