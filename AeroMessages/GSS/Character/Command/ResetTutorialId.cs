@@ -8,6 +8,6 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.ResetTutorialId, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class ResetTutorialId
     {
-        public uint Unk1;
+        public uint TutorialId;
     }
 }

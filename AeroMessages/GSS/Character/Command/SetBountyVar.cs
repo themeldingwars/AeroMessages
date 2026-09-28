@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.SetBountyVar, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class SetBountyVar
     {
-        public uint Unk1;
+        public uint BountyId;
         [AeroString] public string Unk2;
         [AeroString] public string Unk3;
     }

@@ -9,6 +9,6 @@ namespace AeroMessages.GSS.Character.Command
     public partial class NotifyDialogScriptComplete
     {
         public uint Unk1;
-        public uint Unk2;
+        public uint DialogScriptId;
     }
 }

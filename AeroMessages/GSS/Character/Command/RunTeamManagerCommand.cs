@@ -18,7 +18,7 @@ namespace AeroMessages.GSS.Character.Command
             Kick = 5
         }
         public TeamManagerCommandType Type;
-        [AeroString] public string Unk1;
+        [AeroString] public string PlayerName;
         public byte Unk2;
     }
 }
