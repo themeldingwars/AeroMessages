@@ -9,9 +9,9 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.EncounterUIScopeIn, GssVersion.V1, GssVersion.V74)]
     public partial class EncounterUIScopeIn
     {
+        // Kept for callers that still pass the packed size, the values are read to the end now
         public EncounterUIScopeIn(int size)
         {
-            _size = size;
         }
 
         public EncounterUIScopeIn()
@@ -27,10 +27,8 @@ namespace AeroMessages.GSS.Generic
 
         [AeroArray(typeof(byte))] public SinCardData[] SinCard;
 
-        private int _size;
-
-        [AeroArray(nameof(_size))]
-        public byte[] ShadowFieldValues;
+        // Shadow field changes of the encounter view described by Header, parse with AeroEncounters.GetEncounterClass(name).UnpackChanges
+        [AeroBlob] public byte[] ShadowFieldValues;
     }
 
     [AeroBlock]
