@@ -14,7 +14,7 @@ namespace AeroMessages.GSS.AreaVisualData
         [AeroIf(nameof(HaveUnk4), 1)] public Vector3 Unk4;
         public QuantisedQuaternion Rotation;
         public byte Unk9; // loop?
-        public uint Unk10; // group? time?
+        public uint StartTime; // server time in ms
         public HalfFloat Scale;
         public byte HaveUnk12;
         [AeroIf(nameof(HaveUnk12), 1)] public ParticleEffectUnkData Unk12;
