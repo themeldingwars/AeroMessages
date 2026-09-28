@@ -8,6 +8,6 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.ClientUIEvent, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class ClientUIEvent
     {
-        [AeroString] public string Unk;
+        [AeroString] public string Message;
     }
 }
