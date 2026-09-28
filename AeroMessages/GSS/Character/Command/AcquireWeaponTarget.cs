@@ -9,7 +9,7 @@ namespace AeroMessages.GSS.Character.Command
     public partial class AcquireWeaponTarget
     {
         public uint Unk1;
-        public ulong Unk2;
+        public ulong TargetId;
         public float Unk3;
         public sbyte Unk4;
     }

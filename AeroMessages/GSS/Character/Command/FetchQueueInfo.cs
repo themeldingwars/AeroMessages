@@ -12,7 +12,7 @@ namespace AeroMessages.GSS.Character.Command
         [AeroString]
         public string[] Keys;
 
-        public ulong Unk2;
+        public ulong TeamId;
 
         [AeroSdb("dbitems::Battleframe", "id")]
         public uint ChassisId;
