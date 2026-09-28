@@ -12,8 +12,8 @@ namespace AeroMessages.GSS.Character.Event
     {
         public ushort ShortTime;
         public EntityId Killer;
-        public byte Unk1;
-        public byte Unk2;
-        public byte Unk3;
+        public byte Unk1; // Always 6 (Living) in 1962 data, maybe the state before death
+        public CharacterStateData.CharacterStatus State; // Dead or Incapacitated, CharacterState.Time matches ShortTime
+        public CombatLogRow.CombatSourceType SourceType;
     }
 }
