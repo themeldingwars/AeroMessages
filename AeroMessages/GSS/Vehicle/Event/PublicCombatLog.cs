@@ -6,6 +6,7 @@ namespace AeroMessages.GSS.Vehicle.Event
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssVehicleMessage.PublicCombatLog, GssVehicleView.CombatController, GssVersion.V1, GssVersion.V74)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssVehicleMessage.PublicCombatLog, GssVehicleView.ObserverView, GssVersion.V74, GssVersion.V74)]
     public partial class PublicCombatLog
     {
         public int HaveData;
