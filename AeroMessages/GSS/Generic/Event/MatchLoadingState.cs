@@ -9,7 +9,7 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.MatchLoadingState, GssVersion.V1, GssVersion.V74)]
     public partial class MatchLoadingState
     {
-        public sbyte Unk1;
+        public sbyte IsLoading;
         [AeroArray(typeof(byte))] public MatchLoadingStateData[] Players;
     }
 
@@ -18,6 +18,14 @@ namespace AeroMessages.GSS.Generic
     {
         public EntityId Player;
         [AeroString] public string Name;
-        public byte Unk3;
+        public MatchLoadingFlags Flags;
+    }
+
+    [System.Flags]
+    public enum MatchLoadingFlags : byte
+    {
+        None = 0,
+        Connected = 1,
+        Loaded = 2,
     }
 }

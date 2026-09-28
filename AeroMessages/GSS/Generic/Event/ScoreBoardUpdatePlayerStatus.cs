@@ -15,7 +15,7 @@ namespace AeroMessages.GSS.Generic
         public uint ChassisId;
         public byte PvPRank;
         public byte CharacterState; // CharacterStateData.CharacterStatus
-        public sbyte Unk5;
+        public sbyte IsSquaded;
         public byte Unk6;
     }
 }
