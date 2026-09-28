@@ -10,8 +10,8 @@ namespace AeroMessages.GSS.Character.Command
     public partial class ReportProjectileHit
     {
         public ushort TraceRef; // Part of the uint used to group trace data in debugweapon.
-        public ushort ShortTime; // Time when this hit is reported
-        public byte Unk2; // Usually 1, capture has a few cases of 2 or 3. Maybe like CombatLogSource? Or related to the hitreg/prediction?
+        public ushort ShortTime; // Low 16 bits of the FireWeaponProjectile time of the projectile that hit
+        public byte Unk2; // 1 for weapon projectiles, 2 or 3 seen only for ability projectiles
 
         // Seems to be the direction onto the part of the ragdoll that was hit.
         public sbyte QuantisedDirectionX;
