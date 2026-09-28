@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.DuelNotification, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)] // Uncertain controller
     public partial class DuelNotification
     {
-        public DuelData Unk1;
+        public DuelData Duel;
         public ulong Unk2;
     }
 }
