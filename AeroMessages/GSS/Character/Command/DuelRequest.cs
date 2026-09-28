@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.DuelRequest, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class DuelRequest
     {
-        public DuelData Unk1;
-        public byte Unk2;
+        public DuelData Duel;
+        public DuelState RequestedState;
     }
 }
