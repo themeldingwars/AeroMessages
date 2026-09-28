@@ -10,10 +10,10 @@ namespace AeroMessages.GSS.Character.Event
     public partial class TrackerEvent
     {
         public EntityId Entity;
-        public byte Unk1; // 2 deployable, 1 character, 0 when tracking ends
+        public byte TrackingType; // 0 stops tracking, 1 character, 2 deployable
         public uint Unk2; // dbcharacter::Deployable id for deployables
         public byte Unk3;
         [AeroString] public string Text;
-        public byte Unk4;
+        public byte Unk4; // Flags: 0x02 uses the pulse values, 0x10 sets a marker flag
     }
 }
