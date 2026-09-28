@@ -10,7 +10,7 @@ namespace AeroMessages.GSS.Generic
     public partial class ScoreBoardAddPlayer
     {
         public EntityId Player;
-        public ulong Unk2;
+        public ulong ArmyId; // published per team while ScoreBoardInit.UseArmyTeams is set
         [AeroString] public string Name;
         public float Unk4;
         public byte Team;
@@ -18,7 +18,7 @@ namespace AeroMessages.GSS.Generic
         public uint ChassisId;
         public byte PvPRank;
         public byte CharacterState; // CharacterStateData.CharacterStatus
-        public sbyte Unk9;
+        public sbyte IsSquaded;
         public byte Unk10;
     }
 }
