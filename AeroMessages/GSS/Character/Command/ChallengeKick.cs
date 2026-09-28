@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.ChallengeKick, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class ChallengeKick
     {
-        public ulong Unk1;
-        [AeroString] public string Unk2;
+        public ulong ChallengeId;
+        [AeroString] public string PlayerName;
     }
 }

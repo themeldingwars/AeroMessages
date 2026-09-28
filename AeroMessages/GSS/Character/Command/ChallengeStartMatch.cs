@@ -8,6 +8,6 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.ChallengeStartMatch, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class ChallengeStartMatch
     {
-        public ulong Unk1;
+        public ulong ChallengeId;
     }
 }

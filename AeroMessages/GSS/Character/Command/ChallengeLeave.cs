@@ -8,6 +8,6 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.ChallengeLeave, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class ChallengeLeave
     {
-        public ulong Unk1;
+        public ulong ChallengeId;
     }
 }

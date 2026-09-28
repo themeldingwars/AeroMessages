@@ -8,9 +8,9 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.ChallengeInvitation, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class ChallengeInvitation
     {
-        public ulong Unk1;
-        [AeroString] public string Unk2;
-        public byte Unk3;
-        public uint Unk4;
+        public ulong ChallengeId;
+        [AeroString] public string PlayerName;
+        public byte IsSpectator;
+        public uint Team;
     }
 }

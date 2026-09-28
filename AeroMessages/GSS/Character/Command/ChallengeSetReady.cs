@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.ChallengeSetReady, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class ChallengeSetReady
     {
-        public ulong Unk1;
-        public sbyte Unk2; // Ready state?
+        public ulong ChallengeId;
+        public sbyte Ready;
     }
 }

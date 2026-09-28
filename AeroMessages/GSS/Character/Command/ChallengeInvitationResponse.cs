@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.ChallengeInvitationResponse, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class ChallengeInvitationResponse
     {
-        public ulong ChallengeId; // Assumption
-        public sbyte Unk2;
+        public ulong ChallengeId;
+        public sbyte Accept;
     }
 }
