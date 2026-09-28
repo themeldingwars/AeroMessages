@@ -281,7 +281,7 @@ namespace AeroMessages.GSS
     public struct ScopeBubbleInfoData
     {
         public uint Layer;
-        public uint Unk2;
+        public uint VisibilityMask; // objects are only visible when their masks share a bit
     }
 
     [AeroBlock]

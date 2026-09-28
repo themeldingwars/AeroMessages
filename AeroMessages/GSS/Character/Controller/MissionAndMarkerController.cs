@@ -155,7 +155,7 @@ namespace AeroMessages.GSS.Character.Controller
     [AeroBlock]
     public struct ContextFlagData
     {
-        public ushort Unk1;
-        public byte Unk2;
+        public ushort Id; // index into the client's context flag array
+        public byte Value; // bit 0 is the flag's state
     }
 }
