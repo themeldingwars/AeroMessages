@@ -7,7 +7,10 @@ namespace AeroMessages.Control
     [AeroMessageId(MsgType.Control, MsgSrc.Both, 0)]
     public partial class CloseConnection
     {
-        [AeroArray(4)]
-        public byte[] Unk;
+        // Big-endian on the wire, swap the bytes after reading. 0 when the sender gives no code.
+        public uint ShutdownCode;
+
+        // Optional ASCII text, up to 243 bytes, no length prefix and no terminator
+        [AeroBlob] public byte[] Reason = [];
     }
 }
