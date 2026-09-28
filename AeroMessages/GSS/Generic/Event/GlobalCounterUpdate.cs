@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.GlobalCounterUpdate, GssVersion.V1, GssVersion.V74)]
     public partial class GlobalCounterUpdate
     {
-        [AeroString] public string Unk1;
-        public ulong Unk2;
+        [AeroString] public string LeaderboardName;
+        public ulong Counter;
     }
 }

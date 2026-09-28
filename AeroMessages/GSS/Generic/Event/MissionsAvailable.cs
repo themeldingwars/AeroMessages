@@ -9,7 +9,7 @@ namespace AeroMessages.GSS.Generic
     public partial class MissionsAvailable
     {
         [AeroArray(typeof(byte))] public MissionsAvailableData[] Missions;
-        public ulong Unk2;
+        public ulong Npc; // the mission giver's entity id, 0 = none
     }
 
     [AeroBlock]
