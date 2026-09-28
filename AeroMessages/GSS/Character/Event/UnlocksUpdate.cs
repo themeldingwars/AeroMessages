@@ -91,8 +91,6 @@ namespace AeroMessages.GSS.Character.Event
         public uint CertId;
 
         public byte HaveItemSdbId;
-        [AeroIf(nameof(HaveItemSdbId), 1)]
-        [AeroSdb("dbitems::RootItem", "sdb_id")]
-        public uint ItemSdbId;
+        [AeroIf(nameof(HaveItemSdbId), 1)] public uint ItemSdbId;
     }
 }
