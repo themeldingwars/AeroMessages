@@ -32,7 +32,8 @@ namespace AeroMessages.GSS.Vehicle
     public struct DeployableIdsData
     {
         public EntityId Target;
-        public uint Unk1;
-        public byte Unk2;
+        [AeroSdb("vcs::BaseComponentDef", "component_id")]
+        public uint ComponentId; // vcs::DeployableComponentDef / vcs::DropPodComponentDef id
+        public byte HardpointIndex; // drop pod hardpoint (HP_DropPod_N), 0 for single hardpoint components, 255 = slot unused
     }
 }
