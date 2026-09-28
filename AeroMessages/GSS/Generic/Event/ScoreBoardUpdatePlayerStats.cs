@@ -11,9 +11,9 @@ namespace AeroMessages.GSS.Generic
     {
         public EntityId Player;
 
-        // Simliar to PublicCombatLog
-        public int HaveData;
-        [AeroIf(nameof(HaveData), 1)]
+        // Read_CombatLog (0x009f3f50), similar to PublicCombatLog. The client throws unless Version is 1
+        public int Version;
+        [AeroIf(nameof(Version), 1)]
         [AeroBlob(typeof(ushort))]
         public byte[] Data;
         /*
