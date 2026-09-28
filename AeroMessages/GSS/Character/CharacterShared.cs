@@ -267,7 +267,7 @@ namespace AeroMessages.GSS.Character
     public struct SlottedItemUnk2x4
     {
         public uint Unk1;
-        public uint Unk2;
+        public float Unk2;
     }
 
     [AeroBlock]
