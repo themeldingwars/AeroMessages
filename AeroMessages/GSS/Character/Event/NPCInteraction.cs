@@ -11,6 +11,6 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.NPCInteraction, GssCharacterView.NPCController, GssVersion.V74, GssVersion.V74)]
     public partial class NPCInteraction
     {
-        public EntityId Target; // Assumption
+        public EntityId Target; // Assumption, the 1962 client only logs "Received spurious NPC interaction event"
     }
 }

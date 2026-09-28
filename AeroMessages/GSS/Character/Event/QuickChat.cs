@@ -9,6 +9,7 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.QuickChat, GssCharacterView.ObserverView, GssVersion.V74, GssVersion.V74)]
     public partial class QuickChat
     {
-        public uint Unk1;
+        [AeroSdb("dbquickchatdata::QuickChatCommand", "id")]
+        public uint QuickChatId; // the speaker is the entity the message is routed to
     }
 }

@@ -10,7 +10,7 @@ namespace AeroMessages.GSS.Character.Event
     {
         [AeroSdb("apt::AbilityData", "id")]
         public uint FailedAbilityId;
-        public uint Unk2; // FailedTime? Its 0 in captures though.
+        public uint ErrorCode;
         public AbilityCooldownsData AbilityCooldownsData;
     }
 }
