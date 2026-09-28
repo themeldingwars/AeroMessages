@@ -8,6 +8,6 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.ClearPreviousBounties, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class ClearPreviousBounties
     {
-        public byte Unk1;
+        public BountyCategory Category;
     }
 }
