@@ -1,6 +1,7 @@
 using Aero.Gen.Attributes;
 using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
+using AeroMessages.GSS.Character;
 
 namespace AeroMessages.GSS.Generic
 {
@@ -9,7 +10,7 @@ namespace AeroMessages.GSS.Generic
     public partial class BountyListActiveAck
     {
         public byte Success;
-        public byte Unk2; // Count or category?
+        public BountyCategory Category; // 0 = all
         [AeroString(typeof(ushort))] public string JSON;
     }
 }
