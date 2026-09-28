@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.SelfReviveResponse, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class SelfReviveResponse
     {
-        public sbyte Unk1;
+        public sbyte Success;
         public uint Unk2;
         public uint Unk3;
     }

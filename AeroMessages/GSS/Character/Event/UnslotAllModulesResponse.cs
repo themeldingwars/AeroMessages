@@ -9,6 +9,6 @@ namespace AeroMessages.GSS.Character.Event
     public partial class UnslotAllModulesResponse
     {
         public ulong ItemGUID;
-        public sbyte Unk2;
+        public sbyte Success;
     }
 }
