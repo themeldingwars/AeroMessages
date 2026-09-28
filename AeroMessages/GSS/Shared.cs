@@ -98,11 +98,15 @@ namespace AeroMessages.GSS
             Eta = 3,
             // One of CardType / FadeDistance[Jetball] / ShowThroughGeometryDistance / MinimapIcon / IconTint
             EnumByte = 4,
-            // 5 goto the delete
+            // 5 is invalid, the client throws
             Short = 6,
             Timer = 7,
             // Changes falsy default value to true and vice versa, has no explicit value like other types
-            BoolToggle = 8
+            BoolToggle = 8,
+            // No value, resets the field to 0 / false
+            Reset = 0xFE,
+            // No value, leaves the field empty
+            Empty = 0xFF,
         }
 
         public SinCardFieldData.SincardFieldDataType Type;
