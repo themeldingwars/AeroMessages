@@ -9,5 +9,7 @@ namespace AeroMessages.Control
     {
         public ushort NextSeqNum;
         public ushort AckForNum;
+
+        [AeroBlob] public byte[] AdditionalAcks = [];
     }
 }
