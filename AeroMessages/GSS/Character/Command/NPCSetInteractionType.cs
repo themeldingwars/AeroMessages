@@ -9,6 +9,7 @@ namespace AeroMessages.GSS.Character.Command
     public partial class NPCSetInteractionType
     {
         public byte Unk1;
-        public ushort Unk2; // FUN_007377d0 TODO: Seems like something more is read based of this
+        public ushort Unk2BitCount; // Number of bits minus one
+        [AeroBlob] public byte[] Unk2Bits; // ((Unk2BitCount >> 6) + 1) 64-bit words
     }
 }
