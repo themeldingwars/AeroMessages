@@ -9,6 +9,6 @@ namespace AeroMessages.GSS.Character.Event
     public partial class FabricationStartResponse
     {
         public FabricationCommonData1 Response;
-        public uint Unk2;
+        public FabricationResult Result;
     }
 }
