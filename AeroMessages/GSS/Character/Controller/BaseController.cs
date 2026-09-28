@@ -195,9 +195,9 @@ namespace AeroMessages.GSS.Character.Controller
     [AeroBlock]
     public struct PermanentStatusEffectsInnerData
     {
-        public uint Id; // TODO: Verify
+        public uint Id;
         public uint Unk2;
-        public ulong TimestampMicro; // unix time in microseconds
+        public ulong TimestampMicro; // unix time in microseconds, the client counts the remaining seconds down to it
     }
 
     [AeroBlock]
@@ -251,7 +251,7 @@ namespace AeroMessages.GSS.Character.Controller
     [AeroBlock]
     public struct EncounterPartyTupleData
     {
-        public ulong Unk1;
+        public ulong EncounterPartyId; // the player is in this party's ENCOUNTER chat channel
         public byte Unk2;
     }
 
@@ -273,25 +273,35 @@ namespace AeroMessages.GSS.Character.Controller
     [AeroBlock]
     public struct CachedAssetsDeepData
     {
-        public byte Unk1;
-        [AeroArray(typeof(byte))] public uint[] Unk2;
+        public enum CachedAssetSdbType : byte
+        {
+            DeployableType = 0,
+            StatusEffect = 2,
+            VehicleType = 8,
+            MonsterType = 11,
+            ParticleEffect = 18,
+            CameraSequence = 32,
+        }
+
+        public CachedAssetSdbType SdbType;
+        [AeroArray(typeof(byte))] public uint[] SdbIds; // preloaded by the client
     }
 
     [AeroBlock]
     public struct ArcStatusData
     {
         public ulong Unk1;
-        public uint Unk2;
+        public uint ArcId;
         public byte Unk3;
-        public byte Unk4;
+        public byte PercentComplete;
     }
 
     [AeroBlock]
     public struct TimedDailyRewardResultData
     {
-        [AeroArray(3)] public uint[] Unk1;
-        [AeroArray(3)] public uint[] Unk2;
-        public byte Unk3;
+        [AeroArray(3)] public uint[] RewardIds;
+        [AeroArray(3)] public uint[] RewardQuantities;
+        public byte WonIndex; // index into RewardIds, 3 or more: nothing won
     }
 
     [AeroBlock]
