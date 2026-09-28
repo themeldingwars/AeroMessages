@@ -8,8 +8,8 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.ChallengeSwapTeam, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class ChallengeSwapTeam
     {
-        public ulong Unk1;
-        public ulong Unk2;
-        public ulong Unk3;
+        public ulong ChallengeId;
+        public ulong Member1Id;
+        public ulong Member2Id;
     }
 }
