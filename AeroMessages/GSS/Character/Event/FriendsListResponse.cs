@@ -8,15 +8,15 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.FriendsListResponse, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class FriendsListResponse
     {
-        [AeroArray(typeof(byte))] public FriendsListData[] Unk1;
-        public uint Unk2;
+        [AeroArray(typeof(byte))] public FriendsListData[] Friends;
+        public uint Page; // Counts up per response of up to 50 friends, an empty response ends the list
     }
 
     [AeroBlock]
     public struct FriendsListData
     {
-        public ulong Unk1;
-        [AeroString] public string Unk2;
+        public ulong CharacterGuid;
+        [AeroString] public string Name;
         [AeroString] public string Unk3;
         public byte Unk4;
         public uint Unk5;
