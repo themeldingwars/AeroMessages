@@ -13,6 +13,12 @@ namespace AeroMessages.Matrix
         [AeroArray(typeof(byte))]
         public RequestByEntity[] EntityRequests; // mRequestingKeyframes?
 
+        // More than 255 entity requests continue in a second byte-counted chunk right after a full one
+        [AeroIf(nameof(HaveRequestByEntityID), 1)]
+        [AeroIf("EntityRequests.Length", 255)]
+        [AeroArray(typeof(byte))]
+        public RequestByEntity[] EntityRequestsContinued;
+
         public byte HaveRequestByRefID;
         [AeroIf(nameof(HaveRequestByRefID), 1)]
         [AeroArray(typeof(byte))]
@@ -23,8 +29,8 @@ namespace AeroMessages.Matrix
     public struct RequestByEntity
     {
         public ulong Entity;
-        public ushort RefID;
-        public byte Unk2;
+        public ushort RefID; // 0xFFFF when the client has no ref id for the entity
+        public byte ChecksumStatus; // 0 = no checksum (Checksum is 0), 1 = client checksum differs from the server's, 2 = matches
         public uint Checksum;
     }
 }
