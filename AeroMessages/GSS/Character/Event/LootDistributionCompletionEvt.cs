@@ -8,9 +8,9 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.LootDistributionCompletionEvt, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class LootDistributionCompletionEvt
     {
-        public uint Unk1;
-        public byte Unk2;
-        [AeroArray(typeof(byte))] public LootDistributionData[] Unk3;
-        public ulong Unk4;
+        public uint DistributionId;
+        public LootDistributionState RollType;
+        [AeroArray(typeof(byte))] public LootDistributionData[] Participants;
+        public ulong Winner;
     }
 }

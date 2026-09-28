@@ -8,8 +8,8 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.LootDistributionUpdateEvt, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class LootDistributionUpdateEvt
     {
-        public uint Unk1;
-        [AeroArray(typeof(byte))] public LootDistributionData[] Unk2;
+        public uint DistributionId;
+        [AeroArray(typeof(byte))] public LootDistributionData[] Participants;
         public uint Unk3;
     }
 }
