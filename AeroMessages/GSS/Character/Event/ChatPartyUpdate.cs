@@ -11,9 +11,7 @@ namespace AeroMessages.GSS.Character.Event
     {
         public EntityId PartyId; // the leader's character id when the party was created
         [AeroString] public string LeaderName;
-        public ulong MemberId; // the member this update is about
-        [AeroString] public string MemberName;
-        public ChatPartyStatus MemberStatus;
+        public ChatPartyMember Member;
 
         [AeroArray(typeof(byte))]
         public ChatPartyMember[] Members;
