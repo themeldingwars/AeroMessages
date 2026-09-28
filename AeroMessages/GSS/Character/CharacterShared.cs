@@ -695,6 +695,23 @@ namespace AeroMessages.GSS.Character
         WeeklyPvP = 7,
     }
 
+    // The client's bounty type names (0x01bb3078), a single bit per type
+    public enum BountyType : uint
+    {
+        Unknown = 0,
+        Achiever = 1,
+        Crafter = 2,
+        Economist = 4,
+        Hitman = 8,
+        Socializer = 16,
+        Traveler = 32,
+        PvPFreeForAll = 64,
+        PvPJetball = 128,
+        PvPMonstersVsSoldiers = 256,
+        PvPNonAligned = 512,
+        PvPTeamDeathMatch = 1024,
+    }
+
     // The client's interaction type names (0x00780d60)
     public enum InteractionType : byte
     {
