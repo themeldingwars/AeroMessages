@@ -5,7 +5,7 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Character.Event
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.BountyRerollProductInfoUpdateEvt, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)] // Not sure controller
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.BountyRerollProductInfoUpdateEvt, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class BountyRerollProductInfoUpdateEvt
     {
         [AeroArray(typeof(byte))] public BountyRerollProductInfoData[] Data;
@@ -14,8 +14,8 @@ namespace AeroMessages.GSS.Character.Event
     [AeroBlock]
     public struct BountyRerollProductInfoData
     {
-        public uint Unk1;
-        public uint Unk2;
-        public uint Unk3;
+        public uint Category; // BountyCategory value as uint
+        public uint Cost;
+        public uint UpdatedAt; // a newer value replaces the stored entry
     }
 }
