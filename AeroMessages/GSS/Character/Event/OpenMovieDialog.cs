@@ -10,6 +10,6 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.OpenMovieDialog, GssCharacterView.NPCController, GssVersion.V74, GssVersion.V74)]
     public partial class OpenMovieDialog
     {
-        [AeroString] public string Unk;
+        [AeroString] public string Movie; // used as both the video and the audio asset name
     }
 }

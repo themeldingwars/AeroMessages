@@ -11,7 +11,7 @@ namespace AeroMessages.GSS.Character.Event
     {
         public ushort TraceRef; // Part of the uint used to group trace data in debugweapon.
         public ushort ShortTime;
-        public byte Unk2;
-        public byte Unk3;
+        public byte SegmentFraction; // Hit time within the ShortTime..ShortTime + 50 window as a fraction, value * 0.02 / 255
+        public byte Unk3; // impact kind 0..3, picks the projectile's impact definition
     }
 }
