@@ -75,9 +75,9 @@ namespace AeroMessages.GSS.Character.Event
         public byte Unk5;
 
         [AeroArray(typeof(byte))]
-        public ItemUnkData[] Unk6;
+        public ItemUnkData[] Attributes;
 
-        public ushort Unk7;
+        public ushort Quality;
 
         [AeroArray(typeof(byte))]
         public uint[] Modules;
@@ -86,8 +86,9 @@ namespace AeroMessages.GSS.Character.Event
     [AeroBlock]
     public struct ItemUnkData
     {
-        public uint Unk1;
-        public uint Unk2;
+        [AeroSdb("dbitems::AttributeDefinition", "id")]
+        public uint AttributeId;
+        public float Value;
     }
 
     [AeroBlock]
@@ -101,7 +102,7 @@ namespace AeroMessages.GSS.Character.Event
 
         public uint Quantity;
         public byte SubInventory;
-        public uint Unk2;
+        public uint TimestampEpoch; // Unix Seconds, 0 in full updates
     }
 
     [AeroBlock]
