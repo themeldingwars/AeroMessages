@@ -17,8 +17,8 @@ namespace AeroMessages.GSS.Generic
     {
         [AeroSdb("dbencounterdata::Arcs", "id")]
         public uint ArcId;
-        public uint Unk2; // State related
-        public uint Unk3; // State related
+        public uint Unk2; // Always >= CompletionCount
+        public uint CompletionCount;
         public uint CompletionTimeEpoch;
     }
 }
