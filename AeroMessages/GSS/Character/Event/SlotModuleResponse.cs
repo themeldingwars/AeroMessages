@@ -9,14 +9,14 @@ namespace AeroMessages.GSS.Character.Event
     public partial class SlotModuleResponse
     {
         public ulong ItemGUID;
-        [AeroArray(typeof(byte))] public SlotModuleResponseData[] Unk1;
-        public sbyte Unk2;
+        [AeroArray(typeof(byte))] public SlotModuleResponseData[] Slotted;
+        public sbyte Success;
     }
 
     [AeroBlock]
     public struct SlotModuleResponseData
     {
-        public uint Unk1; // Module id then?
-        public byte Unk2; // Ok or no?
+        public uint ModuleSdbId;
+        public byte SlotIndex; // Lua gets SlotIndex - 3
     }
 }

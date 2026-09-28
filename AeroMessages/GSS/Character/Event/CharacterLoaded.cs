@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.CharacterLoaded, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class CharacterLoaded
     {
-        public sbyte Unk1;
-        public sbyte Unk2;
+        public sbyte ShowDailyLoginReward;
+        public sbyte ReceivedNewbieBonus;
     }
 }
