@@ -716,6 +716,24 @@ namespace AeroMessages.GSS.Character
         HolsterTalk = 15,
     }
 
+    // Shared by the vendor token machine and the timed daily reward
+    // Roll from Game.SpendTokenAtVendor or Player.RequestTimedDailyRewardRoll, Commit from Game.ClaimTokenVendorRewards or Player.RequestTimedDailyRewardCommit
+    public enum TokenMachineAction : byte
+    {
+        Roll = 0,
+        Reroll = 1,
+        Rickroll = 2,
+        Commit = 3,
+    }
+
+    public enum TokenMachineState : byte
+    {
+        Idle = 0,
+        Started = 1,
+        Rolled = 2,
+        Error = 3,
+    }
+
     public enum DuelState : byte
     {
         Uninitialized = 0,
