@@ -48,7 +48,7 @@ namespace AeroMessages.GSS.Character
     {
         public uint ActionId;
         public uint Flags; // rarity in the low 5 bits
-        public uint Unk3;
+        public float Cost;
         [AeroArray(typeof(byte))] public FabricationData_00d9a1a0[] Effects;
     }
 
@@ -57,7 +57,7 @@ namespace AeroMessages.GSS.Character
     {
         public uint Type;
         public uint Value1; // uint or float depending on Type
-        public uint Unk3;
+        public float Value2;
     }
 
     [AeroBlock]
@@ -71,6 +71,6 @@ namespace AeroMessages.GSS.Character
     public struct FabricationData_00d9ad00
     {
         public uint IngredientId;
-        public uint Unk2;
+        public float Multiplier;
     }
 }
