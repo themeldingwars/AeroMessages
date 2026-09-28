@@ -6,6 +6,7 @@ namespace AeroMessages.GSS.Deployable.Events
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssDeployableMessage.TookHit, GssDeployableView.ObserverView, GssVersion.V1, GssVersion.V74)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssDeployableMessage.TookHit, GssDeployableView.NPCObserverView, GssVersion.V74, GssVersion.V74)]
     public partial class TookHit
     {
         // These are in DealtHit too

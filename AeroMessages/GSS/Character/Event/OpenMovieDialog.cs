@@ -6,6 +6,8 @@ namespace AeroMessages.GSS.Character.Event
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.OpenMovieDialog, GssCharacterView.CombatController, GssVersion.V1, GssVersion.V74)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.OpenMovieDialog, GssCharacterView.BaseController, GssVersion.V74, GssVersion.V74)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.OpenMovieDialog, GssCharacterView.NPCController, GssVersion.V74, GssVersion.V74)]
     public partial class OpenMovieDialog
     {
         [AeroString] public string Unk;

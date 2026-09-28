@@ -5,7 +5,7 @@ using static Aero.Gen.Attributes.AeroMessageIdAttribute;
 namespace AeroMessages.GSS.Character.Event
 {
     [Aero]
-    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.TookDebugWeaponHitPublic, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)] // TookDebugWeaponHitPublic
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.TookDebugWeaponHitPublic, GssCharacterView.CombatView, GssVersion.V1, GssVersion.V74)]
     public partial class TookDebugWeaponHitPublic // TookDebugWeaponHit has the same parser
     {
         public TookDebugWeaponHitData Data;
