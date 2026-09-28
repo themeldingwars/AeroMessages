@@ -710,12 +710,35 @@ namespace AeroMessages.GSS.Character
     [AeroBlock]
     public struct LootDistributionData
     {
-        public ulong Unk1; // Entity?
-        [AeroString] public string Unk2;
-        public byte Unk3;
-        public ushort Unk4;
-        public byte Unk5;
-        public byte Unk6;
+        public ulong CharacterGuid;
+        [AeroString] public string Name;
+        public LootDistributionState State;
+        public ushort RollValue;
+        public byte VoteCount;
+        public LootDistributionFlags Flags;
+    }
+
+    public enum LootDistributionType : byte
+    {
+        NeedOrGreed = 0,
+        PersonalLoot = 1,
+        Quartermaster = 2,
+    }
+
+    // Need and Greed are shown as Want and Pass for PersonalLoot and Quartermaster distributions
+    public enum LootDistributionState : byte
+    {
+        Waiting = 0,
+        Need = 1,
+        Greed = 2,
+        Removed = 3,
+    }
+
+    [Flags]
+    public enum LootDistributionFlags : byte
+    {
+        IsVoter = 1 << 0,
+        HasVoted = 1 << 1,
     }
 
     [AeroBlock]
