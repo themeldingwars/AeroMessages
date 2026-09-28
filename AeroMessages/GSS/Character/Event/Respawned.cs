@@ -10,7 +10,7 @@ namespace AeroMessages.GSS.Character.Event
     public partial class Respawned
     {
         public ushort ShortTime;
-        public sbyte Unk1;
-        public byte Unk2;
+        public sbyte Unk1; // 1 only together with Unk2 = 6
+        public byte Unk2; // CharacterStatus values: 1 after Ghost, 2 after Dead, 6 when respawned while alive
     }
 }
