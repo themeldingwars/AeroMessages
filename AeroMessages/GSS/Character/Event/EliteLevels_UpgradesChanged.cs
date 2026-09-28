@@ -8,11 +8,11 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.EliteLevels_UpgradesChanged, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class EliteLevels_UpgradesChanged
     {
-        public uint Unk1;
+        public uint ElitePoints;
 
         [AeroArray(typeof(byte))]
         public ElitePreviousUpgradeInfo[] PreviousUpgrades;
 
-        public byte Unk3;
+        public byte Success;
     }
 }
