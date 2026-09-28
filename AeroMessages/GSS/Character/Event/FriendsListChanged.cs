@@ -9,9 +9,9 @@ namespace AeroMessages.GSS.Character.Event
     public partial class FriendsListChanged
     {
         [AeroString] public string Name;
-        public uint Unk2;
-        public byte Unk3;
-        public byte Unk4;
-        public byte Unk5;
+        public uint StatusCode; // HTTP style, 200 or 404
+        public byte Added;
+        public byte Removed;
+        public byte Success;
     }
 }

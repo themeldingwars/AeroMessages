@@ -8,8 +8,8 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.TutorialStateUpdateEvt, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class TutorialStateUpdateEvt
     {
-        public uint Unk1;
-        public ulong Unk2;
-        public uint Unk3;
+        public uint TutorialChainId;
+        public ulong EncounterId;
+        public uint Unk3; // stored as the chain's value
     }
 }

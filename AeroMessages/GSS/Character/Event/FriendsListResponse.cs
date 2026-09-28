@@ -12,14 +12,22 @@ namespace AeroMessages.GSS.Character.Event
         public uint Page; // Counts up per response of up to 50 friends, an empty response ends the list
     }
 
+    public enum FriendStatusType : byte
+    {
+        None = 0,
+        Friend = 1,
+        PendingIn = 2,
+        PendingOut = 3,
+    }
+
     [AeroBlock]
     public struct FriendsListData
     {
         public ulong CharacterGuid;
         [AeroString] public string Name;
-        [AeroString] public string Unk3;
-        public byte Unk4;
-        public uint Unk5;
-        public byte Unk6;
+        [AeroString] public string Note;
+        public FriendStatusType StatusType;
+        public uint LastSeenAt; // unix seconds
+        public byte IsOnline;
     }
 }

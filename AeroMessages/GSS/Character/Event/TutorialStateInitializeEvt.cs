@@ -14,7 +14,7 @@ namespace AeroMessages.GSS.Character.Event
     [AeroBlock]
     public struct TutorialState2x4
     {
-        public uint Unk1;
-        public uint Unk2;
+        public uint TutorialChainId;
+        public uint Unk2; // same value as TutorialStateUpdateEvt.Unk3
     }
 }
