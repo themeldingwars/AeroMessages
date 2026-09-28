@@ -47,8 +47,8 @@ namespace AeroMessages.GSS.AreaVisualData.View
     [AeroBlock]
     public struct ContextFlag
     {
-        public ushort Unk1;
-        public byte Unk2;
+        public ushort Id; // fixed per slot
+        public byte Value; // 0/1
     }
 
     [AeroBlock]
