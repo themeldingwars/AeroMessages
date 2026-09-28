@@ -9,7 +9,7 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.Trail, GssVersion.V1, GssVersion.V74)]
     public partial class Trail
     {
-        public uint Unk1;
+        public uint Id; // TrailRequest.Id
         public byte Unk2; // 0, 1 or 2
 
         [AeroArray(typeof(byte))]

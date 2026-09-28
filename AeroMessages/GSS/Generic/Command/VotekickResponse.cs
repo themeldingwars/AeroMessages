@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Both, GssMessage.VotekickResponse, GssVersion.V1, GssVersion.V74)]
     public partial class VotekickResponse
     {
-        public ulong Unk1;
-        public sbyte Unk2;
+        public ulong DefendantId;
+        public sbyte ShouldKick;
     }
 }
