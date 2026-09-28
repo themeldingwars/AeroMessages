@@ -683,6 +683,18 @@ namespace AeroMessages.GSS.Character
         // --
     }
 
+    public enum BountyCategory : byte
+    {
+        Unknown = 0,
+        Quick = 1,
+        Daily = 2,
+        Weekly = 3,
+        Group = 4,
+        QuickPvP = 5,
+        DailyPvP = 6,
+        WeeklyPvP = 7,
+    }
+
     public enum DuelState : byte
     {
         Uninitialized = 0,
