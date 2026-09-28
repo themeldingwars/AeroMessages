@@ -10,6 +10,6 @@ namespace AeroMessages.GSS.Character.Command
     {
         public byte HaveData;
         [AeroIf(nameof(HaveData), 1)]
-        [AeroBlob] public byte[] Data;
+        [AeroBlob(typeof(ushort))] public byte[] Data;
     }
 }
