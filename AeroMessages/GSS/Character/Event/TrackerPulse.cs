@@ -11,14 +11,15 @@ namespace AeroMessages.GSS.Character.Event
     public partial class TrackerPulse
     {
         public EntityId Entity;
-        public int Unk1;
-        public int Unk2;
+        public int Health;
+        public int MaxHealth;
         public int Unk3;
         public int Unk4;
-        public float Unk5_Current; // Semes to range 0.0 - 400.0 (could be Current)
-        public float Unk5_Max; // Semes to range 0.0 - 400.0 (could be Max)
-        public uint Unk6; // Often "0", sometimes 1, 3
-        public Vector4 Unk7;
-        public uint Unk8; // Often "6"
+        public float Unk5_Current; // 0 - 400 on characters, drains and refills like jet energy, 0 on deployables
+        public float Unk5_Max;
+        public uint Unk6; // 0, 1 or 3 on characters, 0 on deployables
+        public Vector3 Position;
+        public float Heading; // Yaw in degrees
+        public uint Unk8; // 6, 0 in the all-zero pulse sent when tracking starts
     }
 }
