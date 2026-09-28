@@ -8,6 +8,6 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.ToggleMarketplace, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class ToggleMarketplace
     {
-        public sbyte Unk1;
+        public sbyte Open;
     }
 }

@@ -11,10 +11,10 @@ namespace AeroMessages.GSS.Character.Command
         [AeroString]
         public string TargetName;
 
-        public sbyte Unk1;
+        public sbyte Add;
 
-        public byte HaveUnk2;
-        [AeroIf(nameof(HaveUnk2), 1)]
-        [AeroString] public string Unk2;
+        public byte HaveNote;
+        [AeroIf(nameof(HaveNote), 1)]
+        [AeroString] public string Note;
     }
 }

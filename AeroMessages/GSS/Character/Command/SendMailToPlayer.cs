@@ -18,9 +18,9 @@ namespace AeroMessages.GSS.Character.Command
     [AeroBlock]
     public struct MailAttachmentData {
         public uint ItemSdbId;
-        [AeroString] public string Unk;
+        [AeroString] public string ResourceType;
         public ulong ItemGuid;
-        public uint Quality;  // Not sure about this one
+        public uint Quality;
         public uint Quantity;
     }
 }

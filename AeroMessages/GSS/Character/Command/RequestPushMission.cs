@@ -8,6 +8,6 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.RequestPushMission, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class RequestPushMission
     {
-        public uint Unk1;
+        public uint MissionId;
     }
 }
