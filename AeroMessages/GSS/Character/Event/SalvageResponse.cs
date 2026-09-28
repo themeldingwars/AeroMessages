@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.SalvageResponse, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class SalvageResponse
     {
-        public byte Unk1;
+        public byte Success;
 
         [AeroArray(typeof(byte))]
         public ItemSalvageResponse[] SalvageResponses;
