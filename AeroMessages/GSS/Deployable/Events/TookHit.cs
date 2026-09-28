@@ -17,6 +17,6 @@ namespace AeroMessages.GSS.Deployable.Events
 
         // Unique to TookHit
         public ushort ShortTime;
-        public byte Unk2;
+        public byte Unk2; // same wire field as Character TookHit.ViewKickScale, the client never reads it here
     }
 }
