@@ -11,6 +11,7 @@ namespace AeroMessages.GSS.Character.Event
     {
         public uint Time;
         public EntityId Entity;
-        public uint DialogId; // TODO: "dbdialogdata::DialogScript" ?
+        [AeroSdb("dbdialogdata::DialogScript", "id")]
+        public uint DialogId;
     }
 }
