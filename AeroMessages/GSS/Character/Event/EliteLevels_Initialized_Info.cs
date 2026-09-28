@@ -8,8 +8,8 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.EliteLevels_Initialized_Info, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class EliteLevels_Initialized_Info
     {
-        public uint LevelsPerRare; // award_frame_min_level
-        public uint AwardFrameMinLevel; // levels_per_rare
+        public uint LevelsPerRare; // levels_per_rare
+        public uint AwardFrameMinLevel; // award_frame_min_level
         public uint RevertCost; // revert_cost
         public uint RerollCost; // reroll_cost
     }

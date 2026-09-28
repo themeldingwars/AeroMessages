@@ -10,7 +10,7 @@ namespace AeroMessages.GSS.Character
     public struct EliteAvailableUpgradeInfo
     {
         public uint UpgradeId; // TODO: Pinpoint sdb table
-        public uint Unk_1;
+        public uint Category; // 1 stat upgrade, 2 item award, 3 and 4 other award tables
         public float StatValue;
 
         [AeroArray(typeof(byte))]

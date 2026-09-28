@@ -11,6 +11,6 @@ namespace AeroMessages.GSS.Character.Event
         [AeroArray(typeof(byte))]
         public EliteAvailableUpgradeInfo[] AvailableUpgrades;
 
-        public byte Unk1;
+        public byte Success;
     }
 }
