@@ -13,7 +13,7 @@ namespace AeroMessages.Matrix
         public byte PacketUploss; // The client side label for this value
         public byte PacketDownloss; // The client side label for this value
 
-        public ushort Unk5; // related: "prefs.probe_segment_bytes > TARGET_MSS_UNDERSHOOT"
+        public ushort MaxRecvSegmentBytes; // Running max of the client datagram sizes the server received, minus 12. Follows the client MTU probes. Related: "prefs.probe_segment_bytes > TARGET_MSS_UNDERSHOOT"
         public byte IsEverlastingGobsocket; // When changed to 1, triggers a notice "Everlasting Gobsocket".
 
         // -- FUN_00754d40
