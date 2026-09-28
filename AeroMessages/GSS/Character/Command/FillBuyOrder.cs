@@ -8,10 +8,10 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.FillBuyOrder, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class FillBuyOrder
     {
-        public ulong Unk1;
-        public ulong Unk2;
-        public uint Unk3;
-        public int Unk4;
-        public ulong Unk5;
+        public ulong RequestId;
+        public ulong ItemGuid;
+        public uint ItemSdbId;
+        public int Quantity;
+        public long PricePerUnit;
     }
 }
