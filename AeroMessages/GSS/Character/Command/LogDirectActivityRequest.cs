@@ -8,6 +8,6 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.LogDirectActivityRequest, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class LogDirectActivityRequest
     {
-        public uint Unk; // Unsure about type
+        // Nothing to parse
     }
 }
