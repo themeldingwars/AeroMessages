@@ -8,6 +8,6 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.SlotTech, GssVersion.V1, GssVersion.V74)]
     public partial class SlotTech
     {
-        public uint Unk; // sdbid?
+        public uint ItemSdbId; // slotted into the first consumable slot
     }
 }

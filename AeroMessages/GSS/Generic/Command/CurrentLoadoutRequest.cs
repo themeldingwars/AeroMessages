@@ -9,6 +9,6 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Both, GssMessage.CurrentLoadoutRequest, GssVersion.V1, GssVersion.V74)]
     public partial class CurrentLoadoutRequest
     {
-        public EntityId Target; // Assumption
+        public EntityId PlayerId;
     }
 }

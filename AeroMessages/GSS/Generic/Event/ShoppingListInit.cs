@@ -14,7 +14,7 @@ namespace AeroMessages.GSS.Generic
     [AeroBlock]
     public struct ShoppingListData
     {
-        public int Unk1;
-        public uint Unk2; // unk type
+        public int Unk1; // TrackRecipe passes 1
+        public uint BlueprintId;
     }
 }
