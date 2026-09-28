@@ -8,10 +8,8 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.PlaySoundId, GssVersion.V1, GssVersion.V74)]
     public partial class PlaySoundId
     {
-        // Sdb table 14, record_id column?
-        // Looks like there are variations of the message
-        // Record id works for some messages but not all.
-        public long Unk1; // An int64?
-        public ulong Unk2;
+        // > 0: sound id, <= 0: negated raw audio event id
+        public long SoundId;
+        public ulong SourceEntity; // 0 = not positional
     }
 }

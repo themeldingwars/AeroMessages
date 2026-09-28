@@ -10,9 +10,16 @@ namespace AeroMessages.GSS.Generic
     public partial class Trail
     {
         public uint Id; // TrailRequest.Id
-        public byte Unk2; // 0, 1 or 2
+        public TrailStatus Status;
 
         [AeroArray(typeof(byte))]
         public Vector3[] Points;
+    }
+
+    public enum TrailStatus : byte
+    {
+        Complete = 0,     // replaces the points
+        Continuation = 1, // continues the path already shown, the trail fails if the points don't connect
+        Failed = 2,       // no path, sent without points
     }
 }

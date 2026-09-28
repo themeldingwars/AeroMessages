@@ -10,6 +10,6 @@ namespace AeroMessages.GSS.Generic
     {
         public uint DialogId;
         [AeroArray(typeof(byte))] public ulong[] Unk2;
-        public byte Unk3;
+        public byte Interrupt;
     }
 }
