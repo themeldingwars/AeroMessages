@@ -19,7 +19,7 @@ namespace AeroMessages.GSS.Generic
         public uint MissionId;
 
         public byte Unk5;
-        public ulong Unk6;
+        public long Unk6;
         [AeroString] public string Name;
     }
 }
