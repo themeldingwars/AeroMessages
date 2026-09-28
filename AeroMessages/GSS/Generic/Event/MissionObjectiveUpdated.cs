@@ -24,6 +24,6 @@ namespace AeroMessages.GSS.Generic
 
         public byte Status; // Some special type (2 => completed)
 
-        public float Unk3; // Progress as Percentage
+        public float ProgressPct; // -1 = no progress bar
     }
 }
