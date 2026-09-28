@@ -382,9 +382,9 @@ namespace AeroMessages.GSS
         public Vector3 Up; // unit axis the slide offset is applied along
         public uint StartTime;
         public uint EndTime;
-        public float Unk5;
-        public byte Unk6;
-        /// 2: character rotates towards Unk1 over duration
+        public float FixedSpeed; // MovementSlideCommandDef fixed_speed
+        public byte VelocityType; // MovementSlideCommandDef velocity_type
+        /// 2: character rotates towards Destination over duration
         public byte OrientationType;
     }
 
@@ -399,18 +399,18 @@ namespace AeroMessages.GSS
         public Quaternion EndRotation;
         public float VerticalVelocity; // initial upward speed of the arc, m/s
         public float Gravity; // m/s^2
-        public byte Unk9;
-        public byte Unk10;
+        public byte VelocityType; // 1: the arc is simulated as a velocity, otherwise as positions
+        public byte OrientationType; // 1: keeps the rotation, otherwise interpolates StartRotation to EndRotation
     }
 
     [AeroBlock]
     public struct ForcedMovementType4Params
     {
-        public Vector3 Unk1;
+        public Vector3 TargetPosition; // rope pull point, relative to RelativeTo
         public uint StartTime;
         public uint EndTime;
         public float Speed;
-        public Vector3 Unk5;
+        public Vector3 Unk5; // stored where Type1 keeps Direction, the rope simulation doesn't read it
     }
 
     [AeroBlock]
@@ -419,7 +419,7 @@ namespace AeroMessages.GSS
         public Vector3 Velocity; // Bit of an assumption
         public uint Time1;
         public uint Time2;
-        public byte Unk2;
+        public byte Unk2; // bit 0 clear: the client scales Velocity by 100 / step
     }
 
     [AeroBlock]
@@ -441,7 +441,7 @@ namespace AeroMessages.GSS
     [AeroBlock]
     public struct ForcedMovementType8Params
     {
-        public Vector3 Unk1;
+        public Vector3 TargetPosition; // grapple climb target
         public uint Time1;
         public uint Time2;
         public float Extra;
@@ -464,7 +464,7 @@ namespace AeroMessages.GSS
         public Vector3 LookDirection;
         public float MaxAimAngleRad;
         public float Unk3;
-        public byte Unk4;
+        public byte Unk4; // stored where the other types keep OrientationType, 1 is special cased
     }
 
     [AeroBlock]
@@ -489,8 +489,8 @@ namespace AeroMessages.GSS
     {
         public uint StartTime;
         public uint EndTime;
-        public ulong Unk1;
-        public Vector3 Unk2;
+        public ulong AnchorEntity; // stored as the movement's RelativeTo entity
+        public Vector3 AnchorPosition;
         public float MaxRange;
         public float Unk4;
         public float Unk5;
