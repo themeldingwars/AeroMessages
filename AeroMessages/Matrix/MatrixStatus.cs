@@ -13,16 +13,16 @@ namespace AeroMessages.Matrix
         public byte PacketUploss; // The client side label for this value
         public byte PacketDownloss; // The client side label for this value
 
-        public ushort Unk5; // related: "prefs.probe_segment_bytes > TARGET_MSS_UNDERSHOOT"
+        public ushort MaxRecvSegmentBytes; // Running max of the client datagram sizes the server received, minus 12. Follows the client MTU probes. Related: "prefs.probe_segment_bytes > TARGET_MSS_UNDERSHOOT"
         public byte IsEverlastingGobsocket; // When changed to 1, triggers a notice "Everlasting Gobsocket".
 
-        // -- FUN_00754d40
+        // -- ReadOptional_MatrixStatusExtraData, the 1962 client frees it again without reading it
         public byte HaveUnk7;
         [AeroIf(nameof(HaveUnk7), 1)]
         [AeroArray(typeof(byte))] public MatrixStatusUnk7Data[] Unk7;
         // --
 
-        [AeroBlob(typeof(ushort))] public byte[] Unk8;
+        [AeroBlob(typeof(ushort))] public byte[] Unk8; // never read by the 1962 client
     }
 
     [AeroBlock]

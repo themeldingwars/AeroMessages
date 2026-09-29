@@ -9,19 +9,18 @@ namespace AeroMessages.Matrix
     public partial class ChallengeJoinResponse
     {
         public ulong ChallengeId; // Assumption
-        public sbyte Unk1;
-        public sbyte Unk2;
-        public sbyte Unk3;
-        public uint Unk4;
-        [AeroArray(typeof(byte))] public ChallengeJoinResponseUnk5Data Unk5;
-        public uint Unk6;
+        public sbyte Success;
+        public sbyte Created; // "Created" when set, "Accepted" otherwise
+        public sbyte Squad; // joined with the squad
+        public uint Unk4; // not passed on by the client
+        [AeroArray(typeof(byte))] public ChallengeJoinResponseUnk5Data[] Unk5; // the challenge roster
+        public uint Unk6; // selects the roster member with this MemberId
     }
 
     [AeroBlock]
     public struct ChallengeJoinResponseUnk5Data
     {
-        // This may be inaccurate
-        public uint Unk1;
+        public uint MemberId;
         [AeroString] public string Unk2;
         [AeroString] public string Unk3;
         public byte Unk4;

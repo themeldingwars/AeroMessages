@@ -7,7 +7,8 @@ namespace AeroMessages.Control
     [AeroMessageId(MsgType.Control, MsgSrc.Both, 2)]
     public partial class MatrixAck
     {
-        public ushort NextSeqNum;
+        // Sequence numbers are big-endian on the wire, swap the bytes after reading
+        public ushort NextSeqNum; // Next in-order sequence number expected from the peer
         public ushort AckForNum;
     }
 }

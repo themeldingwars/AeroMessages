@@ -5,17 +5,16 @@ namespace AeroMessages.Matrix
     [AeroBlock]
     public struct DevZoneInfoData
     {
-        // FUN_00755d40
-        [AeroArray(typeof(byte))] public DevPortsData DevPorts;
+        // Read_EnterZoneDevData 0x00755d40
+        [AeroArray(typeof(byte))] public DevPortsData[] DevPorts;
 
-        // FUN_00756a50
-        [AeroArray(typeof(byte))] public DevPidsData DevPids;
+        // ReadArray_String_And_Int 0x00756a50
+        [AeroArray(typeof(byte))] public DevPidsData[] DevPids;
     }
 
     [AeroBlock]
     public struct DevPortsData
     {
-        // FUN_00755d40
         [AeroString] public string Name;
         public ushort Port;
     }
@@ -23,7 +22,6 @@ namespace AeroMessages.Matrix
     [AeroBlock]
     public struct DevPidsData
     {
-        // FUN_00756a50
         [AeroString] public string Name;
         public uint Pid;
     }
@@ -39,11 +37,11 @@ namespace AeroMessages.Matrix
     [AeroBlock]
     public struct GameClockInfoData
     {
-        public ulong MicroUnix_1;
-        public ulong MicroUnix_2;
+        public ulong MicroUnix_1; // with ClockOffsetMicros the lower limit of the game clock
+        public ulong MicroUnix_2; // Server unix time when the GSS game time was EnterZone.SimulationSeedMs
         public double Timescale;
-        public ulong Unk3;
-        public ulong Unk4;
+        public ulong PausedAtMicros; // the clock stays at this value while Paused is set
+        public ulong ClockOffsetMicros; // added to every computed game clock time
         public byte Paused;
     }
 
