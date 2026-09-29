@@ -8,9 +8,9 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.VendorTokenMachineRequest, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class VendorTokenMachineRequest
     {
-        public byte Unk1;
+        public VendorTokenMachineAction Action;
         public byte Unk2;
-        public uint Unk3;
-        public uint Unk4;
+        public uint VendorId; // the token terminal the player interacts with
+        public uint TokenId;
     }
 }

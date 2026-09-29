@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.LootDistributionSetState, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class LootDistributionSetState
     {
-        public uint Unk1;
-        public byte Unk2;
+        public uint DistributionId;
+        public LootDistributionState State;
     }
 }

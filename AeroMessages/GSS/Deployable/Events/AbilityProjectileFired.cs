@@ -10,21 +10,21 @@ namespace AeroMessages.GSS.Deployable.Events
     public partial class AbilityProjectileFired
     {
         public ushort ShortTime;
-        public HalfVector3 MaybeHalfs; // ???
+        public HalfVector3 OriginOffset; // Projectile origin relative to the shooter position, world axes
         public QuantisedVector3 Aim;
 
         [AeroSdb("dbitems::Ammo", "id")] // Definition
         public ushort AmmoType;
         public float Range;
-        public int Unk1;
-        public byte Unk2;
-        public float Unk3;
-        public byte Unk4;
-        public uint Unk5;
-        public uint Unk6; // Hardpoint?
+        public int Damage;
+        public byte BurstCount;
+        public float Spread;
+        public byte SpreadSeed; // added to the shot index to seed the per-shot spread offset
+        public uint Unk5; // Always 0, copied into the spawned projectile's parameters
+        public uint Hardpoint;
 
-        public byte HaveUnk7;
-        [AeroIf(nameof(HaveUnk7), 1)]
-        public ulong Unk7;
+        public byte HaveHomingTarget;
+        [AeroIf(nameof(HaveHomingTarget), 1)]
+        public EntityId HomingTarget;
     }
 }

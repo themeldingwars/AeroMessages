@@ -8,6 +8,6 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.EliteLevels_UnusedPointsChanged, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class EliteLevels_UnusedPointsChanged
     {
-        public uint Unk1;
+        public uint ElitePoints;
     }
 }

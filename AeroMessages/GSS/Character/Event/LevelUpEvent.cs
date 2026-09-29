@@ -13,6 +13,6 @@ namespace AeroMessages.GSS.Character.Event
         public byte NewLevel;
         public byte NumberOfLevelsAdvanced;
         [AeroArray(typeof(byte))]
-        public byte[] UnkByteArray;
+        public byte[] RareReplacementLevels; // levels whose dbcharacter::LoadoutRareReplacements rows apply
     }
 }

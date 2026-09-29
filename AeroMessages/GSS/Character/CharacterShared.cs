@@ -10,7 +10,7 @@ namespace AeroMessages.GSS.Character
     public struct EliteAvailableUpgradeInfo
     {
         public uint UpgradeId; // TODO: Pinpoint sdb table
-        public uint Unk_1;
+        public uint Category; // 1 stat upgrade, 2 item award, 3 and 4 other award tables
         public float StatValue;
 
         [AeroArray(typeof(byte))]
@@ -695,6 +695,44 @@ namespace AeroMessages.GSS.Character
         WeeklyPvP = 7,
     }
 
+    // The client's interaction type names (0x00780d60)
+    public enum InteractionType : byte
+    {
+        None = 0,
+        Execute = 1,
+        Revive = 2,
+        Vehicle = 3,
+        Doctor = 4,
+        Transport = 5,
+        Repair = 6,
+        Hack = 7,
+        Generic = 8,
+        List = 9,
+        Collect = 10,
+        GenericHold = 11,
+        Vendor = 12,
+        Search = 13,
+        Grab = 14,
+        HolsterTalk = 15,
+    }
+
+    // Game.SpendTokenAtVendor sends Roll, Game.ClaimTokenVendorRewards sends Commit
+    public enum VendorTokenMachineAction : byte
+    {
+        Roll = 0,
+        Reroll = 1,
+        Rickroll = 2,
+        Commit = 3,
+    }
+
+    public enum VendorTokenMachineState : byte
+    {
+        Idle = 0,
+        Started = 1,
+        Rolled = 2,
+        Error = 3,
+    }
+
     public enum DuelState : byte
     {
         Uninitialized = 0,
@@ -710,12 +748,35 @@ namespace AeroMessages.GSS.Character
     [AeroBlock]
     public struct LootDistributionData
     {
-        public ulong Unk1; // Entity?
-        [AeroString] public string Unk2;
-        public byte Unk3;
-        public ushort Unk4;
-        public byte Unk5;
-        public byte Unk6;
+        public ulong CharacterGuid;
+        [AeroString] public string Name;
+        public LootDistributionState State;
+        public ushort RollValue;
+        public byte VoteCount;
+        public LootDistributionFlags Flags;
+    }
+
+    public enum LootDistributionType : byte
+    {
+        NeedOrGreed = 0,
+        PersonalLoot = 1,
+        Quartermaster = 2,
+    }
+
+    // Need and Greed are shown as Want and Pass for PersonalLoot and Quartermaster distributions
+    public enum LootDistributionState : byte
+    {
+        Waiting = 0,
+        Need = 1,
+        Greed = 2,
+        Removed = 3,
+    }
+
+    [Flags]
+    public enum LootDistributionFlags : byte
+    {
+        IsVoter = 1 << 0,
+        HasVoted = 1 << 1,
     }
 
     [AeroBlock]

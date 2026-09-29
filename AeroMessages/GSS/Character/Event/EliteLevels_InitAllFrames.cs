@@ -18,7 +18,7 @@ namespace AeroMessages.GSS.Character.Event
     public struct EliteFrameInfoAll
     {
         [AeroSdb("dbitems::Battleframe", "id")]
-        public uint ChassisId_1; // Might just be that the data is indexed by this or something
+        public uint ChassisId_1; // the key of the client's frame map
 
         [AeroSdb("dbitems::Battleframe", "id")]
         public uint ChassisId_2;

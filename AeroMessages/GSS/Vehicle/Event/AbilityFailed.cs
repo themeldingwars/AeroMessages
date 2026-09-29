@@ -10,6 +10,6 @@ namespace AeroMessages.GSS.Vehicle.Event
     {
         [AeroSdb("apt::AbilityData", "id")]
         public uint AbilityId;
-        public uint Time;
+        public uint ErrorCode; // same field as Character AbilityFailed.ErrorCode, the vehicle handler ignores it
     }
 }

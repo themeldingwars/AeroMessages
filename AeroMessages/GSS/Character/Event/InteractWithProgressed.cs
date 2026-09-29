@@ -9,8 +9,8 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.InteractedWithProgressed, GssCharacterView.CombatController, GssVersion.V1, GssVersion.V74)]
     public partial class InteractedWithProgressed
     {
-        public EntityId Unk1;
-        public byte Unk2;
-        public uint Unk3;
+        public EntityId InteractorId;
+        public InteractionType InteractionType;
+        public uint EndTime; // game time in ms
     }
 }

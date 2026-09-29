@@ -8,11 +8,11 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.TinkeringPlanResponse, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class TinkeringPlanResponse
     {
-        [AeroString] public string Unk1;
-        public uint Unk2;
-        public sbyte Unk3;
-        public ulong Unk4;
-        public ulong Unk5;
-        public sbyte Unk6;
+        [AeroString] public string ErrorKey;
+        public uint SdbId;
+        public sbyte Success;
+        public ulong OriginalGearItem;
+        public ulong NewGearItem;
+        public sbyte IsCritical;
     }
 }

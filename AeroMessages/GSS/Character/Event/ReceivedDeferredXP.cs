@@ -14,9 +14,9 @@ namespace AeroMessages.GSS.Character.Event
     [AeroBlock]
     public struct DeferredXPData
     {
-        public uint Unk1;
-        public uint Unk2;
-        public uint Unk3;
-        public uint Unk4;
+        public uint FrameId;
+        public uint BaseAmount;
+        public uint BoostAmount;
+        public uint BonusAmount;
     }
 }

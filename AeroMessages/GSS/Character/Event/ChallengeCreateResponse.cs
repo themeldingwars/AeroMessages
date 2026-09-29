@@ -8,6 +8,6 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.ChallengeCreateResponse, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class ChallengeCreateResponse
     {
-        public ulong Unk1;
+        public ulong ChallengeId; // 0 when the challenge couldn't be created
     }
 }

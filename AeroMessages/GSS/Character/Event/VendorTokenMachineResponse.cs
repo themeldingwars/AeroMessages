@@ -8,19 +8,19 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.VendorTokenMachineResponse, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class VendorTokenMachineResponse
     {
-        public byte Unk1;
+        public VendorTokenMachineAction Action;
         public byte Unk2;
-        public uint Unk3;
-        public uint Unk4;
-        public byte Unk5;
-        [AeroArray(typeof(byte))] public VendorTokenThing[] Unk6;
+        public uint VendorId;
+        public uint TokenId;
+        public VendorTokenMachineState State;
+        [AeroArray(typeof(byte))] public VendorTokenThing[] Items;
     }
 
     [AeroBlock]
     public struct VendorTokenThing
     {
-        public uint Unk1;
-        public uint Unk2;
-        public uint Unk3;
+        public uint ItemSdbId;
+        public uint Quantity;
+        public uint Quality;
     }
 }

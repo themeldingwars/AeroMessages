@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.UnslotAllModulesResponse, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class UnslotAllModulesResponse
     {
-        public ulong Unk1;
-        public sbyte Unk2;
+        public ulong ItemGUID;
+        public sbyte Success;
     }
 }

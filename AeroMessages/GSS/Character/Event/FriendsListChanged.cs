@@ -8,10 +8,10 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.FriendsListChanged, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class FriendsListChanged
     {
-        [AeroString] public string Unk1;
-        public uint Unk2;
-        public byte Unk3;
-        public byte Unk4;
-        public byte Unk5;
+        [AeroString] public string Name;
+        public uint StatusCode; // HTTP style, 200 or 404
+        public byte Added;
+        public byte Removed;
+        public byte Success;
     }
 }

@@ -21,7 +21,7 @@ namespace AeroMessages.GSS.Character.Event
     {
         public uint Epoch;
         [AeroString] public string Date; // YYYY-MM-DD
-        public byte Unk3;
+        public byte Claimed;
         public byte Unk4;
     }
 

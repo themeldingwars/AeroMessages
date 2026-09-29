@@ -78,8 +78,8 @@ namespace AeroMessages.GSS.Character.Event
         [AeroIf(nameof(HaveItemSdbId), 1)]
         [AeroSdb("dbitems::RootItem", "sdb_id")]
         public uint ItemSdbId; // certificates that are tracked per item, e.g. per battleframe
-        public byte HaveTimestamp;
-        [AeroIf(nameof(HaveTimestamp), 1)] public uint Timestamp; // unix seconds
+        public byte HaveExpirationTime;
+        [AeroIf(nameof(HaveExpirationTime), 1)] public uint ExpirationTime; // unix seconds
         public byte HaveUnk3;
         [AeroIf(nameof(HaveUnk3), 1)] [AeroString] public string Unk3;
     }
@@ -90,7 +90,7 @@ namespace AeroMessages.GSS.Character.Event
         [AeroSdb("dbitems::Certificate", "id")]
         public uint CertId;
 
-        public byte HaveUnk2;
-        [AeroIf(nameof(HaveUnk2), 1)] public uint Unk2;
+        public byte HaveItemSdbId;
+        [AeroIf(nameof(HaveItemSdbId), 1)] public uint ItemSdbId;
     }
 }

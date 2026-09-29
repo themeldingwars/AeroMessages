@@ -48,19 +48,19 @@ namespace AeroMessages.GSS.Character.Event
         [AeroArray(typeof(byte))]
         public Loadout[] Loadouts;
 
-        public sbyte Unk;
+        public sbyte UpdateMailInventory; // replaces the mail inventory with the two arrays below
 
         [AeroArray(typeof(byte))]
-        public Item[] SecondItems; // ?
+        public Item[] MailItems;
 
         [AeroArray(typeof(byte))]
-        public Resource[] SecondResources; // ?
+        public Resource[] MailResources;
     }
 
     [AeroBlock]
     public struct Item
     {
-        public byte Unk1;
+        public byte ChangeType; // 0 or 1 add or update, 2 destroy
 
         [AeroSdb("dbitems::RootItem", "sdb_id")]
         public uint SdbId;
@@ -70,14 +70,14 @@ namespace AeroMessages.GSS.Character.Event
         public uint TimestampEpoch; // Unix Seconds
         public byte DynamicFlags;
         public ushort Durability;
-        public ushort Unk3;
+        public ushort DurabilityPool;
         public ushort Unk4;
         public byte Unk5;
 
         [AeroArray(typeof(byte))]
-        public ItemUnkData[] Unk6;
+        public ItemUnkData[] Attributes;
 
-        public ushort Unk7;
+        public ushort Quality;
 
         [AeroArray(typeof(byte))]
         public uint[] Modules;
@@ -86,8 +86,9 @@ namespace AeroMessages.GSS.Character.Event
     [AeroBlock]
     public struct ItemUnkData
     {
-        public uint Unk1;
-        public uint Unk2;
+        [AeroSdb("dbitems::AttributeDefinition", "id")]
+        public uint AttributeId;
+        public float Value;
     }
 
     [AeroBlock]
@@ -101,14 +102,14 @@ namespace AeroMessages.GSS.Character.Event
 
         public uint Quantity;
         public byte SubInventory;
-        public uint Unk2;
+        public uint TimestampEpoch; // Unix Seconds, 0 in full updates
     }
 
     [AeroBlock]
     public struct Loadout
     {
-        public int FrameLoadoutId;
-        public uint Unk; // The frame loadout id is used as int in other messages so these are unlikely to belong to it. Perhaps an internal loadout id?
+        public int PveLoadoutId;
+        public uint PvpLoadoutId;
 
         [AeroString]
         public string LoadoutName;
@@ -203,8 +204,8 @@ namespace AeroMessages.GSS.Character.Event
 
         public SlottedItem Backpack;
 
-        public uint Unk6;
-        public uint UnkPerkRespecRemainingSecRelated;
+        public uint PerkRespecReferenceTime; // ms tick PerkRespecLockRemainingSeconds counts from
+        public uint PerkRespecLockRemainingSeconds;
         public byte ArchetypeLevel;
         public uint Unk7;
     }

@@ -9,23 +9,23 @@ namespace AeroMessages.GSS.Character.Event
     public partial class ResourceLocationInfosResponse
     {
         [AeroArray(typeof(byte))] public ResourceLocationInfo[] Data;
-        public byte Unk;
+        public byte IsFinal; // the last response, the client updates the heatmap
     }
 
     [AeroBlock]
     public struct ResourceLocationInfo
     {
-        public float Unk1; // x?
-        public float Unk2; // y?
-        public float Unk3; // z?
-        public uint Unk4; // radius?
-        [AeroArray(typeof(byte))] public ResourceLocationInfoInner[] Unk5; // 'composition'
+        public float X;
+        public float Y;
+        public float Z;
+        public uint Unk4;
+        [AeroArray(typeof(byte))] public ResourceLocationInfoInner[] Composition;
     }
 
     [AeroBlock]
     public struct ResourceLocationInfoInner
     {
-        public uint Unk1; // item type id?
-        public byte Unk2; // percent?
+        public uint ItemTypeId;
+        public byte Percent;
     }
 }
