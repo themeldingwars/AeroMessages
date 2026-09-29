@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.JobLedgerOperation, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class JobLedgerOperation
     {
-        [AeroString] public string Unk1;
-        [AeroArray(typeof(byte))] public uint[] Unk2;
+        [AeroString] public string Operation;
+        [AeroArray(typeof(byte))] public uint[] ArcIds;
     }
 }

@@ -10,15 +10,15 @@ namespace AeroMessages.GSS.Character.Command
     {
         [AeroArray(typeof(byte))] public MatchQueueData[] Queues;
         public ulong Unk2;
-        public ulong Unk3;
-        [AeroArray(typeof(byte))] public float[] Unk4;
+        public ulong TeamId;
+        [AeroArray(typeof(byte))] public uint[] LfgCategoryIds;
         public uint ChassisId;
-        public ulong Unk6;
-        public uint Matchmaker;
+        public ulong SquadId;
+        public uint RequestId;
         public uint Unk8;
-        [AeroString] public string Unk9;
-        public sbyte Unk10;
-        [AeroString] public string Unk11;
+        [AeroString] public string Difficulty;
+        public sbyte SkipMatchmaking;
+        [AeroString] public string ZoneGroup;
     }
 
     [AeroBlock]

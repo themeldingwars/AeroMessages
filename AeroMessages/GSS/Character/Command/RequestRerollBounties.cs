@@ -8,6 +8,6 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.RequestRerollBounties, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class RequestRerollBounties
     {
-        [AeroArray(typeof(byte))] public uint[] Unk1;
+        [AeroArray(typeof(byte))] public uint[] BountyIds;
     }
 }

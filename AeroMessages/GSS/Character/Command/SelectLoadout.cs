@@ -9,6 +9,6 @@ namespace AeroMessages.GSS.Character.Command
     public partial class SelectLoadout
     {
         public int LoadoutId;
-        public sbyte Unk;
+        public sbyte QueueForSpawn;
     }
 }

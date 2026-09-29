@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.ChallengeSetMatchParameters, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class ChallengeSetMatchParameters
     {
-        public ulong Unk1;
-        public uint Unk2;
+        public ulong ChallengeId;
+        public uint ZoneId;
     }
 }

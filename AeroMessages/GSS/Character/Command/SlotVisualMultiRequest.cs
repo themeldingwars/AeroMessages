@@ -9,24 +9,24 @@ namespace AeroMessages.GSS.Character.Command
     public partial class SlotVisualMultiRequest
     {
         public int LoadoutId;
-        public uint ConfigId; // Assumption. If so, 0: PvE, 1: PvP
+        public uint PveOrPvp;
 
         [AeroArray(typeof(byte))]
         public LoadoutConfig_Visual[] Visuals;
 
         [AeroArray(typeof(byte))]
-        public UnkLastVisualsRequestData[] UnkLast; // Maybe something related to purchasing visuals?
+        public VisualPurchaseData[] Purchases;
     }
 
     [AeroBlock]
-    public struct UnkLastVisualsRequestData
+    public struct VisualPurchaseData
     {
-        public uint Unk1;
-        [AeroString] public string Unk2;
-        public uint Unk3;
-        public uint Unk4;
-        [AeroString] public string Unk5;
-        public uint Unk6;
+        public uint SdbId;
+        [AeroString] public string UnlockContext;
+        public uint PriceId;
+        public uint CurrencyRemoteId;
+        [AeroString] public string CurrencyType;
+        public uint Amount;
         public uint Unk7;
     }
 }

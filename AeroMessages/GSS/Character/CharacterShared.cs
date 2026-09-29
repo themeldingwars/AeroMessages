@@ -667,20 +667,44 @@ namespace AeroMessages.GSS.Character
     public struct DuelData
     {
         // FUN_009db930
-        public sbyte Unk1;
-        [AeroString] public string Unk2;
-        public EntityId RequestingEntity;
-        [AeroString] public string Unk3;
-        public EntityId Unk4;
-        [AeroString] public string TargetName;
-        [AeroArray(typeof(byte))] public ulong[] Unk5;
-        [AeroArray(typeof(byte))] public ulong[] Unk6;
+        public DuelState State;
+        [AeroString] public string Reason;
+        public EntityId InitiatorId;
+        [AeroString] public string InitiatorName;
+        public EntityId RecipientId;
+        [AeroString] public string RecipientName;
+        [AeroArray(typeof(byte))] public ulong[] Team1;
+        [AeroArray(typeof(byte))] public ulong[] Team2;
         public ushort Unk7;
         public ushort Unk8;
-        public uint Unk9;
-        public byte Unk10;
+        public uint StartTime;
+        public sbyte WinningTeam;
         public ulong TargetEntity; // TODO: Verify this
         // --
+    }
+
+    public enum BountyCategory : byte
+    {
+        Unknown = 0,
+        Quick = 1,
+        Daily = 2,
+        Weekly = 3,
+        Group = 4,
+        QuickPvP = 5,
+        DailyPvP = 6,
+        WeeklyPvP = 7,
+    }
+
+    public enum DuelState : byte
+    {
+        Uninitialized = 0,
+        Error = 1,
+        Delay = 2,
+        Cancelled = 3,
+        Proposed = 4,
+        Confirmed = 5,
+        Active = 6,
+        Completed = 7,
     }
 
     [AeroBlock]

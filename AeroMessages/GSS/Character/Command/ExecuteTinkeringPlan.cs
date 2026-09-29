@@ -8,15 +8,15 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.ExecuteTinkeringPlan, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class ExecuteTinkeringPlan
     {
-        public uint Unk1;
-        [AeroArray(typeof(byte))] public TinkeringData[] Unk2;
-        [AeroArray(typeof(byte))] public TinkeringData[] Unk3;
-        [AeroArray(typeof(byte))] public TinkeringData[] Unk4;
+        public uint PlanId;
+        [AeroArray(typeof(byte))] public TinkeringData[] ItemInputs;
+        [AeroArray(typeof(byte))] public TinkeringData[] SubtypeInputs;
+        [AeroArray(typeof(byte))] public TinkeringData[] ArrayInputs;
     }
 
     [AeroBlock]
     public struct TinkeringData {
-        public ulong Unk1;
-        public uint Unk2;
+        public ulong ItemGuid;
+        public uint ItemSdbId;
     }
 }

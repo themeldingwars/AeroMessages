@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.LootDistributionSetVotes, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class LootDistributionSetVotes
     {
-        public uint Unk1;
-        [AeroArray(typeof(byte))] public ulong[] Unk2;
+        public uint DistributionId;
+        [AeroArray(typeof(byte))] public ulong[] RecipientIds;
     }
 }

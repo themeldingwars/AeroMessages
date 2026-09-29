@@ -9,6 +9,6 @@ namespace AeroMessages.GSS.Character.Command
     public partial class LoseWeaponTarget
     {
         public uint Unk1;
-        public ulong Unk2;
+        public ulong TargetId;
     }
 }
