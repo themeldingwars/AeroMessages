@@ -11,7 +11,7 @@ namespace AeroMessages.GSS.Character
     {
         public uint UpgradeId; // TODO: Pinpoint sdb table
         public uint Unk_1;
-        public uint StatValue; // Not float?
+        public float StatValue;
 
         [AeroArray(typeof(byte))]
         public uint[] AdditionalInfo;
@@ -267,7 +267,7 @@ namespace AeroMessages.GSS.Character
     public struct SlottedItemUnk2x4
     {
         public uint Unk1;
-        public uint Unk2;
+        public float Unk2;
     }
 
     [AeroBlock]
@@ -611,7 +611,29 @@ namespace AeroMessages.GSS.Character
     {
         public EntityId Id;
         [AeroString] public string Name;
-        public byte State;
+        public ChatPartyStatus Status;
+    }
+
+    public enum ChatPartyStatus : byte
+    {
+        None = 0,
+        ErrorDeclined = 1,
+        ErrorUnroutable = 2,
+        ErrorAnotherGroup = 3,
+        ErrorKicked = 4,
+        ErrorDisconnect = 5,
+        ErrorOnBounty = 6,
+        ErrorInvalidAction = 7,
+        ErrorUnknown = 8,
+        ErrorGroupDoesNotExist = 9,
+        ErrorCannotInviteToBounty = 10,
+        Invited = 11,
+        InvitedSilent = 12,
+        InvitedAutosquad = 13,
+        Accepted = 14,
+        Active = 15,
+        Transferring = 16,
+        Promoted = 17,
     }
 
     [AeroBlock]

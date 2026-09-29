@@ -18,6 +18,6 @@ namespace AeroMessages.GSS.Character.Command
 
         public uint Unk1;
         public uint Unk2;
-        [AeroArray(typeof(byte))] public uint[] Unk3;
+        [AeroArray(typeof(byte))] public float[] Unk3;
     }
 }

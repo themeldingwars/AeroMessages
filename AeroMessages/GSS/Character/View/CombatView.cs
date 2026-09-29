@@ -132,6 +132,6 @@ namespace AeroMessages.GSS.Character.View
     [AeroBlock]
     public struct BattleChatterTagData
     {
-        [AeroArray(2)] public byte[] Tag; // Fixme: String?
+        [AeroString(4)] public string Tag; // dbdialogdata::BattleChatterScriptTags.tag_name, 4 chars, NUL padded (e.g. "NPE")
     }
 }

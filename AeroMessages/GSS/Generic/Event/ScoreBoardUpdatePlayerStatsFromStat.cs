@@ -11,8 +11,8 @@ namespace AeroMessages.GSS.Generic
     {
         public EntityId Player;
 
-        // This looks scuffed, might be repeated
-        public MaybeArrayReadStats Stats;
+        [AeroArray(typeof(byte))]
+        public MaybeArrayReadStats[] Stats;
     }
 
     [AeroBlock]

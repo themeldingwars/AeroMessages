@@ -30,7 +30,7 @@ namespace AeroMessages.GSS.Generic
     {
         public byte Unk1; // 0 (?), 1 (%u), 2 (%.2f)
         [AeroString] public string Unk2; // txt?
-        public int Unk3; // uint?
-        public int Unk4; // float?
+        public uint Unk3; // %u
+        public float Unk4; // %.2f
     }
 }

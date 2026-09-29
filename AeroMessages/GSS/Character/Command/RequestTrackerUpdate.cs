@@ -1,6 +1,7 @@
 using Aero.Gen.Attributes;
 using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
+using AeroMessages.Common;
 
 namespace AeroMessages.GSS.Character.Command
 {
@@ -8,6 +9,6 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.RequestTrackerUpdate, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class RequestTrackerUpdate
     {
-        public ulong Unk1;
+        public EntityId Entity; // Same entity as in TrackerPulse / TrackerEvent
     }
 }
