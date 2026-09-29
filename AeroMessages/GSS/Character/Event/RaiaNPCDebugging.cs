@@ -6,6 +6,7 @@ namespace AeroMessages.GSS.Character.Event
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.RaiaNPCDebugging, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.RaiaNPCDebugging, GssCharacterView.ObserverView, GssVersion.V74, GssVersion.V74)]
     public partial class RaiaNPCDebugging
     {
         [AeroString] public string Unk1;

@@ -6,6 +6,7 @@ namespace AeroMessages.GSS.Character.Event
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.ReceiveWeaponTweaks, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.ReceiveWeaponTweaks, GssCharacterView.CombatView, GssVersion.V74, GssVersion.V74)]
     public partial class ReceiveWeaponTweaks
     {
         public byte Weapon;
