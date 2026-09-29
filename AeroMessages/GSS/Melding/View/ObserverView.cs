@@ -20,7 +20,7 @@ namespace AeroMessages.GSS.Melding.View
     public struct ActiveDataStruct
     {
         public ulong TimestampMicro;
-        public ulong Unk2; // 1000000
+        public ulong DurationMicro; // time to morph FromPoints into ToPoints, starting at TimestampMicro
         public byte Unk3;
         [AeroArray(typeof(byte))] public Vector3[] FromPoints;
         [AeroArray(typeof(byte))] public Vector3[] FromTangents;

@@ -41,7 +41,7 @@ namespace AeroMessages.GSS.Character
     public struct WeaponIndexData
     {
         public byte Index;
-        public byte Unk1;
+        public byte PreviousIndex;
         public byte Unk2;
         public uint Time;
     }
@@ -325,7 +325,7 @@ namespace AeroMessages.GSS.Character
         public EntityId Id1;
         public EntityId Id2;
         public AttachmentRoleType Role;
-        public byte Unk2;
+        public byte Posture; // posture of the vcs Driver/Passenger/TurretComponentDef or dbcharacter::Turret seat
         public byte Unk3;
     }
 
@@ -693,6 +693,23 @@ namespace AeroMessages.GSS.Character
         QuickPvP = 5,
         DailyPvP = 6,
         WeeklyPvP = 7,
+    }
+
+    // The client's bounty type names (0x01bb3078), a single bit per type
+    public enum BountyType : uint
+    {
+        Unknown = 0,
+        Achiever = 1,
+        Crafter = 2,
+        Economist = 4,
+        Hitman = 8,
+        Socializer = 16,
+        Traveler = 32,
+        PvPFreeForAll = 64,
+        PvPJetball = 128,
+        PvPMonstersVsSoldiers = 256,
+        PvPNonAligned = 512,
+        PvPTeamDeathMatch = 1024,
     }
 
     // The client's interaction type names (0x00780d60)

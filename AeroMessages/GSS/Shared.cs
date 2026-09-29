@@ -98,11 +98,15 @@ namespace AeroMessages.GSS
             Eta = 3,
             // One of CardType / FadeDistance[Jetball] / ShowThroughGeometryDistance / MinimapIcon / IconTint
             EnumByte = 4,
-            // 5 goto the delete
+            // 5 is invalid, the client throws
             Short = 6,
             Timer = 7,
             // Changes falsy default value to true and vice versa, has no explicit value like other types
-            BoolToggle = 8
+            BoolToggle = 8,
+            // No value, resets the field to 0 / false
+            Reset = 0xFE,
+            // No value, leaves the field empty
+            Empty = 0xFF,
         }
 
         public SinCardFieldData.SincardFieldDataType Type;
@@ -281,7 +285,7 @@ namespace AeroMessages.GSS
     public struct ScopeBubbleInfoData
     {
         public uint Layer;
-        public uint Unk2;
+        public uint VisibilityMask; // objects are only visible when their masks share a bit
     }
 
     [AeroBlock]
@@ -319,11 +323,12 @@ namespace AeroMessages.GSS
     public struct ForcedMovementData
     {
         public byte Type;
-        public uint Unk1;
+        [AeroSdb("apt::BaseCommandDef", "id")]
+        public uint CommandId; // aptfs Movement*CommandDef that started it, 0 or 1 when not from a command
 
-        public byte HaveUnk2;
-        [AeroIf(nameof(HaveUnk2), 1)]
-        public ulong Unk2;
+        public byte HaveRelativeTo;
+        [AeroIf(nameof(HaveRelativeTo), 1)]
+        public ulong RelativeTo; // entity the positions are relative to (the vehicle a deployable is attached to)
 
         [AeroIf(nameof(Type), 0x01)]
         public ForcedMovementType1Params Params1;
@@ -377,13 +382,13 @@ namespace AeroMessages.GSS
     [AeroBlock]
     public struct ForcedMovementType2Params
     {
-        public Vector3 Unk1;
-        public Vector3 Unk2;
+        public Vector3 Destination;
+        public Vector3 Up; // unit axis the slide offset is applied along
         public uint StartTime;
         public uint EndTime;
-        public float Unk5;
-        public byte Unk6;
-        /// 2: character rotates towards Unk1 over duration
+        public float FixedSpeed; // MovementSlideCommandDef fixed_speed
+        public byte VelocityType; // MovementSlideCommandDef velocity_type
+        /// 2: character rotates towards Destination over duration
         public byte OrientationType;
     }
 
@@ -392,24 +397,24 @@ namespace AeroMessages.GSS
     {
         public uint Time1;
         public uint Time2;
-        public Vector3 Unk3;
-        public Quaternion Unk4;
-        public Vector3 Unk5;
-        public Quaternion Unk6;
-        public float Unk7;
-        public float Unk8;
-        public byte Unk9;
-        public byte Unk10;
+        public Vector3 StartPosition;
+        public Quaternion StartRotation;
+        public Vector3 EndPosition;
+        public Quaternion EndRotation;
+        public float VerticalVelocity; // initial upward speed of the arc, m/s
+        public float Gravity; // m/s^2
+        public byte VelocityType; // 1: the arc is simulated as a velocity, otherwise as positions
+        public byte OrientationType; // 1: keeps the rotation, otherwise interpolates StartRotation to EndRotation
     }
 
     [AeroBlock]
     public struct ForcedMovementType4Params
     {
-        public Vector3 Unk1;
+        public Vector3 TargetPosition; // rope pull point, relative to RelativeTo
         public uint StartTime;
         public uint EndTime;
         public float Speed;
-        public Vector3 Unk5;
+        public Vector3 Unk5; // stored where Type1 keeps Direction, the rope simulation doesn't read it
     }
 
     [AeroBlock]
@@ -418,7 +423,7 @@ namespace AeroMessages.GSS
         public Vector3 Velocity; // Bit of an assumption
         public uint Time1;
         public uint Time2;
-        public byte Unk2;
+        public byte Unk2; // bit 0 clear: the client scales Velocity by 100 / step
     }
 
     [AeroBlock]
@@ -440,7 +445,7 @@ namespace AeroMessages.GSS
     [AeroBlock]
     public struct ForcedMovementType8Params
     {
-        public Vector3 Unk1;
+        public Vector3 TargetPosition; // grapple climb target
         public uint Time1;
         public uint Time2;
         public float Extra;
@@ -463,7 +468,7 @@ namespace AeroMessages.GSS
         public Vector3 LookDirection;
         public float MaxAimAngleRad;
         public float Unk3;
-        public byte Unk4;
+        public byte Unk4; // stored where the other types keep OrientationType, 1 is special cased
     }
 
     [AeroBlock]
@@ -488,8 +493,8 @@ namespace AeroMessages.GSS
     {
         public uint StartTime;
         public uint EndTime;
-        public ulong Unk1;
-        public Vector3 Unk2;
+        public ulong AnchorEntity; // stored as the movement's RelativeTo entity
+        public Vector3 AnchorPosition;
         public float MaxRange;
         public float Unk4;
         public float Unk5;
@@ -721,8 +726,8 @@ namespace AeroMessages.GSS
     [AeroBlock]
     public struct ProcessDelayData
     {
-        public ushort Unk1; // Unknown type
-        public ushort Unk2; // Unknown type
+        public ushort ChangeTime; // low 16 bits of the server time in ms
+        public ushort DelayMs; // 0..300
     }
 
     [AeroBlock]
@@ -910,8 +915,9 @@ namespace AeroMessages.GSS
     [AeroBlock]
     public struct PSDData
     {
-        public ulong PSDD_Unk1;
-        public uint PSDD_Unk2;
+        public ulong EncounterId; // arc encounter the player is in (typecode 0x31)
+        [AeroSdb("dbencounterdata::Arcs", "id")]
+        public uint ArcId;
         public byte PSDD_Unk3;
         public byte PSDD_Unk4;
     }
@@ -920,7 +926,7 @@ namespace AeroMessages.GSS
     public struct ChatAltData_RequestPlayerStateDetails
     {
         public ushort DataLength;
-        // No additional data
+        [AeroArray(nameof(DataLength))] public byte[] Data; // 1962: DataLength 1, one 0 byte
         // Does something on squad and platoon channel, and something different on friends channel.
     }
 
@@ -970,8 +976,9 @@ namespace AeroMessages.GSS
     [AeroBlock]
     public struct GroupWaypoint_Data
     {
-        public uint Unk1;
-        public ulong Unk2;
+        [AeroSdb("dbzonemetadata::ZoneRecord", "id")]
+        public uint ZoneId;
+        public ulong InstanceId;
         public uint Unk3;
         public Vector3 Position;
     }

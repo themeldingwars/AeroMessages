@@ -11,7 +11,7 @@ namespace AeroMessages.GSS.Character.View
     {
         private StaticInfoData StaticInfo;
         private uint SpawnTime;
-        private byte EffectsFlags;
+        private byte EffectsFlags; // bit 0 = flashlight on
         private GibVisuals GibVisualsID;
         private ProcessDelayData ProcessDelay;
         private CharacterStateData CharacterState;

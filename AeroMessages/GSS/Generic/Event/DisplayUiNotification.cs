@@ -19,18 +19,25 @@ namespace AeroMessages.GSS.Generic
 
         public uint Duration; // seconds
 
-        [AeroArray(typeof(byte))] public UiNotificationData[] Unk2; // Formatted args for localized text?
+        [AeroArray(typeof(byte))] public UiNotificationData[] Arguments; // format arguments of the localized text
 
         [AeroSdb("dbcharacter::BannerType", "id")]
         public BannerType Banner;
     }
 
+    public enum UiNotificationArgType : byte
+    {
+        String = 0,
+        UInt = 1,  // "%u"
+        Float = 2, // "%.2f"
+    }
+
     [AeroBlock]
     public struct UiNotificationData
     {
-        public byte Unk1; // 0 (?), 1 (%u), 2 (%.2f)
-        [AeroString] public string Unk2; // txt?
-        public uint Unk3; // %u
-        public float Unk4; // %.2f
+        public UiNotificationArgType Type;
+        [AeroString] public string StringValue;
+        public uint UIntValue;
+        public float FloatValue;
     }
 }

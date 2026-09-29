@@ -9,12 +9,13 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.ScoreBoardUpdatePlayerStatus, GssVersion.V1, GssVersion.V74)]
     public partial class ScoreBoardUpdatePlayerStatus
     {
-        public EntityId Player; // Assumption
-        public byte Unk1;
+        public EntityId Player;
+        public byte Team;
+        [AeroSdb("dbitems::Battleframe", "id")]
         public uint ChassisId;
-        public byte Unk3;
-        public byte Unk4; // Alt read
-        public sbyte Unk5;
+        public byte PvPRank;
+        public byte CharacterState; // CharacterStateData.CharacterStatus
+        public sbyte IsSquaded;
         public byte Unk6;
     }
 }

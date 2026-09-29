@@ -1,6 +1,7 @@
 using Aero.Gen.Attributes;
 using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
+using AeroMessages.GSS.Character;
 
 namespace AeroMessages.GSS.Generic
 {
@@ -11,15 +12,15 @@ namespace AeroMessages.GSS.Generic
         public uint BountyDefId;
         public byte Success;
         public byte Reason; // [0-17]
-        public byte Unk3; // Row / type?
-        public uint Unk4;
+        public BountyCategory Category;
+        public BountyType BountyType;
 
         [AeroSdb("clientmissions::Mission","id")]
         //[AeroSdb("clientmissions::MissionObjective","mission_id")]
         public uint MissionId;
 
-        public byte Unk5;
-        public long Unk6;
+        public byte IsRare;
+        public long ExpirationTime; // unix seconds, -1 = never
         [AeroString] public string Name;
     }
 }

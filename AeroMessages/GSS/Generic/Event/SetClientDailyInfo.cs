@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.SetClientDailyInfo, GssVersion.V1, GssVersion.V74)]
     public partial class SetClientDailyInfo
     {
-        public uint Unk1; // time?
-        [AeroArray(typeof(byte))] public int[] Unk2; // 00b0af40 missions?
+        public uint RefreshTime; // unix seconds
+        [AeroArray(typeof(byte))] public int[] DailyMissionIds;
     }
 }

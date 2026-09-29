@@ -8,8 +8,8 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.StopDialogScriptMessage, GssVersion.V1, GssVersion.V74)]
     public partial class StopDialogScriptMessage
     {
-        public uint Unk1;
+        public uint DialogId;
         [AeroArray(typeof(byte))] public ulong[] Unk2;
-        public byte Unk3;
+        public byte Interrupt;
     }
 }

@@ -9,8 +9,8 @@ namespace AeroMessages.GSS.AreaVisualData.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssAreaVisualDataMessage.AudioEmitterSpawned, GssAreaVisualDataView.ObserverView, GssVersion.V1, GssVersion.V74)]
     public partial class AudioEmitterSpawned
     {
-        public long Unk1;
-        public Vector3 Unk2; // Pos?
-        public ushort Unk3; // ShortTime or some audio id?
+        public long SoundId; // negative: -SoundId is a raw audio event id, positive: looked up by the audio system
+        public Vector3 Position;
+        public ushort DurationSeconds;
     }
 }

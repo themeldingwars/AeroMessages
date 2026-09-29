@@ -9,7 +9,8 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.PlaySoundIdAtLocation, GssVersion.V1, GssVersion.V74)]
     public partial class PlaySoundIdAtLocation
     {
-        public long Unk1; // An int64?
+        // > 0: sound id, <= 0: negated raw audio event id
+        public long SoundId;
         public Vector3 Position;
     }
 }

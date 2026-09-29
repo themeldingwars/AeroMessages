@@ -20,7 +20,11 @@ namespace AeroMessages.GSS.Generic
 
         public EntityId EncounterId;
 
-        [AeroBlob(typeof(ushort))] public byte[] BlobData;
+        // SinCard changes until the end of the blob, per entry: ulong Guid, then
+        //   (Guid & 0xff) == 0xff: ulong Target, uint Type, SinCardFieldData[] Fields (byte count), creates or replaces the card
+        //   otherwise: byte n, n == 0 removes the card, else n times (byte field index, SinCardFieldData value)
+        // Aero can't read a structure bounded by a byte length, so it stays a blob
+        [AeroBlob(typeof(ushort))] public byte[] SinCardChanges;
 
         // Shadow field changes for the encounter view announced in EncounterUIScopeIn
         [AeroBlob] public byte[] ShadowFieldValues;

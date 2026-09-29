@@ -1,6 +1,7 @@
 using Aero.Gen.Attributes;
 using Aero.Protocol;
 using static Aero.Gen.Attributes.AeroMessageIdAttribute;
+using AeroMessages.Common;
 
 namespace AeroMessages.GSS.Generic
 {
@@ -8,29 +9,30 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.ScoreBoardInit, GssVersion.V1, GssVersion.V74)]
     public partial class ScoreBoardInit
     {
-        [AeroArray(typeof(byte))] public ScoreBoardInitData[] Unk1;
+        [AeroArray(typeof(byte))] public ScoreBoardInitData[] Players;
         public sbyte Unk2;
         public sbyte Unk3;
         public byte Unk4;
-        public sbyte Unk5;
+        public sbyte UseArmyTeams; // publish each row's team -> ArmyId mapping
         [AeroString] public string Unk6;
     }
 
     [AeroBlock]
     public struct ScoreBoardInitData
     {
-        public ulong Unk1;
-        public ulong Unk2;
-        [AeroString] public string Unk3;
+        public EntityId Player;
+        public ulong ArmyId;
+        [AeroString] public string Name;
         public float Unk4;
-        public byte Unk5;
-        public uint Unk6;
-        public byte Unk7;
-        public byte Unk8;
-        public sbyte Unk9;
+        public byte Team;
+        [AeroSdb("dbitems::Battleframe", "id")]
+        public uint ChassisId;
+        public byte PvPRank;
+        public byte CharacterState; // CharacterStateData.CharacterStatus
+        public sbyte IsSquaded;
         public byte Unk10;
-        public ScoreBoardData1 Unk11;
-        [AeroArray(typeof(byte))] public ScoreBoardData3[] Unk12;
+        public ScoreBoardData1 Stats;
+        [AeroArray(typeof(byte))] public ScoreBoardData3[] EncounterStats;
         public uint Unk13;
         public sbyte Unk14;
         [AeroArray(typeof(byte))] public ScoreBoardData1[] Unk15; // 00c53610
@@ -40,7 +42,9 @@ namespace AeroMessages.GSS.Generic
     public struct ScoreBoardData1
     {
         // 00c52e90
-        [AeroArray(18)] public uint[] Unk1;
+        // Index i is the dbstats::Stat id ScoreBoardStatIds[i] (table 0x01bb23b0): 10007, 10009, 10107, 10033, 10037, 10025, 10026, 10045, 10174,
+        // 10158, 10175, 10170, 10153, 10154, 10067, 10075, 10080, 10079
+        [AeroArray(18)] public uint[] StatValues;
         [AeroArray(typeof(byte))] public ScoreBoardData2[] Unk2;
         public uint Unk3;
         public byte Unk4;
@@ -60,8 +64,9 @@ namespace AeroMessages.GSS.Generic
     public struct ScoreBoardData3
     {
         // 00c52520
-        public int Unk1;
-        public int Unk2;
-        public int Unk3;
+        [AeroSdb("dbcharacter::XPRewardType", "id")]
+        public int XpRewardTypeId;
+        public int Count;
+        public int Xp;
     }
 }
