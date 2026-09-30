@@ -9,7 +9,7 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.DevRequestObjectPositions, GssVersion.V1, GssVersion.V74)]
     public partial class DevRequestObjectPositions
     {
-        public byte Show; // Seems to ignore stuff if 0 and will not print log unless 1.
+        public byte IsFinal; // 0: more chunks follow, 1: final chunk and log the count
         public byte Unk2;
         [AeroArray(typeof(byte))] public Vector3[] Positions;
         [AeroArray(typeof(byte))] public float[] Unk4;
