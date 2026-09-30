@@ -48,13 +48,13 @@ namespace AeroMessages.GSS.Character.View
     [AeroBlock]
     public struct DynamicProjectileInfo
     {
-        public uint Unk; // Uncertain type
+        public uint ProjectileId;
     }
 
     [AeroBlock]
     public struct DynamicProjectilePosition
     {
         public Vector3 Position;
-        public uint Unk;
+        public uint Time;
     }
 }
