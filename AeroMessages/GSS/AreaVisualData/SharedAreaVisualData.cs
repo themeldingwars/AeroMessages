@@ -7,7 +7,7 @@ namespace AeroMessages.GSS.AreaVisualData
     [AeroBlock]
     public struct ParticleEffect
     {
-        public EntityId PfxEntityId; // Guesswork, following sequentially from the view
+        public EntityId PfxEntityId;
         public uint PfxAssetId;
         public Vector3 Position;
         public byte HaveUnk4;
@@ -16,14 +16,7 @@ namespace AeroMessages.GSS.AreaVisualData
         public byte Unk9; // loop?
         public uint StartTime; // server time in ms
         public HalfFloat Scale;
-        public byte HaveUnk12;
-        [AeroIf(nameof(HaveUnk12), 1)] public ParticleEffectUnkData Unk12;
-    }
-
-    [AeroBlock]
-    public struct ParticleEffectUnkData
-    {
-        public uint Unk1;
-        public uint Unk2;
+        public byte HaveScopeBubbleInfo;
+        [AeroIf(nameof(HaveScopeBubbleInfo), 1)] public ScopeBubbleInfoData ScopeBubbleInfo;
     }
 }
