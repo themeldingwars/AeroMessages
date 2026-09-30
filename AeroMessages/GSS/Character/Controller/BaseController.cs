@@ -166,8 +166,8 @@ namespace AeroMessages.GSS.Character.Controller
         public Vector3 AimDirection;
         public Vector3 Velocity;
         public ushort MovementState;
-        public byte Unk1; // ???
-        public byte Unk2; // ???
+        public MovementDataType MovementType;
+        public byte WaterLevelAndDesc;
         public ushort JetpackEnergy;
         public short AirGroundTimer;
         public short JumpTimer;
