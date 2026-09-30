@@ -8,6 +8,6 @@ namespace AeroMessages.Matrix
     [AeroMessageId(MsgType.Matrix, MsgSrc.Message, MatrixMessage.ChallengeLeave, MatrixVersion.V5, MatrixVersion.V32)]
     public partial class ChallengeLeave
     {
-        public ulong ChallengeId; // Assumption
+        public ulong ChallengeId;
     }
 }
