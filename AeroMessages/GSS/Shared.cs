@@ -242,7 +242,7 @@ namespace AeroMessages.GSS
         [AeroArray(typeof(byte))]
         public EntityId[] Entities;
 
-        public byte Unk1;
+        public sbyte Unk1;
         public Vector3 Unk2;
         public Vector3 Unk3;
         public int Unk4;
