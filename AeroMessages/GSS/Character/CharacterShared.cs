@@ -647,8 +647,7 @@ namespace AeroMessages.GSS.Character
 
         public uint GlobalCooldown_Activated_Time;
         public uint GlobalCooldown_ReadyAgain_Time;
-
-        public byte Unk;
+        public byte GlobalCooldown_Flags;
     }
 
     [AeroBlock]
@@ -658,9 +657,8 @@ namespace AeroMessages.GSS.Character
         public uint AbilityId;
         public uint Activated_Time;
         public uint ReadyAgain_Time;
-
-        [AeroArray(5)]
-        public byte[] Unk;
+        public byte Flags;
+        public uint Unk;
     }
 
     [AeroBlock]
