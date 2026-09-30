@@ -11,6 +11,6 @@ namespace AeroMessages.GSS.Character.Command
         [AeroSdb("dbzonemetadata::ZoneRecord", "id")]
         public uint ZoneId;
 
-        public sbyte Unk2;
+        public sbyte IncludeSquad;
     }
 }

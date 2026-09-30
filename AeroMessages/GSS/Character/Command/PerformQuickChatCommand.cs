@@ -8,6 +8,7 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.PerformQuickChatCommand, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class PerformQuickChatCommand
     {
-        public uint Unk1;
+        [AeroSdb("dbquickchatdata::QuickChatCommand", "id")]
+        public uint QuickChatId;
     }
 }
