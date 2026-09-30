@@ -142,14 +142,14 @@ namespace AeroMessages.GSS.Character.Controller
 
         public Vector3 Position;
 
-        [AeroArray(typeof(byte))] public AeraMapMarkerInnerData[] Unk4;
+        [AeroArray(typeof(byte))] public AeraMapMarkerInnerData[] Polygon;
     }
 
     [AeroBlock]
     public struct AeraMapMarkerInnerData
     {
-        public uint Unk1;
-        public uint Unk2;
+        public float X;
+        public float Y;
     }
 
     [AeroBlock]
