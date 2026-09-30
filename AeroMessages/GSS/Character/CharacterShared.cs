@@ -42,7 +42,7 @@ namespace AeroMessages.GSS.Character
     {
         public byte Index;
         public byte PreviousIndex;
-        public byte Unk2;
+        public byte PlaySwapAnimation;
         public uint Time;
     }
 
@@ -514,9 +514,9 @@ namespace AeroMessages.GSS.Character
         [AeroIf(nameof(HaveUnk4), 1)]
         public CinematicCameraData1 Unk4;
 
-        public byte HaveUnk5;
-        [AeroIf(nameof(HaveUnk5), 1)]
-        public CinematicCameraData2 Unk5;
+        public byte HaveCameraSequence;
+        [AeroIf(nameof(HaveCameraSequence), 1)]
+        public CinematicCameraData2 CameraSequence;
     }
 
     [AeroBlock]
@@ -538,7 +538,7 @@ namespace AeroMessages.GSS.Character
     [AeroBlock]
     public struct CinematicCameraData2
     {
-        public uint Unk1;
+        public uint CameraSequenceId;
         public float Unk2;
     }
 
