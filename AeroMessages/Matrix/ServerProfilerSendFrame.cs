@@ -14,14 +14,14 @@ namespace AeroMessages.Matrix
     [AeroBlock]
     public struct ServerProfilerFrameData
     {
-        public ushort Unk1;
-        [AeroArray(typeof(byte))] public ServerProfilerStruct[] Unk2;
+        public ushort Id; // named by ServerProfilerSendNames.FrameNames
+        [AeroArray(typeof(byte))] public ServerProfilerStruct[] Nodes;
     }
 
     [AeroBlock]
     public struct ServerProfilerStruct
     {
-        public ushort Unk1;
+        public ushort Id; // named by ServerProfilerSendNames.NodeNames
         public ushort Unk2;
         public ushort Unk3;
         public ushort Unk4;
