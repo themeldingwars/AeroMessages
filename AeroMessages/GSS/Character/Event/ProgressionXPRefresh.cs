@@ -17,8 +17,8 @@ namespace AeroMessages.GSS.Character.Event
     {
         [AeroSdb("dbitems::RootItem", "sdb_id")]
         public uint ChassisID;
-        public uint XpValue1;
-        public uint XpValue2;
+        public uint CurrentXp;
+        public uint LifetimeXp;
         public uint CurrentLevel;
         public uint Unk;
     }
