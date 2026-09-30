@@ -24,7 +24,7 @@ namespace AeroMessages.GSS.Generic
         }
 
         public ushort ShortTime;
-        public ushort Unk2; // Seems like another time value
+        public ushort ReceivedShortTime;
         public DebugEventSampleType Type;
         public sbyte Queued; // 0 => "Server", else => "Server (Queued)"
     }
