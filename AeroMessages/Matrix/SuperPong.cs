@@ -10,6 +10,6 @@ namespace AeroMessages.Matrix
     {
         [AeroArray(typeof(byte))]
         public ulong[] TimestampMicro; // Microseconds UNIX Epoch (Client follows server time from TimeSync)
-        public uint Unk;
+        public uint Mode; // 1: feeds the debuglag graph and pings again, otherwise logs the hop times
     }
 }

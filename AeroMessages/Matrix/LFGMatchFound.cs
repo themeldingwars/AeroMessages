@@ -15,6 +15,6 @@ namespace AeroMessages.Matrix
         [AeroString] public string LeaderName;
 
         [AeroArray(typeof(byte))]
-        [AeroString] public string[] Unk5;
+        [AeroString] public string[] MemberNames; // the leader squad invites everyone but itself
     }
 }
