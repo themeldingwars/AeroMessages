@@ -8,7 +8,7 @@ namespace AeroMessages.Matrix
     [AeroMessageId(MsgType.Matrix, MsgSrc.Message, MatrixMessage.ChallengeMatchParametersUpdate, MatrixVersion.V5, MatrixVersion.V32)]
     public partial class ChallengeMatchParametersUpdate
     {
-        public ulong ChallengeId; // Assumption
-        public uint Unk1; // selects a roster member like ChallengeJoinResponse.Unk6
+        public ulong ChallengeId;
+        public uint ZoneId; // the selected map, like ChallengeJoinResponse.ZoneId
     }
 }

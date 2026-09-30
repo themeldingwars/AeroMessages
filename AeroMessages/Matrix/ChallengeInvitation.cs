@@ -10,7 +10,7 @@ namespace AeroMessages.Matrix
     public partial class ChallengeInvitation
     {
         public ulong ChallengeId;
-        public EntityId FromEntity; // Assumption
+        public EntityId FromEntity; // auto accepted when it is the squad leader
         [AeroString] public string FromName;
     }
 }
