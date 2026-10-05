@@ -8,14 +8,14 @@ namespace AeroMessages.Matrix
     [AeroMessageId(MsgType.Matrix, MsgSrc.Message, MatrixMessage.ServerProfiler_SendNames, MatrixVersion.V5, MatrixVersion.V32)]
     public partial class ServerProfilerSendNames
     {
-        [AeroArray(typeof(byte))] public ServerProfilerSendNamesData[] Unk1;
-        [AeroArray(typeof(byte))] public ServerProfilerSendNamesData[] Unk2;
+        [AeroArray(typeof(byte))] public ServerProfilerSendNamesData[] FrameNames; // for ServerProfilerFrameData.Id
+        [AeroArray(typeof(byte))] public ServerProfilerSendNamesData[] NodeNames; // for ServerProfilerStruct.Id
     }
 
     [AeroBlock]
     public struct ServerProfilerSendNamesData
     {
-        public ushort Unk1;
-        [AeroString] public string Unk2;
+        public ushort Id;
+        [AeroString] public string Name;
     }
 }

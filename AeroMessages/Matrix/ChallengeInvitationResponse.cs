@@ -8,8 +8,20 @@ namespace AeroMessages.Matrix
     [AeroMessageId(MsgType.Matrix, MsgSrc.Message, MatrixMessage.ChallengeInvitationResponse, MatrixVersion.V5, MatrixVersion.V32)]
     public partial class ChallengeInvitationResponse
     {
-        public ulong ChallengeId; // Assumption
-        [AeroString] public string Unk1; // Assumption
-        public sbyte Unk2;
+        public ulong ChallengeId;
+        [AeroString] public string InviteeName;
+        public ChallengeInvitationResult Result;
+    }
+
+    public enum ChallengeInvitationResult : byte
+    {
+        Accepted = 0,
+        Declined = 1,
+        DoesNotExist = 2,
+        Offline = 3,
+        TeamFull = 4,
+        MatchStarting = 5,
+        TargetNotChallengeable = 6,
+        SquadTeamFull = 7,
     }
 }

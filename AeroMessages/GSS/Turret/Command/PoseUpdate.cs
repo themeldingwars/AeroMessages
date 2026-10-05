@@ -9,7 +9,7 @@ namespace AeroMessages.GSS.Turret.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssTurretCommand.PoseUpdate, GssTurretView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class PoseUpdate
     {
-        public Quaternion Unk1; // Rot?
+        public Quaternion Rotation;
         public uint Time;
     }
 }

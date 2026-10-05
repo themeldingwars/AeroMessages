@@ -6,6 +6,7 @@ namespace AeroMessages.GSS.Character.Command
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.LogLongTimeWithoutPush, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.LogLongTimeWithoutPush, GssCharacterView.MissionAndMarkerController, GssVersion.V74, GssVersion.V74)]
     public partial class LogLongTimeWithoutPush
     {
         // Nothing to parse

@@ -67,6 +67,6 @@ namespace AeroMessages.GSS.AreaVisualData.View
     {
         [AeroSdb("dbcharacter::Faction", "id")]
         public byte FactionId;
-        public byte Unk2;
+        public byte TeamId;
     }
 }

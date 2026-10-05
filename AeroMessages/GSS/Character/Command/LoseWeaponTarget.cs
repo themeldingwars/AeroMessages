@@ -6,9 +6,10 @@ namespace AeroMessages.GSS.Character.Command
 {
     [Aero]
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.LoseWeaponTarget, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
+    [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.LoseWeaponTarget, GssCharacterView.CombatController, GssVersion.V74, GssVersion.V74)]
     public partial class LoseWeaponTarget
     {
-        public uint Unk1;
+        public uint Time;
         public ulong TargetId;
     }
 }

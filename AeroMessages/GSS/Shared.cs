@@ -242,7 +242,7 @@ namespace AeroMessages.GSS
         [AeroArray(typeof(byte))]
         public EntityId[] Entities;
 
-        public byte Unk1;
+        public sbyte Unk1;
         public Vector3 Unk2;
         public Vector3 Unk3;
         public int Unk4;
@@ -850,7 +850,6 @@ namespace AeroMessages.GSS
     {
         public ushort DataLength;
 
-        // Guesswork
         [AeroString] public string CDR_Unk1;
         [AeroString] public string CDR_Unk2;
     }
@@ -860,7 +859,6 @@ namespace AeroMessages.GSS
     {
         public ushort DataLength;
 
-        // Guesswork
         [AeroString] public string CDR_PlayerName;
         public byte CDR_Gender;
         public uint CDR_ItemTypeId;
@@ -872,9 +870,8 @@ namespace AeroMessages.GSS
     {
         public ushort DataLength;
 
-        // Guesswork
-        public uint CUA_Unk1;
-        [AeroString] public string CUA_Unk2;
+        public uint CUA_AchievementId;
+        [AeroString] public string CUA_PlayerName;
         public byte CUA_Gender;
     }
 
@@ -883,8 +880,7 @@ namespace AeroMessages.GSS
     {
         public ushort DataLength;
 
-        // Guesswork
-        [AeroString] public string SIF_Name; // Player?
+        [AeroString] public string SIF_PlayerName;
     }
 
     [AeroBlock]
@@ -892,7 +888,7 @@ namespace AeroMessages.GSS
     {
         public ushort DataLength;
 
-        public byte Unk1; // Special read func, casted to uint?. 0 for DarkCisum, 1 for CrissKitty.
+        public byte Gender;
         public uint ChassisId;
         public byte Level;
         public byte EffectiveLevel;
@@ -909,7 +905,7 @@ namespace AeroMessages.GSS
         public byte ChatIconFlags; // Again tho?
         public byte CharacterState;
         public uint MaxHealth;
-        public ushort Unk14;
+        public ushort NameCardId;
     }
 
     [AeroBlock]
@@ -951,15 +947,15 @@ namespace AeroMessages.GSS
     {
         public ushort DataLength;
 
-        public byte GP_Unk1;
-        public byte GP_Unk2;
-        public byte GP_Unk3;
-        public byte GP_Unk4;
-        public byte GP_Unk5;
-        public byte GP_Unk6;
-        public HalfFloat GP_Unk7;
-        public byte GP_Unk8;
-        [AeroArray(typeof(byte))] public EntityId[] Entities;
+        public byte BaseLootRuleBelowThreshold;
+        public byte InteractableLootRuleBelowThreshold;
+        public byte BaseLootRuleAboveThreshold;
+        public byte InteractableLootRuleAboveThreshold;
+        public byte BaseLootRarityThreshold;
+        public byte InteractableLootRarityThreshold;
+        public HalfFloat LootRadius;
+        public byte SplitResources;
+        [AeroArray(typeof(byte))] public EntityId[] LootVoters;
     }
 
     [AeroBlock]
@@ -967,7 +963,6 @@ namespace AeroMessages.GSS
     {
         public ushort DataLength;
 
-        // Guesswork
         public byte HaveWaypoint;
         [AeroIf(nameof(HaveWaypoint), 1)]
         public GroupWaypoint_Data Waypoint;
@@ -979,7 +974,7 @@ namespace AeroMessages.GSS
         [AeroSdb("dbzonemetadata::ZoneRecord", "id")]
         public uint ZoneId;
         public ulong InstanceId;
-        public uint Unk3;
+        public uint ScopeBubbleLayer;
         public Vector3 Position;
     }
 
@@ -988,10 +983,9 @@ namespace AeroMessages.GSS
     {
         public ushort DataLength;
 
-        // Guesswork
         public ulong GroupId;
-        [AeroString] public string SMQ_Unk1; // random zone group?
-        [AeroString] public string SMQ_Unk2; // leader?
+        [AeroString] public string ZoneGroup;
+        [AeroString] public string Difficulty;
     }
     [AeroBlock]
     public struct ChatAltData_SquadQueueIneligibility
@@ -1011,7 +1005,7 @@ namespace AeroMessages.GSS
     {
         public uint QueueId;
         [AeroArray(typeof(byte))] public uint[] SQI_Unk2; // Unknown type
-        [AeroArray(typeof(byte))] public int[] SQI_Unk3; // ReadArray_Int32_Weird
+        [AeroArray(typeof(byte))] public int[] DifficultyIds;
     }
 
 
@@ -1029,9 +1023,8 @@ namespace AeroMessages.GSS
     {
         public ushort DataLength;
 
-        // Guesswork
-        public ulong GRA_Unk1;
-        public uint GRA_Unk2; // Maybe same as GRR_Unk1? ScanId?
+        public ulong GRA_OwnerId;
+        public uint GRA_ScanId;
         public Vector3 GRA_Position;
         [AeroArray(typeof(byte))] public ResourceCompositionData[] Data;
 
@@ -1042,8 +1035,7 @@ namespace AeroMessages.GSS
     {
         public ushort DataLength;
 
-        // Guesswork
-        public uint GRR_Unk1; // Maybe same as GRA_Unk2? ScanId?
+        public uint GRR_ScanId;
     }
 
     [AeroBlock]
@@ -1051,7 +1043,6 @@ namespace AeroMessages.GSS
     {
         public ushort DataLength;
 
-        // Guesswork
         public uint QCM_Id;
     }
 
@@ -1061,12 +1052,12 @@ namespace AeroMessages.GSS
         public ushort DataLength;
 
         public uint ItemTypeId;
-        [AeroString] public string LootedTo; // or lootedBy??
+        [AeroString] public string LootedBy;
         public uint Quantity;
-        public uint Boosted; // Assumption
-        public uint Quality; // Assumption
-        [AeroArray(typeof(byte))] public uint[] Modules; // Assumption
-        public byte RewardType; // Assumption
+        public uint Boosted;
+        public uint Quality;
+        [AeroArray(typeof(byte))] public uint[] Modules;
+        public byte RewardType; // 2: match_reward, 3: encounter_reward
     }
 
     [AeroBlock]
@@ -1083,8 +1074,7 @@ namespace AeroMessages.GSS
     {
         public ushort DataLength;
 
-        // Guesswork
-        public sbyte FROR_StatusType;
+        public sbyte IsRequest;
     }
 
     [AeroBlock]

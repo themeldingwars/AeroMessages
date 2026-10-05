@@ -17,7 +17,7 @@ namespace AeroMessages.GSS.Character.Event
         public int Unk4;
         public float Unk5_Current; // 0 - 400 on characters, drains and refills like jet energy, 0 on deployables
         public float Unk5_Max;
-        public uint Unk6; // 0, 1 or 3 on characters, 0 on deployables
+        public uint ScopeLayer;
         public Vector3 Position;
         public float Heading; // Yaw in degrees
         public uint Unk8; // 6, 0 in the all-zero pulse sent when tracking starts
