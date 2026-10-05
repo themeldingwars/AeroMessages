@@ -11,36 +11,8 @@ namespace AeroMessages.GSS.Character.Event
     {
         public sbyte ClearExistingData; // 1 for full, 0 for partitial
 
-
-        // TODO: Aero needs support for handling additional entries if size is 255
-        // TEMP: Hack that supports up to 765 items
-        public byte ItemsPart1Length;
-        [AeroIf(nameof(ItemsPart1Length), Ops.Equal, 255)]
-        [AeroArray(255)]
-        public Item[] ItemsPart1Full;
-
-        [AeroIf(nameof(ItemsPart1Length), Ops.NotEqual, 255)]
-        [AeroArray(nameof(ItemsPart1Length))]
-        public Item[] ItemsPart1;
-
-        [AeroIf(nameof(ItemsPart1Length), Ops.Equal, 255)]
-        public byte ItemsPart2Length;
-
-        [AeroIf(nameof(ItemsPart2Length), Ops.Equal, 255)]
-        [AeroArray(255)]
-        public Item[] ItemsPart2Full;
-
-        [AeroIf(nameof(ItemsPart2Length), Ops.NotEqual, 255)]
-        [AeroArray(nameof(ItemsPart2Length))]
-        public Item[] ItemsPart2;
-
-        [AeroIf(nameof(ItemsPart2Length), Ops.Equal, 255)]
-        public byte ItemsPart3Length;
-
-        [AeroIf(nameof(ItemsPart3Length), Ops.NotEqual, 255)]
-        [AeroArray(nameof(ItemsPart3Length))]
-        public Item[] ItemsPart3;
-        // ---
+        [AeroArray(typeof(byte), Chunked = true)]
+        public Item[] Items;
 
         [AeroArray(typeof(byte))]
         public Resource[] Resources;
