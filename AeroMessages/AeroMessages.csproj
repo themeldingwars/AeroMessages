@@ -14,7 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Aero.Gen" Version="1.6.0">
+      <PackageReference Include="Aero.Gen" Version="1.7.2">
         <PrivateAssets>analyzers</PrivateAssets>
       </PackageReference>
       <PackageReference Include="Nerdbank.GitVersioning" Version="3.10.94">
