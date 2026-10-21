@@ -850,8 +850,9 @@ namespace AeroMessages.GSS
     {
         public ushort DataLength;
 
-        [AeroString] public string CDR_Unk1;
-        [AeroString] public string CDR_Unk2;
+        // The client formats CHAT_DUEL_RESULT "<winner> wins duel with <loser>." with the two names in this order
+        [AeroString] public string CDR_WinnerName;
+        [AeroString] public string CDR_LoserName;
     }
 
     [AeroBlock]
