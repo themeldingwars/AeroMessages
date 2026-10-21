@@ -17,7 +17,7 @@ namespace AeroMessages.GSS.Generic
     {
         [AeroSdb("dbencounterdata::Arcs", "id")]
         public uint ArcId;
-        public uint Unk2; // Always >= CompletionCount
+        public uint AttemptCount; // Every start of the arc, also the ones that were stopped without completing it
         public uint CompletionCount;
         public uint CompletionTimeEpoch;
     }
