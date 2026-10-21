@@ -58,7 +58,7 @@ namespace AeroMessages.GSS
             Type36 = 36,
             Type37 = 37,
             Type38 = 38,
-            Type39 = 39,
+            Type39 = 39, // Battleframe change, see CombatLogType39Data
             Type40 = 40,
             Type41 = 41,
             Type42 = 42,
@@ -419,11 +419,14 @@ namespace AeroMessages.GSS
     [AeroBlock]
     public struct CombatLogType39Data
     {
-        public uint T39_Unk1; // chassis ids
-        public uint T39_Unk2; // chassis ids
-        public byte T39_Unk3;
-        public byte T39_Unk4;
-        public uint T39_Unk5;
+        // A battleframe change: sent when the player switches frames or the frame levels up (same chassis twice),
+        // and with ToChassisId 0 when the session ends. Consecutive rows chain: ToChassisId/ToLevel of one row
+        // are FromChassisId/FromLevel of the next, and TimeInFrame is the seconds between them.
+        public uint T39_FromChassisId;
+        public uint T39_ToChassisId;
+        public byte T39_FromLevel;
+        public byte T39_ToLevel;
+        public uint T39_TimeInFrame;
         public uint T39_Unk6;
     }
 
