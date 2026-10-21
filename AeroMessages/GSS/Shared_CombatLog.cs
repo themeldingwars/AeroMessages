@@ -58,7 +58,7 @@ namespace AeroMessages.GSS
             Type36 = 36,
             Type37 = 37,
             Type38 = 38,
-            Type39 = 39, // Battleframe change, see CombatLogType39Data
+            BattleframeChangeEvent = 39,
             Type40 = 40,
             Type41 = 41,
             Type42 = 42,
@@ -208,7 +208,7 @@ namespace AeroMessages.GSS
         [AeroIf(nameof(LogType), CombatLogType.Type36)]
         public CombatLogType36Data Type36Data;
 
-        [AeroIf(nameof(LogType), CombatLogType.Type39)]
+        [AeroIf(nameof(LogType), CombatLogType.BattleframeChangeEvent)]
         public CombatLogType39Data Type39Data;
 
         [AeroIf(nameof(LogType), CombatLogType.Type44)]
