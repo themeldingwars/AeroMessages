@@ -7,9 +7,10 @@ namespace AeroMessages.Control
     [AeroMessageId(MsgType.Control, MsgSrc.Both, 3)]
     public partial class GSSAck
     {
-        public ushort NextSeqNum;
-        public ushort AckForNum;
+        [AeroBigEndian] public ushort NextSeqNum;
+        [AeroBigEndian] public ushort AckForNum;
 
+        // Big-endian ushorts
         [AeroBlob] public byte[] AdditionalAcks = [];
     }
 }
