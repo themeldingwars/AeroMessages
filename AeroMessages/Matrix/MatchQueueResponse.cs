@@ -8,7 +8,7 @@ namespace AeroMessages.Matrix
     [AeroMessageId(MsgType.Matrix, MsgSrc.Message, MatrixMessage.MatchQueueResponse, MatrixVersion.V1, MatrixVersion.V32)]
     public partial class MatchQueueResponse
     {
-        [AeroArray(typeof(byte))] public MatchQueueResponseData Queues;
+        [AeroArray(typeof(byte), Chunked = true)] public MatchQueueResponseData[] Queues;
         public uint Matchmaker;
     }
 
