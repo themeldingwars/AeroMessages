@@ -12,7 +12,7 @@ namespace AeroMessages.GSS.Character.Command
         [AeroString] public string Recipient;
         [AeroString] public string Subject;
         [AeroString] public string Body;
-        [AeroArray(typeof(byte))] public MailAttachmentData[] Attachments;
+        [AeroArray(typeof(byte), Chunked = true)] public MailAttachmentData[] Attachments;
     }
 
     [AeroBlock]

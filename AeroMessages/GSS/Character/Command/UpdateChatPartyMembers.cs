@@ -9,7 +9,7 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.UpdateChatPartyMembers, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class UpdateChatPartyMembers
     {
-        [AeroArray(typeof(byte))] public ChatPartyMember[] Data;
+        [AeroArray(typeof(byte), Chunked = true)] public ChatPartyMember[] Data;
         public EntityId InvitingEntity;
     }
 }

@@ -9,8 +9,8 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.UpdateShoppingList, GssCharacterView.MissionAndMarkerController, GssVersion.V74, GssVersion.V74)]
     public partial class UpdateShoppingList
     {
-        [AeroArray(typeof(byte))] public ShoppingListUIntEntry[] Blueprints;
-        [AeroArray(typeof(byte))] public ShoppingListByteEntry[] Unk2;
+        [AeroArray(typeof(byte), Chunked = true)] public ShoppingListUIntEntry[] Blueprints;
+        [AeroArray(typeof(byte), Chunked = true)] public ShoppingListByteEntry[] Unk2;
     }
 
     [AeroBlock]

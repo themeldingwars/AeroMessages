@@ -9,7 +9,7 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.RemoveInteractives, GssCharacterView.CombatController, GssVersion.V1, GssVersion.V74)]
     public partial class RemoveInteractives
     {
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public EntityId[] Entities;
     }
 }

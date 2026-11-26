@@ -8,6 +8,6 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.RepairRequest, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class RepairRequest
     {
-        [AeroArray(typeof(byte))] public ulong[] Data;
+        [AeroArray(typeof(byte), Chunked = true)] public ulong[] Data;
     }
 }

@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.MissionsAvailable, GssVersion.V1, GssVersion.V74)]
     public partial class MissionsAvailable
     {
-        [AeroArray(typeof(byte))] public MissionsAvailableData[] Missions;
+        [AeroArray(typeof(byte), Chunked = true)] public MissionsAvailableData[] Missions;
         public ulong Npc; // the mission giver's entity id, 0 = none
     }
 

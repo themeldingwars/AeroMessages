@@ -10,6 +10,6 @@ namespace AeroMessages.Matrix
     {
         public byte Unk1;
         public ulong Unk2;
-        [AeroArray(typeof(byte))] [AeroString] public string[] Unk3;
+        [AeroArray(typeof(byte), Chunked = true)] [AeroString] public string[] Unk3;
     }
 }

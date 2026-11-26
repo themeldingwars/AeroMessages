@@ -11,6 +11,6 @@ namespace AeroMessages.GSS.Generic
         [AeroSdb("dbdialogdata::DialogScript", "id")]
         public uint DialogId;
 
-        [AeroArray(typeof(byte))] public ulong[] Speakers; // a single entry is the speaking entity of every line
+        [AeroArray(typeof(byte), Chunked = true)] public ulong[] Speakers; // a single entry is the speaking entity of every line
     }
 }

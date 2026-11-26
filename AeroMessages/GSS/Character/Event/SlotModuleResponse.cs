@@ -9,7 +9,7 @@ namespace AeroMessages.GSS.Character.Event
     public partial class SlotModuleResponse
     {
         public ulong ItemGUID;
-        [AeroArray(typeof(byte))] public SlotModuleResponseData[] Slotted;
+        [AeroArray(typeof(byte), Chunked = true)] public SlotModuleResponseData[] Slotted;
         public sbyte Success;
     }
 

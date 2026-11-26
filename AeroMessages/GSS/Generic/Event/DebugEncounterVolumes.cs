@@ -9,10 +9,10 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.DebugEncounterVolumes, GssVersion.V1, GssVersion.V74)]
     public partial class DebugEncounterVolumes
     {
-        [AeroArray(typeof(byte))] public DbgVol1[] Unk1;
-        [AeroArray(typeof(byte))] public DbgVol2[] Unk2;
-        [AeroArray(typeof(byte))] public DbgVol2[] Unk3;
-        [AeroArray(typeof(byte))] public DbgVol3[] Unk4;
+        [AeroArray(typeof(byte), Chunked = true)] public DbgVol1[] Unk1;
+        [AeroArray(typeof(byte), Chunked = true)] public DbgVol2[] Unk2;
+        [AeroArray(typeof(byte), Chunked = true)] public DbgVol2[] Unk3;
+        [AeroArray(typeof(byte), Chunked = true)] public DbgVol3[] Unk4;
     }
 
     [AeroBlock]

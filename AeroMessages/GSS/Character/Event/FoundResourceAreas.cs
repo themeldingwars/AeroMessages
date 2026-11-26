@@ -9,7 +9,7 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.FoundResourceAreas, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class FoundResourceAreas
     {
-        [AeroArray(typeof(byte))] public ResourceArea[] Data;
+        [AeroArray(typeof(byte), Chunked = true)] public ResourceArea[] Data;
     }
 
     [AeroBlock]

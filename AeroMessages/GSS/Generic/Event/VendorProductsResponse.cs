@@ -18,10 +18,10 @@ namespace AeroMessages.GSS.Generic
         [AeroSdb("dbcharacter::Faction", "id")]
         public uint FactionId;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public FactionDiscount[] FactionDiscounts;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public VendorProduct[] Products;
     }
 
@@ -67,10 +67,10 @@ namespace AeroMessages.GSS.Generic
         public uint Quantity;
         public uint Duration;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public VendorProductPrice[] Prices;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public VendorProductRestriction[] Restrictions;
 
         public byte Priority;

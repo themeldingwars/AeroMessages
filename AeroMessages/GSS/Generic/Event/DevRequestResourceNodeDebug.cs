@@ -9,6 +9,6 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.DevRequestResourceNodeDebug, GssVersion.V1, GssVersion.V74)]
     public partial class DevRequestResourceNodeDebug
     {
-        [AeroArray(typeof(byte))] public Vector3[] TestedPathLocations;
+        [AeroArray(typeof(byte), Chunked = true)] public Vector3[] TestedPathLocations;
     }
 }

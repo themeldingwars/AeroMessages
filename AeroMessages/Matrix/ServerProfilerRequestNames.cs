@@ -8,7 +8,7 @@ namespace AeroMessages.Matrix
     [AeroMessageId(MsgType.Matrix, MsgSrc.Command, MatrixMessage.ServerProfiler_RequestNames, MatrixVersion.V5, MatrixVersion.V32)]
     public partial class ServerProfilerRequestNames
     {
-        [AeroArray(typeof(byte))] public ushort[] FrameIds;
-        [AeroArray(typeof(byte))] public ushort[] NodeIds;
+        [AeroArray(typeof(byte), Chunked = true)] public ushort[] FrameIds;
+        [AeroArray(typeof(byte), Chunked = true)] public ushort[] NodeIds;
     }
 }

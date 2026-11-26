@@ -454,7 +454,7 @@ namespace AeroMessages.GSS
     public struct CombatLogType49Data
     {
         public uint T49_Unk1;
-        [AeroArray(typeof(byte))] public CombatLogIntPair[] T49_Unk2;
+        [AeroArray(typeof(byte), Chunked = true)] public CombatLogIntPair[] T49_Unk2;
         public byte T49_Unk3;
     }
 
@@ -469,7 +469,7 @@ namespace AeroMessages.GSS
     public struct CombatLogType53Data
     {
         public uint T53_Unk1;
-        [AeroArray(typeof(byte))] public CombatLogType53DataInner[] T53_Unk2;
+        [AeroArray(typeof(byte), Chunked = true)] public CombatLogType53DataInner[] T53_Unk2;
     }
 
     [AeroBlock]

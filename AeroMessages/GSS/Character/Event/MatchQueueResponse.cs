@@ -10,7 +10,7 @@ namespace AeroMessages.GSS.Character.Event
     {
         public sbyte Success;
         public Matrix.ForceUnqueue.QueueErrorReason FailureReason;
-        [AeroArray(typeof(byte))] public ulong[] PlayerIds; // the players the failure is about
+        [AeroArray(typeof(byte), Chunked = true)] public ulong[] PlayerIds; // the players the failure is about
         public uint FailureData;
         public ulong SquadId; // forwarded to the squad, the members queue with it as MatchQueue.SquadId
         public ulong Unk6;

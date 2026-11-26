@@ -13,7 +13,7 @@ namespace AeroMessages.GSS.Character.Command
         [AeroSdb("dbencounterdata::EncUiQueryOption", "id")]
         public uint SelectedOptionId;
 
-        [AeroArray(typeof(byte))] public UiQueryResponseOutput[] Outputs;
+        [AeroArray(typeof(byte), Chunked = true)] public UiQueryResponseOutput[] Outputs;
     }
 
     [AeroBlock]

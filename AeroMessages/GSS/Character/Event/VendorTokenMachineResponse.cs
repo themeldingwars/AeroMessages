@@ -13,7 +13,7 @@ namespace AeroMessages.GSS.Character.Event
         public uint VendorId;
         public uint TokenId;
         public TokenMachineState State;
-        [AeroArray(typeof(byte))] public VendorTokenThing[] Items;
+        [AeroArray(typeof(byte), Chunked = true)] public VendorTokenThing[] Items;
     }
 
     [AeroBlock]

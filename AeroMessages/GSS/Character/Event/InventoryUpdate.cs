@@ -14,18 +14,18 @@ namespace AeroMessages.GSS.Character.Event
         [AeroArray(typeof(byte), Chunked = true)]
         public Item[] Items;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public Resource[] Resources;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public Loadout[] Loadouts;
 
         public sbyte UpdateMailInventory; // replaces the mail inventory with the two arrays below
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public Item[] MailItems;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public Resource[] MailResources;
     }
 
@@ -46,12 +46,12 @@ namespace AeroMessages.GSS.Character.Event
         public ushort Unk4;
         public byte Unk5;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public ItemUnkData[] Attributes;
 
         public ushort Quality;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public uint[] Modules;
     }
 
@@ -92,7 +92,7 @@ namespace AeroMessages.GSS.Character.Event
         [AeroSdb("dbitems::RootItem", "sdb_id")]
         public uint ChassisID;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public LoadoutConfig[] LoadoutConfigs;
     }
 
@@ -104,13 +104,13 @@ namespace AeroMessages.GSS.Character.Event
         [AeroString]
         public string ConfigName;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public LoadoutConfig_Item[] Items;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public LoadoutConfig_Visual[] Visuals;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public uint[] Perks;
 
         public uint Unk1; // Feels like it should be related to perks, but couldn't find anything.
@@ -141,7 +141,7 @@ namespace AeroMessages.GSS.Character.Event
         public uint Unk1_5;
         public uint Unk1_6;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public uint[] Unk2;
 
         public VisualsBlock UnkVisualsBlock;
@@ -152,13 +152,13 @@ namespace AeroMessages.GSS.Character.Event
         [AeroSdb("dbitems::RootItem", "sdb_id")]
         public uint GliderId;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public LoadoutConfig_Extra_UnkThing[] Unk3;
 
         [AeroSdb("dbvisualrecords::WarpaintPalette", "id")]
         public uint OverrideWeaponsPaletteId;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public uint[] Unk4;
 
         public uint Unk5_1;
@@ -168,10 +168,10 @@ namespace AeroMessages.GSS.Character.Event
 
         public SlottedItem Chassis;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public SlottedItem[] Weapons;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public VisualOverridesData[] VisualOverrides;
 
         public SlottedItem Backpack;

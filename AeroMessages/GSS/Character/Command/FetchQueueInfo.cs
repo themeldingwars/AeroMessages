@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.FetchQueueInfo, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class FetchQueueInfo
     {
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         [AeroString]
         public string[] Keys;
 

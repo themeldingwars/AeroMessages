@@ -12,7 +12,7 @@ namespace AeroMessages.GSS.Generic
     {
         public EntityId Unk1; // Primary key
         [AeroString] public string Unk2; // Secondary key
-        [AeroArray(typeof(byte))] public NpcShapeDebugInfoData[] Unk3;
+        [AeroArray(typeof(byte), Chunked = true)] public NpcShapeDebugInfoData[] Unk3;
     }
 
     [AeroBlock]

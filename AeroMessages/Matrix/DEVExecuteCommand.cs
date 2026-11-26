@@ -16,6 +16,6 @@ namespace AeroMessages.Matrix
             Stats = 3 // statscmd
         }
         public DevCommandType Type;
-        [AeroArray(typeof(byte))] [AeroString] public string[] Arguments;
+        [AeroArray(typeof(byte), Chunked = true)] [AeroString] public string[] Arguments;
     }
 }

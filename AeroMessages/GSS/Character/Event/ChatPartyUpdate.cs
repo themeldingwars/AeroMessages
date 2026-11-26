@@ -13,7 +13,7 @@ namespace AeroMessages.GSS.Character.Event
         [AeroString] public string LeaderName;
         public ChatPartyMember Member;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public ChatPartyMember[] Members;
 
         public EntityId LeaderId;

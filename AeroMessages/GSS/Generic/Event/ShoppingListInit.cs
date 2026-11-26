@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.ShoppingListInit, GssVersion.V1, GssVersion.V74)]
     public partial class ShoppingListInit
     {
-        [AeroArray(typeof(byte))] public ShoppingListData[] Data;
+        [AeroArray(typeof(byte), Chunked = true)] public ShoppingListData[] Data;
     }
 
     [AeroBlock]

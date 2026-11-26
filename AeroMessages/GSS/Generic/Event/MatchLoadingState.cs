@@ -10,7 +10,7 @@ namespace AeroMessages.GSS.Generic
     public partial class MatchLoadingState
     {
         public sbyte IsLoading;
-        [AeroArray(typeof(byte))] public MatchLoadingStateData[] Players;
+        [AeroArray(typeof(byte), Chunked = true)] public MatchLoadingStateData[] Players;
     }
 
     [AeroBlock]

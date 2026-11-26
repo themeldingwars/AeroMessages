@@ -13,6 +13,6 @@ namespace AeroMessages.GSS.Character.Command
 
         public byte HaveSquadMemberIds;
         [AeroIf(nameof(HaveSquadMemberIds), 1)]
-        [AeroArray(typeof(byte))] public ulong[] SquadMemberIds;
+        [AeroArray(typeof(byte), Chunked = true)] public ulong[] SquadMemberIds;
     }
 }

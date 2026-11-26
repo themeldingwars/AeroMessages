@@ -15,7 +15,7 @@ namespace AeroMessages.GSS.Generic
         [AeroSdb("aptfs::RegisterClientProximityCommandDef", "id")]
         public uint ClientProximityCommandId;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public EntityId[] Targets;
 
         public uint Time;

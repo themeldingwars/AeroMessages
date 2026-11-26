@@ -13,7 +13,7 @@ namespace AeroMessages.GSS.Character
         public uint Category; // 1 stat upgrade, 2 item award, 3 and 4 other award tables
         public float StatValue;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public uint[] AdditionalInfo;
         //public uint? Count; // first additional info entry
         //public uint? ItemSDBId; // second additional info entry
@@ -91,7 +91,7 @@ namespace AeroMessages.GSS.Character
         [AeroSdb("dblocalization::LocalizedText", "id")]
         public uint NameLocalizationId;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         [AeroSdb("dbcharacter::HeadAccesory", "ha_id")] // TODO: Double check
         public uint[] HeadAccessories;
 
@@ -110,31 +110,31 @@ namespace AeroMessages.GSS.Character
     [AeroBlock]
     public struct VisualsBlock
     {
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public VisualsDecalsBlock[] Decals;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public uint[] Gradients;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public uint[] Colors;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public VisualsPaletteBlock[] Palettes;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public VisualsPatternBlock[] Patterns;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public uint[] OrnamentGroupIds;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public uint[] CziMapAssetIds; // First/Lowest byte is not part of the AssetId
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public HalfFloat[] MorphWeights;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public VisualsOverlayBlock[] Overlays;
     }
 
@@ -222,7 +222,7 @@ namespace AeroMessages.GSS.Character
         [AeroIf(nameof(Flags), Ops.HasFlag, SlottedItemFlags.HaveMoreData)]
         public SlottedItemUnkData UnkData;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public SlottedModule[] Modules;
 
         public VisualsBlock Visuals;
@@ -253,13 +253,13 @@ namespace AeroMessages.GSS.Character
     public struct SlottedItemUnkData
     {
         public ulong Unk1;
-        [AeroArray(typeof(byte))] public SlottedItemUnk2x4[] Unk2;
+        [AeroArray(typeof(byte), Chunked = true)] public SlottedItemUnk2x4[] Unk2;
         public ushort Unk3;
         public ushort Unk4;
         public uint Unk5;
         public byte Unk6;
         public uint Unk7;
-        [AeroArray(typeof(byte))] public uint[] Unk8;
+        [AeroArray(typeof(byte), Chunked = true)] public uint[] Unk8;
         public byte Unk9;
     }
 
@@ -479,8 +479,8 @@ namespace AeroMessages.GSS.Character
     [AeroBlock]
     public struct MovementPoseDebugData2Collision
     {
-        [AeroArray(typeof(byte))] public MovementPoseDebugData2Arrow[] Arrows; // debugmovement.drawCollision
-        [AeroArray(typeof(byte))] public float[] Unk2; // Not certain that its floats
+        [AeroArray(typeof(byte), Chunked = true)] public MovementPoseDebugData2Arrow[] Arrows; // debugmovement.drawCollision
+        [AeroArray(typeof(byte), Chunked = true)] public float[] Unk2; // Not certain that its floats
     }
 
     [AeroBlock]
@@ -580,14 +580,14 @@ namespace AeroMessages.GSS.Character
         public uint Data1; // Pattern: 1 == Armor, 2 == Bodysuit
         public uint Data2; // Color?
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public float[] Transform;
     }
 
     [AeroBlock]
     public struct VisualOverridesField
     {
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public VisualOverridesData[] Data;
     }
 
@@ -601,7 +601,7 @@ namespace AeroMessages.GSS.Character
     [AeroBlock]
     public struct AssetOverridesField
     {
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         [AeroSdb("dbvisualrecords::AssetOverrideGroup", "id")]
         public uint[] Ids;
     }
@@ -671,8 +671,8 @@ namespace AeroMessages.GSS.Character
         [AeroString] public string InitiatorName;
         public EntityId RecipientId;
         [AeroString] public string RecipientName;
-        [AeroArray(typeof(byte))] public ulong[] Team1;
-        [AeroArray(typeof(byte))] public ulong[] Team2;
+        [AeroArray(typeof(byte), Chunked = true)] public ulong[] Team1;
+        [AeroArray(typeof(byte), Chunked = true)] public ulong[] Team2;
         public ushort Unk7;
         public ushort Unk8;
         public uint StartTime;

@@ -10,7 +10,7 @@ namespace AeroMessages.GSS.Generic
     public partial class NpcHostilityDebugInfo
     {
         public EntityId Target; // Assumption
-        [AeroArray(typeof(byte))] public NpcHosilityDebugInfoData[] Data;
+        [AeroArray(typeof(byte), Chunked = true)] public NpcHosilityDebugInfoData[] Data;
     }
 
     [AeroBlock]

@@ -12,7 +12,7 @@ namespace AeroMessages.GSS.Character.Event
         public uint FrameId;
         public byte NewLevel;
         public byte NumberOfLevelsAdvanced;
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public byte[] RareReplacementLevels; // levels whose dbcharacter::LoadoutRareReplacements rows apply
     }
 }

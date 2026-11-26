@@ -9,6 +9,6 @@ namespace AeroMessages.GSS.Character.Command
     public partial class LootDistributionSetVotes
     {
         public uint DistributionId;
-        [AeroArray(typeof(byte))] public ulong[] RecipientIds;
+        [AeroArray(typeof(byte), Chunked = true)] public ulong[] RecipientIds;
     }
 }

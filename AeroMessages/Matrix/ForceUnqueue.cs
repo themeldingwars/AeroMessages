@@ -34,7 +34,7 @@ namespace AeroMessages.Matrix
         }
 
         public QueueErrorReason ReasonType;
-        [AeroArray(typeof(byte))] public EntityId[] CausingCharacters;
+        [AeroArray(typeof(byte), Chunked = true)] public EntityId[] CausingCharacters;
         public uint ReasonValue;
     }
 }

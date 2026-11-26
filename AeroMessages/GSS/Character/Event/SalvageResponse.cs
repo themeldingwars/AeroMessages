@@ -10,7 +10,7 @@ namespace AeroMessages.GSS.Character.Event
     {
         public byte Success;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public ItemSalvageResponse[] SalvageResponses;
     }
 

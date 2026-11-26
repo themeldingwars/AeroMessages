@@ -8,10 +8,10 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.MatchQueue, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class MatchQueue
     {
-        [AeroArray(typeof(byte))] public MatchQueueData[] Queues;
+        [AeroArray(typeof(byte), Chunked = true)] public MatchQueueData[] Queues;
         public ulong Unk2;
         public ulong TeamId;
-        [AeroArray(typeof(byte))] public uint[] LfgCategoryIds;
+        [AeroArray(typeof(byte), Chunked = true)] public uint[] LfgCategoryIds;
         public uint ChassisId;
         public ulong SquadId;
         public uint RequestId;

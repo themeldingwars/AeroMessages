@@ -9,14 +9,14 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.ServerProfiler_SendFrame, GssVersion.V1, GssVersion.V74)]
     public partial class ServerProfilerSendFrame
     {
-        [AeroArray(typeof(byte))] public ServerProfilerFrameData[] Data;
+        [AeroArray(typeof(byte), Chunked = true)] public ServerProfilerFrameData[] Data;
     }
 
     [AeroBlock]
     public struct ServerProfilerFrameData
     {
         public ushort Id; // named by ServerProfilerSendNames.FrameNames
-        [AeroArray(typeof(byte))] public ServerProfilerStruct[] Nodes;
+        [AeroArray(typeof(byte), Chunked = true)] public ServerProfilerStruct[] Nodes;
     }
 
     [AeroBlock]

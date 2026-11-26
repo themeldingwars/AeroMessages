@@ -11,7 +11,7 @@ namespace AeroMessages.GSS.Character.Event
         public int LoadoutId;
         public uint ConfigId; // Assumption. If so, 0: PvE, 1: PvP
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public LoadoutConfig_Visual[] Visuals;
 
         public sbyte Result; // 1 = Success, 0 = Failure

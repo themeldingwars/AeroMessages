@@ -8,6 +8,6 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.Fabrication_FetchAllRecipes_Response, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class FabricationFetchAllRecipesResponse
     {
-        [AeroArray(typeof(byte))] public uint[] Recipes;
+        [AeroArray(typeof(byte), Chunked = true)] public uint[] Recipes;
     }
 }

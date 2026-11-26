@@ -54,14 +54,14 @@ namespace AeroMessages.GSS
     [AeroBlock]
     public struct SinFactionsAcquiredByData
     {
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public byte[] Factions;
     }
 
     [AeroBlock]
     public struct SinTeamsAcquiredByData
     {
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public byte[] Factions;
     }
 
@@ -239,7 +239,7 @@ namespace AeroMessages.GSS
     [AeroBlock]
     public struct StatusEffectMoreData
     {
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public EntityId[] Entities;
 
         public sbyte Unk1;
@@ -566,7 +566,7 @@ namespace AeroMessages.GSS
         [AeroArray(typeof(int))] public GenericKeyVariablePair[] Value15; // Double Inception
 
         [AeroIf(nameof(TypeSelector), 0x10)]
-        [AeroArray(typeof(byte))] public VariableType[] Value16; // Regular Inception
+        [AeroArray(typeof(byte), Chunked = true)] public VariableType[] Value16; // Regular Inception
         */
     }
 
@@ -707,7 +707,7 @@ namespace AeroMessages.GSS
         public EntityId Target;
 
         // 009f6020
-        [AeroArray(typeof(byte))] public DbgMatrix4x4[] Transforms;
+        [AeroArray(typeof(byte), Chunked = true)] public DbgMatrix4x4[] Transforms;
     }
 
     [AeroBlock]
@@ -956,7 +956,7 @@ namespace AeroMessages.GSS
         public byte InteractableLootRarityThreshold;
         public HalfFloat LootRadius;
         public byte SplitResources;
-        [AeroArray(typeof(byte))] public EntityId[] LootVoters;
+        [AeroArray(typeof(byte), Chunked = true)] public EntityId[] LootVoters;
     }
 
     [AeroBlock]
@@ -1005,8 +1005,8 @@ namespace AeroMessages.GSS
     public struct SQIData
     {
         public uint QueueId;
-        [AeroArray(typeof(byte))] public uint[] SQI_Unk2; // Unknown type
-        [AeroArray(typeof(byte))] public int[] DifficultyIds;
+        [AeroArray(typeof(byte), Chunked = true)] public uint[] SQI_Unk2; // Unknown type
+        [AeroArray(typeof(byte), Chunked = true)] public int[] DifficultyIds;
     }
 
 
@@ -1027,7 +1027,7 @@ namespace AeroMessages.GSS
         public ulong GRA_OwnerId;
         public uint GRA_ScanId;
         public Vector3 GRA_Position;
-        [AeroArray(typeof(byte))] public ResourceCompositionData[] Data;
+        [AeroArray(typeof(byte), Chunked = true)] public ResourceCompositionData[] Data;
 
     }
 
@@ -1057,7 +1057,7 @@ namespace AeroMessages.GSS
         public uint Quantity;
         public uint Boosted;
         public uint Quality;
-        [AeroArray(typeof(byte))] public uint[] Modules;
+        [AeroArray(typeof(byte), Chunked = true)] public uint[] Modules;
         public byte RewardType; // 2: match_reward, 3: encounter_reward
     }
 

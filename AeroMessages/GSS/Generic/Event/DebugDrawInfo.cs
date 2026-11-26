@@ -8,6 +8,6 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.DebugDrawInfo, GssVersion.V1, GssVersion.V74)]
     public partial class DebugDrawInfo
     {
-        [AeroArray(typeof(byte))] public byte[] Unk;
+        [AeroArray(typeof(byte), Chunked = true)] public byte[] Unk;
     }
 }

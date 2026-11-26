@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.BountyRerollProductInfoUpdateEvt, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class BountyRerollProductInfoUpdateEvt
     {
-        [AeroArray(typeof(byte))] public BountyRerollProductInfoData[] Data;
+        [AeroArray(typeof(byte), Chunked = true)] public BountyRerollProductInfoData[] Data;
     }
 
     [AeroBlock]

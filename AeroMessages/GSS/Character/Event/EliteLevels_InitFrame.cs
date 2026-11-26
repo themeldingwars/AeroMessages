@@ -21,10 +21,10 @@ namespace AeroMessages.GSS.Character.Event
         public uint EliteXP;
         public uint ElitePoints;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public EliteAvailableUpgradeInfo[] AvailableUpgrades;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public ElitePreviousUpgradeInfo[] PreviousUpgrades;
     }
 }

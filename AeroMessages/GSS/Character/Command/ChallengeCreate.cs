@@ -8,6 +8,6 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.ChallengeCreate, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class ChallengeCreate
     {
-        [AeroArray(typeof(byte))] public ulong[] SquadMemberIds;
+        [AeroArray(typeof(byte), Chunked = true)] public ulong[] SquadMemberIds;
     }
 }

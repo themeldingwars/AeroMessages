@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.ArcCompletionHistoryUpdate, GssVersion.V1, GssVersion.V74)]
     public partial class ArcCompletionHistoryUpdate
     {
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public ArcBlock[] Data;
     }
 

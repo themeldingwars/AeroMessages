@@ -14,7 +14,7 @@ namespace AeroMessages.Matrix
         public EntityId LeaderId;
         [AeroString] public string LeaderName;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         [AeroString] public string[] MemberNames; // the leader squad invites everyone but itself
     }
 }

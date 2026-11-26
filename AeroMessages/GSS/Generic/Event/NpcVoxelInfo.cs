@@ -11,8 +11,8 @@ namespace AeroMessages.GSS.Generic
     public partial class NpcVoxelInfo
     {
         public EntityId Unk1;
-        [AeroArray(typeof(byte))] public Vector3[] Unk2;
-        [AeroArray(typeof(byte))] public uint[] Unk3;
+        [AeroArray(typeof(byte), Chunked = true)] public Vector3[] Unk2;
+        [AeroArray(typeof(byte), Chunked = true)] public uint[] Unk3;
         public byte Unk4; // 0 seems to clear?
     }
 }

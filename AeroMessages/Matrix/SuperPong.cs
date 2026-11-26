@@ -8,7 +8,7 @@ namespace AeroMessages.Matrix
     [AeroMessageId(MsgType.Matrix, MsgSrc.Message, MatrixMessage.SuperPong, MatrixVersion.V1, MatrixVersion.V32)]
     public partial class SuperPong
     {
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public ulong[] TimestampMicro; // Microseconds UNIX Epoch (Client follows server time from TimeSync)
         public uint Mode; // 1: feeds the debuglag graph and pings again, otherwise logs the hop times
     }

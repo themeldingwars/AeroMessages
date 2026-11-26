@@ -9,8 +9,8 @@ namespace AeroMessages.GSS.Character.Event
     public partial class WorkbenchUpdate
     {
         public sbyte ClearExistingData;
-        [AeroArray(typeof(byte))] public ulong[] RemovedWorkbenchGuids;
-        [AeroArray(typeof(byte))] public WorkbenchUpdateData[] Workbenches;
+        [AeroArray(typeof(byte), Chunked = true)] public ulong[] RemovedWorkbenchGuids;
+        [AeroArray(typeof(byte), Chunked = true)] public WorkbenchUpdateData[] Workbenches;
     }
 
     [AeroBlock]
@@ -20,10 +20,10 @@ namespace AeroMessages.GSS.Character.Event
         public uint BlueprintId;
         public uint Repetitions;
         public uint Position; // workbench slot
-        [AeroArray(typeof(byte))] public WorkbenchUpdateInner1[] Inputs;
+        [AeroArray(typeof(byte), Chunked = true)] public WorkbenchUpdateInner1[] Inputs;
         public byte MarkedComplete;
         public uint RbCompleteCost; // Red Beans to finish now
-        [AeroArray(typeof(byte))] public WorkbenchUpdateInner2[] Outputs;
+        [AeroArray(typeof(byte), Chunked = true)] public WorkbenchUpdateInner2[] Outputs;
         public uint TotalSecondsRequired;
         public uint SecondsRemaining; // as of TimerReferenceTimeUs
         public byte Unk11;
@@ -34,7 +34,7 @@ namespace AeroMessages.GSS.Character.Event
     public struct WorkbenchUpdateInner1
     {
         public uint Unk1;
-        [AeroArray(typeof(byte))] public WorkbenchUpdateInner1_1[] Items;
+        [AeroArray(typeof(byte), Chunked = true)] public WorkbenchUpdateInner1_1[] Items;
     }
 
     [AeroBlock]
@@ -52,6 +52,6 @@ namespace AeroMessages.GSS.Character.Event
         public uint ItemTypeId;
         public uint Quantity;
         public uint Quality;
-        [AeroArray(typeof(byte))] public uint[] Modules;
+        [AeroArray(typeof(byte), Chunked = true)] public uint[] Modules;
     }
 }

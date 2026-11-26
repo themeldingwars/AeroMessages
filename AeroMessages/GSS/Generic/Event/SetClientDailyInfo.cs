@@ -9,6 +9,6 @@ namespace AeroMessages.GSS.Generic
     public partial class SetClientDailyInfo
     {
         public uint RefreshTime; // unix seconds
-        [AeroArray(typeof(byte))] public int[] DailyMissionIds;
+        [AeroArray(typeof(byte), Chunked = true)] public int[] DailyMissionIds;
     }
 }

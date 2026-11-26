@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Both, GssMessage.ServerProfiler_RequestNames, GssVersion.V1, GssVersion.V74)]
     public partial class ServerProfilerRequestNames
     {
-        [AeroArray(typeof(byte))] public ushort[] FrameIds;
-        [AeroArray(typeof(byte))] public ushort[] NodeIds;
+        [AeroArray(typeof(byte), Chunked = true)] public ushort[] FrameIds;
+        [AeroArray(typeof(byte), Chunked = true)] public ushort[] NodeIds;
     }
 }

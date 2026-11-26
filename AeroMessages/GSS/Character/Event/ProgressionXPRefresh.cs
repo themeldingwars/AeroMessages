@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.ProgressionXpRefresh, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class ProgressionXPRefresh
     {
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public ProgressionFrameInfo[] Frames;
     }
 

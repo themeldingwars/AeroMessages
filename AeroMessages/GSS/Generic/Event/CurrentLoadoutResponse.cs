@@ -16,6 +16,6 @@ namespace AeroMessages.GSS.Generic
         [AeroString] public string LoadoutName;
         [AeroString] public string Unk5;
         public uint Unk6;
-        [AeroArray(typeof(byte))] public LoadoutConfig[] LoadoutConfigs;
+        [AeroArray(typeof(byte), Chunked = true)] public LoadoutConfig[] LoadoutConfigs;
     }
 }

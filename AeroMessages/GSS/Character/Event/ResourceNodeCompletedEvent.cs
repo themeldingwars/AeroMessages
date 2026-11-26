@@ -16,6 +16,6 @@ namespace AeroMessages.GSS.Character.Event
         public uint ScanId;
         public byte Unk9; // Empty?
         public uint Quantity;
-        [AeroArray(typeof(byte))] public ResourceCompositionData[] Composition;
+        [AeroArray(typeof(byte), Chunked = true)] public ResourceCompositionData[] Composition;
     }
 }

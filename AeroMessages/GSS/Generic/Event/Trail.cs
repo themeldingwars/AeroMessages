@@ -12,7 +12,7 @@ namespace AeroMessages.GSS.Generic
         public uint Id; // TrailRequest.Id
         public TrailStatus Status;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public Vector3[] Points;
     }
 

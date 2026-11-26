@@ -11,10 +11,10 @@ namespace AeroMessages.GSS.Character.Command
         public int LoadoutId;
         public uint ConfigId; // 0 PvE, 1 PvP
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public LoadoutConfig_Visual[] Visuals;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public VisualPurchaseData[] Purchases;
     }
 

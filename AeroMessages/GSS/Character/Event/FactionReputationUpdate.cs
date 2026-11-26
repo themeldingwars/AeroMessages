@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.FactionReputationUpdate, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class FactionReputationUpdate
     {
-        [AeroArray(typeof(byte))] public FactionReputationData[] Data;
+        [AeroArray(typeof(byte), Chunked = true)] public FactionReputationData[] Data;
         public sbyte HideUiNotification;
     }
 

@@ -22,9 +22,9 @@ namespace AeroMessages.GSS.Melding.View
         public ulong TimestampMicro;
         public ulong DurationMicro; // time to morph FromPoints into ToPoints, starting at TimestampMicro
         public byte Unk3;
-        [AeroArray(typeof(byte))] public Vector3[] FromPoints;
-        [AeroArray(typeof(byte))] public Vector3[] FromTangents;
-        [AeroArray(typeof(byte))] public Vector3[] ToPoints;
-        [AeroArray(typeof(byte))] public Vector3[] ToTangets;
+        [AeroArray(typeof(byte), Chunked = true)] public Vector3[] FromPoints;
+        [AeroArray(typeof(byte), Chunked = true)] public Vector3[] FromTangents;
+        [AeroArray(typeof(byte), Chunked = true)] public Vector3[] ToPoints;
+        [AeroArray(typeof(byte), Chunked = true)] public Vector3[] ToTangets;
     }
 }

@@ -9,7 +9,7 @@ namespace AeroMessages.Matrix
     [AeroMessageId(MsgType.Matrix, MsgSrc.Command, MatrixMessage.SuperPing, MatrixVersion.V1, MatrixVersion.V32)]
     public partial class SuperPing
     {
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public ulong[] TimestampMicro; // Microseconds UNIX Epoch (Client follows server time from TimeSync)
         public EntityId Requester;
         public uint Mode; // the client always sends 1, echoed in SuperPong

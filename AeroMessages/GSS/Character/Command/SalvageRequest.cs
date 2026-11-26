@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Character.Command
     [AeroMessageId(MsgType.GSS, MsgSrc.Command, GssCharacterCommand.SalvageRequest, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class SalvageRequest
     {
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public ItemSalvageRequest[] SalvageRequests;
     }
 

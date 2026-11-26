@@ -47,7 +47,7 @@ namespace AeroMessages.GSS.Turret.View
     [AeroBlock]
     public struct AmmoStruct
     {
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public ushort[] AmmoIndex; // Limited examples, could be wrong
     }
 }

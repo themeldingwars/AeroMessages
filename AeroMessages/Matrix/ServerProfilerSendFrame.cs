@@ -9,14 +9,14 @@ namespace AeroMessages.Matrix
     [AeroMessageId(MsgType.Matrix, MsgSrc.Message, MatrixMessage.ServerProfiler_SendFrame, MatrixVersion.V5, MatrixVersion.V32)]
     public partial class ServerProfilerSendFrame
     {
-        [AeroArray(typeof(byte))] public ServerProfilerFrameData[] Data;
+        [AeroArray(typeof(byte), Chunked = true)] public ServerProfilerFrameData[] Data;
     }
 
     [AeroBlock]
     public struct ServerProfilerFrameData
     {
         public ushort Id; // named by ServerProfilerSendNames.FrameNames
-        [AeroArray(typeof(byte))] public ServerProfilerStruct[] Nodes;
+        [AeroArray(typeof(byte), Chunked = true)] public ServerProfilerStruct[] Nodes;
     }
 
     [AeroBlock]
