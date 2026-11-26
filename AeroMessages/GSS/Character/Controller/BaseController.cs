@@ -188,7 +188,7 @@ namespace AeroMessages.GSS.Character.Controller
     [AeroBlock]
     public struct PermanentStatusEffectsData
     {
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public PermanentStatusEffectsInnerData[] Effects;
     }
 
@@ -251,7 +251,7 @@ namespace AeroMessages.GSS.Character.Controller
     [AeroBlock]
     public struct CachedAssetsData
     {
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public CachedAssetsInnerData[] Data;
     }
 
@@ -260,7 +260,7 @@ namespace AeroMessages.GSS.Character.Controller
     {
         public ulong Unk1;
         public byte Unk2;
-        [AeroArray(typeof(byte))] public CachedAssetsDeepData[] Unk3;
+        [AeroArray(typeof(byte), Chunked = true)] public CachedAssetsDeepData[] Unk3;
     }
 
     [AeroBlock]
@@ -277,7 +277,7 @@ namespace AeroMessages.GSS.Character.Controller
         }
 
         public CachedAssetSdbType SdbType;
-        [AeroArray(typeof(byte))] public uint[] SdbIds; // preloaded by the client
+        [AeroArray(typeof(byte), Chunked = true)] public uint[] SdbIds; // preloaded by the client
     }
 
     [AeroBlock]
@@ -300,7 +300,7 @@ namespace AeroMessages.GSS.Character.Controller
     [AeroBlock]
     public struct OldestDeployablesField
     {
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public OldestDeployablesData[] Data;
     }
 

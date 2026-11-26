@@ -16,7 +16,7 @@ namespace AeroMessages.Matrix
 
         public byte HaveRequestByRefID;
         [AeroIf(nameof(HaveRequestByRefID), 1)]
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public ushort[] RefRequests; // mRequestingViewIndices?
     }
 

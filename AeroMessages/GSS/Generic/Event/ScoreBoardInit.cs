@@ -9,7 +9,7 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.ScoreBoardInit, GssVersion.V1, GssVersion.V74)]
     public partial class ScoreBoardInit
     {
-        [AeroArray(typeof(byte))] public ScoreBoardInitData[] Players;
+        [AeroArray(typeof(byte), Chunked = true)] public ScoreBoardInitData[] Players;
         public sbyte Unk2;
         public sbyte Unk3;
         public byte Unk4;
@@ -32,10 +32,10 @@ namespace AeroMessages.GSS.Generic
         public sbyte IsSquaded;
         public byte Unk10;
         public ScoreBoardData1 Stats;
-        [AeroArray(typeof(byte))] public ScoreBoardData3[] EncounterStats;
+        [AeroArray(typeof(byte), Chunked = true)] public ScoreBoardData3[] EncounterStats;
         public uint Unk13;
         public sbyte Unk14;
-        [AeroArray(typeof(byte))] public ScoreBoardData1[] Unk15; // 00c53610
+        [AeroArray(typeof(byte), Chunked = true)] public ScoreBoardData1[] Unk15; // 00c53610
     }
 
     [AeroBlock]
@@ -45,7 +45,7 @@ namespace AeroMessages.GSS.Generic
         // Index i is the dbstats::Stat id ScoreBoardStatIds[i] (table 0x01bb23b0): 10007, 10009, 10107, 10033, 10037, 10025, 10026, 10045, 10174,
         // 10158, 10175, 10170, 10153, 10154, 10067, 10075, 10080, 10079
         [AeroArray(18)] public uint[] StatValues;
-        [AeroArray(typeof(byte))] public ScoreBoardData2[] Unk2;
+        [AeroArray(typeof(byte), Chunked = true)] public ScoreBoardData2[] Unk2;
         public uint Unk3;
         public byte Unk4;
     }

@@ -8,13 +8,13 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.AddOrUpdateInteractives, GssCharacterView.CombatController, GssVersion.V1, GssVersion.V74)]
     public partial class AddOrUpdateInteractives
     {
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public ulong[] Entities; // "Interactives"
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public byte[] InteractionTypes; // "Types"
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public uint[] InteractionDurationsMs; // "Durations"
     }
 }

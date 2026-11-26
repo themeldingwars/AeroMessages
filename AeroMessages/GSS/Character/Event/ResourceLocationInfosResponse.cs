@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.ResourceLocationInfosResponse, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class ResourceLocationInfosResponse
     {
-        [AeroArray(typeof(byte))] public ResourceLocationInfo[] Data;
+        [AeroArray(typeof(byte), Chunked = true)] public ResourceLocationInfo[] Data;
         public byte IsFinal; // the last response, the client updates the heatmap
     }
 
@@ -19,7 +19,7 @@ namespace AeroMessages.GSS.Character.Event
         public float Y;
         public float Z;
         public uint Unk4;
-        [AeroArray(typeof(byte))] public ResourceLocationInfoInner[] Composition;
+        [AeroArray(typeof(byte), Chunked = true)] public ResourceLocationInfoInner[] Composition;
     }
 
     [AeroBlock]

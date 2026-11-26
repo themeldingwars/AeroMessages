@@ -37,9 +37,9 @@ namespace AeroMessages.GSS.Character
         [AeroArray(typeof(uint))] public FabricationData_00d973d0[] ActionSet; // the client has room for 16 entries and doesn't check the count
         public uint LastActionUsed;
         public uint Rerolls;
-        [AeroArray(typeof(byte))] public FabricationData_00d9aab0[] UsedActions;
-        [AeroArray(typeof(byte))] public uint[] Modules; // item sdb ids
-        [AeroArray(typeof(byte))] public FabricationData_00d9ad00[] IngredientMultipliers;
+        [AeroArray(typeof(byte), Chunked = true)] public FabricationData_00d9aab0[] UsedActions;
+        [AeroArray(typeof(byte), Chunked = true)] public uint[] Modules; // item sdb ids
+        [AeroArray(typeof(byte), Chunked = true)] public FabricationData_00d9ad00[] IngredientMultipliers;
         [AeroArray(typeof(int))] public GenericKeyVariablePair[] LuaVars;
     }
 
@@ -49,7 +49,7 @@ namespace AeroMessages.GSS.Character
         public uint ActionId;
         public uint Flags; // rarity in the low 5 bits
         public float Cost;
-        [AeroArray(typeof(byte))] public FabricationData_00d9a1a0[] Effects;
+        [AeroArray(typeof(byte), Chunked = true)] public FabricationData_00d9a1a0[] Effects;
     }
 
     [AeroBlock]

@@ -11,9 +11,9 @@ namespace AeroMessages.GSS.Generic
     {
         public byte IsFinal; // 0: more chunks follow, 1: final chunk and log the count
         public byte Unk2;
-        [AeroArray(typeof(byte))] public Vector3[] Positions;
-        [AeroArray(typeof(byte))] public float[] Unk4;
-        [AeroArray(typeof(byte))] public float[] Unk5;
-        [AeroArray(typeof(byte))] public uint[] Unk6; // Presumably this would have been resource types?
+        [AeroArray(typeof(byte), Chunked = true)] public Vector3[] Positions;
+        [AeroArray(typeof(byte), Chunked = true)] public float[] Unk4;
+        [AeroArray(typeof(byte), Chunked = true)] public float[] Unk5;
+        [AeroArray(typeof(byte), Chunked = true)] public uint[] Unk6; // Presumably this would have been resource types?
     }
 }

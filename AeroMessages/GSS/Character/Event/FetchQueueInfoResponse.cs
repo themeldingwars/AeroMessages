@@ -9,7 +9,7 @@ namespace AeroMessages.GSS.Character.Event
     public partial class FetchQueueInfoResponse
     {
         public sbyte Succes;
-        [AeroArray(typeof(byte))] public FetchQueueData[] Queues;
+        [AeroArray(typeof(byte), Chunked = true)] public FetchQueueData[] Queues;
     }
 
     [AeroBlock]
@@ -23,12 +23,12 @@ namespace AeroMessages.GSS.Character.Event
         [AeroString] public string DisplayKeyDesc;
         public uint ZoneId;
         public uint MissionId;
-        [AeroArray(typeof(byte))] public QueueCertsData[] Certs;
-        [AeroArray(typeof(byte))] public QueueDifficultiesData[] Difficulties;
-        [AeroArray(typeof(byte))] public QueueRewardsItemData[] RewardsWinnerItems;
-        [AeroArray(typeof(byte))] public QueueRewardsLootData[] RewardsWinnerLoots;
-        [AeroArray(typeof(byte))] public QueueRewardsItemData[] RewardsLooserItems;
-        [AeroArray(typeof(byte))] public QueueRewardsLootData[] RewardsLooserLoots;
+        [AeroArray(typeof(byte), Chunked = true)] public QueueCertsData[] Certs;
+        [AeroArray(typeof(byte), Chunked = true)] public QueueDifficultiesData[] Difficulties;
+        [AeroArray(typeof(byte), Chunked = true)] public QueueRewardsItemData[] RewardsWinnerItems;
+        [AeroArray(typeof(byte), Chunked = true)] public QueueRewardsLootData[] RewardsWinnerLoots;
+        [AeroArray(typeof(byte), Chunked = true)] public QueueRewardsItemData[] RewardsLooserItems;
+        [AeroArray(typeof(byte), Chunked = true)] public QueueRewardsLootData[] RewardsLooserLoots;
     }
 
     [AeroBlock]

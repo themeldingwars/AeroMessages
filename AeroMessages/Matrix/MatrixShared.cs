@@ -6,10 +6,10 @@ namespace AeroMessages.Matrix
     public struct DevZoneInfoData
     {
         // Read_EnterZoneDevData 0x00755d40
-        [AeroArray(typeof(byte))] public DevPortsData[] DevPorts;
+        [AeroArray(typeof(byte), Chunked = true)] public DevPortsData[] DevPorts;
 
         // ReadArray_String_And_Int 0x00756a50
-        [AeroArray(typeof(byte))] public DevPidsData[] DevPids;
+        [AeroArray(typeof(byte), Chunked = true)] public DevPidsData[] DevPids;
     }
 
     [AeroBlock]

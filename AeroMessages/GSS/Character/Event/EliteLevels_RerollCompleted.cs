@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.EliteLevels_RerollCompleted, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class EliteLevels_RerollCompleted
     {
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public EliteAvailableUpgradeInfo[] AvailableUpgrades;
 
         public byte Success;

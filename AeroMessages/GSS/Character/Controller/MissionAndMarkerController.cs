@@ -142,7 +142,7 @@ namespace AeroMessages.GSS.Character.Controller
 
         public Vector3 Position;
 
-        [AeroArray(typeof(byte))] public AeraMapMarkerInnerData[] Polygon;
+        [AeroArray(typeof(byte), Chunked = true)] public AeraMapMarkerInnerData[] Polygon;
     }
 
     [AeroBlock]

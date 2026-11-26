@@ -25,7 +25,7 @@ namespace AeroMessages.GSS.Generic
 
         public ushort SchemaVersion; // must be equal to 2
 
-        [AeroArray(typeof(byte))] public SinCardData[] SinCard;
+        [AeroArray(typeof(byte), Chunked = true)] public SinCardData[] SinCard;
 
         // Shadow field changes of the encounter view described by Header, parse with AeroEncounters.GetEncounterClass(name).UnpackChanges
         [AeroBlob] public byte[] ShadowFieldValues;
@@ -42,6 +42,6 @@ namespace AeroMessages.GSS.Generic
         //[AeroSdb("dbencounterdata::SinCardFields", "TemplateId")]
         public uint Type;
 
-        [AeroArray(typeof(byte))] public SinCardFieldData[] Fields;
+        [AeroArray(typeof(byte), Chunked = true)] public SinCardFieldData[] Fields;
     }
 }

@@ -11,7 +11,7 @@ namespace AeroMessages.GSS.Generic
     {
         public EntityId Player;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public MaybeArrayReadStats[] Stats;
     }
 

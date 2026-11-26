@@ -19,7 +19,7 @@ namespace AeroMessages.GSS.Generic
 
         public uint Duration; // seconds
 
-        [AeroArray(typeof(byte))] public UiNotificationData[] Arguments; // format arguments of the localized text
+        [AeroArray(typeof(byte), Chunked = true)] public UiNotificationData[] Arguments; // format arguments of the localized text
 
         [AeroSdb("dbcharacter::BannerType", "id")]
         public BannerType Banner;

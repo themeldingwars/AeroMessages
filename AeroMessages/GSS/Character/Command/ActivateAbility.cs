@@ -11,7 +11,7 @@ namespace AeroMessages.GSS.Character.Command
     {
         public uint Time;
         public byte AbilitySlotIndex;
-        [AeroArray(typeof(byte))] public EntityId[] Targets;
+        [AeroArray(typeof(byte), Chunked = true)] public EntityId[] Targets;
         public float Data1; // Might have some unclean memory use
         public float Data2;
         public float Data3;

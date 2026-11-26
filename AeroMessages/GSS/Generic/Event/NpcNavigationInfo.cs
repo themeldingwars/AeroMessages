@@ -11,8 +11,8 @@ namespace AeroMessages.GSS.Generic
     public partial class NpcNavigationInfo
     {
         public EntityId Unk1;
-        [AeroArray(typeof(byte))] public Vector3[] Unk2;
-        [AeroArray(typeof(byte))] public NpcNavigationData2[] Unk3;
+        [AeroArray(typeof(byte), Chunked = true)] public Vector3[] Unk2;
+        [AeroArray(typeof(byte), Chunked = true)] public NpcNavigationData2[] Unk3;
     }
 
     [AeroBlock]

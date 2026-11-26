@@ -18,7 +18,7 @@ namespace AeroMessages.GSS.Character.Event
         // [AeroSdb("dblocalization::LocalizedText", "id")]
         public uint Prompt;
 
-        [AeroArray(typeof(byte))] public NewUiQueryInput[] Inputs;
+        [AeroArray(typeof(byte), Chunked = true)] public NewUiQueryInput[] Inputs;
     }
 
     [AeroBlock]

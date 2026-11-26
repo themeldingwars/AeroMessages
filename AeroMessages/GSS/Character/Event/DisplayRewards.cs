@@ -16,13 +16,13 @@ namespace AeroMessages.GSS.Character.Event
 
         public uint EventId; // world object/event id, gives the event name and icon
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public StatInfo[] Stats;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public RewardInfoData[] Rewards1;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public RewardInfoData[] Rewards2;
 
         public EntityId ResourceTargetId;
@@ -34,7 +34,7 @@ namespace AeroMessages.GSS.Character.Event
 
         public byte DisplayQuality; // 0 = salvage, 5 = legendary
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public ReputationInfo[] Reputations;
     }
 

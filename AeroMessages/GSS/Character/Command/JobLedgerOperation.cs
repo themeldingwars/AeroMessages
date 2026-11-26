@@ -9,6 +9,6 @@ namespace AeroMessages.GSS.Character.Command
     public partial class JobLedgerOperation
     {
         [AeroString] public string Operation;
-        [AeroArray(typeof(byte))] public uint[] ArcIds;
+        [AeroArray(typeof(byte), Chunked = true)] public uint[] ArcIds;
     }
 }

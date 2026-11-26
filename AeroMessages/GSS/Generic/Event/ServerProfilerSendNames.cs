@@ -8,8 +8,8 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.ServerProfiler_SendNames, GssVersion.V1, GssVersion.V74)]
     public partial class ServerProfilerSendNames
     {
-        [AeroArray(typeof(byte))] public ServerProfilerNamesData[] FrameNames; // for ServerProfilerFrameData.Id
-        [AeroArray(typeof(byte))] public ServerProfilerNamesData[] NodeNames; // for ServerProfilerStruct.Id
+        [AeroArray(typeof(byte), Chunked = true)] public ServerProfilerNamesData[] FrameNames; // for ServerProfilerFrameData.Id
+        [AeroArray(typeof(byte), Chunked = true)] public ServerProfilerNamesData[] NodeNames; // for ServerProfilerStruct.Id
     }
 
     [AeroBlock]

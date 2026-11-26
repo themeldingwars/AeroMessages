@@ -10,7 +10,7 @@ namespace AeroMessages.GSS.Character.Command
     {
         public ulong ItemGUID;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public SlotModuleRequestData[] Modules;
     }
 

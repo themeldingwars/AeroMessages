@@ -208,6 +208,6 @@ namespace AeroMessages.GSS.Character.Controller
     [AeroBlock]
     public struct NemesesData
     {
-        [AeroArray(typeof(byte))] public ulong[] Values;
+        [AeroArray(typeof(byte), Chunked = true)] public ulong[] Values;
     }
 }

@@ -54,7 +54,7 @@ namespace AeroMessages.GSS.Generic
     {
         // FUN_00c3bfc0
         [AeroString] public string Unk1;
-        [AeroArray(typeof(byte))] public uint[] Unk2;
+        [AeroArray(typeof(byte), Chunked = true)] public uint[] Unk2;
     }
 
     [AeroBlock]

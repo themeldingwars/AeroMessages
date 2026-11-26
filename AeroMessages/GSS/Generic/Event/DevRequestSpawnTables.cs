@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.DevRequestSpawnTables, GssVersion.V1, GssVersion.V74)]
     public partial class DevRequestSpawnTables
     {
-        [AeroArray(typeof(byte))] public DevReqSpawnTableData[] Unk;
+        [AeroArray(typeof(byte), Chunked = true)] public DevReqSpawnTableData[] Unk;
     }
 
     [AeroBlock]

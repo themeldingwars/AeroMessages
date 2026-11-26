@@ -13,7 +13,7 @@ namespace AeroMessages.Matrix
         public sbyte Created; // "Created" when set, "Accepted" otherwise
         public sbyte Squad; // joined with the squad
         public uint Unk4; // not passed on by the client
-        [AeroArray(typeof(byte))] public ChallengeMapData[] AvailableMaps; // Lobby.GetAvailableMaps
+        [AeroArray(typeof(byte), Chunked = true)] public ChallengeMapData[] AvailableMaps; // Lobby.GetAvailableMaps
         public uint ZoneId; // the selected map, Lobby.GetMatchParameters "zone_id"
     }
 

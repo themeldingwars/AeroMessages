@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.TutorialStateInitializeEvt, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class TutorialStateInitializeEvt
     {
-        [AeroArray(typeof(byte))] public TutorialState2x4[] Data;
+        [AeroArray(typeof(byte), Chunked = true)] public TutorialState2x4[] Data;
     }
 
     [AeroBlock]

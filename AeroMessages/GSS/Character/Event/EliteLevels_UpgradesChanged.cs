@@ -10,7 +10,7 @@ namespace AeroMessages.GSS.Character.Event
     {
         public uint ElitePoints;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public ElitePreviousUpgradeInfo[] PreviousUpgrades;
 
         public byte Success;

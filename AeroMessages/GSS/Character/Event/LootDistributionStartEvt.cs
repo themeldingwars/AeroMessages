@@ -9,12 +9,12 @@ namespace AeroMessages.GSS.Character.Event
     public partial class LootDistributionStartEvt
     {
         public uint DistributionId;
-        [AeroArray(typeof(byte))] public LootDistributionData[] Participants;
+        [AeroArray(typeof(byte), Chunked = true)] public LootDistributionData[] Participants;
         public uint ExpirationTime;
         public uint ItemSdbId;
         public uint Quantity;
         public uint Unk6;
-        [AeroArray(typeof(byte))] public uint[] HiddenModules;
+        [AeroArray(typeof(byte), Chunked = true)] public uint[] HiddenModules;
         public byte Unk8;
         public LootDistributionType Type;
     }

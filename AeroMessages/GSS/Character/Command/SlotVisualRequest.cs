@@ -18,6 +18,6 @@ namespace AeroMessages.GSS.Character.Command
 
         public uint ConfigId; // 0 PvE, 1 PvP
         public uint Unk2;
-        [AeroArray(typeof(byte))] public float[] Unk3;
+        [AeroArray(typeof(byte), Chunked = true)] public float[] Unk3;
     }
 }

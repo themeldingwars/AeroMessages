@@ -10,7 +10,7 @@ namespace AeroMessages.GSS.Character.Event
     {
         public sbyte ClearExistingData; // 1 for full update, 0 for partitial
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public UnlockGroup[] Groups;
     }
 
@@ -25,7 +25,7 @@ namespace AeroMessages.GSS.Character.Event
         [AeroArray(typeof(byte), Chunked = true)]
         public UnlockGroupEntry[] AddEntries;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         public UnlockGroupEntrySmall[] RemEntries; // unlocks taken away
     }
 

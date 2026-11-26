@@ -11,7 +11,7 @@ namespace AeroMessages.GSS.Generic
     {
         public EntityId Unk1;
         [AeroString] public string Unk2;
-        [AeroArray(typeof(byte))] public NpcPositionalDebugInfoData[] Unk3;
+        [AeroArray(typeof(byte), Chunked = true)] public NpcPositionalDebugInfoData[] Unk3;
         public byte Unk4;
     }
 

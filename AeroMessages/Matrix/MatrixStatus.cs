@@ -19,7 +19,7 @@ namespace AeroMessages.Matrix
         // -- ReadOptional_MatrixStatusExtraData, the 1962 client frees it again without reading it
         public byte HaveUnk7;
         [AeroIf(nameof(HaveUnk7), 1)]
-        [AeroArray(typeof(byte))] public MatrixStatusUnk7Data[] Unk7;
+        [AeroArray(typeof(byte), Chunked = true)] public MatrixStatusUnk7Data[] Unk7;
         // --
 
         [AeroBlob(typeof(ushort))] public byte[] Unk8; // never read by the 1962 client

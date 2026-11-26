@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.MissionCompletionCounts, GssVersion.V1, GssVersion.V74)]
     public partial class MissionCompletionCounts
     {
-        [AeroArray(typeof(byte))] public MissionCompletionCountsData[] Data;
+        [AeroArray(typeof(byte), Chunked = true)] public MissionCompletionCountsData[] Data;
         [AeroString] public string Type;
     }
 

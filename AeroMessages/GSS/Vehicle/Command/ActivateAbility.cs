@@ -11,7 +11,7 @@ namespace AeroMessages.GSS.Vehicle.Command
     {
         public uint Time;
         public AbilitySlotIndex AbilitySlotIndex;
-        [AeroArray(typeof(byte))] public EntityId[] Targets;
+        [AeroArray(typeof(byte), Chunked = true)] public EntityId[] Targets;
         public byte TraceAbilities; // traceAbilities command in console toggles this
     }
 }

@@ -10,7 +10,7 @@ namespace AeroMessages.GSS.Character.Event
     {
         public uint DistributionId;
         public LootDistributionState RollType;
-        [AeroArray(typeof(byte))] public LootDistributionData[] Participants;
+        [AeroArray(typeof(byte), Chunked = true)] public LootDistributionData[] Participants;
         public ulong Winner;
     }
 }

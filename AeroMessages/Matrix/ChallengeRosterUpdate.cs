@@ -10,7 +10,7 @@ namespace AeroMessages.Matrix
     public partial class ChallengeRosterUpdate
     {
         public ulong ChallengeId;
-        [AeroArray(typeof(byte))] public ChallengeRosterUpdateData[] Updates; // replaces the whole roster
+        [AeroArray(typeof(byte), Chunked = true)] public ChallengeRosterUpdateData[] Updates; // replaces the whole roster
     }
 
     [AeroBlock]

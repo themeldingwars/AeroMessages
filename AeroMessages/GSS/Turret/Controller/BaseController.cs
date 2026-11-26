@@ -36,6 +36,6 @@ namespace AeroMessages.GSS.Turret.Controller
     [AeroBlock]
     public struct AmmoData
     {
-        [AeroArray(typeof(byte))] public ushort[] Ammo;
+        [AeroArray(typeof(byte), Chunked = true)] public ushort[] Ammo;
     }
 }

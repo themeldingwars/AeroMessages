@@ -11,6 +11,6 @@ namespace AeroMessages.GSS.Character.Command
         public ulong ChallengeId;
         public ulong InviterId;
         [AeroString] public string InviterName;
-        [AeroArray(typeof(byte))] public ulong[] SquadMemberIds;
+        [AeroArray(typeof(byte), Chunked = true)] public ulong[] SquadMemberIds;
     }
 }

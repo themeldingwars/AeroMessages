@@ -8,7 +8,7 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.FriendsListResponse, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class FriendsListResponse
     {
-        [AeroArray(typeof(byte))] public FriendsListData[] Friends;
+        [AeroArray(typeof(byte), Chunked = true)] public FriendsListData[] Friends;
         public uint Page; // Counts up per response of up to 50 friends, an empty response ends the list
     }
 

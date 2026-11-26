@@ -107,7 +107,7 @@ namespace AeroMessages.GSS.Deployable.View
 
         private EntityId AttachedTo;
 
-        [AeroArray(typeof(byte))]
+        [AeroArray(typeof(byte), Chunked = true)]
         private ushort[] WarpaintColors;
 
         private byte VisualInfoGroupIndex; // TODO: Verify

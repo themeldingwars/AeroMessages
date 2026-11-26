@@ -9,9 +9,9 @@ namespace AeroMessages.GSS.Character.Command
     public partial class ExecuteTinkeringPlan
     {
         public uint PlanId;
-        [AeroArray(typeof(byte))] public TinkeringData[] ItemInputs;
-        [AeroArray(typeof(byte))] public TinkeringData[] SubtypeInputs;
-        [AeroArray(typeof(byte))] public TinkeringData[] ArrayInputs;
+        [AeroArray(typeof(byte), Chunked = true)] public TinkeringData[] ItemInputs;
+        [AeroArray(typeof(byte), Chunked = true)] public TinkeringData[] SubtypeInputs;
+        [AeroArray(typeof(byte), Chunked = true)] public TinkeringData[] ArrayInputs;
     }
 
     [AeroBlock]

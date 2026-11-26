@@ -8,8 +8,8 @@ namespace AeroMessages.GSS.Character.Event
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssCharacterMessage.DailyLoginRewardsUpdateEvt, GssCharacterView.BaseController, GssVersion.V1, GssVersion.V74)]
     public partial class DailyLoginRewardsUpdateEvt
     {
-        [AeroArray(typeof(byte))] public DailyRewardsLoginData[] LoginData;
-        [AeroArray(typeof(byte))] public DailyRewardStreakData[] StreakData;
+        [AeroArray(typeof(byte), Chunked = true)] public DailyRewardsLoginData[] LoginData;
+        [AeroArray(typeof(byte), Chunked = true)] public DailyRewardStreakData[] StreakData;
         public uint StreakLength;
         public uint StreakBuybackPrice;
         [AeroSdb("dbcharacter::Calendar", "id")]
@@ -33,7 +33,7 @@ namespace AeroMessages.GSS.Character.Event
         public uint Display; // Seems like it can be the index to display in streak items if there are multiple
         public uint LastClaimTime;
 
-        [AeroArray(typeof(byte))] public DailyRewardStreakItemData[] StreakItems; // If no entries are provided the client crashes?
+        [AeroArray(typeof(byte), Chunked = true)] public DailyRewardStreakItemData[] StreakItems; // If no entries are provided the client crashes?
     }
 
     [AeroBlock]

@@ -9,7 +9,7 @@ namespace AeroMessages.GSS.Generic
     [AeroMessageId(MsgType.GSS, MsgSrc.Message, GssMessage.ChatMessageList, GssVersion.V1, GssVersion.V74)]
     public partial class ChatMessageList
     {
-        [AeroArray(typeof(byte))] public ChatMessageData[] Messages;
+        [AeroArray(typeof(byte), Chunked = true)] public ChatMessageData[] Messages;
     }
 
     [AeroBlock]

@@ -9,7 +9,7 @@ namespace AeroMessages.GSS.Character.Event
     public partial class LootDistributionUpdateEvt
     {
         public uint DistributionId;
-        [AeroArray(typeof(byte))] public LootDistributionData[] Participants;
+        [AeroArray(typeof(byte), Chunked = true)] public LootDistributionData[] Participants;
         public uint Unk3;
     }
 }

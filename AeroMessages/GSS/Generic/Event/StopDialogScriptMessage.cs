@@ -9,7 +9,7 @@ namespace AeroMessages.GSS.Generic
     public partial class StopDialogScriptMessage
     {
         public uint DialogId;
-        [AeroArray(typeof(byte))] public ulong[] Unk2;
+        [AeroArray(typeof(byte), Chunked = true)] public ulong[] Unk2;
         public byte Interrupt;
     }
 }
