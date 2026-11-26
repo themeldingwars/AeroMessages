@@ -997,8 +997,7 @@ namespace AeroMessages.GSS
          */
         public ushort DataLength;
 
-        public byte DataCount; // Throws exception if 0?
-        [AeroArray(nameof(DataCount))] public SQIData[] Data;
+        [AeroArray(typeof(byte), Chunked = true)] public SQIData[] Data; // Read_SquadQueueIneligibilityData, 0xB06170
     }
 
     [AeroBlock]
