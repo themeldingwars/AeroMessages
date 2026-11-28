@@ -620,8 +620,7 @@ namespace AeroMessages.GSS
         [AeroIf(nameof(Flags), Ops.HasFlag, CurrentPoseUpdateFlags.ShortTime)]
         public byte ShortTimeAlt;
 
-        // Unknown byte
-        public byte UnkAlwaysPresent;
+        public byte Lateness;
 
         // Movement State
         [AeroIf(nameof(Flags), Ops.DoesntHaveFlag, CurrentPoseUpdateFlags.MovementState)]
