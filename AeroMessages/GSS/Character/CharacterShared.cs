@@ -390,12 +390,12 @@ namespace AeroMessages.GSS.Character
         public MovementPoseFlags Flags;
         public byte             WaterLevelAndDesc; // ddddllll
 
-        [AeroIf(nameof(MovementPoseFlags), Ops.HasFlag, MovementPoseFlags.PosRotState)]
+        [AeroIf(nameof(Flags), Ops.HasFlag, MovementPoseFlags.PosRotState)]
         public MovementPosRotState PosRotState;
 
         public Vector3 Velocity;
 
-        [AeroIf(nameof(MovementPoseFlags), Ops.HasFlag, MovementPoseFlags.Aim)]
+        [AeroIf(nameof(Flags), Ops.HasFlag, MovementPoseFlags.Aim)]
         public Vector3 Aim;
 
         public ushort JetpackEnergy;
