@@ -357,15 +357,16 @@ namespace AeroMessages.GSS.Character
             restrict_weapon      = 1 << 4,
             remove_hitboxes      = 1 << 5, // Client projectile visuals pass through when this is set, so figure its the hitboxes. Other players can walk through us, but we cant walk through them.
             restrict_abilities   = 1 << 6,
-            unk_128              = 1 << 7,
+            immune_death         = 1 << 7,
             immune_falldamage    = 1 << 8, // You do not go into falling state when this is on, thus your character does not do the heavy landing.
             restrict_sprint      = 1 << 9,
             restrict_melee       = 1 << 10,
             restrict_interaction = 1 << 11,
             knock_down           = 1 << 12,
-            restrict_stumble     = 1 << 13,
+            immune_physics       = 1 << 13,
             move_through_objects = 1 << 14, // You can run through other characters. They can't run through you. Other objects are still solid.
             reversed_controls    = 1 << 15,
+            restrict_stumble     = 1 << 16,
         }
 
         public CharacterCombatFlags Value;
