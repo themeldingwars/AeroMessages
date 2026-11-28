@@ -159,7 +159,7 @@ namespace AeroMessages.GSS.Character.Controller
         [Flags]
         public enum CharacterPermissionFlags : ulong
         {
-            movement = 1U << 0,
+            move = 1U << 0,
             sprint = 1U << 1,
             jump = 1U << 2,
             interact = 1U << 3,
@@ -168,7 +168,7 @@ namespace AeroMessages.GSS.Character.Controller
             abilities = 1U << 6,
             flashlight = 1U << 7,
             unk_8 = 1U << 8,
-            cheat_jump_midair = 1U << 9,
+            double_jump = 1U << 9,
             glider = 1U << 10,
             unk_11 = 1U << 11,
             jetpack = 1U << 12,
@@ -176,11 +176,11 @@ namespace AeroMessages.GSS.Character.Controller
             unk_14 = 1U << 14, // Some relation to flashlight permission, seems to affect a base value (if we have permission then it becomes 1.0, otherwise 0)
             spectate_input = 1U << 15, // Spectate button can be pressed while Dead (Jump) (needs testing)
             new_character = 1U << 16,
-            glider_hud = 1U << 17,
+            glider_auto = 1U << 17,
             crouch = 1U << 18,
-            cheat_float = 1U << 19,
+            hover = 1U << 19,
             detect_resources = 1U << 20,
-            unk_21 = 1U << 21,
+            generate_supercharge = 1U << 21,
             calldown_abilities = 1U << 22,
             unk_23 = 1U << 23,
             emotes = 1U << 24,
@@ -190,7 +190,7 @@ namespace AeroMessages.GSS.Character.Controller
             respawn_input = 1U << 28, // Respawn button can be pressed while Dead (Reload)
             free_repairs = 1U << 29,
             battleframe_abilities = 1U << 30,
-            unk_31 = 1U << 31, // Something returns false early if we dont have it - related to combat.timeout cvar, text "In combat, aggros" displayed where?
+            combat = 1U << 31,
             // another 32 bits
         }
 
