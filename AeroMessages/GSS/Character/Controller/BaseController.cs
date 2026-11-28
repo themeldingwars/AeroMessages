@@ -166,7 +166,7 @@ namespace AeroMessages.GSS.Character.Controller
         public Vector3 AimDirection;
         public Vector3 Velocity;
         public ushort MovementState;
-        public MovementDataType MovementType;
+        public MovementPoseFlags Flags;
         public byte WaterLevelAndDesc;
         public ushort JetpackEnergy;
         public short AirGroundTimer;

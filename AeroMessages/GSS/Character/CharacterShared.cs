@@ -374,11 +374,12 @@ namespace AeroMessages.GSS.Character
     }
 
     [Flags]
-    public enum MovementDataType : byte
+    public enum MovementPoseFlags : byte
     {
-        Velocity = 0,
+        None = 0,
         PosRotState = 1,
-        Aim = 2
+        Aim = 2,
+        DoubleJumpUsed = 4
     }
 
     [AeroBlock]
@@ -386,15 +387,15 @@ namespace AeroMessages.GSS.Character
     {
         // FUN_009f04d0
         public ushort           ShortTime;
-        public MovementDataType MovementType;
+        public MovementPoseFlags Flags;
         public byte             WaterLevelAndDesc; // ddddllll
 
-        [AeroIf(nameof(MovementType), Ops.HasFlag, MovementDataType.PosRotState)]
+        [AeroIf(nameof(MovementPoseFlags), Ops.HasFlag, MovementPoseFlags.PosRotState)]
         public MovementPosRotState PosRotState;
 
         public Vector3 Velocity;
 
-        [AeroIf(nameof(MovementType), Ops.HasFlag, MovementDataType.Aim)]
+        [AeroIf(nameof(MovementPoseFlags), Ops.HasFlag, MovementPoseFlags.Aim)]
         public Vector3 Aim;
 
         public ushort JetpackEnergy;
